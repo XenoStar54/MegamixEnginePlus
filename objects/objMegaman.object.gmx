@@ -160,7 +160,6 @@ frozenPaletteOutline = 0;
 // is embarked in.
 vehicle = noone;
 deathTimer = -1;
-global.outlineCol = c_black;
 playerPalette();
 
 // Show the READY text
