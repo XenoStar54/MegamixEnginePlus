@@ -119,7 +119,7 @@ enemyDamageValue(objChillSpikeLanded, 2);
 // Misc.
 enemyDamageValue(objPowerStone, 2);
 enemyDamageValue(objPlantBarrier, 6);
-enemyDamageValue(objBrickWeapon, 4);
+enemyDamageValue(objBlockDropper, 4);
 enemyDamageValue(objIceSlasher, 2);
 
 // AirShooter Patterns

@@ -62,59 +62,92 @@ enemyDamageValue(objBusterShot, 1);
 enemyDamageValue(objBusterShotHalfCharged, 1);
 enemyDamageValue(objBusterShotCharged, 3);
 
-// MaGMML3
-enemyDamageValue(objSparkChaser, 2);
-enemyDamageValue(objLaserTrident, 1);
-enemyDamageValue(objWaterShield, 1);
-enemyDamageValue(objTornadoBlow, 1);
+// MM1
+enemyDamageValue(objSuperArmBlockProjectile, 1);
+enemyDamageValue(objSuperArmDebris, 1);
+enemyDamageValue(objIceSlasher, 0);
 enemyDamageValue(objThunderBeam, 5);
-enemyDamageValue(objBreakDash, 1);
-enemyDamageValue(objMagneticShockwave, 2);
-enemyDamageValue(objIceWall, 0);
 
-// MaGMML2
-enemyDamageValue(objHornetChaser, 1);
-enemyDamageValue(objJewelSatellite, 1);
-enemyDamageValue(objGrabBuster, 1);
-enemyDamageValue(objTripleBlade, 2);
-enemyDamageValue(objSlashClaw, 2);
-enemyDamageValue(objWheelCutter, 2);
-enemyDamageValue(objSakugarne, 4);
-enemyDamageValue(objWireAdapter, 2);
-
-// MaGMML1
+// MM2
 enemyDamageValue(objMetalBlade, 2);
-enemyDamageValue(objGeminiLaser, 1);
-enemyDamageValue(objSolarBlaze, 1);
-enemyDamageValue(objTopSpin, 1);
-enemyDamageValue(objThunderWool, 4);
-enemyDamageValue(objPharaohShot, 1);
-enemyDamageValue(objBlackHoleBomb, 1);
-enemyDamageValue(objMagicCard, 2);
 
-// MaG48MML
-enemyDamageValue(objFlameMixer, 1);
-enemyDamageValue(objRainFlush, 1);
-enemyDamageValue(objSparkShock, 4);
+// MM3
+enemyDamageValue(objNeedleCannon, 0);
+enemyDamageValue(objMagnetMissile, 1);
+enemyDamageValue(objGeminiLaser, 1);
+enemyDamageValue(objHardKnuckle, 2);
+enemyDamageValue(objTopSpin, 1);
 enemyDamageValue(objSearchSnake, 1);
+enemyDamageValue(objSparkShock, 4);
+enemyDamageValue(objShadowBlade, 1);
+
+// MM4
+enemyDamageValue(objRainFlush, 1);
+enemyDamageValue(objPharaohShot, 1); //Charge shot = 6
+
+// MM5
+enemyDamageValue(objPowerStone, 1);
+
+// MM6
+enemyDamageValue(objPlantBarrier, 3);
+
+// MM7
+enemyDamageValue(objSlashClaw, 2);
+
+// MM8
+enemyDamageValue(objHomingSniper, 2);
+
+// MM9
+enemyDamageValue(objConcreteShot, 1);
+enemyDamageValue(objTornadoBlow, 1);
+enemyDamageValue(objLaserTrident, 1);
+enemyDamageValue(objJewelSatellite, 1);
+enemyDamageValue(objHornetChaser, 1);
+enemyDamageValue(objBlackHoleBomb, 1);
+
+// MM10
+enemyDamageValue(objTripleBlade, 2);
+enemyDamageValue(objWaterShield, 1);
+enemyDamageValue(objChillShot, 0);
+enemyDamageValue(objChillSpikeLanded, 0);
+enemyDamageValue(objThunderWool, 4);
+enemyDamageValue(objWheelCutter, 2);
+enemyDamageValue(objSolarBlaze, 1);
+
+// MM11
+enemyDamageValue(objBlockDropper, 1);
+
+// MMI
+
+// MMII
+enemyDamageValue(objSakugarne, 4);
+
+// MMIII
+
+// MMIV
+
+// MMV
+enemyDamageValue(objSparkChaser, 2);
+enemyDamageValue(objGrabBuster, 1);
+enemyDamageValue(objBreakDash, 1);
+enemyDamageValue(objSaltWater, 1);
+
+// MM&amp;B
 enemyDamageValue(objTenguBlade, 1);
 enemyDamageValue(objTenguDash, 1);
 enemyDamageValue(objTenguDisk, 2);
-enemyDamageValue(objSaltWater, 1);
-enemyDamageValue(objConcreteShot, 1);
-enemyDamageValue(objHomingSniper, 2);
+enemyDamageValue(objIceWall, 0);
+enemyDamageValue(objMagicCard, 2);
 
-// MaG24HMML
-enemyDamageValue(objSuperArmBlockProjectile, 1);
-enemyDamageValue(objSuperArmDebris, 1);
-enemyDamageValue(objChillShot, 0);
-enemyDamageValue(objChillSpikeLanded, 0);
+// MM&amp;B2
+enemyDamageValue(objFlameMixer, 1);
 
-// Misc.
-enemyDamageValue(objPowerStone, 1);
-enemyDamageValue(objPlantBarrier, 1);
-enemyDamageValue(objBrickWeapon, 1);
-enemyDamageValue(objIceSlasher, 0);
+// Other
+enemyDamageValue(objMagneticShockwave, 2);
+
+// Utilities
+enemyDamageValue(objWireAdapter, 2);
+enemyDamageValue(objSuperArrow, 2);
 </string>
           </argument>
         </arguments>

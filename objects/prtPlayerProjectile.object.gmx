@@ -31,6 +31,12 @@ faction = 2;
 stopOnFlash = 0;
 killOverride = false;
 
+// does weapon persist on weapon switch? used mostly for time slow
+persists = false;
+
+// used to prevent Star Crash effect from carrying over
+lowGravity = false;
+
 canHit = false;
 penetrate = 0;
 pierces = 0;

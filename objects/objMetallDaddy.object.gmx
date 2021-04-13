@@ -145,7 +145,7 @@ enemyDamageValue(objChillSpikeLanded, 5);
 // Misc.
 enemyDamageValue(objPowerStone, 1);
 enemyDamageValue(objPlantBarrier, 1);
-enemyDamageValue(objBrickWeapon, 0);
+enemyDamageValue(objBlockDropper, 0);
 enemyDamageValue(objIceSlasher, 1);
 </string>
           </argument>

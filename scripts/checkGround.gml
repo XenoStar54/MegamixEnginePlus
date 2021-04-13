@@ -51,6 +51,12 @@ if (dieToSpikes) // entities with this variable set to "true" die when coming in
 {
     // spikes become solid when hitstunned
     var spSolid = (canHit && iFrames != 0);
+    
+    if(instance_exists(objSkullBarrier))
+    {
+        spSolid = 1;
+    }
+    
     with (objSpike)
     {
         solid = spSolid;

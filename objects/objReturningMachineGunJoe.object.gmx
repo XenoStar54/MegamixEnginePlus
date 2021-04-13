@@ -31,6 +31,9 @@ healthpointsStart = 6;
 facePlayerOnSpawn = true;
 category = "joes,shielded";
 
+// Empty mech mechanic
+joeLock = false;
+
 // enemy specific code
 phase = 0;
 shotCount = 0;

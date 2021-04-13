@@ -54,6 +54,14 @@ if (instance_exists(objAirMan))
     xspeed = (xstart - x) / 20;
     yspeed = (ystart - y) / 20;
 }
+if (instance_exists(objDocAir))
+{
+    x = objDocAir.x;
+    y = objDocAir.y;
+    
+    xspeed = (xstart - x) / 20;
+    yspeed = (ystart - y) / 20;
+}
 </string>
           </argument>
         </arguments>
@@ -76,7 +84,7 @@ if (instance_exists(objAirMan))
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (!instance_exists(objAirMan))
+            <string>if (!instance_exists(objAirMan) &amp;&amp; !instance_exists(objDocAir))
 {
     instance_destroy();
     exit;

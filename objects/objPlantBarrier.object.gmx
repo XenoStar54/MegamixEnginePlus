@@ -36,6 +36,7 @@ image_speed = (2 / 3);
 
 penetrate = 0;
 pierces = 0;
+currentPlayerID = 0;
 
 playSFX(sfxBuster);
 </string>
@@ -102,11 +103,39 @@ if (!global.frozen)
     {
         case -1:
         case 1:
+                with (other)
+                {
+                    if (instance_exists(other.parent))
+                    {
+                        global.playerProjectileCreator = other.parent;
+                    }
+                    else
+                    {
+                        global.playerProjectileCreator = objMegaman;
+                    }
+                    i = instance_create(bboxGetXCenter(), bbox_top - 2, objGrabBusterPickup);
+                    if (instance_exists(i))
+                    {
+                        playSFX(sfxBallBounce);
+                        i.sprite_index = sprPlantBarrierPickup;
+                        i.xspeed = 1.25 * sign(other.xspeed);
+                        i.yspeed = -2;
+                        i.grav = 0.25;
+                        i.depth = depth - 1;
+                        i.x += i.xspeed;
+                    
+                    }
+                }
+                global.ammo[currentPlayerID, global.weapon[currentPlayerID]] = max(0,
+                global.ammo[currentPlayerID, global.weapon[currentPlayerID]] - 2 / (global.energySaver + 1));
             with (other)
             {
                 instance_destroy();
             }
-            instance_destroy();
+            if(global.ammo[currentPlayerID, global.weapon[currentPlayerID]] &lt;= 0)
+            {
+                instance_destroy();
+            }
             break;
     }
 }
@@ -136,6 +165,7 @@ if (!global.frozen)
 
 if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT))
 {
+    currentPlayerID = playerID;
     fireWeapon(0, 0, objPlantBarrier, 1, 2, 1, 0);
 }
 </string>
@@ -186,7 +216,7 @@ specialDamageValue("fire", 1);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>weaponSetup("PLANT BARRIER", make_color_rgb(248, 88, 152), make_color_rgb(248, 248, 248), sprWeaponIconsPlantBarrier);
+            <string>weaponSetup("PLANT BARRIER", global.nesPalette[31], global.nesPalette[40], sprWeaponIconsPlantBarrier);
 </string>
           </argument>
         </arguments>

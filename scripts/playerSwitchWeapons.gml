@@ -49,6 +49,18 @@ else
 
 if (global.weapon[playerID] != oldWeapon)
 {
+    if(instance_exists(objSuperArmCreateBlock))
+    {
+        if(objSuperArmCreateBlock.sprite_index == sprSuperArmCreateBlock)
+        {
+            with(objSuperArmCreateBlock)
+            {
+                instance_create(x, y - 16 * image_yscale, objExplosion)
+                instance_destroy();
+            }
+        }
+    }
+
     // slight pause between scrolls
     quickWeaponScrollTimer = 8 + (10 * (quickWeaponScrollTimer < 0));
     
@@ -65,7 +77,17 @@ if (global.weapon[playerID] != oldWeapon)
     
     with (prtPlayerProjectile)
     {
-        if (playerID == other.playerID)
+        if (lowGravity)
+        {
+            if instance_exists(objMegaman)
+            {
+                with (objMegaman)
+                {
+                    gravfactor = 1;
+                }
+            }
+        }
+        if (playerID == other.playerID && !persists)
         {
             instance_destroy();
         }
@@ -77,6 +99,9 @@ if (global.weapon[playerID] != oldWeapon)
     audio_stop_sound(sfxCharged);
     audio_stop_sound(sfxWheelCutter1);
     audio_stop_sound(sfxWheelCutter2);
+    audio_stop_sound(sfxFireCharging1);
+    audio_stop_sound(sfxFireCharging2);
+    audio_stop_sound(sfxFireCharging3);
 }
 
 // Timer

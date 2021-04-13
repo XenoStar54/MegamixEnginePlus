@@ -28,6 +28,7 @@
             <string>/// initialization
 
 //// global initialization ////
+global.hudFlicker = 0
 
 // set random seed
 randomize();
@@ -187,7 +188,7 @@ if (!instance_exists(objSectionSwitcher) &amp;&amp; global.inGame)
 
 // Flicker
 depthAlter = !depthAlter;
-if (depthAlter)
+if (depthAlter &amp;&amp; global.hudFlicker)
 {
     depth = 10;
 }

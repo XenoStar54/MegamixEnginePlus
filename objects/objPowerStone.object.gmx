@@ -173,7 +173,7 @@ specialDamageValue("floating", 4);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>weaponSetup("POWER STONE", make_color_rgb(124, 8, 0), make_color_rgb(255, 255, 255), sprWeaponIconsPowerStone);
+            <string>weaponSetup("POWER STONE", global.nesPalette[7], global.nesPalette[40], sprWeaponIconsPowerStone);
 </string>
           </argument>
         </arguments>

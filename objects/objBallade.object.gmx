@@ -62,6 +62,8 @@ music = "Mega_Man_4GB.gbs";
 musicType = "VGM";
 musicTrackNumber = 20;
 
+enemyDamageValue(objScrewCrusher, 4);
+
 // Damage Table
 enemyDamageValue(objBusterShot, 1);
 enemyDamageValue(objBusterShotHalfCharged, 1);
@@ -119,7 +121,7 @@ enemyDamageValue(objChillSpikeLanded, 0);
 // Misc.
 enemyDamageValue(objPowerStone, 2);
 enemyDamageValue(objPlantBarrier, 0);
-enemyDamageValue(objBrickWeapon, 2);
+enemyDamageValue(objBlockDropper, 2);
 enemyDamageValue(objIceSlasher, 0);
 </string>
           </argument>

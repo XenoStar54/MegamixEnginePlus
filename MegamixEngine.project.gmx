@@ -601,6 +601,59 @@
         <filename>rmShowcaseJumping.room.gmx</filename>
       </datafile>
       <datafile>
+        <name>MM8Boss.ogg</name>
+        <exists>-1</exists>
+        <size>393182</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>MM8Boss.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>Rockman8intro.ogg</name>
+        <exists>-1</exists>
+        <size>3280813</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>Rockman8intro.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>MegamixEnginePlusTitle.ogg</name>
+        <exists>-1</exists>
+        <size>2679933</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>MegamixEnginePlusTitle.ogg</filename>
+      </datafile>
+    </datafiles>
+    <datafiles number="173" name="Recordings">
+      <datafile>
         <name>rmShowcaseLeftovers.room.gmx</name>
         <exists>-1</exists>
         <size>345343</size>
@@ -651,6 +704,269 @@
         </ConfigOptions>
         <filename>rmShowcaseMinibossAnimals.room.gmx</filename>
       </datafile>
+    </datafiles>
+    <datafiles number="173" name="UnitTests">
+      <datafiles number="173" name="Rooms">
+        <datafile>
+          <name>lvlRecordingTest.room.gmx</name>
+          <exists>-1</exists>
+          <size>4787</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>lvlRecordingTest.room.gmx</filename>
+        </datafile>
+        <datafile>
+          <name>lvlUnitTestEnemies.room.gmx</name>
+          <exists>-1</exists>
+          <size>6583</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>lvlUnitTestEnemies.room.gmx</filename>
+        </datafile>
+        <datafile>
+          <name>lvlUnitTestMovement.room.gmx</name>
+          <exists>-1</exists>
+          <size>35253</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>lvlUnitTestMovement.room.gmx</filename>
+        </datafile>
+        <datafile>
+          <name>lvlUnitTestObjectSetter.room.gmx</name>
+          <exists>-1</exists>
+          <size>22056</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>lvlUnitTestObjectSetter.room.gmx</filename>
+        </datafile>
+        <datafile>
+          <name>lvlUnitTestRecording.room.gmx</name>
+          <exists>-1</exists>
+          <size>4474</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>lvlUnitTestRecording.room.gmx</filename>
+        </datafile>
+        <datafile>
+          <name>rmUnitTestBasic.room.gmx</name>
+          <exists>-1</exists>
+          <size>3853</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>rmUnitTestBasic.room.gmx</filename>
+        </datafile>
+        <datafile>
+          <name>lvlUnitTestBossDoors.room.gmx</name>
+          <exists>-1</exists>
+          <size>149674</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>lvlUnitTestBossDoors.room.gmx</filename>
+        </datafile>
+      </datafiles>
+      <datafiles number="173" name="Recordings">
+        <datafile>
+          <name>RecordingObjectSet.mrc</name>
+          <exists>-1</exists>
+          <size>4163</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>RecordingObjectSet.mrc</filename>
+        </datafile>
+        <datafile>
+          <name>RecordingTestHere.mrc</name>
+          <exists>-1</exists>
+          <size>3505</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>RecordingTestHere.mrc</filename>
+        </datafile>
+        <datafile>
+          <name>RecordingTestBasicMovement.mrc</name>
+          <exists>-1</exists>
+          <size>16529</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>RecordingTestBasicMovement.mrc</filename>
+        </datafile>
+        <datafile>
+          <name>RecordingTestBasicMovement2.mrc</name>
+          <exists>-1</exists>
+          <size>25851</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>RecordingTestBasicMovement2.mrc</filename>
+        </datafile>
+        <datafile>
+          <name>RecordingTestBasicMovement3.mrc</name>
+          <exists>-1</exists>
+          <size>11974</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>RecordingTestBasicMovement3.mrc</filename>
+        </datafile>
+        <datafile>
+          <name>RecordingTestBasicMovement4.mrc</name>
+          <exists>-1</exists>
+          <size>24803</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>RecordingTestBasicMovement4.mrc</filename>
+        </datafile>
+        <datafile>
+          <name>RecordingTestReset.mrc</name>
+          <exists>-1</exists>
+          <size>3605</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>RecordingTestReset.mrc</filename>
+        </datafile>
+        <datafile>
+          <name>recTestA.mrc</name>
+          <exists>-1</exists>
+          <size>3442</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>recTestA.mrc</filename>
+        </datafile>
+      </datafiles>
+    </datafiles>
+    <datafiles number="173" name="Levels">
       <datafile>
         <name>rmShowcaseMinibossIndustrial.room.gmx</name>
         <exists>-1</exists>
@@ -1906,6 +2222,7 @@
         <sound>sound\sfxWanaan</sound>
       </sounds>
       <sounds name="MM5">
+        <sound>sound\sfxChargeMan</sound>
         <sound>sound\sfxDachoneLaser</sound>
         <sound>sound\sfxDachoneWalk</sound>
         <sound>sound\sfxDarkWhistle</sound>
@@ -1929,15 +2246,42 @@
         <sound>sound\sfxCurlingerBounce</sound>
         <sound>sound\sfxCyberGabyoallBoost</sound>
         <sound>sound\sfxFireTelly</sound>
+        <sound>sound\sfxFlameBlast</sound>
+        <sound>sound\sfxFlameManFire</sound>
         <sound>sound\sfxHeliButonHover</sound>
         <sound>sound\sfxHeliButonReveal</sound>
+        <sound>sound\sfxKnightLand</sound>
         <sound>sound\sfxTeck</sound>
       </sounds>
       <sounds name="MM7">
+        <sound>sound\sfxBoomerang</sound>
+        <sound>sound\sfxFreezeManPower</sound>
+        <sound>sound\sfxSpringManJump</sound>
+        <sound>sound\sfxSpringManLand</sound>
+        <sound>sound\sfxSpringManMagnetized</sound>
+        <sound>sound\sfxSpringManShoot</sound>
+        <sound>sound\sfxSpringMiniBounce</sound>
         <sound>sound\sfxStegorusStomp</sound>
         <sound>sound\sfxStegorusSpikes</sound>
         <sound>sound\sfxStegorusMissile</sound>
         <sound>sound\sfxTelTelRain</sound>
+        <sound>sound\sfxTurbo</sound>
+      </sounds>
+      <sounds name="MM8">
+        <sound>sound\sfxSwordManFlameSword</sound>
+        <sound>sound\sfxSwordManSword</sound>
+        <sound>sound\sfxSwordStoneBreak</sound>
+        <sound>sound\sfxFrostLand</sound>
+        <sound>sound\sfxFrostPunch</sound>
+        <sound>sound\sfxFrostPunchEnd</sound>
+        <sound>sound\sfxFrostShake</sound>
+        <sound>sound\sfxIceWave1</sound>
+        <sound>sound\sfxIceWave2</sound>
+        <sound>sound\sfxIceWave3</sound>
+        <sound>sound\sfxGrenadeDash</sound>
+        <sound>sound\sfxGrenadeDebris</sound>
+        <sound>sound\sfxGrenadeFlashBomb</sound>
+        <sound>sound\sfxGrenadeGrenade</sound>
       </sounds>
       <sounds name="MM9">
         <sound>sound\sfxAlarm</sound>
@@ -1945,11 +2289,15 @@
         <sound>sound\sfxBunbyCatcher</sound>
         <sound>sound\sfxChangkeyDragonBreath</sound>
         <sound>sound\sfxElectricShot</sound>
+        <sound>sound\sfxFakeManReload</sound>
+        <sound>sound\sfxFakeManShoot</sound>
         <sound>sound\sfxFireTotemFire</sound>
         <sound>sound\sfxHoohooRock</sound>
         <sound>sound\sfxJumpRollerFlame</sound>
+        <sound>sound\sfxMagmaBazooka</sound>
         <sound>sound\sfxMM9Quake</sound>
         <sound>sound\sfxPaozoSuckIn</sound>
+        <sound>sound\sfxPlugShot</sound>
         <sound>sound\sfxPopoHeliFire</sound>
         <sound>sound\sfxSharkLaser</sound>
         <sound>sound\sfxSplashSing</sound>
@@ -2001,6 +2349,10 @@
         <sound>sound\sfxSolarBlazePopSmall</sound>
         <sound>sound\sfxSolarManSun</sound>
         <sound>sound\sfxSprinklanShoot</sound>
+        <sound>sound\sfxStrikeManDizzy</sound>
+        <sound>sound\sfxStrikeManRollingBounce</sound>
+        <sound>sound\sfxStrikeManSpinAttack</sound>
+        <sound>sound\sfxStrikeManThrow</sound>
         <sound>sound\sfxTackleFireDispenser</sound>
         <sound>sound\sfxTheKeeperFistClash</sound>
         <sound>sound\sfxTheKeeperShockwave</sound>
@@ -2088,61 +2440,95 @@
       <sound>sound\sfxBusterCharged</sound>
       <sound>sound\sfxBusterProtoCharged</sound>
       <sound>sound\sfxReflect</sound>
-      <sound>sound\sfxSparkChaser</sound>
-      <sound>sound\sfxLaserTrident</sound>
-      <sound>sound\sfxTornadoBlow</sound>
-      <sound>sound\sfxWaterShield</sound>
-      <sound>sound\sfxWaterShield2</sound>
-      <sound>sound\sfxThunderBeam</sound>
-      <sound>sound\sfxBreakDash</sound>
-      <sound>sound\sfxIceWall</sound>
-      <sound>sound\sfxRushCycle1</sound>
-      <sound>sound\sfxRushCycle2</sound>
-      <sounds name="MaGMML1">
-        <sound>sound\sfxTopSpin</sound>
-        <sound>sound\sfxMetalBlade</sound>
-        <sound>sound\sfxPharaohShot</sound>
-        <sound>sound\sfxPharaohShotCharged</sound>
-        <sound>sound\sfxMagicCard</sound>
-        <sound>sound\sfxThunderWoolRise</sound>
-        <sound>sound\sfxThunderWoolThunder</sound>
-        <sound>sound\sfxSolarBlaze</sound>
-        <sound>sound\sfxSolarBlazePop</sound>
-        <sound>sound\sfxBlackHoleBomb</sound>
-        <sound>sound\sfxBlackHoleBombOpen</sound>
-        <sound>sound\sfxGeminiLaser</sound>
+      <sounds name="MM1">
+        <sound>sound\sfxSuperArm</sound>
+        <sound>sound\sfxIceSlasher</sound>
+        <sound>sound\sfxThunderBeam</sound>
+        <sound>sound\sfxTimeSlow</sound>
       </sounds>
-      <sounds name="MaGMML2">
-        <sound>sound\sfxHornetChaser</sound>
-        <sound>sound\sfxJewelSatellite</sound>
-        <sound>sound\sfxTripleBlade</sound>
-        <sound>sound\sfxGrabBuster</sound>
+      <sounds name="MM2">
+        <sound>sound\sfxMetalBlade</sound>
+        <sound>sound\sfxTimeStopper</sound>
+        <sound>sound\sfxFakeTimeStopper</sound>
+        <sound>sound\sfxLeafShield</sound>
+      </sounds>
+      <sounds name="MM3">
+        <sound>sound\sfxGeminiLaser</sound>
+        <sound>sound\sfxTopSpin</sound>
+        <sound>sound\sfxSparkShock</sound>
+      </sounds>
+      <sounds name="MM4">
         <sound>sound\sfxFlashStopper</sound>
-        <sound>sound\sfxSlashClaw</sound>
-        <sound>sound\sfxWheelCutter1</sound>
-        <sound>sound\sfxWheelCutter2</sound>
+        <sound>sound\sfxRainFlush</sound>
+        <sound>sound\sfxPharaohShot</sound>
+        <sound>sound\sfxDrillBomb</sound>
+        <sound>sound\sfxPharaohShotCharged</sound>
         <sound>sound\sfxWire</sound>
       </sounds>
-      <sounds name="MaG48HMML">
-        <sound>sound\sfxConcreteShot1</sound>
-        <sound>sound\sfxConcreteShot2</sound>
+      <sounds name="MM5">
+        <sound>sound\sfxGravityHold</sound>
+        <sound>sound\sfxWaterWave</sound>
+        <sound>sound\sfxPowerStone</sound>
+        <sound>sound\sfxGyroAttack</sound>
+      </sounds>
+      <sounds name="MM7">
+        <sound>sound\sfxSlashClaw</sound>
+      </sounds>
+      <sounds name="MM8">
         <sound>sound\sfxHomingSniper</sound>
         <sound>sound\sfxHomingSniper2</sound>
         <sound>sound\sfxHomingSniper3</sound>
         <sound>sound\sfxHomingSniperLock</sound>
-        <sound>sound\sfxRainFlush</sound>
-        <sound>sound\sfxSparkShock</sound>
+      </sounds>
+      <sounds name="MM9">
+        <sound>sound\sfxConcreteShot1</sound>
+        <sound>sound\sfxConcreteShot2</sound>
+        <sound>sound\sfxTornadoBlow</sound>
+        <sound>sound\sfxLaserTrident</sound>
+        <sound>sound\sfxPlugBall</sound>
+        <sound>sound\sfxJewelSatellite</sound>
+        <sound>sound\sfxHornetChaser</sound>
+        <sound>sound\sfxFireCharging1</sound>
+        <sound>sound\sfxFireCharging2</sound>
+        <sound>sound\sfxFireCharging3</sound>
+        <sound>sound\sfxBlackHoleBomb</sound>
+        <sound>sound\sfxBlackHoleBombOpen</sound>
+      </sounds>
+      <sounds name="MM10">
+        <sound>sound\sfxTripleBlade</sound>
+        <sound>sound\sfxWaterShield</sound>
+        <sound>sound\sfxWaterShield2</sound>
+        <sound>sound\sfxThunderWoolRise</sound>
+        <sound>sound\sfxThunderWoolThunder</sound>
+        <sound>sound\sfxWheelCutter1</sound>
+        <sound>sound\sfxWheelCutter2</sound>
+        <sound>sound\sfxSolarBlaze</sound>
+        <sound>sound\sfxSolarBlazePop</sound>
+      </sounds>
+      <sounds name="MM11">
+        <sound>sound\sfxBlazingTorch1</sound>
+        <sound>sound\sfxBlazingTorch2</sound>
+      </sounds>
+      <sounds name="MMIV">
+        <sound>sound\sfxBalladeCracker</sound>
+        <sound>sound\sfxBalladeCrackerExplode</sound>
+      </sounds>
+      <sounds name="MMV">
+        <sound>sound\sfxSparkChaser</sound>
+        <sound>sound\sfxGrabBuster</sound>
+        <sound>sound\sfxBreakDash</sound>
+      </sounds>
+      <sounds name="MM&amp;B">
         <sound>sound\sfxTenguBlade</sound>
+        <sound>sound\sfxIceWall</sound>
+        <sound>sound\sfxMagicCard</sound>
       </sounds>
-      <sounds name="MaG24HMML">
-        <sound>sound\sfxSuperArm</sound>
-      </sounds>
-      <sounds name="Misc.">
-        <sound>sound\sfxIceSlasher</sound>
-        <sound>sound\sfxPowerStone</sound>
+      <sounds name="Other">
         <sound>sound\sfxSkeletuppinPakkajoe</sound>
-        <sound>sound\sfxTimeStopper</sound>
-        <sound>sound\sfxFakeTimeStopper</sound>
+      </sounds>
+      <sounds name="Utilities">
+        <sound>sound\sfxRushCycle1</sound>
+        <sound>sound\sfxRushCycle2</sound>
       </sounds>
     </sounds>
     <sounds name="Menu">
@@ -2184,174 +2570,353 @@
         <sprite>sprites\sprBusterShot</sprite>
         <sprite>sprites\sprBusterShotHalfCharged</sprite>
         <sprite>sprites\sprBusterShotCharged</sprite>
-        <sprite>sprites\sprBusterShotChargedColourMask</sprite>
         <sprite>sprites\sprBusterShotChargedPlus</sprite>
-        <sprite>sprites\sprBusterShotChargedPlusColourMask</sprite>
         <sprite>sprites\sprBusterShotHalfChargedProto</sprite>
         <sprite>sprites\sprBusterShotChargedProto</sprite>
-        <sprite>sprites\sprBusterShotChargedProtoColourMask</sprite>
         <sprite>sprites\sprBassBullet</sprite>
-        <sprite>sprites\sprSparkChaser</sprite>
-        <sprite>sprites\sprLaserTrident</sprite>
-        <sprite>sprites\sprTornadoBlow</sprite>
-        <sprite>sprites\mskTornadoBlow</sprite>
-        <sprite>sprites\sprMagneticShockwave</sprite>
-        <sprite>sprites\sprMagneticShockwaveParticle</sprite>
-        <sprite>sprites\sprWaterShieldBubble</sprite>
-        <sprite>sprites\sprThunderBeam</sprite>
-        <sprite>sprites\sprThunderBeamVertical</sprite>
-        <sprite>sprites\sprIceWall</sprite>
-        <sprite>sprites\sprIceWallShard</sprite>
-        <sprite>sprites\sprIceWallBreak</sprite>
-        <sprite>sprites\sprMagnetBeam</sprite>
-        <sprite>sprites\sprMagnetBeamEnd</sprite>
-        <sprite>sprites\sprMagnetBeamPickup</sprite>
-        <sprites name="Rush">
-          <sprite>sprites\sprRushMask</sprite>
-          <sprite>sprites\sprRushTeleport</sprite>
-          <sprite>sprites\sprRush</sprite>
-          <sprite>sprites\sprRushCoil</sprite>
-          <sprite>sprites\sprRushJet</sprite>
-          <sprite>sprites\sprRushCycle</sprite>
+        <sprites name="MM1">
+          <sprite>sprites\sprSuperArmCreateBlock</sprite>
+          <sprite>sprites\sprSuperArmDebris</sprite>
+          <sprite>sprites\sprIceSlasher</sprite>
+          <sprite>sprites\sprHyperBomb</sprite>
+          <sprite>sprites\sprHyperBombBlast</sprite>
+          <sprite>sprites\sprFireStorm</sprite>
+          <sprite>sprites\sprFireStormShield</sprite>
+          <sprite>sprites\sprThunderBeam</sprite>
+          <sprite>sprites\sprThunderBeamVertical</sprite>
         </sprites>
-        <sprites name="MaGMML1">
+        <sprites name="MM2">
           <sprite>sprites\sprMetalBlade</sprite>
-          <sprite>sprites\sprMagicCard</sprite>
-          <sprite>sprites\sprMagicCardVertical</sprite>
-          <sprite>sprites\sprSolarBlaze</sprite>
-          <sprite>sprites\sprSolarBlazeWave</sprite>
-          <sprite>sprites\sprPharaohShotCharging</sprite>
-          <sprite>sprites\sprPharaohShot</sprite>
-          <sprite>sprites\sprPharaohShotCharged</sprite>
-          <sprite>sprites\sprThunderWool</sprite>
-          <sprite>sprites\sprThunderWoolThunder</sprite>
-          <sprite>sprites\sprBlackHoleBombInactive</sprite>
-          <sprite>sprites\sprBlackHoleBomb</sprite>
-          <sprite>sprites\sprBlackHoleBombHitbox</sprite>
+          <sprite>sprites\sprAirShooter</sprite>
+          <sprite>sprites\sprAirShooterBurst</sprite>
+          <sprite>sprites\sprBubbleLead</sprite>
+          <sprite>sprites\sprBubbleLeadCapture</sprite>
+          <sprite>sprites\sprQuickBoomerang</sprite>
+          <sprite>sprites\sprCrashBomberWeapon</sprite>
+          <sprite>sprites\sprCrashBomberWeaponBlast</sprite>
+          <sprite>sprites\sprAtomicFire1</sprite>
+          <sprite>sprites\sprAtomicFire2</sprite>
+          <sprite>sprites\sprAtomicFire3</sprite>
+          <sprite>sprites\sprLeafShield</sprite>
+          <sprite>sprites\sprLeafShieldInit</sprite>
+        </sprites>
+        <sprites name="MM3">
+          <sprite>sprites\sprNeedleCannon</sprite>
           <sprite>sprites\sprGeminiLaser</sprite>
           <sprite>sprites\sprGeminiLaserReflect</sprite>
-        </sprites>
-        <sprites name="MaGMML2">
-          <sprite>sprites\sprHornetChaser</sprite>
-          <sprite>sprites\sprJewelSatellite</sprite>
-          <sprite>sprites\sprGrabBuster</sprite>
-          <sprite>sprites\sprGrabBusterPickup</sprite>
-          <sprite>sprites\sprTripleBlade</sprite>
-          <sprite>sprites\sprFlashStopperScreen</sprite>
-          <sprite>sprites\sprWheelCutter</sprite>
-          <sprite>sprites\sprSlashClaw</sprite>
-          <sprite>sprites\sprSuperArrow</sprite>
-          <sprite>sprites\sprWireAdapterWire</sprite>
-          <sprite>sprites\sprWireAdapter</sprite>
-          <sprites name="Sakugarne">
-            <sprite>sprites\sprSakugarne</sprite>
-            <sprite>sprites\sprSakugarneRide</sprite>
-            <sprites name="References">
-              <sprite>sprites\sprSakugarneMegaman</sprite>
-              <sprite>sprites\sprSakugarneMegamanLess</sprite>
-            </sprites>
-          </sprites>
-        </sprites>
-        <sprites name="MaG48HMML">
-          <sprite>sprites\sprFlameMixer</sprite>
-          <sprite>sprites\sprRainFlush</sprite>
-          <sprite>sprites\sprRainFlushParticle</sprite>
+          <sprite>sprites\sprMagnetMissile</sprite>
+          <sprite>sprites\sprHardKnuckle</sprite>
+          <sprite>sprites\sprSearchSnake</sprite>
           <sprite>sprites\sprSparkShock</sprite>
           <sprite>sprites\sprSparkShockParalyze</sprite>
-          <sprite>sprites\sprSearchSnake</sprite>
-          <sprite>sprites\mskSearchSnake</sprite>
+          <sprite>sprites\sprShadowBlade</sprite>
+          <sprites name="Do Not Use">
+            <sprite>sprites\mskSearchSnake</sprite>
+          </sprites>
+        </sprites>
+        <sprites name="MM4">
+          <sprite>sprites\sprFlashStopperScreen</sprite>
+          <sprite>sprites\sprRainFlush</sprite>
+          <sprite>sprites\sprRainFlushParticle</sprite>
+          <sprite>sprites\sprPharaohShot</sprite>
+          <sprite>sprites\sprPharaohShotCharged</sprite>
+          <sprite>sprites\sprPharaohShotCharging</sprite>
+          <sprite>sprites\sprDrillBomb</sprite>
+          <sprite>sprites\sprDustCrusher</sprite>
+          <sprite>sprites\sprDustCrusherFrag</sprite>
+          <sprite>sprites\sprDiveMissile</sprite>
+          <sprite>sprites\sprSkullBarrier</sprite>
+        </sprites>
+        <sprites name="MM5">
+          <sprite>sprites\sprWaterWave</sprite>
+          <sprite>sprites\mskWaterWave</sprite>
+          <sprite>sprites\sprPowerStone</sprite>
+          <sprite>sprites\sprGyroAttack</sprite>
+          <sprite>sprites\sprStarCrash</sprite>
+          <sprite>sprites\sprStarCrashInit</sprite>
+          <sprite>sprites\sprChargeKick</sprite>
+          <sprite>sprites\sprNapalmBomb</sprite>
+          <sprite>sprites\sprCrystalEyeLarge</sprite>
+          <sprite>sprites\sprWeaponCrystalEyeSmall</sprite>
+          <sprite>sprites\sprDarkStasisBullet</sprite>
+          <sprite>sprites\sprDarkStasisWall</sprite>
+          <sprite>sprites\mskDarkStasis</sprite>
+        </sprites>
+        <sprites name="MM6">
+          <sprite>sprites\sprWeaponBlizzardAttack</sprite>
+          <sprite>sprites\sprFlameBlastShot</sprite>
+          <sprite>sprites\sprFlameBlastFloor</sprite>
+          <sprite>sprites\sprFlameBlastWall</sprite>
+          <sprite>sprites\sprKnightCrusher</sprite>
+          <sprite>sprites\sprPlantBarrier</sprite>
+          <sprite>sprites\sprPlantBarrierPickup</sprite>
+          <sprite>sprites\sprSilverTomahawkWeapon</sprite>
+          <sprite>sprites\sprWindStormWeapon</sprite>
+          <sprite>sprites\sprYamatoSpear</sprite>
+        </sprites>
+        <sprites name="MM7">
+          <sprite>sprites\sprWeaponFreezeCracker</sprite>
+          <sprite>sprites\sprFreezeEffect</sprite>
+          <sprite>sprites\sprSlashClaw</sprite>
+        </sprites>
+        <sprites name="MM8">
+          <sprite>sprites\sprHomingSniper</sprite>
+          <sprite>sprites\sprHomingSniperCrosshair</sprite>
+          <sprite>sprites\sprWaterBalloon</sprite>
+          <sprite>sprites\sprWaterBalloonSplash</sprite>
+        </sprites>
+        <sprites name="MM9">
+          <sprite>sprites\sprConcreteShot</sprite>
+          <sprite>sprites\sprTornadoBlow</sprite>
+          <sprite>sprites\sprLaserTrident</sprite>
+          <sprite>sprites\sprPlugBall</sprite>
+          <sprite>sprites\sprJewelSatellite</sprite>
+          <sprite>sprites\sprHornetChaser</sprite>
+          <sprite>sprites\sprMagmaBazooka</sprite>
+          <sprite>sprites\sprMagmaBazookaCharged</sprite>
+          <sprite>sprites\sprBlackHoleBombInactive</sprite>
+          <sprite>sprites\sprBlackHoleBomb</sprite>
+          <sprites name="Do Not Use">
+            <sprite>sprites\mskTornadoBlow</sprite>
+            <sprite>sprites\sprBlackHoleBombHitbox</sprite>
+          </sprites>
+        </sprites>
+        <sprites name="MM10">
+          <sprite>sprites\sprTripleBlade</sprite>
+          <sprite>sprites\sprWaterShieldBubble</sprite>
+          <sprite>sprites\sprChillShot</sprite>
+          <sprite>sprites\sprThunderWool</sprite>
+          <sprite>sprites\sprThunderWoolThunder</sprite>
+          <sprite>sprites\sprReboundStriker</sprite>
+          <sprite>sprites\sprWheelCutter</sprite>
+          <sprite>sprites\sprSolarBlaze</sprite>
+          <sprite>sprites\sprSolarBlazeWave</sprite>
+        </sprites>
+        <sprites name="MM11">
+          <sprite>sprites\sprBlockDropper</sprite>
+          <sprite>sprites\sprBlockDropperDebris</sprite>
+          <sprite>sprites\sprBlazingTorch</sprite>
+          <sprite>sprites\sprBlazingTorchDragon</sprite>
+          <sprite>sprites\sprBlazingTorchParticle</sprite>
+          <sprite>sprites\sprBlazingTorchSpawn</sprite>
+          <sprite>sprites\sprBounceBall</sprite>
+          <sprite>sprites\sprBounceBallConfetti</sprite>
+        </sprites>
+        <sprites name="MMI">
+          <sprite>sprites\sprMirrorBuster</sprite>
+        </sprites>
+        <sprites name="MMII">
+          <sprite>sprites\sprSakugarne</sprite>
+          <sprite>sprites\sprSakugarneRide</sprite>
+          <sprites name="Do Not Use">
+            <sprite>sprites\sprSakugarneMegaman</sprite>
+            <sprite>sprites\sprSakugarneMegamanLess</sprite>
+          </sprites>
+        </sprites>
+        <sprites name="MMIII">
+          <sprite>sprites\sprScrewCrusher</sprite>
+        </sprites>
+        <sprites name="MMV">
+          <sprite>sprites\sprSparkChaser</sprite>
+          <sprite>sprites\sprGrabBuster</sprite>
+          <sprite>sprites\sprGrabBusterPickup</sprite>
           <sprite>sprites\sprSaltWater</sprite>
           <sprite>sprites\sprSaltWaterDrop</sprite>
           <sprite>sprites\sprSaltWaterSplash1</sprite>
           <sprite>sprites\sprSaltWaterSplash2</sprite>
-          <sprite>sprites\sprConcreteShot</sprite>
-          <sprite>sprites\sprHomingSniper</sprite>
-          <sprite>sprites\sprHomingSniperCrosshair</sprite>
+        </sprites>
+        <sprites name="MM&amp;B">
           <sprite>sprites\sprTenguBlade</sprite>
           <sprite>sprites\sprTenguDisk</sprite>
+          <sprite>sprites\sprIceWall</sprite>
+          <sprite>sprites\sprIceWallShard</sprite>
+          <sprite>sprites\sprIceWallBreak</sprite>
+          <sprite>sprites\sprMagicCard</sprite>
+          <sprite>sprites\sprMagicCardVertical</sprite>
         </sprites>
-        <sprites name="MegaEngine">
-          <sprites name="MM5">
-            <sprite>sprites\sprStarCrashInit</sprite>
-            <sprite>sprites\sprStarCrash</sprite>
+        <sprites name="MM&amp;B2">
+          <sprite>sprites\sprFlameMixer</sprite>
+        </sprites>
+        <sprites name="DOS">
+          <sprite>sprites\sprForceField</sprite>
+          <sprite>sprites\sprSonicWave</sprite>
+          <sprite>sprites\sprSonicWaveDiagonal</sprite>
+          <sprite>sprites\sprNuclearDetonator</sprite>
+          <sprite>sprites\sprNuclearDetonatorExploding</sprite>
+          <sprite>sprites\sprSharkBoomerang</sprite>
+        </sprites>
+        <sprites name="Other">
+          <sprite>sprites\sprMagneticShockwave</sprite>
+          <sprite>sprites\sprMagneticShockwaveParticle</sprite>
+          <sprite>sprites\sprCentaurArrow</sprite>
+          <sprite>sprites\sprSkeletuppinPakkajoe</sprite>
+          <sprites name="Do Not Use">
+            <sprite>sprites\mskWeaponExplosion</sprite>
           </sprites>
-          <sprites name="MM6">
-            <sprite>sprites\sprSilverTomahawk</sprite>
-            <sprite>sprites\sprWindStorm</sprite>
+        </sprites>
+        <sprites name="Utilities">
+          <sprite>sprites\sprMagnetBeam</sprite>
+          <sprite>sprites\sprMagnetBeamEnd</sprite>
+          <sprite>sprites\sprMagnetBeamPickup</sprite>
+          <sprite>sprites\sprRushTeleport</sprite>
+          <sprite>sprites\sprRush</sprite>
+          <sprite>sprites\sprRushCoil</sprite>
+          <sprite>sprites\sprRushJet</sprite>
+          <sprite>sprites\sprWireAdapterWire</sprite>
+          <sprite>sprites\sprWireAdapter</sprite>
+          <sprite>sprites\sprSuperArrow</sprite>
+          <sprite>sprites\sprRushCycle</sprite>
+          <sprites name="Do Not Use">
+            <sprite>sprites\sprRushMask</sprite>
           </sprites>
         </sprites>
         <sprites name="WeaponIcons">
           <sprite>sprites\sprWeaponIconsMegaBuster</sprite>
           <sprite>sprites\sprWeaponIconsBassBuster</sprite>
-          <sprite>sprites\sprWeaponIconsSparkChaser</sprite>
-          <sprite>sprites\sprWeaponIconsLaserTrident</sprite>
-          <sprite>sprites\sprWeaponIconsTornadoBlow</sprite>
-          <sprite>sprites\sprWeaponIconsMagneticShockwave</sprite>
-          <sprite>sprites\sprWeaponIconsWaterShield</sprite>
-          <sprite>sprites\sprWeaponIconsBreakDash</sprite>
-          <sprite>sprites\sprWeaponIconsThunderBeam</sprite>
-          <sprite>sprites\sprWeaponIconsIceWall</sprite>
-          <sprite>sprites\sprWeaponIconsRushCoil</sprite>
-          <sprite>sprites\sprWeaponIconsRushJet</sprite>
-          <sprite>sprites\sprWeaponIconsRushCycle</sprite>
-          <sprite>sprites\sprWeaponIconsMagnetBeam</sprite>
-          <sprites name="MaGMML1">
-            <sprite>sprites\sprWeaponIconsMetalBlade</sprite>
-            <sprite>sprites\sprWeaponIconsTopSpin</sprite>
-            <sprite>sprites\sprWeaponIconsMagicCard</sprite>
-            <sprite>sprites\sprWeaponIconsSolarBlaze</sprite>
-            <sprite>sprites\sprWeaponIconsPharaohShot</sprite>
-            <sprite>sprites\sprWeaponIconsThunderWool</sprite>
-            <sprite>sprites\sprWeaponIconsBlackHoleBomb</sprite>
-            <sprite>sprites\sprWeaponIconsGeminiLaser</sprite>
+          <sprites name="MM1">
+            <sprite>sprites\sprWeaponIconsRollingCutter</sprite>
+            <sprite>sprites\sprWeaponIconsSuperArm</sprite>
+            <sprite>sprites\sprWeaponIconsIceSlasher</sprite>
+            <sprite>sprites\sprWeaponIconsHyperBomb</sprite>
+            <sprite>sprites\sprWeaponIconsFireStorm</sprite>
+            <sprite>sprites\sprWeaponIconsThunderBeam</sprite>
+            <sprite>sprites\sprWeaponIconsTimeSlow</sprite>
           </sprites>
-          <sprites name="MaGMML2">
-            <sprite>sprites\sprWeaponIconsHornetChaser</sprite>
-            <sprite>sprites\sprWeaponIconsJewelSatellite</sprite>
-            <sprite>sprites\sprWeaponIconsGrabBuster</sprite>
-            <sprite>sprites\sprWeaponIconsTripleBlade</sprite>
+          <sprites name="MM2">
+            <sprite>sprites\sprWeaponIconsMetalBlade</sprite>
+            <sprite>sprites\sprWeaponIconsAirShooter</sprite>
+            <sprite>sprites\sprWeaponIconsBubbleLead</sprite>
+            <sprite>sprites\sprWeaponIconsQuickBoomerang</sprite>
+            <sprite>sprites\sprWeaponIconsCrashBomber</sprite>
+            <sprite>sprites\sprWeaponIconsTimeStopper</sprite>
+            <sprite>sprites\sprWeaponIconsAtomicFire</sprite>
+            <sprite>sprites\sprWeaponIconsLeafShield</sprite>
+          </sprites>
+          <sprites name="MM3">
+            <sprite>sprites\sprWeaponIconsNeedleCannon</sprite>
+            <sprite>sprites\sprWeaponIconsMagnetMissile</sprite>
+            <sprite>sprites\sprWeaponIconsGeminiLaser</sprite>
+            <sprite>sprites\sprWeaponIconsHardKnuckle</sprite>
+            <sprite>sprites\sprWeaponIconsTopSpin</sprite>
+            <sprite>sprites\sprWeaponIconsSearchSnake</sprite>
+            <sprite>sprites\sprWeaponIconsSparkShock</sprite>
+            <sprite>sprites\sprWeaponIconsShadowBlade</sprite>
+          </sprites>
+          <sprites name="MM4">
             <sprite>sprites\sprWeaponIconsFlashStopper</sprite>
+            <sprite>sprites\sprWeaponIconsRainFlush</sprite>
+            <sprite>sprites\sprWeaponIconsDrillBomb</sprite>
+            <sprite>sprites\sprWeaponIconsPharaohShot</sprite>
+            <sprite>sprites\sprWeaponIconsRingBoomerang</sprite>
+            <sprite>sprites\sprWeaponIconsDustCrusher</sprite>
+            <sprite>sprites\sprWeaponIconsDiveMissile</sprite>
+            <sprite>sprites\sprWeaponIconsSkullBarrier</sprite>
+          </sprites>
+          <sprites name="MM5">
+            <sprite>sprites\sprWeaponIconsGravityHold</sprite>
+            <sprite>sprites\sprWeaponIconsWaterWave</sprite>
+            <sprite>sprites\sprWeaponIconsPowerStone</sprite>
+            <sprite>sprites\sprWeaponIconsGyroAttack</sprite>
+            <sprite>sprites\sprWeaponIconsStarCrash</sprite>
+            <sprite>sprites\sprWeaponIconsChargeKick</sprite>
+            <sprite>sprites\sprWeaponIconsNapalmBomb</sprite>
+            <sprite>sprites\sprWeaponIconsCrystalEye</sprite>
+            <sprite>sprites\sprWeaponIconsDarkStasis</sprite>
+          </sprites>
+          <sprites name="MM6">
+            <sprite>sprites\sprWeaponIconsBlizzardAttack</sprite>
+            <sprite>sprites\sprWeaponIconsCentaurFlash</sprite>
+            <sprite>sprites\sprWeaponIconsFlameBlast</sprite>
+            <sprite>sprites\sprWeaponIconsKnightCrusher</sprite>
+            <sprite>sprites\sprWeaponIconsPlantBarrier</sprite>
+            <sprite>sprites\sprWeaponIconsSilverTomahawk</sprite>
+            <sprite>sprites\sprWeaponIconsWindStorm</sprite>
+            <sprite>sprites\sprWeaponIconsYamatoSpear</sprite>
+          </sprites>
+          <sprites name="MM7">
+            <sprite>sprites\sprWeaponIconsFreezeCracker</sprite>
             <sprite>sprites\sprWeaponIconsSlashClaw</sprite>
+          </sprites>
+          <sprites name="MM8">
+            <sprite>sprites\sprWeaponIconsHomingSniper</sprite>
+            <sprite>sprites\sprWeaponIconsWaterBalloon</sprite>
+          </sprites>
+          <sprites name="MM9">
+            <sprite>sprites\sprWeaponIconsConcreteShot</sprite>
+            <sprite>sprites\sprWeaponIconsTornadoBlow</sprite>
+            <sprite>sprites\sprWeaponIconsLaserTrident</sprite>
+            <sprite>sprites\sprWeaponIconsPlugBall</sprite>
+            <sprite>sprites\sprWeaponIconsJewelSatellite</sprite>
+            <sprite>sprites\sprWeaponIconsHornetChaser</sprite>
+            <sprite>sprites\sprWeaponIconsMagmaBazooka</sprite>
+            <sprite>sprites\sprWeaponIconsBlackHoleBomb</sprite>
+            <sprite>sprites\sprWeaponIconsRevolverBuster</sprite>
+          </sprites>
+          <sprites name="MM10">
+            <sprite>sprites\sprWeaponIconsTripleBlade</sprite>
+            <sprite>sprites\sprWeaponIconsWaterShield</sprite>
+            <sprite>sprites\sprWeaponIconsChillShot</sprite>
+            <sprite>sprites\sprWeaponIconsThunderWool</sprite>
+            <sprite>sprites\sprWeaponIconsReboundStriker</sprite>
             <sprite>sprites\sprWeaponIconsWheelCutter</sprite>
+            <sprite>sprites\sprWeaponIconsSolarBlaze</sprite>
+          </sprites>
+          <sprites name="MM11">
+            <sprite>sprites\sprWeaponIconsBlockDropper</sprite>
+            <sprite>sprites\sprWeaponIconsBlazingTorch</sprite>
+            <sprite>sprites\sprWeaponIconsBounceBall</sprite>
+          </sprites>
+          <sprites name="MMI">
+            <sprite>sprites\sprWeaponIconsMirrorBuster</sprite>
+          </sprites>
+          <sprites name="MMII">
             <sprite>sprites\sprWeaponIconsSakugarne</sprite>
+          </sprites>
+          <sprites name="MMIII">
+            <sprite>sprites\sprWeaponIconsScrewCrusher</sprite>
+          </sprites>
+          <sprites name="MMIV">
+            <sprite>sprites\sprWeaponIconsBalladeCracker</sprite>
+          </sprites>
+          <sprites name="MMV">
+            <sprite>sprites\sprWeaponIconsSparkChaser</sprite>
+            <sprite>sprites\sprWeaponIconsGrabBuster</sprite>
+            <sprite>sprites\sprWeaponIconsBreakDash</sprite>
+            <sprite>sprites\sprWeaponIconsSaltWater</sprite>
+          </sprites>
+          <sprites name="MM&amp;B">
+            <sprite>sprites\sprWeaponIconsTenguBlade</sprite>
+            <sprite>sprites\sprWeaponIconsIceWall</sprite>
+            <sprite>sprites\sprWeaponIconsMagicCard</sprite>
+          </sprites>
+          <sprites name="MM&amp;B2">
+            <sprite>sprites\sprWeaponIconsFlameMixer</sprite>
+          </sprites>
+          <sprites name="DOS">
+            <sprite>sprites\sprWeaponIconsForceField</sprite>
+            <sprite>sprites\sprWeaponIconsSonicWave</sprite>
+            <sprite>sprites\sprWeaponIconsNuclearDetonator</sprite>
+            <sprite>sprites\sprWeaponIconsBitCannon</sprite>
+            <sprite>sprites\sprWeaponIconsSharkBoomerang</sprite>
+          </sprites>
+          <sprites name="Other">
+            <sprite>sprites\sprWeaponIconsMagneticShockwave</sprite>
+            <sprite>sprites\sprWeaponIconsSkeletuppinPakkajoe</sprite>
+            <sprite>sprites\sprWeaponIconsCentaurArrow</sprite>
+          </sprites>
+          <sprites name="Utilities">
+            <sprite>sprites\sprWeaponIconsMagnetBeam</sprite>
+            <sprite>sprites\sprWeaponIconsRushCoil</sprite>
+            <sprite>sprites\sprWeaponIconsRushJet</sprite>
             <sprite>sprites\sprWeaponIconsWire</sprite>
             <sprite>sprites\sprWeaponIconsSuperArrow</sprite>
-          </sprites>
-          <sprites name="MaG24HMML">
-            <sprite>sprites\sprWeaponIconsChillShot</sprite>
-            <sprite>sprites\sprWeaponIconsSuperArm</sprite>
-          </sprites>
-          <sprites name="MaG48HMML">
-            <sprite>sprites\sprWeaponIconsFlameMixer</sprite>
-            <sprite>sprites\sprWeaponIconsHomingSniper</sprite>
-            <sprite>sprites\sprWeaponIconsRainFlush</sprite>
-            <sprite>sprites\sprWeaponIconsSparkShock</sprite>
-            <sprite>sprites\sprWeaponIconsSearchSnake</sprite>
-            <sprite>sprites\sprWeaponIconsSaltWater</sprite>
-            <sprite>sprites\sprWeaponIconsConcreteShot</sprite>
-            <sprite>sprites\sprWeaponIconsTenguBlade</sprite>
-          </sprites>
-          <sprites name="Misc.">
-            <sprite>sprites\sprWeaponIconsSkeletuppinPakkajoe</sprite>
-            <sprite>sprites\sprWeaponIconsBrickWeapon</sprite>
-            <sprite>sprites\sprWeaponIconsPlantBarrier</sprite>
-            <sprite>sprites\sprWeaponIconsPowerStone</sprite>
-            <sprite>sprites\sprWeaponIconsTimeStopper</sprite>
-            <sprite>sprites\sprWeaponIconsIceSlasher</sprite>
+            <sprite>sprites\sprWeaponIconsRushCycle</sprite>
           </sprites>
         </sprites>
-        <sprites name="Misc">
-          <sprites name="Test">
-            <sprite>sprites\sprSkeletuppinPakkajoe</sprite>
-            <sprite>sprites\sprBrickWeapon</sprite>
-            <sprite>sprites\sprBrickWeaponDebris</sprite>
-            <sprite>sprites\sprChillShot</sprite>
-            <sprite>sprites\sprSuperArmDebris</sprite>
-            <sprite>sprites\sprIceSlasher</sprite>
-            <sprite>sprites\sprPlantBarrier</sprite>
-            <sprite>sprites\sprPowerStone</sprite>
-          </sprites>
-          <sprite>sprites\mskWeaponExplosion</sprite>
+        <sprites name="Do Not Use">
+          <sprite>sprites\sprBusterShotChargedColourMask</sprite>
+          <sprite>sprites\sprBusterShotChargedPlusColourMask</sprite>
+          <sprite>sprites\sprBusterShotChargedProtoColourMask</sprite>
         </sprites>
       </sprites>
       <sprites name="Health/Weapon Bar">
@@ -2408,6 +2973,7 @@
         <sprite>sprites\sprBigEyeOrange</sprite>
         <sprite>sprites\sprMM1SniperJoe</sprite>
         <sprite>sprites\sprMM1SniperJoeJump</sprite>
+        <sprite>sprites\sprMM1SniperJoeMech</sprite>
         <sprite>sprites\sprKillerBullet</sprite>
         <sprite>sprites\sprKillerBulletOrange</sprite>
         <sprite>sprites\sprKillerBulletBlue</sprite>
@@ -2488,6 +3054,7 @@
         <sprite>sprites\sprBlockyPieceGray</sprite>
         <sprite>sprites\sprBlockyPreview</sprite>
         <sprite>sprites\sprMM2SniperJoe</sprite>
+        <sprite>sprites\sprMM2SniperJoeJump</sprite>
         <sprite>sprites\sprMM2SniperJoeMech</sprite>
         <sprite>sprites\sprMM2SniperJoeMechEmpty</sprite>
         <sprite>sprites\sprBigFish</sprite>
@@ -2849,19 +3416,32 @@
         </sprites>
       </sprites>
       <sprites name="MM7">
+        <sprite>sprites\sprBohuu</sprite>
+        <sprite>sprites\sprCFN24</sprite>
+        <sprite>sprites\sprCFN24Yellow</sprite>
         <sprite>sprites\sprCyorown</sprite>
         <sprite>sprites\sprGobots</sprite>
         <sprite>sprites\sprGobotsFire</sprite>
         <sprite>sprites\sprKaminariKogoro</sprite>
         <sprite>sprites\sprKintot</sprite>
+        <sprite>sprites\sprMM7ShieldAttacker</sprite>
+        <sprite>sprites\sprMM7ShieldAttackerTurn</sprite>
+        <sprite>sprites\sprRagger</sprite>
+        <sprite>sprites\sprSniperJoe01</sprite>
+        <sprite>sprites\sprSniperJoe01Crouch</sprite>
+        <sprite>sprites\sprSniperJoe01Jump</sprite>
+        <sprite>sprites\sprSpiralGabyoall</sprite>
+        <sprite>sprites\sprSpiralGabyoallGreen</sprite>
+        <sprite>sprites\sprStegorus</sprite>
+        <sprite>sprites\mskStegorus</sprite>
         <sprite>sprites\sprTelTel</sprite>
         <sprite>sprites\sprTelTelWeatherCancel</sprite>
         <sprite>sprites\sprTsuranattori</sprite>
         <sprite>sprites\sprTurboRoader</sprite>
-        <sprite>sprites\sprStegorus</sprite>
-        <sprite>sprites\mskStegorus</sprite>
         <sprites name="Projectiles">
           <sprite>sprites\sprKaminariKogoroLightning</sprite>
+          <sprite>sprites\sprRaggerBoomerang</sprite>
+          <sprite>sprites\sprSniperJoe01Shot</sprite>
           <sprite>sprites\sprStegorusMissile</sprite>
           <sprite>sprites\sprStegorusSpikeSmall</sprite>
           <sprite>sprites\sprStegorusSpikeMedium</sprite>
@@ -2928,6 +3508,7 @@
         <sprite>sprites\sprMetallB</sprite>
         <sprite>sprites\sprMM9MachineGunJoe</sprite>
         <sprite>sprites\sprMM9MachineGunJoeJump</sprite>
+        <sprite>sprites\sprMM9MachineGunJoeMech</sprite>
         <sprite>sprites\sprNombrellan</sprite>
         <sprite>sprites\sprNombrellanSpawner</sprite>
         <sprite>sprites\sprOctone</sprite>
@@ -3035,6 +3616,10 @@
         <sprite>sprites\sprPiledanTurret</sprite>
         <sprite>sprites\sprPointan</sprite>
         <sprite>sprites\sprReturningMachinegunJoe</sprite>
+        <sprite>sprites\sprMM10MachineGunJoeMech</sprite>
+        <sprite>sprites\sprMM10MachineGunJoeMechAlt</sprite>
+        <sprite>sprites\sprMM10MachineGunJoeMechShield</sprite>
+        <sprite>sprites\sprMM10MachineGunJoeMechShieldAlt</sprite>
         <sprite>sprites\sprRSuzy</sprite>
         <sprite>sprites\sprSearchy</sprite>
         <sprite>sprites\sprSearchyLight</sprite>
@@ -3413,11 +3998,11 @@
       <sprite>sprites\sprBossDoorVertical</sprite>
       <sprite>sprites\sprBossControl</sprite>
       <sprites name="MM1">
-        <sprites name="Bomb">
-          <sprite>sprites\sprBombMan</sprite>
-          <sprite>sprites\sprBombManBomb</sprite>
-          <sprite>sprites\sprBombManBlast</sprite>
-          <sprite>sprites\mskBombMan</sprite>
+        <sprites name="Proto Eye">
+          <sprite>sprites\sprProtoEyeIntro</sprite>
+          <sprite>sprites\sprProtoEye</sprite>
+          <sprite>sprites\sprProtoEyeShoot</sprite>
+          <sprite>sprites\sprProtoEyeShot</sprite>
         </sprites>
         <sprites name="Cut">
           <sprite>sprites\sprCutMask</sprite>
@@ -3430,15 +4015,6 @@
           <sprite>sprites\sprCutRunShame</sprite>
           <sprite>sprites\sprCutJumpShame</sprite>
           <sprite>sprites\sprCutShot</sprite>
-        </sprites>
-        <sprites name="Fire">
-          <sprite>sprites\mskFireMan</sprite>
-          <sprite>sprites\sprFireMan</sprite>
-          <sprite>sprites\sprFireManIdle</sprite>
-          <sprite>sprites\sprFireManRun</sprite>
-          <sprite>sprites\sprFireManShoot</sprite>
-          <sprite>sprites\sprFireWall</sprite>
-          <sprite>sprites\sprFireFlame</sprite>
         </sprites>
         <sprites name="Guts">
           <sprite>sprites\sptGutsMask</sprite>
@@ -3457,6 +4033,38 @@
           <sprite>sprites\sprIceSkate</sprite>
           <sprite>sprites\sprIceManSlasher</sprite>
         </sprites>
+        <sprites name="Bomb">
+          <sprite>sprites\sprBombMan</sprite>
+          <sprite>sprites\sprBombManBomb</sprite>
+          <sprite>sprites\sprBombManBlast</sprite>
+          <sprite>sprites\mskBombMan</sprite>
+        </sprites>
+        <sprites name="Fire">
+          <sprite>sprites\mskFireMan</sprite>
+          <sprite>sprites\sprFireMan</sprite>
+          <sprite>sprites\sprFireManIdle</sprite>
+          <sprite>sprites\sprFireManRun</sprite>
+          <sprite>sprites\sprFireManShoot</sprite>
+          <sprite>sprites\sprFireWall</sprite>
+          <sprite>sprites\sprFireFlame</sprite>
+        </sprites>
+        <sprites name="Elec">
+          <sprite>sprites\sprElecMan</sprite>
+          <sprite>sprites\sprElecManPose</sprite>
+        </sprites>
+        <sprites name="Time">
+          <sprite>sprites\sprTimeAttack1</sprite>
+          <sprite>sprites\sprTimeAttack2</sprite>
+          <sprite>sprites\sprTimeAttack2Back</sprite>
+          <sprite>sprites\sprTimeIdle</sprite>
+          <sprite>sprites\sprTimeIntro</sprite>
+          <sprite>sprites\sprTimeJump</sprite>
+          <sprite>sprites\sprTimeJumpBack</sprite>
+          <sprite>sprites\sprTimeshin</sprite>
+          <sprite>sprites\sprTimeShinBack</sprite>
+          <sprite>sprites\sprTimeWalk</sprite>
+          <sprite>sprites\mskTimeMan</sprite>
+        </sprites>
         <sprites name="Oil">
           <sprite>sprites\sprOilMan</sprite>
           <sprite>sprites\mskOilMan</sprite>
@@ -3464,8 +4072,40 @@
           <sprite>sprites\sprOilManSplash</sprite>
           <sprite>sprites\sprOilManParticle</sprite>
         </sprites>
+        <sprites name="Yellow Devil">
+          <sprite>sprites\sprYDblob</sprite>
+          <sprite>sprites\sprYDblobFormGeneric</sprite>
+          <sprite>sprites\sprYellowDevil</sprite>
+          <sprite>sprites\sprYDblobForm</sprite>
+          <sprite>sprites\sprYDbullet</sprite>
+          <sprite>sprites\sprYDeye</sprite>
+        </sprites>
+        <sprites name="Wily Machine 1">
+          <sprite>sprites\sprWilyMachine1AHurt</sprite>
+          <sprite>sprites\sprWilyMachine1AIntro1</sprite>
+          <sprite>sprites\sprWilyMachine1AIntro2</sprite>
+          <sprite>sprites\sprWilyMachine1AIntro3</sprite>
+          <sprite>sprites\sprWilyMachineMM1Pilot</sprite>
+          <sprite>sprites\sprWilySaucerMM1</sprite>
+          <sprite>sprites\sprWilyMachine1AGun</sprite>
+          <sprite>sprites\sprWilyMachine1A</sprite>
+          <sprite>sprites\sprWilyMachine1AProjectile</sprite>
+          <sprite>sprites\sprWilyMachine1Debris</sprite>
+          <sprite>sprites\sprWilyMachine1B</sprite>
+          <sprite>sprites\sprWilyMachine1BHurt</sprite>
+          <sprite>sprites\sprWilyMachine1BProjectile</sprite>
+          <sprite>sprites\mskWilyMachine1A</sprite>
+          <sprite>sprites\mskWilyMachine1B</sprite>
+        </sprites>
       </sprites>
       <sprites name="MM2">
+        <sprites name="Metal">
+          <sprite>sprites\sprMetalMask</sprite>
+          <sprite>sprites\sprMetalIntro</sprite>
+          <sprite>sprites\sprMetalRun</sprite>
+          <sprite>sprites\sprMetalJump</sprite>
+          <sprite>sprites\sprMetalJumpThrow</sprite>
+        </sprites>
         <sprites name="Air">
           <sprite>sprites\sprAirMask</sprite>
           <sprite>sprites\sprAirIntro</sprite>
@@ -3491,6 +4131,11 @@
             <sprite>sprites\sprBubbleManWaterPillarTop</sprite>
           </sprites>
         </sprites>
+        <sprites name="Quick">
+          <sprite>sprites\sprQuickMan</sprite>
+          <sprite>sprites\sprQuickManPose</sprite>
+          <sprite>sprites\sprQuickManBoomerang</sprite>
+        </sprites>
         <sprites name="Crash">
           <sprite>sprites\sprCrashMask</sprite>
           <sprite>sprites\sprCrashIdle</sprite>
@@ -3513,18 +4158,6 @@
           <sprite>sprites\sprHeatmanShot</sprite>
           <sprite>sprites\sprHeatmanPose</sprite>
         </sprites>
-        <sprites name="Metal">
-          <sprite>sprites\sprMetalMask</sprite>
-          <sprite>sprites\sprMetalIntro</sprite>
-          <sprite>sprites\sprMetalRun</sprite>
-          <sprite>sprites\sprMetalJump</sprite>
-          <sprite>sprites\sprMetalJumpThrow</sprite>
-        </sprites>
-        <sprites name="Quick">
-          <sprite>sprites\sprQuickMan</sprite>
-          <sprite>sprites\sprQuickManPose</sprite>
-          <sprite>sprites\sprQuickManBoomerang</sprite>
-        </sprites>
         <sprites name="Wood">
           <sprite>sprites\sprWoodMask</sprite>
           <sprite>sprites\sprWoodMan</sprite>
@@ -3540,11 +4173,6 @@
           <sprite>sprites\sprMechaDragonFireHurt</sprite>
           <sprite>sprites\sprMechaDragonFireBall</sprite>
         </sprites>
-        <sprites name="Boobeam ">
-          <sprite>sprites\sprBoobeamBullet</sprite>
-          <sprite>sprites\sprNothing</sprite>
-          <sprite>sprites\sprBoobeam</sprite>
-        </sprites>
         <sprites name="Pico">
           <sprite>sprites\sprPicoKun</sprite>
           <sprite>sprites\sprPicoBrick</sprite>
@@ -3555,11 +4183,43 @@
           <sprite>sprites\mskGutsDozer</sprite>
           <sprite>sprites\sprGutsDozerHand</sprite>
         </sprites>
+        <sprites name="Boobeam ">
+          <sprite>sprites\sprBoobeamBullet</sprite>
+          <sprite>sprites\sprNothing</sprite>
+          <sprite>sprites\sprBoobeam</sprite>
+        </sprites>
+        <sprites name="Wily Machine 2">
+          <sprite>sprites\sprWilyMachine2AFadein</sprite>
+          <sprite>sprites\sprWilyMachine2A</sprite>
+          <sprite>sprites\sprWilyMachine2AHurt</sprite>
+          <sprite>sprites\sprWilyMachine2B</sprite>
+          <sprite>sprites\sprWilyMachine2BHurt</sprite>
+          <sprite>sprites\sprWilyMachine2Debris</sprite>
+          <sprite>sprites\sprWilyMachine2Projectile</sprite>
+          <sprite>sprites\sprWilySaucerMM2</sprite>
+        </sprites>
+        <sprites name="Alien">
+          <sprite>sprites\sprAlien</sprite>
+          <sprite>sprites\sprWilyUFO</sprite>
+        </sprites>
       </sprites>
       <sprites name="MM3">
-        <sprites name="Hard">
-          <sprite>sprites\sprHardMan</sprite>
-          <sprite>sprites\sprHardManKnuckle</sprite>
+        <sprites name="Needle">
+          <sprite>sprites\sprNeedleManPose</sprite>
+          <sprite>sprites\mskNeedleMan</sprite>
+          <sprite>sprites\sprNeedleMan</sprite>
+          <sprite>sprites\sprNeedleManNeedle</sprite>
+          <sprite>sprites\sprNeedleManStrike</sprite>
+        </sprites>
+        <sprites name="Magnet">
+          <sprite>sprites\sprMagnetAttract</sprite>
+          <sprite>sprites\sprMagnetJump</sprite>
+          <sprite>sprites\sprMagnetMask</sprite>
+          <sprite>sprites\sprMagnetPose</sprite>
+          <sprite>sprites\sprMagnetPrepare</sprite>
+          <sprite>sprites\sprMagnetProjectile</sprite>
+          <sprite>sprites\sprMagnetShoot</sprite>
+          <sprite>sprites\sprMagnetStand</sprite>
         </sprites>
         <sprites name="Gemini">
           <sprite>sprites\sprGeminiMask</sprite>
@@ -3568,6 +4228,10 @@
           <sprite>sprites\sprGeminiWalk</sprite>
           <sprite>sprites\sprGeminiShoot</sprite>
           <sprite>sprites\sprGeminiJump</sprite>
+        </sprites>
+        <sprites name="Hard">
+          <sprite>sprites\sprHardMan</sprite>
+          <sprite>sprites\sprHardManKnuckle</sprite>
         </sprites>
         <sprites name="Top">
           <sprite>sprites\sprTopMask</sprite>
@@ -3578,11 +4242,42 @@
           <sprite>sprites\sprTopSpin</sprite>
           <sprite>sprites\sprTopmanTop</sprite>
         </sprites>
+        <sprites name="Snake">
+          <sprite>sprites\sprSnakeManSearchSnake</sprite>
+          <sprite>sprites\sprSnakeManPose</sprite>
+          <sprite>sprites\sprSnakeMan</sprite>
+          <sprite>sprites\sprSnakeManAir</sprite>
+          <sprite>sprites\mskSnakeMan</sprite>
+        </sprites>
         <sprites name="Spark">
           <sprite>sprites\sprSparkman</sprite>
           <sprite>sprites\sprSparkmanBigShot</sprite>
           <sprite>sprites\sprSparkmanLittleShot</sprite>
           <sprite>sprites\mskSparkman</sprite>
+        </sprites>
+        <sprites name="Shadow">
+          <sprite>sprites\mskShadowman</sprite>
+          <sprite>sprites\sprShadowIntro</sprite>
+          <sprite>sprites\sprShadowMan</sprite>
+          <sprite>sprites\sprShadowShuriken</sprite>
+        </sprites>
+        <sprites name="Doc Robot">
+          <sprite>sprites\sprDocRobotStand</sprite>
+          <sprite>sprites\sprDocRobotWalk</sprite>
+          <sprite>sprites\sprDocRobotSquat</sprite>
+          <sprite>sprites\sprDocRobotJump</sprite>
+          <sprite>sprites\sprDocRobotJumpShoot</sprite>
+          <sprite>sprites\sprDocRobotShoot</sprite>
+          <sprite>sprites\sprDocRobotFlash</sprite>
+          <sprite>sprites\sprDocRobotSweat</sprite>
+          <sprite>sprites\sprDocBubbleShooting</sprite>
+          <sprite>sprites\sprDocHeat</sprite>
+          <sprite>sprites\mskDocRobot</sprite>
+          <sprite>sprites\sprDocMetalBlade</sprite>
+          <sprite>sprites\sprDocQuickBoomerang</sprite>
+          <sprite>sprites\sprDocLeafShield</sprite>
+          <sprite>sprites\sprDocFallingLeaves</sprite>
+          <sprite>sprites\sprMM2Bots</sprite>
         </sprites>
         <sprites name="KamegoroMaker">
           <sprite>sprites\sprKamegoroMaker</sprite>
@@ -3596,6 +4291,25 @@
         </sprites>
       </sprites>
       <sprites name="MM4">
+        <sprites name="Bright">
+          <sprite>sprites\sprBrightMan</sprite>
+          <sprite>sprites\sprBrightManIntro</sprite>
+        </sprites>
+        <sprites name="Toad">
+          <sprite>sprites\sprToadMask</sprite>
+          <sprite>sprites\sprToadIntro</sprite>
+          <sprite>sprites\sprToadIdle</sprite>
+          <sprite>sprites\sprToadJump</sprite>
+          <sprite>sprites\sprToadDance</sprite>
+          <sprite>sprites\sprToadRainProjectile</sprite>
+        </sprites>
+        <sprites name="Drill">
+          <sprite>sprites\sprDrillMan</sprite>
+          <sprite>sprites\sprDrillManPose</sprite>
+          <sprite>sprites\sprDrillManDrillBomb</sprite>
+          <sprite>sprites\sprDrillManPuff</sprite>
+          <sprite>sprites\mskDrillMan</sprite>
+        </sprites>
         <sprites name="Pharaoh">
           <sprite>sprites\sprPharaohmask</sprite>
           <sprite>sprites\sprPharaohPose</sprite>
@@ -3610,13 +4324,17 @@
           <sprite>sprites\sprPharaohShoot</sprite>
           <sprite>sprites\sprPharaohManShotBig</sprite>
         </sprites>
-        <sprites name="Toad">
-          <sprite>sprites\sprToadMask</sprite>
-          <sprite>sprites\sprToadIntro</sprite>
-          <sprite>sprites\sprToadIdle</sprite>
-          <sprite>sprites\sprToadJump</sprite>
-          <sprite>sprites\sprToadDance</sprite>
-          <sprite>sprites\sprToadRainProjectile</sprite>
+        <sprites name="Ring">
+          <sprite>sprites\sprRingBoomerang</sprite>
+          <sprite>sprites\sprRingJump</sprite>
+          <sprite>sprites\sprRingJumpShoot</sprite>
+          <sprite>sprites\sprRingMask</sprite>
+          <sprite>sprites\sprRingPose</sprite>
+          <sprite>sprites\sprRingPrepareJump</sprite>
+          <sprite>sprites\sprRingShoot</sprite>
+          <sprite>sprites\sprRingStand</sprite>
+          <sprite>sprites\sprRingWalk</sprite>
+          <sprite>sprites\sprRingWalk2</sprite>
         </sprites>
         <sprites name="Dust">
           <sprite>sprites\sprDustMan</sprite>
@@ -3624,7 +4342,22 @@
           <sprite>sprites\sprDustManDustCrusher</sprite>
           <sprite>sprites\sprDustManDustSplit</sprite>
         </sprites>
-        <sprites name="MetallDaddy">
+        <sprites name="Dive">
+          <sprite>sprites\sprDiveMan</sprite>
+          <sprite>sprites\sprDiveManPose</sprite>
+          <sprite>sprites\sprDiveManSpin</sprite>
+          <sprite>sprites\mskDiveMan</sprite>
+          <sprite>sprites\mskDiveManIntermediate</sprite>
+          <sprite>sprites\mskDiveManSpin</sprite>
+          <sprite>sprites\sprDiveManMissile</sprite>
+        </sprites>
+        <sprites name="Skull">
+          <sprite>sprites\sprSkullManBarrier</sprite>
+          <sprite>sprites\mskSkullMan</sprite>
+          <sprite>sprites\sprSkullMan</sprite>
+          <sprite>sprites\sprSkullManPose</sprite>
+        </sprites>
+        <sprites name="Metall Daddy">
           <sprite>sprites\sprMetallDaddy</sprite>
           <sprite>sprites\sprMetallDaddyHurt</sprite>
           <sprite>sprites\mskMetallDaddy</sprite>
@@ -3642,6 +4375,11 @@
           <sprite>sprites\sprGravityJumpShoot</sprite>
           <sprite>sprites\sprGravityBullet</sprite>
         </sprites>
+        <sprites name="Wave">
+          <sprite>sprites\sprWaveMan</sprite>
+          <sprite>sprites\sprWaterWaveProjectile</sprite>
+          <sprite>sprites\sprWaveProjectile</sprite>
+        </sprites>
         <sprites name="Stone">
           <sprite>sprites\sprStoneManIntro</sprite>
           <sprite>sprites\sprStoneMan</sprite>
@@ -3654,15 +4392,85 @@
           <sprite>sprites\sprGyroManProjectile</sprite>
           <sprite>sprites\mskGyroMan</sprite>
         </sprites>
-        <sprites name="Dark">
+        <sprites name="Star">
+          <sprite>sprites\sprStarManIntro</sprite>
+          <sprite>sprites\sprStarStand</sprite>
+          <sprite>sprites\sprStarAirShoot</sprite>
+          <sprite>sprites\sprStarJump</sprite>
+          <sprite>sprites\sprStarGround</sprite>
+          <sprite>sprites\sprStarGroundShoot</sprite>
+          <sprite>sprites\sprStarCrashBoss</sprite>
+        </sprites>
+        <sprites name="Charge">
+          <sprite>sprites\sprChargePose</sprite>
+          <sprite>sprites\sprChargeStand</sprite>
+          <sprite>sprites\sprChargeWalk</sprite>
+          <sprite>sprites\sprChargeAttack</sprite>
+          <sprite>sprites\sprChargeCharge</sprite>
+          <sprite>sprites\sprChargeCoal</sprite>
+          <sprite>sprites\sprChargeShake</sprite>
+          <sprite>sprites\sprChargeSteam</sprite>
+          <sprite>sprites\sprChargeMask</sprite>
+        </sprites>
+        <sprites name="Napalm">
+          <sprite>sprites\sprNapalmPose</sprite>
+          <sprite>sprites\sprNapalmStand</sprite>
+          <sprite>sprites\sprNapalmJump</sprite>
+          <sprite>sprites\sprNapalmPrepareJump</sprite>
+          <sprite>sprites\sprNapalmShoot</sprite>
+          <sprite>sprites\sprNapalmShootGrenade</sprite>
+          <sprite>sprites\sprNapalmGrenade</sprite>
+          <sprite>sprites\sprNapalmProjectile</sprite>
+          <sprite>sprites\sprNapalmMask</sprite>
+        </sprites>
+        <sprites name="Crystal">
+          <sprite>sprites\sprCrystalPose</sprite>
+          <sprite>sprites\sprCrystalStand</sprite>
+          <sprite>sprites\sprCrystalJump</sprite>
+          <sprite>sprites\sprCrystalShoot</sprite>
+          <sprite>sprites\sprCrystalMask</sprite>
+          <sprite>sprites\sprCrystalProjectile</sprite>
+          <sprite>sprites\sprCrystalEyeSmall</sprite>
+        </sprites>
+        <sprites name="Dark Man 1">
+          <sprite>sprites\sprDarkMan1</sprite>
+          <sprite>sprites\mskDarkMan1</sprite>
+        </sprites>
+        <sprites name="Dark Man 2">
+          <sprite>sprites\sprDarkMan2Walk</sprite>
+          <sprite>sprites\sprDarkMan2Jump</sprite>
+          <sprite>sprites\sprDarkMan2JumpShoot</sprite>
+          <sprite>sprites\sprDarkMan2</sprite>
+          <sprite>sprites\sprDarkMan2Prep</sprite>
+          <sprite>sprites\sprDarkMan2Shoot</sprite>
+          <sprite>sprites\mskDarkMan2</sprite>
+        </sprites>
+        <sprites name="Dark Man 3">
+          <sprite>sprites\sprDarkMan3</sprite>
+          <sprite>sprites\sprDarkMan3Bullet</sprite>
+          <sprite>sprites\sprDarkMan3StunRing</sprite>
+        </sprites>
+        <sprites name="Dark Man 4">
           <sprite>sprites\sprDarkMan</sprite>
           <sprite>sprites\sprDarkMask</sprite>
           <sprite>sprites\sprDarkShot</sprite>
           <sprite>sprites\sprDarkBarrier</sprite>
           <sprite>sprites\sprDarkProto</sprite>
         </sprites>
+        <sprites name="Big Pets">
+          <sprite>sprites\sprBigPets</sprite>
+          <sprite>sprites\sprBigPetsHurt</sprite>
+          <sprite>sprites\sprBigPetsPlatform</sprite>
+          <sprite>sprites\sprBigPetsFriend</sprite>
+        </sprites>
       </sprites>
       <sprites name="MM6">
+        <sprites name="Blizzard">
+          <sprite>sprites\sprBlizzardMan</sprite>
+          <sprite>sprites\sprBlizzardManPose</sprite>
+          <sprite>sprites\sprBlizzardAttack</sprite>
+          <sprite>sprites\sprBlizzardMask</sprite>
+        </sprites>
         <sprites name="Centaur">
           <sprite>sprites\sprCentaurMask</sprite>
           <sprite>sprites\sprCentaurIdle</sprite>
@@ -3672,6 +4480,27 @@
           <sprite>sprites\sprCentaurShoot</sprite>
           <sprite>sprites\sprCentaurFlash</sprite>
           <sprite>sprites\sprCentaurWalk</sprite>
+        </sprites>
+        <sprites name="Flame">
+          <sprite>sprites\sprFlamePose</sprite>
+          <sprite>sprites\sprFlameStand</sprite>
+          <sprite>sprites\sprFlameJump</sprite>
+          <sprite>sprites\sprFlamePump</sprite>
+          <sprite>sprites\sprFlameShoot</sprite>
+          <sprite>sprites\sprFlameProjectile</sprite>
+          <sprite>sprites\sprFlameFlame</sprite>
+          <sprite>sprites\sprFlameFlameParticle</sprite>
+          <sprite>sprites\sprFlameMask</sprite>
+        </sprites>
+        <sprites name="Knight">
+          <sprite>sprites\sprKnightPose</sprite>
+          <sprite>sprites\sprKnightJump</sprite>
+          <sprite>sprites\sprKnightPrepareShoot</sprite>
+          <sprite>sprites\sprKnightProjectile</sprite>
+          <sprite>sprites\sprKnightShoot</sprite>
+          <sprite>sprites\sprKnightStand</sprite>
+          <sprite>sprites\sprKnightWalk</sprite>
+          <sprite>sprites\sprKnightMask</sprite>
         </sprites>
         <sprites name="Plant">
           <sprite>sprites\sprPlantMask</sprite>
@@ -3684,20 +4513,32 @@
           <sprite>sprites\sprPlantShoot</sprite>
           <sprite>sprites\sprPlantBarrierBoss</sprite>
         </sprites>
-        <sprites name="Blizzard">
-          <sprite>sprites\sprBlizzardMan</sprite>
-          <sprite>sprites\sprBlizzardManPose</sprite>
-          <sprite>sprites\sprBlizzardAttack</sprite>
-          <sprite>sprites\sprBlizzardMask</sprite>
+        <sprites name="Tomahawk">
+          <sprite>sprites\sprTomahawkMan</sprite>
+          <sprite>sprites\sprTomahawkManPose</sprite>
+          <sprite>sprites\mskTomahawkMan</sprite>
+          <sprite>sprites\sprTomahawkManTomahawk</sprite>
+          <sprite>sprites\sprTomahawkManFeather</sprite>
         </sprites>
-        <sprites name="Rounder">
-          <sprite>sprites\sprRounderV2</sprite>
-          <sprite>sprites\sprRounderV2Bomb</sprite>
+        <sprites name="Wind">
+          <sprite>sprites\sprWindStand</sprite>
+          <sprite>sprites\sprWindPose</sprite>
+          <sprite>sprites\sprWindShoot</sprite>
+          <sprite>sprites\sprWindFloat</sprite>
+          <sprite>sprites\sprWindPrepare</sprite>
+          <sprite>sprites\sprWindPull</sprite>
+          <sprite>sprites\sprWindProjectile</sprite>
+          <sprite>sprites\sprWindEffect</sprite>
+          <sprite>sprites\sprWindMask</sprite>
         </sprites>
         <sprites name="Yamato">
           <sprite>sprites\sprYamatoMan</sprite>
           <sprite>sprites\mskYamato</sprite>
           <sprite>sprites\sprYamatoManSpearhead</sprite>
+        </sprites>
+        <sprites name="Rounder">
+          <sprite>sprites\sprRounderV2</sprite>
+          <sprite>sprites\sprRounderV2Bomb</sprite>
         </sprites>
         <sprites name="PowerPiston">
           <sprite>sprites\sprPowerPiston</sprite>
@@ -3705,7 +4546,122 @@
           <sprite>sprites\sprPowerPistonDebry</sprite>
         </sprites>
       </sprites>
+      <sprites name="MM7">
+        <sprites name="Freeze">
+          <sprite>sprites\sprFreezeIntro</sprite>
+          <sprite>sprites\sprFreezeStand</sprite>
+          <sprite>sprites\sprFreezeWalk</sprite>
+          <sprite>sprites\sprFreezeJump</sprite>
+          <sprite>sprites\sprFreezeAttack1</sprite>
+          <sprite>sprites\sprFreezeAttack2</sprite>
+          <sprite>sprites\sprFreezeAttack3</sprite>
+          <sprite>sprites\sprFreezeComeOn</sprite>
+          <sprite>sprites\sprFreezeCracker</sprite>
+          <sprite>sprites\sprFreezeFloor</sprite>
+          <sprite>sprites\sprFreezeIcicle</sprite>
+          <sprite>sprites\sprFreezeMask</sprite>
+        </sprites>
+        <sprites name="Spring">
+          <sprite>sprites\sprSpringIntro</sprite>
+          <sprite>sprites\sprSpringPose</sprite>
+          <sprite>sprites\sprSpringJump</sprite>
+          <sprite>sprites\sprSpringSpin</sprite>
+          <sprite>sprites\sprSpringSpringShoot</sprite>
+          <sprite>sprites\sprSpringStanding</sprite>
+          <sprite>sprites\sprSpringArmLink</sprite>
+          <sprite>sprites\sprSpringArmShoot</sprite>
+          <sprite>sprites\sprSpingArmProjectile</sprite>
+          <sprite>sprites\sprMagneticField</sprite>
+          <sprite>sprites\sprMiniSpring</sprite>
+          <sprite>sprites\sprSpringMask</sprite>
+        </sprites>
+        <sprites name="Slash">
+          <sprite>sprites\sprSlashManIntro</sprite>
+          <sprite>sprites\sprSlashMan</sprite>
+          <sprite>sprites\sprSlashManCharge1</sprite>
+          <sprite>sprites\sprSlashManCharge2</sprite>
+          <sprite>sprites\sprSlashManCharge3</sprite>
+          <sprite>sprites\sprSlashManRolling</sprite>
+          <sprite>sprites\sprSlashManSlash</sprite>
+          <sprite>sprites\sprSlashManBeto</sprite>
+          <sprite>sprites\sprBetoEffect</sprite>
+          <sprite>sprites\sprBetoHead</sprite>
+          <sprite>sprites\sprSlashManBetoSplash</sprite>
+          <sprite>sprites\sprSlashMask</sprite>
+        </sprites>
+        <sprites name="Turbo">
+          <sprite>sprites\sprTurboMan</sprite>
+          <sprite>sprites\sprTurboCart</sprite>
+          <sprite>sprites\sprTurboCartMask</sprite>
+          <sprite>sprites\sprTurboFire</sprite>
+          <sprite>sprites\sprTurbogus</sprite>
+          <sprite>sprites\sprTurboFireMask</sprite>
+        </sprites>
+        <sprites name="MM7Proto">
+          <sprite>sprites\sprProtoManMM7Boss</sprite>
+          <sprite>sprites\sprProtoManMM7BossWarp</sprite>
+        </sprites>
+      </sprites>
+      <sprites name="MM8">
+        <sprites name="Sword">
+          <sprite>sprites\sprSwordMan</sprite>
+          <sprite>sprites\sprSwordAttack</sprite>
+          <sprite>sprites\sprSwordBodey</sprite>
+          <sprite>sprites\sprSwordFallStone</sprite>
+          <sprite>sprites\sprSwordShards</sprite>
+          <sprite>sprites\sprSwordShards2</sprite>
+          <sprite>sprites\sprSwordFire</sprite>
+          <sprite>sprites\sprSwordStone</sprite>
+          <sprite>sprites\sprSwordWave</sprite>
+          <sprite>sprites\sprSwordMask</sprite>
+          <sprite>sprites\sprSwordNoBodyMask</sprite>
+        </sprites>
+        <sprites name="Frost">
+          <sprite>sprites\sprFrostMan</sprite>
+          <sprite>sprites\sprFrostBlock</sprite>
+          <sprite>sprites\sprFrostBlock2</sprite>
+          <sprite>sprites\sprFrostBlockShards</sprite>
+          <sprite>sprites\sprFrostMegaMan</sprite>
+          <sprite>sprites\sprFrostShards</sprite>
+          <sprite>sprites\sprIceWave</sprite>
+          <sprite>sprites\sprFrostRail</sprite>
+          <sprite>sprites\sprFrostMsk</sprite>
+          <sprite>sprites\sprFrostMsk2</sprite>
+        </sprites>
+        <sprites name="Grenade">
+          <sprite>sprites\sprGrenadePose</sprite>
+          <sprite>sprites\sprGrenadeBlock</sprite>
+          <sprite>sprites\sprGrenadeDash</sprite>
+          <sprite>sprites\sprGrenadeDashTrail</sprite>
+          <sprite>sprites\sprGrenadeDebrisBar</sprite>
+          <sprite>sprites\sprGrenadeDebrisPipe</sprite>
+          <sprite>sprites\sprGrenadeDuck</sprite>
+          <sprite>sprites\sprGrenadeFloorDestroyer</sprite>
+          <sprite>sprites\sprGrenadeJump</sprite>
+          <sprite>sprites\sprGrenadeJumpTrail</sprite>
+          <sprite>sprites\sprGrenadeJumpShoot</sprite>
+          <sprite>sprites\sprGrenadeShoot</sprite>
+          <sprite>sprites\sprGrenadeStand</sprite>
+          <sprite>sprites\sprGrenadeFlashBomb</sprite>
+          <sprite>sprites\sprGrenadeFlashBombExplosion</sprite>
+          <sprite>sprites\sprGrenadeGrenade</sprite>
+          <sprite>sprites\sprFlashBombEfect</sprite>
+          <sprite>sprites\sprGrenadeWall</sprite>
+          <sprite>sprites\sprGrenadeMask</sprite>
+        </sprites>
+      </sprites>
       <sprites name="MM9">
+        <sprites name="Tornado">
+          <sprite>sprites\sprTornadoStand</sprite>
+          <sprite>sprites\sprTornadoPose</sprite>
+          <sprite>sprites\sprTornadoIntro</sprite>
+          <sprite>sprites\sprTornadoStand2</sprite>
+          <sprite>sprites\sprTornadoAir</sprite>
+          <sprite>sprites\sprTornadoAirShoot</sprite>
+          <sprite>sprites\sprTornadoProjectile</sprite>
+          <sprite>sprites\sprTornadoShoot</sprite>
+          <sprite>sprites\sprTornadoMask</sprite>
+        </sprites>
         <sprites name="Splash">
           <sprite>sprites\sprSplashIdle</sprite>
           <sprite>sprites\sprSplashIntro</sprite>
@@ -3719,6 +4675,22 @@
           <sprite>sprites\sprSplashMask</sprite>
           <sprite>sprites\sprSplashDetector</sprite>
         </sprites>
+        <sprites name="Plug">
+          <sprite>sprites\sprPlugMan</sprite>
+          <sprite>sprites\sprPlugIntro</sprite>
+          <sprite>sprites\sprPlugJump</sprite>
+          <sprite>sprites\sprPlugAttack</sprite>
+          <sprite>sprites\sprPlugBallboss</sprite>
+          <sprite>sprites\sprPlugPress</sprite>
+          <sprite>sprites\sprPlugShot1</sprite>
+          <sprite>sprites\sprPlugShot2</sprite>
+          <sprite>sprites\sprPlugShot3</sprite>
+        </sprites>
+        <sprites name="Jewel">
+          <sprite>sprites\sprJewelMan</sprite>
+          <sprite>sprites\sprJewelManSattelite</sprite>
+          <sprite>sprites\sprJewelManSatteliteSparkle</sprite>
+        </sprites>
         <sprites name="Honey">
           <sprite>sprites\sprHoneyWomanIntro</sprite>
           <sprite>sprites\sprHoneyWoman</sprite>
@@ -3731,7 +4703,31 @@
           <sprite>sprites\sprHornetMan</sprite>
           <sprite>sprites\sprBossHornetChaser</sprite>
         </sprites>
-        <sprites name="SharkSubmarine">
+        <sprites name="Magma">
+          <sprite>sprites\sprMagmaIntro</sprite>
+          <sprite>sprites\sprMagmaStand</sprite>
+          <sprite>sprites\sprMagmaJump</sprite>
+          <sprite>sprites\sprMagmaLand</sprite>
+          <sprite>sprites\sprMagmaHeat</sprite>
+          <sprite>sprites\sprMagmaHeatGo</sprite>
+          <sprite>sprites\sprMagmaBazooka1</sprite>
+          <sprite>sprites\sprMagmaBazooka2</sprite>
+          <sprite>sprites\sprMagmaShoot1</sprite>
+          <sprite>sprites\sprMagmaShoot2</sprite>
+          <sprite>sprites\sprMagmaMask</sprite>
+        </sprites>
+        <sprites name="Galaxy">
+          <sprite>sprites\sprGalaxyMan</sprite>
+          <sprite>sprites\sprGalaxyManPose</sprite>
+          <sprite>sprites\sprGalaxyManWeakness</sprite>
+          <sprite>sprites\sprBlackHoleBombConcrete</sprite>
+          <sprite>sprites\sprGalaxyManMask</sprite>
+          <sprite>sprites\sprGalaxyManPoseMask</sprite>
+        </sprites>
+        <sprites name="Fake">
+          <sprite>sprites\sprFakeMan</sprite>
+        </sprites>
+        <sprites name="Shark Submarine">
           <sprite>sprites\sprSharkSubmarineTail</sprite>
           <sprite>sprites\sprSharkSubmarineTailHatch</sprite>
           <sprite>sprites\sprSharkSubmarineSilo</sprite>
@@ -3749,6 +4745,14 @@
         </sprites>
       </sprites>
       <sprites name="MM10">
+        <sprites name="Commando">
+          <sprite>sprites\sprCommandoMask</sprite>
+          <sprite>sprites\sprCommandoMan</sprite>
+          <sprite>sprites\sprCommandoManBombHor</sprite>
+          <sprite>sprites\sprCommandoManBombVer</sprite>
+          <sprite>sprites\sprCommandoExplosionHor</sprite>
+          <sprite>sprites\sprCommandoExplosionVer</sprite>
+        </sprites>
         <sprites name="Chill">
           <sprite>sprites\sprChillMask</sprite>
           <sprite>sprites\sprChillIdle</sprite>
@@ -3765,13 +4769,27 @@
           <sprite>sprites\sprChillSpikeWall</sprite>
           <sprite>sprites\sprChillSpikeShatter</sprite>
         </sprites>
-        <sprites name="Commando">
-          <sprite>sprites\sprCommandoMask</sprite>
-          <sprite>sprites\sprCommandoMan</sprite>
-          <sprite>sprites\sprCommandoManBombHor</sprite>
-          <sprite>sprites\sprCommandoManBombVer</sprite>
-          <sprite>sprites\sprCommandoExplosionHor</sprite>
-          <sprite>sprites\sprCommandoExplosionVer</sprite>
+        <sprites name="Sheep">
+          <sprite>sprites\sprSheepMan</sprite>
+          <sprite>sprites\sprSheepManSpark</sprite>
+          <sprite>sprites\sprSheepThunderWool</sprite>
+          <sprite>sprites\sprSheepThunderWoolThunder</sprite>
+          <sprite>sprites\sprThunderWoolDisappear</sprite>
+          <sprite>sprites\sprThunderWoolGroundThunder</sprite>
+        </sprites>
+        <sprites name="Strike">
+          <sprite>sprites\sprStrikeManPose</sprite>
+          <sprite>sprites\sprStrikeMan</sprite>
+          <sprite>sprites\sprStrikeManSpin</sprite>
+          <sprite>sprites\sprStrikeManBall</sprite>
+          <sprite>sprites\sprStrikeManTired</sprite>
+          <sprite>sprites\sprStrikeManProjectile</sprite>
+          <sprite>sprites\mskStrikeMan</sprite>
+        </sprites>
+        <sprites name="Nitro">
+          <sprite>sprites\sprNitroMan</sprite>
+          <sprite>sprites\sprNitroManIntro</sprite>
+          <sprite>sprites\sprNitroManIntro2</sprite>
         </sprites>
         <sprites name="Solar">
           <sprite>sprites\sprSolarMask</sprite>
@@ -3784,7 +4802,14 @@
           <sprite>sprites\sprSolarBlazeLarge</sprite>
         </sprites>
       </sprites>
-      <sprites name="GB">
+      <sprites name="MMI">
+        <sprites name="Enker">
+          <sprite>sprites\sprEnker</sprite>
+          <sprite>sprites\mskEnkerCollision</sprite>
+          <sprite>sprites\sprEnkerShot</sprite>
+        </sprites>
+      </sprites>
+      <sprites name="MMII">
         <sprites name="Quint">
           <sprite>sprites\sprQuintIntro</sprite>
           <sprite>sprites\sprQuintStand</sprite>
@@ -3793,26 +4818,8 @@
           <sprite>sprites\sprQuintRock</sprite>
           <sprite>sprites\sprQuintLargeRock</sprite>
         </sprites>
-        <sprites name="Enker">
-          <sprite>sprites\sprEnker</sprite>
-          <sprite>sprites\mskEnkerCollision</sprite>
-          <sprite>sprites\sprEnkerShot</sprite>
-        </sprites>
-        <sprites name="Uranus">
-          <sprite>sprites\sprUranus</sprite>
-          <sprite>sprites\mskUranus</sprite>
-          <sprite>sprites\sprUranusProjectile</sprite>
-        </sprites>
-        <sprites name="Saturn">
-          <sprite>sprites\sprSaturn</sprite>
-          <sprite>sprites\mskSaturn</sprite>
-          <sprite>sprites\sprSaturnRing</sprite>
-          <sprite>sprites\sprSaturnProjectile</sprite>
-        </sprites>
-        <sprites name="GiantSuzy">
-          <sprite>sprites\sprGiantSuzy</sprite>
-          <sprite>sprites\sprGiantSuzyArtColours</sprite>
-        </sprites>
+      </sprites>
+      <sprites name="MMIII">
         <sprites name="Punk">
           <sprite>sprites\sprPunk</sprite>
           <sprite>sprites\mskPunk1</sprite>
@@ -3820,17 +4827,32 @@
           <sprite>sprites\sprPunkScrewCrusher</sprite>
           <sprite>sprites\sprPunkDebris</sprite>
         </sprites>
+        <sprites name="GiantSuzy">
+          <sprite>sprites\sprGiantSuzy</sprite>
+          <sprite>sprites\sprGiantSuzyArtColours</sprite>
+        </sprites>
+      </sprites>
+      <sprites name="MMIV">
+        <sprites name="Ballade">
+          <sprite>sprites\sprBallade1</sprite>
+          <sprite>sprites\sprBallade2</sprite>
+          <sprite>sprites\sprBalladeBalladeCracker</sprite>
+          <sprite>sprites\mskBallade</sprite>
+        </sprites>
         <sprites name="Hunter">
           <sprite>sprites\sprHunterA</sprite>
           <sprite>sprites\sprHunterB</sprite>
           <sprite>sprites\sprHunterShot</sprite>
           <sprite>sprites\sprHunterPlatform</sprite>
         </sprites>
-        <sprites name="Ballade">
-          <sprite>sprites\sprBallade1</sprite>
-          <sprite>sprites\sprBallade2</sprite>
-          <sprite>sprites\sprBalladeBalladeCracker</sprite>
-          <sprite>sprites\mskBallade</sprite>
+      </sprites>
+      <sprites name="MMV">
+        <sprites name="Terra">
+          <sprite>sprites\sprTerra</sprite>
+          <sprite>sprites\sprTerraSparkChaser</sprite>
+          <sprite>sprites\sprTerraStunSphere</sprite>
+          <sprite>sprites\sprTerraWarp</sprite>
+          <sprite>sprites\sprTerraFlash</sprite>
         </sprites>
         <sprites name="Mercury">
           <sprite>sprites\sprMercury</sprite>
@@ -3838,11 +4860,67 @@
           <sprite>sprites\sprMercuryBlob</sprite>
           <sprite>sprites\mskMercury</sprite>
         </sprites>
+        <sprites name="Saturn">
+          <sprite>sprites\sprSaturn</sprite>
+          <sprite>sprites\mskSaturn</sprite>
+          <sprite>sprites\sprSaturnRing</sprite>
+          <sprite>sprites\sprSaturnProjectile</sprite>
+        </sprites>
+        <sprites name="Uranus">
+          <sprite>sprites\sprUranus</sprite>
+          <sprite>sprites\mskUranus</sprite>
+          <sprite>sprites\sprUranusProjectile</sprite>
+        </sprites>
       </sprites>
       <sprites name="WW">
-        <sprite>sprites\sprIronBall</sprite>
+        <sprites name="Iron Ball">
+          <sprite>sprites\sprIronBall</sprite>
+        </sprites>
       </sprites>
-      <sprites name="CFTF">
+      <sprites name="MM&amp;B">
+        <sprites name="Magic Man">
+          <sprite>sprites\sprMagicMan</sprite>
+          <sprite>sprites\sprMagicManIntro</sprite>
+          <sprite>sprites\sprMagicManJump</sprite>
+          <sprite>sprites\sprMagicManShoot</sprite>
+          <sprite>sprites\sprMagicManThrow</sprite>
+          <sprite>sprites\sprMagicManBird</sprite>
+          <sprite>sprites\sprMagicManBirdBall</sprite>
+          <sprite>sprites\sprMagicManBirdBallDebris</sprite>
+          <sprite>sprites\sprMagicManBullet</sprite>
+          <sprite>sprites\sprMagicManCard</sprite>
+          <sprite>sprites\sprMagicManDash</sprite>
+        </sprites>
+      </sprites>
+      <sprites name="MM&amp;B2">
+        <sprites name="Grey Devil">
+          <sprite>sprites\sprGreyDevilIntro</sprite>
+          <sprite>sprites\sprGreyDevilIdle</sprite>
+          <sprite>sprites\sprGreyDevilMove</sprite>
+          <sprite>sprites\sprGreyDevilReform</sprite>
+          <sprite>sprites\sprGreyDevilProjectile</sprite>
+          <sprite>sprites\sprGreyDevilGloop</sprite>
+          <sprite>sprites\mskGreyDevil</sprite>
+        </sprites>
+        <sprites name="Dangan">
+          <sprite>sprites\sprDanganIntro</sprite>
+          <sprite>sprites\sprDanganIdle</sprite>
+          <sprite>sprites\sprDanganTransform1</sprite>
+          <sprite>sprites\sprDanganTransform2</sprite>
+          <sprite>sprites\sprDanganJump</sprite>
+          <sprite>sprites\sprDanganRocket</sprite>
+          <sprite>sprites\sprDanganFall</sprite>
+          <sprite>sprites\sprDanganBullet</sprite>
+          <sprite>sprites\mskDangan</sprite>
+          <sprite>sprites\sprDanganThrow</sprite>
+        </sprites>
+        <sprites name="Konro">
+          <sprite>sprites\sprKonroStand</sprite>
+          <sprite>sprites\sprKonroLean</sprite>
+          <sprite>sprites\sprKonroHover</sprite>
+          <sprite>sprites\sprKonroFireball</sprite>
+          <sprite>sprites\sprKonroFlame</sprite>
+        </sprites>
         <sprites name="Komuso">
           <sprite>sprites\sprKomusoIntro</sprite>
           <sprite>sprites\sprKomusoFlute</sprite>
@@ -3859,27 +4937,6 @@
           <sprite>sprites\sprKomusoDoppler1</sprite>
           <sprite>sprites\sprKomusoDoppler2</sprite>
           <sprite>sprites\sprKomusoDoppler3</sprite>
-        </sprites>
-        <sprites name="Dangan">
-          <sprite>sprites\sprDanganIntro</sprite>
-          <sprite>sprites\sprDanganIdle</sprite>
-          <sprite>sprites\sprDanganTransform1</sprite>
-          <sprite>sprites\sprDanganTransform2</sprite>
-          <sprite>sprites\sprDanganJump</sprite>
-          <sprite>sprites\sprDanganRocket</sprite>
-          <sprite>sprites\sprDanganFall</sprite>
-          <sprite>sprites\sprDanganBullet</sprite>
-          <sprite>sprites\mskDangan</sprite>
-          <sprite>sprites\sprDanganThrow</sprite>
-        </sprites>
-        <sprites name="GreyDevil">
-          <sprite>sprites\sprGreyDevilIntro</sprite>
-          <sprite>sprites\sprGreyDevilIdle</sprite>
-          <sprite>sprites\sprGreyDevilMove</sprite>
-          <sprite>sprites\sprGreyDevilReform</sprite>
-          <sprite>sprites\sprGreyDevilProjectile</sprite>
-          <sprite>sprites\sprGreyDevilGloop</sprite>
-          <sprite>sprites\mskGreyDevil</sprite>
         </sprites>
       </sprites>
       <sprites name="DOS">
@@ -3904,6 +4961,26 @@
           <sprite>sprites\sprVoltBarrier</sprite>
           <sprite>sprites\sprVoltTossedShield</sprite>
           <sprite>sprites\sprVoltShot</sprite>
+        </sprites>
+        <sprites name="Bit">
+          <sprite>sprites\sprBitMan</sprite>
+          <sprite>sprites\sprBitManPose</sprite>
+          <sprite>sprites\sprBitManBullet</sprite>
+          <sprite>sprites\sprBitManRun</sprite>
+          <sprite>sprites\sprBitManTile</sprite>
+        </sprites>
+        <sprites name="Torch">
+          <sprite>sprites\sprTorchManDOS</sprite>
+          <sprite>sprites\sprTorchManDOSIntro</sprite>
+          <sprite>sprites\sprTorchManDOSPostintro</sprite>
+          <sprite>sprites\sprTorchManDOSBurn</sprite>
+          <sprite>sprites\sprTorchManDOSEmber</sprite>
+          <sprite>sprites\sprTorchManDOSEmberBig</sprite>
+          <sprite>sprites\sprTorchManDOSEmberSmall</sprite>
+          <sprite>sprites\sprTorchManDOSEmberFinal</sprite>
+          <sprite>sprites\sprTorchManDOSEmberSweep</sprite>
+          <sprite>sprites\sprTorchManDOSWelding</sprite>
+          <sprite>sprites\mskTorchManDOS</sprite>
         </sprites>
       </sprites>
     </sprites>
@@ -4461,6 +5538,8 @@
       <sprite>sprites\sprSavingIcon</sprite>
       <sprite>sprites\sprEnergySaver</sprite>
       <sprite>sprites\sprRushBikeShopIcon</sprite>
+      <sprite>sprites\sprRechargedGraphic</sprite>
+      <sprite>sprites\sprPlusGraphic</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -4662,6 +5741,35 @@
           <background>background\tstMrX1Animated2</background>
         </backgrounds>
       </backgrounds>
+      <backgrounds name="MM7">
+        <background>background\tstFreezeMan</background>
+        <background>background\tstJunkMan</background>
+        <background>background\tstBurstMan</background>
+        <background>background\tstCloudMan</background>
+        <background>background\tstSpringMan</background>
+        <background>background\tstSlashMan</background>
+        <background>background\tstShadeMan</background>
+        <background>background\tstTurboMan</background>
+        <background>background\tstMM7Wily1</background>
+        <background>background\tstMM7Wily2</background>
+        <background>background\tstMM7Wily3</background>
+        <background>background\tstMM7Wily4</background>
+      </backgrounds>
+      <backgrounds name="MM8">
+        <background>background\tstTenguMan</background>
+        <background>background\tstAstroMan</background>
+        <background>background\tstSwordMan</background>
+        <background>background\tstClownMan</background>
+        <background>background\tstSearchMan</background>
+        <background>background\tstFrostMan</background>
+        <background>background\tstGrenadeMan</background>
+        <background>background\tstAquaMan</background>
+        <background>background\tstDuo</background>
+        <background>background\tstMM8Wily1</background>
+        <background>background\tstMM8Wily2</background>
+        <background>background\tstMM8Wily3</background>
+        <background>background\tstMM8Wily4</background>
+      </backgrounds>
       <backgrounds name="MM9">
         <background>background\tstConcreteman</background>
         <background>background\tstGalaxyman</background>
@@ -4740,7 +5848,7 @@
           <background>background\tstMM10Wily5Animated2</background>
         </backgrounds>
       </backgrounds>
-      <backgrounds name="CFTF">
+      <backgrounds name="MM&amp;B2">
         <background>background\tstCave</background>
         <background>background\tstStoveMan</background>
       </backgrounds>
@@ -4750,6 +5858,7 @@
         <background>background\tstAnimated1</background>
         <background>background\tstAnimated2</background>
         <background>background\tstRingmanHolsters</background>
+        <background>background\bgStarFieldCC</background>
       </backgrounds>
     </backgrounds>
     <background>background\bgBasic</background>
@@ -4852,6 +5961,10 @@
         <script>scripts\bboxGetYCenter.gml</script>
         <script>scripts\bboxGetXCenterObject.gml</script>
         <script>scripts\bboxGetYCenterObject.gml</script>
+        <script>scripts\sprite_get_xcenter.gml</script>
+        <script>scripts\sprite_get_xcenter_object.gml</script>
+        <script>scripts\sprite_get_ycenter.gml</script>
+        <script>scripts\sprite_get_ycenter_object.gml</script>
       </scripts>
     </scripts>
     <scripts name="Initialization">
@@ -5199,6 +6312,7 @@
       <object>objects\objTopSolid</object>
       <object>objects\objIce</object>
       <object>objects\objLadder</object>
+      <object>objects\objFence</object>
       <object>objects\objSpike</object>
       <object>objects\objDamageSpike</object>
       <object>objects\objWater</object>
@@ -5319,6 +6433,7 @@
         <object>objects\objJamacy</object>
         <object>objects\objJamacyClimbing</object>
         <object>objects\objJamacyClimbingTurn</object>
+        <object>objects\objJamacyFence</object>
         <object>objects\objJunkGolem</object>
         <object>objects\objKomasaburo</object>
         <object>objects\objMagFly</object>
@@ -5557,10 +6672,16 @@
         </objects>
       </objects>
       <objects name="MM7">
+        <object>objects\objBohuu</object>
+        <object>objects\objCFN24</object>
         <object>objects\objCyorown</object>
         <object>objects\objGobots</object>
         <object>objects\objKaminariKogoro</object>
         <object>objects\objKintot</object>
+        <object>objects\objMM7ShieldAttacker</object>
+        <object>objects\objRagger</object>
+        <object>objects\objSniperJoe01</object>
+        <object>objects\objSpiralGabyoall</object>
         <object>objects\objStegorus</object>
         <object>objects\objTelTel</object>
         <object>objects\objTelTelWeatherCancel</object>
@@ -5569,6 +6690,7 @@
         <objects name="Projectiles">
           <object>objects\objCyorownBullet</object>
           <object>objects\objKaminariKogoroLightning</object>
+          <object>objects\objRaggerBoomerang</object>
           <object>objects\objStegorusSpike</object>
           <object>objects\objStegorusMissile</object>
           <object>objects\objTelTelWeatherControl</object>
@@ -5965,26 +7087,13 @@
           <object>objects\objTricastlePlatform</object>
         </objects>
       </objects>
-      <objects name="MM&amp;B">
-        <object>objects\objMelodyResponseCannon</object>
-        <objects name="Setup">
-          <object>objects\objMelodyResponseButtonUp</object>
-          <object>objects\objMelodyResponseButtonLeft</object>
-          <object>objects\objMelodyResponseButtonDown</object>
-          <object>objects\objMelodyResponseButtonRight</object>
-          <object>objects\objMelodyResponseDoor</object>
-        </objects>
-        <objects name="Projectiles">
-          <object>objects\objMelodyResponseBullet</object>
-        </objects>
-      </objects>
-      <objects name="GB I-IV">
+      <objects name="MMIV">
         <object>objects\objGiantMetCannon</object>
         <objects name="Projectiles">
           <object>objects\objGiantMetCannonShot</object>
         </objects>
       </objects>
-      <objects name="GB V">
+      <objects name="MMV">
         <object>objects\objGundrill</object>
         <object>objects\objHyoey</object>
         <object>objects\objTKhamen</object>
@@ -6005,7 +7114,20 @@
           <object>objects\objTKhamenDead</object>
         </objects>
       </objects>
-      <objects name="CFTF">
+      <objects name="MM&amp;B">
+        <object>objects\objMelodyResponseCannon</object>
+        <objects name="Setup">
+          <object>objects\objMelodyResponseButtonUp</object>
+          <object>objects\objMelodyResponseButtonLeft</object>
+          <object>objects\objMelodyResponseButtonDown</object>
+          <object>objects\objMelodyResponseButtonRight</object>
+          <object>objects\objMelodyResponseDoor</object>
+        </objects>
+        <objects name="Projectiles">
+          <object>objects\objMelodyResponseBullet</object>
+        </objects>
+      </objects>
+      <objects name="MM&amp;B2">
         <object>objects\objBeeBlader</object>
         <object>objects\objCombiloid</object>
         <object>objects\objCombiloidBuddy</object>
@@ -6033,91 +7155,136 @@
     </objects>
     <objects name="Bosses">
       <objects name="MM1">
-        <object>objects\objBombMan</object>
+        <object>objects\objProtoEye</object>
         <object>objects\objCutMan</object>
-        <object>objects\objFireMan</object>
         <object>objects\objGutsMan</object>
         <object>objects\objIceMan</object>
+        <object>objects\objBombMan</object>
+        <object>objects\objFireMan</object>
+        <object>objects\objElecMan</object>
+        <object>objects\objTimeMan</object>
         <object>objects\objOilMan</object>
+        <object>objects\objYellowDevil</object>
+        <object>objects\objWilyMachine1A</object>
+        <object>objects\objWilyMachine1B</object>
         <objects name="Projectiles">
-          <object>objects\objBombManBlast</object>
-          <object>objects\objBombManBomb</object>
           <object>objects\objCutBullet</object>
-          <object>objects\objFireFlame</object>
-          <object>objects\objFireManStorm</object>
           <object>objects\objGutsBossBlock</object>
           <object>objects\objGutsBossBlockRubble</object>
           <object>objects\objIceManSlasher</object>
+          <object>objects\objBombManBlast</object>
+          <object>objects\objBombManBomb</object>
+          <object>objects\objFireFlame</object>
+          <object>objects\objFireManStorm</object>
+          <object>objects\objElecManBullet</object>
+          <object>objects\objTimeNeedle</object>
+          <object>objects\objTimeNeedleBack</object>
           <object>objects\objOilManOilShot</object>
           <object>objects\objOilManParticle</object>
           <object>objects\objOilManPuddle</object>
+          <object>objects\objYDblob</object>
+          <object>objects\objWilyMachine1AProjectile</object>
+          <object>objects\objWilyMachine1BProjectile</object>
+          <object>objects\objWilyMachineHurtbox</object>
         </objects>
       </objects>
       <objects name="MM2">
+        <object>objects\objMetalMan</object>
         <object>objects\objAirMan</object>
         <object>objects\objBubbleMan</object>
+        <object>objects\objQuickMan</object>
         <object>objects\objCrashMan</object>
         <object>objects\objFlashMan</object>
         <object>objects\objHeatMan</object>
-        <object>objects\objMetalMan</object>
-        <object>objects\objQuickMan</object>
         <object>objects\objWoodMan</object>
-        <object>objects\objBoobeam</object>
-        <object>objects\objBoobeamControl</object>
-        <object>objects\objGutsDozer</object>
         <object>objects\objMechaDragon</object>
         <object>objects\objPicoBrick</object>
+        <object>objects\objGutsDozer</object>
+        <object>objects\objBoobeam</object>
+        <object>objects\objBoobeamControl</object>
+        <object>objects\objWilyMachine2A</object>
+        <object>objects\objWilyMachine2B</object>
+        <object>objects\objAlien</object>
         <objects name="Projectiles">
+          <object>objects\objMetalManBlade</object>
           <object>objects\objAirManGust</object>
-          <object>objects\objBoobeamBullet</object>
           <object>objects\objBubbleBullet</object>
           <object>objects\objBubbleManLead</object>
+          <object>objects\objQuickManBoomerang</object>
           <object>objects\objCrashBomber</object>
           <object>objects\objFlashmanTimeStop</object>
           <object>objects\objHeatManFire</object>
           <object>objects\objMechaDragonFire</object>
-          <object>objects\objMetalManBlade</object>
-          <object>objects\objQuickManBoomerang</object>
           <object>objects\objWoodFallingLeaves</object>
           <object>objects\objWoodLeafShield</object>
           <object>objects\objWoodRisingLeaves</object>
+          <object>objects\objBoobeamBullet</object>
+          <object>objects\objWilyMachine2Projectile</object>
         </objects>
         <objects name="Don't Use">
+          <object>objects\objBubbleManWaterSprout</object>
           <object>objects\objPicoControl</object>
           <object>objects\objPicoKun</object>
-          <object>objects\objBubbleManWaterSprout</object>
           <object>objects\objGutsDozerHand</object>
         </objects>
       </objects>
       <objects name="MM3">
+        <object>objects\objNeedleMan</object>
+        <object>objects\objMagnetMan</object>
         <object>objects\objGeminiMan</object>
         <object>objects\objHardMan</object>
-        <object>objects\objSparkMan</object>
         <object>objects\objTopMan</object>
+        <object>objects\objSnakeMan</object>
+        <object>objects\objSparkMan</object>
+        <object>objects\objShadowMan</object>
+        <object>objects\objDocMetal</object>
+        <object>objects\objDocAir</object>
+        <object>objects\objDocBubble</object>
+        <object>objects\objDocQuick</object>
+        <object>objects\objDocCrash</object>
+        <object>objects\objDocFlash</object>
+        <object>objects\objDocHeat</object>
+        <object>objects\objDocWood</object>
         <object>objects\objKamegoroMaker</object>
         <objects name="Projectiles">
+          <object>objects\objNeedleManBullet</object>
+          <object>objects\objNeedleManStrike</object>
+          <object>objects\objMagnetProjectile</object>
           <object>objects\objGemineighbour</object>
           <object>objects\objGeminiBullet</object>
           <object>objects\objGeminiManLaser</object>
+          <object>objects\objHardManKnuckle</object>
+          <object>objects\objTopmanTop</object>
+          <object>objects\objSnakeManSearchSnake</object>
+          <object>objects\objSparkmanProjectile</object>
+          <object>objects\objShadowShuriken</object>
+          <object>objects\objDocRobotIntro</object>
           <object>objects\objKamegoro</object>
           <object>objects\objKamegoroShell</object>
-          <object>objects\objSparkmanProjectile</object>
-          <object>objects\objTopmanTop</object>
-          <object>objects\objHardManKnuckle</object>
         </objects>
       </objects>
       <objects name="MM4">
-        <object>objects\objDustMan</object>
-        <object>objects\objPharaohMan</object>
+        <object>objects\objBrightMan</object>
         <object>objects\objToadMan</object>
+        <object>objects\objDrillMan</object>
+        <object>objects\objPharaohMan</object>
+        <object>objects\objRingMan</object>
+        <object>objects\objDustMan</object>
+        <object>objects\objDiveMan</object>
+        <object>objects\objSkullMan</object>
         <object>objects\objMetallDaddy</object>
         <objects name="Projectiles">
-          <object>objects\objDustManCrusher</object>
-          <object>objects\objDustManDebris</object>
+          <object>objects\objToadRainParticle</object>
+          <object>objects\objDrillManDrillBomb</object>
           <object>objects\objPharaohManShot</object>
           <object>objects\objPharaohManShotBig</object>
           <object>objects\objPharaohManShotHardmode</object>
-          <object>objects\objToadRainParticle</object>
+          <object>objects\objRingProjectile</object>
+          <object>objects\objDustManCrusher</object>
+          <object>objects\objDustManDebris</object>
+          <object>objects\objDiveManMissile</object>
+          <object>objects\objSkullManBullet</object>
+          <object>objects\objSkullManBarrier</object>
           <object>objects\objMetallDaddyChild</object>
         </objects>
         <objects name="Don't Use">
@@ -6126,20 +7293,47 @@
       </objects>
       <objects name="MM5">
         <object>objects\objGravityMan</object>
-        <object>objects\objGyroMan</object>
+        <object>objects\objWaveMan</object>
         <object>objects\objStoneMan</object>
+        <object>objects\objGyroMan</object>
+        <object>objects\objStarMan</object>
+        <object>objects\objChargeMan</object>
+        <object>objects\objNapalmMan</object>
+        <object>objects\objCrystalMan</object>
+        <object>objects\objDarkMan1</object>
+        <object>objects\objDarkMan2</object>
+        <object>objects\objDarkMan3</object>
         <object>objects\objDarkMan4</object>
+        <object>objects\objBigPets</object>
         <objects name="Projectiles">
           <object>objects\objGravityShot</object>
-          <object>objects\objGyroShot</object>
+          <object>objects\objWaterWaveProjectile</object>
           <object>objects\objStoneManPowerStone</object>
+          <object>objects\objGyroShot</object>
+          <object>objects\objStarCrashBoss</object>
+          <object>objects\objChargeCoal</object>
+          <object>objects\objChargeCoalInit</object>
+          <object>objects\objChargeSteam</object>
+          <object>objects\objNapalmGrenade</object>
+          <object>objects\objNapalmProjectile</object>
+          <object>objects\objCrystalProjectile</object>
+          <object>objects\objCrystalManEye</object>
+          <object>objects\objDarkMan2Barrier</object>
+          <object>objects\objDarkMan3Bullet</object>
+          <object>objects\objDarkMan3StunRing</object>
           <object>objects\objDarkBarrier</object>
+          <object>objects\objBigPetsFriend</object>
+          <object>objects\objBigPetsPlatform</object>
         </objects>
       </objects>
       <objects name="MM6">
         <object>objects\objBlizzardMan</object>
         <object>objects\objCentaurMan</object>
+        <object>objects\objFlameMan</object>
+        <object>objects\objKnightMan</object>
         <object>objects\objPlantMan</object>
+        <object>objects\objTomahawkMan</object>
+        <object>objects\objWindMan</object>
         <object>objects\objYamatoMan</object>
         <object>objects\objRounderV2</object>
         <object>objects\objPowerPiston</object>
@@ -6148,27 +7342,118 @@
           <object>objects\objCentaurFlash</object>
           <object>objects\objCentaurSecondaryBullet</object>
           <object>objects\objCentaurShot</object>
-          <object>objects\objYamatoSpearhead</object>
+          <object>objects\objFlameFlame</object>
+          <object>objects\objFlameFlameParticle</object>
+          <object>objects\objFlameProjectile</object>
+          <object>objects\objKnightProjectile</object>
           <object>objects\objPlantBarrierBoss</object>
+          <object>objects\objTomahawkManFeather</object>
+          <object>objects\objWindProjectile</object>
+          <object>objects\objYamatoSpearhead</object>
           <object>objects\objRounderV2Bomb</object>
           <object>objects\objPowerPistonRock</object>
         </objects>
       </objects>
+      <objects name="MM7">
+        <object>objects\objFreezeMan</object>
+        <object>objects\objSpringMan</object>
+        <object>objects\objSlashMan</object>
+        <object>objects\objTurboMan</object>
+        <object>objects\objProtoManMM7Boss</object>
+        <objects name="Projectiles">
+          <object>objects\objFreezeCracker</object>
+          <object>objects\objFreezeCracker2</object>
+          <object>objects\objFreezeCracker3</object>
+          <object>objects\objFreezeIcicle</object>
+          <object>objects\objSpringMini</object>
+          <object>objects\objBetoHead</object>
+          <object>objects\objSlashManBeto</object>
+          <object>objects\objSlashManBetoPuddle</object>
+          <object>objects\objTurboFire</object>
+          <object>objects\objTurboFire2</object>
+        </objects>
+        <objects name="Don't Use">
+          <object>objects\objFloorFreeze</object>
+          <object>objects\objSpringArmLink</object>
+          <object>objects\objSpringArm</object>
+          <object>objects\objSpringMagnetic</object>
+          <object>objects\objSlashManSlash</object>
+          <object>objects\objTurboFireMask</object>
+          <object>objects\objTurbogus</object>
+        </objects>
+      </objects>
+      <objects name="MM8">
+        <object>objects\objSwordMan</object>
+        <object>objects\objFrostMan</object>
+        <object>objects\objGrenadeMan</object>
+        <objects name="Projectiles">
+          <object>objects\objSwordFire</object>
+          <object>objects\objSwordStone</object>
+          <object>objects\objSwordWave</object>
+          <object>objects\objFrostBlock</object>
+          <object>objects\objIceWave</object>
+          <object>objects\objGrenadeFlashBomb</object>
+          <object>objects\objGrenadeFlashBombStraight</object>
+          <object>objects\objFlashBombEffect</object>
+          <object>objects\objGrenadeBlock</object>
+          <object>objects\objGrenadeDebris</object>
+          <object>objects\objGrenadeManGrenade</object>
+        </objects>
+        <objects name="Don't Use">
+          <object>objects\objSwordHead</object>
+          <object>objects\objSwordBody</object>
+          <object>objects\objFrostMegaMan</object>
+          <object>objects\objFrostMegaMan2</object>
+          <object>objects\objFrostMegaMan3</object>
+          <object>objects\objFrostBlockRail1</object>
+          <object>objects\objFrostBlockRail2</object>
+          <object>objects\objFrostBlockRail3</object>
+          <object>objects\objFrostBlockRail4</object>
+          <object>objects\objFrostBlockRail5</object>
+          <object>objects\objFrostBlockRail6</object>
+          <object>objects\objFrostRailContorol</object>
+          <object>objects\objGrenadeFlashBombExplosion</object>
+          <object>objects\objGrenadeDestroyer</object>
+          <object>objects\objGrenadeDestroyerStep1</object>
+          <object>objects\objGrenadeDestroyerStep2</object>
+          <object>objects\objGrenadeDestroyerStep3</object>
+          <object>objects\objGrenadeDestroyerStep4</object>
+        </objects>
+      </objects>
       <objects name="MM9">
+        <object>objects\objTornadoMan</object>
+        <object>objects\objSplashWoman</object>
+        <object>objects\objPlugMan</object>
+        <object>objects\objJewelMan</object>
         <object>objects\objHoneyWoman</object>
         <object>objects\objHornetMan</object>
-        <object>objects\objSplashWoman</object>
+        <object>objects\objMagmaMan</object>
+        <object>objects\objGalaxyMan</object>
+        <object>objects\objFakeMan</object>
         <object>objects\objSharkSubmarineTail</object>
         <object>objects\objSharkSubmarineBody</object>
         <object>objects\objSharkSubmarineHead</object>
         <objects name="Projectiles">
+          <object>objects\objTornadoProjectile</object>
+          <object>objects\objSplashFlounder</object>
+          <object>objects\objSplashNote</object>
+          <object>objects\objSplashTrident</object>
+          <object>objects\objPlug</object>
+          <object>objects\objPlugShot</object>
+          <object>objects\objJewelManSattelite</object>
           <object>objects\objBeeChaser</object>
           <object>objects\objBeeDropper</object>
           <object>objects\objHoneycombBomb</object>
           <object>objects\objHoneyPuddle</object>
-          <object>objects\objSplashFlounder</object>
-          <object>objects\objSplashNote</object>
-          <object>objects\objSplashTrident</object>
+          <object>objects\objMagmaBazookBoss</object>
+          <object>objects\objMagmaStep1</object>
+          <object>objects\objMagmaStep2</object>
+          <object>objects\objMagmaStep3</object>
+          <object>objects\objMagmaStep4</object>
+          <object>objects\objMagmaStep5</object>
+          <object>objects\objMagmaStep6</object>
+          <object>objects\objMagmaStep7</object>
+          <object>objects\objGalaxyBH</object>
           <object>objects\objSharkSubmarineMissile</object>
           <object>objects\objSharkSubmarineDolphin</object>
           <object>objects\objSharkSubmarineLaser</object>
@@ -6180,48 +7465,72 @@
         </objects>
       </objects>
       <objects name="MM10">
-        <object>objects\objChillMan</object>
         <object>objects\objCommandoMan</object>
+        <object>objects\objChillMan</object>
+        <object>objects\objSheepMan</object>
+        <object>objects\objStrikeMan</object>
+        <object>objects\objNitroMan</object>
         <object>objects\objSolarMan</object>
         <objects name="Projectiles">
+          <object>objects\objCommandoBomb</object>
+          <object>objects\objCommandoBombExplosion</object>
+          <object>objects\objCommandoGroundWave</object>
           <object>objects\objChillDebry</object>
           <object>objects\objChillSpike</object>
           <object>objects\objChillSpikeGenerator</object>
           <object>objects\objChillSpikeSpike</object>
-          <object>objects\objCommandoBomb</object>
-          <object>objects\objCommandoBombExplosion</object>
-          <object>objects\objCommandoGroundWave</object>
+          <object>objects\objSheepManSpark</object>
+          <object>objects\objSheepManThunderWool</object>
+          <object>objects\objSheepThunderWoolThunder</object>
+          <object>objects\objThunderWoolGroundThunder</object>
+          <object>objects\objStrikeManProjectile</object>
+          <object>objects\objNitroManCutter</object>
           <object>objects\objSolarManBlaze</object>
           <object>objects\objSolarSun</object>
         </objects>
       </objects>
-      <objects name="GB I-IV">
+      <objects name="MMI">
         <object>objects\objEnker</object>
-        <object>objects\objQuint</object>
-        <object>objects\objPunk</object>
-        <object>objects\objBallade</object>
-        <object>objects\objGiantSuzy</object>
-        <object>objects\objHunterA</object>
-        <object>objects\objHunterB</object>
         <objects name="Projectiles">
-          <object>objects\objBalladeBalladeCracker</object>
-          <object>objects\objBalladeBalladeMine</object>
           <object>objects\objEnkerShot</object>
-          <object>objects\objHunterBaby</object>
-          <object>objects\objHunterBPartner</object>
-          <object>objects\objHunterBullet</object>
-          <object>objects\objPunkDebris</object>
-          <object>objects\objPunkScrewCrusher</object>
+        </objects>
+      </objects>
+      <objects name="MMII">
+        <object>objects\objQuint</object>
+        <objects name="Projectiles">
           <object>objects\objSakugarneBigRock</object>
           <object>objects\objSakugarneRock</object>
           <object>objects\objSakugarneToss</object>
         </objects>
       </objects>
-      <objects name="GB V">
+      <objects name="MMIII">
+        <object>objects\objPunk</object>
+        <object>objects\objGiantSuzy</object>
+        <objects name="Projectiles">
+          <object>objects\objPunkDebris</object>
+          <object>objects\objPunkScrewCrusher</object>
+        </objects>
+      </objects>
+      <objects name="MMIV">
+        <object>objects\objBallade</object>
+        <object>objects\objHunterA</object>
+        <object>objects\objHunterB</object>
+        <objects name="Projectiles">
+          <object>objects\objBalladeBalladeCracker</object>
+          <object>objects\objBalladeBalladeMine</object>
+          <object>objects\objHunterBaby</object>
+          <object>objects\objHunterBPartner</object>
+          <object>objects\objHunterBullet</object>
+        </objects>
+      </objects>
+      <objects name="MMV">
+        <object>objects\objTerra</object>
         <object>objects\objMercury</object>
         <object>objects\objSaturn</object>
         <object>objects\objUranus</object>
         <objects name="Projectiles">
+          <object>objects\objTerraSparkChaser</object>
+          <object>objects\objTerraStunSphere</object>
           <object>objects\objMercuryGrabBuster</object>
           <object>objects\objMercuryGrabBusterPickup</object>
           <object>objects\objMercurySmallBlob</object>
@@ -6234,13 +7543,26 @@
       <objects name="WW">
         <object>objects\objIronBall</object>
       </objects>
-      <objects name="CFTF">
-        <object>objects\objDanganMan</object>
-        <object>objects\objKomusoMan</object>
-        <object>objects\objGreyDevil</object>
+      <objects name="MM&amp;B">
+        <object>objects\objMagicMan</object>
         <objects name="Projectiles">
-          <object>objects\objDanganBullet</object>
+          <object>objects\objMagicManBird</object>
+          <object>objects\objMagicManBirdBall</object>
+          <object>objects\objMagicManCard</object>
+        </objects>
+      </objects>
+      <objects name="MM&amp;B2">
+        <object>objects\objGreyDevil</object>
+        <object>objects\objDanganMan</object>
+        <object>objects\objKonroMan</object>
+        <object>objects\objKomusoMan</object>
+        <objects name="Projectiles">
           <object>objects\objGreyDevilGloop</object>
+          <object>objects\objDanganBullet</object>
+          <object>objects\objKonroFlame</object>
+          <object>objects\objKonroFireball</object>
+          <object>objects\objKonroFireballDestroyable</object>
+          <object>objects\objKonroFireballRemnant</object>
           <object>objects\objKomusoBullet</object>
           <object>objects\objKomusoDoppler</object>
           <object>objects\objKomusoFire</object>
@@ -6248,22 +7570,27 @@
         </objects>
       </objects>
       <objects name="DOS">
-        <object>objects\objDynaMan</object>
-        <object>objects\objSonicMan</object>
         <object>objects\objVoltMan</object>
+        <object>objects\objSonicMan</object>
+        <object>objects\objDynaMan</object>
+        <object>objects\objBitMan</object>
+        <object>objects\objTorchManDOS</object>
         <objects name="Projectiles">
           <object>objects\objDynaDynamite</object>
           <object>objects\objSonicMine</object>
           <object>objects\objVoltBarrier</object>
           <object>objects\objVoltmanDischarge</object>
           <object>objects\objVoltmanShot</object>
+          <object>objects\objBitManBullet</object>
+          <object>objects\objTorchManDOSEmber</object>
+          <object>objects\objTorchManDOSWelding</object>
         </objects>
       </objects>
       <objects name="Don't Use">
         <objects name="BossDetectors">
           <object>objects\objCentaurDetector</object>
-          <object>objects\objChillSpikeDetector</object>
           <object>objects\objSplashWallDetector</object>
+          <object>objects\objChillSpikeDetector</object>
           <object>objects\objVoltRoofDetector</object>
         </objects>
       </objects>
@@ -6348,6 +7675,7 @@
         <object>objects\objSuperCutterSpawner</object>
         <object>objects\objWaterJet</object>
         <object>objects\objSuperArmBlock</object>
+        <object>objects\objSuperArmCreateBlock</object>
         <object>objects\objSuperArmBlock2x2</object>
         <objects name="Don't Use">
           <object>objects\objFireBlockFire</object>
@@ -6576,13 +7904,14 @@
           <object>objects\objSandstorm</object>
         </objects>
       </objects>
-      <objects name="MM&amp;B">
-        <object>objects\objAstroWall</object>
+      <objects name="MMI">
+        <object>objects\objFireSpike</object>
+        <object>objects\objIcicle</object>
+        <object>objects\objSuperCutterRevenge</object>
       </objects>
-      <objects name="GB I-IV">
+      <objects name="MMIV">
         <object>objects\objAnglePlatform</object>
         <object>objects\objBalladeMissile</object>
-        <object>objects\objFireSpike</object>
         <object>objects\objFluorescentBulb</object>
         <object>objects\objFusePlatform</object>
         <object>objects\objFusePlatformStarter</object>
@@ -6592,17 +7921,15 @@
         <object>objects\objFusePlatformUp</object>
         <object>objects\objGutsHover</object>
         <object>objects\objHunterPlatform</object>
-        <object>objects\objIcicle</object>
         <object>objects\objIcePlatform</object>
         <object>objects\objMoveHover</object>
         <object>objects\objNapalm</object>
         <object>objects\objRockPlatform</object>
-        <object>objects\objSuperCutterRevenge</object>
         <objects name="Don't Use">
           <object>objects\objFusePlatformDeleter</object>
         </objects>
       </objects>
-      <objects name="GB V">
+      <objects name="MMV">
         <object>objects\objBubbleFloor</object>
         <object>objects\objGirderLarge</object>
         <object>objects\objGirderMedium</object>
@@ -6628,12 +7955,18 @@
           <object>objects\objVenusWaterfallEnd</object>
         </objects>
       </objects>
-      <objects name="CFTF">
+      <objects name="MM&amp;B">
+        <object>objects\objAstroWall</object>
+      </objects>
+      <objects name="MM&amp;B2">
         <object>objects\objCFTFConveyor</object>
         <object>objects\objDanganPlatform</object>
         <object>objects\objDanganPlatformSpawner</object>
         <object>objects\objKomusoMine</object>
         <object>objects\objKonroPlatform</object>
+      </objects>
+      <objects name="Other">
+        <object>objects\objEmptyMech</object>
       </objects>
       <objects name="Don't Use">
         <object>objects\prtCustomCamera</object>
@@ -6711,91 +8044,193 @@
           <object>objects\objBusterShotCharged</object>
           <object>objects\objBusterShotHalfChargedProto</object>
           <object>objects\objBusterShotChargedProto</object>
-          <object>objects\objSparkChaser</object>
-          <object>objects\objLaserTrident</object>
-          <object>objects\objWaterShield</object>
-          <object>objects\objTornadoBlow</object>
-          <object>objects\objThunderBeam</object>
-          <object>objects\objMagneticShockwave</object>
-          <object>objects\objIceWall</object>
-          <object>objects\objBreakDash</object>
-          <object>objects\objRushCoil</object>
-          <object>objects\objRushJet</object>
-          <object>objects\objRushCycle</object>
-          <object>objects\objMagnetBeam</object>
-          <objects name="Misc.">
-            <object>objects\objNormalBusterShot</object>
-            <object>objects\objTornadoEffect</object>
-            <object>objects\objBubblePopEffect</object>
-            <object>objects\objRushTeleport</object>
-            <object>objects\objRushTeleportBlock</object>
-            <object>objects\objWeaponExplosion</object>
-            <object>objects\objProtoShield</object>
-          </objects>
-          <objects name="MaGMML1">
-            <object>objects\objMetalBlade</object>
-            <object>objects\objGeminiLaser</object>
-            <object>objects\objSolarBlaze</object>
-            <object>objects\objTopSpin</object>
-            <object>objects\objThunderWool</object>
-            <object>objects\objPharaohShot</object>
-            <object>objects\objBlackHoleBomb</object>
-            <object>objects\objMagicCard</object>
-            <objects name="Misc.">
-              <object>objects\objBHBEffect</object>
-            </objects>
-          </objects>
-          <objects name="MaGMML2">
-            <object>objects\objHornetChaser</object>
-            <object>objects\objJewelSatellite</object>
-            <object>objects\objGrabBuster</object>
-            <object>objects\objTripleBlade</object>
-            <object>objects\objFlashStopper</object>
-            <object>objects\objSlashClaw</object>
-            <object>objects\objWheelCutter</object>
-            <object>objects\objSakugarne</object>
-            <object>objects\objWireAdapter</object>
-            <object>objects\objSuperArrow</object>
-            <objects name="Misc.">
-              <object>objects\objGrabBusterPickup</object>
-              <object>objects\objSlashEffect</object>
-            </objects>
-          </objects>
-          <objects name="MaG24HMML">
+          <objects name="MM1">
+            <object>objects\objRollingCutter</object>
             <object>objects\objSuperArm</object>
-            <object>objects\objChillShot</object>
-            <objects name="Misc.">
-              <object>objects\objChillSpikeLanded</object>
-              <object>objects\objChillDebris</object>
+            <object>objects\objIceSlasher</object>
+            <object>objects\objHyperBomb</object>
+            <object>objects\objFireStorm</object>
+            <object>objects\objThunderBeam</object>
+            <object>objects\objTimeSlow</object>
+            <objects name="Do Not Use">
               <object>objects\objSuperArmBlockProjectile</object>
               <object>objects\objSuperArmDebris</object>
             </objects>
           </objects>
-          <objects name="MaG48HMML">
-            <object>objects\objFlameMixer</object>
-            <object>objects\objRainFlush</object>
-            <object>objects\objSparkShock</object>
+          <objects name="MM2">
+            <object>objects\objMetalBlade</object>
+            <object>objects\objAirShooter</object>
+            <object>objects\objBubbleLead</object>
+            <object>objects\objQuickBoomerang</object>
+            <object>objects\objCrashBomberWeapon</object>
+            <object>objects\objTimeStopper</object>
+            <object>objects\objAtomicFire</object>
+            <object>objects\objLeafShield</object>
+          </objects>
+          <objects name="MM3">
+            <object>objects\objNeedleCannon</object>
+            <object>objects\objMagnetMissile</object>
+            <object>objects\objGeminiLaser</object>
+            <object>objects\objHardKnuckle</object>
+            <object>objects\objTopSpin</object>
             <object>objects\objSearchSnake</object>
-            <object>objects\objTenguBlade</object>
-            <object>objects\objSaltWater</object>
-            <object>objects\objConcreteShot</object>
-            <object>objects\objHomingSniper</object>
-            <objects name="Misc.">
+            <object>objects\objSparkShock</object>
+            <object>objects\objShadowBlade</object>
+            <objects name="Do Not Use">
               <object>objects\objSparkShockParalyze</object>
+            </objects>
+          </objects>
+          <objects name="MM4">
+            <object>objects\objFlashStopper</object>
+            <object>objects\objRainFlush</object>
+            <object>objects\objPharaohShot</object>
+            <object>objects\objDrillBomb</object>
+            <object>objects\objRingBoomerang</object>
+            <object>objects\objDustCrusher</object>
+            <object>objects\objDiveMissile</object>
+            <object>objects\objSkullBarrier</object>
+          </objects>
+          <objects name="MM5">
+            <object>objects\objGravityHold</object>
+            <object>objects\objWaterWave</object>
+            <object>objects\objPowerStone</object>
+            <object>objects\objGyroAttack</object>
+            <object>objects\objStarCrash</object>
+            <object>objects\objChargeKick</object>
+            <object>objects\objNapalmBomb</object>
+            <object>objects\objCrystalEye</object>
+            <object>objects\objDarkStasis</object>
+            <objects name="Do Not Use">
+              <object>objects\objGravityHoldEffect</object>
+              <object>objects\objChargeKicking</object>
+            </objects>
+          </objects>
+          <objects name="MM6">
+            <object>objects\objWeaponBlizzardAttack</object>
+            <object>objects\objCentaurFlashWeapon</object>
+            <object>objects\objFlameBlast</object>
+            <object>objects\objKnightCrusher</object>
+            <object>objects\objPlantBarrier</object>
+            <object>objects\objSilverTomahawk</object>
+            <object>objects\objWindStorm</object>
+            <object>objects\objYamatoSpear</object>
+            <objects name="Do Not Use">
+              <object>objects\objWindStormEffect</object>
+            </objects>
+          </objects>
+          <objects name="MM7">
+            <object>objects\objWeaponFreezeCracker</object>
+            <object>objects\objSlashClaw</object>
+            <objects name="Do Not Use">
+              <object>objects\objSlashEffect</object>
+            </objects>
+          </objects>
+          <objects name="MM8">
+            <object>objects\objHomingSniper</object>
+            <object>objects\objWaterBalloon</object>
+          </objects>
+          <objects name="MM9">
+            <object>objects\objConcreteShot</object>
+            <object>objects\objTornadoBlow</object>
+            <object>objects\objLaserTrident</object>
+            <object>objects\objPlugBall</object>
+            <object>objects\objJewelSatellite</object>
+            <object>objects\objHornetChaser</object>
+            <object>objects\objMagmaBazooka</object>
+            <object>objects\objBlackHoleBomb</object>
+            <object>objects\objRevolverBuster</object>
+            <objects name="Do Not Use">
+              <object>objects\objTornadoEffect</object>
+              <object>objects\objBHBEffect</object>
+              <object>objects\objRevolverBusterSuppressor</object>
+            </objects>
+          </objects>
+          <objects name="MM10">
+            <object>objects\objTripleBlade</object>
+            <object>objects\objWaterShield</object>
+            <object>objects\objChillShot</object>
+            <object>objects\objThunderWool</object>
+            <object>objects\objReboundStriker</object>
+            <object>objects\objWheelCutter</object>
+            <object>objects\objSolarBlaze</object>
+            <objects name="Do Not Use">
+              <object>objects\objBubblePopEffect</object>
+              <object>objects\objChillSpikeLanded</object>
+              <object>objects\objChillDebris</object>
+            </objects>
+          </objects>
+          <objects name="MM11">
+            <object>objects\objBlockDropper</object>
+            <object>objects\objBlazingTorch</object>
+            <object>objects\objBounceBall</object>
+            <objects name="Do Not Use">
+              <object>objects\objBlockDropperDebris</object>
+              <object>objects\objBounceBallConfetti</object>
+            </objects>
+          </objects>
+          <objects name="MMI">
+            <object>objects\objMirrorBuster</object>
+          </objects>
+          <objects name="MMII">
+            <object>objects\objSakugarne</object>
+          </objects>
+          <objects name="MMIII">
+            <object>objects\objScrewCrusher</object>
+          </objects>
+          <objects name="MMIV">
+            <object>objects\objBalladeCracker</object>
+          </objects>
+          <objects name="MMV">
+            <object>objects\objSparkChaser</object>
+            <object>objects\objGrabBuster</object>
+            <object>objects\objBreakDash</object>
+            <object>objects\objSaltWater</object>
+            <objects name="Do Not Use">
+              <object>objects\objGrabBusterPickup</object>
+            </objects>
+          </objects>
+          <objects name="MM&amp;B">
+            <object>objects\objTenguBlade</object>
+            <object>objects\objIceWall</object>
+            <object>objects\objMagicCard</object>
+            <objects name="Do Not Use">
               <object>objects\objTenguDash</object>
               <object>objects\objTenguDisk</object>
             </objects>
           </objects>
-          <objects name="Other Examples">
-            <object>objects\objTimeStopper</object>
-            <object>objects\objPowerStone</object>
-            <object>objects\objPlantBarrier</object>
-            <object>objects\objBrickWeapon</object>
-            <object>objects\objIceSlasher</object>
-            <object>objects\objSkeletuppinPakkajoe</object>
-            <objects name="Misc.">
-              <object>objects\objBrickWeaponDebris</object>
+          <objects name="MM&amp;B2">
+            <object>objects\objFlameMixer</object>
+          </objects>
+          <objects name="DOS">
+            <object>objects\objForceField</object>
+            <object>objects\objSonicWave</object>
+            <object>objects\objNuclearDetonator</object>
+            <object>objects\objBitCannon</object>
+            <object>objects\objSharkBoomerang</object>
+            <objects name="Do Not Use">
+              <object>objects\objNuclearDetonatorExplosion</object>
+              <object>objects\objBitCannonBit</object>
             </objects>
+          </objects>
+          <objects name="Other">
+            <object>objects\objMagneticShockwave</object>
+            <object>objects\objCentaurArrow</object>
+            <object>objects\objSkeletuppinPakkajoe</object>
+          </objects>
+          <objects name="Utilities">
+            <object>objects\objMagnetBeam</object>
+            <object>objects\objRushCoil</object>
+            <object>objects\objRushJet</object>
+            <object>objects\objWireAdapter</object>
+            <object>objects\objSuperArrow</object>
+            <object>objects\objRushCycle</object>
+          </objects>
+          <objects name="Do Not Use">
+            <object>objects\objNormalBusterShot</object>
+            <object>objects\objRushTeleport</object>
+            <object>objects\objRushTeleportBlock</object>
+            <object>objects\objWeaponExplosion</object>
+            <object>objects\objProtoShield</object>
           </objects>
         </objects>
       </objects>
@@ -6823,6 +8258,7 @@
       <objects name="Menu">
         <object>objects\objDisclaimer</object>
         <object>objects\objTitleScreen</object>
+        <object>objects\objRechargedGraphic</object>
         <object>objects\objRoomSelector</object>
         <object>objects\objDebugMenu</object>
         <object>objects\objPauseMenu</object>
@@ -6876,7 +8312,7 @@
       <room>rooms\rmShop</room>
       <room>rooms\rmCastleIntro</room>
     </rooms>
-    <rooms name="Test Rooms">
+    <rooms name="Test Halls">
       <room>rooms\lvlTestHallTemp</room>
       <room>rooms\lvlTestHall</room>
       <room>rooms\lvlTestHall2</room>
@@ -6884,6 +8320,29 @@
       <room>rooms\lvlTestHall4</room>
       <room>rooms\lvlTestHall5</room>
       <room>rooms\lvlTestHallBoss</room>
+    </rooms>
+    <rooms name="Plus Test Rooms">
+      <room>rooms\lvlFreezeManTest</room>
+      <room>rooms\lvlGrenadeManTest</room>
+      <room>rooms\lvlMagmaManTest</room>
+      <room>rooms\lvlPlusTest</room>
+    </rooms>
+    <rooms name="Classic Mega Man Example Stages">
+      <room>rooms\lvlCutMan</room>
+      <room>rooms\lvlGutsMan</room>
+      <room>rooms\lvlFlashMan</room>
+      <room>rooms\lvlGeminiMan</room>
+      <room>rooms\lvlPharaohMan</room>
+      <room>rooms\lvlMM4Wily1</room>
+      <room>rooms\lvlStoneMan</room>
+      <room>rooms\lvlMM5Dark1</room>
+      <room>rooms\lvlPlantMan</room>
+      <room>rooms\lvlMM6MrX4</room>
+      <room>rooms\lvlHoneyWoman</room>
+      <room>rooms\lvlMM9Wily3</room>
+      <room>rooms\lvlChillMan</room>
+      <room>rooms\lvlStrikeMan</room>
+      <room>rooms\lvlMM10Wily4</room>
     </rooms>
   </rooms>
   <constants number="40">
