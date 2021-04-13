@@ -1,5 +1,6 @@
 #!/bin/usr/python3
 # This script removes one instance of all duplicate tags according to their text
+# tag can be one of: object, room, etc.
 
 import sys
 import os
@@ -7,10 +8,11 @@ import re
 from collections import defaultdict
 
 backgrounds = defaultdict()
-background_regex = re.compile("(<" + sys.argv[2] + ">.*</" + sys.argv[2] + ">\n)",re.MULTILINE)
+if len(sys.argv) >= 3:
+	background_regex = re.compile("(<" + sys.argv[2] + ">.*</" + sys.argv[2] + ">\n)",re.MULTILINE)
 
 def usage():
-	print("usage: " + sys.argv[0] + " src tag")
+	print("usage: " + sys.argv[0] + " src.project.gmx tag")
 	
 def main(gmx):
 	n = 0;
