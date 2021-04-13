@@ -289,7 +289,7 @@ specialDamageValue("grounded", 3);
           <argument>
             <kind>1</kind>
             <string>/// Set Mega Man's palette
-weaponSetup("SEARCH SNAKE", make_color_rgb(0, 184, 0), make_color_rgb(248, 248, 248), sprWeaponIconsSearchSnake);
+weaponSetup("SEARCH SNAKE", global.nesPalette[22], global.nesPalette[40], sprWeaponIconsSearchSnake);
 </string>
           </argument>
         </arguments>

@@ -28,6 +28,7 @@
             <string>/// initialization
 
 //// global initialization ////
+global.hudFlicker = 0;
 
 // set random seed
 randomize();
@@ -1230,6 +1231,13 @@ if (global.showControllerOverlay)
     drawControllerOverlay(view_xview + view_wview - 28, view_yview + view_hview);
 }
 
+// Flicker
+depthAlter = !depthAlter;
+if(depthAlter &amp;&amp; global.hudFlicker)
+{
+    depth = 10;
+}
+
 // Show FPS
 if (global.showFPS)
 {
@@ -1409,12 +1417,9 @@ depth = depthstart;
         {
             var dxx = dx + ((healthIndex - 1) * 8); // Multibosses
             
-            // Initial black bg for healthbar
-            draw_sprite_ext(sprHealthbarBackground, 0, dxx, dy, 1, 1, 0, c_black, 1);
-            
             // Choose color to draw
             var currentExtraHealthBar = 0;
-            var myPrimaryColor, mySecondaryColor;
+            var myPrimaryColor, mySecondaryColor, myBGColor;
             var _currentHealth = 0;
             
             if (fillingHealthBar) //Intro health bar
@@ -1453,13 +1458,20 @@ depth = depthstart;
                     {
                         myPrimaryColor = healthBarPrimaryColor[currentExtraHealthBar + 1];
                         mySecondaryColor = healthBarSecondaryColor[currentExtraHealthBar + 1];
+                        myBGColor = healthBarBackgroundColor[currentExtraHealthBar + 1];
+                        // backwards compatibility
+                        if(myBGColor == 54) myBGColor = global.nesPalette[min(54, (healthBarBackgroundColor[1] + (healthBarColorSkip * (currentExtraHealthBar))))];
                     }
                     else
                     {
                         // if the colors chosen are higher numbered than valid colors on the NES palette, default to the last in the index (black)
                         myPrimaryColor = global.nesPalette[min(54, (healthBarPrimaryColor[1] + (healthBarColorSkip * (currentExtraHealthBar))))];
                         mySecondaryColor = global.nesPalette[min(54, (healthBarSecondaryColor[1] + (healthBarColorSkip * (currentExtraHealthBar))))];
+                        myBGColor = global.nesPalette[min(54, (healthBarBackgroundColor[1] + (healthBarColorSkip * (currentExtraHealthBar))))];
                     }
+                    
+                    // first draw the health bar background
+                    draw_sprite_ext(sprHealthbarBackground, 0, dxx, dy, 1, 1, 0, myBGColor, 1);
                 }
                 
                 // now actually draw the pellets themselves, using all the info we've gatehred.

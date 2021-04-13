@@ -32,6 +32,9 @@ grav = 0;
 image_speed = 0;
 stopOnFlash = false;
 
+// Doc Crash's bombs behave differently. Here's a check for it.
+isDoc = false;
+
 contactDamage = 4;
 
 var spd;
@@ -82,49 +85,87 @@ reflectable = 0;
 
 if (!global.frozen)
 {
-    if (xspeed != 0)
+    if(!isDoc)
     {
-        image_xscale = sign(xspeed);
-    }
-    
-    if (ycoll != 0 &amp;&amp; sprite_index != sprCrashBombArmed)
-    {
-        playSFX(sfxCrashBombArm);
-        xspeed = 0;
-        yspeed = 0;
-        sprite_index = sprCrashBombArmed;
-    }
-    
-    if (sprite_index == sprCrashBombArmed)
-    {
-        image_index += 0.125;
-        cooldownTimer -= 1;
-        if (cooldownTimer &lt;= 0)
+        if (xspeed != 0)
         {
-            // visible = false;
-            if (cooldownTimer mod 8 == 0)
+            image_xscale = sign(xspeed);
+        }
+        
+        if (ycoll != 0 &amp;&amp; sprite_index != sprCrashBombArmed)
+        {
+            playSFX(sfxCrashBombArm);
+            xspeed = 0;
+            yspeed = 0;
+            sprite_index = sprCrashBombArmed;
+        }
+        
+        if (sprite_index == sprCrashBombArmed)
+        {
+            image_index += 0.125;
+            cooldownTimer -= 1;
+            if (cooldownTimer &lt;= 0)
             {
-                playSFX(sfxEnemyHit);//playSFX(sfxCrashBomb);
-                var i;
-                d = choose(1, -1);
-                t = irandom(45) * -d;
-                for (i = 0; i &lt; 4; i += 1)
+                // visible = false;
+                if (cooldownTimer mod 8 == 0)
                 {
-                    t += irandom_range(45, 90) * sign(d);
-                    expl = instance_create(x, y, objHarmfulExplosion);
-                    expl.stopOnFlash = false;
-                    expl.sprite_index = sprCrashExplosion;
-                    expl.contactDamage = 4;
-                    with (expl)
+                    playSFX(sfxEnemyHit);//playSFX(sfxCrashBomb);
+                    var i;
+                    d = choose(1, -1);
+                    t = irandom(45) * -d;
+                    for (i = 0; i &lt; 4; i += 1)
                     {
-                        direction = other.t;
-                        rotationMovement(x, y, irandom_range(8, 20), 0);
+                        t += irandom_range(45, 90) * sign(d);
+                        expl = instance_create(x, y, objHarmfulExplosion);
+                        expl.stopOnFlash = false;
+                        expl.sprite_index = sprCrashExplosion;
+                        expl.contactDamage = 4;
+                        with (expl)
+                        {
+                            direction = other.t;
+                            rotationMovement(x, y, irandom_range(8, 20), 0);
+                        }
                     }
                 }
             }
+            if (cooldownTimer &lt;= -64)
+                instance_destroy();
         }
-        if (cooldownTimer &lt;= -64)
+    }
+    else
+    {
+        if (xspeed != 0)
+        {
+            image_xscale = sign(xspeed);
+        }
+        
+        if (ycoll != 0 &amp;&amp; sprite_index != sprCrashBombArmed)
+        {
+            playSFX(sfxCrashBombArm);
+            xspeed = 0;
+            yspeed = 0;
+            sprite_index = sprCrashBombArmed;
+        }
+        
+        if (sprite_index == sprCrashBombArmed)
+        {
+            image_index += 0.125;
+            cooldownTimer -= 1;
+            if (cooldownTimer &lt;= 0)
+            {
+                // visible = false;
+                if (cooldownTimer == 0)
+                {
+                    playSFX(sfxMM3Explode);//playSFX(sfxCrashBomb);
+                    expl = instance_create(x, y, objHarmfulExplosion);
+                    expl.stopOnFlash = false;
+                    expl.sprite_index = sprBigExplosion;
+                    expl.contactDamage = 4;
+                }
+            }
+            if (cooldownTimer &lt;= -1)
             instance_destroy();
+        }
     }
 }
 </string>

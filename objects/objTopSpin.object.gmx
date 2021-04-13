@@ -223,7 +223,7 @@ if (!global.frozen)
 {
     if (global.ammo[playerID, global.weapon[playerID]] &gt; 0)
     {
-        global.ammo[playerID, global.weapon[playerID]] -= (2 / (global.energySaver + 1));
+        global.ammo[playerID, global.weapon[playerID]] -= (1 / (global.energySaver + 1));
     }
 }
 </string>

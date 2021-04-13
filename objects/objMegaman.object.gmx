@@ -43,6 +43,11 @@ playerID = 0;
 costumeID = 0;
 fanoutDistance = 0;
 
+// it might seem weird to initialize weapon variables here, but trust me this is necessary for the Needle Cannon and Yamato Spear weapon behaviors
+global.needleTimer = 0;
+global.needleOffset = -1;
+global.yamatoOffset = -1;
+
 // Physics variables
 grav = 0.25; // The player's gravity
 gravfactor = 1;
@@ -146,6 +151,10 @@ plt = 0;
 isFrozen = 0;
 freezeTimer = 0;
 
+// for custom palettes when frozen
+frozenPalettePrimary = 0;
+frozenPaletteSecondary = 0;
+frozenPaletteOutline = 0;
 
 // vehicle: the instance of a vehicle mega man
 // is embarked in.
@@ -280,7 +289,18 @@ if paletteRefresh == 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>switch (global.characterSelected[playerID])
+            <string>// you might not expect to find Needle Cannon code here but well here we are
+global.needleTimer++;
+
+// prevent annoying Atomic Fire sfx holdover
+if(!instance_exists(objAtomicFire) &amp;&amp; !isCharge)
+{
+    audio_stop_sound(sfxFireCharging1);
+    audio_stop_sound(sfxFireCharging2);
+    audio_stop_sound(sfxFireCharging3);
+}
+
+switch (global.characterSelected[playerID])
 { 
     default: //you can define step code here that needs to be run on every frame for a specific character. Proto man is the only character that needs to be changed for this specifically, due to his shield so he uses a different script.
     case "Roll":
@@ -428,7 +448,8 @@ global.damage *= contactDamageMultiplier;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.playerHealth[playerID] = 0;
+            <string>//atomicFireHeld = false;
+global.playerHealth[playerID] = 0;
 </string>
           </argument>
         </arguments>

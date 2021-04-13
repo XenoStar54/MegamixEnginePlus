@@ -163,6 +163,14 @@ if (!global.frozen)
             <kind>1</kind>
             <string>if (canDamage)
 {
+    // Star Crash is special because without this Star Man's barrier never returns
+    if other.object_index = objStarCrashBoss
+    {
+        with(objStarCrashBoss)
+        {
+            instance_destroy();
+        }
+    }
     switch (other.reflectable)
     {
         case 0:
@@ -210,7 +218,7 @@ if (!global.frozen)
             <kind>1</kind>
             <string>if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT))
 {
-    i = fireWeapon(16, 0, objBlackHoleBomb, 1, 7, 1, 0);
+    i = fireWeapon(16, 0, objBlackHoleBomb, 1, 4, 1, 0);
     with (i)
     {
         xspeed = other.image_xscale * 1; // zoom

@@ -116,8 +116,13 @@ enemyDamageValue(objChillSpikeLanded, 1);
 // Misc.
 enemyDamageValue(objPowerStone, 1);
 enemyDamageValue(objPlantBarrier, 0);
-enemyDamageValue(objBrickWeapon, 0);
+enemyDamageValue(objBlockDropper, 0);
 enemyDamageValue(objIceSlasher, 0);
+
+// Megamix Expansion
+
+enemyDamageValue(objMagnetMissile, 4);
+enemyDamageValue(objShadowBlade, 0);
 </string>
           </argument>
         </arguments>

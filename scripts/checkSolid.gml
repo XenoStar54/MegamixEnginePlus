@@ -42,6 +42,10 @@ if (dieToSpikes)
     if(!alwaysCheckSolids)
     {
         var spSolid = (canHit && iFrames != 0);
+        
+        if(instance_exists(objSkullBarrier))
+        spSolid = 1;
+        
         with (objSpike)
         {
             solid = spSolid;

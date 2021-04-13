@@ -80,6 +80,17 @@ if (entityCanStep())
             image_xscale = other.image_xscale;
         }
     }
+    else if (instance_exists(objDocWood))
+    {
+        depth = 0;
+        sprite_index = sprDocFallingLeaves;
+        if (followWood)
+        {
+            xs = bboxGetXCenterObject(objDocWood);
+            ys = bboxGetYCenterObject(objDocWood);
+            image_xscale = other.image_xscale;
+        }
+    }
     else
     {
         instance_destroy();

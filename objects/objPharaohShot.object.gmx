@@ -250,7 +250,7 @@ if (sprite_index == sprPharaohShotCharging)
 }
 else
 {
-    cost = 3;
+    cost = 1;
 }
 
 if (charging)

@@ -33,11 +33,15 @@ layer = 1000000;
 if (place_meeting(x, y, objSolid))
 {
     carveSolid(bbox_left, bbox_top, bbox_right, bbox_bottom);
-    with (objSolid)
+    
+    if(sprite_index != sprSuperArmCreateBlock)
     {
-        if (place_meeting(x, y, other))
+        with (objSolid)
         {
-            instance_destroy();
+            if (place_meeting(x, y, other))
+            {
+                instance_destroy();
+            }
         }
     }
     
@@ -58,7 +62,16 @@ canHit = false;
 contactDamage = 0;
 
 grav = 0;
-blockCollision = 0;
+
+if (sprite_index == sprSuperArmCreateBlock)
+{
+    blockCollision = 1;
+}
+else
+{
+    blockCollision = 0;
+}
+
 shiftVisible = 1;
 bubbleTimer = -1;
 </string>
@@ -85,10 +98,53 @@ bubbleTimer = -1;
             <kind>1</kind>
             <string>event_inherited();
 
+if (sprite_index == sprSuperArmCreateBlock)
+{
+    parent = prtPlayerProjectile;
+    respawn = false;
+    if(superArmHoldOwner == noone)
+    {
+        blockCollision = 1;
+        isSolid = 1;
+    }
+    else
+    {
+        blockCollision = 0;
+        isSolid = 0;
+    }
+}
+
 // change depth
 if (superArmHoldOwner != noone)
 {
     depth = 1;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="40">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>event_inherited();
+if(sprite_index == sprSuperArmCreateBlock)
+{
+    instance_destroy();
 }
 </string>
           </argument>
@@ -184,18 +240,39 @@ if (tileN &lt;= 0)
             <kind>1</kind>
             <string>if (!dead)
 {
-    for (var i = 0; i &lt; tileN; i++)
+    if sprite_index != sprSuperArmCreateBlock
     {
-        draw_background_part(tiles[i], tileLeft[i], tileTop[i], tileWidth[i], tileHeight[i], floor(x) + tileOffsetX[i], floor(y) + tileOffsetY[i]);
+        for (var i = 0; i &lt; tileN; i++)
+        {
+            draw_background_part(tiles[i], tileLeft[i], tileTop[i], tileWidth[i], tileHeight[i], floor(x) + tileOffsetX[i], floor(y) + tileOffsetY[i]);
+        }
+    }
+    else
+    {
+        draw_sprite(sprSuperArmCreateBlock, 0, x, y); 
     }
     
     if (superArmFlashTimer mod (2 * superArmFlashInterval) &gt;= superArmFlashInterval || superArmHoldOwner != noone || superArmThrown)
     {
         // flash
         draw_set_blend_mode(bm_add);
-        for (var i = 0; i &lt; tileN; i++)
+        if sprite_index != sprSuperArmCreateBlock
         {
-            draw_background_part(tiles[i], tileLeft[i], tileTop[i], tileWidth[i], tileHeight[i], floor(x) + tileOffsetX[i], floor(y) + tileOffsetY[i]);
+            for (var i = 0; i &lt; tileN; i++)
+            {
+                draw_background_part(tiles[i], tileLeft[i], tileTop[i], tileWidth[i], tileHeight[i], floor(x) + tileOffsetX[i], floor(y) + tileOffsetY[i]);
+            }
+        }
+        else
+        {
+            if superArmFlashTimer % 10 == 0
+            {
+                draw_sprite(sprSuperArmCreateBlock, 0, x, y);
+            }
+            else if superArmFlashTimer % 5 == 0
+            {
+                draw_sprite(sprSuperArmCreateBlock, 1, x, y);
+            }
         }
         draw_set_blend_mode(bm_normal);
         draw_set_alpha(1);

@@ -30,6 +30,8 @@
 blockCollision = true;
 grav = 0.25;
 
+isDoc = false;
+
 contactDamage = 4;
 image_speed = 1 / 5;
 stopOnFlash = false;
@@ -62,58 +64,119 @@ raiseTimer = 0;
 
 if (entityCanStep())
 {
-    image_speed = 1 / 5;
-    if (grav != 0)
-        reflectable = true;
-    else
-        reflectable = false;
-    if (checkSolid(0, 3) &amp;&amp; style == 0)
+    if !isDoc
     {
-        xspeed = 0;
-        blockCollision = false;
-        grav = 0;
-        
-        raiseTimer++;
-        if (raiseTimer == 1)
+        image_speed = 1 / 5;
+        if (grav != 0)
+            reflectable = true;
+        else
+            reflectable = false;
+        if (checkSolid(0, 3) &amp;&amp; style == 0)
         {
+            xspeed = 0;
+            blockCollision = false;
+            grav = 0;
+            
+            raiseTimer++;
+            if (raiseTimer == 1)
+            {
+                for (var i = 0; i &lt; 4; i++)
+                {
+                    spawnFire[i] = instance_create(x, y, object_index);
+                    with (spawnFire[i])
+                    {
+                        style = 1;
+                        grav = 0;
+                        blockCollision = false;
+                    }
+                }
+            }
+        }
+        
+        if (raiseTimer &gt; 0)
+        {
+            raiseTimer++;
+            var offset = raiseTimer;
+            if (raiseTimer &gt; 32)
+                offset = 32;
+            if (raiseTimer &gt; 50)
+                offset = 32 - (raiseTimer - 50);
+            var die = false;
+            if (offset &lt; 0)
+                die = true;
             for (var i = 0; i &lt; 4; i++)
             {
-                spawnFire[i] = instance_create(x, y, object_index);
                 with (spawnFire[i])
                 {
                     style = 1;
                     grav = 0;
                     blockCollision = false;
+                    y = other.y - offset * i / 5;
+                    if (die)
+                        instance_destroy();
+                }
+            }
+            if (die)
+                instance_destroy();
+        }
+    }
+    else
+    {
+        image_speed = 1 / 5;
+        if (grav != 0)
+            reflectable = true;
+        else
+            reflectable = false;
+        if (checkSolid(0, 3) &amp;&amp; style == 0)
+        {
+            xspeed = 0;
+            yspeed = 0;
+            blockCollision = false;
+            grav = 0;
+            
+            raiseTimer++;
+            if (raiseTimer == 1)
+            {
+                for (var i = 0; i &lt; 4; i++)
+                {
+                    spawnFire[i] = instance_create(x, y, object_index);
+                    with (spawnFire[i])
+                    {
+                        style = 1;
+                        grav = 0;
+                        blockCollision = false;
+                    }
                 }
             }
         }
-    }
-    
-    if (raiseTimer &gt; 0)
-    {
-        raiseTimer++;
-        var offset = raiseTimer;
-        if (raiseTimer &gt; 32)
-            offset = 32;
-        if (raiseTimer &gt; 50)
-            offset = 32 - (raiseTimer - 50);
-        var die = false;
-        if (offset &lt; 0)
-            die = true;
-        for (var i = 0; i &lt; 4; i++)
-        {
-            with (spawnFire[i])
+        
+        if (raiseTimer &gt; 0)
+        {   
+            yspeed = 0;
+            raiseTimer++;
+            var offset = raiseTimer;
+            if (raiseTimer &gt; 32)
+                offset = 32;
+            if (raiseTimer &gt; 50)
+                offset = 32 - (raiseTimer - 50);
+            var die = false;
+            if (offset &lt; 0)
+                die = true;
+            for (var i = 0; i &lt; 4; i++)
             {
-                style = 1;
-                grav = 0;
-                blockCollision = false;
-                y = other.y - offset * i / 5;
-                if (die)
-                    instance_destroy();
+                with (spawnFire[i])
+                {
+                    style = 1;
+                    grav = 0;
+                    blockCollision = false;
+                    y = other.y - offset * i / 5;
+                    if (die)
+                        instance_destroy();
+                }
             }
+            if (die)
+                instance_destroy();
         }
-        if (die)
-            instance_destroy();
     }
 }
 else

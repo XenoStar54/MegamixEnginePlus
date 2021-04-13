@@ -37,6 +37,9 @@ category = "joes";
 
 facePlayer = true;
 
+// Empty mech mechanic
+joeLock = false;
+
 // Enemy specific code
 shootTimer = 0;
 shooting = false;

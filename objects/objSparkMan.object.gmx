@@ -113,8 +113,11 @@ enemyDamageValue(objChillSpikeLanded, 2);
 // Misc.
 enemyDamageValue(objPowerStone, 4);
 enemyDamageValue(objPlantBarrier, 1);
-enemyDamageValue(objBrickWeapon, 4);
+enemyDamageValue(objBlockDropper, 4);
 enemyDamageValue(objIceSlasher, 1);
+
+// Xeno
+enemyDamageValue(objShadowBlade, 4);
 </string>
           </argument>
         </arguments>

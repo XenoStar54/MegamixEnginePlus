@@ -19,6 +19,12 @@ animate = 0;
 spriteX = 0;
 spriteY = 0;
 
+// smh Atomic Fire
+//if(atomicFireHeld)
+//{
+    //isShoot = true;
+//}
+
 // do animations
 switch (AnimID)
 {
@@ -252,6 +258,10 @@ switch (AnimID)
         break;
     case "Guts":
         spriteY = 6;
+        break;
+    case "Charge":
+        spriteX = 15 + other.animFrame;
+        spriteY = 10;
         break;
     
     // Other

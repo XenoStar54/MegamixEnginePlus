@@ -145,6 +145,15 @@ if (entityCanStep() &amp;&amp; introTimer &gt; 0 &amp;&amp; introType)
 if (entityCanStep()
     &amp;&amp; introTimer &lt;= 0)
 {
+    if(instance_exists(objChargeKick) || instance_exists(objChargeKicking))
+    {
+        contactDamage = 0;
+    }
+    else
+    {
+        contactDamage = 3;
+    }
+
     if (instance_exists(target))
     {
         strMMX = target.x;

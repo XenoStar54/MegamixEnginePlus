@@ -437,7 +437,7 @@ if (doIt)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>weaponSetup("JEWEL SATELLITE", make_color_rgb(67, 231, 216), make_color_rgb(252, 252, 252), sprWeaponIconsJewelSatellite);
+            <string>weaponSetup("JEWEL SATELLITE", global.nesPalette[38], global.nesPalette[40], sprWeaponIconsJewelSatellite);
 </string>
           </argument>
         </arguments>

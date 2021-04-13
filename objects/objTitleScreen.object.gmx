@@ -25,10 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>playMusic('Mega_Man_1GB.GBS', "VGM", 0, 0, 0, 0, 1);
+            <string>playMusic('MegamixEnginePlusTitle.ogg', "OGG", 0, 0, 161, 0, 1);
 
 canProceed = true;
 drawtext = 0;
+
+instance_create(91, 90, objRechargedGraphic);
 
 option = 0;
 options = 2;

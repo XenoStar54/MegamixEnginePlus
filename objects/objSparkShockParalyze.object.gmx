@@ -85,6 +85,14 @@ if (!global.frozen)
                 other.x = bboxGetXCenter();
                 other.y = bboxGetYCenter();
             }
+            if(countdownToDestruction % 50 == 0)
+            {
+               a = instance_create(bboxGetXCenter(), bboxGetYCenter(), objSparkShock);
+               a.contactDamage = 1;
+               a.pierces = 0;
+               a.penetrate = 0;
+               a.visible = 0;
+            }
         }
         else
         {

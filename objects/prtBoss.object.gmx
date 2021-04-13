@@ -59,6 +59,7 @@
 
 // healthBarPrimaryColor[1]: Primary color of the boss' first healthbar. THE [1] IS IMPORTANT. Use the number of the color you want that's on the NES palette reference.
 // healthBarSecondaryColor[1]: Secondary color of the boss' first healthbar. THE [1] IS IMPORTANT. Use the number of the color you want that's on the NES palette reference.
+// healthBarBackgroundColor[1]: Background color of the boss' first healthbar. THE [1] IS IMPORTANT. Use the number of the color you want that's on the NES palette reference.
 // healthBarColorSkip: The number that the healthbar color increments by when a new healthbar is reached, referring to the color numbers in global.nesPalette. Only applies if using automatic coloring.
 
 // manualColors: If set to true, you can define the colors of each healthbar of the boss manually. Instead of
@@ -145,6 +146,8 @@ healthBarTimerSpeedExtra = 0.25;
 
 healthBarPrimaryColor[1] = 34;
 healthBarSecondaryColor[1] = 40;
+healthBarBackgroundColor[1] = 54;
+
 healthBarColorSkip = 1;
 manualColors = false;
 

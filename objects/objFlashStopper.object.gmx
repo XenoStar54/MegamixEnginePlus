@@ -199,7 +199,7 @@ if (!global.frozen)
 {
     if (!instance_exists(objFlashStopper))
     {
-        fireWeapon(0, 0, objFlashStopper, 0, 7, 0, 0);
+        fireWeapon(0, 0, objFlashStopper, 0, 4, 0, 0);
     }
     else // fire buster shots when flashstopper is active
     {

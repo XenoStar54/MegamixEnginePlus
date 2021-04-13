@@ -29,6 +29,7 @@
 event_inherited();
 
 contactDamage = 7;
+
 </string>
           </argument>
         </arguments>

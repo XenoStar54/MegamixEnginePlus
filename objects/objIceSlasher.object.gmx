@@ -29,12 +29,12 @@
 
 bulletLimitCost = 1;
 
-contactDamage = 2;
+contactDamage = 1;
 
 image_speed = 0.15;
 
 penetrate = 3;
-pierces = 0;
+pierces = 2;
 
 xspeed = 0;
 yspeed = 0;

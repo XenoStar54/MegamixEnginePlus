@@ -37,6 +37,9 @@ category = "joes";
 
 facePlayerOnSpawn = true;
 
+// Empty mech mechanic
+joeLock = false;
+
 // Enemy specific code
 shootTimer = 0;
 shooting = false;
@@ -72,10 +75,10 @@ xs = 0;
 
 if (entityCanStep())
 {
-    // if it's on the ground, check if the player is behind it, by comparing what myDir is
-    //( set on spawn), and the image_xscale attempting to be set relative to the player.
-    // if they're not equal, jump and try to catch up with the player.
-    
+        // if it's on the ground, check if the player is behind it, by comparing what myDir is
+        //( set on spawn), and the image_xscale attempting to be set relative to the player.
+        // if they're not equal, jump and try to catch up with the player.
+        
     if (ground)
     {
         var rn = irandom(1);
