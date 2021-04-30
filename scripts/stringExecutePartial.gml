@@ -4,8 +4,7 @@
 // returns false on success, or a string if there is an error.
 // call gigReturnValue() to get the return value after a success.
 
-var _code = argument0;
-var gi = external_call(global.dll_gigGenerate, _code);
+var gi = external_call(global.dll_gigGenerate, argument0);
 
 if (external_call(global.dll_gigError, gi))
 {
@@ -72,12 +71,7 @@ while (true)
 {
     if (pc > maxAddress)
     {
-        assert(false, "program counter exceeded bytecode section range during execution.");
-    }
-    
-    if (object_index == objDestroyField)
-    {
-        show_debug_message("destroy_field");
+        return "program counter exceeded bytecode section range during execution.";
     }
 
     // read in opcode
@@ -93,17 +87,29 @@ while (true)
     case "ldi_true":
         stack[sc++] = true;
         break;
+    case "ldi_zero":
+        stack[sc++] = 0.0;
+        break;
+    case "ldi_self":
+        stack[sc++] = self;
+        break;
+    case "ldi_other":
+        stack[sc++] = other;
+        break;
     case "ldi_undef":
         stack[sc++] = undefined
         break;
     case "ldi_f32":
-    case "ldi_f64":
     case "ldi_s32":
     case "ldi_u64":
+        // TODO: load s32, u64 properly?
         stack[sc++] = real(immediate);
         break;
     case "ldi_string":
         stack[sc++] = immediate;
+        break;
+    case "ldi_true":
+        stack[sc++] = true;
         break;
     case "inc":
         stack[sc - 1]++;
@@ -354,7 +360,7 @@ while (true)
             stack[sc++] = gigVariableGet(vInstanceName[real(immediate)], false, _id, ix1, ix2);
             break;
         }
-        break;
+        break;  
     case "stga":
         {
             var val = stack[--sc];
@@ -387,6 +393,13 @@ while (true)
         stack[sc - 2] = stack[sc - 5];
         stack[sc - 1] = stack[sc - 4];
         break;
+    case "swap":
+        {
+            var s = stack[sc - 1];
+            stack[sc - 1] = stack[sc - 2];
+            stack[sc - 2] = s;
+        }
+        break;
     case "dupn":
         {
             var n = floor(real(immediate));
@@ -397,9 +410,24 @@ while (true)
             }
         }
         break;
+    case "dupi":
+        {
+            var n = floor(real(immediate));
+            stack[sc] = stack[sc - n - 1];
+        }
+        break;
+    case "deli":
+        {
+            var n = floor(real(immediate));
+            for (var i = 0; i < n; i++)
+            {
+                stack[sc - n + i - 1] = stack[sc - n + i];
+            }
+            sc -= 1;
+        }
+        break;
     case "nat":
         {
-            // parse immediate function description of form fnname:argc
             var fn = "";
             var argc = 0;
             for (var i = 1; i <= string_length(immediate); i++)
@@ -413,8 +441,6 @@ while (true)
                 }
                 fn += c;
             }
-            
-            // pass in arguments from the stack
             var argv;
             argv[0] = 0;
             for (var i = 0; i < argc; i++)
@@ -422,13 +448,10 @@ while (true)
                 argv[i] = stack[sc - argc + i];
             }
             sc -= argc;
-            
-            // execute function
             global.dll_gigExecutionError = false;
             var perf = false;
             with (_self)
             {
-                perf = true;
                 stack[sc++] = gigFunction(fn, argc, argv);
             }
             if (!perf)
@@ -437,11 +460,11 @@ while (true)
             }
             if (global.dll_gigExecutionError == 1)
             {
-                assert(false, "The function '" + fn  + "'could not be executed, as it is not a user-defined script nor is it listed in the script gigFunction. Please consider adding it to the script gigFunction if it is a built-in script.");
+                return "The function '" + fn  + "'could not be executed, as it is not a user-defined script nor is it listed in the script gigFunction. Please consider adding it to the script gigFunction if it is a built-in script.";
             }
             if (global.dll_gigExecutionError == 2)
             {
-                assert(false, "The function '" + fn  + "' was invoked with " + string(argc) + " arguments, which is too many for the interpreter to handle.");
+                return "The function '" + fn  + "' was invoked with " + string(argc) + " arguments, which is too many for the interpreter to handle.";
             }
         }
         break;
@@ -497,7 +520,6 @@ while (true)
             }
             if (!valid)
             {
-                assert(is_real(id)); // just to confirm that we haven't broken the with stack.
                 return "yield from invalid with-iterator.";
             }
             if (withidx[wi] >= withcount[wi])
@@ -544,12 +566,11 @@ while (true)
         break;
     case "ret":
         if (sc != 1)
-            assert(false, "Bytecode execution finished with " + string(sc) + " values on stack.")
+            return "Bytecode execution finished with " + string(sc) + " values on stack."
         global.dll_gigReturnValue = stack[0];
-        assert(is_real(id)); // just to confirm that we haven't broken the with stack.
         return false;
     case "eof":
-        assert(false, "bytecode eof reached -- unexpected.");
+        return "bytecode eof reached -- unexpected.";
     case "nop":
         break;
     case "all":
@@ -568,12 +589,12 @@ while (true)
     case "pshe":
     case "pope":
     case "call":
-        assert(false, "opcode " + opcode + " was expected to not be generated, but was encountered anyway.")
+        return "opcode " + opcode + " was requested not to be compiled, but was encountered anyway."
     case "sfx":
     case "ufx":
-        assert(false, "write-no-copy array accessor not supported (though it could be in the future.)");
+        return "write-no-copy array accessor not supported (though it could be in the future.)";
     default:
-        assert(false, "opcode not implemented: " + opcode + " at address " + string(pc));
+        return "opcode not implemented: " + opcode + " at address " + string(pc);
     }
 
     do
@@ -582,5 +603,4 @@ while (true)
     } until (addressAligned[pc]);
 }
 
-assert(is_real(id)); // just to confirm that we haven't broken the with stack.
 return false;
