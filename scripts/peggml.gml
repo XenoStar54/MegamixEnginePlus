@@ -46,6 +46,8 @@ global._peggml_clear_error = external_define(dllName, "peggml_clear_error", call
 
 // remaining declarations
 global._peggml_set_stack_size = external_define(dllName, "peggml_set_stack_size", callType, ty_real, 1, ty_real);
+global._peggml_stack_current_depth = external_define(dllName, "peggml_stack_current_depth", callType, ty_real, 0);
+global._peggml_estimate_stack_usage = external_define(dllName, "peggml_estimate_stack_usage", callType, ty_real, 0);
 global._peggml_parser_create = external_define(dllName, "peggml_parser_create", callType, ty_real, 1, ty_string);
 global._peggml_parser_destroy = external_define(dllName, "peggml_parser_destroy", callType, ty_real, 1, ty_real);
 global._peggml_parser_enable_packrat = external_define(dllName, "peggml_parser_enable_packrat", callType, ty_real, 0);
@@ -86,14 +88,26 @@ return external_call(global._peggml_clear_error)
 peggml_init()
 return external_call(global._peggml_set_stack_size, argument0)
 
+#define peggml_stack_current_depth
+peggml_init()
+return external_call(global._peggml_stack_current_depth)
+
+#define peggml_estimate_stack_usage
+peggml_init()
+return external_call(global._peggml_estimate_stack_usage)
+
 #define peggml_parser_create
 peggml_init()
 var handle = external_call(global._peggml_parser_create, argument0)
-global._peggml_handler_map[handle] = ds_map_create()
+if (handle >= 0)
+{
+    global._peggml_handler_map[handle] = ds_map_create()
+}
 return handle
 
 #define peggml_parser_destroy
 var handle = argument0
+if (handle < 0) return 0
 ds_map_destroy(global._peggml_handler_map[handle])
 global._peggml_handler_map[handle] = -1
 return external_call(global._peggml_parser_destroy, handle)
@@ -176,7 +190,7 @@ var handler_map = global._peggml_handler_map[parser]
 
 var args
 args[0] = script
-for (var i = 0; i < argument_count; ++i)
+for (var i = 0; i < argument_count - 3; ++i)
 {
     args[i + 1] = argument[i + 3]
 }

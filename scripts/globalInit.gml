@@ -2,6 +2,8 @@
 // these are global variables and constants that aren't really meant to be configured.
 global.newLine = "
 ";
+global.doubleQuote = '"'
+global._undefined = _globalInit_undefined()
 global.nextRoom = -1;
 global.previousRoom=-1;
 
@@ -16,6 +18,10 @@ lockPoolInit();
 globalLockInit();
 fsInit();
 gigInit();
+global._peggml_loaded = false // for opengml compatability (cannot execute pragma_gml yet)
+peggml_set_stack_size(1000 * 1000 * 800) // 800 megabytes stack
+peggml_init();
+roomExternalInit();
 
 // extension initialization
 cleanMem('init');
@@ -225,7 +231,7 @@ global.factionStance[7, 5] = 0;
 global.factionStance[7, 6] = 0;
 global.factionStance[7, 7] = 0;
 
-// load external rooms
-global.roomExternalCache = ds_map_create();
-global.roomExternalFileName = ds_map_create();
-global.roomExternalSetupMap = ds_map_create();
+#define _globalInit_undefined
+/// returns undefined
+
+if (false) return 0

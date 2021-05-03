@@ -1,4 +1,4 @@
-/// stringSplit(string, delimiter, trim)
+/// stringSplit(string, delimiter, trim=false)
 // returns an array of strings split on the given delimiter.
 // if trim is true, then trim all whitespace
 

@@ -8,8 +8,17 @@ if (!argument[0])
     {
         // caps makes this easier to spot in the inspector
         var ERROR_MESSAGE = argument[1];
-        printErr(ERROR_MESSAGE);
-        printErr("FATAL ASSERTION FAILURE");
+        if (variable_global_exists("consoleN"))
+        {
+            printErr(ERROR_MESSAGE);
+            printErr("FATAL ASSERTION FAILURE");
+        }
+        else
+        {
+            // TODO: make this show_error?
+            show_debug_message(ERROR_MESSAGE)
+            show_debug_message("FATAL ASSERTION FAILURE")
+        }
     }
     
     // intentionally invoke crash:

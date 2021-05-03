@@ -56,9 +56,16 @@ var prop_colour = 0;
 var code_str = "";
 
 // parse properties:
+var file_text = ""
 while (!file_text_eof(file))
 {
-    var text = file_text_readln(file);
+    file_text += file_text_readln(file) + global.newLine
+}
+
+
+
+if (false) {
+    var text = 
     text = stringSubstring(text, string_pos("<", text));
     
     // room properties

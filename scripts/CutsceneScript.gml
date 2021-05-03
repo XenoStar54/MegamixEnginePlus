@@ -9,6 +9,8 @@ global._cuts_parser = peggml_parser_create("
 
 ")
 
+assert(global._cuts_parser >= 0, "peggml error: " + peggml_error_str())
+
 #define _cuts_test
 /// automated test of the cutscene logic
 

@@ -1782,8 +1782,8 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  46220: function() {throw 'Canceled!'},  
- 46238: function($0, $1) {setTimeout(function() { __emscripten_do_dispatch_to_thread($0, $1); }, 0);}
+  46236: function() {throw 'Canceled!'},  
+ 46254: function($0, $1) {setTimeout(function() { __emscripten_do_dispatch_to_thread($0, $1); }, 0);}
 };
 function initPthreadsJS(){ PThread.initRuntime(); }
 
@@ -6468,6 +6468,12 @@ var _peggml_parser_destroy = Module["_peggml_parser_destroy"] = createExportWrap
 var _peggml_set_stack_size = Module["_peggml_set_stack_size"] = createExportWrapper("peggml_set_stack_size");
 
 /** @type {function(...*):?} */
+var _peggml_stack_current_depth = Module["_peggml_stack_current_depth"] = createExportWrapper("peggml_stack_current_depth");
+
+/** @type {function(...*):?} */
+var _peggml_estimate_stack_usage = Module["_peggml_estimate_stack_usage"] = createExportWrapper("peggml_estimate_stack_usage");
+
+/** @type {function(...*):?} */
 var _peggml_parser_set_symbol_id = Module["_peggml_parser_set_symbol_id"] = createExportWrapper("peggml_parser_set_symbol_id");
 
 /** @type {function(...*):?} */
@@ -6687,8 +6693,8 @@ var _asyncify_start_rewind = Module["_asyncify_start_rewind"] = createExportWrap
 /** @type {function(...*):?} */
 var _asyncify_stop_rewind = Module["_asyncify_stop_rewind"] = createExportWrapper("asyncify_stop_rewind");
 
-var __emscripten_allow_main_runtime_queued_calls = Module['__emscripten_allow_main_runtime_queued_calls'] = 46208;
-var __emscripten_main_thread_futex = Module['__emscripten_main_thread_futex'] = 51740;
+var __emscripten_allow_main_runtime_queued_calls = Module['__emscripten_allow_main_runtime_queued_calls'] = 46224;
+var __emscripten_main_thread_futex = Module['__emscripten_main_thread_futex'] = 51772;
 
 
 
