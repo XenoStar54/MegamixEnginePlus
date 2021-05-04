@@ -2178,6 +2178,7 @@
   </datafiles>
   <NewExtensions>
     <extension index="0">extensions\GameMusicEmu</extension>
+    <extension index="1">extensions\EmptyExtension</extension>
   </NewExtensions>
   <sounds name="sound">
     <sounds name="Player">
