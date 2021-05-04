@@ -44,69 +44,18 @@ var file = file_text_open_read(filepath);
 if (file == -1)
     return -1;
 
-var prop_width = 256;
-var prop_height = 240;
-var prop_bg_n = 0;
-var prop_bg;
-var prop_inst_n = 0;
-var prop_inst;
-var prop_tile_n = 0;
-var prop_tile;
-var prop_colour = 0;
-var code_str = "";
+var time_parse_begin = get_timer()
 
 // parse properties:
+roomExternalParseBegin()
 var file_text = ""
 while (!file_text_eof(file))
 {
-    file_text += file_text_readln(file) + global.newLine
+     roomExternalParseLine(file_text_readln(file))
 }
 
-
-
-if (false) {
-    var text = 
-    text = stringSubstring(text, string_pos("<", text));
-    
-    // room properties
-    if (stringStartsWith(text, "<width>"))
-        prop_width = real(string_digits(text));
-    if (stringStartsWith(text, "<height>"))
-        prop_height = real(string_digits(text));
-    if (stringStartsWith(text, "<colour>"))
-        prop_colour = real(string_digits(text));
-    if (stringStartsWith(text, "<code>"))
-    {
-        code_str = text + global.newLine;
-        while (!file_text_eof(file))
-        {
-            if (string_pos("</code>", code_str) != 0)
-                break;
-            code_str += file_text_readln(file) + global.newLine;
-        }
-        continue;
-    }
-    
-    // backgrounds
-    if (stringStartsWith(text, "<background "))
-    {
-        prop_background[prop_bg_n++] = xmlParseTag(text);
-    }
-    
-    // views [not implemented]
-    
-    // instances
-    if (stringStartsWith(text, "<instance "))
-    {
-        prop_inst[prop_inst_n++] = xmlParseTag(text);
-    }
-    
-    // tiles
-    if (stringStartsWith(text, "<tile "))
-    {
-        prop_tile[prop_tile_n++] = xmlParseTag(text);
-    }
-}
+show_debug_message("total backgrounds: " + string(ds_list_size(global._roomExternalBackgrounds)))
+show_debug_message("total instances: " + string(ds_list_size(global._roomExternalInstances)))
 
 file_text_close(file);
 
@@ -123,28 +72,30 @@ prop_copy[4] = "rotation";
 prop_copy_n = 5;
 
 // this grid will remain for the length of the game
-// it details creation event code for each instance.
-var exgrid = ds_grid_create(prop_inst_n + 1, prop_copy_n + 1);
+// it details creation event code for each instance, and also the creation code for the room.
+var exgrid = ds_grid_create(ds_list_size(global._roomExternalInstances) + 1, prop_copy_n + 1);
 global.roomExternalSetupMap[? exrm] = exgrid;
-exgrid[# 0, 0] = stringBetween(code_str, "<code>", "</code>");
+exgrid[# 0, 0] = roomExternalParseGetProp("code", "")
 
 print("Room loaded externally: " + filepath, WL_VERBOSE);
 if (argument_count > 1)
     print("Hash confirmed.", WL_VERBOSE);
 else
     print("Hash is " + file_hash + " (not enforced!)", WL_VERBOSE);
+var time_parse = (get_timer() - time_parse_begin) / 1000
+print("Time taken (parse): " + string(time_parse) + " ms", WL_VERBOSE);
 
 // apply properties
-room_set_width(exrm, prop_width);
-room_set_height(exrm, prop_height);
-room_set_background_colour(exrm, prop_colour, true);
+room_set_width(exrm, roomExternalParseGetProp("width", 256));
+room_set_height(exrm, roomExternalParseGetProp("height", 224));
+room_set_background_colour(exrm, roomExternalParseGetProp("colour", c_gray), roomExternalParseGetProp("showColour", true));
 
-// add backgrounds [not implemented]
-for (var i = 0; i < prop_bg_n; i++)
+// add backgrounds
+for (var i = 0; i < ds_list_size(global._roomExternalBackgrounds); i++)
 {
-    if (i > 7 || i < 0)
+    if (i >= 8 || i < 0)
         return -2;
-    var map = prop_background[i];
+    var map = global._roomExternalBackgrounds[| i];
     var bgName = map[? "name"];
     var bgID = asset_get_index(bgName);
     if (bgID < 0)
@@ -160,14 +111,13 @@ for (var i = 0; i < prop_bg_n; i++)
         real(map[? "hspeed"]),
         real(map[? "vspeed"]),
         real(map[? "alpha"]));
-    ds_map_destroy(map);
 }
 
 // add instances
 room_instance_add(exrm, 0, 0, objExternalRoomSetup);
-for (var i = 0; i < prop_inst_n; i++)
+for (var i = 0; i < ds_list_size(global._roomExternalInstances); i++)
 {
-    var map = prop_inst[i];
+    var map = global._roomExternalInstances[| i];
     var objName = map[? "objName"];
     var objId = asset_get_index(objName);
     var _x = map[? "x"];
@@ -179,25 +129,25 @@ for (var i = 0; i < prop_inst_n; i++)
     for (var j = 0; j < prop_copy_n; ++j)
     {
         exgrid[# i + 1, j + 1] = map[? prop_copy[j]];
-        
     }
-    
-    
-    ds_map_destroy(map);
 }
 
 // add tiles
-for (var i = 0; i < prop_tile_n; i++)
+for (var i = 0; i < ds_list_size(global._roomExternalTiles); i++)
 {
-    var map = prop_tile[i];
+    var map = global._roomExternalTiles[| i];
     room_tile_add_ext(exrm, asset_get_index(map[? "bgName"]),
         real(map[? "xo"]), real(map[? "yo"]),
         real(map[? "w"]), real(map[? "h"]),
         real(map[? "x"]), real(map[? "y"]),
-        real(map[? "depth"]), real(map[? "scaleX"]), real(map[? "scaleY"]),1);
-    ds_map_destroy(map);
+        real(map[? "depth"]), real(map[? "scaleX"]), real(map[? "scaleY"]), 1);
 }
 
 global.roomExternalCache[? argument[0]] = exrm;
+
+roomExternalParseEnd()
+
+var time_total = (get_timer() - time_parse_begin) / 1000
+print("Time taken (total): " + string(time_total) + " ms", WL_VERBOSE);
 
 return exrm;

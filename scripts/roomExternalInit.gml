@@ -17,16 +17,19 @@ global._roomExternalXMLMaps[3] = _roomExternalInstances
 
 global.roomExternalParser = peggml_parser_create("
     ROOMPROP <- RP_CAPTION /
-        RP_WIDTH /
-        RP_CODE /
-        RP_CODE_BEGIN /
-        RP_HEIGHT /
-        RP_SPEED /
-        RP_PERSISTENT /
-        RP_COLOUR / 
-        RP_SHOWCOLOUR /
-        RP_ENABLEVIEWS /
-        RP_BACKGROUND
+            RP_WIDTH /
+            RP_CODE /
+            RP_CODE_BEGIN /
+            RP_HEIGHT /
+            RP_SPEED /
+            RP_PERSISTENT /
+            RP_COLOUR / 
+            RP_SHOWCOLOUR /
+            RP_ENABLEVIEWS /
+            RP_BACKGROUND /
+            RP_TILE /
+            RP_VIEW /
+            RP_INSTANCE
         RP_WIDTH <- '<width>'i NUMBER '</width>'i
         RP_HEIGHT <- '<height>'i NUMBER '</height>'i
         RP_CAPTION <- '<caption>'i TEXT '</caption>'i
@@ -43,7 +46,7 @@ global.roomExternalParser = peggml_parser_create("
         RP_INSTANCE <- '<instance ' ATTRIBUTE* '/>'
         ATTRIBUTE <- ATTRNAME '=' '" + global.doubleQuote + "' ATTRVAL '" + global.doubleQuote + "'
             ATTRNAME <- < [a-zA-Z0-9]+ >
-            ATTRVAL <- ( [^" + global.doubleQuote + "] )*
+            ATTRVAL <- [^" + global.doubleQuote + "]*
     TEXT <- ([^<>&] / ESCAPED_CHAR)+
     ESCAPED_CHAR <- '&' [^a-zA-Z0-9]+ ';'
     COMMENT <- '<!--' [^>]* '>'
@@ -66,10 +69,10 @@ peggml_parser_set_handler(global.roomExternalParser, "RP_SHOWCOLOUR", _roomExter
 peggml_parser_set_handler(global.roomExternalParser, "RP_CODE", _roomExternalInit_handle_value, "code")
 peggml_parser_set_handler(global.roomExternalParser, "RP_CODE_BEGIN", _roomExternalInit_handle_CODE_BEGIN)
 peggml_parser_set_handler(global.roomExternalParser, "RP_ENABLEVIEWS", _roomExternalInit_handle_value, "enableViews")
-peggml_parser_set_handler(global.roomExternalParser, "RP_BACKGROUND", _roomExternalInit_handle_tag, global._roomExternalXMLMaps)
+peggml_parser_set_handler(global.roomExternalParser, "RP_BACKGROUND", _roomExternalInit_handle_tag, global._roomExternalBackgrounds)
 peggml_parser_set_handler(global.roomExternalParser, "RP_TILE", _roomExternalInit_handle_tag, global._roomExternalTiles)
 peggml_parser_set_handler(global.roomExternalParser, "RP_VIEW", _roomExternalInit_handle_tag, global._roomExternalViews)
-peggml_parser_set_handler(global.roomExternalParser, "RP_INSTANCES", _roomExternalInit_handle_tag, global._roomExternalInstances)
+peggml_parser_set_handler(global.roomExternalParser, "RP_INSTANCE", _roomExternalInit_handle_tag, global._roomExternalInstances)
 peggml_parser_set_handler(global.roomExternalParser, "TEXT", _roomExternalInit_handle_TEXT)
 
 show_debug_message("about to parse...")
@@ -135,7 +138,10 @@ var value = roomExternalParseLines('
   <instances>
     <instance objName="objGlobalControl" x="0" y="0" name="inst_3334DD84" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
-  <tiles/>
+   <tiles>
+    <tile bgName="tstFlashman" x="1280" y="64" w="16" h="16" xo="64" yo="48" id="11288555" name="inst_70BECDDC" depth="100000001" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tstFlashman" x="1264" y="64" w="16" h="16" xo="64" yo="48" id="11288556" name="inst_000365F1" depth="100000001" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+  </tiles>
   <PhysicsWorld>0</PhysicsWorld>
   <PhysicsWorldTop>0</PhysicsWorldTop>
   <PhysicsWorldLeft>0</PhysicsWorldLeft>
@@ -151,7 +157,10 @@ show_debug_message("width: " + string(roomExternalParseGetProp("width")))
 show_debug_message("height: " + string(roomExternalParseGetProp("height", 100)))
 show_debug_message("caption: " + string(roomExternalParseGetProp("caption", "(no caption)")))
 show_debug_message("code: " + string(roomExternalParseGetProp("code", "(no code)")))
+show_debug_message("backgrounds: " + string(ds_list_size(global._roomExternalBackgrounds)))
 show_debug_message("views: " + string(ds_list_size(global._roomExternalViews)))
+show_debug_message("instances: " + string(ds_list_size(global._roomExternalInstances)))
+show_debug_message("tiles: " + string(ds_list_size(global._roomExternalTiles)))
 
 roomExternalParseEnd()
 
@@ -168,7 +177,7 @@ for (var i = 0; i < array_length_1d(global._roomExternalXMLMaps); ++i)
     {
         ds_map_destroy(xlist[| j])
     }
-    ds_map_clear(map)
+    ds_list_clear(xlist)
 }
 global._roomExternalLatchCC = false
 global._roomExternalCCAccumulate = ""
@@ -212,7 +221,7 @@ else
 peggml_clear_error()
 
 #define roomExternalParseGetProp
-/// roomExternalParseGetProp(property:string)
+/// roomExternalParseGetProp(property:string, [default])
 
 var prop = argument[0]
 var _default = global._undefined
