@@ -46,7 +46,7 @@ if (string_length(msg) > MAX_LINE_WIDTH)
     exit;
 }
 
-if (global.warningLevel <= warningLevel)
+if (instance_exists(objDebugControl) && global.warningLevel <= warningLevel)
 {
     global.consoleTimer[global.consoleN] = 0;
     global.consoleColour[global.consoleN] = col;

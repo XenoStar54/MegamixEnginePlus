@@ -179,7 +179,10 @@ for (var i = 0; i < array_length_1d(global._roomExternalXMLMaps); ++i)
     var xlist = global._roomExternalXMLMaps[i]
     for (var j = 0; j < ds_list_size(xlist); ++j)
     {
-        ds_map_destroy(xlist[| j])
+        if (!is_string(xlist[| j])) // could be a string if some error occurred and we didn't remap string -> parsed xml map
+        {
+            ds_map_destroy(xlist[| j])
+        }
     }
     ds_list_clear(xlist)
 }
@@ -222,6 +225,21 @@ else
     }
 }
 
+// remap xml from string to map (for instances, backgrounds, etc...)
+for (var i = 0; i < array_length_1d(global._roomExternalXMLMaps); ++i)
+{
+    var xlist = global._roomExternalXMLMaps[i]
+    var len = ds_list_size(xlist)
+    if (len > 0 && is_string(xlist[| len - 1]))
+    {
+        var tag = xmlParseTag(xlist[| len - 1])
+        if (tag >= 0)
+        {
+            xlist[| len - 1] = tag
+        }
+    }
+}
+
 peggml_clear_error()
 
 #define roomExternalParseGetProp
@@ -240,10 +258,12 @@ return value
 
 #define _roomExternalInit_handle_tag
 ///_roomExternalInit_handle_tag(list)
-var list = argument0
-var xml = xmlParseTag(peggml_parse_elt_get_string())
-ds_list_add(list, xml)
-return xml
+var str = peggml_parse_elt_get_string()
+if (is_string(str))
+{
+    ds_list_add(argument0, str)
+}
+return 0
 
 #define _roomExternalInit_handle_value
 ///_roomExternalInit_handle_value(name)

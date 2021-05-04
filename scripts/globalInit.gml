@@ -21,6 +21,7 @@ gigInit();
 global._peggml_loaded = false // for opengml compatability (cannot execute pragma_gml yet)
 peggml_set_stack_size(1000 * 1000 * 800) // 800 megabytes stack
 peggml_init();
+xmlParseTagInit();
 roomExternalInit();
 
 // extension initialization
