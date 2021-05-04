@@ -21,8 +21,9 @@ gigInit();
 global._peggml_loaded = false // for opengml compatability (cannot execute pragma_gml yet)
 peggml_set_stack_size(1000 * 1000 * 800) // 800 megabytes stack
 peggml_init();
-xmlParseTagInit();
+xmlParseTagInit(!ogm_is_host); // (this may be more efficient in GM, less efficient in OGM, so we enable peg parsing only in GM)
 roomExternalInit();
+global._roomExternalCustomObjectHandlerMap[? objTileAnimation] = ev_user0
 
 // extension initialization
 cleanMem('init');

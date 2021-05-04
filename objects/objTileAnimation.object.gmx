@@ -32,29 +32,29 @@
 ///To use you have to set the animID array to the animation frames of the tileset
 ///and set animationLayer to the layer where the animated tiles are
 /*
-animLength = how many frames
-animTime = interval before change
-animID[#] = background frame (Note # goes up from 0 to animLength)
-animateOnTransition = will stop animations during the transition
-
-animationLayer = Layer animated tiles start at (your animated tiles should start on this layer)
-
-Note: This only works for tiles on a 16x16 grid
-
-
-see the example level for how to set this up.
+see example levels for how to set this up.
 */
 
+//@cc how many frames
 animLength = 1;
+
+//@cc interval before change
 animTime = 1;
+
+//@cc will stop animations during the transition
 animateOnTransition = false;
-animID[10] = tstAnimated;
+
+//@cc background frame (Note, # goes up from 0 to animLength - 1)
 animID[0] = noone;
+animID[10] = tstAnimated;
+
+//@cc the layer animated tiles start at (your animated tiles should start on this layer)
 animationLayer=100000;
 
+// non-cc variables
 timer = 0;
 tileID = 0;
-init=1;
+init=1; // has initialized
 </string>
           </argument>
         </arguments>
@@ -79,54 +79,62 @@ init=1;
             <kind>1</kind>
             <string>/// This generates tiles all across the levet
 /// Note this causes lag at the start of the stage in larger levels
+
+// prevents arithmetic error
+if (animLength &lt; 1)
+{
+    animLength = 1 
+}
+
 if(init)
 {
-    print("Animating");
-    var tiles = tile_get_ids_at_depth(animationLayer);
-    var total = array_length_1d(tiles);
-    if(total&lt;=0)
+    var bakeVarName = "_objTileAnimation_room" + string(room) + "_inst_" + string(id) + "_init"
+    if (!variable_global_exists(bakeVarName)) // skip this if baked into the room already.
     {
-        init=0;
-        instance_destroy();
-        exit;
-    }
-    
-    for (var i = 0; i &lt; total; i+=1)
-    {
-        var tile = tiles[i];
-        var bg=tile_get_background(tile);
-        var skip=true;
-        var k=0;
-        for(var j=0; j&lt;animLength;j+=1;)
+        print("Animating");
+        var tiles = tile_get_ids_at_depth(animationLayer);
+        var total = array_length_1d(tiles);
+        if(total&lt;=0)
         {
-            if(bg==animID[j])
+            init=0;
+            instance_destroy();
+            exit;
+        }
+        
+        for (var i = 0; i &lt; total; ++i)
+        {
+            var tile = tiles[i];
+            var bg=tile_get_background(tile);
+            var skip=true;
+            var k=0;
+            for(var j=0; j&lt;animLength;j+=1;)
             {
-                skip=false;
-                k=j+1;
-                break;
+                if(bg==animID[j])
+                {
+                    skip=false;
+                    k=j+1;
+                    break;
+                }
+            }
+            if (skip) continue;
+            for(var j=1;j&lt;animLength;j++)
+            {
+                tile_add(
+                    animID[(k++) % animLength],
+                    tile_get_left(tile),
+                    tile_get_top(tile),
+                    tile_get_width(tile),
+                    tile_get_height(tile),
+                    tile_get_x(tile), tile_get_y(tile),
+                    animationLayer + j
+                );
             }
         }
-        if(skip)
-            continue;
-        if(k&gt;=animLength)
-        {
-            k=0;
-        }
-        for(var j=1;j&lt;animLength;j++)
-        {
-            tile_add(animID[k], tile_get_left(tile),
-                tile_get_top(tile), 16,
-                16, tile_get_x(tile), tile_get_y(tile),
-                animationLayer + j);
-            ++k;
-            if(k&gt;=animLength)
-            {
-                k=0;
-            }
-        }
     }
-    for(var i =1;i&lt;animLength;i++)
+    for(var i = 1; i &lt; animLength; ++i)
+    {
         tile_layer_hide(animationLayer+i);
+    }
     init=false;
     exit;
 }
@@ -159,7 +167,106 @@ else
         tile_layer_show(animationLayer + tileID);
     }
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// this runs when importing an external room in order to speed up the process.
 
+// run setup code and cc code in a temporary instance
+// this is not a perfect simulation of running the ccode in the new room, since not everything is set up.
+// hopefully it's sufficient in all cases though...
+with (instance_create(0, 0, objStruct))
+{
+    event_perform_object(objTileAnimation, ev_create, 0)
+    global.roomExternalLoad_ccOptimize = true // creation code can set this to false if it doesn't want us to optimize.
+    var result = stringExecutePartial(global.roomExternalLoad_handler_creationCode)
+    if (result != false)
+    {
+        printErr(result)
+        break
+    }
+    // prevents arithmetic error
+    if (animLength &lt; 1)
+    {
+        animLength = 1 
+    }
+    show_debug_message("animating tiles on layer " + string(animationLayer))
+    if (instance_exists(self) &amp;&amp; global.roomExternalLoad_ccOptimize) // creation code 
+    {
+        // iterate over tiles
+        for (var i = 0; i &lt; ds_list_size(global._roomExternalTiles); i++)
+        {
+            var map = global._roomExternalTiles[| i];
+            var bg = asset_get_index(map[? "bgName"]),
+                xo = real(map[? "xo"]),
+                yo = real(map[? "yo"]),
+                w = real(map[? "w"]),
+                h = real(map[? "h"]),
+                _x = real(map[? "x"]),
+                _y = real(map[? "y"]),
+                _depth = real(map[? "depth"]),
+                _xscale = real(map[? "scaleX"]),
+                _yscale = real(map[? "scaleY"]);
+            
+            if (!background_exists(bg))
+            {
+                printErr("background asset does not exist: " + map[? "bgName"])
+                continue
+            }
+            
+            var skip = true;
+            var k = 0;
+            for (var j = 0; j &lt; animLength; j += 1)
+            {
+                if (bg == animID[j])
+                {
+                    skip = false;
+                    k = j + 1;
+                    break;
+                }
+            }
+            if (skip) continue
+            for (var j = 1; j &lt; animLength; j++)
+            {
+                room_tile_add_ext(
+                    global.roomExternalLoad_handler_roomIndex,
+                    animID[(k++) % animLength],
+                    xo,
+                    yo,
+                    w, h,
+                    _x, _y,
+                    animationLayer + j,
+                    _xscale, _yscale, 1
+                );
+            }
+        }
+        
+        // change instance so that it doesn't try to initialize the animations again.
+        var bakeVarName = "_objTileAnimation_room" + string(global.roomExternalLoad_handler_roomIndex)
+            + "_inst_" + string(global.roomExternalLoad_handler_instanceID) + "_init"
+        variable_global_set(bakeVarName, 1)
+        instance_destroy();
+    }
+}
 </string>
           </argument>
         </arguments>

@@ -15,7 +15,7 @@ for (var i = 1; i < grid_width; i++)
 {
     with (exgrid[# i, 0])
     {
-        var ccode = xmlStringUnescape(exgrid[# i, 1]);
+        var ccode = exgrid[# i, 1];
         if (string_length(ccode) > 0)
         {
             stringExecutePartial(ccode);
@@ -24,7 +24,7 @@ for (var i = 1; i < grid_width; i++)
 }
 
 // room creation code
-var rmccode = xmlStringUnescape(exgrid[# 0, 0]);
+var rmccode = exgrid[# 0, 0];
 if (string_length(rmccode) > 0)
 {
     stringExecutePartial(rmccode);

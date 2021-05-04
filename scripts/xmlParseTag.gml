@@ -3,21 +3,59 @@
 /// into a map from attribute to value.
 /// do not forget to free the map after you use it!
 
-global._xmlParseTagMap = ds_map_create()
-
-global.xmlParseTagError = ""
-peggml_clear_error()
-peggml_parse(global._xmlTagParser, argument0)
-
-if (peggml_error())
+if (global.xmlParseTagWithPeg)
 {
-    global.xmlParseTagError = peggml_error_str()
+    global._xmlParseTagMap = ds_map_create()
+    
+    global.xmlParseTagError = ""
     peggml_clear_error()
+    peggml_parse(global._xmlTagParser, argument0)
+    
+    if (peggml_error())
+    {
+        global.xmlParseTagError = peggml_error_str()
+        peggml_clear_error()
+    }
+    
+    return global._xmlParseTagMap;
+}
+else
+{
+    var dsm, tag = stringTrim(argument0);
+    dsm = ds_map_create();
+    // seek to end of tag
+    tag = stringSubstring(tag, string_pos(" ", tag) + 1);
+    while (tag!=">")
+    {
+        var attr, value;
+        
+        // read attribute
+        var eqPos = string_pos("=", tag);
+        attr = stringSubstring(tag, 1, eqPos);
+        tag = stringSubstring(tag, eqPos + 1);
+        
+        // read value
+        var q1Pos = string_pos('"', tag)
+        tag = stringSubstring(tag, q1Pos + 1);
+        var q2Pos = string_pos('"', tag)
+        value = stringSubstring(tag, 1, q2Pos);
+        tag = stringSubstring(tag, q2Pos + 2);
+        
+        dsm[? attr] = value;
+    }
+    
+    return dsm;
 }
 
-return global._xmlParseTagMap;
-
 #define xmlParseTagInit
+if (argument_count > 0)
+{
+    global.xmlParseTagWithPeg = argument0
+}
+else
+{
+    global.xmlParseTagWithPeg = true
+}
 global.xmlParseTagError = ""
 global._xmlTagParser = peggml_parser_create("
 TAG <- '<' ATTRNAME ATTRIBUTE* '/>'

@@ -14,6 +14,7 @@ global._roomExternalXMLMaps[0] = _roomExternalBackgrounds
 global._roomExternalXMLMaps[1] = _roomExternalTiles
 global._roomExternalXMLMaps[2] = _roomExternalViews
 global._roomExternalXMLMaps[3] = _roomExternalInstances
+global._roomExternalCustomObjectHandlerMap = ds_map_create()
 
 global.roomExternalParser = peggml_parser_create("
     ROOMPROP <- RP_CAPTION /

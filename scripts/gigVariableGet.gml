@@ -220,31 +220,39 @@ if (!arrayAccess)
 else
 {
     // array access
-    if (vname == "view_xview")
+    if (vname == "view_xview" && global.dll_gig2DArrays)
         return view_xview[i, j];
-    else if (vname == "view_yview")
+    else if (vname == "view_xview" && !global.dll_gig2DArrays)
+        return view_xview[i];
+    else if (vname == "view_yview" && global.dll_gig2DArrays)
         return view_yview[i, j];
-    else if (vname == "view_wview")
-        return view_wview[i, j];
-    else if (vname == "view_hview")
-        return view_hview[i, j];
-    else if (vname == "alarm")
-        return _self.alarm[j];
+    else if (vname == "view_yview" && !global.dll_gig2DArrays)
+        return view_yview[i];
+    else if (vname == "alarm" && global.dll_gig2DArrays)
+        return alarm[i, j];
+    else if (vname == "alarm" && !global.dll_gig2DArrays)
+        return alarm[i];
     // TODO: add more built-in variables
     else
     {
         var arr;
         if (_global)
         {
-            assert(variable_global_exists(vname), "getting nonexistent global: " + vname);
             arr = variable_global_get(vname);
         }
         else
         {
-            assert(variable_instance_exists(_self, vname), "getting nonexistant instance variable: " + vname);
             arr = variable_instance_get(_self, vname);
         }
 
-        return arr[@ i, j];
+        if (global.dll_gig2DArrays)
+        {
+            return arr[@ i, j];
+        }
+        else
+        {
+            return arr[@ i]
+        }
     }
 }
+

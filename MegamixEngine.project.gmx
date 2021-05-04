@@ -6295,6 +6295,7 @@
       <scripts name="gig">
         <script>scripts\stringExecutePartial.gml</script>
         <script>scripts\gigVariableGet.gml</script>
+        <script>scripts\gigStringExecute.gml</script>
         <script>scripts\gigVariableSet.gml</script>
         <script>scripts\gigReturnValue.gml</script>
         <script>scripts\gigInit.gml</script>
