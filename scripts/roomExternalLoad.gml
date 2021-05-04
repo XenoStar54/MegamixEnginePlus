@@ -88,7 +88,7 @@ print("Time taken (parse): " + string(time_parse) + " ms", WL_VERBOSE);
 // apply properties
 room_set_width(exrm, roomExternalParseGetProp("width", 256));
 room_set_height(exrm, roomExternalParseGetProp("height", 224));
-room_set_background_colour(exrm, roomExternalParseGetProp("colour", c_gray), roomExternalParseGetProp("showColour", true));
+room_set_background_colour(exrm, roomExternalParseGetProp("colour", c_gray), roomExternalParseGetProp("showColour", true) != 0);
 
 // add backgrounds
 for (var i = 0; i < ds_list_size(global._roomExternalBackgrounds); i++)

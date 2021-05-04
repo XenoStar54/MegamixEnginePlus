@@ -35,8 +35,8 @@ global.roomExternalParser = peggml_parser_create("
         RP_CAPTION <- '<caption>'i TEXT '</caption>'i
         RP_SPEED <- '<speed>'i NUMBER '</speed>'i
         RP_PERSISTENT <- '<persistent>'i NUMBER '</persistent>'i
-        RP_COLOUR <- '<colour>'i NUMBER '<colour>'i / '<color>'i NUMBER '<color>'i
-        RP_SHOWCOLOUR <- '<showcolour>'i NUMBER '<showcolour>'i / '<showcolor>'i NUMBER '<showcolor>'i
+        RP_COLOUR <- '<colour>'i NUMBER '</colour>'i / '<color>'i NUMBER '<color>'i
+        RP_SHOWCOLOUR <- '<showcolour>'i NUMBER '</showcolour>'i / '<showcolor>'i NUMBER '<showcolor>'i
         RP_CODE <- '<code>'i TEXT '</code>'i
         RP_CODE_BEGIN <- '<code>'i TEXT?
         RP_ENABLEVIEWS <- '<enableviews>'i NUMBER '</enableviews>'i
@@ -50,7 +50,7 @@ global.roomExternalParser = peggml_parser_create("
     TEXT <- ([^<>&] / ESCAPED_CHAR)+
     ESCAPED_CHAR <- '&' [^a-zA-Z0-9]+ ';'
     COMMENT <- '<!--' [^>]* '>'
-    NUMBER <- < '-'? [0-9]+ > / < '-'? [0-9]* '.'? [0-9]+ >
+    NUMBER <- < ('-')? [0-9]+ > / < ('-')? [0-9]* '.'? [0-9]+ >
     %whitespace  <-  [ \t\r\n]*
 ") // ((~COMMENT* RP_OTHER ~COMMENT*)* / TEXT)
 
@@ -90,7 +90,7 @@ var value = roomExternalParseLines('
   <isometric>0</isometric>
   <speed>60</speed>
   <persistent>0</persistent>
-  <colour>0</colour>
+  <colour>35</colour>
   <showcolour>-1</showcolour>
   <code>
     test = 4
@@ -153,14 +153,18 @@ var value = roomExternalParseLines('
 </room>
 ')
 
+/*
 show_debug_message("width: " + string(roomExternalParseGetProp("width")))
 show_debug_message("height: " + string(roomExternalParseGetProp("height", 100)))
 show_debug_message("caption: " + string(roomExternalParseGetProp("caption", "(no caption)")))
+show_debug_message("colour: " + string(roomExternalParseGetProp("colour")))
+show_debug_message("showColour: " + string(roomExternalParseGetProp("showColour")))
 show_debug_message("code: " + string(roomExternalParseGetProp("code", "(no code)")))
 show_debug_message("backgrounds: " + string(ds_list_size(global._roomExternalBackgrounds)))
 show_debug_message("views: " + string(ds_list_size(global._roomExternalViews)))
 show_debug_message("instances: " + string(ds_list_size(global._roomExternalInstances)))
 show_debug_message("tiles: " + string(ds_list_size(global._roomExternalTiles)))
+*/
 
 roomExternalParseEnd()
 
