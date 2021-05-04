@@ -3,7 +3,7 @@
 global.newLine = "
 ";
 global.doubleQuote = '"'
-global._undefined = _globalInit_undefined()
+global._undefined = scrNoEffect()
 global.nextRoom = -1;
 global.previousRoom=-1;
 
@@ -232,8 +232,3 @@ global.factionStance[7, 4] = 0;
 global.factionStance[7, 5] = 0;
 global.factionStance[7, 6] = 0;
 global.factionStance[7, 7] = 0;
-
-#define _globalInit_undefined
-/// returns undefined
-
-if (false) return 0

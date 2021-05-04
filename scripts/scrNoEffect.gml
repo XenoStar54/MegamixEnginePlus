@@ -1,4 +1,5 @@
 /// scrNoEffect()
 // does nothing (useful for script_execute placeholder)
+// returns undefined
 
-return 0;
+if (false) return 0

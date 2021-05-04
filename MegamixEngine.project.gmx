@@ -6169,7 +6169,10 @@
         <script>scripts\zeroPad.gml</script>
         <scripts name="XML">
           <script>scripts\xmlParseTag.gml</script>
+          <script>scripts\xmlParseTagInit.gml</script>
           <script>scripts\xmlStringUnescape.gml</script>
+          <script>scripts\xmlParseTag_handle_token.gml</script>
+          <script>scripts\xmlParseTag_handle_ATTRIBUTE.gml</script>
         </scripts>
       </scripts>
       <script>scripts\print.gml</script>
@@ -6300,9 +6303,6 @@
         <script>scripts\gigReturnValue.gml</script>
         <script>scripts\gigInit.gml</script>
         <script>scripts\gigFunction.gml</script>
-      </scripts>
-      <scripts name="Cutscenes">
-        <script>scripts\CutsceneScript.gml</script>
       </scripts>
       <script>scripts\peggml.gml</script>
       <script>scripts\scriptExecuteNargs.gml</script>
