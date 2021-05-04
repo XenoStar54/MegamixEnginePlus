@@ -53,10 +53,6 @@ while (!file_text_eof(file))
 {
      roomExternalParseLine(file_text_readln(file))
 }
-
-show_debug_message("total backgrounds: " + string(ds_list_size(global._roomExternalBackgrounds)))
-show_debug_message("total instances: " + string(ds_list_size(global._roomExternalInstances)))
-
 file_text_close(file);
 
 // external room's id:

@@ -37,7 +37,7 @@ global.roomExternalParser = peggml_parser_create("
         RP_PERSISTENT <- '<persistent>'i NUMBER '</persistent>'i
         RP_COLOUR <- '<colour>'i NUMBER '</colour>'i / '<color>'i NUMBER '<color>'i
         RP_SHOWCOLOUR <- '<showcolour>'i NUMBER '</showcolour>'i / '<showcolor>'i NUMBER '<showcolor>'i
-        RP_CODE <- '<code>'i TEXT '</code>'i
+        RP_CODE <- '<code>'i TEXT? '</code>'i
         RP_CODE_BEGIN <- '<code>'i TEXT?
         RP_ENABLEVIEWS <- '<enableviews>'i NUMBER '</enableviews>'i
         RP_BACKGROUND <- '<background ' ATTRIBUTE* '/>'
@@ -219,9 +219,13 @@ else
     global._roomExternalCCAccumulate += line + global.newLine
     if (string_pos("</code>", line) != 0)
     {
+        peggml_parse(global.roomExternalParser, global._roomExternalCCAccumulate)
         global._roomExternalLatchCC = false
-        peggml_parse(global.roomExternalParser, _roomExternalCCAccumulate)
         global._roomExternalCCAccumulate = ""
+    }
+    else
+    {
+        assert(string_pos("<", line) == 0, "escaped </code> while parsing <code>")
     }
 }
 
