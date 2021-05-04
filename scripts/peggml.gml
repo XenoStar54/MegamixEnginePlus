@@ -1,4 +1,4 @@
-#define peggml
+#define peggml_init
 
 gml_pragma("global", "global._peggml_loaded = false;")
 
