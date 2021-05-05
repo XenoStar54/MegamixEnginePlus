@@ -106,7 +106,10 @@ with (objMegaman)
                 if (!other.tugLock[playerID])
                 {
                     var lock = lockPoolLock(PL_LOCK_GRAVITY) 
-                    lock.targetInstance = id
+                    with (lock)
+                    {
+                    targetInstance = other.id;
+                    }
                     other.tugLock[playerID] = lock;
                     
                     // ensure lock eventually released
