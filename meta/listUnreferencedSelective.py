@@ -36,7 +36,6 @@ def no_extension(str):
 		str = split[0]
 		
 def check_file_for_references(ref_file, ref_name, names, unprefixed_names, graph):
-
 	
 	#if ("lvl" == ref_name[0:3] or "rm" == ref_name[0:2]):
 	#	if (len(roomsChosen) == 16):

@@ -110,9 +110,6 @@ while (true)
     case "ldi_string":
         stack[sc++] = immediate;
         break;
-    case "ldi_true":
-        stack[sc++] = true;
-        break;
     case "inc":
         stack[sc - 1]++;
         break;

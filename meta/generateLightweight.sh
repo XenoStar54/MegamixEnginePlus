@@ -1,0 +1,1 @@
+python3 ./listUnreferencedSelective.py "../*.project.gmx" --generate-lightweight $@
