@@ -170,10 +170,11 @@ if (!global.frozen)
     &amp;&amp; global.ammo[playerID, global.weapon[playerID]] &gt; 0)
 {
     var i = fireWeapon(0, 0, objTopSpin, 1, 0, 0, 0);
-    if (i)
+    with (i)
     {
-        i.topLock = lockPoolLock(localPlayerLock[PL_LOCK_CLIMB],
-            localPlayerLock[PL_LOCK_SLIDE]);
+        topLock = lockPoolLock(PL_LOCK_CLIMB,
+            PL_LOCK_SLIDE);
+        topLock.targetInstance = other.id
     }
 }
 </string>

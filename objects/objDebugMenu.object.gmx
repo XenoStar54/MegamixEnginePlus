@@ -35,7 +35,7 @@ global.levelRunInvalidReason = "debug menu";
 playerID = 0;
 
 // controls
-pauseLock = lockPoolLock(global.playerLock[PL_LOCK_PAUSE]);
+pauseLock = lockPoolLock(PL_LOCK_PAUSE);
 option = 0;
 quickScrollTimer = 25;
 endy = 10;

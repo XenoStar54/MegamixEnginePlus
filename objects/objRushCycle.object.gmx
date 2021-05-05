@@ -140,22 +140,29 @@ if (!global.frozen)
                 // lock controls + give spike immunity
                 rider.dieToSpikes = 0;
                 physicsLock = lockPoolLock(
-                    rider.localPlayerLock[PL_LOCK_MOVE],
-                    rider.localPlayerLock[PL_LOCK_TURN],
-                    rider.localPlayerLock[PL_LOCK_JUMP],
-                    rider.localPlayerLock[PL_LOCK_SLIDE],
-                    rider.localPlayerLock[PL_LOCK_CLIMB]);
+                    PL_LOCK_MOVE,
+                    PL_LOCK_TURN,
+                    PL_LOCK_JUMP,
+                    PL_LOCK_SLIDE,
+                    PL_LOCK_CLIMB);
+                physicsLock.targetInstance = rider
             }
         }
     }
     
     // Set this as a variable for ease of access
-    var isGlobalLocked = (isLocked(global.playerLock[PL_LOCK_MOVE]) &amp;&amp;
-        isLocked(global.playerLock[PL_LOCK_JUMP]) &amp;&amp;
-        isLocked(global.playerLock[PL_LOCK_TURN]) &amp;&amp;
-        isLocked(global.playerLock[PL_LOCK_SHOOT]) &amp;&amp;
-        isLocked(global.playerLock[PL_LOCK_SLIDE]) &amp;&amp;
-        isLocked(global.playerLock[PL_LOCK_CLIMB])) || (isLocked(global.playerFrozen));
+    var isGlobalLocked = false
+    with (rider)
+    {
+        isGlobalLocked = (
+            playerIsLocked(PL_LOCK_MOVE) &amp;&amp;
+            playerIsLocked(PL_LOCK_JUMP) &amp;&amp;
+            playerIsLocked(PL_LOCK_TURN) &amp;&amp;
+            playerIsLocked(PL_LOCK_SHOOT) &amp;&amp;
+            playerIsLocked(PL_LOCK_SLIDE) &amp;&amp;
+            playerIsLocked(PL_LOCK_CLIMB)) || (isLocked(GLOBAL_LOCK_PLAYERFROZEN)
+        );
+    }
     
     // Make sure to set
     if (isGlobalLocked)

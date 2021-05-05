@@ -54,7 +54,7 @@ else
     origin_x = 0;
     origin_y = 0;
 }
-pauseLock = lockPoolLock(global.playerLock[PL_LOCK_PAUSE]);
+pauseLock = lockPoolLock(PL_LOCK_PAUSE);
 global.frozen = true;
 animFrame = 0;
 pauseTimer = 30;

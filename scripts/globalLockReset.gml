@@ -1,12 +1,10 @@
-/// playerLockGlobalInit()
-// initializes global player control lock pools
+/// globalLockReset
+/// deletes all lock pools, except those marked specifically as noGlobalReset
 
-// TODO: add global.frozen
-// TODO: add global.lockTransition
-lockPoolReleaseAll(global.timeStopped);
-lockPoolReleaseAll(global.playerFrozen);
-
-for (var i = 0; i < PL_LOCK_MAX; i++)
+with (objLock)
 {
-    lockPoolReleaseAll(global.playerLock[i]);
+    if (!noGlobalReset)
+    {
+        lockPoolRelease(id)
+    }
 }

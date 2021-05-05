@@ -1,4 +1,4 @@
-/// playerGetHit(health)
+/// playerGetHit(dmg)
 // Call it like this: with objMegaman playerGetHit();
 // Makes the player get hit
 
@@ -65,12 +65,14 @@ if (!isHit)
         }
         
         // lock controls during knockback:
-        hitLock = lockPoolLock(localPlayerLock[PL_LOCK_MOVE],
-            localPlayerLock[PL_LOCK_JUMP],
-            localPlayerLock[PL_LOCK_CLIMB],
-            localPlayerLock[PL_LOCK_SLIDE],
-            localPlayerLock[PL_LOCK_SHOOT],
-            localPlayerLock[PL_LOCK_TURN]);
+        hitLock = lockPoolLock(PL_LOCK_MOVE,
+            PL_LOCK_JUMP,
+            PL_LOCK_CLIMB,
+            PL_LOCK_SLIDE,
+            PL_LOCK_SHOOT,
+            PL_LOCK_TURN);
+        hitLock.targetInstance = id
+        hitLock.debugInfo += "<playerGetHit"
         
         // Create sweat effects
         if (global.playerHealth[playerID] > 0 && dmg > 0)

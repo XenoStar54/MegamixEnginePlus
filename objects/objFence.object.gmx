@@ -55,17 +55,20 @@ combineObjects(object_index);
     {
         with (objMegaman)
         {   
-            if other.climbingLock == 0
+            if other.climbingLock &lt;= 0
             {
                 if yDir == -gravDir &amp;&amp; collision_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, other, false, false) &amp;&amp; !climbing &amp;&amp; !playerIsLocked(PL_LOCK_CLIMB)
                 {
                     if bbox_left &gt; other.bbox_left + 1 &amp;&amp; bbox_right &lt; other.bbox_right - 1 &amp;&amp; bbox_top &gt; other.bbox_top + 1 &amp;&amp; bbox_bottom &lt; other.bbox_bottom - 1
                     {
-                        other.climbingLock = lockPoolLock(localPlayerLock[PL_LOCK_MOVE],
-                        localPlayerLock[PL_LOCK_SLIDE],
-                        localPlayerLock[PL_LOCK_GRAVITY],
-                        localPlayerLock[PL_LOCK_CLIMB],
-                        localPlayerLock[PL_LOCK_TURN]);
+                        var lock = lockPoolLock(PL_LOCK_MOVE,
+                            PL_LOCK_SLIDE,
+                            PL_LOCK_GRAVITY,
+                            PL_LOCK_CLIMB,
+                            PL_LOCK_TURN
+                        );
+                        lock.targetInstance = id
+                        other.climbingLock = lock
                         ground = false;
                         clamp(x, other.bbox_left + 1, other.bbox_right - 1);
                         clamp(y, other.bbox_top + 1, other.bbox_bottom - 1);

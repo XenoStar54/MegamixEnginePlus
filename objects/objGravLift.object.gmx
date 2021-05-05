@@ -88,24 +88,30 @@ liftAccel = 0.05;
         if (gravDir * other.liftSpeed &lt; 0 &amp;&amp; !climbing)
         {
             if (!global.gravityLiftLockJumpMap[? id])
-                global.gravityLiftLockJumpMap[? id] = lockPoolLock(localPlayerLock[PL_LOCK_JUMP]);
+            {
+                var lock = lockPoolLock(PL_LOCK_JUMP);
+                lock.targetInstance = id
+                global.gravityLiftLockJumpMap[? id] = lock
+            }
         }
         else
-            global.gravityLiftLockJumpMap[? id] = lockPoolRelease(localPlayerLock[PL_LOCK_JUMP], global.gravityLiftLockJumpMap[? id]);
+            global.gravityLiftLockJumpMap[? id] = lockPoolRelease(PL_LOCK_JUMP, global.gravityLiftLockJumpMap[? id]);
         
         // lock movement except when on the ground:
         if (ground)
         {
             playLandSound = 0;
             if (global.gravityLiftLockMap[? id])
-                lockPoolRelease(localPlayerLock[PL_LOCK_MOVE], localPlayerLock[PL_LOCK_GRAVITY], global.gravityLiftLockMap[? id]);
+                lockPoolRelease(global.gravityLiftLockMap[? id]);
             global.gravityLiftLockMap[? id] = false;
         }
         else if (!global.gravityLiftLockMap[? id])
         {
-            global.gravityLiftLockMap[? id] =
-                lockPoolLock(localPlayerLock[PL_LOCK_MOVE],
-                localPlayerLock[PL_LOCK_GRAVITY]);
+            var lock = 
+                lockPoolLock(PL_LOCK_MOVE,
+                PL_LOCK_GRAVITY);
+            lock.targetInstance = id
+            global.gravityLiftLockMap[? id] = lock
         }
         if (climbing)
         {

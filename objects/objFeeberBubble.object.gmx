@@ -75,9 +75,10 @@ if (entityCanStep())
             target.y = y - (sprite_height/2) - 4;
             if (myLock == 0)
             {
-                myLock = lockPoolLock(global.playerLock[PL_LOCK_SHOOT],
-                    global.playerLock[PL_LOCK_CLIMB],
-                    global.playerLock[PL_LOCK_CHARGE]);
+                myLock = lockPoolLock(PL_LOCK_SHOOT,
+                    PL_LOCK_CLIMB,
+                    PL_LOCK_CHARGE);
+                myLock.targetInstance = target
             }
             
             if ((global.keyJumpPressed[target.playerID]) &amp;&amp; (!damage)

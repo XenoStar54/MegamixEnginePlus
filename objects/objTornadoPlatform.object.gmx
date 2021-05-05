@@ -176,8 +176,9 @@ if (!global.frozen &amp;&amp; !dead)
                 if (!attached[other.playerID])
                 {
                     attached[other.playerID] = true;
-                    with (other)
-                        other.shootLock[playerID] = lockPoolLock(localPlayerLock[PL_LOCK_SHOOT]);
+                    var lock = lockPoolLock(PL_LOCK_SHOOT);
+                    lock.targetInstance = other.id
+                    shootLock[playerID] = lock
                     attachX[other.playerID] = other.x - x; // set x rotation origin
                     
                     spinTimer = 0; // reset timer

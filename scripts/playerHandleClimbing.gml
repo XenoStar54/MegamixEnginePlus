@@ -44,10 +44,13 @@ if (!playerIsLocked(PL_LOCK_CLIMB))
         
         if (climbing)
         {
-            climbLock = lockPoolLock(localPlayerLock[PL_LOCK_MOVE],
-                localPlayerLock[PL_LOCK_SLIDE],
-                localPlayerLock[PL_LOCK_GRAVITY],
-                localPlayerLock[PL_LOCK_TURN]);
+            climbLock = lockPoolLock(PL_LOCK_MOVE,
+                PL_LOCK_SLIDE,
+                PL_LOCK_GRAVITY,
+                PL_LOCK_TURN);
+            slideLock.targetInstance = id
+            slideLock.debugInfo += "<playerHandleClimbing"
+            
             ground = false;
             if jumpCounter == 0
             {

@@ -59,7 +59,9 @@ shootStandStillLock = lockPoolRelease(shootStandStillLock);
 if (stopit)
 {
     xspeed = 0;
-    shootStandStillLock = lockPoolLock(localPlayerLock[PL_LOCK_MOVE]);
+    shootStandStillLock = lockPoolLock(PL_LOCK_MOVE);
+    shootStandStillLock.targetInstance = id
+    shootStandStillLock.debugInfo += "<fireWeapon"
 }
 
 if (!ground && (isShoot < 3))

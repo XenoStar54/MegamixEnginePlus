@@ -1,4 +1,4 @@
-/// playerGetShocked(ignore ground, additional time, mm1stun, shock time)
+/// playerGetShocked(_IgnoreGround)
 // Call it like this: with objMegaman playerGetShocked();
 // Makes the player get shocked
 
@@ -55,12 +55,14 @@ if (!isHit && (_IgnoreGround || ground))
                 }
                 
                 // lock controls during knockback:
-                shockLock = lockPoolLock(localPlayerLock[PL_LOCK_MOVE],
-                    localPlayerLock[PL_LOCK_JUMP],
-                    localPlayerLock[PL_LOCK_CLIMB],
-                    localPlayerLock[PL_LOCK_SLIDE],
-                    localPlayerLock[PL_LOCK_SHOOT],
-                    localPlayerLock[PL_LOCK_TURN]);
+                shockLock = lockPoolLock(PL_LOCK_MOVE,
+                    PL_LOCK_JUMP,
+                    PL_LOCK_CLIMB,
+                    PL_LOCK_SLIDE,
+                    PL_LOCK_SHOOT,
+                    PL_LOCK_TURN);
+                shockLock.targetInstance = id
+                shockLock.debugInfo += "<playerGetShocked"
             }
         }
     }

@@ -46,7 +46,7 @@ stopOnFlash = false;
 caughtPlayer = noone;
 despawnTimer = 0;
 caughtTimer = 0;
-honeyLock = false;
+honeyLock = -1;
 </string>
           </argument>
         </arguments>
@@ -109,9 +109,9 @@ honeyLock = lockPoolRelease(honeyLock);
                 other.caughtTimer++;
             }
             other.caughtXScalePrev = image_xscale;
-            if(isLocked(other.honeyLock))
+            if(other.honeyLock &gt;= 0)
             {
-                lockPoolRelease(other.honeyLock);
+                other.honeyLock = lockPoolRelease(other.honeyLock);
             }
         }
     }
@@ -145,6 +145,7 @@ if (!dead &amp;&amp; !global.frozen &amp;&amp; !global.timeStopped)
     {
         with (objMegaman)
         {
+            var _player = id
             with (other)
             {
                 if (place_meeting(x, y, other) &amp;&amp; other.ground /*&amp;&amp; other.bbox_bottom &lt;= bbox_bottom */ )
@@ -153,12 +154,18 @@ if (!dead &amp;&amp; !global.frozen &amp;&amp; !global.timeStopped)
                     caughtXScalePrev = other.image_xscale;
                     other.xspeed = 0;
                     other.isSlide = 0;
-                    honeyLock = lockPoolLock(
-                        other.localPlayerLock[PL_LOCK_MOVE],
-                        other.localPlayerLock[PL_LOCK_SLIDE],
-                        other.localPlayerLock[PL_LOCK_GRAVITY],
-                        other.localPlayerLock[PL_LOCK_SHOOT],
-                        other.localPlayerLock[PL_LOCK_CLIMB]);
+                    with (_player)
+                    {
+                        var lock = lockPoolLock(
+                            PL_LOCK_MOVE,
+                            PL_LOCK_SLIDE,
+                            PL_LOCK_GRAVITY,
+                            PL_LOCK_SHOOT,
+                            PL_LOCK_CLIMB
+                        );
+                        lock.targetInstance = id
+                        other.honeyLock = lock
+                    }
                 }
             }
         }
