@@ -40,36 +40,37 @@ bubbleTimer = -1;
 fire = false;
 
 // What lights oil on fire
-fireSource[1] = objFireBlockFire;
-fireSource[2] = objFirePillar;
-fireSource[3] = objFireWave;
-fireSource[4] = objTackleFire;
-fireSource[5] = objHotDogFire;
-fireSource[6] = objLightningLordLightning;
-fireSource[7] = objApacheJoeProjectile;
-fireSource[8] = objFireBoyShot;
-fireSource[9] = objFireTellyShot;
-fireSource[10] = objFireSpike;
-fireSource[11] = objHeatMan;
-fireSource[12] = objHeatManFire;
-fireSource[13] = objMechaDragonFire;
-fireSource[14] = objPharaohManShot;
-fireSource[15] = objPharaohManShotBig;
-fireSource[16] = objPharaohShot;
-fireSource[17] = objSolarBlaze;
-fireSource[18] = objNapalm;
-fireSource[19] = objPopoHeliFire;
-fireSource[20] = objChangkeyDragon;
-fireSource[21] = objChangkeyDragonFire;
-fireSource[22] = objSuzak;
-fireSource[23] = objFenix;
-fireSource[24] = objSFFire;
-fireSource[25] = objFlameMixer;
-fireSource[26] = objPUOilFire;
+// we reference by string in order to avoid a crash if an object is removed from the engine.
+fireSource[1] = asset_get_index("objFireBlockFire");
+fireSource[2] = asset_get_index("objFirePillar");
+fireSource[3] = asset_get_index("objFireWave");
+fireSource[4] = asset_get_index("objTackleFire");
+fireSource[5] = asset_get_index("objHotDogFire");
+fireSource[6] = asset_get_index("objLightningLordLightning");
+fireSource[7] = asset_get_index("objApacheJoeProjectile");
+fireSource[8] = asset_get_index("objFireBoyShot");
+fireSource[9] = asset_get_index("objFireTellyShot");
+fireSource[10] = asset_get_index("objFireSpike");
+fireSource[11] = asset_get_index("objHeatMan");
+fireSource[12] = asset_get_index("objHeatManFire");
+fireSource[13] = asset_get_index("objMechaDragonFire");
+fireSource[14] = asset_get_index("objPharaohManShot");
+fireSource[15] = asset_get_index("objPharaohManShotBig");
+fireSource[16] = asset_get_index("objPharaohShot");
+fireSource[17] = asset_get_index("objSolarBlaze");
+fireSource[18] = asset_get_index("objNapalm");
+fireSource[19] = asset_get_index("objPopoHeliFire");
+fireSource[20] = asset_get_index("objChangkeyDragon");
+fireSource[21] = asset_get_index("objChangkeyDragonFire");
+fireSource[22] = asset_get_index("objSuzak");
+fireSource[23] = asset_get_index("objFenix");
+fireSource[24] = asset_get_index("objSFFire");
+fireSource[25] = asset_get_index("objFlameMixer");
+fireSource[26] = asset_get_index("objPUOilFire");
 
 // oil
-oil[0] = objOil;
-oil[1] = objPUOilFire;
+oil[0] = asset_get_index("objOil");
+oil[1] = asset_get_index("objPUOilFire");
 </string>
           </argument>
         </arguments>

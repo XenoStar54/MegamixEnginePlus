@@ -16,7 +16,8 @@ required = ["^root", "prtBoss", "prtMiniBoss", "prtEntity"]
 
 roomsChosen = ["rmInit","lvlCopyThisRoom","lvlGameIntro","rmCastleIntro","rmCharacterSelect","rmCredits","rmDisclaimer","rmFileSelect","rmGameOver","rmNewFile","rmOptions","rmRoomSelect","rmShop","rmStageSelect","rmTitleScreen","rmWeaponGet", "lvlShowcaseHUB"];
 
-ignoreMatch = ["getRoom(", "stageRoom[", "asset_get_index"] # lines containing this string in it should be treated as a false positive.
+ignoreMatch = ["getRoom", "stageRoom[", "asset_get_index"] # lines containing this string in it should be treated as a false positive.
+ignoreRefs = ["objWilyCastle"] # this entity contains many false positives, we need to ignore it
 
 # objChillSpike is a substring of objChillSpikeLanded, which turns out to be common, so we need to double-check it.
 checkNoSuffix = ["objChillSpike"]
@@ -46,7 +47,8 @@ def check_file_for_references(ref_file, ref_name, names, unprefixed_names, graph
 	#		print("skipping " + ref_name)
 	#		##print(roomsChosen);
 	#		return [(ref_name,ref_name)];
-		
+	if ref_name in ignoreRefs:
+		return []
 		
 	print("scanning " + ref_name)
 	rfs = ""
@@ -63,6 +65,7 @@ def check_file_for_references(ref_file, ref_name, names, unprefixed_names, graph
 		if inext == -1:
 			inext = len(rfs)
 		line = rfs[i:inext]
+		i = inext
 		
 		# filter lines which don't even have the prefix
 		hasPrefix = False
@@ -93,7 +96,6 @@ def check_file_for_references(ref_file, ref_name, names, unprefixed_names, graph
 					match_name = match
 					if match_name not in match_names:
 						match_names.add(match_name)
-		i = inext
 				
 	edges = []
 	for match_name in match_names:
@@ -104,7 +106,7 @@ def check_file_for_references(ref_file, ref_name, names, unprefixed_names, graph
 	raise "ERROR"
 			
 
-def get_unreferenced_list(project_file):
+def get_unreferenced_list(project_file, num_threads=0):
 	graph = {("^root", "^root")} # set
 	names = []
 	unprefixed_names = []
@@ -150,7 +152,7 @@ def get_unreferenced_list(project_file):
 	
 	print("Launching threads...", flush=True)
 	
-	with mp.Pool(max(1, int(mp.cpu_count() / 1.5))) as tpe:
+	with mp.Pool(max(1, int(mp.cpu_count() / 1.5)) if num_threads <= 0 else int(num_threads)) as tpe:
 		results = [tpe.apply_async(check_file_for_references, args=work) for work in works]
 		
 		print("Waiting for threads to join... (If this line hangs, use the Windows command line.)", flush=True)
@@ -195,7 +197,7 @@ if __name__ == '__main__':
 				roomsChosen.append(arg);
 		
 		projfile = sys.argv[1]
-		disconnected, connected, history = get_unreferenced_list(projfile)
+		disconnected, connected, history = get_unreferenced_list(projfile, 1 if "--single-thread" in sys.argv else 0)
 		print("resources used:", len(connected))
 		print("resources unused:", len(disconnected))
 		print("Writing output to out.txt")
@@ -227,6 +229,8 @@ if __name__ == '__main__':
 					if not skip:
 						newfile += line
 			outfile = "lw_" + os.path.basename(projfile)
+			# set ENGINE_LIGHTWEIGHT constant to 1.
+			newfile = newfile.replace('<constant name="ENGINE_LIGHTWEIGHT">0','<constant name="ENGINE_LIGHTWEIGHT">1')
 			print("Generating " + outfile)
 			with open(os.path.join(dir, outfile), "w") as out:
 				out.write(newfile)

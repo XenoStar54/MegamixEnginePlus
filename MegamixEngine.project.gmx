@@ -2178,7 +2178,8 @@
   </datafiles>
   <NewExtensions>
     <extension index="0">extensions\GameMusicEmu</extension>
-    <extension index="1">extensions\EmptyExtension</extension>
+    <extension index="1">extensions\peggml</extension>
+    <extension index="2">extensions\gmedit_lambda</extension>
   </NewExtensions>
   <sounds name="sound">
     <sounds name="Player">
@@ -6221,6 +6222,10 @@
       </scripts>
       <scripts name="External Room Loading">
         <script>scripts\roomExternalInit.gml</script>
+        <script>scripts\roomExternalParseBegin.gml</script>
+        <script>scripts\roomExternalParseEnd.gml</script>
+        <script>scripts\roomExternalParseGetProp.gml</script>
+        <script>scripts\roomExternalParseLine.gml</script>
         <script>scripts\roomExternalSetupPre.gml</script>
         <script>scripts\roomExternalSetupPost.gml</script>
         <script>scripts\roomExternalLoad.gml</script>
@@ -6305,7 +6310,6 @@
         <script>scripts\gigInit.gml</script>
         <script>scripts\gigFunction.gml</script>
       </scripts>
-      <script>scripts\peggml.gml</script>
       <script>scripts\scriptExecuteNargs.gml</script>
       <script>scripts\scrNoEffect.gml</script>
       <script>scripts\eventExecute.gml</script>
@@ -8416,6 +8420,7 @@
     <constant name="GME_ENABLED">1</constant>
     <constant name="FMOD_ENABLED">1</constant>
     <constant name="FS_ENABLED">1</constant>
+    <constant name="ENGINE_LIGHTWEIGHT">0</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

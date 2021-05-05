@@ -25,51 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited();
-canHit = false;
-
-respawnRange = -1;
-despawnRange = -1;
-
-shiftVisible = 1;
-
-blockCollision = 0;
-grav = 0;
-bubbleTimer = -1;
-
-fire = false;
-
-// What lights oil on fire
-fireSource[1] = objFireBlockFire;
-fireSource[2] = objFirePillar;
-fireSource[3] = objFireWave;
-fireSource[4] = objTackleFire;
-fireSource[5] = objHotDogFire;
-fireSource[6] = objLightningLordLightning;
-fireSource[7] = objApacheJoeProjectile;
-fireSource[8] = objFireBoyShot;
-fireSource[9] = objFireTellyShot;
-fireSource[10] = objFireSpike;
-fireSource[11] = objHeatMan;
-fireSource[12] = objHeatManFire;
-fireSource[13] = objMechaDragonFire;
-fireSource[14] = objPharaohManShot;
-fireSource[15] = objPharaohManShotBig;
-fireSource[16] = objPharaohShot;
-fireSource[17] = objSolarBlaze;
-fireSource[18] = objNapalm;
-fireSource[19] = objPopoHeliFire;
-fireSource[20] = objChangkeyDragon;
-fireSource[21] = objChangkeyDragonFire;
-fireSource[22] = objSuzak;
-fireSource[23] = objFenix;
-fireSource[24] = objSFFire;
-fireSource[25] = objFlameMixer;
-fireSource[26] = objPUOilFire;
-
-// oil
-oil[0] = objOil;
-oil[1] = objPUOilFire;
+            <string>
+event_perform_object(objOil, ev_create, 0)
 </string>
           </argument>
         </arguments>
@@ -151,62 +108,6 @@ else
 {
     instance_create(x + 1, y, objPUOilFire);
     instance_destroy();
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="10">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/*if (fire)
-{
-    exit;
-}
-
-fire = true;
-
-var oil;
-oil[0] = objOil;
-oil[1] = objPUOil;
-
-for (i = 0; i &lt;= 1; i += 1)
-{
-    if (place_meeting(x + 16, y, oil[i]))
-    {
-        with (instance_place(x + 16, y, oil[i]))
-        {
-            if id != other.id &amp;&amp; !fire
-            {
-                event_user(0);
-            }
-        }
-    }
-    if (place_meeting(x - 16, y, oil[i]))
-    {
-        with (instance_place(x - 16, y, oil[i]))
-        {
-            if id != other.id &amp;&amp; !fire
-            {
-                event_user(0);
-            }
-        }
-    }
 }
 </string>
           </argument>

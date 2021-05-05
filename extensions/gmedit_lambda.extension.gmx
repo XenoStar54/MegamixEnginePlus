@@ -34,7 +34,7 @@
     <file>
       <filename>gmedit_lambda.gml</filename>
       <origname>extensions\gmedit_lambda.gml</origname>
-      <init></init>
+      <init>__lf_</init>
       <final></final>
       <kind>2</kind>
       <uncompress>0</uncompress>
@@ -44,7 +44,71 @@
         </Config>
       </ConfigOptions>
       <ProxyFiles/>
-      <functions/>
+      <functions>
+        <function>
+          <name>__lf_</name>
+          <externalName>__lf_</externalName>
+          <kind>11</kind>
+          <help></help>
+          <returnType>2</returnType>
+          <argCount>-1</argCount>
+          <args/>
+        </function>
+        <function>
+          <name>__lf_roomExternalInit_roomExternalParseLines</name>
+          <externalName>__lf_roomExternalInit_roomExternalParseLines</externalName>
+          <kind>11</kind>
+          <help></help>
+          <returnType>2</returnType>
+          <argCount>-1</argCount>
+          <args/>
+        </function>
+        <function>
+          <name>__lf_roomExternalInit__roomExternalInit_handle_tag</name>
+          <externalName>__lf_roomExternalInit__roomExternalInit_handle_tag</externalName>
+          <kind>11</kind>
+          <help></help>
+          <returnType>2</returnType>
+          <argCount>-1</argCount>
+          <args/>
+        </function>
+        <function>
+          <name>__lf_roomExternalInit__roomExternalInit_handle_value</name>
+          <externalName>__lf_roomExternalInit__roomExternalInit_handle_value</externalName>
+          <kind>11</kind>
+          <help></help>
+          <returnType>2</returnType>
+          <argCount>-1</argCount>
+          <args/>
+        </function>
+        <function>
+          <name>__lf_roomExternalInit__roomExternalInit_handle_NUMBER</name>
+          <externalName>__lf_roomExternalInit__roomExternalInit_handle_NUMBER</externalName>
+          <kind>11</kind>
+          <help></help>
+          <returnType>2</returnType>
+          <argCount>-1</argCount>
+          <args/>
+        </function>
+        <function>
+          <name>__lf_roomExternalInit__roomExternalInit_handle_TEXT</name>
+          <externalName>__lf_roomExternalInit__roomExternalInit_handle_TEXT</externalName>
+          <kind>11</kind>
+          <help></help>
+          <returnType>2</returnType>
+          <argCount>-1</argCount>
+          <args/>
+        </function>
+        <function>
+          <name>__lf_roomExternalInit__roomExternalInit_handle_CODE_BEGIN</name>
+          <externalName>__lf_roomExternalInit__roomExternalInit_handle_CODE_BEGIN</externalName>
+          <kind>11</kind>
+          <help></help>
+          <returnType>2</returnType>
+          <argCount>-1</argCount>
+          <args/>
+        </function>
+      </functions>
       <constants/>
     </file>
   </files>
