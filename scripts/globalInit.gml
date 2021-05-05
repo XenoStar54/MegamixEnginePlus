@@ -6,14 +6,13 @@ global.nextRoom = -1;
 global.previousRoom=-1;
 
 // host-specific config
-ogm_is_host = false;
+ogm_is_host = false; // (ogm host will fix this value as true)
+global.ogmIsHost = ogm_is_host
 global.gme_enabled = GME_ENABLED;
-if (GME_ENABLED == 1 && ogm_is_host) global.gme_enabled = false;
+if (GME_ENABLED == 1 && global.ogmIsHost) global.gme_enabled = false;
 
 // subsystem initialization
 mathTableSetup();
-lockPoolInit();
-globalLockInit();
 fsInit();
 gigInit();
 
