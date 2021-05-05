@@ -10,10 +10,10 @@ global._roomExternalBackgrounds = ds_list_create()
 global._roomExternalTiles = ds_list_create()
 global._roomExternalViews = ds_list_create()
 global._roomExternalInstances = ds_list_create()
-global._roomExternalXMLMaps[0] = _roomExternalBackgrounds
-global._roomExternalXMLMaps[1] = _roomExternalTiles
-global._roomExternalXMLMaps[2] = _roomExternalViews
-global._roomExternalXMLMaps[3] = _roomExternalInstances
+global._roomExternalXMLMaps[0] = global._roomExternalBackgrounds
+global._roomExternalXMLMaps[1] = global._roomExternalTiles
+global._roomExternalXMLMaps[2] = global._roomExternalViews
+global._roomExternalXMLMaps[3] = global._roomExternalInstances
 global._roomExternalCustomObjectHandlerMap = ds_map_create()
 
 global.roomExternalParser = peggml_parser_create("
