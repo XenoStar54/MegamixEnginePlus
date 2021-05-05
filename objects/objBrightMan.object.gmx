@@ -464,7 +464,7 @@ with (objEnemyBullet) {
         instance_destroy();
     }
 }
-if (lockPoolExists(flashLock))
+if (flashLock &gt;= 0)
 {
     flashLock = playerTimeRestored(flashLock);
 }

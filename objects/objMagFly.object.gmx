@@ -105,7 +105,9 @@ with (objMegaman)
             {
                 if (!other.tugLock[playerID])
                 {
-                    other.tugLock[playerID] = lockPoolLock(localPlayerLock[PL_LOCK_GRAVITY]);
+                    var lock = lockPoolLock(PL_LOCK_GRAVITY) 
+                    lock.targetInstance = id
+                    other.tugLock[playerID] = lock;
                     
                     // ensure lock eventually released
                     other.tugDefer[playerID] = defer(ev_destroy, EV_DEATH, -10000000, lockPoolRelease, makeArray(other.tugLock[playerID]));

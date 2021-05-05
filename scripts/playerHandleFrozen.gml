@@ -9,15 +9,17 @@ if (isFrozen)
     
     if (!icedLock)
     {
-        icedLock = lockPoolLock(localPlayerLock[PL_LOCK_MOVE],
-            localPlayerLock[PL_LOCK_TURN],
-            localPlayerLock[PL_LOCK_SLIDE],
-            localPlayerLock[PL_LOCK_SHOOT],
-            localPlayerLock[PL_LOCK_CLIMB],
-            localPlayerLock[PL_LOCK_SPRITECHANGE],
-            localPlayerLock[PL_LOCK_GRAVITY],
-            localPlayerLock[PL_LOCK_JUMP],
-            localPlayerLock[PL_LOCK_CHARGE]);
+        icedLock = lockPoolLock(PL_LOCK_MOVE,
+            PL_LOCK_TURN,
+            PL_LOCK_SLIDE,
+            PL_LOCK_SHOOT,
+            PL_LOCK_CLIMB,
+            PL_LOCK_SPRITECHANGE,
+            PL_LOCK_GRAVITY,
+            PL_LOCK_JUMP,
+            PL_LOCK_CHARGE);
+        icedLock.targetInstance = id
+        icedLock.debugInfo += "<playerHandleFrozen"
     }
     
     if (!freezeTimer || isHit)

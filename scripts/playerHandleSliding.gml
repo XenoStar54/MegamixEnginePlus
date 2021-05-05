@@ -33,10 +33,12 @@ if (global.enableSlide && !playerIsLocked(PL_LOCK_SLIDE))
             isSlide = true;
             slideTimer = 0;
             
-            slideLock = lockPoolLock(localPlayerLock[PL_LOCK_MOVE],
-                localPlayerLock[PL_LOCK_TURN],
-                localPlayerLock[PL_LOCK_JUMP],
-                localPlayerLock[PL_LOCK_SHOOT]);
+            slideLock = lockPoolLock(PL_LOCK_MOVE,
+                PL_LOCK_TURN,
+                PL_LOCK_JUMP,
+                PL_LOCK_SHOOT);
+            slideLock.targetInstance = id
+            slideLock.debugInfo += "<slideLock:newSlide"
             
             // create slide dust particles
             with (instance_create(x + (abs(x - bbox_right) - 2) * sign(image_xscale), y + (abs(y - bbox_bottom) - 2) * sign(image_yscale), objSlideDust))
@@ -56,7 +58,9 @@ if (global.enableSlide && !playerIsLocked(PL_LOCK_SLIDE))
         // prevent charging while sliding
         if (chargeTimer == 0 && !slideChargeLock)
         {
-            slideChargeLock = lockPoolLock(localPlayerLock[PL_LOCK_CHARGE]);
+            slideChargeLock = lockPoolLock(PL_LOCK_CHARGE);
+            slideChargeLock.targetInstance = id
+            slideChargeLock.debugInfo += "<slideLock:preventCharging"
         }
         
         var canProceed = true;

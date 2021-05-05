@@ -151,7 +151,9 @@ if(entityCanStep())
                 {
                     with(target)
                     {
-                        other.weldLock = lockPoolLock(localPlayerLock[PL_LOCK_MOVE],localPlayerLock[PL_LOCK_TURN],localPlayerLock[PL_LOCK_JUMP],localPlayerLock[PL_LOCK_CHARGE],localPlayerLock[PL_LOCK_SHOOT],localPlayerLock[PL_LOCK_SLIDE]);
+                        var lock = lockPoolLock(PL_LOCK_MOVE, PL_LOCK_TURN,PL_LOCK_JUMP,PL_LOCK_CHARGE,PL_LOCK_SHOOT,PL_LOCK_SLIDE);
+                        lock.targetInstance = id
+                        other.weldLock = lock
                         xspeed = 0;
                     }
                 }

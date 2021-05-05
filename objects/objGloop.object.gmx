@@ -199,7 +199,11 @@ if (!global.frozen &amp;&amp; !pop)
                 statusObject.statusWalkSpeed = 0;
             xspeed = 0;
             if (!other.gloopLock)
-                other.gloopLock = lockPoolLock(localPlayerLock[PL_LOCK_MOVE]);
+            {
+                var lock = lockPoolLock(PL_LOCK_MOVE);
+                lock.targetInstance = id
+                other.gloopLock = lock
+            }
         }
         else if (!ground)
         {

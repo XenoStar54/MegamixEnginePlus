@@ -227,15 +227,17 @@ if (instance_exists(objMegaman) &amp;&amp; !global.frozen &amp;&amp; !isFight &a
                 blockCollisionStart = blockCollision;
                 gravStart = grav;
                 // Lock player movement, spread out co-op players, make megaman face the boss
-                introLock = lockPoolLock(global.playerLock[PL_LOCK_MOVE],
-                    global.playerLock[PL_LOCK_SLIDE],
-                    global.playerLock[PL_LOCK_SHOOT],
-                    global.playerLock[PL_LOCK_TURN],
-                    global.playerLock[PL_LOCK_CHARGE],
-                    global.playerLock[PL_LOCK_CLIMB],
-                    global.playerLock[PL_LOCK_JUMP],
-                    global.playerLock[PL_LOCK_PAUSE],
-                    global.playerFrozen);
+                introLock = lockPoolLock(
+                    PL_LOCK_MOVE,
+                    PL_LOCK_SLIDE,
+                    PL_LOCK_SHOOT,
+                    PL_LOCK_TURN,
+                    PL_LOCK_CHARGE,
+                    PL_LOCK_CLIMB,
+                    PL_LOCK_JUMP,
+                    PL_LOCK_PAUSE,
+                    GLOBAL_LOCK_PLAYERFROZEN);
+                introLock.targetInstance = all
                 
                 with (objMegaman)
                 {

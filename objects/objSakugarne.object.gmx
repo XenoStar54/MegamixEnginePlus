@@ -154,10 +154,11 @@ if (!global.frozen)
                         despawnRange = -1;
                         
                         physicsLock = lockPoolLock(
-                            parent.localPlayerLock[PL_LOCK_SHOOT],
-                            parent.localPlayerLock[PL_LOCK_CHARGE],
-                            parent.localPlayerLock[PL_LOCK_SLIDE],
-                            parent.localPlayerLock[PL_LOCK_CLIMB]);
+                            PL_LOCK_SHOOT,
+                            PL_LOCK_CHARGE,
+                            PL_LOCK_SLIDE,
+                            PL_LOCK_CLIMB);
+                        physicsLock.targetInstance = parent
                     }
                 }
             }

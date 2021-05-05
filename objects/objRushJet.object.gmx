@@ -142,10 +142,11 @@ if (!global.frozen)
                 if (!rushJetLock)
                 {
                     rushJetLock = lockPoolLock(
-                        parent.localPlayerLock[PL_LOCK_MOVE],
-                        parent.localPlayerLock[PL_LOCK_TURN],
-                        parent.localPlayerLock[PL_LOCK_CLIMB],
-                        parent.localPlayerLock[PL_LOCK_SLIDE]);
+                        PL_LOCK_MOVE,
+                        PL_LOCK_TURN,
+                        PL_LOCK_CLIMB,
+                        PL_LOCK_SLIDE);
+                    rushJetLock.targetInstance = parent
                 }
                 
                 parent.xspeed = 0;

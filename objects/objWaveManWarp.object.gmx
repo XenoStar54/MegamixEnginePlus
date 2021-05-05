@@ -184,9 +184,10 @@ if (instance_exists(objMegaman))
 {
     if (!global.waveManWarpLock)
         global.waveManWarpLock = lockPoolLock(
-            global.playerLock[PL_LOCK_MOVE],
-            global.playerLock[PL_LOCK_TURN],
-            global.playerLock[PL_LOCK_SHOOT]);
+            PL_LOCK_MOVE,
+            PL_LOCK_TURN,
+            PL_LOCK_SHOOT
+        );
             
     with (objMegaman)
     {

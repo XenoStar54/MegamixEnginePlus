@@ -432,17 +432,23 @@ if (instance_exists(triggerPlayer))
         climbing = other.triggerPlayer.climbing;
         
         if (climbing)
-            climbLock = lockPoolLock(localPlayerLock[PL_LOCK_MOVE],
-                localPlayerLock[PL_LOCK_SLIDE],
-                localPlayerLock[PL_LOCK_GRAVITY],
-                localPlayerLock[PL_LOCK_TURN]);
+        {
+            climbLock = lockPoolLock(PL_LOCK_MOVE,
+                PL_LOCK_SLIDE,
+                PL_LOCK_GRAVITY,
+                PL_LOCK_TURN);
+            climbLock.targetInstance = id
+        }
         
         slideLock = lockPoolRelease(slideLock);
         slideChargeLock = lockPoolRelease(slideChargeLock);
         isSlide = other.triggerPlayer.isSlide;
         
         if (isSlide)
-            slideLock = lockPoolLock(localPlayerLock[PL_LOCK_MOVE], localPlayerLock[PL_LOCK_SHOOT], localPlayerLock[PL_LOCK_TURN]);
+        {
+            slideLock = lockPoolLock(PL_LOCK_MOVE, PL_LOCK_SHOOT, PL_LOCK_TURN);
+            slideLock.targetInstance = id
+        }
         
         mask_index = other.triggerPlayer.mask_index;
         ladderXScale = -1;

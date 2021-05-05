@@ -85,7 +85,6 @@ if (global.sturdyHelmet)
 // Variables
 
 // Lock certain actions
-playerLockLocalInit();
 hitLock = false;
 climbLock = false;
 shootStandStillLock = false;

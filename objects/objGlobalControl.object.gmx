@@ -717,14 +717,15 @@ for (i = 0; i &lt; global.playerCount; i += 1)
             {
                 // teleporting init
                 teleportLock = lockPoolLock(
-                    localPlayerLock[PL_LOCK_MOVE],
-                    localPlayerLock[PL_LOCK_PHYSICS],
-                    localPlayerLock[PL_LOCK_SHOOT],
-                    localPlayerLock[PL_LOCK_CLIMB],
-                    localPlayerLock[PL_LOCK_CHARGE],
-                    localPlayerLock[PL_LOCK_PAUSE],
-                    localPlayerLock[PL_LOCK_TURN],
-                    localPlayerLock[PL_LOCK_GRAVITY]);
+                    PL_LOCK_MOVE,
+                    PL_LOCK_PHYSICS,
+                    PL_LOCK_SHOOT,
+                    PL_LOCK_CLIMB,
+                    PL_LOCK_CHARGE,
+                    PL_LOCK_PAUSE,
+                    PL_LOCK_TURN,
+                    PL_LOCK_GRAVITY);
+                teleportLock.targetInstance = id
                 canHit = false;
             }
             
@@ -1150,15 +1151,16 @@ if (global.inGame)
             }
             
             teleportLock = lockPoolLock(
-                localPlayerLock[PL_LOCK_MOVE],
-                localPlayerLock[PL_LOCK_PHYSICS],
-                localPlayerLock[PL_LOCK_SHOOT],
-                localPlayerLock[PL_LOCK_CLIMB],
-                localPlayerLock[PL_LOCK_CHARGE],
-                localPlayerLock[PL_LOCK_PAUSE],
-                localPlayerLock[PL_LOCK_TURN],
-                localPlayerLock[PL_LOCK_GRAVITY]
-                );
+                PL_LOCK_MOVE,
+                PL_LOCK_PHYSICS,
+                PL_LOCK_SHOOT,
+                PL_LOCK_CLIMB,
+                PL_LOCK_CHARGE,
+                PL_LOCK_PAUSE,
+                PL_LOCK_TURN,
+                PL_LOCK_GRAVITY
+            );
+            teleportLock.targetInstance = id
             
             playerPalette();
         }
