@@ -68,7 +68,7 @@ if (fname == "make_color_rgb" || fname == "make_colour_rgb")
 else if (fname == "make_color_hsv" || fname == "make_colour_hsv")
     return make_colour_hsv(a0, a1, a2);
 else if (fname == "abs")
-    return abs(a0);
+    return abs(a0);  
 else if (fname == "show_debug_message")
     return show_debug_message(a0);
 else if (fname == "sign")
@@ -114,19 +114,7 @@ else if (fname == "place_meeting")
 else if (fname == "position_meeting")
     return position_meeting(a0, a1, a2);
 else if (fname == "instance_destroy")
-    {
-        if (argc == 1)
-        {
-            with (a0)
-            {
-                return instance_destroy();
-            }
-        }
-        else
-        {
-            return instance_destroy();
-        }
-    }
+    instance_destroy();
 else if (fname == "instance_create")
     return instance_create(a0, a1, a2);
 else if (fname == "instance_change")
@@ -138,13 +126,13 @@ else if(fname == "ds_map_replace")
 else if (fname ==  "ds_list_find_index")
     return ds_list_find_index(a0,a1);
 else if (fname == "ds_list_set")
-    return ds_list_set(a0,a1,a2);
+    ds_list_set(a0,a1,a2);
 else if (fname == "tile_layer_delete")
-    return tile_layer_delete(a0);
+    tile_layer_delete(a0);
 else if (fname == "tile_layer_show")
-    return tile_layer_show(a0);
+    tile_layer_show(a0);
 else if (fname == "tile_layer_hide")
-    return tile_layer_hide(a0);
+    tile_layer_hide(a0);
 else if (fname == "instance_exists")
     return instance_exists(a0);
 else if (fname == "string")
@@ -158,7 +146,7 @@ else if (fname == "event_perform")
 else if (fname == "event_perform_object")
     return event_perform_object(a0, a1, a2);
 else if(fname == "event_user")
-    return event_user(a0);
+    event_user(a0);
 else if (fname == "choose") //need to do this so it accepts varying argument counts
 {
     if (argc == 2)
@@ -176,7 +164,7 @@ else if (fname == "choose") //need to do this so it accepts varying argument cou
     else if (argc == 5)
     {
         return choose(a0, a1, a2, a3);
-    }
+    }  
     else if (argc == 6)
     {
         return choose(a0, a1, a2, a3, a4);
@@ -184,7 +172,7 @@ else if (fname == "choose") //need to do this so it accepts varying argument cou
     else if (argc == 7)
     {
         return choose(a0, a1, a2, a3, a4, a5);
-    }
+    } 
     else if (argc == 8)
     {
         return choose(a0, a1, a2, a3, a4, a5, a6);
@@ -193,7 +181,7 @@ else if (fname == "choose") //need to do this so it accepts varying argument cou
     {
         return choose(a0, a1, a2, a3, a4, a5, a6, a7);
     }
-}
+}  
 else if (fname == "action_another_room")
     return action_another_room(a0);
 else if (fname == "action_bounce")
@@ -209,7 +197,7 @@ else if (fname == "action_create_object_motion")
 else if (fname == "action_create_object_random")
     return action_create_object_random(a0, a1, a2, a3 ,a4 , a5);
 else if (fname == "action_current_room")
-    return action_current_room();
+    action_current_room();
 else if (fname == "action_draw_arrow")
     return action_draw_arrow(a0, a1, a2, a3, a4);
 else if (fname == "action_draw_background")
@@ -217,7 +205,7 @@ else if (fname == "action_draw_background")
 else if (fname == "action_draw_ellipse")
     return action_draw_ellipse(a0, a1, a2, a3, a4);
 else if (fname == "action_draw_ellipse_gradient")
-    return action_draw_ellipse_gradient(a0, a1, a2, a3, a4, a5);
+    return action_draw_ellipse_gradient(a0, a1, a2, a3, a4, a5);   
 else if (fname == "action_draw_gradient_hor")
     return action_draw_gradient_hor(a0, a1, a2, a3, a4, a5);
 else if (fname == "action_draw_gradient_vert")
@@ -225,7 +213,7 @@ else if (fname == "action_draw_gradient_vert")
 else if (fname == "action_draw_health")
     return action_draw_health(a0, a1, a2, a3, a4, a5);
 else if (fname == "action_draw_life")
-    return action_draw_life(a0, a1, a2);
+    return action_draw_life(a0, a1, a2);   
 else if (fname == "action_draw_life_images")
     return action_draw_life_images(a0, a1, a2);
 else if (fname == "action_draw_line")
@@ -257,21 +245,21 @@ else if (fname == "action_highscore_clear")
 else if (fname == "action_if")
     return action_if(a0);
 else if (fname == "action_if_aligned")
-    return action_if_aligned(a0, a1);
+    return action_if_aligned(a0, a1);  
 else if (fname == "action_if_collision")
     return action_if_collision(a0, a1, a2);
 else if (fname == "action_if_dice")
     return action_if_dice(a0);
 else if (fname == "action_if_empty")
-    return action_if_empty(a0, a1, a2);
+    return action_if_empty(a0, a1, a2);  
 else if (fname == "action_if_health")
-    return action_if_health(a0, a1);
+    return action_if_health(a0, a1);    
 else if (fname == "action_if_life")
     return action_if_life(a0, a1);
 else if (fname == "action_if_mouse")
-    return action_if_mouse(a0);
+    return action_if_mouse(a0);  
 else if (fname == "action_if_next_room")
-    action_if_next_room();
+    action_if_next_room();        
 else
     global.dll_gigExecutionError = 1;
 return 0;

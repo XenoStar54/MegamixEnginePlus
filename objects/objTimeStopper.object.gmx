@@ -147,7 +147,8 @@ if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT)
         shootTimer = 0;
         isShoot = 2;
         shootStandStillLock = lockPoolRelease(shootStandStillLock);
-        shootStandStillLock = lockPoolLock(localPlayerLock[PL_LOCK_MOVE]);
+        shootStandStillLock = lockPoolLock(PL_LOCK_MOVE);
+        shootStandStillLock.targetInstance = id
         xspeed = 0;
         playSFX(sfxTimeStopper);
     }

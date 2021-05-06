@@ -33,10 +33,12 @@ if (global.enableSlide && !playerIsLocked(PL_LOCK_SLIDE))
             isSlide = true;
             slideTimer = 0;
             
-            slideLock = lockPoolLock(localPlayerLock[PL_LOCK_MOVE],
-                localPlayerLock[PL_LOCK_TURN],
-                localPlayerLock[PL_LOCK_JUMP],
-                localPlayerLock[PL_LOCK_SHOOT]);
+            slideLock = lockPoolLock(PL_LOCK_MOVE,
+                PL_LOCK_TURN,
+                PL_LOCK_JUMP,
+                PL_LOCK_SHOOT);
+            slideLock.targetInstance = id
+            slideLock.debugInfo += "<slideLock:newSlide"
             
             // create slide dust particles
             with (instance_create(x + (abs(x - bbox_right) - 2) * sign(image_xscale), y + (abs(y - bbox_bottom) - 2) * sign(image_yscale), objSlideDust))
@@ -56,14 +58,18 @@ if (global.enableSlide && !playerIsLocked(PL_LOCK_SLIDE))
         // prevent charging while sliding
         if (chargeTimer == 0 && !slideChargeLock)
         {
-            slideChargeLock = lockPoolLock(localPlayerLock[PL_LOCK_CHARGE]);
+            slideChargeLock = lockPoolLock(PL_LOCK_CHARGE);
+            slideChargeLock.targetInstance = id
+            slideChargeLock.debugInfo += "<slideLock:preventCharging"
         }
         
         var canProceed = true;
         var isfree = true;
-        var jump = global.keyJumpPressed[playerID] && yDir != gravDir /*&& !playerIsLocked(PL_LOCK_JUMP )*/ ;
+        var jump = global.keyJumpPressed[playerID] && (yDir != gravDir || (global.characterSelected[playerID] == "Bass" && slideTimer != 1)); /*&& !playerIsLocked(PL_LOCK_JUMP )*/ ;
+        var jumpCancel = global.keyJumpPressed[playerID] && (yDir != gravDir || (global.characterSelected[playerID] == "Bass" && jumpCounter <= 1));//Why was this all set into a variable??
         
-        if (image_xscale == -xDir || slideTimer >= slideFrames || jump)
+        if (image_xscale == -xDir || slideTimer >= slideFrames 
+        || jump)
         {
             canProceed = false;
         }
@@ -143,7 +149,7 @@ if (global.enableSlide && !playerIsLocked(PL_LOCK_SLIDE))
             xspeed = (ground && ((instance_exists(statusObject) && statusObject.statusOnIce)
                 || place_meeting(x, y + gravDir, objIce))) * slideSpeed * image_xscale * 0.5;
             
-            if (jump)
+            if (jumpCancel)
             {
                 playerJump(0); //this gets incremented twice somehow so it cant increase jumpCounter
                 if dashSlide

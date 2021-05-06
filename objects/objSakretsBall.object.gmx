@@ -118,7 +118,7 @@ if (entityCanStep())
             <string>dead = 1;
 
 // probably don't want to spew projectiles past this shield huh
-if (hitterID != 0)
+if (instance_exists(hitterID))
 {
     if (hitterID.object_index == objWaterShield)
     {

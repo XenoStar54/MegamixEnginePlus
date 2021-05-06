@@ -126,14 +126,15 @@ if (!global.frozen &amp;&amp; !dead &amp;&amp; !global.timeStopped)
                             
                             // lock player movement
                             lockPool = lockPoolLock(
-                                other.localPlayerLock[PL_LOCK_MOVE],
-                                other.localPlayerLock[PL_LOCK_TURN],
-                                other.localPlayerLock[PL_LOCK_SLIDE],
-                                other.localPlayerLock[PL_LOCK_SHOOT],
-                                other.localPlayerLock[PL_LOCK_JUMP],
-                                other.localPlayerLock[PL_LOCK_CHARGE],
-                                other.localPlayerLock[PL_LOCK_CLIMB],
-                                other.localPlayerLock[PL_LOCK_GROUND]);
+                                PL_LOCK_MOVE,
+                                PL_LOCK_TURN,
+                                PL_LOCK_SLIDE,
+                                PL_LOCK_SHOOT,
+                                PL_LOCK_JUMP,
+                                PL_LOCK_CHARGE,
+                                PL_LOCK_CLIMB,
+                                PL_LOCK_GROUND);
+                            lockPool.targetInstance = other.id
                         }
                     }
                 }

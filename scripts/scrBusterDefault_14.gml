@@ -10,7 +10,7 @@ if (!global.lockBuster)
 {
     if (global.keyShootPressed[playerID] && !playerIsLocked(PL_LOCK_SHOOT) && chargeTimer == 0)
     {
-        i = fireWeapon(16, 0, objBusterShot, bulletLimit, weaponCost, action, willStop);
+        i = fireWeapon(20, 0, objBusterShot, bulletLimit, weaponCost, action, willStop);
         if (i)
         {
             i.xspeed = image_xscale * 5; // zoom
@@ -113,7 +113,7 @@ if (!global.lockBuster)
                 
                 if (chargeTimer < chargeTime) // Half charge
                 {
-                    i = fireWeapon(12, 0, objBusterShotHalfCharged, bulletLimit, weaponCost, action, willStop);
+                    i = fireWeapon(16, 0, objBusterShotHalfCharged, bulletLimit, weaponCost, action, willStop);
                     if (i)
                     {
                         i.xspeed = image_xscale * 5;
@@ -121,7 +121,7 @@ if (!global.lockBuster)
                 }
                 else // Full charge
                 {
-                    i = fireWeapon(20, 0, objBusterShotCharged, 3, 0, 1, 0);
+                    i = fireWeapon(24, 0, objBusterShotCharged, 3, 0, 1, 0);
                     if (i)
                     {
                         i.xspeed = image_xscale * 5.5;

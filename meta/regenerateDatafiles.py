@@ -5,10 +5,16 @@
 import sys
 import os
 import xml.etree.ElementTree as ET
+import glob
 
 gmx_file = '../MegamixEngine.project.gmx'
 datafiles_directory = "../datafiles"
 nl = "\n" # line end
+
+for name in glob.glob('../*.project.gmx'):
+    gmx_file = name
+
+print("project file:", gmx_file)
 
 def error(what):
     print("ERROR:", what)

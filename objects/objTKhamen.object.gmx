@@ -85,12 +85,15 @@ if (entityCanStep())
             {
                 if (myLock == 0)
                 {
-                    myLock = lockPoolLock(global.playerLock[PL_LOCK_SHOOT],
-                        global.playerLock[PL_LOCK_CLIMB],
-                        global.playerLock[PL_LOCK_SLIDE],
-                        global.playerLock[PL_LOCK_JUMP],
-                        global.playerLock[PL_LOCK_TURN],
-                        global.playerLock[PL_LOCK_MOVE]);
+                    myLock = lockPoolLock(
+                        PL_LOCK_SHOOT,
+                        PL_LOCK_CLIMB,
+                        PL_LOCK_SLIDE,
+                        PL_LOCK_JUMP,
+                        PL_LOCK_TURN,
+                        PL_LOCK_MOVE
+                    );
+                    myLock.targetInstance = target
                     target.xspeed = 0;
                 }
                 if (target.ground)

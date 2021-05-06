@@ -1,21 +1,24 @@
 /// isLocked(ids[...])
-/// returns true if any of the given lock pools are locked:
+/// returns true if any of the given lock pools are locked
+/// (if using instance-specific locks, call this from a particular instance.)
 
-for (var lp = 0; lp < argument_count; lp++)
+var _id = id
+
+for (var i = 0; i < argument_count; ++i)
 {
-    var lockPoolID = argument[lp];
-    
-    // error-checking
-    if (!lockPoolExists(lp))
+    var pool = argument[i]
+    with (objLock)
     {
-        printErr("Attempted to check value of lock on non-existent lock pool, id: " + string(lockPoolID));
-        assert(false);
-        return -1;
+        if (targetInstance >= 0 && _id != targetInstance)
+        {
+            // this is an instance-specific lock which doesn't concern us.
+            continue
+        }
+        if (arrayContains(type, pool))
+        {
+            return true
+        }
     }
-    
-    // check if lock pool is locked
-    if (global.lockPoolLockCount[lockPoolID] > 0)
-        return true;
 }
 
 return false;

@@ -115,7 +115,9 @@ if (entityCanStep())
                     climbLock = lockPoolRelease(climbLock);
                     if (other.myLock == 0)
                     {
-                        other.myLock = lockPoolLock(localPlayerLock[PL_LOCK_CLIMB]);
+                        var lock = lockPoolLock(PL_LOCK_CLIMB);
+                        lock.targetInstance = id
+                        other.myLock = lock
                     }
                 }
             }
@@ -125,7 +127,9 @@ if (entityCanStep())
                 blockCollision = false;
                 if (other.myLock == 0)
                 {
-                    other.myLock = lockPoolLock(localPlayerLock[PL_LOCK_CLIMB]);
+                    var lock = lockPoolLock(PL_LOCK_CLIMB);
+                    lock.targetInstance = id
+                    other.myLock = lock
                 }
             }
         }
@@ -140,10 +144,9 @@ if (entityCanStep())
                 blockCollision = true;
             }
         }
-        if(lockPoolExists(myLock)&amp;&amp;isLocked(myLock))
+        if (myLock &gt;= 0)
         {
-            lockPoolRelease(myLock);
-            myLock=0;
+            myLock = lockPoolRelease(myLock);
         }
         
     }
@@ -152,9 +155,9 @@ if (entityCanStep())
     if (bbox_top &gt; sectionBottom) || (x &gt; global.sectionRight) || (x &lt; global.sectionLeft)
     || (instance_exists(objSectionSwitcher))
     {
-        if(lockPoolExists(myLock)&amp;&amp;isLocked(myLock))
+        if(myLock &gt;= 0)
         {
-            lockPoolRelease(myLock);
+            myLock = lockPoolRelease(myLock);
         }
         instance_destroy();
     }
@@ -169,9 +172,9 @@ else if (dead || instance_exists(objSectionSwitcher))
             blockCollision = true;
         }
     }
-    if(lockPoolExists(myLock)&amp;&amp;isLocked(myLock))
+    if(myLock &gt;= 0)
     {
-        lockPoolRelease(myLock);
+        myLock = lockPoolRelease(myLock);
     }
     
     // force despawn

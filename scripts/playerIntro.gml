@@ -309,15 +309,15 @@ else
                     teleportLock = lockPoolRelease(teleportLock);
                     playerHandleSprites("Normal");
                     teleportLock = lockPoolLock(
-                        localPlayerLock[PL_LOCK_MOVE],
-                        localPlayerLock[PL_LOCK_TURN],
-                        localPlayerLock[PL_LOCK_SHOOT],
-                        localPlayerLock[PL_LOCK_JUMP],
-                        localPlayerLock[PL_LOCK_PAUSE],
-                        localPlayerLock[PL_LOCK_CHARGE],
-                        localPlayerLock[PL_LOCK_SPRITECHANGE],
-                        localPlayerLock[PL_LOCK_CLIMB]
-                        );
+                        PL_LOCK_MOVE,
+                        PL_LOCK_TURN,
+                        PL_LOCK_SHOOT,
+                        PL_LOCK_JUMP,
+                        PL_LOCK_PAUSE,
+                        PL_LOCK_CHARGE,
+                        PL_LOCK_SPRITECHANGE,
+                        PL_LOCK_CLIMB
+                    );
                 } // Rising back into the ground
                 else if (skullHeight > 0)
                 {

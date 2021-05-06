@@ -240,7 +240,7 @@ if (!global.frozen)
             <string>if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT)
 &amp;&amp; instance_number(objFlameBlast) &lt; 3)
 {
-    i = fireWeapon(17, 0, objFlameBlast, 3, 1, 1, 0);
+    i = fireWeapon(21, 0, objFlameBlast, 3, 1, 1, 0);
     if (instance_exists(i)) // Set starting speed
     {
         i.state = 0;

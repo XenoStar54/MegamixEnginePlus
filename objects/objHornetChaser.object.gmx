@@ -195,8 +195,8 @@ if (!global.frozen)
             <kind>1</kind>
             <string>var xOffset, yOffset, bulletObject, bulletLimit, weaponCost, action, willStop;
 
-xOffset = 14; // x offset from center of player
-yOffset = -3; // y offset from center of player
+xOffset = 18; // x offset from center of player
+yOffset = 0; // y offset from center of player
 bulletObject = objHornetChaser;
 bulletLimit = 3;
 weaponCost = 1.5;

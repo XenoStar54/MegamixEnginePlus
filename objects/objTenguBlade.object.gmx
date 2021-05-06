@@ -183,16 +183,20 @@ else
         i.ys = i.y - y;
         i.xst = i.image_xscale;
         
-        i.slashLock = lockPoolLock(
-            localPlayerLock[PL_LOCK_GROUND],
-            localPlayerLock[PL_LOCK_SHOOT],
-            localPlayerLock[PL_LOCK_TURN],
-            localPlayerLock[PL_LOCK_SLIDE]);
+        var lock = lockPoolLock(
+            PL_LOCK_GROUND,
+            PL_LOCK_SHOOT,
+            PL_LOCK_TURN,
+            PL_LOCK_SLIDE);
+        lock.targetInstance = id
+        i.slashLock = lock
         i.extraLock = false;
         
         if (ground)
         {
-            i.extraLock = lockPoolLock(localPlayerLock[PL_LOCK_JUMP]);
+            lock = lockPoolLock(PL_LOCK_JUMP);
+            lock.targetInstance = id
+            i.extraLock = lock
         }
     }
 }

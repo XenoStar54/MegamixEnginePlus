@@ -313,7 +313,6 @@ if (entityCanStep())
             <string>with(objWilyMachine2Projectile) instance_destroy();
 if(nextForm != noone)
 {
-    useEndStageBehavior = false;
     musicStore = "";
     with(instance_create(x,y,nextForm))
     {
@@ -335,9 +334,12 @@ if(nextForm != noone)
         musicLoopStore = other.musicLoopStore;
         musicVolumeStore = other.musicVolumeStore;
         musicTrackNumberStore = other.musicTrackNumberStore;
+        elementName = other.elementName;
+        elementCode = other.elementCode;
         if(other.nextFormScript != scrNoEffect) scriptExecuteNargs(other.nextFormScript,other.nextFormArgs);
         if(other.nextFormCode != "") stringExecutePartial(other.nextFormCode);
     }
+    useEndStageBehavior = false;
     if(!dropItemAnyway) itemDrop = -1;
 }
 

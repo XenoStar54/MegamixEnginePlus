@@ -117,7 +117,7 @@ if (!global.frozen)
             <kind>1</kind>
             <string>var xOffset, yOffset, bulletObject, bulletLimit, weaponCost, action, willStop;
 
-xOffset = 16; // x offset from center of player
+xOffset = 20; // x offset from center of player
 yOffset = 0; // y offset from center of player
 bulletObject = objSolarBlaze;
 bulletLimit = 2;

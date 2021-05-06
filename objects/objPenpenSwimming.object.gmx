@@ -45,6 +45,7 @@ image_speed = 0.2;
 
 sinCounter = 0;
 homing = 0;
+ys = 0;
 </string>
           </argument>
         </arguments>
@@ -73,7 +74,7 @@ if (entityCanStep())
 {
     if (!homing)
     {
-        var ys = 0;
+         
         if (xspeed == 0)
         {
             ys = y;
@@ -101,6 +102,7 @@ else if (dead)
     sinCounter = 0;
     homing = 0;
 }
+
 </string>
           </argument>
         </arguments>

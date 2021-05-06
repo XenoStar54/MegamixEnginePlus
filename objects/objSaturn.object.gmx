@@ -431,7 +431,7 @@ with (objSaturnBullet)
 {
     instance_destroy();
 }
-if (lockPoolExists(timeStopLock))
+if (timeStopLock &gt;= 0)
 {
     timeStopLock = playerTimeRestored(timeStopLock);
 }

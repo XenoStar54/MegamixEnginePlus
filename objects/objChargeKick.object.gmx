@@ -50,7 +50,7 @@ animFrame = 0;
 dashTimer = 35;
 dashSpeed = 2.5;
 
-breakDashLock = false;
+breakDashLock = -1;
 </string>
           </argument>
         </arguments>
@@ -75,11 +75,12 @@ breakDashLock = false;
             <kind>1</kind>
             <string>event_inherited();
 
+breakDashLock = lockPoolRelease(breakDashLock);
+
 if (instance_exists(parent))
 {
     with(parent)
     {
-        lockPoolRelease(other.breakDashLock);
         hitTimer = 0;
         iFrames = 50;
     }
@@ -146,13 +147,16 @@ if (!global.frozen)
     
     with (parent) // Mega Man anim + movement forcing
     {
-        if (!other.breakDashLock &amp;&amp; ground)
+        if (other.breakDashLock &lt;= 0 &amp;&amp; ground)
         {
-            other.breakDashLock = lockPoolLock(
-                localPlayerLock[PL_LOCK_MOVE],
-                localPlayerLock[PL_LOCK_SHOOT],
-                localPlayerLock[PL_LOCK_SLIDE],
-                localPlayerLock[PL_LOCK_TURN]);
+            var lock = lockPoolLock(
+                PL_LOCK_MOVE,
+                PL_LOCK_SHOOT,
+                PL_LOCK_SLIDE,
+                PL_LOCK_TURN
+            );
+            lock.targetInstance = id
+            other.breakDashLock = lock
             xspeed=0;
             yspeed=0;
         }
@@ -165,12 +169,13 @@ if (!global.frozen)
             iFrames = -1;
         }
     }
-    if(isLocked(global.playerLock[PL_LOCK_MOVE])&amp;&amp;
-    isLocked(global.playerLock[PL_LOCK_TURN]))
+    with (parent)
     {
-        dashTimer=0;
-        with(parent)
+        if(playerIsLocked(PL_LOCK_MOVE) &amp;&amp; playerIsLocked(PL_LOCK_TURN))
+        {
+            other.dashTimer=0;
             xspeed=0;
+        }
     }
     
     
@@ -217,7 +222,7 @@ var initChargeTime = 20;
 // Shooting buster shots if not charged.
 if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT) &amp;&amp; !instance_exists(objChargeKicking))
 {
-    i = fireWeapon(16, 0, objNormalBusterShot, 3, 0, 1, 0);
+    i = fireWeapon(20, 0, objNormalBusterShot, 3, 0, 1, 0);
     if (i)
     {
         i.xspeed = image_xscale * 5; // zoom

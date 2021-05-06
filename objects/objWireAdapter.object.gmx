@@ -323,13 +323,15 @@ if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT))
                 {
                     i.yspeed = -4 * image_yscale;
                     
-                    i.wireLock = lockPoolLock(
-                        localPlayerLock[PL_LOCK_MOVE],
-                        localPlayerLock[PL_LOCK_JUMP],
-                        localPlayerLock[PL_LOCK_GRAVITY],
-                        localPlayerLock[PL_LOCK_CLIMB],
-                        localPlayerLock[PL_LOCK_TURN],
-                        localPlayerLock[PL_LOCK_SLIDE]);
+                    var lock = lockPoolLock(
+                        PL_LOCK_MOVE,
+                        PL_LOCK_JUMP,
+                        PL_LOCK_GRAVITY,
+                        PL_LOCK_CLIMB,
+                        PL_LOCK_TURN,
+                        PL_LOCK_SLIDE);
+                    lock.targetInstance = id
+                    i.wireLock = lock
                     
                     i.ys = y - i.y;
                 }

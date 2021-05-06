@@ -38,7 +38,8 @@ global.recordInputFidelityMessageBuffer = "";
 global.consoleN = 0;
 
 // debug objectviewer
-viewobjects = 0;
+infoScreen = 0; // 0: none. 1: instances. 2: lock pools
+infoScreenCount = 3
 
 // screenshots
 screenshotNum = 0;
@@ -192,31 +193,35 @@ if (keyboard_check_pressed(ord('2')) &amp;&amp; !global.frozen
     instance_create(view_xview[0], view_yview[0], objDebugMenu);
 }
 
-// debug objectviewer
-if (viewobjects)
+// information screens
+var nextInfoScreen = keyboard_check_pressed(ord('3'))
+var cancelInfoScreen = keyboard_check_pressed(vk_backspace)
+
+var enteringScreen = -1
+var exitingScreen = -1
+if (nextInfoScreen || cancelInfoScreen)
 {
-    scroll += global.keyDownPressed[0] - global.keyUpPressed[0];
-    scroll = min(max(0, scroll), ds_list_size(ids) - limit);
-    
-    if (keyboard_check_pressed(vk_backspace) || keyboard_check_pressed(ord('3'))) // Disable
-    {
-        ds_list_destroy(ids);
-        ds_map_destroy(names);
-        ds_map_destroy(amounts);
-        
-        viewobjects = 0;
-    }
+    exitingScreen = infoScreen
+    infoScreen = ((infoScreen + 1) % infoScreenCount) * (!cancelInfoScreen)
+    enteringScreen = infoScreen
+    scroll = 0
 }
-else if (keyboard_check_pressed(ord('3'))) // Set lists
+
+switch (exitingScreen)
 {
-    if (!viewobjects)
-    {
-        viewobjects = 1;
-        
-        ids = ds_list_create();
-        names = ds_map_create();
-        amounts = ds_map_create();
-    }
+case 1: // exit instances screen
+    ds_list_destroy(ids);
+    ds_map_destroy(names);
+    ds_map_destroy(amounts);
+    break
+}
+
+switch (enteringScreen)
+{
+case 1: // open instances screen
+    ids = ds_list_create();
+    names = ds_map_create();
+    amounts = ds_map_create();
     
     ds_list_clear(ids);
     ds_map_clear(names);
@@ -245,6 +250,18 @@ else if (keyboard_check_pressed(ord('3'))) // Set lists
     
     limit = min(25, ds_list_size(ids));
     scroll = 0;
+    break
+}
+
+switch (infoScreen)
+{
+case 1:
+    scroll += global.keyDownPressed[0] - global.keyUpPressed[0];
+    scroll = min(max(0, scroll), ds_list_size(ids) - limit);
+    break
+case 2:
+    scroll += (global.keyDown[0] - global.keyUp[0]) * 3;
+    scroll = max(0, scroll)
 }
 
 ///////////////////////////////////////////////////////////
@@ -296,7 +313,7 @@ for (var i = 0; i &lt; CONSOLE_MAX &amp;&amp; i &lt; global.consoleN; i++)
 }
 
 // Debug - objectviewer
-if (viewobjects)
+if (infoScreen == 1)
 {
     draw_set_valign(fa_top);
     draw_set_color(c_white);
@@ -323,6 +340,15 @@ if (viewobjects)
     
     draw_set_halign(fa_left);
     draw_text(view_xview, view_yview, "Total instances: " + string(instance_number(all)));
+}
+
+// Debug - lockpools
+if (infoScreen == 2)
+{
+    draw_set_valign(fa_top);
+    draw_set_halign(fa_left);
+    draw_set_color(c_white);
+    draw_text_ext(view_xview[0] + 4, view_yview[0] + 4 - scroll, lockPoolDebugString(), 12, view_wview[0] - 8)
 }
 
 // recording / playback sign
