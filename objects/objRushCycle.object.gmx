@@ -152,7 +152,6 @@ if (!global.frozen)
     
     // Set this as a variable for ease of access
     var isGlobalLocked = false
-    if (instance_exists(rider))
     with (rider)
     {
         isGlobalLocked = (
@@ -164,6 +163,7 @@ if (!global.frozen)
             playerIsLocked(PL_LOCK_CLIMB)) || (isLocked(GLOBAL_LOCK_PLAYERFROZEN)
         );
     }
+	
     // Make sure to set
     if (isGlobalLocked)
     {
