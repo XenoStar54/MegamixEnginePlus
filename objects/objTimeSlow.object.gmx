@@ -55,7 +55,7 @@ else
     origin_y = 0;
 }
 pauseLock = lockPoolLock(PL_LOCK_PAUSE);
-global.frozen = true;
+queuePause();
 animFrame = 0;
 pauseTimer = 30;
 shiftVisible = 1;
@@ -138,7 +138,7 @@ if pauseTimer &gt; 0
 else if pauseTimer == 0 
 {
     pauseTimer = -1;
-    global.frozen = false;
+    queueUnpause();
     lockPoolRelease(pauseLock);
 }
 if (!global.frozen)

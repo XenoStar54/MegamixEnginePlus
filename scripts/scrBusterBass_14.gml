@@ -49,7 +49,7 @@ if (!global.lockBuster)
         {
             shootTimer++
             shootStandStillLock = lockPoolRelease(shootStandStillLock);
-            shootStandStillLock = lockPoolLock(localPlayerLock[PL_LOCK_MOVE]);
+            shootStandStillLock = lockPoolLock(PL_LOCK_MOVE);
             
             exit;
         }
@@ -84,7 +84,7 @@ if (!global.lockBuster)
         else
         {
             shootStandStillLock = lockPoolRelease(shootStandStillLock);
-            shootStandStillLock = lockPoolLock(localPlayerLock[PL_LOCK_MOVE]);
+            shootStandStillLock = lockPoolLock(PL_LOCK_MOVE);
             shootTimer = 8;//min(shootTimer,15);
             
         }

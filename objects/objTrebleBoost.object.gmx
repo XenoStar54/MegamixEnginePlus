@@ -115,7 +115,7 @@ consumeTime = 30;
 
 t_Boosting = false;
 
-playerLock = lockPoolNew();
+playerLock = -1;//lockPoolNew();
 
 grav = .25;
 
@@ -149,11 +149,13 @@ respawnRange = -1;
             <kind>1</kind>
             <string>if (isBoosting)
 {
-    with (objMegaman)
+    lockPoolRelease(playerLock);//lock = lockPoolLock(PL_LOCK_GROUND)
+    //lock.targetInstance = target;
+    /*with (objMegaman)
     {
         other.playerLock = lockPoolRelease(other.playerLock);//canMove = true;
         //canGravity = true;
-    }
+    }*/
 }
 event_inherited();
 </string>
@@ -718,10 +720,8 @@ meg.canGravity = false;*/
 meg.isSlide = false;
 meg.dashJumped = false;//bassDash = false;
 meg.ground = false;
-with (meg)
-{
-    other.playerLock = lockPoolLock(localPlayerLock[PL_LOCK_MOVE],localPlayerLock[PL_LOCK_GRAVITY],localPlayerLock[PL_LOCK_AERIAL], localPlayerLock[PL_LOCK_SLIDE], localPlayerLock[PL_LOCK_CLIMB]);
-}
+playerLock = lockPoolLock(PL_LOCK_MOVE,PL_LOCK_GRAVITY,PL_LOCK_AERIAL, PL_LOCK_SLIDE, PL_LOCK_CLIMB);
+playerLock.targetInstance = meg;
 //meg.playLandSound = false;
 // playSFX(sfxSpring);
 alarm[0] = -1;

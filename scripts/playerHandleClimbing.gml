@@ -48,8 +48,8 @@ if (!playerIsLocked(PL_LOCK_CLIMB))
                 PL_LOCK_SLIDE,
                 PL_LOCK_GRAVITY,
                 PL_LOCK_TURN);
-            slideLock.targetInstance = id
-            slideLock.debugInfo += "<playerHandleClimbing"
+            climbLock.targetInstance = id
+            climbLock.debugInfo += "<playerHandleClimbing"
             
             ground = false;
             if jumpCounter == 0
