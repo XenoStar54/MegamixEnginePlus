@@ -55,11 +55,7 @@ else
     origin_y = 0;
 }
 pauseLock = lockPoolLock(PL_LOCK_PAUSE);
-<<<<<<< HEAD
 queuePause();
-=======
-global.frozen = true;
->>>>>>> upstream/plus
 animFrame = 0;
 pauseTimer = 30;
 shiftVisible = 1;
