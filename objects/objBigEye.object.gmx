@@ -47,6 +47,8 @@ timer = 0;
 repeatAmount = 0; // variables to make sure big eye doesn't repeat his action too much
 repeatIsHigh = true;
 xs = 0;
+
+highJump = 0;
 </string>
           </argument>
         </arguments>
@@ -108,7 +110,6 @@ if (entityCanStep())
         if (timer == 1)
         {
             xs = 0;
-            var highJump;
             if (repeatAmount &lt; 2)
             {
                 // randomize();

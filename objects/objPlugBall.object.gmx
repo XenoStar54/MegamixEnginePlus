@@ -183,7 +183,7 @@ else if (!canDamage)
             <string>/// Fire weapon
 if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT))
 {
-    i = fireWeapon(18, 0, objPlugBall, 3, 0.5, 1, 0);
+    i = fireWeapon(26, 0, objPlugBall, 3, 0.5, 1, 0);
     if (i)
     {
         i.yspeed = i.spd * image_yscale;

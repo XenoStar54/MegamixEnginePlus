@@ -92,7 +92,7 @@ if (entityCanStep())
                     with (bomb)
                     {
                         xspeed = xSpeedAim(x, y, other.target.x, other.target.y, yspeed, grav);
-                        xspeed = xspeed / other.i;
+                        xspeed = xspeed / i;
                     }
                 }
             }

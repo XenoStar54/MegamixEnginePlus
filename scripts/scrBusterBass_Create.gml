@@ -9,4 +9,6 @@ xspeed = 0;
 yspeed = 0;
 grav = 0;
 
+isBoost = false;
+
 playSFX(sfxBuster);

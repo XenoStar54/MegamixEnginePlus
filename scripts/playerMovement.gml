@@ -1,4 +1,4 @@
-if (!instance_exists(vehicle))
+if (!instance_exists(vehicle) && !instance_exists(myTrebleBoost))
 {
     if (ycoll * gravDir > 0)
     {

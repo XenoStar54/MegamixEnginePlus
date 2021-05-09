@@ -94,7 +94,7 @@ if (!global.frozen){
             <kind>1</kind>
             <string>if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT)){
 
-    i = fireWeapon(15, 0, objCentaurArrow, 2, 0.5, 1, 0);
+    i = fireWeapon(19, 0, objCentaurArrow, 2, 0.5, 1, 0);
     if (i){
     
         playSFX(sfxBuster);

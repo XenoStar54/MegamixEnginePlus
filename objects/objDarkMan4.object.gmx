@@ -283,7 +283,7 @@ if (entityCanStep())
             // Fire barriers
             case 1:
                 attackTimer++;
-                if (objDarkBarrier.orbit == false)
+                if (!instance_exists(objDarkBarrier) || objDarkBarrier.orbit == false)
                 {
                     if (attackTimer &gt;= 20)
                     {

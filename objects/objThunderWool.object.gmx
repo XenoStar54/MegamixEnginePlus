@@ -195,7 +195,7 @@ if (!global.frozen)
             <kind>1</kind>
             <string>if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT))
 {
-    i = fireWeapon(16, -1, objThunderWool, 2, 2, 1, 0);
+    i = fireWeapon(16, 8, objThunderWool, 2, 2, 1, 0);
     if (i) // set starting speed
     {
         i.xspeed = 1 * image_xscale;

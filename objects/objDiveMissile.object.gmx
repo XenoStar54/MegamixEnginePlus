@@ -141,64 +141,66 @@ if (isController) // Code for the controller
         <exetype>2</exetype>
         <functionname></functionname>
         <codestring></codestring>
-        <whoName>other</whoName>
+        <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
           <argument>
             <kind>1</kind>
             <string>event_inherited();
-
-if (!global.frozen &amp;&amp; !global.switchingSections)
+with (other)
 {
-    if (!isController) // Code for the missiles
-    {
-        // behaviourType = 4;
-        
-        target = controllerTargets[0];
-        
-        if (!instance_exists(target))
-        {
-            event_user(0);
-        }
-        else if (target.dead || !target.canHit)
-        {
-            event_user(0);
-        }
-        
-        if (target != controllerTargets[0])
-        {
-            controllerTargets[0] = target;
-            crosshairFrame[0] = 0;
-        }
-        
-        timer++;
-        
-        if (instance_exists(target)) // Aiming
-        {
-            var newAngle = point_direction(x, y, bboxGetXCenterObject(target), bboxGetYCenterObject(target));
-            newAngle = wrapAngle(floor(newAngle / 30) * 30);
-            
-            if (!(timer mod 4))
-            {
-                if (angle != newAngle)
-                {
-                    var delta = 360 - angle;
-                    var nangl = (newAngle + delta) % 360;
-                    var rotDir = 1 - ((nangl &gt;= 180) * 2);
-                    
-                    angle = wrapAngle(angle + 30 * rotDir);
-                }
-            }
-        }
-        
-        xspeed = cos(degtorad(angle)) * spd;
-        yspeed = -sin(degtorad(angle)) * spd;
-        
-        animFrame = (animFrame + 0.25) mod 2;
-        
-        image_index = floor(animFrame) * 8 + floor(((angle div 45) * 45) / 45);
-    }
+	if (!global.frozen &amp;&amp; !global.switchingSections)
+	{
+		if (!isController) // Code for the missiles
+		{
+			// behaviourType = 4;
+			
+			target = controllerTargets[0];
+			
+			if (!instance_exists(target))
+			{
+				event_user(0);
+			}
+			else if (target.dead || !target.canHit)
+			{
+				event_user(0);
+			}
+			
+			if (target != controllerTargets[0])
+			{
+				controllerTargets[0] = target;
+				crosshairFrame[0] = 0;
+			}
+			
+			timer++;
+			
+			if (instance_exists(target)) // Aiming
+			{
+				var newAngle = point_direction(x, y, bboxGetXCenterObject(target), bboxGetYCenterObject(target));
+				newAngle = wrapAngle(floor(newAngle / 30) * 30);
+				
+				if (!(timer mod 4))
+				{
+					if (angle != newAngle)
+					{
+						var delta = 360 - angle;
+						var nangl = (newAngle + delta) % 360;
+						var rotDir = 1 - ((nangl &gt;= 180) * 2);
+						
+						angle = wrapAngle(angle + 30 * rotDir);
+					}
+				}
+			}
+			
+			xspeed = cos(degtorad(angle)) * spd;
+			yspeed = -sin(degtorad(angle)) * spd;
+			
+			animFrame = (animFrame + 0.25) mod 2;
+			
+			image_index = floor(animFrame) * 8 + floor(((angle div 45) * 45) / 45);
+		}
+	}
 }
 </string>
           </argument>
@@ -229,7 +231,7 @@ var willStop = 0; // If this is 1, the player will halt on shooting ala Metal Bl
 
 if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT))
 {
-    i = fireWeapon(16, 0, objDiveMissile, bulletLimit, weaponCost, action, willStop);
+    i = fireWeapon(20, 0, objDiveMissile, bulletLimit, weaponCost, action, willStop);
     if (i)
     {
         i.xspeed = 4 * image_xscale;

@@ -148,7 +148,7 @@ else if (isBullet){
             <string>if (!playerIsLocked(PL_LOCK_SHOOT) &amp;&amp; global.ammo[playerID, global.weapon[playerID]] &gt; 0){
     if (!instance_exists(objMirrorBuster)){
         if (global.keyShootPressed[playerID]){
-            a = fireWeapon(24, 0, objMirrorBuster, 1, 0, 1, 0);
+            a = fireWeapon(20, 0, objMirrorBuster, 1, 0, 1, 0);
         }
     }
     else{

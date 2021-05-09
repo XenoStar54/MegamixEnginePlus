@@ -249,7 +249,7 @@ if (!global.frozen)
     }
     else
     {
-        with (fireWeapon(16, 0, objBusterShot, 4, 0, 1, 0))
+        with (fireWeapon(20, 0, objBusterShot, 4, 0, 1, 0))
         {
             xspeed = other.image_xscale * 5;
         }

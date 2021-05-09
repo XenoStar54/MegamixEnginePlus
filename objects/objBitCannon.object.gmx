@@ -133,7 +133,7 @@ if(entityCanStep())
 {
     if(state == 0) // held
     {
-        if(parent)
+        if(instance_exists(parent))
         {
             image_xscale = parent.image_xscale;
             image_yscale = parent.image_yscale;
@@ -332,6 +332,7 @@ if (!playerIsLocked(PL_LOCK_SHOOT))
           <argument>
             <kind>1</kind>
             <string>/// nope
+
 </string>
           </argument>
         </arguments>

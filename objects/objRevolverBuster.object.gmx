@@ -121,7 +121,7 @@ if (!playerIsLocked(PL_LOCK_SHOOT))
     {
         if(global.keyShootPressed[playerID] || global.keyShoot[playerID])
         {
-            i = fireWeapon(16, 0, objRevolverBuster, 99, 0.25, 1, 0);
+            i = fireWeapon(20, 0, objRevolverBuster, 99, 0.25, 1, 0);
             if (i)
             {
                 playSFX(sfxBuster);

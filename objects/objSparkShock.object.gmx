@@ -19,29 +19,31 @@
         <exetype>2</exetype>
         <functionname></functionname>
         <codestring></codestring>
-        <whoName>other</whoName>
+        <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
           <argument>
             <kind>1</kind>
             <string>event_inherited();
+with (other)
+{
+	bulletLimitCost = 1;
 
-bulletLimitCost = 1;
+	contactDamage = -1;
+	inWater = -1;
 
-contactDamage = -1;
-inWater = -1;
+	penetrate = 0;
+	pierces = 0;
 
-penetrate = 0;
-pierces = 0;
+	xspeed = 0;
+	yspeed = 0;
+	grav = 0;
 
-xspeed = 0;
-yspeed = 0;
-grav = 0;
+	image_speed = 0.5;
 
-image_speed = 0.5;
-
-playSFX(sfxSparkShock);
+	playSFX(sfxSparkShock);
+}
 </string>
           </argument>
         </arguments>
@@ -68,7 +70,7 @@ playSFX(sfxSparkShock);
 
 if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT))
 {
-    var i = fireWeapon(25, -1, objSparkShock, 2, 1, 1, 0);
+    var i = fireWeapon(20, -1, objSparkShock, 2, 1, 1, 0);
     if (i) // set starting speed
     {
         i.xspeed = image_xscale * 5;

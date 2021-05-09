@@ -219,7 +219,7 @@ if (!global.frozen)
             <kind>1</kind>
             <string>if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT))
 {
-    var i = fireWeapon(16, 0, objBlackHoleBomb, 1, 4, 1, 0);
+    var i = fireWeapon(24, 0, objBlackHoleBomb, 1, 4, 1, 0);
     with (i)
     {
         xspeed = other.image_xscale * 1; // zoom
@@ -316,6 +316,7 @@ if (!global.frozen)
             <string>// unique ricochet animation
 var i = instance_create(x, y, objHarmfulExplosion);
 i.contactDamage = 0;
+playSFX(sfxReflect);//Actually play an sound so the player knows what the hell happened.
 playSFX(sfxExplosion2);
 instance_destroy();
 </string>

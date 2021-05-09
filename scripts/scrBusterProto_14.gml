@@ -1,4 +1,4 @@
-var bulletLimit = 3;
+var bulletLimit = 2;
 var weaponCost = 0;
 var action = 1; // 0 - no frame; 1 - shoot; 2 - throw
 var willStop = 0; // If this is 1, the player will halt on shooting ala Metal Blade.
