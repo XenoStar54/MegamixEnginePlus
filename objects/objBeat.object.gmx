@@ -519,7 +519,7 @@ if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT))
     else
     {
         // normal firing
-        var i = fireWeapon(16, 0, objBusterShot, 4, 0, 1, 0);
+        var i = fireWeapon(20, 0, objBusterShot, 4, 0, 1, 0);
         if (i)
         {
             i.xspeed = image_xscale * 5; // zoom
