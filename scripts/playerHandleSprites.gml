@@ -58,7 +58,7 @@ switch (AnimID)
         }
         else if (ground && !beat)
         {
-            if (!playerIsLocked(PL_LOCK_MOVE) || fanoutDistance != 0)
+            if (!playerIsLocked(PL_LOCK_MOVE) || fanoutDistance != 0) && xDir != 0//Gannio: Changed so that Bass Buster does not mistakenly use a single frame. Also reflects how it should actually work (both this and the original method follow MM10-no-sidle-on-release rule).
             {
                 if (stepTimer >= stepFrames) // Walking
                 {
@@ -311,6 +311,90 @@ switch (AnimID)
     case "Magnet":
         spriteY = other.spry;
         spriteX = other.sprx;
+        break;
+    case "Boost": // Treble Boost.
+        var startup = -1;
+        var aTimer = 0;//Because of how we're not overwriting blinkImage from Normal, we need TrebleBoost to handle this animation.
+        with (objTrebleBoost)
+        {
+            startup = alarm[1];
+            aTimer = animTimer;
+        }
+        //show_debug_message(startup);
+        //printErr(startup);
+        
+        if (startup >= 0)
+        {
+            animNameID = 1;
+            aTimer = 0;
+            blinkImage = 0;
+        }
+        else
+        {
+            animNameID = 0; // Standing
+            
+            blinkImage = aTimer%2;
+            //printErr(blinkImage);
+            spriteX = 12+blinkImage;
+            spriteY = 12+isShoot;
+        }
+        switch (animNameID)
+        {
+            case 0: // Stand 
+                //spriteX = 19+blinkImage;
+                /*if global.cPlayer == 1
+                    {
+                    if !isShoot
+                        spriteY = 7;
+                    }*/
+                //spriteY = 2;
+                break;
+            case 1:
+            spriteX = 12;
+            spriteY = 13;
+            if (startup >= 9)
+            {
+                spriteX += 2;
+                //spriteY++;
+            }
+            else if (startup >= 6)
+            {
+                spriteX += 3;
+                //spriteY++;
+            }
+            else
+            {
+                spriteX += 4;
+                //spriteY++;
+            }
+            /*switch (floor(startup/4))
+            {
+                //case 3:
+                
+                
+                
+                case 2:
+                    spriteX += 2;
+                    spriteY++;
+                break;
+                
+                case 1:
+                    spriteX += 3;
+                    spriteY++;
+                break;
+                
+                case 0:
+                    spriteX += 4;
+                    spriteY++;
+                break;
+            
+            }*/
+                
+                
+            break;
+        }
+        
+        
         break;
 }
 

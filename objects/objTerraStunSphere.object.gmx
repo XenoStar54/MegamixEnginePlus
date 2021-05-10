@@ -96,7 +96,7 @@ if(entityCanStep())
     hookX += xs;
     hookY += ys;
     
-    if(target &amp;&amp; place_meeting(x,y,target) &amp;&amp; !target.isFrozen &amp;&amp; target.iFrames == 0) with(target) // no stun when invincible pls
+    if(instance_exists(target) &amp;&amp; target.object_index == objMegaman &amp;&amp; place_meeting(x,y,target) &amp;&amp; !target.isFrozen &amp;&amp; target.iFrames == 0) with(target) // no stun when invincible pls
     {
         freezeTimer = 600;
         isFrozen = 1;

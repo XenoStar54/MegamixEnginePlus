@@ -112,7 +112,7 @@ if (entityCanStep())
             }
             with (objMegaman)
             {
-                playerBlow(other.currentPullSpd * other.pullDir * other.image_xscale);
+                playerBlow(currentPullSpd * other.pullDir * other.image_xscale);
             }
             break;
         

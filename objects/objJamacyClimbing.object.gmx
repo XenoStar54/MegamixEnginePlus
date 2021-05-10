@@ -39,6 +39,8 @@ imgSpd = 0.1;
 
 // @cc - Changes colour (0 = peach w/ red light (default); 1 = orange w/ blue light;)
 col = 0;
+
+startDir = 1;
 </string>
           </argument>
         </arguments>
@@ -67,7 +69,7 @@ if (entityCanStep())
 {
     if (yspeed == 0)
     {
-        yspeed = 0.75;
+        yspeed = 0.75*startDir;
     }
     else if (yspeed &gt; 0)
     {

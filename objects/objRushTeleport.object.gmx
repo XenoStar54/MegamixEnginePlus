@@ -203,6 +203,25 @@ if (!global.frozen)
                 }
             }
         }
+        if (type == 'boost' &amp;&amp; collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,parent,true,true) &amp;&amp; global.ammo[playerID, global.weapon[playerID]] != 0)
+        {
+            
+            global.playerProjectileCreator = parent;
+            i = instance_create(x, y, objTrebleBoost);
+                    
+            if (i)
+            {
+                i.image_xscale = dir;
+                i.image_yscale = image_yscale;
+                i.parent = parent;
+                with (i)
+                {
+                    event_user(1);
+                }
+                instance_destroy();
+                exit;
+            }
+        }
     }
     else
     {
@@ -251,12 +270,18 @@ if (!global.frozen)
                 {
                     i = instance_create(x, y - 16 * image_yscale, objSakugarne);
                 }
+                if (type == 'boost')
+                {
+                    i = instance_create(x, y, objTrebleBoost);
+                    
+                }
                 if (i)
                 {
                     i.image_xscale = dir;
                     i.image_yscale = image_yscale;
                     i.grav *= sign(image_yscale);
                     i.parent = parent;
+                    
                 }
                 instance_destroy();
             }

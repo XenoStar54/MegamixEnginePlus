@@ -193,7 +193,7 @@ if (!global.frozen)
             <string>if (global.keyShoot[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT)
 &amp;&amp; global.ammo[playerID, global.weapon[playerID]] &gt; 0)
 {
-    fireWeapon(0, 0, objPharaohShot, 2, 0, 0, 0);
+    fireWeapon(2, 0, objPharaohShot, 2, 0, 0, 0);
 }
 </string>
           </argument>

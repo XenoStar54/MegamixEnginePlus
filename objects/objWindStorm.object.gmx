@@ -93,7 +93,7 @@ if (entityCanStep() &amp;&amp; canDamage)
           <argument>
             <kind>1</kind>
             <string>if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT)){
-    a = fireWeapon(16, -1, objWindStorm, 3, 1, 1, 0);
+    a = fireWeapon(20, -1, objWindStorm, 3, 1, 1, 0);
     if (a){
         playSFX(sfxBuster);
         a.xspeed = 3*image_xscale;

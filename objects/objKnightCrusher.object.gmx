@@ -141,7 +141,7 @@ if (entityCanStep())
             <kind>1</kind>
             <string>if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT))
 {
-    i = fireWeapon(16, 0, objKnightCrusher, 2, 1, 1, 0);
+    i = fireWeapon(28, 0, objKnightCrusher, 2, 1, 1, 0);
     if (i)
     {
         playSFX(sfxBuster);

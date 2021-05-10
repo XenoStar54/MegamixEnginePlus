@@ -18,7 +18,7 @@
   </TextureGroups>
   <For3D>0</For3D>
   <width>917</width>
-  <height>662</height>
+  <height>713</height>
   <frames>
     <frame index="0">images\sprBass_0.png</frame>
     <frame index="1">images\sprBass_1.png</frame>

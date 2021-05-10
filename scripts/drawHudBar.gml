@@ -4,7 +4,7 @@ var px = argument0;
 var py = argument1;
 var color1 = argument2;
 var color2 = argument3;
-var fill = argument4;
+var fill = ceil(argument4);
 var full = argument5;
 
 

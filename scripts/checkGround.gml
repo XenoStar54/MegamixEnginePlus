@@ -131,7 +131,12 @@ if (place_free(x, y))
                 if jumpCounter == 0
                 {
                     jumpCounter += 1;
+                    if (global.characterSelected[playerID] == "Bass" && isSlide)
+                    {
+                        dashJumped = true;
+                    }
                 }
+                
             }
         }
         else if (yspeed * cgrav >= 0) // There is something solid below us! Lower position to stay grounded if necessary

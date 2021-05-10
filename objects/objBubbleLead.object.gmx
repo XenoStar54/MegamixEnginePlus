@@ -236,7 +236,7 @@ if (!playerIsLocked(PL_LOCK_SHOOT))
 {
     if(global.keyShootPressed[playerID])
     {
-        i = fireWeapon(16, 0, objBubbleLead, 2, 0.5, 1, 0);
+        i = fireWeapon(20, 0, objBubbleLead, 2, 0.5, 1, 0);
         if (i)
         {
             i.dir = image_xscale;

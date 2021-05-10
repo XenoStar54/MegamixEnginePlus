@@ -1,4 +1,3 @@
-var protoShieldCreated = 0;
 //THE ACTUAL STEP EVENT
 if (!global.frozen && !frozen)
 {
@@ -38,9 +37,9 @@ if (!global.frozen && !frozen)
     // Recover from mm1 stun
     playerHandleStun();
     
-    if protoShieldCreated == 0
+    if !instance_exists(myProtoShield)
     {
-        protoShieldCreate = instance_create(x, y, objProtoShield)
-        protoShieldCreate.parent = id;
+        myProtoShield = instance_create(x, y, objProtoShield)
+        myProtoShield.parent = id;
     }
 }

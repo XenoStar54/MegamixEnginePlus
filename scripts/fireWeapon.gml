@@ -74,7 +74,13 @@ ys += 4;
 if (costumeID == 1 || costumeID == 3) //if the costumeID is equal to Proto Man or Roll's then increase it.
 {
     ys += 2;
+    if (costumeID == 1)
+    {
+        xs -= 1;
+        ys += 1;//Slightly further for Proto Man.
+    }
 }
+
 if (climbing)
 {
     image_xscale = climbShootXscale;

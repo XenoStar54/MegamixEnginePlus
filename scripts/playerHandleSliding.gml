@@ -65,9 +65,11 @@ if (global.enableSlide && !playerIsLocked(PL_LOCK_SLIDE))
         
         var canProceed = true;
         var isfree = true;
-        var jump = global.keyJumpPressed[playerID] && yDir != gravDir /*&& !playerIsLocked(PL_LOCK_JUMP )*/ ;
+        var jump = global.keyJumpPressed[playerID] && (yDir != gravDir || (global.characterSelected[playerID] == "Bass" && slideTimer != 1)); /*&& !playerIsLocked(PL_LOCK_JUMP )*/ ;
+        var jumpCancel = global.keyJumpPressed[playerID] && (yDir != gravDir || (global.characterSelected[playerID] == "Bass" && jumpCounter <= 1));//Why was this all set into a variable??
         
-        if (image_xscale == -xDir || slideTimer >= slideFrames || jump)
+        if (image_xscale == -xDir || slideTimer >= slideFrames 
+        || jump)
         {
             canProceed = false;
         }
@@ -147,7 +149,7 @@ if (global.enableSlide && !playerIsLocked(PL_LOCK_SLIDE))
             xspeed = (ground && ((instance_exists(statusObject) && statusObject.statusOnIce)
                 || place_meeting(x, y + gravDir, objIce))) * slideSpeed * image_xscale * 0.5;
             
-            if (jump)
+            if (jumpCancel)
             {
                 playerJump(0); //this gets incremented twice somehow so it cant increase jumpCounter
                 if dashSlide

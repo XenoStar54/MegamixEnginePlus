@@ -59,6 +59,7 @@ if (!playerIsLocked(PL_LOCK_MOVE))
                 }
             }
         }
+        
     }
     else // Move in the air
     {
@@ -75,4 +76,5 @@ if (!playerIsLocked(PL_LOCK_MOVE))
             stepTimer = stepFrames;
         }
     }
+    
 }

@@ -46,6 +46,8 @@ shotCount = 0;
 spriteWarp = sprProtoManMM7BossWarp;
 spriteNormal = sprProtoManMM7Boss;
 
+preIntro = false;
+
 // Health Bar
 healthBarPrimaryColor[1] = 19;
 healthBarSecondaryColor[1] = 13;

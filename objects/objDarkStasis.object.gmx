@@ -169,7 +169,7 @@ if (!playerIsLocked(PL_LOCK_SHOOT))
     {
         if(global.keyShootPressed[playerID])
         {
-            i = fireWeapon(16, 0, objDarkStasis, 2, 2, 1, 0);
+            i = fireWeapon(20, 0, objDarkStasis, 2, 2, 1, 0);
             if (i)
             {
                 playSFX(sfxDachoneLaser);
