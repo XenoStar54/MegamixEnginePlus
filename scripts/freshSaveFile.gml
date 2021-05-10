@@ -20,6 +20,8 @@ global.bolts = 0;
 global.eTanks = 0;
 global.wTanks = 0;
 global.mTanks = 0;
+global.beatCalls = 0;
+global.pierceProtectors = 0;
 
 global.energyElements = 0;
 global.elementsCollected = makeArray("");

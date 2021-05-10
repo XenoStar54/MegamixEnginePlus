@@ -3,7 +3,7 @@ WreckingPrograms (creator of Mega Engine)
 SnoruntPyro
 ACESpark
 Stove Guy
-ThatEntityGuy
+ThatEntityGirl
 GingerMochi
 Beed28
 Renhoek
@@ -31,7 +31,7 @@ Sprites Inc.
 ## Original art
 ACESpark
 E-Clare
-Entity1037
+ThatEntityGirl
 gone-sovereign
 gregarlink10
 Stove Guy
@@ -42,6 +42,8 @@ M-Jacq
 StOil
 Flashman85
 MiniMacro
+ynmfallen
+Aburtos
 
 ## Original audio
 CosmicGem

@@ -40,6 +40,10 @@ global.maxETanks = 9;
 global.maxWTanks = 9;
 global.maxMTanks = 1;
 
+// maximum number of misc items
+global.maxPierceProtectors = 9;
+global.maxBeatCalls = 9;
+
 // maximum number of bolts
 global.maxBolts = 9999;
 

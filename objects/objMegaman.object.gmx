@@ -372,6 +372,7 @@ if (spawned)
             break;
         }
     }
+    
     switch (global.characterSelected[0])
     {
         default: //Weapon Names and Icons. This is to prevent multiplayer from confusing the game
@@ -400,6 +401,11 @@ if (spawned)
             break;
         }
     }
+    
+    if (global.difficulty == DIFF_EASY)
+    {
+        contactDamageMultiplier /= 2;
+    }
 }
 </string>
           </argument>
@@ -423,11 +429,7 @@ if (spawned)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (global.difficulty == DIFF_EASY)
-{
-    global.damage = max(1, global.damage div 2);
-}
-global.damage *= contactDamageMultiplier;
+            <string>global.damage = max(1, floor(global.damage * contactDamageMultiplier));
 </string>
           </argument>
         </arguments>

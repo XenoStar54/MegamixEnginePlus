@@ -82,11 +82,11 @@ with (objMegaman)
 // set these here. makes everyone's lives easier.
 
 etankPositionX = 149;
-etankPositionY = 10;
+etankPositionY = 6;
 wtankPositionX = 180;
-wtankPositionY = 10;
+wtankPositionY = 6;
 mtankPositionX = 211;
-mtankPositionY = 10;
+mtankPositionY = 6;
 
 optionsPositionX = 136;
 optionsPositionY = 208;
@@ -347,7 +347,13 @@ switch (phase)
                     
                     if (global.weapon[playerID] != oldWeapon)
                     {
-                        with (prtPlayerProjectile)
+                        // the beat weapon can act as a beat call, which is done by making
+                        // the weapon and beat call item use the same object
+                        if (object_index != objBeat) // don't destroy if it's an independent beat call
+                        {
+                            instance_destroy();
+                        }
+                        else if (isWeapon) // do destroy beat if it's a weapon
                         {
                             instance_destroy();
                         }
@@ -790,13 +796,13 @@ if (phase != 0)
     {
         if (playerID == other.playerID)
         {
-            drawPlayer(playerID, costumeID, 0, 0, other.x + 172, other.y + 62, -1, 1);
+            drawPlayer(playerID, costumeID, 0, 0, other.x + 172, other.y + 51, -1, 1);
         }
     }
     
     // health
-    draw_sprite_ext(sprPauseMenuBarPrimary, global.playerHealth[playerID], x + 144, y + 81, 1, 1, 0, col[0, 2], 1);
-    draw_sprite_ext(sprPauseMenuBarSecondary, global.playerHealth[playerID], x + 144, y + 81, 1, 1, 0, col[1, 2], 1);
+    draw_sprite_ext(sprPauseMenuBarPrimary, global.playerHealth[playerID], x + 144, y + 70, 1, 1, 0, col[0, 2], 1);
+    draw_sprite_ext(sprPauseMenuBarSecondary, global.playerHealth[playerID], x + 144, y + 70, 1, 1, 0, col[1, 2], 1);
     
     // E-Tank
     draw_sprite_ext(sprETank, 2, x + etankPositionX, y + etankPositionY, 1, 1, 0, col[0, option == weaponVisibleN + 1], 1);
@@ -817,43 +823,51 @@ if (phase != 0)
     draw_text(x + mtankPositionX + 8, y + mtankPositionY + 18, zeroPad(global.mTanks, 2));
     
     // Bolts
-    draw_sprite_ext(sprBoltBig, 0, x + 210, y + 54, 1, 1, 0, c_white, 1);
-    draw_sprite_ext(sprBoltBig, 1, x + 210, y + 54, 1, 1, 0, col[0, 1], 1);
-    draw_sprite_ext(sprBoltBig, 2, x + 210, y + 54, 1, 1, 0, col[1, 1], 1);
+    draw_sprite_ext(sprBoltBig, 0, x + 210, y + 43, 1, 1, 0, c_white, 1);
+    draw_sprite_ext(sprBoltBig, 1, x + 210, y + 43, 1, 1, 0, col[0, 1], 1);
+    draw_sprite_ext(sprBoltBig, 2, x + 210, y + 43, 1, 1, 0, col[1, 1], 1);
     
-    draw_text(x + 210 + 8, y + 54 + 18, zeroPad(global.bolts, 4));
+    draw_text(x + 210 + 8, y + 43 + 18, zeroPad(global.bolts, 4));
     
     // Energy Elements
-    draw_sprite_ext(sprEnergyElement, 0, x + 148, y + 92, 1, 1, 0, c_white, 1);
+    draw_sprite_ext(sprEnergyElement, 0, x + 161, y + 106, 1, 1, 0, c_white, 1);
     
-    draw_text(x + 148 + 8, y + 92 + 18, zeroPad(global.energyElements, 3));
+    draw_text(x + 161 + 8, y + 106 + 18, zeroPad(global.energyElements, 3));
     
     // Side Collectible
-    draw_sprite_ext(sprKey, 0, x + 178, y + 92, 1, 1, 0, c_white, 1);
+    draw_sprite_ext(sprKey, 0, x + 199, y + 106, 1, 1, 0, c_white, 1); // 191
     
-    draw_text(x + 178 + 8, y + 92 + 18, zeroPad(0, 3));
+    draw_text(x + 199 + 8, y + 106 + 18, zeroPad(0, 3));
 
+    // lives remaining
     with (objMegaman)
     {
         if (playerID == other.playerID)
         {
-            drawPlayer(playerID, costumeID, 16, 12, other.x + 216, other.y + 92, 1, 1);
+            drawPlayer(playerID, costumeID, 16, 12, other.x + 159, other.y + 79, 1, 1);
         }
     }
     
-    // lives remaining
     var livesText = zeroPad(global.livesRemaining, 2);
     if (!global.livesEnabled)
     {
         livesText = "--";
     }
     
-    draw_text(x + 216, y + 92 + 18, livesText);
+    draw_text(x + 159, y + 79 + 18, livesText);
+    
+    // beat calls
+    draw_sprite(sprBeatCall, 1, x + 187 - 8, y + 79);
+    draw_text(x + 187, y + 79 + 18, zeroPad(global.beatCalls, 2)); // 161, 106
+    
+    // pierce protectors
+    draw_sprite(sprPierceProtector, 0, x + 215 - 8, y + 79); // 207, 106
+    draw_text(x + 215, y + 79 + 18, zeroPad(global.pierceProtectors, 2));
     
     // energy saver
     if (global.energySaver)
     {
-        draw_sprite(sprEnergySaver, 0, x + 180, y + 160);
+        draw_sprite(sprEnergySaver, 0, x + 180, y + 164);
     }
     
     // colored text overlays

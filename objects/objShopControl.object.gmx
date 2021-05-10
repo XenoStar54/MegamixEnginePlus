@@ -28,9 +28,9 @@
             <string>image_speed = 0;
 
 // contants
-iconsXOffset = 52 + 12;
+iconsXOffset = 24 + 28;
 iconsYOffset = 24;
-iconsXSpacing = 52;
+iconsXSpacing = 28 + 16;
 iconsYSpacing = 34;
 
 priceXOffset = iconsXOffset;
@@ -51,7 +51,7 @@ playersXOffset = 224;
 playersYOffset = 144;
 playersXSpacing = 24;
 
-menuWidth = 3;
+menuWidth = 4;
 menuHeight = 2;
 
 quickScrollWait = 25; // how long until quick scroll activates
@@ -81,7 +81,6 @@ for (i = 0; i &lt; menuWidth; i++)
         itemPrice[i, j] = noone;
         itemName[i, j] = noone;
         itemDescription[i, j] = noone;
-        //itemPurchaseAction[i, j] = ""; // put arbitrary code here. Note that stringExecutePartial cannot handle a lot of GML functions.
     }
 }
 
@@ -91,43 +90,48 @@ itemIcon[0, 0] = sprLife;
 itemPrice[0, 0] = 20;
 itemName[0, 0] = "Life";
 itemDescription[0, 0] = "Gives you an extra try at beating a stage."
-//itemPurchaseAction[0, 0] = "global.livesRemaining++; if (global.livesRemaining &gt;= global.maxLives) { itemUnavailable[0, 0] = 1; }";
 
 itemUnavailable[1, 0] = global.energySaver &gt; 0;
 itemIcon[1, 0] = sprEnergySaver;
 itemPrice[1, 0] = 200;
 itemName[1, 0] = "Energy Saver";
 itemDescription[1, 0] = "Lowers the amount of weapon energy that's consumed when using weapons."
-//itemPurchaseAction[1, 0] = "global.energySaver = true; itemUnavailable[1, 0] = 1;";
 
 itemUnavailable[2, 0] = global.weaponLocked[global.weaponID[? objRushCycle]] == 0;
 itemIcon[2, 0] = sprRushBikeShopIcon;
 itemPrice[2, 0] = 100;
 itemName[2, 0] = "Rush Bike";
 itemDescription[2, 0] = "Turns rush into a motorcycle, allowing you to travel at high speeds!";
-//itemPurchaseAction[2, 0] = "global.weaponLocked[global.weaponID[? objRushCycle]] = false; itemUnavailable[2, 0] = true;";
 
-itemUnavailable[0, 1] = global.eTanks &gt;= global.maxETanks;
-itemIcon[0, 1] = sprETank;
+itemUnavailable[3, 0] = global.eTanks &gt;= global.maxETanks;
+itemIcon[3, 0] = sprETank;
+itemPrice[3, 0] = 30;
+itemName[3, 0] = "E-Tank";
+itemDescription[3, 0] = "Completely refills your health upon use.";
+
+itemUnavailable[0, 1] = global.wTanks &gt;= global.maxWTanks;
+itemIcon[0, 1] = sprWTank;
 itemPrice[0, 1] = 30;
-itemName[0, 1] = "E-Tank";
-itemDescription[0, 1] = "Completely refills your health upon use.";
-//itemPurchaseAction[0, 1] = "global.eTanks++; if (global.eTanks &gt;= global.maxETanks) { itemUnavailable[0, 1] = 1; }";
+itemName[0, 1] = "W-Tank";
+itemDescription[0, 1] = "Completely refills the energy of all of your weapons upon use.";
 
-itemUnavailable[1, 1] = global.wTanks &gt;= global.maxWTanks;
-itemIcon[1, 1] = sprWTank;
-itemPrice[1, 1] = 30;
-itemName[1, 1] = "W-Tank";
-itemDescription[1, 1] = "Completely refills the energy of all of your weapons upon use.";
-//itemPurchaseAction[1, 1] = "global.wTanks++; if (global.wTanks &gt;= global.maxWTanks) { itemUnavailable[1, 1] = 1; }";
+itemUnavailable[1, 1] = global.mTanks &gt;= global.maxMTanks;
+itemIcon[1, 1] = sprMTank;
+itemPrice[1, 1] = 50;
+itemName[1, 1] = "M-Tank";
+itemDescription[1, 1] = "Completely refills both your health and the energy for all of your weapons upon use."
 
-itemUnavailable[2, 1] = global.mTanks &gt;= global.maxMTanks;
-itemIcon[2, 1] = sprMTank;
-itemPrice[2, 1] = 50;
-itemName[2, 1] = "M-Tank";
-itemDescription[2, 1] = "Completely refills both your health and the energy for all of your weapons upon use."
-//itemPurchaseAction[2, 1] = "global.mTanks++; if (global.mTanks &gt;= global.maxMTanks) { itemUnavailable[2, 1] = 1; }";;
+itemUnavailable[2, 1] = global.beatCalls &gt;= global.maxBeatCalls;
+itemIcon[2, 1] = sprBeatCall;
+itemPrice[2, 1] = 20;
+itemName[2, 1] = "Beat Call";
+itemDescription[2, 1] = "Automatically used when you fall into a pit. Calls Beat to carry you to safety.";
 
+itemUnavailable[3, 1] = global.pierceProtectors &gt;= global.maxPierceProtectors;
+itemIcon[3, 1] = sprPierceProtector;
+itemPrice[3, 1] = 20;
+itemName[3, 1] = "Pierce Protector";
+itemDescription[3, 1] = "Automatically used when spikes are touched. Prevents damage.";
 
 // hacky way to make sure the player palettes are set
 for (i = 0; i &lt; global.playerCount; i++)
@@ -199,9 +203,11 @@ with (objMegaman)
     if (global.keyPausePressed[0])
     {
         if (global.bolts &gt;= itemPrice[cursorX, cursorY] &amp;&amp; itemUnavailable[cursorX, cursorY] == 0)
-        { // buy the item
+        {
+            // buy the item
             if (cursorX == 0 &amp;&amp; cursorY == 0)
-            { // life
+            {
+                // life
                 global.livesRemaining++;
                 if (global.livesRemaining &gt;= global.maxLives)
                 {
@@ -209,41 +215,61 @@ with (objMegaman)
                 }
             }
             else if (cursorX == 1 &amp;&amp; cursorY == 0)
-            { // energy saver
+            {
+                // energy saver
                 global.energySaver = true;
                 itemUnavailable[1, 0] = 1;
             }
             else if (cursorX == 2 &amp;&amp; cursorY == 0)
-            { // rush cycle
+            {
+                // rush cycle
                 global.weaponLocked[global.weaponID[? objRushCycle]] = false;
                 itemUnavailable[2, 0] = true;
             }
-            else if (cursorX == 0 &amp;&amp; cursorY == 1)
-            { // etank
+            else if (cursorX == 3 &amp;&amp; cursorY == 0)
+            {
+                // etank
                 global.eTanks++;
                 if (global.eTanks &gt;= global.maxETanks)
+                {
+                    itemUnavailable[3, 0] = 1;
+                }
+            }
+            else if (cursorX == 0 &amp;&amp; cursorY == 1)
+            { // wtank
+                global.wTanks++;
+                if (global.wTanks &gt;= global.maxWTanks)
                 {
                     itemUnavailable[0, 1] = 1;
                 }
             }
             else if (cursorX == 1 &amp;&amp; cursorY == 1)
-            { // wtank
-                global.wTanks++;
-                if (global.wTanks &gt;= global.maxWTanks)
+            {
+                // mtank
+                global.mTanks++;
+                if (global.mTanks &gt;= global.maxMTanks)
                 {
                     itemUnavailable[1, 1] = 1;
                 }
             }
             else if (cursorX == 2 &amp;&amp; cursorY == 1)
-            { // mtank
-                global.mTanks++;
-                if (global.mTanks &gt;= global.maxMTanks)
+            {
+                // beat call
+                global.beatCalls++;
+                if (global.beatCalls &gt;= global.maxBeatCalls)
                 {
                     itemUnavailable[2, 1] = 1;
                 }
             }
-            
-            //stringExecutePartial(itemPurchaseAction[cursorX, cursorY]);
+            else if (cursorX == 3 &amp;&amp; cursorY == 1)
+            {
+                // pierce protector
+                global.pierceProtectors++;
+                if (global.pierceProtectors &gt;= global.maxPierceProtectors)
+                {
+                    itemUnavailable[3, 1] = 1;
+                }
+            }
             
             global.bolts -= itemPrice[cursorX, cursorY];
             targetBolts = global.bolts;
@@ -261,7 +287,8 @@ with (objMegaman)
         displayBolts--;
     }
     else if (displayBolts &lt; targetBolts)
-    { // lol I'm sure someone will do an item that costs negative bolts    :P
+    {
+        // lol I'm sure someone will do an item that costs negative bolts    :P
         displayBolts++;
     }
     

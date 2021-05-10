@@ -51,6 +51,7 @@ staticImgSpd = 0.5;
 // cutscene variables
 phase = 0;
 subPhase = 0;
+skipped = false;
 
 timer = 0;
 counter = 0;
@@ -438,7 +439,7 @@ if (instance_exists(bossObject))
                 }
                 
                 // go to the stage
-                if (timer &gt;= 400)
+                if (!skipped &amp;&amp; timer &gt;= 400)
                 {
                     var level = getRoom(stageRoom[cursorX, cursorY], "Levels/" + stageRoom[cursorX, cursorY])
                     goToLevel(level, true);
@@ -544,7 +545,7 @@ if (instance_exists(bossObject))
                 }
                 
                 // go to the stage
-                if (bossObjectIntroFinished &amp;&amp; timer &gt;= 400)
+                if (!skipped &amp;&amp; bossObjectIntroFinished &amp;&amp; timer &gt;= 400)
                 {
                     var level = getRoom(stageRoom[cursorX, cursorY], "Levels/" + stageRoom[cursorX, cursorY])
                     goToLevel(level, true);
@@ -556,6 +557,15 @@ if (instance_exists(bossObject))
         }
         
         break;
+}
+
+// skip boss intro
+if (phase &gt;= 2 &amp;&amp; !skipped &amp;&amp; global.keyPausePressed[0])
+{
+    // go to the stage
+    var level = getRoom(stageRoom[cursorX, cursorY], "Levels/" + stageRoom[cursorX, cursorY])
+    goToLevel(level, true);
+    skipped = true;
 }
 
 // animation

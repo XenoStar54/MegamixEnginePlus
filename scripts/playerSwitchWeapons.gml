@@ -87,9 +87,19 @@ if (global.weapon[playerID] != oldWeapon)
                 }
             }
         }
+        
         if (playerID == other.playerID && !persists)
         {
-            instance_destroy();
+            // the beat weapon can act as a beat call, which is done by making
+            // the weapon and beat call item use the same object
+            if (object_index != objBeat) // don't destroy if it's an independent beat call
+            {
+                instance_destroy();
+            }
+            else if (isWeapon) // do destroy beat if it's a weapon
+            {
+                instance_destroy();
+            }
         }
     }
     

@@ -25,6 +25,8 @@ global.converter = sl(global.converter);
 global.difficulty = sl(global.difficulty, "difficulty");
 global.debugSkipStageMode = sl(global.debugSkipStageMode, "skip-stages");
 global.energySaver = sl(global.energySaver, "energy-saver");
+global.pierceProtectors = sl(global.pierceProtectors, "pierce-protector");
+global.beatCalls = sl(global.beatCalls, "beat-call");
 
 global.gameTimer = sl(global.gameTimer);
 

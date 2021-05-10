@@ -306,9 +306,47 @@ if (dieToSpikes)
         spSolid = instance_place(x, y, objSpike);
         if (spSolid)
         {
-            global.damage = spSolid.contactDamage;
-            healthpoints -= global.damage;
-            playSFX(sfxEnemyHit);
+            if (object_index == objMegaman)
+            {
+                if (global.pierceProtectors > 0)
+                {
+                    global.pierceProtectors--;
+                    playSFX(sfxMenuSelect);
+                    
+                    // knockback player without damaging them
+                    global.damage = 0;
+                    iFrames = -1;
+                    shootTimer = 0;
+                    playSFX(sfxHit);
+                }
+                else
+                {
+                    global.damage = spSolid.contactDamage;
+                    if (global.damage < 28) // instakill spikes should stay instakill
+                    {
+                        // make damage spikes be effected by damage multiplier
+                        global.damage = max(1, floor(global.damage * contactDamageMultiplier));
+                    }
+                    else if (global.difficulty == DIFF_EASY)
+                    {
+                        // instakill spikes deal 7 damage on easy instead
+                        global.damage = max(1, floor(7 * contactDamageMultiplier * 2)); // * 2 is to offset easy mode's half damage
+                    }
+                    
+                    healthpoints -= global.damage;
+                }
+                
+                // Damagepopup
+                if (global.damagePopup)
+                {
+                    instance_create(bboxGetXCenter(), bbox_top + 4, objDamagePopup);
+                }
+            }
+            else
+            {
+                global.damage = spSolid.contactDamage;
+                healthpoints -= global.damage;
+            }
 
             if (healthpoints <= 0)
             {

@@ -29,6 +29,16 @@ spriteY = 0;
 switch (AnimID)
 {
     case "Normal": // Regular animation stuff 
+        // workaround to not appear as standing when being carried by beat and touching the ground
+        var beat = false;
+        if (instance_exists(vehicle))
+        {
+            if (vehicle.object_index == objBeat)
+            {
+                beat = true;
+            }
+        }
+        
         animNameID = 0; // Standing
         if (isHit || isFrozen) // Hurt
         {
@@ -46,7 +56,7 @@ switch (AnimID)
         {
             animNameID = 8;
         }
-        else if (ground)
+        else if (ground && !beat)
         {
             if (!playerIsLocked(PL_LOCK_MOVE) || fanoutDistance != 0)
             {

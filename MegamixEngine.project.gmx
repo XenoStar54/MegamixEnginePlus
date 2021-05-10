@@ -2446,6 +2446,7 @@
         <sprite>sprites\sprBusterShotChargedProto</sprite>
         <sprite>sprites\sprBassBullet</sprite>
         <sprites name="MM1">
+          <sprite>sprites\sprRollingCutter</sprite>
           <sprite>sprites\sprSuperArmCreateBlock</sprite>
           <sprite>sprites\sprSuperArmDebris</sprite>
           <sprite>sprites\sprIceSlasher</sprite>
@@ -2509,6 +2510,7 @@
           <sprite>sprites\sprNapalmBomb</sprite>
           <sprite>sprites\sprCrystalEyeLarge</sprite>
           <sprite>sprites\sprWeaponCrystalEyeSmall</sprite>
+          <sprite>sprites\sprBeat</sprite>
           <sprite>sprites\sprDarkStasisBullet</sprite>
           <sprite>sprites\sprDarkStasisWall</sprite>
           <sprite>sprites\mskDarkStasis</sprite>
@@ -2629,6 +2631,10 @@
           <sprite>sprites\sprMagnetBeam</sprite>
           <sprite>sprites\sprMagnetBeamEnd</sprite>
           <sprite>sprites\sprMagnetBeamPickup</sprite>
+          <sprite>sprites\sprCarry</sprite>
+          <sprite>sprites\sprItem1</sprite>
+          <sprite>sprites\sprItem2</sprite>
+          <sprite>sprites\sprItem3</sprite>
           <sprite>sprites\sprRushTeleport</sprite>
           <sprite>sprites\sprRush</sprite>
           <sprite>sprites\sprRushCoil</sprite>
@@ -2692,6 +2698,7 @@
             <sprite>sprites\sprWeaponIconsChargeKick</sprite>
             <sprite>sprites\sprWeaponIconsNapalmBomb</sprite>
             <sprite>sprites\sprWeaponIconsCrystalEye</sprite>
+            <sprite>sprites\sprWeaponIconsBeat</sprite>
             <sprite>sprites\sprWeaponIconsDarkStasis</sprite>
           </sprites>
           <sprites name="MM6">
@@ -2777,6 +2784,10 @@
           </sprites>
           <sprites name="Utilities">
             <sprite>sprites\sprWeaponIconsMagnetBeam</sprite>
+            <sprite>sprites\sprWeaponIconsCarry</sprite>
+            <sprite>sprites\sprWeaponIconsItem1</sprite>
+            <sprite>sprites\sprWeaponIconsItem2</sprite>
+            <sprite>sprites\sprWeaponIconsItem3</sprite>
             <sprite>sprites\sprWeaponIconsRushCoil</sprite>
             <sprite>sprites\sprWeaponIconsRushJet</sprite>
             <sprite>sprites\sprWeaponIconsWire</sprite>
@@ -4744,6 +4755,24 @@
         </sprites>
       </sprites>
       <sprites name="WW">
+        <sprites name="HyperStormH">
+          <sprite>sprites\sprHyperStormH</sprite>
+          <sprite>sprites\sprHyperStormHDust</sprite>
+        </sprites>
+        <sprites name="MegaWaterS">
+          <sprite>sprites\sprMegaWaterS</sprite>
+          <sprite>sprites\sprMegaWaterSDrops</sprite>
+          <sprite>sprites\sprMegaWaterSShield</sprite>
+          <sprite>sprites\sprMegaWaterSSpear</sprite>
+          <sprite>sprites\sprMegaWaterSSplash</sprite>
+          <sprite>sprites\sprMegaWaterSStream</sprite>
+        </sprites>
+        <sprites name="BusterRodG">
+          <sprite>sprites\sprBusterRodG</sprite>
+          <sprite>sprites\sprBusterRodGRodHead</sprite>
+          <sprite>sprites\sprBusterRodGRodParts</sprite>
+          <sprite>sprites\mskBusterRodGRod</sprite>
+        </sprites>
         <sprites name="Iron Ball">
           <sprite>sprites\sprIronBall</sprite>
         </sprites>
@@ -5411,6 +5440,8 @@
       <sprite>sprites\sprRushBikeShopIcon</sprite>
       <sprite>sprites\sprRechargedGraphic</sprite>
       <sprite>sprites\sprPlusGraphic</sprite>
+      <sprite>sprites\sprPierceProtector</sprite>
+      <sprite>sprites\sprBeatCall</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -5723,7 +5754,7 @@
         <background>background\tstCave</background>
         <background>background\tstStoveMan</background>
       </backgrounds>
-      <backgrounds name="Don&#039;t Use">
+      <backgrounds name="Don't Use">
         <background>background\tstSplashWomanTub</background>
         <background>background\tstAnimated</background>
         <background>background\tstAnimated1</background>
@@ -6193,7 +6224,7 @@
         <object>objects\objSlopeRLong</object>
         <object>objects\objSlopeLLong</object>
       </objects>
-      <objects name="Don&#039;t Use">
+      <objects name="Don't Use">
         <object>objects\prtBossDoor</object>
         <object>objects\objStandSolid</object>
       </objects>
@@ -6466,7 +6497,7 @@
           <object>objects\objTwinCannonBullet</object>
           <object>objects\objYudonMissile</object>
         </objects>
-        <objects name="Don&#039;tUse">
+        <objects name="Don'tUse">
           <object>objects\objPowerMusclerSmoke</object>
           <object>objects\objRockExplosion</object>
           <object>objects\objTatepakkanPlatform</object>
@@ -6530,7 +6561,7 @@
           <object>objects\objSpringFaceBombHead</object>
           <object>objects\objSRU21PDebris</object>
         </objects>
-        <objects name="Don&#039;t Use">
+        <objects name="Don't Use">
           <object>objects\objBrainBreakGlasses</object>
           <object>objects\objBrainBreakSmoke</object>
           <object>objects\objBrownContainer</object>
@@ -6572,7 +6603,7 @@
         <objects name="Projectiles">
           <object>objects\objBigTellyBomb</object>
         </objects>
-        <objects name="Don&#039;t Use">
+        <objects name="Don't Use">
           <object>objects\objKemumakinCloud</object>
         </objects>
       </objects>
@@ -6699,7 +6730,7 @@
           <object>objects\objSwalloweggEgg</object>
           <object>objects\objWaltriotMissile</object>
         </objects>
-        <objects name="Don&#039;t use">
+        <objects name="Don't use">
           <object>objects\objBariIIIBody</object>
           <object>objects\objDarspiderWeb</object>
           <object>objects\objSepaRoaderCannon</object>
@@ -6810,7 +6841,7 @@
           <object>objects\objMorningJoeStar</object>
         </objects>
       </objects>
-      <objects name="Don&#039;t Use">
+      <objects name="Don't Use">
         <object>objects\objEnemyBullet</object>
         <object>objects\objHarmfulExplosion</object>
       </objects>
@@ -6866,7 +6897,7 @@
           <object>objects\objOctobossBullet</object>
           <object>objects\objOctoperOABullet1</object>
         </objects>
-        <objects name="Don&#039;t Use">
+        <objects name="Don't Use">
           <object>objects\objOctoperDetector</object>
         </objects>
       </objects>
@@ -6918,7 +6949,7 @@
           <object>objects\objHanabiranFlower</object>
           <object>objects\objPaozoBall</object>
         </objects>
-        <objects name="Don&#039;t use">
+        <objects name="Don't use">
           <object>objects\objChangkeyDragonMask</object>
           <object>objects\objChangkeyDragonTackleFire</object>
           <object>objects\objChangkeyDragonTailFire</object>
@@ -6944,7 +6975,7 @@
           <object>objects\objOctobulbRailSpark</object>
           <object>objects\objOctobulbJellyfish</object>
         </objects>
-        <objects name="Don&#039;t Use">
+        <objects name="Don't Use">
           <object>objects\objSuzakAndFenix</object>
           <object>objects\objTheKeeperHand</object>
           <object>objects\objOctobulbEnergy</object>
@@ -6976,7 +7007,7 @@
           <object>objects\objTKhamenRock</object>
           <object>objects\objTyhornBall</object>
         </objects>
-        <objects name="Don&#039;t Use">
+        <objects name="Don't Use">
           <object>objects\objGundrillCover</object>
           <object>objects\objTKhamenDead</object>
         </objects>
@@ -7014,7 +7045,7 @@
           <object>objects\objTwinShooterGLaser</object>
           <object>objects\objCombiloidProjectile</object>
         </objects>
-        <objects name="Don&#039;t Use">
+        <objects name="Don't Use">
           <object>objects\objCombiloidGun</object>
           <object>objects\objCombiloidMace</object>
         </objects>
@@ -7088,7 +7119,7 @@
           <object>objects\objBoobeamBullet</object>
           <object>objects\objWilyMachine2Projectile</object>
         </objects>
-        <objects name="Don&#039;t Use">
+        <objects name="Don't Use">
           <object>objects\objBubbleManWaterSprout</object>
           <object>objects\objPicoControl</object>
           <object>objects\objPicoKun</object>
@@ -7154,7 +7185,7 @@
           <object>objects\objSkullManBarrier</object>
           <object>objects\objMetallDaddyChild</object>
         </objects>
-        <objects name="Don&#039;t Use">
+        <objects name="Don't Use">
           <object>objects\objMetallDaddyHelmet</object>
         </objects>
       </objects>
@@ -7239,7 +7270,7 @@
           <object>objects\objTurboFire</object>
           <object>objects\objTurboFire2</object>
         </objects>
-        <objects name="Don&#039;t Use">
+        <objects name="Don't Use">
           <object>objects\objFloorFreeze</object>
           <object>objects\objSpringArmLink</object>
           <object>objects\objSpringArm</object>
@@ -7266,7 +7297,7 @@
           <object>objects\objGrenadeDebris</object>
           <object>objects\objGrenadeManGrenade</object>
         </objects>
-        <objects name="Don&#039;t Use">
+        <objects name="Don't Use">
           <object>objects\objSwordHead</object>
           <object>objects\objSwordBody</object>
           <object>objects\objFrostMegaMan</object>
@@ -7325,7 +7356,7 @@
           <object>objects\objSharkSubmarineDolphin</object>
           <object>objects\objSharkSubmarineLaser</object>
         </objects>
-        <objects name="Don&#039;t Use">
+        <objects name="Don't Use">
           <object>objects\prtSharkSubmarine</object>
           <object>objects\objSharkSubmarineBodyHatch</object>
           <object>objects\objSharkSubmarineCannon</object>
@@ -7408,7 +7439,18 @@
         </objects>
       </objects>
       <objects name="WW">
+        <object>objects\objHyperStormH</object>
+        <object>objects\objMegaWaterS</object>
+        <object>objects\objBusterRodG</object>
         <object>objects\objIronBall</object>
+        <objects name="Projectiles">
+          <object>objects\objHyperStormHDust</object>
+          <object>objects\objHyperStormHMet</object>
+          <object>objects\objMegaWaterSShield</object>
+          <object>objects\objMegaWaterSStream</object>
+          <object>objects\objBusterRodGRod</object>
+          <object>objects\objBusterRodGShadowClone</object>
+        </objects>
       </objects>
       <objects name="MM&amp;B">
         <object>objects\objMagicMan</object>
@@ -7453,7 +7495,7 @@
           <object>objects\objTorchManDOSWelding</object>
         </objects>
       </objects>
-      <objects name="Don&#039;t Use">
+      <objects name="Don't Use">
         <objects name="BossDetectors">
           <object>objects\objCentaurDetector</object>
           <object>objects\objSplashWallDetector</object>
@@ -7544,7 +7586,7 @@
         <object>objects\objSuperArmBlock</object>
         <object>objects\objSuperArmCreateBlock</object>
         <object>objects\objSuperArmBlock2x2</object>
-        <objects name="Don&#039;t Use">
+        <objects name="Don't Use">
           <object>objects\objFireBlockFire</object>
           <object>objects\objPUOilFire</object>
           <object>objects\objFireWave</object>
@@ -7574,7 +7616,7 @@
         <object>objects\objQuickLighting</object>
         <object>objects\objQuickLightingNormal</object>
         <object>objects\objSideCrusher</object>
-        <objects name="Don&#039;t Use">
+        <objects name="Don't Use">
           <object>objects\objQuickLaser</object>
           <object>objects\objPreciseQuickLaser</object>
           <object>objects\objTikiHorn</object>
@@ -7601,7 +7643,7 @@
         <object>objects\objTopLift</object>
         <object>objects\objTopSpawner</object>
         <object>objects\objWanaan</object>
-        <objects name="Don&#039;t Use">
+        <objects name="Don't Use">
           <object>objects\objKamegoroTornado</object>
           <object>objects\objWanaanChomper</object>
         </objects>
@@ -7622,7 +7664,7 @@
         <object>objects\objQuickSandB</object>
         <object>objects\objRingmanPlatform</object>
         <object>objects\objToadRainCtrl</object>
-        <objects name="Don&#039;t Use">
+        <objects name="Don't Use">
           <object>objects\objDrillBoulder</object>
           <object>objects\objDrillBoulderParticle</object>
           <object>objects\objHoverSmoke</object>
@@ -7664,7 +7706,7 @@
           <object>objects\objWaveManWarpRight</object>
           <object>objects\objWaveManWarpStop</object>
         </objects>
-        <objects name="Don&#039;t Use">
+        <objects name="Don't Use">
           <object>objects\objRollingDrillField</object>
           <object>objects\objWaveManWarp</object>
         </objects>
@@ -7699,7 +7741,7 @@
         <object>objects\objJunkPlatform</object>
         <object>objects\objJunkPlatformLarge</object>
         <object>objects\objRevealingTiles</object>
-        <objects name="Don&#039;t Use">
+        <objects name="Don't Use">
           <object>objects\objJunkMagDebris</object>
           <object>objects\objJunkDust</object>
           <object>objects\objControllableLiftOverlay</object>
@@ -7719,7 +7761,7 @@
         <object>objects\objMM8Switch</object>
         <object>objects\objTenguWind</object>
         <object>objects\objTenguWindSpeedTrigger</object>
-        <objects name="Don&#039;t Use">
+        <objects name="Don't Use">
           <object>objects\objSkullElevatorMask</object>
           <object>objects\objTenguLeaf</object>
         </objects>
@@ -7740,7 +7782,7 @@
         <object>objects\objMagmaBeamSource</object>
         <object>objects\objTornadoPlatform</object>
         <object>objects\objWily4Laser</object>
-        <objects name="Don&#039;t Use">
+        <objects name="Don't Use">
           <object>objects\objMagmaBeam</object>
           <object>objects\objMagmaBeamParticle</object>
         </objects>
@@ -7766,7 +7808,7 @@
         <object>objects\objStrikeManSoccerBall</object>
         <object>objects\objStrikeManSpikeySoccerBall</object>
         <object>objects\objTackleFireDispenser</object>
-        <objects name="Don&#039;t Use">
+        <objects name="Don't Use">
           <object>objects\objBladeManSeeSawPlatform</object>
           <object>objects\objSandstorm</object>
         </objects>
@@ -7792,7 +7834,7 @@
         <object>objects\objMoveHover</object>
         <object>objects\objNapalm</object>
         <object>objects\objRockPlatform</object>
-        <objects name="Don&#039;t Use">
+        <objects name="Don't Use">
           <object>objects\objFusePlatformDeleter</object>
         </objects>
       </objects>
@@ -7812,7 +7854,7 @@
         <object>objects\objTyhornPlatformSpawn</object>
         <object>objects\objUranusPlatform</object>
         <object>objects\objVenusWaterfallSpawner</object>
-        <objects name="Don&#039;t Use">
+        <objects name="Don't Use">
           <object>objects\objKamapot</object>
           <object>objects\objTyhornPlatform</object>
           <object>objects\objUranusPlatformSegment</object>
@@ -7835,7 +7877,7 @@
       <objects name="Other">
         <object>objects\objEmptyMech</object>
       </objects>
-      <objects name="Don&#039;t Use">
+      <objects name="Don't Use">
         <object>objects\prtCustomCamera</object>
         <object>objects\objMovingPlatformTest</object>
         <object>objects\objSolidEntity</object>
@@ -7870,7 +7912,7 @@
           <object>objects\objDownScrolling400px</object>
         </objects>
       </objects>
-      <objects name="Don&#039;t Use">
+      <objects name="Don't Use">
         <object>objects\objStopScrollingVertical</object>
         <object>objects\objSectionArrowLeft</object>
         <object>objects\objSectionArrowRight</object>
@@ -7899,7 +7941,7 @@
       <object>objects\objKeyBarrier</object>
       <object>objects\objEddie</object>
     </objects>
-    <objects name="Don&#039;t Use">
+    <objects name="Don't Use">
       <objects name="Player">
         <object>objects\objMegaman</object>
         <object>objects\objMegamanSweat</object>
@@ -7966,6 +8008,7 @@
             <object>objects\objChargeKick</object>
             <object>objects\objNapalmBomb</object>
             <object>objects\objCrystalEye</object>
+            <object>objects\objBeat</object>
             <object>objects\objDarkStasis</object>
             <objects name="Do Not Use">
               <object>objects\objGravityHoldEffect</object>
@@ -8086,7 +8129,12 @@
           </objects>
           <objects name="Utilities">
             <object>objects\objMagnetBeam</object>
+            <object>objects\objCarry</object>
+            <object>objects\objItem1</object>
+            <object>objects\objItem2</object>
+            <object>objects\objItem3</object>
             <object>objects\objRushCoil</object>
+            <object>objects\objMM3RushJet</object>
             <object>objects\objRushJet</object>
             <object>objects\objWireAdapter</object>
             <object>objects\objSuperArrow</object>

@@ -24,7 +24,7 @@ if (limit > 0) // Checks bullet limit
 {
     with (prtPlayerProjectile)
     {
-        if (parent == other.id)
+        if (parent == other.id && object_index != objBeat) // beat can be out when not as a weapon, so don't count him
         {
             limit -= bulletLimitCost;
             if (!limit)

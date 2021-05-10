@@ -235,6 +235,10 @@ if (!global.frozen)
                 {
                     i = instance_create(x, y - 16 * image_yscale, objRushJet);
                 }
+                if (type == 'mm3jet')
+                {
+                    i = instance_create(x, y - 16 * image_yscale, objMM3RushJet);
+                }
                 if (type == 'coil')
                 {
                     i = instance_create(x, y, objRushCoil);
