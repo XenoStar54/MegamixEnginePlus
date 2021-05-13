@@ -588,6 +588,9 @@ isTile = true;</code>
     <instance objName="objNapalm" x="48" y="1296" name="inst_0836F354" locked="0" code="if (global.difficulty &lt; DIFF_HARD)&#xA;{&#xA;    instance_destroy();&#xA;}&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objNapalm" x="208" y="1296" name="inst_08FB83E4" locked="0" code="if (global.difficulty &lt; DIFF_HARD)&#xA;{&#xA;    instance_destroy();&#xA;}&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objNapalm" x="192" y="1296" name="inst_98538A0C" locked="0" code="if (global.difficulty &lt; DIFF_HARD)&#xA;{&#xA;    instance_destroy();&#xA;}&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objMegaMechSharkTail" x="528" y="1440" name="inst_70EDCBA2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objMegaMechSharkBody" x="272" y="1440" name="inst_C5EE4C9E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objMegaMechSharkHead" x="240" y="1440" name="inst_A4DFF18C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="tstMM10Wily4" x="624" y="352" w="16" h="16" xo="32" yo="128" id="11295846" name="inst_EB5691AE" depth="1000010" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

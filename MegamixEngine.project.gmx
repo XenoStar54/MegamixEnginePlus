@@ -4911,7 +4911,7 @@
         </sprites>
       </sprites>
       <sprites name="MM&amp;B">
-        <sprites name="Magic Man">
+        <sprites name="Magic">
           <sprite>sprites\sprMagicMan</sprite>
           <sprite>sprites\sprMagicManIntro</sprite>
           <sprite>sprites\sprMagicManJump</sprite>
@@ -7294,8 +7294,8 @@
         <object>objects\objDocFlash</object>
         <object>objects\objDocHeat</object>
         <object>objects\objDocWood</object>
-        <object>objects\objKamegoroMaker</object>
         <object>objects\objDocRobotShell</object>
+        <object>objects\objKamegoroMaker</object>
         <objects name="Projectiles">
           <object>objects\objNeedleManBullet</object>
           <object>objects\objNeedleManStrike</object>
