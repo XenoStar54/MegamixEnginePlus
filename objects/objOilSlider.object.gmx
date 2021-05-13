@@ -165,11 +165,12 @@ if ((entityCanStep() || instance_exists(objSectionSwitcher)) &amp;&amp; canDamag
                     }
                     if (!other.oilSliderLock){
                         other.oilSliderLock = lockPoolLock(
-                        localPlayerLock[PL_LOCK_MOVE],
-                        localPlayerLock[PL_LOCK_SHOOT],
-                        localPlayerLock[PL_LOCK_TURN],
-                        localPlayerLock[PL_LOCK_SLIDE]);
+                        PL_LOCK_MOVE,
+                        PL_LOCK_SHOOT,
+                        PL_LOCK_TURN,
+                        PL_LOCK_SLIDE);
                     }
+                    other.oilSliderLock.targetInstance = id;
                 }
             }
         }

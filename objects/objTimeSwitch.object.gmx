@@ -231,7 +231,8 @@ if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT)
             shootTimer = 0;
             isShoot = 3;
             shootStandStillLock = lockPoolRelease(shootStandStillLock);
-            shootStandStillLock = lockPoolLock(localPlayerLock[PL_LOCK_MOVE]);
+            shootStandStillLock = lockPoolLock(PL_LOCK_MOVE);
+            shootStandStillLock.targetInstance = id;
             xspeed = 0;
             playSFX(sfxFlashStopper);
         }
@@ -243,15 +244,6 @@ if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT)
             else
                 playSFX(sfxError);
     }
-}
-
-switch(costumeID)
-{
-    default:
-        global.weaponName[global.weaponID[? objTimeSwitch]] = "TIME SWITCH";
-        global.weaponPrimaryColor[global.weaponID[? objTimeSwitch]] = global.nesPalette[34];
-        global.weaponSecondaryColor[global.weaponID[? objTimeSwitch]] = global.nesPalette[40];
-    break;
 }
 </string>
           </argument>

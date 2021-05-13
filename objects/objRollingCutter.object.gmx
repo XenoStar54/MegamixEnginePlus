@@ -41,7 +41,7 @@ yspeed = 0;
 grav = 0;
 
 rotateChange = 2.4;
-rotateChangeRecoil = 12;
+rotateChangeRecoil = 10;
 
 back = false;
 sfx = noone;
@@ -103,7 +103,7 @@ if (entityCanStep())
     
     if (!back &amp;&amp; !(direction &gt; 225 &amp;&amp; direction &lt; 315))
     {
-        direction += rotateChange * -image_xscale;
+        direction += rotateChange * -image_xscale * 1.2;
     }
     else if (!back &amp;&amp; (direction &gt; 225 &amp;&amp; direction &lt; 315))
     {
@@ -147,7 +147,7 @@ if (entityCanStep())
             change = rotateChangeRecoil;
         }
         
-        direction += change;
+        direction += change*0.95;
         speed = 3.5;
     }
     
@@ -222,11 +222,11 @@ if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT))
     {
         if (image_xscale &gt; 0)
         {
-            i.direction = 45;
+            i.direction = 55;
         }
         else
         {
-            i.direction = 135;
+            i.direction = 125;
         }
     }
 }

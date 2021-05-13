@@ -313,14 +313,24 @@ while (true)
     case "stsa":
         {
             var val = stack[--sc];
-            if (global.dll_gig2DArrays) ix2 = stack[--sc];
+            if (global.dll_gig2DArrays) 
+            {
+                ix2 = stack[--sc];
+            }
+            else
+            {
+                ix2 = 0;
+            }
             ix1 = stack[--sc];
             gigVariableSet(vInstanceName[real(immediate)], val, false, _self, ix1, ix2);
         }
         break;
     case "ldsa":
         {
-            if (global.dll_gig2DArrays) ix2 = stack[--sc];
+            if (global.dll_gig2DArrays) 
+            {
+                ix2 = stack[--sc];
+            }
             ix1 = stack[--sc];
             stack[sc++] = gigVariableGet(vInstanceName[real(immediate)], false, _self, ix1, ix2);
         }
@@ -337,7 +347,10 @@ while (true)
             {
                 _id = _other;
             }
-            if (global.dll_gig2DArrays) ix2 = stack[--sc];
+            if (global.dll_gig2DArrays) 
+            {
+                ix2 = stack[--sc];
+            }
             ix1 = stack[--sc];
             gigVariableSet(vInstanceName[real(immediate)], val, false, _id, ix1, ix2);
         }
@@ -354,7 +367,10 @@ while (true)
             {
                 _id = _other;
             }
-            if (global.dll_gig2DArrays) ix2 = stack[--sc];
+            if (global.dll_gig2DArrays) 
+            {
+                ix2 = stack[--sc];
+            }
             ix1 = stack[--sc];
             stack[sc++] = gigVariableGet(vInstanceName[real(immediate)], false, _id, ix1, ix2);
             break;
@@ -363,14 +379,20 @@ while (true)
     case "stga":
         {
             var val = stack[--sc];
-            if (global.dll_gig2DArrays) ix2 = stack[--sc];
+            if (global.dll_gig2DArrays) 
+            {
+                ix2 = stack[--sc];
+            }
             ix1 = stack[--sc];
             gigVariableSet(vGlobalName[real(immediate)], val, true, ix1, ix2);
             break;
         }
     case "ldga":
         {
-            if (global.dll_gig2DArrays) ix2 = stack[--sc];
+            if (global.dll_gig2DArrays) 
+            {
+                ix2 = stack[--sc];
+            }
             ix1 = stack[--sc];
             stack[sc++] = gigVariableGet(vGlobalName[real(immediate)], true, ix1, ix2);
             break;

@@ -69,7 +69,7 @@ startXScale = 0;
 // Music
 music = "Mega_Man_2GB.gbs";
 musicType = "VGM";
-musicTrackNumber = 16; // Default track: An ode to humanity's sins
+musicTrackNumber = 4; // Default track: An ode to humanity's sins
 
 // Damage Table
 enemyDamageValue(objBusterShot, 1);

@@ -20,8 +20,8 @@
   <width>30</width>
   <height>24</height>
   <frames>
-    <frame index="0">images\sprTackleFireDispenserFlipped_0.png</frame>
-    <frame index="1">images\sprTackleFireDispenserFlipped_1.png</frame>
-    <frame index="2">images\sprTackleFireDispenserFlipped_2.png</frame>
+    <frame index="0">images\sprTackleFireDispenserFlippedY_0.png</frame>
+    <frame index="1">images\sprTackleFireDispenserFlippedY_1.png</frame>
+    <frame index="2">images\sprTackleFireDispenserFlippedY_2.png</frame>
   </frames>
 </sprite>

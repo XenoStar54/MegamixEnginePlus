@@ -201,14 +201,6 @@
     <instance objName="objSolid" x="0" y="192" name="inst_47F08A34" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="objLadder" x="32" y="192" name="inst_9CE1C137" locked="0" code="" scaleX="1" scaleY="7" colour="4294967295" rotation="0"/>
     <instance objName="objSolid" x="1552" y="224" name="inst_764AEB31" locked="0" code="" scaleX="14" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objWilyMachine1A" x="576" y="512" name="inst_992C9E9B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objWilyMachine2A" x="720" y="528" name="inst_88527180" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objYellowDevil" x="560" y="592" name="inst_2AA45F36" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objWindMan" x="736" y="624" name="inst_0595BE26" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objTorchManDOS" x="608" y="624" name="inst_514A96A6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objTornadoMan" x="672" y="624" name="inst_FF949E96" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objTurboMan" x="692" y="624" name="inst_6E6D8CA5" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objWaveMan" x="716" y="624" name="inst_64D7B222" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objYellowDevil" x="2240" y="368" name="inst_BBF913B3" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objWindMan" x="2016" y="400" name="inst_5B1FEE05" locked="0" code="itemDrop = objYashichi;&#xA;useEndStageBehavior = false;&#xA;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objWilyMachine2A" x="1728" y="352" name="inst_BF7F261E" locked="0" code="itemDrop = objYashichi;&#xA;useEndStageBehavior = false;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -221,7 +213,7 @@
     <instance objName="objTornadoMan" x="736" y="400" name="inst_758C920B" locked="0" code="itemDrop = objYashichi;&#xA;useEndStageBehavior = false;&#xA;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objTorchManDOS" x="480" y="400" name="inst_9AD991CB" locked="0" code="itemDrop = objYashichi;&#xA;useEndStageBehavior = false;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objHyperStormH" x="304" y="608" name="inst_AD5B92D9" locked="0" code="// boss creation code&#xA;vacuumTime = 30;&#xA;shootCount *= 2;&#xA;shootWait /= 2;&#xA;jumpNumber = 3;&#xA;jumpHeight = -8;&#xA;&#xA;// death behavior&#xA;itemDrop = objYashichi;&#xA;useEndStageBehavior = false;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objDefaultSpawn" x="480" y="624" name="inst_1E2F7B4E" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objDefaultSpawn" x="816" y="624" name="inst_1E2F7B4E" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objMegaWaterS" x="384" y="848" name="inst_8F1B55E7" locked="0" code="// boss creation code&#xA;platformLeft = 336;&#xA;platformRight = 432;&#xA;platformTop = 784;&#xA;&#xA;// defeat behavior&#xA;itemDrop = objYashichi;&#xA;useEndStageBehavior = false;&#xA;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBossDoor" x="496" y="752" name="inst_A8007701" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBossDoor" x="496" y="736" name="inst_A4E80941" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -273,6 +265,18 @@
     <instance objName="objBossDoorVertical" x="384" y="672" name="inst_C7A33C54" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBossDoorVertical" x="368" y="672" name="inst_11B8D086" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBossDoorVertical" x="352" y="672" name="inst_E507193A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objSolid" x="800" y="640" name="inst_EDA2951A" locked="0" code="" scaleX="62" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objSolid" x="768" y="864" name="inst_566B4EC4" locked="0" code="" scaleX="48" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objRightScrolling" x="1024" y="672" name="inst_8920680E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRightScrolling" x="1280" y="672" name="inst_507CAE5C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRightScrolling" x="1024" y="448" name="inst_83F9B518" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRightScrolling" x="1280" y="448" name="inst_3E1A8A4A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRightScrolling" x="1536" y="448" name="inst_11EDDE9D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objDownScrolling" x="768" y="672" name="inst_F667059B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objStopScrollingHorizontal" x="1792" y="448" name="inst_2867BE35" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objStopScrollingHorizontal" x="1536" y="672" name="inst_49F23C40" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objStopScrollingHorizontal" x="768" y="448" name="inst_CE514F63" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objQuint" x="1248" y="624" name="inst_AE2F7148" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="tstTopman" x="16" y="192" w="16" h="16" xo="128" yo="48" id="11355687" name="inst_C593DE49" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

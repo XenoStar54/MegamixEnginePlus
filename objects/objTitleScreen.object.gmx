@@ -77,7 +77,7 @@ freshSaveFile();
     if ((demoTimer++) mod 500 == 495)
     {
         if (!recordInputPlayback(
-            choose("Recordings/demoPharaohMan.mrc",
+            choose("Recordings/demoHoneyWoman.mrc",
             "Recordings/demoHoneyWoman.mrc")))
             canProceed = false;
         exit;
