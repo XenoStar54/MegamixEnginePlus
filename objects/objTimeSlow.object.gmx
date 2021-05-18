@@ -252,7 +252,7 @@ if (!global.frozen || pauseTimer &gt; 0)
 {
     if (!instance_exists(objTimeSlow))
     {
-        var i = fireWeapon(0, 0, objTimeSlow, 1, 4, 2 - (ground == false)*2, 1);
+        var i = fireWeapon(0, 0, objTimeSlow, 1, 4, 2 - (ground == false)*2, 1 - 1 * (ground == false));
         i.origin_x = x;
         i.origin_y = y;
     }
