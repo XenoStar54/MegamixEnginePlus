@@ -152,16 +152,15 @@ if (!global.frozen)
     {
         if (!other.breakDashLock &amp;&amp; ground)
         {
-            var lock = lockPoolLock(
+                other.breakDashLock = lockPoolLock(
                 PL_LOCK_MOVE,
                 PL_LOCK_SHOOT,
                 PL_LOCK_SLIDE,
-                PL_LOCK_TURN
-            );
-            lock.targetInstance = id
-            other.breakDashLock = lock
-            xspeed=0;
-            yspeed=0;
+                PL_LOCK_TURN);
+                
+            other.breakDashLock.targetInstance = id;
+            xspeed = 0;
+            yspeed = 0;
         }
         
         if (!ground) // No air break dashes, sorry :c
@@ -179,8 +178,8 @@ if (!global.frozen)
     {
         if(playerIsLocked(PL_LOCK_MOVE) &amp;&amp; playerIsLocked(PL_LOCK_TURN))
         {
-            other.dashTimer=0;
-            xspeed=0;
+            //other.dashTimer=0;
+            //xspeed=0;
         }
     }
     

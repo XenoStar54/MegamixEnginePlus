@@ -3232,10 +3232,6 @@
         <sprite>sprites\sprBBitter</sprite>
         <sprite>sprites\sprBounder</sprite>
         <sprite>sprites\sprSpaceMetool</sprite>
-        <sprite>sprites\sprDachoneB</sprite>
-        <sprite>sprites\sprDachoneG</sprite>
-        <sprite>sprites\sprOctoboss</sprite>
-        <sprite>sprites\sprOctoperOA</sprite>
         <sprite>sprites\sprGiree</sprite>
         <sprite>sprites\sprMetallK1000</sprite>
         <sprite>sprites\sprCorocoro</sprite>
@@ -3279,9 +3275,6 @@
           <sprite>sprites\sprThrownBomb</sprite>
           <sprite>sprites\sprRock</sprite>
           <sprite>sprites\sprRockShatter</sprite>
-          <sprite>sprites\sprOctobossBullet</sprite>
-          <sprite>sprites\sprOctoperBullet1</sprite>
-          <sprite>sprites\sprDachoneBullet</sprite>
           <sprite>sprites\sprRembakunMissile</sprite>
           <sprite>sprites\sprApacheJoeBullet</sprite>
           <sprite>sprites\sprFoojeenTrash</sprite>
@@ -3807,16 +3800,27 @@
         <sprite>sprites\sprKabatoncue</sprite>
         <sprite>sprites\sprKabatoncueTeleport</sprite>
       </sprites>
+      <sprites name="MM5">
+        <sprite>sprites\sprDachoneB</sprite>
+        <sprite>sprites\sprDachoneG</sprite>
+        <sprite>sprites\sprOctoboss</sprite>
+        <sprite>sprites\sprOctoperOA</sprite>
+        <sprites name="Projectiles">
+          <sprite>sprites\sprDachoneBullet</sprite>
+          <sprite>sprites\sprOctobossBullet</sprite>
+          <sprite>sprites\sprOctoperBullet1</sprite>
+        </sprites>
+      </sprites>
       <sprites name="MM6">
         <sprite>sprites\sprGamarn</sprite>
         <sprite>sprites\sprGamarnLaser</sprite>
         <sprite>sprites\sprGamadayu</sprite>
         <sprite>sprites\sprGamadayuBomb</sprite>
         <sprite>sprites\sprGamarnIcon</sprite>
-        <sprite>sprites\sprMetallPotton</sprite>
         <sprite>sprites\sprGorillaTank</sprite>
         <sprite>sprites\sprGorillaTankEyes</sprite>
         <sprite>sprites\sprGorillaTankHand</sprite>
+        <sprite>sprites\sprMetallPotton</sprite>
       </sprites>
       <sprites name="MM7">
         <sprite>sprites\sprShirokumachineGTV</sprite>
@@ -6601,7 +6605,6 @@
         <object>objects\objCocco</object>
         <object>objects\objCorocoro</object>
         <object>objects\objCrystalJoe</object>
-        <object>objects\objDachone</object>
         <object>objects\objFoojeen</object>
         <object>objects\objGiree</object>
         <object>objects\objGravitron</object>
@@ -6892,20 +6895,24 @@
           <object>objects\objShieldAttackerTRLShield</object>
         </objects>
       </objects>
-      <objects name="GB I-IV">
-        <object>objects\objBubukanMkII</object>
+      <objects name="MMGBI">
         <object>objects\objCuttingWheel</object>
         <object>objects\objCuttingWheelChase</object>
         <object>objects\objCuttingWheelStationary</object>
         <object>objects\objDrillun</object>
-        <object>objects\objGunnerJoe</object>
+      </objects>
+      <objects name="MMGBIII">
+        <object>objects\objBubukanMkII</object>
         <object>objects\objPickelmanDada</object>
+      </objects>
+      <objects name="MMGBIV">
+        <object>objects\objGunnerJoe</object>
         <object>objects\objPressn</object>
         <objects name="Projectiles">
           <object>objects\objGunnerJoeMissile</object>
         </objects>
       </objects>
-      <objects name="GB V">
+      <objects name="MMGBV">
         <object>objects\objAlabell</object>
         <object>objects\objArmaroid</object>
         <object>objects\objBabyFlies</object>
@@ -6967,7 +6974,7 @@
           <object>objects\objSoshiBreakerDebris</object>
         </objects>
       </objects>
-      <objects name="CFTF">
+      <objects name="MM&amp;B2">
         <object>objects\objAceManbow</object>
         <object>objects\objButterdroid</object>
         <object>objects\objChuckmagnet</object>
@@ -7044,6 +7051,7 @@
         </objects>
       </objects>
       <objects name="MM5">
+        <object>objects\objDachone</object>
         <object>objects\objOctoboss</object>
         <object>objects\objOctoperOA</object>
         <objects name="Projectiles">
@@ -7139,13 +7147,13 @@
           <object>objects\objTricastlePlatform</object>
         </objects>
       </objects>
-      <objects name="MMIV">
+      <objects name="MMGBIV">
         <object>objects\objGiantMetCannon</object>
         <objects name="Projectiles">
           <object>objects\objGiantMetCannonShot</object>
         </objects>
       </objects>
-      <objects name="MMV">
+      <objects name="MMGBV">
         <object>objects\objGundrill</object>
         <object>objects\objHyoey</object>
         <object>objects\objTKhamen</object>
