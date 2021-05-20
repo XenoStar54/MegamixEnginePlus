@@ -226,13 +226,18 @@ else if (global.switchingSections)
 var initChargeTime = 20;
 
 // Shooting buster shots if not charged.
-if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT) &amp;&amp; !instance_exists(objBreakDash))
+var _canSpawn = true;
+with (objBreakDash)
 {
-    i = fireWeapon(20, 0, objNormalBusterShot, 3, 0, 1, 0);
-    if (i)
+    if (playerID == other.playerID)
     {
-        i.xspeed = image_xscale * 5; // zoom
+        _canSpawn = false;
     }
+}
+
+if (!_canSpawn)
+{
+    scrBusterControl(false);
 }
 
 //////////////
@@ -244,13 +249,23 @@ if (global.ammo[playerID, global.weapon[playerID]] &gt; 0)
     if ((global.keyShoot[playerID] || (isSlide &amp;&amp; chargeTimer &gt; 0))
         &amp;&amp; !playerIsLocked(PL_LOCK_CHARGE))
     {
-        if (!isShoot)
+        var areDashing = false;
+        with (objBreakDash)
+        {
+            if (playerID == other.playerID)
+            {
+                areDashing = true;
+            }
+        }
+        
+        if (!areDashing &amp;&amp; (!isShoot || global.characterSelected[playerID] == "Bass"))
         {
             isCharge = true;
             if (!isSlide)
             {
                 initChargeTimer += 1;
             }
+            
             if (initChargeTimer &gt;= initChargeTime)
             {
                 chargeTimer += 1;
@@ -258,6 +273,7 @@ if (global.ammo[playerID, global.weapon[playerID]] &gt; 0)
                 {
                     playSFX(sfxCharging);
                 }
+                
                 if (chargeTimer &lt; chargeTime)
                 {
                     var chargeTimeDiv, chargeCol;
@@ -276,6 +292,7 @@ if (global.ammo[playerID, global.weapon[playerID]] &gt; 0)
                         chargeCol = make_color_rgb(248, 88,
                             152); // Light red (pink)
                     }
+                    
                     if (chargeTimer mod 6 &gt;= 0 &amp;&amp; chargeTimer mod 6 &lt; 3)
                     {
                         global.outlineCol[playerID] = chargeCol;
@@ -292,6 +309,7 @@ if (global.ammo[playerID, global.weapon[playerID]] &gt; 0)
                         audio_stop_sound(sfxCharging);
                         playSFX(sfxCharged);
                     }
+                    
                     switch (floor(chargeTimer / 3 mod 3))
                     {
                         case 0:
@@ -316,7 +334,7 @@ if (global.ammo[playerID, global.weapon[playerID]] &gt; 0)
     }
     else // Release the charge shot
     {
-        if (chargeTimer != 0 &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT) &amp;&amp; !isHit)
+        if (chargeTimer != 0 &amp;&amp; !isHit)
         {
             // Climbing constantly flips your xscale, so here just rely on a seperate variable set w/ direction keys and stuff in playerStep
             if (climbing)
@@ -324,17 +342,23 @@ if (global.ammo[playerID, global.weapon[playerID]] &gt; 0)
                 image_xscale = climbShootXscale;
             }
             
-            /////////////////////
-            // ACTUAL SHOOTING //
-            /////////////////////
-            
-            // full charge
-            if (chargeTimer &gt;= chargeTime &amp;&amp; ground)
+            if (!playerIsLocked(PL_LOCK_SHOOT))
             {
-                a = instance_create(x, y, objBreakDash);
-                a.image_xscale = image_xscale;
-                global.ammo[playerID, global.weapon[playerID]] = max(0,
-                    global.ammo[playerID, global.weapon[playerID]] - 3);
+                /////////////////////
+                // ACTUAL SHOOTING //
+                /////////////////////
+                
+                // full charge
+                if (chargeTimer &gt;= chargeTime &amp;&amp; ground)
+                {
+                    a = instance_create(x, y, objBreakDash);
+                    a.image_xscale = image_xscale;
+                    a.parent = id;
+                    a.playerID = playerID;
+                    a.costumeID = costumeID;
+                    global.ammo[playerID, global.weapon[playerID]] = max(0,
+                        global.ammo[playerID, global.weapon[playerID]] - 3);
+                }
             }
             
             // reset all charging stuff

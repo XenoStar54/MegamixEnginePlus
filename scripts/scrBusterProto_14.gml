@@ -1,3 +1,16 @@
+/// scrBusterProto_14([canCharge?], [canStartShoot])
+var _canCharge = true;
+if (argument_count > 0)
+{
+    _canCharge = argument[0];
+}
+
+var _canStartShoot = true;
+if (argument_count > 1)
+{
+    _canStartShoot = argument[1];
+}
+
 var bulletLimit = 2;
 var weaponCost = 0;
 var action = 1; // 0 - no frame; 1 - shoot; 2 - throw
@@ -8,7 +21,8 @@ var initChargeTime = 20;
 
 if (!global.lockBuster)
 {
-    if (global.keyShootPressed[playerID] && !playerIsLocked(PL_LOCK_SHOOT) && chargeTimer == 0)
+    if (_canStartShoot && global.keyShootPressed[playerID]
+        && !playerIsLocked(PL_LOCK_SHOOT) && chargeTimer == 0)
     {
         i = fireWeapon(16, 0, objBusterShot, bulletLimit, weaponCost, action, willStop);
         if (i)
@@ -21,10 +35,10 @@ if (!global.lockBuster)
     // Charging //
     //////////////
     
-    if (global.enableCharge)
+    if (global.enableCharge && _canCharge)
     {
         if ((global.keyShoot[playerID] || (isSlide && chargeTimer > 0))
-            && !playerIsLocked(PL_LOCK_CHARGE))
+            && !playerIsLocked(PL_LOCK_CHARGE) && (_canStartShoot || initChargeTimer > 0))
         {
             if (!isShoot)
             {

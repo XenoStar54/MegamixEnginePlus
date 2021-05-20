@@ -551,115 +551,93 @@ if (!global.frozen)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT))
+            <string>var _canSpawn = !instance_exists(myTrebleBoost);
+with (objTrebleBoost)
 {
-
-    if (!instance_exists(objRushCoil)
-    &amp;&amp; !instance_exists(objRushTeleport) &amp;&amp; !instance_exists(objTrebleBoost) &amp;&amp; global.ammo[playerID, global.weapon[playerID]] &gt; 0)
+    if (playerID == other.playerID)
     {
-        i = fireWeapon(26, 0, objRushTeleport, 4, 0, 0, 0);
+        _canSpawn = false;
+    }
+}
+
+with (objRushTeleport)
+{
+    if (playerID == other.playerID)
+    {
+        _canSpawn = false;
+    }
+}
+
+_canSpawn = _canSpawn &amp;&amp; global.ammo[playerID, global.weapon[playerID]] &gt; 0;
+
+if (_canSpawn)
+{
+    if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT))
+    {
+        i = fireWeapon(26, 0, objRushTeleport, 1, 0, 0, 0);
         if (i)
         {
-            i.type = 'boost';
-            i.y = view_yview + (view_hview * (image_yscale == -1));
-        }
-    }
-    else
-    {
-        if (instance_exists(myTrebleBoost))
-        {
-            var directions = makeArray(0,45,-45);
-            var tempPlayer = global.characterSelected[playerID];
-            global.characterSelected[playerID] = "Bass";
-            
-            var myCount = 0;
-            with (objBusterShot)//Check only this player's bullets.
+            with (i)
             {
-                if (parent == other.id)
-                {
-                    
-                    myCount++;
-                }
+                type = 'boost';
+                y = view_yview + (view_hview * (image_yscale == -1));
             }
             
-            
-            if (myCount == 0)
+            //_canSpawn = false;
+        }
+    }
+}
+
+if (!_canSpawn &amp;&amp; instance_exists(myTrebleBoost))
+{
+    if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT))
+    {
+        // treble boost shots
+        var directions = makeArray(0,45,-45);
+        var tempPlayer = global.characterSelected[playerID];
+        global.characterSelected[playerID] = "Bass"; // use bass' shots
+        
+        var myCount = 0;
+        with (objBusterShot) // Check only this player's bullets.
+        {
+            if (parent == other.id)
             {
-                for (var a = 0; a &lt; 3; a++)
-                {
-                    i = fireWeapon(20, 0, objBusterShot, 100, 0, 1, 0);
-                    if (i)
-                    {
-                        i.isBoost = true;
-                        i.penetrate = 1;
-                        i.contactDamage = 1;
-                        i.sprite_index = sprBassBullet;
-                        i.dir = directions[a];
-                        if (image_xscale &lt; 0)
-                        {
-                            i.dir += 180;
-                        }
-                        with (i)
-                        {
-                            xspeed = cos(degtorad(dir)) * 5;
-                            yspeed = -sin(degtorad(dir)) * 5 * sign(image_yscale);//Run this once to set the x and y speed.
-                        }
-                    }
-                }
-            
-            
-                /*i = fireWeapon(20, 0, objBusterShot, 100, 0, 1, 0);
+                myCount++;
+            }
+        }
+        
+        if (myCount == 0)
+        {
+            for (var a = 0; a &lt; 3; a++)
+            {
+                i = fireWeapon(20, 0, objBusterShot, 100, 0, 1, 0);
                 if (i)
                 {
-                    i.xspeed = image_xscale * 5;
-                    i.sprite_index = sprEnemyBullet;
-                    i = fireWeapon(20, 0, objBusterShot, 100, 0, 1, 0);
-                    if (i)//Need inside so we can bypass bullet limit restrictions.
+                    i.isBoost = true;
+                    i.penetrate = 1;
+                    i.contactDamage = 1;
+                    i.sprite_index = sprBassBullet;
+                    i.dir = directions[a];
+                    if (image_xscale &lt; 0)
                     {
-                        i.dir = degtorad(45);//i.xspeed = image_xscale * 3;
-                        //i.yspeed = image_yscale * 3;
-                        i.sprite_index = sprEnemyBullet;
-                        if (image_xscale &lt; 0)
-                        {
-                            i.dir += 180;
-                        }
+                        i.dir += 180;
                     }
-                    
-                    i = fireWeapon(20, 0, objBusterShot, 100, 0, 1, 0);
-                    if (i)
+                    with (i)
                     {
-                        i.dir = degtorad(-45)//i.xspeed = image_xscale * 3;
-                        //i.yspeed = image_yscale * -3;
-                        i.sprite_index = sprEnemyBullet;
-                        if (image_xscale &lt; 0)
-                        {
-                            i.dir += 180;
-                        }
+                        xspeed = cos(degtorad(dir)) * 5;
+                        yspeed = -sin(degtorad(dir)) * 5 * sign(image_yscale);//Run this once to set the x and y speed.
                     }
-                    
-                    //global.shotCount++;
-                }*/
-            }
-            global.characterSelected[playerID] = tempPlayer;//And swap back.
-        }
-        else
-        {
-            var discountAssist = 1;//Used to guarantee the actual 'shot' limit as 3 instead of 2 (NES-style) or 3 with assist onscreen and 4 with it offscreen (out of ammo).
-            if (instance_exists(objRushTeleport) || instance_exists(objRushCoil) || instance_exists(objRushJet))
-            {
-                discountAssist = 0;
-            }
-            
-            i = fireWeapon(16, 0, objBusterShot, 4-discountAssist, 0, 1, 0);
-            if (i)
-            {
-                i.xspeed = image_xscale * 5;
-                //global.shotCount++;
+                }
             }
         }
+        
+        // end character shenanigans
+        global.characterSelected[playerID] = tempPlayer;
     }
-
 }
+
+// normal firing
+scrBusterControl(false, true, !instance_exists(myTrebleBoost) &amp;&amp; !_canSpawn);
 </string>
           </argument>
         </arguments>

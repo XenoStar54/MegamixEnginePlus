@@ -261,11 +261,11 @@ with (objRushTeleport)
 
 _canSpawn = _canSpawn &amp;&amp; global.ammo[playerID, global.weapon[playerID]] &gt; 0;
 
-if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT))
+if (_canSpawn)
 {
-    if (_canSpawn)
+    if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT))
     {
-        i = fireWeapon(26, 0, objRushTeleport, 4, 0, 0, 0);
+        i = fireWeapon(26, 0, objRushTeleport, 1, 0, 0, 0);
         with (i)
         {
             type = 'mm3jet';
@@ -276,17 +276,10 @@ if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT))
             }
         }
     }
-    else
-    {
-        // buster
-        var i = fireWeapon(20, 0, objBusterShot, 4, 0, 1, 0);
-        if (i)
-        {
-            i.xspeed = image_xscale * 5; // zoom
-        }
-    }
 }
 
+// normal firing
+scrBusterControl(false, true, !_canSpawn);
 </string>
           </argument>
         </arguments>

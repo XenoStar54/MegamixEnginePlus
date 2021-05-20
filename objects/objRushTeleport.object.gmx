@@ -170,7 +170,7 @@ if (!global.frozen)
     
     if (yspeed != 0 &amp;&amp; upordown == 'down')
     {
-        if (type == 'jet')
+        if (type == 'jet' || type == 'mm3jet')
         {
             if (instance_exists(parent))
             {
@@ -187,7 +187,7 @@ if (!global.frozen)
             {
                 if (!checkSolid(0, 0))
                 {
-                    if (type == 'jet')
+                    if (type == 'jet' || type == 'mm3jet')
                     {
                         yspeed = 0;
                         y = instance_place(x, y, objRushTeleportBlock).y;
@@ -257,6 +257,10 @@ if (!global.frozen)
                 if (type == 'mm3jet')
                 {
                     i = instance_create(x, y - 16 * image_yscale, objMM3RushJet);
+                }
+                if (type == 'marine')
+                {
+                    i = instance_create(x, y - 16 * image_yscale, objRushMarine);
                 }
                 if (type == 'coil')
                 {

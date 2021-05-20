@@ -89,6 +89,7 @@ if (instance_exists(parent))
 // update costume sprite
 if (instance_exists(parent))
 {
+    playerID = parent.playerID;
     costumeID = parent.costumeID;
 }
 </string>

@@ -262,7 +262,7 @@ if (!global.frozen)
                 parent.yspeed = -1 * gravDir;
                 instance_destroy();
             }
-            else
+            /*else
             {
                 with (parent)
                 {
@@ -272,7 +272,7 @@ if (!global.frozen)
                         shootTimer -= 1;
                     }
                 }
-            }
+            }*/
         }
     }
 }
@@ -308,11 +308,11 @@ weaponCost = 2;
 action = 1; // 0 - no frame; 1 - shoot; 2 - throw
 willStop = 0; // If this is 1, the player will halt on shooting ala Metal Blade.
 
-if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT))
+if (!instance_exists(vehicle))
 {
-    if (!instance_exists(vehicle))
+    if (!instance_exists(bulletObject))
     {
-        if (!instance_exists(bulletObject))
+        if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT))
         {
             if (!climbing &amp;&amp; ground
                 &amp;&amp; ((global.keyUp[playerID] &amp;&amp; sign(grav) &gt;= 0)
@@ -337,17 +337,13 @@ if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT))
                 }
             }
         }
-        else
+    }
+    else
+    {
+        // buster shot
+        if (objWireAdapter.phase &gt;= 2)
         {
-            // buster shot
-            if (objWireAdapter.phase &gt;= 2)
-            {
-                var i = fireWeapon(16, 0, objBusterShot, 4, 0, 1, 0);
-                if (i)
-                {
-                    i.xspeed = image_xscale * 5;
-                }
-            }
+            scrBusterControl(false, false);
         }
     }
 }

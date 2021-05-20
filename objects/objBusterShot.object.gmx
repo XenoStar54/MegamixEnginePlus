@@ -49,11 +49,12 @@ else if instance_exists(parent)
         case "Bass": 
         {
             scrBusterBass_Create();
-            dir = 0;
             break;
         }
     }
 }
+
+dir = 0;
 </string>
           </argument>
         </arguments>
@@ -112,30 +113,8 @@ if (!global.frozen &amp;&amp; object_index != objNormalBusterShot &amp;&amp; ins
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if object_index == objNormalBusterShot //normal shots
-    scrBusterDefault_14();
-else 
-{
-    switch (global.characterSelected[playerID])
-    {
-        default: //All characters besides Bass and Proto Man use the same event
-        case "Mega Man":
-        case "Roll":
-        {
-            scrBusterDefault_14();
-            break;
-        }
-        case "Bass":
-        {
-            scrBusterBass_14();
-            break;
-        }
-        case "Proto Man":
-        {
-            scrBusterProto_14();
-        }
-    }
-}
+            <string>/// EV_WEAPON_CONTROL
+scrBusterControl();
 </string>
           </argument>
         </arguments>

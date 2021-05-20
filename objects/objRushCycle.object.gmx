@@ -400,10 +400,37 @@ if (active)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT))
+            <string>var canSpawn = global.ammo[playerID, global.weapon[playerID]] &gt; 0;
+
+var onCycle = false;
+if (instance_exists(vehicle))
 {
-    if (!instance_exists(objRushCycle) &amp;&amp; !instance_exists(objRushTeleport)
-    &amp;&amp; global.ammo[playerID, global.weapon[playerID]] &gt; 0)
+    if (vehicle.object_index == objRushCycle)
+    {
+        onCycle = true;
+    }
+}
+
+with (objRushCycle)
+{
+    if (playerID == other.playerID)
+    {
+        canSpawn = false;
+    }
+}
+
+with (objRushTeleport)
+{
+    if (playerID == other.playerID)
+    {
+        canSpawn = false;
+    }
+}
+    
+if (canSpawn)
+{
+    // summon cycle
+    if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT))
     {
         i = fireWeapon(26, 0, objRushTeleport, 1, 0, 0, 0);
         with (i)
@@ -415,11 +442,57 @@ if (active)
                 y += view_hview;
             }
         }
-    } // buster shot if cycle is on
-    else if (instance_exists(vehicle))
+    }
+                
+    // Reset all charging stuff
+    chargeTimer = 0;
+    initChargeTimer = 0;
+    audio_stop_sound(sfxCharged);
+    audio_stop_sound(sfxCharging);
+    playerPalette(); // Reset the colors
+}
+else if (onCycle)
+{
+    // buster shot if cycle is on
+    if (!vehicle.turning &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT))
     {
-        if (!vehicle.turning)
+        if (global.characterSelected[playerID] != "Bass")
         {
+            if (global.keyShootPressed[playerID])
+            {
+                with (vehicle)
+                {
+                    shootTimer = 20;
+                    if (currentImg &lt; 4 &amp;&amp; ground)
+                    {
+                        currentImg += 2;
+                    }
+                }
+                
+                var i = fireWeapon(13, 4, objBusterShot, 3, 0, 1, 0);
+                if (instance_exists(i))
+                {
+                    i.xspeed = objRushCycle.image_xscale * 6.5;
+                }
+            }
+                
+            // Reset all charging stuff
+            chargeTimer = 0;
+            initChargeTimer = 0;
+            audio_stop_sound(sfxCharged);
+            audio_stop_sound(sfxCharging);
+            playerPalette(); // Reset the colors
+        }
+        else if (global.keyShoot[playerID])
+        {
+            // bass buster when cycle is on
+            if (shootTimer &lt; 8)
+            {
+                shootTimer++
+                exit;
+            }
+            
+            var i = fireWeapon(13, 4, objBusterShot, 4, 0, 1, 0);
             with (vehicle)
             {
                 shootTimer = 20;
@@ -429,20 +502,24 @@ if (active)
                 }
             }
             
-            i = fireWeapon(13, 4, objBusterShot, 3, 0, 1, 0);
             if (instance_exists(i))
             {
-                i.xspeed = objRushCycle.image_xscale * 6.5;
+                i.sprite_index = sprEnemyBullet;
+                i.dir = 0;
+            
+                if (image_xscale &lt; 0)
+                {
+                    i.dir += 180;
+                }
             }
         }
     }
-    else
-    {
-        with (fireWeapon(16, 0, objBusterShot, 4, 0, 1, 0))
-        {
-            xspeed = other.image_xscale * 5;
-        }
-    }
+}
+
+// normal firing
+if (!onCycle)
+{
+    scrBusterControl(false, true, !canSpawn);
 }
 </string>
           </argument>

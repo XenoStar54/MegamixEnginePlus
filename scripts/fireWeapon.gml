@@ -22,9 +22,10 @@ stopit = argument6;
 
 if (limit > 0) // Checks bullet limit
 {
-    with (prtPlayerProjectile)
+    //with (prtPlayerProjectile)
+    with (wobj) // only care about the weapon limit for the object we're firing
     {
-        if (parent == other.id && object_index != objBeat) // beat can be out when not as a weapon, so don't count him
+        if (parent == other.id)
         {
             limit -= bulletLimitCost;
             if (!limit)
@@ -101,6 +102,8 @@ i = instance_create(x + (xs * image_xscale), y + (ys * image_yscale), wobj);
 if (instance_exists(i))
 {
     i.parent = id;
+    i.playerID = playerID;
+    i.costumeID = costumeID;
     i.image_xscale *= image_xscale;
     i.image_yscale *= image_yscale;
     

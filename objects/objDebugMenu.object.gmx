@@ -38,7 +38,7 @@ playerID = 0;
 pauseLock = lockPoolLock(PL_LOCK_PAUSE);
 option = 0;
 quickScrollTimer = 25;
-endy = 10;
+endy = 11;
 mode = 0; // 0: normal. 1: record input menu
 openTimer = 0;
 
@@ -47,6 +47,7 @@ AMMO REFILL#
 INVINCIBILITY#
 INFINITE HEALTH#
 SWAP GRAVITY#
+CHARACTER CHANGE#
 COSTUME CHANGE#
 RECORD INPUT#
 VISIBLE COLLISION#
@@ -229,9 +230,86 @@ if (mode == 0)
                     playSFX(sfxError);
                 }
                 break;
+            
+            // Character
+            case 5:
+                if (global.keyLeftPressed[playerID] &amp;&amp; !global.keyRightPressed[playerID])
+                {
+                    // characters
+                    playSFX(sfxMenuMove);
+                    
+                    with (objMegaman)
+                    {
+                        if (playerID == other.playerID)
+                        {
+                            switch (global.characterSelected[playerID])
+                            {
+                                default:
+                                case "Mega Man":
+                                    global.characterSelected[playerID] = "Roll";
+                                    break;
+                                case "Proto Man":
+                                    global.characterSelected[playerID] = "Mega Man";
+                                    break;
+                                case "Bass":
+                                    global.characterSelected[playerID] = "Proto Man";
+                                    break;
+                                case "Roll":
+                                    global.characterSelected[playerID] = "Bass";
+                                    break;
+                            }
+                            
+                            // set character traits
+                            event_user(0);
+                            
+                            // set to default costume for character
+                            event_perform_object(objMegaman, ev_step_begin, 0);
+                            
+                            playerPalette();
+                        }
+                    }
+                }
+                else if (global.keyRightPressed[playerID] &amp;&amp; !global.keyLeftPressed[playerID])
+                {
+                    // characters
+                    playSFX(sfxMenuMove);
+                    
+                    with (objMegaman)
+                    {
+                        if (playerID == other.playerID)
+                        {
+                            switch (global.characterSelected[playerID])
+                            {
+                                default:
+                                case "Mega Man":
+                                    global.characterSelected[playerID] = "Proto Man";
+                                    break;
+                                case "Proto Man":
+                                    global.characterSelected[playerID] = "Bass";
+                                    break;
+                                case "Bass":
+                                    global.characterSelected[playerID] = "Roll";
+                                    break;
+                                case "Roll":
+                                    global.characterSelected[playerID] = "Mega Man";
+                                    break;
+                            }
+                            
+                            // set character traits
+                            event_user(0);
+                            
+                            // set to default costume for character
+                            event_perform_object(objMegaman, ev_step_begin, 0);
+                            
+                            playerPalette();
+                        }
+                    }
+                }
+                
+                break;
 
             // Costumes
-            case 5:
+            case 6:
                 if (global.keyLeftPressed[playerID] &amp;&amp; !global.keyRightPressed[playerID])
                 {
                     // Costumes
@@ -259,10 +337,11 @@ if (mode == 0)
                         playerPalette();
                     }
                 }
+                
                 break;
 
             // record input
-            case 6:
+            case 7:
                 switch (global.recordInputMode)
                 {
                     case 0:
@@ -283,7 +362,7 @@ if (mode == 0)
                 break;
 
             // visible solids
-            case 7:
+            case 8:
                 with (objSolid)
                     visible ^= true;
                 with (objLadder)
@@ -297,7 +376,7 @@ if (mode == 0)
                 break;
 
             // PRESS 2
-            case 8:
+            case 9:
                 for (var i = 0; i &lt;= global.playerCount; i += 1)
                 {
                     global.playerHealth[i] = 0;
@@ -306,7 +385,7 @@ if (mode == 0)
                 break;
 
             // instakill entities
-            case 9:
+            case 10:
                 playSFX(sfxExplosion2);
                 with (prtEntity)
                 {
@@ -431,8 +510,12 @@ if (mode == 0)
             case 4:
                 draw_text(view_xview[0] + 256 - 8, view_yview[0] + i, string(objMegaman.gravDir));
                 break;
-            // costumes
+            // characters
             case 5:
+                draw_text(view_xview[0] + 256 - 8, view_yview[0] + i, global.characterSelected[playerID]);
+                break;
+            // costumes
+            case 6:
                 draw_text(view_xview[0] + 256 - 8, view_yview[0] + i, string(objMegaman.costumeID));
                 break;
         }

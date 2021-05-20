@@ -2464,6 +2464,7 @@
       <sprite>sprites\mskMegaman</sprite>
       <sprite>sprites\mskMegamanSlide</sprite>
       <sprite>sprites\mskMegamanSlide2</sprite>
+      <sprite>sprites\mskMegamanMarine</sprite>
       <sprite>sprites\mskProtoShield</sprite>
       <sprite>sprites\sprMegamanTeleport</sprite>
       <sprite>sprites\sprMegamanTeleportPrimary</sprite>
@@ -2694,6 +2695,7 @@
           <sprite>sprites\sprSuperArrow</sprite>
           <sprite>sprites\sprRushCycle</sprite>
           <sprite>sprites\sprCarry</sprite>
+          <sprite>sprites\sprRushMarine</sprite>
           <sprites name="Do Not Use">
             <sprite>sprites\sprItem1Mask</sprite>
             <sprite>sprites\sprItem2Mask</sprite>
@@ -2870,6 +2872,7 @@
             <sprite>sprites\sprWeaponIconsItem3</sprite>
             <sprite>sprites\sprWeaponIconsRushCoil</sprite>
             <sprite>sprites\sprWeaponIconsRushJet</sprite>
+            <sprite>sprites\sprWeaponIconsRushMarine</sprite>
             <sprite>sprites\sprWeaponIconsWire</sprite>
             <sprite>sprites\sprWeaponIconsSuperArrow</sprite>
             <sprite>sprites\sprWeaponIconsRushCycle</sprite>
@@ -6037,6 +6040,7 @@
       <script>scripts\getWeaponID.gml</script>
       <script>scripts\weaponReward.gml</script>
       <scripts name="Buster Replacements">
+        <script>scripts\scrBusterControl.gml</script>
         <scripts name="Default">
           <script>scripts\scrBusterDefault_Create.gml</script>
           <script>scripts\scrBusterDefault_14.gml</script>
@@ -8246,6 +8250,7 @@
           </objects>
           <objects name="MMGBI">
             <object>objects\objMirrorBuster</object>
+            <object>objects\objAtomicFireGBI</object>
           </objects>
           <objects name="MMGBII">
             <object>objects\objSakugarne</object>
@@ -8321,6 +8326,7 @@
             <object>objects\objRushCoil</object>
             <object>objects\objMM3RushJet</object>
             <object>objects\objRushJet</object>
+            <object>objects\objRushMarine</object>
             <object>objects\objWireAdapter</object>
             <object>objects\objSuperArrow</object>
             <object>objects\objRushCycle</object>
@@ -8398,6 +8404,7 @@
   <rooms name="rooms">
     <room>rooms\rmInit</room>
     <room>rooms\lvlCopyThisRoom</room>
+    <room>rooms\lvlWaterAndWaterAndWaterWater</room>
     <room>rooms\lvlShowcaseHUB</room>
     <rooms name="Engine">
       <room>rooms\rmDisclaimer</room>

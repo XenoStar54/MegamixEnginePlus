@@ -164,23 +164,18 @@ if (carryCount &gt;= 3)
     canSpawn = false;
 }
 
-if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT))
+if (canSpawn)
 {
-    if (canSpawn)
+    // spawn carry
+    if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT))
     {
-        // spawn carry
         // sets its position in its spawn event
         i = fireWeapon(0, 0, objCarry, 3, 1, 1, 0);
     }
-    else
-    {
-        var i = fireWeapon(20, 0, objBusterShot, 4, 0, 1, 0);
-        if (i)
-        {
-            i.xspeed = image_xscale * 5; // zoom
-        }
-    }
 }
+
+// normal firing
+scrBusterControl(false, true, !canSpawn);
 </string>
           </argument>
         </arguments>

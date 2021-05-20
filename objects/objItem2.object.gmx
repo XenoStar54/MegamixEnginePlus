@@ -131,30 +131,24 @@ if (!global.frozen)
           <argument>
             <kind>1</kind>
             <string>/// EV_WEAPON_CONTROL
-var canSpawn = global.ammo[playerID, global.weapon[playerID]] &gt; 0;
-if (instance_exists(objItem2))
+var _canSpawn = global.ammo[playerID, global.weapon[playerID]] &gt; 0;
+with (objItem2)
 {
-    if (objItem2.playerID == playerID)
+    if (playerID == other.playerID)
     {
-        canSpawn = false;
+        _canSpawn = false;
     }
 }
 
-if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT))
+if (_canSpawn)
 {
-    if (canSpawn)
+    if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT))
     {
         fireWeapon(30, 0, objItem2, 1, 0, 2, 0);
     }
-    else
-    {
-        var i = fireWeapon(20, 0, objBusterShot, 4, 0, 1, 0);
-        if (i)
-        {
-            i.xspeed = image_xscale * 5; // zoom
-        }
-    }
 }
+
+scrBusterControl(false, true, !_canSpawn);
 </string>
           </argument>
         </arguments>

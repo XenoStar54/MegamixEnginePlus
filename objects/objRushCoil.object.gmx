@@ -156,12 +156,30 @@ if (!global.frozen)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT))
+            <string>var _canSpawn = true;
+with (objRushCoil)
 {
-    if (!instance_exists(objRushCoil) &amp;&amp; !instance_exists(objRushTeleport)
-    &amp;&amp; global.ammo[playerID, global.weapon[playerID]] &gt; 0)
+    if (playerID == other.playerID)
     {
-        var i = fireWeapon(26, 0, objRushTeleport, 4, 0, 0, 0);
+        _canSpawn = false;
+    }
+}
+
+with (objRushTeleport)
+{
+    if (playerID == other.playerID)
+    {
+        _canSpawn = false;
+    }
+}
+
+_canSpawn = _canSpawn &amp;&amp; global.ammo[playerID, global.weapon[playerID]] &gt; 0;
+
+if (_canSpawn)
+{
+    if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT))
+    {
+        i = fireWeapon(26, 0, objRushTeleport, 1, 0, 0, 0);
         with (i)
         {
             type = 'coil';
@@ -172,15 +190,10 @@ if (!global.frozen)
             }
         }
     }
-    else
-    {
-        var i = fireWeapon(20, 0, objBusterShot, 4, 0, 1, 0);
-        if (i)
-        {
-            i.xspeed = image_xscale * 5; // zoom
-        }
-    }
 }
+
+// normal firing
+scrBusterControl(false, true, !_canSpawn);
 </string>
           </argument>
         </arguments>

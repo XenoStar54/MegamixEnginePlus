@@ -205,6 +205,7 @@ paletteRefresh = 0;
 
 myProtoShield = noone;
 myTrebleBoost = noone;
+myRushMarine = noone;
 </string>
           </argument>
         </arguments>
@@ -342,73 +343,10 @@ switch (global.characterSelected[playerID])
           <argument>
             <kind>1</kind>
             <string>event_inherited();
+
 if (spawned)
 {
-    switch (global.characterSelected[playerID])
-    { 
-        default: //define any variables that need to be overwritten here for a specific character. Note that the costume ID variables are assumed to be in their default values
-            break;
-        case "Mega Man":
-        {
-            costumeID = 0;
-            break;
-        }
-        case "Proto Man":
-        {
-            contactDamageMultiplier = 2; //Proto Man takes double damage like in MM10
-            costumeID = 1;
-            break;
-        }
-        case "Bass":
-        {
-            jumpCounterMax = 2; //Bass has double jumping
-            dashSlide = true; //Bass can dash
-            multiJumpDashCancel = true; //dash momentum no longer applies when a jump is done in midair with bass
-            firstSlideMask = mskMegaman;//This also applies to dash masks
-            secondSlideMask = mskMegaman;//same as above
-            costumeID = 2;
-            break;
-        }
-        case "Roll":
-        {
-            costumeID = 3;
-            break;
-        }
-    }
-    
-    switch (global.characterSelected[0])
-    {
-        default: //Weapon Names and Icons. This is to prevent multiplayer from confusing the game
-        case "Mega Man":
-        {
-            global.weaponName[0] = "MEGA BUSTER"
-            global.weaponIcon[0] = sprWeaponIconsMegaBuster;
-            break;
-        }
-        case "Proto Man":
-        {
-            global.weaponName[0] = "PROTO BUSTER"
-            global.weaponIcon[0] = sprWeaponIconsMegaBuster;
-            break;
-        }
-        case "Bass":
-        {
-            global.weaponName[0] = "BASS BUSTER"
-            global.weaponIcon[0] = sprWeaponIconsBassBuster;
-            break;
-        }
-        case "Roll":
-        {
-            global.weaponName[0] = "ROLL BUSTER"
-            global.weaponIcon[0] = sprWeaponIconsMegaBuster;
-            break;
-        }
-    }
-    
-    if (global.difficulty == DIFF_EASY)
-    {
-        contactDamageMultiplier /= 2;
-    }
+    event_user(0); // setup character traits
 }
 </string>
           </argument>
@@ -480,6 +418,127 @@ global.playerHealth[playerID] = 0;
           <argument>
             <kind>1</kind>
             <string>playerGetHit(global.damage);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>switch (global.characterSelected[playerID])
+{ 
+    default: //define any variables that need to be overwritten here for a specific character. Note that the costume ID variables are assumed to be in their default values
+        break;
+    case "Mega Man":
+    {
+        contactDamageMultiplier = 1;
+        jumpCounterMax = 1;
+        dashSlide = false;
+        multiJumpDashCancel = true;
+        firstSlideMask = mskMegamanSlide;
+        secondSlideMask = mskMegamanSlide2;
+        
+        costumeID = 0;
+        break;
+    }
+    case "Proto Man":
+    {
+        contactDamageMultiplier = 2; //Proto Man takes double damage like in MM10
+        jumpCounterMax = 1;
+        dashSlide = false;
+        multiJumpDashCancel = true;
+        firstSlideMask = mskMegamanSlide;
+        secondSlideMask = mskMegamanSlide2;
+        
+        costumeID = 1;
+        break;
+    }
+    case "Bass":
+    {
+        contactDamageMultiplier = 1;
+        jumpCounterMax = 2; //Bass has double jumping
+        dashSlide = true; //Bass can dash
+        multiJumpDashCancel = true; //dash momentum no longer applies when a jump is done in midair with bass
+        firstSlideMask = mskMegaman;//This also applies to dash masks
+        secondSlideMask = mskMegaman;//same as above
+        
+        costumeID = 2;
+        break;
+    }
+    case "Roll":
+    {
+        contactDamageMultiplier = 1;
+        jumpCounterMax = 1;
+        dashSlide = false;
+        multiJumpDashCancel = true;
+        firstSlideMask = mskMegamanSlide;
+        secondSlideMask = mskMegamanSlide2;
+        
+        costumeID = 3;
+        break;
+    }
+}
+
+switch (global.characterSelected[0])
+{
+    default: //Weapon Names and Icons. This is to prevent multiplayer from confusing the game
+    case "Mega Man":
+    {
+        global.weaponName[0] = "MEGA BUSTER"
+        global.weaponIcon[0] = sprWeaponIconsMegaBuster;
+        break;
+    }
+    case "Proto Man":
+    {
+        global.weaponName[0] = "PROTO BUSTER"
+        global.weaponIcon[0] = sprWeaponIconsMegaBuster;
+        break;
+    }
+    case "Bass":
+    {
+        global.weaponName[0] = "BASS BUSTER"
+        global.weaponIcon[0] = sprWeaponIconsBassBuster;
+        break;
+    }
+    case "Roll":
+    {
+        global.weaponName[0] = "ROLL BUSTER"
+        global.weaponIcon[0] = sprWeaponIconsMegaBuster;
+        break;
+    }
+}
+
+if (global.difficulty == DIFF_EASY)
+{
+    contactDamageMultiplier /= 2;
+}
+
+// get rid of proto shield if we hot-swapped characters
+if (global.characterSelected[playerID] != "Proto Man")
+{
+    with (objProtoShield)
+    {
+        if (parent == other.id)
+        {
+            instance_destroy();
+        }
+    }
+}
 </string>
           </argument>
         </arguments>

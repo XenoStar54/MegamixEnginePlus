@@ -231,12 +231,30 @@ if (!global.frozen)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT))
+            <string>var _canSpawn = true;
+with (objRushJet)
 {
-    if (!instance_exists(objRushJet) &amp;&amp; !instance_exists(objRushTeleport)
-    &amp;&amp; global.ammo[playerID, global.weapon[playerID]] &gt; 0)
+    if (playerID == other.playerID)
     {
-        var i = fireWeapon(26, 0, objRushTeleport, 4, 0, 0, 0);
+        _canSpawn = false;
+    }
+}
+
+with (objRushTeleport)
+{
+    if (playerID == other.playerID)
+    {
+        _canSpawn = false;
+    }
+}
+
+_canSpawn = _canSpawn &amp;&amp; global.ammo[playerID, global.weapon[playerID]] &gt; 0;
+
+if (_canSpawn)
+{
+    if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT))
+    {
+        i = fireWeapon(26, 0, objRushTeleport, 1, 0, 0, 0);
         with (i)
         {
             type = 'jet';
@@ -247,14 +265,10 @@ if (!global.frozen)
             }
         }
     }
-    else
-    {
-        with (fireWeapon(20, 0, objBusterShot, 4, 0, 1, 0))
-        {
-            xspeed = other.image_xscale * 5;
-        }
-    }
 }
+
+// normal firing
+scrBusterControl(false, true, !_canSpawn);
 </string>
           </argument>
         </arguments>
