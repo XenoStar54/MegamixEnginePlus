@@ -325,7 +325,8 @@ if(capturedProjectile != 0)
             <string>playSFX(sfxReflect);
 canDamage = false;
 yspeed = image_yscale*-2;
-
+xspeed = 0;
+grav = 0;
 </string>
           </argument>
         </arguments>

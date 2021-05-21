@@ -17,6 +17,13 @@ if (dir != 0)
         }
     }
     
+    // prevent switching if GB Time Stopper is active
+    if(instance_exists(objTimeStopperGB))
+    {
+        playSFX(sfxError);
+        exit;
+    }
+    
     quickWeaponScrollTimer--;
     
     if (!quickWeaponScrollTimer)
@@ -36,6 +43,12 @@ if (dir != 0)
 }
 else
 {
+    // prevent switching if GB Time Stopper is active
+    if(instance_exists(objTimeStopperGB))
+    {
+        exit;
+    }
+    
     // reset to mega buster
     if ((global.keyWeaponSwitchLeft[playerID] && global.keyWeaponSwitchRight[playerID]) && !global.lockBuster)
     {
