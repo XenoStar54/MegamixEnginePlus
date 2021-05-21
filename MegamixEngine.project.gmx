@@ -2673,36 +2673,40 @@
           <sprite>sprites\sprTorchArm</sprite>
         </sprites>
         <sprites name="Other">
-          <sprite>sprites\sprBeat</sprite>
           <sprite>sprites\sprMagneticShockwave</sprite>
           <sprite>sprites\sprMagneticShockwaveParticle</sprite>
           <sprite>sprites\sprCentaurArrow</sprite>
           <sprite>sprites\sprSkeletuppinPakkajoe</sprite>
+          <sprite>sprites\sprBeat</sprite>
           <sprites name="Do Not Use">
             <sprite>sprites\mskWeaponExplosion</sprite>
           </sprites>
         </sprites>
-        <sprites name="Utilities">
+        <sprites name="Non-Rush Utilities">
           <sprite>sprites\sprMagnetBeam</sprite>
           <sprite>sprites\sprMagnetBeamEnd</sprite>
           <sprite>sprites\sprMagnetBeamPickup</sprite>
           <sprite>sprites\sprItem1</sprite>
           <sprite>sprites\sprItem2</sprite>
           <sprite>sprites\sprItem3</sprite>
+          <sprite>sprites\sprWireAdapterWire</sprite>
+          <sprite>sprites\sprWireAdapter</sprite>
+          <sprite>sprites\sprSuperArrow</sprite>
+          <sprite>sprites\sprCarry</sprite>
+          <sprites name="Don't Use">
+            <sprite>sprites\sprItem1Mask</sprite>
+            <sprite>sprites\sprItem2Mask</sprite>
+            <sprite>sprites\sprItem3Mask</sprite>
+          </sprites>
+        </sprites>
+        <sprites name="Rush Utilities">
           <sprite>sprites\sprRushTeleport</sprite>
           <sprite>sprites\sprRush</sprite>
           <sprite>sprites\sprRushCoil</sprite>
           <sprite>sprites\sprRushJet</sprite>
-          <sprite>sprites\sprWireAdapterWire</sprite>
-          <sprite>sprites\sprWireAdapter</sprite>
-          <sprite>sprites\sprSuperArrow</sprite>
-          <sprite>sprites\sprRushCycle</sprite>
-          <sprite>sprites\sprCarry</sprite>
           <sprite>sprites\sprRushMarine</sprite>
-          <sprites name="Do Not Use">
-            <sprite>sprites\sprItem1Mask</sprite>
-            <sprite>sprites\sprItem2Mask</sprite>
-            <sprite>sprites\sprItem3Mask</sprite>
+          <sprite>sprites\sprRushCycle</sprite>
+          <sprites name="Don't Use">
             <sprite>sprites\sprRushMask</sprite>
           </sprites>
         </sprites>
@@ -2862,22 +2866,24 @@
             <sprite>sprites\sprWeaponIconsTorchArm</sprite>
           </sprites>
           <sprites name="Other">
-            <sprite>sprites\sprWeaponIconsBeat</sprite>
             <sprite>sprites\sprWeaponIconsMagneticShockwave</sprite>
             <sprite>sprites\sprWeaponIconsSkeletuppinPakkajoe</sprite>
             <sprite>sprites\sprWeaponIconsCentaurArrow</sprite>
+            <sprite>sprites\sprWeaponIconsBeat</sprite>
           </sprites>
-          <sprites name="Utilities">
+          <sprites name="Non-Rush Utilities">
             <sprite>sprites\sprWeaponIconsMagnetBeam</sprite>
-            <sprite>sprites\sprWeaponIconsCarry</sprite>
             <sprite>sprites\sprWeaponIconsItem1</sprite>
             <sprite>sprites\sprWeaponIconsItem2</sprite>
             <sprite>sprites\sprWeaponIconsItem3</sprite>
+            <sprite>sprites\sprWeaponIconsWire</sprite>
+            <sprite>sprites\sprWeaponIconsSuperArrow</sprite>
+            <sprite>sprites\sprWeaponIconsCarry</sprite>
+          </sprites>
+          <sprites name="Rush Utilities">
             <sprite>sprites\sprWeaponIconsRushCoil</sprite>
             <sprite>sprites\sprWeaponIconsRushJet</sprite>
             <sprite>sprites\sprWeaponIconsRushMarine</sprite>
-            <sprite>sprites\sprWeaponIconsWire</sprite>
-            <sprite>sprites\sprWeaponIconsSuperArrow</sprite>
             <sprite>sprites\sprWeaponIconsRushCycle</sprite>
             <sprite>sprites\sprWeaponIconsTrebleBoost</sprite>
           </sprites>
@@ -8324,25 +8330,27 @@
             </objects>
           </objects>
           <objects name="Other">
-            <object>objects\objBeat</object>
             <object>objects\objMagneticShockwave</object>
             <object>objects\objCentaurArrow</object>
             <object>objects\objSkeletuppinPakkajoe</object>
+            <object>objects\objBeat</object>
           </objects>
-          <objects name="Utilities">
+          <objects name="Non-Rush Utilities">
             <object>objects\objMagnetBeam</object>
             <object>objects\objItem1</object>
             <object>objects\objItem2</object>
             <object>objects\objItem3</object>
+            <object>objects\objWireAdapter</object>
+            <object>objects\objSuperArrow</object>
+            <object>objects\objCarry</object>
+          </objects>
+          <objects name="Rush Utilities">
             <object>objects\objRushCoil</object>
             <object>objects\objMM3RushJet</object>
             <object>objects\objRushJet</object>
             <object>objects\objRushMarine</object>
-            <object>objects\objWireAdapter</object>
-            <object>objects\objSuperArrow</object>
             <object>objects\objRushCycle</object>
             <object>objects\objTrebleBoost</object>
-            <object>objects\objCarry</object>
           </objects>
           <objects name="Don't Use">
             <object>objects\objNormalBusterShot</object>
