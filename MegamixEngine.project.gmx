@@ -2612,6 +2612,8 @@
           <sprite>sprites\sprBounceBallConfetti</sprite>
         </sprites>
         <sprites name="MMGBI">
+          <sprite>sprites\sprThunderBeamGB</sprite>
+          <sprite>sprites\sprThunderBeamVerticalGB</sprite>
           <sprite>sprites\sprQuickBoomerangGB</sprite>
           <sprite>sprites\sprAtomicFireGB1</sprite>
           <sprite>sprites\sprAtomicFireGB2</sprite>
@@ -8267,6 +8269,7 @@
             </objects>
           </objects>
           <objects name="MMGBI">
+            <object>objects\objThunderBeamGB</object>
             <object>objects\objQuickBoomerangGB</object>
             <object>objects\objAtomicFireGB</object>
             <object>objects\objMirrorBuster</object>
