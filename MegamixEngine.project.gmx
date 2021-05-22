@@ -8278,6 +8278,7 @@
             </objects>
           </objects>
           <objects name="MMGBI">
+            <object>objects\objRollingCutterGB</object>
             <object>objects\objIceSlasherGB</object>
             <object>objects\objThunderBeamGB</object>
             <object>objects\objBubbleLeadGB</object>
