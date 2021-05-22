@@ -1,4 +1,4 @@
-// scrBusterBass_14([canAim?], [canStartShoot])
+// scrBusterBass_14([canAim?], [canStartShoot], [sfx])
 var _canAim = true;
 if (argument_count > 0)
 {
@@ -9,6 +9,12 @@ var _canStartShoot = true;
 if (argument_count > 1)
 {
     _canStartShoot = argument[1];
+}
+
+var _sfx = true;
+if (argument_count > 2)
+{
+    _sfx = argument[2];
 }
 
 var bulletLimit = 4;
@@ -82,6 +88,12 @@ if (!global.lockBuster && _canStartShoot)
         
         if (i)
         {
+            
+            playSFX(_sfx);
+            if(_sfx == sfxBusterGBI)
+            {
+                i.ReflectSFX = sfxReflectGBI;
+            }
             i.sprite_index = sprBassBullet;
             i.dir = 0;
         

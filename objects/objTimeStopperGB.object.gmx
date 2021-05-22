@@ -176,7 +176,7 @@ if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT)
     }
     else
     {
-        scrBusterControl(false, true, true);
+        scrBusterControl(false, true, true, sfxBusterGBI);
     }
 }
 </string>

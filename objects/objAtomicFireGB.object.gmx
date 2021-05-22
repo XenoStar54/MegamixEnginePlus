@@ -372,10 +372,15 @@ audio_stop_sound(sfxAtomicFireChargeCGBI);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited();
-
+            <string>// just insert this here since we don't want to use the NES reflect sound
+canDamage = 0;
+canHit = false;
+direction = 45 + 90 * (xspeed + hspeed &gt; 0);
+speed = 6;
+xspeed = 0;
+yspeed = 0;
+playSFX(sfxReflectGBI);
 contactDamage = 0;
-
 audio_stop_sound(sfxAtomicFireChargeAGBI);
 audio_stop_sound(sfxAtomicFireChargeBGBI);
 audio_stop_sound(sfxAtomicFireChargeCGBI);

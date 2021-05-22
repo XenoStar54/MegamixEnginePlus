@@ -1,4 +1,4 @@
-/// scrBusterDefault_14([canCharge?], [canStartShoot?])
+/// scrBusterDefault_14([canCharge?], [canStartShoot?], [sfx])
 var _canCharge = true;
 if (argument_count > 0)
 {
@@ -9,6 +9,12 @@ var _canStartShoot = true;
 if (argument_count > 1)
 {
     _canStartShoot = argument[1];
+}
+
+var _sfx = true;
+if (argument_count > 2)
+{
+    _sfx = argument[2];
 }
 
 var bulletLimit = 3;
@@ -27,6 +33,12 @@ if (!global.lockBuster)
         i = fireWeapon(20, 0, objBusterShot, bulletLimit, weaponCost, action, willStop);
         if (i)
         {
+            playSFX(_sfx);
+            if(_sfx == sfxBusterGBI)
+            {
+                i.ReflectSFX = sfxReflectGBI;
+                i.sprite_index = sprBusterShotGB;
+            }
             i.xspeed = image_xscale * 5; // zoom
         }
     }

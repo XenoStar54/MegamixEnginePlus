@@ -1,4 +1,4 @@
-/// scrBusterControl([canCharge?], [canAim?], [canStartShoot?])
+/// scrBusterControl([canCharge?], [canAim?], [canStartShoot?], [busterSFX])
 /* setting canStartShoot to false makes you unable to start charging or shoot small pellets,
     but it lets you release charge shots currently being charged. Useful for stuff like utilities */
     
@@ -20,6 +20,12 @@ if (argument_count > 2)
     _startShoot = argument[2];
 }
 
+var _sfx = sfxBuster;
+if (argument_count > 3)
+{   
+    _sfx = argument[3];
+}
+
 if (object_index == objNormalBusterShot)
 {
     // normal shots
@@ -33,19 +39,19 @@ else
         case "Mega Man":
         case "Roll":
         {
-            scrBusterDefault_14(_charge, _startShoot);
+            scrBusterDefault_14(_charge, _startShoot, _sfx);
             break;
         }
         
         case "Proto Man":
         {
-            scrBusterProto_14(_charge, _startShoot);
+            scrBusterProto_14(_charge, _startShoot, _sfx);
             break;
         }
         
         case "Bass":
         {
-            scrBusterBass_14(_aim, _startShoot);
+            scrBusterBass_14(_aim, _startShoot, _sfx);
             break;
         }
     }

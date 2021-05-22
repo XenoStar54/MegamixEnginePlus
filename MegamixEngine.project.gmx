@@ -2478,6 +2478,7 @@
         <sprite>sprites\sprBusterShotHalfChargedProto</sprite>
         <sprite>sprites\sprBusterShotChargedProto</sprite>
         <sprite>sprites\sprBassBullet</sprite>
+        <sprite>sprites\sprBusterShotGB</sprite>
         <sprites name="MM1">
           <sprite>sprites\sprRollingCutter</sprite>
           <sprite>sprites\sprSuperArmCreateBlock</sprite>
@@ -2613,6 +2614,7 @@
           <sprite>sprites\sprBounceBallConfetti</sprite>
         </sprites>
         <sprites name="MMGBI">
+          <sprite>sprites\sprRollingCutterGB</sprite>
           <sprite>sprites\sprIceSlasherGB</sprite>
           <sprite>sprites\sprThunderBeamGB</sprite>
           <sprite>sprites\sprThunderBeamVerticalGB</sprite>
