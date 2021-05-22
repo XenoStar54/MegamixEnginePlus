@@ -186,7 +186,7 @@ if (global.keyShoot[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT) &amp;&am
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>playSFX(sfxReflect);
+            <string>playSFX(sfxReflectGBI);
 canDamage = false;
 grav = 0.2*image_yscale;
 image_speed = 0;
