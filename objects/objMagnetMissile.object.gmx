@@ -40,6 +40,9 @@ for (var i = 0; i &lt; 6; i++)
     crosshairFrame[i] = 0;
 }
 
+// corner animation
+hasTurnedCorner = false;
+
 // Movement
 timer = 0;
 newAngle = 0;
@@ -150,65 +153,108 @@ if (isController) // Code for the controller
             <string>event_inherited();
 with (other)
 {
-	if (!global.frozen &amp;&amp; !global.switchingSections)
-	{
-		// to flip Magnet Missile properly, this must be included
-		
-		if (xspeed &gt; 0)
-		{
-			image_index = 0;
-		}
-		else if (xspeed &lt; 0)
-		{
-			image_index = 3;
-		}
-		
-		if (!isController) // Code for the missiles
-		{
-			// behaviourType = 4;
-			
-			target = controllerTargets[0];
-			
-			if (!instance_exists(target))
-			{
-				event_user(0);
-			}
-			else if (target.dead)
-			{
-				event_user(0);
-			}
-			
-			if (target != controllerTargets[0])
-			{
-				controllerTargets[0] = target;
-				crosshairFrame[0] = 0;
-			}
-			
-			timer++;
-			
-			if (instance_exists(target)) // Aiming
-			{
-				// check for x position being the same. The comparisons are to prevent minor positioning glitches
-				if (x &gt; target.x - 3 &amp;&amp; x &lt; target.x + 3 &amp;&amp; xspeed != 0)
-				{
-					// if target is above, turn the missile up and speed it up
-					if (target.y &lt;= y)
-					{
-						image_index = 1;
-						xspeed = 0;
-						yspeed = -6;
-					}
-					// otherwise, turn missile down
-					else
-					{
-						image_index = 2;   
-						xspeed = 0;
-						yspeed = 6;
-					}
-				}
-			}
-		}
-	}
+    if (!global.frozen &amp;&amp; !global.switchingSections)
+    {
+        if(hasTurnedCorner)
+        {
+            if(image_index == 4 || image_index == 5)
+            {
+                image_index = 1;
+                xspeed = 0;
+                yspeed = -6;
+            }
+            else if(image_index == 6 || image_index == 7)
+            {
+                image_index = 2;   
+                xspeed = 0;
+                yspeed = 6;
+            }
+        }
+    
+        // to flip Magnet Missile properly, this must be included
+        if (xspeed &gt; 0)
+        {
+            image_index = 0;
+        }
+        else if (xspeed &lt; 0)
+        {
+            image_index = 3;
+        }
+    
+        if (!isController) // Code for the missiles
+        {
+            target = controllerTargets[0];
+            if (!instance_exists(target))
+            {
+                event_user(0);
+            }
+            else if (target.dead)
+            {
+                event_user(0);
+            }
+            
+            if (target != controllerTargets[0])
+            {
+                controllerTargets[0] = target;
+                crosshairFrame[0] = 0;
+            }
+            timer++;
+            
+            if (instance_exists(target)) // Aiming
+            {
+                // check for x position being the same. The comparisons are to prevent minor positioning glitches
+                if (x &gt; target.x - 3 &amp;&amp; x &lt; target.x + 3 &amp;&amp; xspeed != 0)
+                {
+                    // if target is above, turn the missile up and speed it up
+                    if (target.y &lt;= y)
+                    {
+                        if(!hasTurnedCorner)
+                        {
+                            xspeed = 0;
+                            if(image_xscale &lt; 0)
+                            {
+                                image_index = 4;
+                            }
+                            else
+                            {
+                                image_index = 5;
+                            }
+                            hasTurnedCorner = true;
+                        }
+                        else
+                        {
+                            image_index = 1;
+                            xspeed = 0;
+                            yspeed = -6;
+                        }
+                    }
+                    // otherwise, turn missile down
+                    else
+                    {
+                        if(!hasTurnedCorner)
+                        {
+                            xspeed = 0;
+                            if(image_xscale &lt; 0)
+                            {
+                                image_index = 7;
+                            }
+                            else
+                            {
+                                image_index = 6;
+                            }
+                            hasTurnedCorner = true;
+                        }
+                        else
+                        {
+                            image_index = 2;   
+                            xspeed = 0;
+                            yspeed = 6;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 </string>
           </argument>

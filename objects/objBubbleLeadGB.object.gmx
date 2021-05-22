@@ -78,40 +78,47 @@ isSolid = 0;
 
 if(entityCanStep())
 {
-    if(state == 0) // land
+    if(canDamage)
     {
-        xspeed = dir;
-        if(ground || inWater)
+        if(state == 0) // land
         {
-            state = 1;
-            yspeed = 0;
+            xspeed = dir;
+            if(ground || inWater)
+            {
+                state = 1;
+                yspeed = 0;
+                grav = 0;
+                xspeed = 0;
+            }
+        }
+        else if(state == 1) // I have landed
+        {
             grav = 0;
-            xspeed = 0;
+            if(ground || inWater)
+            {
+                xspeed = dir*1.5;
+                yspeed = 0;
+                /*if(inWater)
+                {
+                    var water = instance_place(x,y,objWater);
+                    var waterSurface = water.y + (16*abs(water.image_yscale)) * (image_yscale != water.image_yscale) * -image_yscale;
+                    if(abs(waterSurface - y) &lt; 2) yspeed = (waterSurface - y);
+                    else yspeed = sign(waterSurface - y)*2;
+                }*/
+            }
+            else
+            {
+                xspeed = 0;
+                yspeed = 1.5*image_yscale;
+            }
+            
+            // die on wall
+            if(sign(xcoll) == dir) event_user(10);
         }
     }
-    else if(state == 1) // I have landed
+    else
     {
-        grav = 0;
-        if(ground || inWater)
-        {
-            xspeed = dir*1.5;
-            yspeed = 0;
-            /*if(inWater)
-            {
-                var water = instance_place(x,y,objWater);
-                var waterSurface = water.y + (16*abs(water.image_yscale)) * (image_yscale != water.image_yscale) * -image_yscale;
-                if(abs(waterSurface - y) &lt; 2) yspeed = (waterSurface - y);
-                else yspeed = sign(waterSurface - y)*2;
-            }*/
-        }
-        else
-        {
-            xspeed = 0;
-            yspeed = 1.5*image_yscale;
-        }
-        
-        // die on wall
-        if(sign(xcoll) == dir) event_user(10);
+        xspeed = 0;
     }
 }
 </string>
@@ -227,7 +234,7 @@ canDamage = false;
 yspeed = image_yscale*-2;
 xspeed = 0;
 grav = 0;
-
+blockCollision = 0;
 </string>
           </argument>
         </arguments>
