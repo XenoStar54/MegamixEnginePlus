@@ -187,7 +187,11 @@ speed = 6;
 xspeed = 0;
 yspeed = 0;
 playSFX(sfxReflectGBI);
-contactDamage = 0;
+if(!isShield)
+{
+    contactDamage = 0;
+}
+
 </string>
           </argument>
         </arguments>

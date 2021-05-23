@@ -179,6 +179,10 @@ if (entityCanStep())
           <argument>
             <kind>1</kind>
             <string>//pretty sure it doesnt reflect lmao
+if(!isShield)
+{
+    contactDamage = 0;
+}
 </string>
           </argument>
         </arguments>
