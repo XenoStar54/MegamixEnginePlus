@@ -2616,6 +2616,8 @@
         <sprites name="MMGBI">
           <sprite>sprites\sprRollingCutterGB</sprite>
           <sprite>sprites\sprIceSlasherGB</sprite>
+          <sprite>sprites\sprFireStormGB</sprite>
+          <sprite>sprites\sprFireStormShieldGB</sprite>
           <sprite>sprites\sprThunderBeamGB</sprite>
           <sprite>sprites\sprThunderBeamVerticalGB</sprite>
           <sprite>sprites\sprBubbleLeadGB</sprite>
@@ -8280,6 +8282,7 @@
           <objects name="MMGBI">
             <object>objects\objRollingCutterGB</object>
             <object>objects\objIceSlasherGB</object>
+            <object>objects\objFireStormGB</object>
             <object>objects\objThunderBeamGB</object>
             <object>objects\objBubbleLeadGB</object>
             <object>objects\objQuickBoomerangGB</object>
