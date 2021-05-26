@@ -25,12 +25,35 @@ var willStop = 0; // If this is 1, the player will halt on shooting ala Metal Bl
 var chargeTime = 57; // Set charge time for this weapon
 var initChargeTime = 20;
 
+// make all charge levels count for eachother
+var shots = 0;
+var halfShots = 0;
+var fullShots = 0;
+with (prtPlayerProjectile)
+{
+    if (playerID == other.playerID)
+    {
+        if (object_index == objBusterShot)
+        {
+            shots++;
+        }
+        else if (object_index == objBusterShotHalfChargedProto)
+        {
+            halfShots++;
+        }
+        else if (object_index == objBusterShotChargedProto)
+        {
+            fullShots++;
+        }
+    }
+}
+
 if (!global.lockBuster)
 {
     if (_canStartShoot && global.keyShootPressed[playerID]
         && !playerIsLocked(PL_LOCK_SHOOT) && chargeTimer == 0)
     {
-        i = fireWeapon(16, 0, objBusterShot, bulletLimit, weaponCost, action, willStop);
+        i = fireWeapon(16, 0, objBusterShot, bulletLimit - halfShots - fullShots, weaponCost, action, willStop);
         if (i)
         {
             playSFX(_sfx);
@@ -138,7 +161,7 @@ if (!global.lockBuster)
                 
                 if (chargeTimer < chargeTime) // Half charge
                 {
-                    i = fireWeapon(12, 0, objBusterShotHalfChargedProto, bulletLimit, weaponCost, action, willStop);
+                    i = fireWeapon(12, 0, objBusterShotHalfChargedProto, bulletLimit - shots - fullShots, weaponCost, action, willStop);
                     if (i)
                     {
                         i.xspeed = image_xscale * 5;
@@ -146,7 +169,7 @@ if (!global.lockBuster)
                 }
                 else // Full charge
                 {
-                    i = fireWeapon(20, 0, objBusterShotChargedProto, 3, 0, 1, 0);
+                    i = fireWeapon(20, 0, objBusterShotChargedProto, bulletLimit - shots - halfShots, 0, 1, 0);
                     if (i)
                     {
                         i.xspeed = image_xscale * 5.5;
