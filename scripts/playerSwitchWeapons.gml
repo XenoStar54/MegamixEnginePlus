@@ -20,7 +20,7 @@ if (dir != 0)
     // prevent switching if GB Time Stopper is active
     if(instance_exists(objTimeStopperGB))
     {
-        playSFX(sfxError);
+        //playSFX(sfxError);
         exit;
     }
     

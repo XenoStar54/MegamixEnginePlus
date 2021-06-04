@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>event_inherited();
 
-contactDamage = 2;
+contactDamage = 0.5;
 
 penetrate = 1;
 pierces = 2; //2 if shield
@@ -116,11 +116,11 @@ if (entityCanStep())
             <kind>1</kind>
             <string>if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT) &amp;&amp; !instance_exists(objFireStormGB))
 {
-    a = fireWeapon(20, 0, objFireStormGB, 1, 2, 2, 0);
+    a = fireWeapon(20, 0, objFireStormGB, 1, 1, 2, 0);
     if (a)
     {
         playSFX(sfxFireStormGBI);
-        a.xspeed = 5*image_xscale;
+        a.xspeed = 6*image_xscale;
         a.image_xscale = image_xscale;
         a.attackDelay = 20;
         

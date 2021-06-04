@@ -2602,6 +2602,7 @@
           <sprite>sprites\sprWheelCutter</sprite>
           <sprite>sprites\sprSolarBlaze</sprite>
           <sprite>sprites\sprSolarBlazeWave</sprite>
+          <sprite>sprites\sprMirrorBuster</sprite>
         </sprites>
         <sprites name="MM11">
           <sprite>sprites\sprBlockDropper</sprite>
@@ -2625,7 +2626,8 @@
           <sprite>sprites\sprAtomicFireGB1</sprite>
           <sprite>sprites\sprAtomicFireGB2</sprite>
           <sprite>sprites\sprAtomicFireGB3</sprite>
-          <sprite>sprites\sprMirrorBuster</sprite>
+          <sprite>sprites\sprMirrorBusterGB</sprite>
+          <sprite>sprites\sprMirrorBusterBulletGB</sprite>
         </sprites>
         <sprites name="MMGBII">
           <sprite>sprites\sprSakugarne</sprite>
@@ -2811,6 +2813,7 @@
             <sprite>sprites\sprWeaponIconsReboundStriker</sprite>
             <sprite>sprites\sprWeaponIconsWheelCutter</sprite>
             <sprite>sprites\sprWeaponIconsSolarBlaze</sprite>
+            <sprite>sprites\sprWeaponIconsMirrorBuster</sprite>
           </sprites>
           <sprites name="MM11">
             <sprite>sprites\sprWeaponIconsBlockDropper</sprite>
@@ -2826,7 +2829,7 @@
             <sprite>sprites\sprWeaponIconsQuickBoomerangGB</sprite>
             <sprite>sprites\sprWeaponIconsTimeStopperGB</sprite>
             <sprite>sprites\sprWeaponIconsAtomicFireGB</sprite>
-            <sprite>sprites\sprWeaponIconsMirrorBuster</sprite>
+            <sprite>sprites\sprWeaponIconsMirrorBusterGB</sprite>
           </sprites>
           <sprites name="MMGBII">
             <sprite>sprites\sprWeaponIconsMetalBladeGB</sprite>
@@ -8264,6 +8267,7 @@
             <object>objects\objReboundStriker</object>
             <object>objects\objWheelCutter</object>
             <object>objects\objSolarBlaze</object>
+            <object>objects\objMirrorBuster</object>
             <objects name="Don't Use">
               <object>objects\objBubblePopEffect</object>
               <object>objects\objChillSpikeLanded</object>
@@ -8288,7 +8292,7 @@
             <object>objects\objQuickBoomerangGB</object>
             <object>objects\objTimeStopperGB</object>
             <object>objects\objAtomicFireGB</object>
-            <object>objects\objMirrorBuster</object>
+            <object>objects\objMirrorBusterGB</object>
           </objects>
           <objects name="MMGBII">
             <object>objects\objSakugarne</object>

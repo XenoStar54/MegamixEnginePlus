@@ -106,7 +106,7 @@ if (entityCanStep())
     
     if (!back &amp;&amp; !(direction &gt; 225 &amp;&amp; direction &lt; 315))
     {
-        direction += rotateChange * -image_xscale * 1.2;
+        direction += rotateChange * -image_xscale * 1.3;
     }
     else if (!back &amp;&amp; (direction &gt; 225 &amp;&amp; direction &lt; 315))
     {
