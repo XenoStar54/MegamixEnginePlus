@@ -34,16 +34,17 @@ global.levelSong = fileName;
 global.levelSongType = fileType;
 global.levelTrackNumber = trackNumber;
 
-if (songLength > loopPosition)
+if (global.levelSongType == "OGG")
 {
     global.levelLoopStart = loopPosition / songLength;
+    global.levelLoopEnd = 1;
 }
 else
 {
-    global.levelLoopStart = 1;
+    global.levelLoopStart = loopPosition * 1000;
+    global.levelLoopEnd = songLength * 1000;
 }
 
-global.levelLoopEnd = 1;
 
 global.levelLoop = loops;
 global.levelVolume = volume;

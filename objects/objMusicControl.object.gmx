@@ -82,6 +82,10 @@ global.levelLoop = 1;
 global.levelVolume = 1;
 global.songMemory = -1;
 
+// nsf bug workaround
+stuckTimer = 0;
+prePos = 0;
+
 // (ike voice) prepare yourself
 alarm[0] = 1;
 </string>
@@ -189,6 +193,45 @@ if (playing &amp;&amp; !endReached &amp;&amp; !audio_is_playing(snd_queue)  &amp
         GME_SetPosition(0);
 
         forceReset = false;
+    }
+}
+
+// restart song if the vgm player gets stuck (it's a pretty glitchy extension)
+if (playing &amp;&amp; !endReached &amp;&amp; snd_queue != noone)
+{
+    var pos = GME_GetPosition();
+    if (prePos == pos)
+    {
+        if (stuckTimer &gt;= 5)
+        {
+            show_debug_message("Unstuck song. Pos: " + string(pos));
+            resumeMusic();
+            pos = 0;
+            stuckTimer = 0;
+        }
+        
+        stuckTimer++;
+    }
+    else
+    {
+        stuckTimer = 0;
+    }
+    
+    prePos = pos;
+}
+else
+{
+    prePos = 0;
+    stuckTimer = 0;
+}
+
+// manual vgm song looping
+if (playing &amp;&amp; global.levelLoop
+    &amp;&amp; global.levelLoopStart &gt;= 0 &amp;&amp; global.levelLoopEnd &gt; 0)
+{
+    if (GME_GetPosition() &gt;= global.levelLoopEnd)
+    {
+        GME_SetPosition(global.levelLoopStart);
     }
 }
 </string>
