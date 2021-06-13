@@ -86,8 +86,8 @@ else
     image_index = image_index mod imgs;
     
     drawSelf();
-    draw_sprite_ext(sprite_index, image_index + imgs, round(x), round(y), image_xscale, image_yscale, image_angle, global.primaryCol[0], image_alpha);
-    draw_sprite_ext(sprite_index, image_index + imgs * 2, round(x), round(y), image_xscale, image_yscale, image_angle, global.secondaryCol[0], image_alpha);
+    draw_sprite_ext(sprite_index, image_index + imgs, x, y, image_xscale, image_yscale, image_angle, global.primaryCol[0], image_alpha);
+    draw_sprite_ext(sprite_index, image_index + imgs * 2, x, y, image_xscale, image_yscale, image_angle, global.secondaryCol[0], image_alpha);
 }
 </string>
           </argument>

@@ -176,7 +176,7 @@ if(spawned)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(sprite_index,image_index,round(x),round(y)+yo,image_xscale,image_yscale,image_angle,image_blend,image_alpha);
+            <string>draw_sprite_ext(sprite_index,image_index,x,y+yo,image_xscale,image_yscale,image_angle,image_blend,image_alpha);
 </string>
           </argument>
         </arguments>

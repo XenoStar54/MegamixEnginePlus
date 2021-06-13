@@ -11,7 +11,7 @@ else
     deathSFX = sfxDeath;
 }
 
-if (global.playerHealth[playerID] <= 0)
+if (global.playerHealth[playerID] <= 0 && !global.alwaysHealth)
 {
     if (deathTimer)
     {

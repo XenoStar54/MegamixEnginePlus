@@ -88,8 +88,9 @@ var bound_left = max(global.sectionLeft, global.borderLockLeft),
 view_xview = clamp(view_xview, bound_left, bound_right);
 view_yview = clamp(view_yview, bound_top, bound_bottom);
 
-view_xview = round(view_xview);
-view_yview = round(view_yview);
+// round camera (without this you will get distortion and tile seams)
+view_xview = round(view_xview * global.screenScale) / global.screenScale;
+view_yview = round(view_yview * global.screenScale) / global.screenScale;
 
 // cached
 global.cachedXView = view_xview[0];

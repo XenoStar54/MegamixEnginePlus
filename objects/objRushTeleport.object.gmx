@@ -353,11 +353,11 @@ else
             <string>event_inherited();
 if col[1] != -1
 {
-    draw_sprite_ext(sprite_index, image_index + 3, round(x), round(y), image_xscale, image_yscale, image_angle, col[1], image_alpha)
+    draw_sprite_ext(sprite_index, image_index + 3, x, y, image_xscale, image_yscale, image_angle, col[1], image_alpha)
 }
 if col[2] != -1
 {
-    draw_sprite_ext(sprite_index, image_index + 6, round(x), round(y), image_xscale, image_yscale, image_angle, col[2], image_alpha)
+    draw_sprite_ext(sprite_index, image_index + 6, x, y, image_xscale, image_yscale, image_angle, col[2], image_alpha)
 }
 </string>
           </argument>

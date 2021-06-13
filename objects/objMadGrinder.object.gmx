@@ -361,15 +361,15 @@ event_inherited();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(sprite_index, 1 + clamp(jitterFrame, 0, 2 + mouthOpen), round(x), round(y), image_xscale, image_yscale, image_angle, image_blend, image_alpha);
-draw_sprite_ext(sprite_index, 8 + clamp(rollerFrame, 0, 8), round(x), round(y) - (image_index - 2), image_xscale, image_yscale, image_angle, image_blend, image_alpha);
-draw_sprite_ext(sprite_index, 5 + clamp(wheelFrame, 0, 3), round(x), round(y) - (image_index - 2), image_xscale, image_yscale, image_angle, image_blend, image_alpha);
-draw_sprite_ext(sprite_index, 4, round(x), round(y) - round(clamp(jitterFrame, 0, 2)), image_xscale, image_yscale, image_angle, image_blend, image_alpha);
+            <string>draw_sprite_ext(sprite_index, 1 + clamp(jitterFrame, 0, 2 + mouthOpen), x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
+draw_sprite_ext(sprite_index, 8 + clamp(rollerFrame, 0, 8), x, y - (image_index - 2), image_xscale, image_yscale, image_angle, image_blend, image_alpha);
+draw_sprite_ext(sprite_index, 5 + clamp(wheelFrame, 0, 3), x, y - (image_index - 2), image_xscale, image_yscale, image_angle, image_blend, image_alpha);
+draw_sprite_ext(sprite_index, 4, x, y - round(clamp(jitterFrame, 0, 2)), image_xscale, image_yscale, image_angle, image_blend, image_alpha);
 if (hasCutter)
-    draw_sprite_ext(sprite_index, 16 + cutterFrame mod 6, round(x), round(y) - (image_index - 2), image_xscale, image_yscale, image_angle, image_blend, image_alpha);
+    draw_sprite_ext(sprite_index, 16 + cutterFrame mod 6, x, y - (image_index - 2), image_xscale, image_yscale, image_angle, image_blend, image_alpha);
 if (yspeed &lt; 0)
 {
-    draw_sprite(sprMadGrinderJet, (attackTimer / 2) mod 2, round(x), round(y) + 32);
+    draw_sprite(sprMadGrinderJet, (attackTimer / 2) mod 2, x, y + 32);
 }
 </string>
           </argument>

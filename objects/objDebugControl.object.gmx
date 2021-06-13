@@ -106,7 +106,7 @@ for (var i = 0; i &lt; CONSOLE_MAX &amp;&amp; i &lt; global.consoleN; i++)
             <string>// Debug keys
 
 // Reset game
-if (keyboard_check_pressed(vk_f2))
+if (keyboard_check_pressed(vk_f1))
 {
     audio_stop_all();
     stopMusic();
@@ -114,29 +114,33 @@ if (keyboard_check_pressed(vk_f2))
 }
 
 // Change screen size
-if (keyboard_check_pressed(vk_f3))
+if (!window_get_fullscreen()) // don't change if you can't see it
 {
-    var pre = global.screensize;
-    
-    setScreenSize(global.screensize + 1);
-    
-    if (global.screensize == pre)
+    if (keyboard_check_pressed(vk_f2))
     {
-        setScreenSize(1);
+        var pre = global.screenSize;
+        setScreenSize(global.screenSize - 1);
+        if (global.screenSize == pre)
+        {
+            setScreenSize(floor(display_get_width() / global.screenWidth));
+        }
+    }
+    
+    if (keyboard_check_pressed(vk_f3))
+    {
+        var pre = global.screenSize;
+        setScreenSize(global.screenSize + 1);
+        if (global.screenSize == pre)
+        {
+            setScreenSize(1);
+        }
     }
 }
 
 // Toggle fullscreen
 if (keyboard_check_pressed(vk_f4))
 {
-    if (window_get_fullscreen())
-    {
-        setScreenSize(global.screensize);
-    }
-    else
-    {
-        setScreenSize(9999); // definitely going to set it to fullscreen   :P
-    }
+    setFullscreen(!window_get_fullscreen());
 }
 
 // Screenshot
@@ -218,50 +222,52 @@ case 1: // exit instances screen
 
 switch (enteringScreen)
 {
-case 1: // open instances screen
-    ids = ds_list_create();
-    names = ds_map_create();
-    amounts = ds_map_create();
-    
-    ds_list_clear(ids);
-    ds_map_clear(names);
-    ds_map_clear(amounts);
-    
-    var index;
-    
-    with (all)
-    {
-        index = string(object_index);
+    case 1: // open instances screen
+        ids = ds_list_create();
+        names = ds_map_create();
+        amounts = ds_map_create();
         
-        with (other)
+        ds_list_clear(ids);
+        ds_map_clear(names);
+        ds_map_clear(amounts);
+        
+        var index;
+        
+        with (all)
         {
-            if (!ds_map_exists(names, index)) // Check if object_index is not in the list
+            index = string(object_index);
+            
+            with (other)
             {
-                ds_list_add(ids, index); // Add the id
-                ds_map_add(names, index, string_delete(object_get_name(real(index)), 1, 3)); // Add the name
-                ds_map_add(amounts, index, 1); // Add to amount list
-            }
-            else
-            {
-                ds_map_replace(amounts, index, ds_map_find_value(amounts, index) + 1);
+                if (!ds_map_exists(names, index)) // Check if object_index is not in the list
+                {
+                    ds_list_add(ids, index); // Add the id
+                    ds_map_add(names, index, string_delete(object_get_name(real(index)), 1, 3)); // Add the name
+                    ds_map_add(amounts, index, 1); // Add to amount list
+                }
+                else
+                {
+                    ds_map_replace(amounts, index, ds_map_find_value(amounts, index) + 1);
+                }
             }
         }
-    }
-    
-    limit = min(25, ds_list_size(ids));
-    scroll = 0;
-    break
+        
+        limit = min(25, ds_list_size(ids));
+        scroll = 0;
+        
+        break;
 }
 
 switch (infoScreen)
 {
-case 1:
-    scroll += global.keyDownPressed[0] - global.keyUpPressed[0];
-    scroll = min(max(0, scroll), ds_list_size(ids) - limit);
-    break
-case 2:
-    scroll += (global.keyDown[0] - global.keyUp[0]) * 3;
-    scroll = max(0, scroll)
+    case 1:
+        scroll += global.keyDownPressed[0] - global.keyUpPressed[0];
+        scroll = min(max(0, scroll), ds_list_size(ids) - limit);
+        break;
+    case 2:
+        scroll += (global.keyDown[0] - global.keyUp[0]) * 3;
+        scroll = max(0, scroll);
+        break;
 }
 
 ///////////////////////////////////////////////////////////

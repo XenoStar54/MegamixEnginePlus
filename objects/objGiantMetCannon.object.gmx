@@ -381,10 +381,10 @@ else
             
             for (var i = 0; i &lt; ceil(abs(curYOffset) / 8); i++)
             {
-                draw_sprite_ext(sprGiantMetCannonMiddle, i, round(x)+1, round(y) + spriteOffset + (i * 8), image_xscale, image_yscale, image_angle, image_blend, image_alpha);
+                draw_sprite_ext(sprGiantMetCannonMiddle, i, x+1, y + spriteOffset + (i * 8), image_xscale, image_yscale, image_angle, image_blend, image_alpha);
             }
-            draw_sprite_ext(sprGiantMetCannonBottom, 0, round(x)+2, bottomPart, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
-            draw_sprite_ext(sprGiantMetCannonTop, cFrame, round(x), round(y) + spriteOffset, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
+            draw_sprite_ext(sprGiantMetCannonBottom, 0, x+2, bottomPart, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
+            draw_sprite_ext(sprGiantMetCannonTop, cFrame, x, y + spriteOffset, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
             d3d_set_fog(false, 0, 0, 0);
             
             if (iceTimer &gt; 0)
@@ -393,10 +393,10 @@ else
                 
                 for (var i = 0; i &lt; ceil(abs(curYOffset) / 8); i++)
                 {
-                    draw_sprite_ext(sprGiantMetCannonMiddle, i, round(x)+1, round(y) + spriteOffset + (i * 8), image_xscale, image_yscale, image_angle, image_blend, image_alpha);
+                    draw_sprite_ext(sprGiantMetCannonMiddle, i, x+1, y + spriteOffset + (i * 8), image_xscale, image_yscale, image_angle, image_blend, image_alpha);
                 }
-                draw_sprite_ext(sprGiantMetCannonBottom, 0, round(x)+2, bottomPart, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
-                draw_sprite_ext(sprGiantMetCannonTop, cFrame, round(x), round(y) + spriteOffset, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
+                draw_sprite_ext(sprGiantMetCannonBottom, 0, x+2, bottomPart, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
+                draw_sprite_ext(sprGiantMetCannonTop, cFrame, x, y + spriteOffset, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
                 draw_set_blend_mode(bm_normal);
             }
         }
@@ -404,10 +404,10 @@ else
         {
             for (var i = 0; i &lt; ceil(abs(curYOffset) / 8); i++)
             {
-                draw_sprite_ext(sprGiantMetCannonMiddle, i, round(x)+1, round(y) + spriteOffset + (i * 8), image_xscale, image_yscale, image_angle, image_blend, image_alpha);
+                draw_sprite_ext(sprGiantMetCannonMiddle, i, x+1, y + spriteOffset + (i * 8), image_xscale, image_yscale, image_angle, image_blend, image_alpha);
             }
-            draw_sprite_ext(sprGiantMetCannonBottom, 0, round(x)+2, bottomPart, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
-            draw_sprite_ext(sprGiantMetCannonTop, cFrame, round(x), round(y) + spriteOffset, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
+            draw_sprite_ext(sprGiantMetCannonBottom, 0, x+2, bottomPart, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
+            draw_sprite_ext(sprGiantMetCannonTop, cFrame, x, y + spriteOffset, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
         }
     }
 }

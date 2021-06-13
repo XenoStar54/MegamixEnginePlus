@@ -195,7 +195,7 @@ for (var i = 0; i &lt; (radius - 9) / tetherSpacing; i++)
     if (positionCollision(hingeX - x, (hingeY - 2) - y) &amp;&amp; i == 0)
         imgIndex = 1;
     draw_sprite(sprJewelPlatformTether, imgIndex,
-        round(hingeX * (1 - p) + x * p), floor(hingeY * (1 - p) + y * p));
+        hingeX * (1 - p) + x * p, hingeY * (1 - p) + y * p);
 }
 
 drawSelf();

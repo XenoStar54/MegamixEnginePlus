@@ -197,7 +197,7 @@ scrBusterControl(false, true, !_canSpawn);
             <kind>1</kind>
             <string>if (!dead &amp;&amp; instance_exists(parent))
 {
-    drawCostume(parent.costumeID + 1, sx, sy, round(x), round(y), image_xscale, image_yscale, 
+    drawCostume(parent.costumeID + 1, sx, sy, x, y, image_xscale, image_yscale, 
     c_white, global.weaponPrimaryColor[global.weaponID[? objCopyVision]], global.weaponSecondaryColor[global.weaponID[? objCopyVision]],
     global.nesPalette[9]);
 

@@ -1,12 +1,19 @@
 /// freshOptions()
 // resets all options-specific variables to their default value
 
+global.resolution = false; // native
+global.pixelRatio = 1; // 8:7
+global.accurateFullscreen = true;
+global.shadersEnabled = global.shadersCompatible;
+global.filter = 0;
+global.borderGraphic = 18; // mm9 border 4
 global.healthEffect = 0;
 global.musicvolume = 80;
 global.soundvolume = 100;
 global.damagePopup = 0;
 global.mmColor = 0;
 global.chargeBar = 0;
+global.lifeCounter = true;
 global.showFPS = 0;
 global.familyFriendlyText = false;
 global.escapeBehavior = 0;

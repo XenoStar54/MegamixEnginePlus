@@ -98,7 +98,7 @@ freshSaveFile();
         playSFX(sfxMenuMove);
     }
     
-    if (global.keyPausePressed[0])
+    if (global.keyPausePressed[0] || global.keyJumpPressed[0])
     {
         demoTimer = 0;
         switch (option)

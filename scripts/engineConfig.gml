@@ -10,6 +10,8 @@ global.gameSpeed = 60;
 global.screenWidth = 256;
 global.screenHeight = 224;
 
+global.screenScaleMax = 8; // any larger will cause shaders to lag a ton
+
 // colour palette
 paletteSetup();
 

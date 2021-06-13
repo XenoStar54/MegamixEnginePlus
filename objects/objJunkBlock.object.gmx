@@ -166,7 +166,7 @@ instance_create(spriteGetXCenter(), spriteGetYCenter(), objExplosion);
 if (superArmFlashTimer mod (2 * superArmFlashInterval) &gt;= superArmFlashInterval || superArmHoldOwner != noone || superArmThrown)
 {
     draw_set_blend_mode(bm_add);
-    draw_sprite(sprite_index, image_index, round(x), round(y));
+    draw_sprite(sprite_index, image_index, x, y);
     draw_set_blend_mode(bm_normal);
     draw_set_alpha(1);
 }

@@ -437,11 +437,11 @@ alarm[0] = 2;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(sprite_index, 1 + ceil(clamp(carFrame, 0, 2)), round(x), round(y), image_xscale, image_yscale, image_angle, image_blend, image_alpha);
+            <string>draw_sprite_ext(sprite_index, 1 + ceil(clamp(carFrame, 0, 2)), x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
 if (floor(carFrame) == 1)
-    draw_sprite_ext(sprite_index, 4 + joeFrame, round(x), round(y) + 1, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
+    draw_sprite_ext(sprite_index, 4 + joeFrame, x, y + 1, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
 else
-    draw_sprite_ext(sprite_index, 4 + joeFrame, round(x), round(y), image_xscale, image_yscale, image_angle, image_blend, image_alpha);
+    draw_sprite_ext(sprite_index, 4 + joeFrame, x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
 </string>
           </argument>
         </arguments>

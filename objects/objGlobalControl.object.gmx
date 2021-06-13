@@ -88,12 +88,33 @@ freshSaveFile();
 // default options
 freshOptions();
 
+// setup shaders
+global.crtSurfaceScale = 6;
+
+global.crtSurfaceWidth  = global.screenWidth * global.crtSurfaceScale;
+global.crtSurfaceHeight = global.screenHeight * global.crtSurfaceScale;
+
+global.crtDistort = true;
+global.crtDistortionAmount = 0.12;
+global.crtBorder = true; // there's really no good reason to make this toggleable
+
+uni_crt_sizes = shader_get_uniform(shdCRT, "u_crt_sizes");
+distort = shader_get_uniform(shdCRT, "distort");
+distortion = shader_get_uniform(shdCRT, "distortion");
+border = shader_get_uniform(shdCRT, "border");
+
+crtSurface = noone;
+
+shdFadeShift = shader_get_uniform(shdColorSubtractStep, "fadeShift");
+fadeSurface = noone;
+
 // load user's options (if they exist)
 saveLoadOptions(false);
 
 /// set up display ///
 
-setScreenSize(global.screensize);
+setScreenSize(global.screenSize);
+application_surface_draw_enable(false);
 display_reset(0, global.vsync);
 
 //// Create other control objects ////
@@ -106,6 +127,37 @@ init = 1;
 
 // show disclaimer
 room_goto(rmDisclaimer);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// refresh window
+if (!window_get_fullscreen())
+{
+    setScreenSize(global.screenSize);
+}
+else
+{
+    setFullscreen(window_get_fullscreen());
+}
 </string>
           </argument>
         </arguments>
@@ -206,8 +258,7 @@ for (i = 0; i &lt;= 1; i += 1)
 
 if (global.nextRoom != 0 || fadeAlpha &gt; 0)
 {
-    fadetimer += (1 + instance_exists(objPauseMenu));
-    
+    fadetimer += 1;
     if (fadetimer &gt;= fadeinterval)
     {
         if (global.nextRoom &amp;&amp; fadeAlpha == 1)
@@ -910,8 +961,6 @@ global.lockBuster = false;
 
 global.timeStopped = false;
 
-application_surface_draw_enable(true);
-
 // forcibly reset control locks
 globalLockReset();
 </string>
@@ -1195,14 +1244,23 @@ if (global.inGame)
     global.hasTeleported = false;
 }
 
+// set global screen size based on the room's view
+var preW = global.screenWidth;
+var preH = global.screenHeight;
+global.screenWidth = view_wview[0];
+global.screenHeight =  view_hview[0];
+
 // if the new room's view size is different, adjust the screen size accordingly
-var s = max(1, min(display_get_height() / global.screenHeight, display_get_width() / global.screenWidth));
-if ((window_get_fullscreen() &amp;&amp; (surface_get_width(application_surface) != floor(global.screenWidth * s)
-        || surface_get_height(application_surface) != floor(global.screenHeight * s)))
-    || (!window_get_fullscreen() &amp;&amp; (surface_get_width(application_surface) != view_wview[0] * global.screensize
-        || surface_get_height(application_surface) != view_hview[0] * global.screensize)))
+if (preW != global.screenWidth || preH != global.screenHeight)
 {
-    setScreenSize(global.screensize, false);
+    setScreenSize(global.screensize);
+    
+    // workaround to fix the application position not updating while in fullscreen
+    if (window_get_fullscreen())
+    {
+        window_set_fullscreen(false);
+        setFullscreen(true);
+    }
 }
 
 // next room should not launch a new level
@@ -1237,6 +1295,176 @@ saveLoadGame(true);
 // End cleanMem
 cleanMem('clear');
 cleanMem('free');
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="77">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw Game, apply filters, and do Shader Fade Out
+
+// app position stuff
+appPosition = application_get_position();
+
+appWidth = (appPosition[2] - appPosition[0]) * getPixelRatio();
+appHeight = appPosition[3] - appPosition[1];
+appX = appPosition[0] + ((appPosition[2] - appPosition[0]) - appWidth) / 2;
+appY = appPosition[1];
+if (window_get_fullscreen())
+{
+    if (global.accurateFullscreen)
+    {
+        var d = 0;
+        do
+        {
+            // lock to highest whole-number scale
+            appWidth = (((appPosition[2] - appPosition[0]) div global.screenWidth) - d) * global.screenWidth * getPixelRatio();
+            appHeight = (((appPosition[3] - appPosition[1]) div global.screenHeight) - d) * global.screenHeight;
+            
+            // try smaller scales until we're within screen limits
+            d++;
+        }
+        until ((appWidth &lt;= display_get_width() &amp;&amp; appHeight &lt;= display_get_height()) || appHeight &lt;= global.screenHeight)
+    }
+    else if (appWidth &gt; display_get_width())
+    {
+        // change app position if too wide due to pixel ratio (gms will automatically adjust app position otherwise)
+        appWidth = display_get_width();
+        appHeight = (display_get_width() / getPixelRatio()) * global.screenHeight / global.screenWidth;
+    }
+
+    // fullscreen app position
+    appX = (display_get_width() - appWidth) / 2;
+    appY = (display_get_height() - appHeight) / 2;
+}
+
+// how many times application_surface is stretched (ignoring pixel ratio)
+multiply = appHeight / surface_get_height(application_surface);
+
+// surfaces
+finalSurface = application_surface;
+surfaceWidth = surface_get_width(application_surface);
+surfaceHeight = surface_get_height(application_surface);
+
+if (global.shadersEnabled)
+{
+    // fade
+    fadeShift = floor(fadeAlpha / fadestep); // lazy replacement of fadeAlpha code, lol
+    if (fadeShift &gt; 0)
+    {
+        if (!surface_exists(fadeSurface))
+        {
+            var p = powerOfTwo(surfaceWidth, surfaceHeight);
+            fadeSurface = surface_create(p, p);
+            surface_resize(fadeSurface, surfaceWidth, surfaceHeight); // crt filter messes up if the surface doesn't have exact screen dimensions
+        }
+        
+        surface_set_target(fadeSurface);
+        
+        //shader_set(shdColorSubtract);
+        //var subtract = shader_get_uniform(shdColorSubtract, "subtractColor");
+        //shader_set_uniform_f(subtract, fadeAlpha, fadeAlpha, fadeAlpha);
+        shader_set(shdColorSubtractStep);
+        shader_set_uniform_f(shdFadeShift, fadeShift);
+        draw_surface(finalSurface, 0, 0);
+        shader_reset();
+        
+        surface_reset_target();
+        
+        // set to new final surface
+        finalSurface = fadeSurface;
+    }
+    
+    // filters
+    if (global.filter &gt; 0)
+    {
+        switch (global.filter)
+        {
+            // interpolation
+            case 1:
+                // done at the bottom with a gms function
+                break;
+                
+            // CRT filter
+            case 2:
+                if (!surface_exists(crtSurface))
+                {
+                    var s = powerOfTwo(global.crtSurfaceWidth, global.crtSurfaceHeight);
+                    crtSurface = surface_create(s, s);
+                }
+                
+                surface_set_target(crtSurface);
+                
+                shader_set(shdCRT);
+                shader_set_uniform_f(uni_crt_sizes, global.screenWidth, global.screenHeight, global.crtSurfaceWidth, global.crtSurfaceHeight);
+                shader_set_uniform_f(distort, global.crtDistort);
+                shader_set_uniform_f(distortion, global.crtDistortionAmount);
+                shader_set_uniform_f(border, global.crtBorder);
+                draw_surface_part_ext(finalSurface, 0, 0, surface_get_width(application_surface), surface_get_height(application_surface), 0, 0, global.crtSurfaceScale, global.crtSurfaceScale, c_white, 1);
+                shader_reset();
+                
+                surface_reset_target();
+                
+                // set this as the new surface to draw
+                finalSurface = crtSurface;
+                multiply = appHeight / global.crtSurfaceHeight;
+                surfaceWidth = global.crtSurfaceWidth;
+                surfaceHeight = global.crtSurfaceHeight;
+                
+                break;
+        }
+    }
+}
+
+// draw border graphic
+draw_enable_alphablend(false); // pixels drawn with transparency will actually show the border graphic behind them without this
+texture_set_interpolation(true);
+if (window_get_fullscreen())
+{
+    if (global.borderGraphic &gt; 0)
+    {
+        draw_background_stretched(getBorderGraphic(), 0, 0, display_get_width(), display_get_height());
+    }
+    else
+    {
+        draw_set_color(c_black);
+        draw_rectangle(0, 0, display_get_width(), display_get_height(), false);
+        draw_set_color(c_white);
+    }
+}
+
+// Note: interpolation isn't noticeable at window resolution when the window is big.
+texture_set_interpolation(global.filter == 1 || (global.filter == 2 &amp;&amp; global.shadersEnabled)); // always interpolate with crt filter
+
+// Draw the game
+var xscale = round(surfaceWidth * multiply * getPixelRatio()) / surfaceWidth;
+var yscale = round(surfaceHeight * multiply) / surfaceHeight;
+draw_surface_part_ext(finalSurface, 0, 0, surfaceWidth, surfaceHeight, appX, appY, xscale, yscale, c_white, 1);
+
+// cleanup
+texture_set_interpolation(false); // ONLY DRAW THE FINAL SURFACE WITH INTERPOLATION
+if (surface_exists(fadeSurface))
+{
+    surface_free(fadeSurface);
+}
+
+draw_enable_alphablend(true);
 </string>
           </argument>
         </arguments>
@@ -1316,7 +1544,7 @@ draw_set_color(c_white);
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
 
-if (fadeAlpha &gt; 0)
+if (fadeAlpha &gt; 0 &amp;&amp; !global.shadersEnabled)
 {
     draw_sprite_ext(sprDot, 0, view_xview, view_yview, view_wview, view_hview, 0, c_black, fadeAlpha);
 }
@@ -1390,9 +1618,20 @@ depth = depthstart;
             
             drawHudBar(dx, dy, pcol, scol, global.playerHealth[z], 28);
             
-            var display = true;
+            // lives counter
+            if (global.livesEnabled &amp;&amp; global.lifeCounter)
+            {
+                draw_enable_alphablend(true);
+                draw_set_halign(fa_left);
+                draw_set_valign(fa_top);
+                draw_sprite_ext(sprDot, 0, dx, dy + sprite_get_height(sprHealthbarBackground), 8, 8, 0, c_black, 1);
+                draw_text(dx, dy + sprite_get_height(sprHealthbarBackground), global.livesRemaining);
+                draw_enable_alphablend(false);
+            }
             
             // Weapons
+            var display = true;
+            
             var c
             if (global.weapon[z] != 0) // Weapon energy
             {

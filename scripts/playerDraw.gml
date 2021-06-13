@@ -8,10 +8,15 @@ if (teleporting || showReady)
     }
 }
 
+// without this the player jitters when the screen scrolls
+var _x = floor((x * global.screenScale) + .5) / global.screenScale;
+var _y = floor((y * global.screenScale) + .5) / global.screenScale;
+
 if ((teleporting || showDuringReady) && !instance_exists(objSectionSwitcher))
 {
     playerIntro(false);
 }
+
 // Drawing READY text before teleporting in
 if (showReady)
 {
@@ -80,7 +85,7 @@ else
         else // Draws the player
         {
             drawPlayer(playerID, costumeID, spriteX, spriteY,
-                round(x), round(y), image_xscale, image_yscale);
+                _x, _y, image_xscale, image_yscale);
         }
     }
     
@@ -99,8 +104,8 @@ else
         for (i = 0; i <= 3; i += 1)
         {
             draw_sprite_ext(global.weaponIcon[global.weapon[playerID]],
-                i, round(x) - 8 + iconx,
-                round(y) - 30 * image_yscale, 1, image_yscale, 0,
+                i, _x - 8 + iconx,
+                _y - 30 * image_yscale, 1, image_yscale, 0,
                 col[i], image_alpha);
         }
     }

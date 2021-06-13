@@ -405,8 +405,8 @@ if (xscaleStorage &lt;= 0)
 {
     image_xscale = 1;
     draw_sprite_part_ext(sprite_index, image_index, 0, 0, sprite_width,
-        sprite_height - yOffset, round(x - 56) + sprite_width,
-        round(y - 64), -image_xscale, image_yscale, image_blend,
+        sprite_height - yOffset, x - 56 + sprite_width,
+        y - 64, -image_xscale, image_yscale, image_blend,
         image_alpha);
     image_xscale = -1;
 }
@@ -414,7 +414,7 @@ else
 {
     image_xscale = 1;
     draw_sprite_part_ext(sprite_index, image_index, 0, 0, sprite_width,
-        sprite_height - yOffset, round(x - 56), round(y - 64),
+        sprite_height - yOffset, x - 56, y - 64,
         image_xscale, image_yscale, image_blend, image_alpha);
 }
 

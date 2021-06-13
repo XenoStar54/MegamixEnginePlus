@@ -6,8 +6,8 @@
 var pid = argument0,
     sheetX = argument1,
     sheetY = argument2,
-    _x = floor(argument3),
-    _y = floor(argument4),
+    _x = argument3,
+    _y = argument4,
     _xscale = argument5,
     _yscale = argument6;
 

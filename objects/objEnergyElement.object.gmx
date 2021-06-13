@@ -255,8 +255,8 @@ if (entityCanStep())
             <string>if (!dead)
 {
     drawSelf();
-    draw_sprite_ext(sprite_index, 1, round(x), round(y), image_xscale, image_yscale, image_angle, primarycol, image_alpha);
-    draw_sprite_ext(sprite_index, 2, round(x), round(y), image_xscale, image_yscale, image_angle, secondarycol, image_alpha);
+    draw_sprite_ext(sprite_index, 1, x, y, image_xscale, image_yscale, image_angle, primarycol, image_alpha);
+    draw_sprite_ext(sprite_index, 2, x, y, image_xscale, image_yscale, image_angle, secondarycol, image_alpha);
 }
 </string>
           </argument>

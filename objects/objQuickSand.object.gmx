@@ -176,8 +176,8 @@ else
     for (var j = stretchY - 1; j &gt;= 0; j -= 1)
     {
         draw_sprite(sprite_index, -1,
-            round(x) + sprite_get_width(sprite_index) * i,
-            round(y) + j * 16);
+            x + sprite_get_width(sprite_index) * i,
+            y + j * 16);
     }
 }
 </string>

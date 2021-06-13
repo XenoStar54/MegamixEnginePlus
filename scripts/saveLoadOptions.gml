@@ -5,12 +5,23 @@
 slBegin(argument0, "options.sav")
 
 // option flags
-global.screensize            = sl(global.screensize,   "screensize");
+global.screenSize            = sl(global.screenSize,   "screensize");
+setFullscreen(sl(window_get_fullscreen(), "fullscreen"));
+global.resolution            = sl(global.resolution, "resolution");
+global.pixelRatio            = sl(global.pixelRatio, "pixel-ratio");
+global.accurateFullscreen    = sl(global.accurateFullscreen, "accurate-fullscreen");
+global.shadersEnabled        = sl(global.shadersEnabled, "shadersenabled") && global.shadersCompatible;
+global.filter                = sl(global.filter, "filter");
+global.crtDistort            = sl(global.crtDistort, "crt-distort");
+global.crtDistortionAmount   = sl(global.crtDistortionAmount, "crt-distortion-amount");
+global.crtBorder             = sl(global.crtBorder, "crt-border");
+global.borderGraphic         = sl(global.borderGraphic, "border-graphic");
 global.musicvolume           = sl(global.musicvolume,  "mvol");
 global.soundvolume           = sl(global.soundvolume,  "svol");
 global.damagePopup           = sl(global.damagePopup,  "dpop");
 global.mmColor               = sl(global.mmColor,      "mmcol");
 global.chargeBar             = sl(global.chargeBar,    "cbar");
+global.lifeCounter           = sl(global.lifeCounter, "lives-counter");
 global.showFPS               = sl(global.showFPS,      "fps");
 global.healthEffect          = sl(global.healthEffect, "healthfx");
 global.playerCount           = sl(global.playerCount,  "player-count");

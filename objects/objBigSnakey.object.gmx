@@ -162,15 +162,15 @@ drawSelf();
 if (floor(blink) &gt; 0)
 {
     draw_sprite_ext(sprite_index, 1 + floor(blink) - (floor(blink / 3) * 2),
-        round(x), round(y), image_xscale, image_yscale, image_angle,
+        x, y, image_xscale, image_yscale, image_angle,
         image_blend, image_alpha);
 }
 if (length &gt; 0)
 {
     for (var i = 1; i &lt;= length; i += 1)
     {
-        draw_background_part(tstSnakeman, 0, 32, 32, 16, round(x) - 16,
-            round(y) + (i - 1) * 16);
+        draw_background_part(tstSnakeman, 0, 32, 32, 16, x - 16,
+            y + (i - 1) * 16);
     }
 }
 

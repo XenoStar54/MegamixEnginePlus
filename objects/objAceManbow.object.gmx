@@ -180,7 +180,7 @@ else if (dead)
             <string>// Ace Manbow is always drawn upright, regardless of what Image_Yscale says. Image_yscale is used to determine which direction it moves in.
 if (!dead)
 {
-    draw_sprite_ext(sprite_index, image_index, round(x), floor(y), image_xscale, 1, image_angle, image_blend, image_alpha);
+    draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, 1, image_angle, image_blend, image_alpha);
 }
 if ((iFrames == 1 || iFrames == 3) || (iceTimer &gt; 0))
 {
@@ -188,12 +188,12 @@ if ((iFrames == 1 || iFrames == 3) || (iceTimer &gt; 0))
     if (iceTimer &gt; 0)
         flashcol = make_color_rgb(0, 120, 255);
     d3d_set_fog(true, flashcol, 0, 0);
-    draw_sprite_ext(sprite_index, image_index, round(x), floor(y), image_xscale, 1, image_angle, image_blend, image_alpha);
+    draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, 1, image_angle, image_blend, image_alpha);
     d3d_set_fog(false, 0, 0, 0);
     if (iceTimer &gt; 0)
     {
         draw_set_blend_mode(bm_add);
-        draw_sprite_ext(sprite_index, image_index, round(x), floor(y), image_xscale, 1, image_angle, image_blend, image_alpha);
+        draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, 1, image_angle, image_blend, image_alpha);
         draw_set_blend_mode(bm_normal);
     }
 }

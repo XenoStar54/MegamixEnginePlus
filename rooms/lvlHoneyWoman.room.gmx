@@ -48,7 +48,7 @@ playMusic("HoneyWoman.ogg", "OGG", 1, 06.398, 51.199, true, 0.75);</code>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
   </backgrounds>
   <views>
-    <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
+    <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="256" hview="224" xport="0" yport="0" wport="256" hport="224" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
@@ -140,10 +140,10 @@ playMusic("HoneyWoman.ogg", "OGG", 1, 06.398, 51.199, true, 0.75);</code>
     <instance objName="objFlowerPresenter" x="544" y="496" name="inst_75DBE406" locked="0" code="flower = 0;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objCaricarry" x="624" y="640" name="inst_E5688F32" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objFlowerPresenter" x="720" y="576" name="inst_53110F54" locked="0" code="flower = 0;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objBokazurah" x="1056" y="256" name="inst_34EF6C7F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objBokazurah" x="1048" y="256" name="inst_34EF6C7F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBokazurah" x="1248" y="32" name="inst_8CBD034A" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objBokazurah" x="1248" y="384" name="inst_DDF3846F" locked="0" code="if (global.difficulty = DIFF_HARD)&#xA;    instance_destroy();" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objBokazurah" x="1056" y="480" name="inst_FDEAB5D3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objBokazurah" x="1256" y="384" name="inst_DDF3846F" locked="0" code="if (global.difficulty = DIFF_HARD)&#xA;    instance_destroy();" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objBokazurah" x="1048" y="480" name="inst_FDEAB5D3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBoltBig" x="560" y="64" name="inst_A2A6633B" locked="0" code="if (global.difficulty = DIFF_HARD)&#xA;    instance_destroy();&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objScissascissor" x="784" y="144" name="inst_E7C8422E" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objScissascissor" x="976" y="96" name="inst_17C0C913" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -178,7 +178,7 @@ playMusic("HoneyWoman.ogg", "OGG", 1, 06.398, 51.199, true, 0.75);</code>
     <instance objName="objBokazurahPlatform" x="1200" y="768" name="inst_45FD8818" locked="0" code="if (global.difficulty = DIFF_HARD)&#xA;    instance_destroy();&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBokazurahPlatform" x="1168" y="768" name="inst_889160BD" locked="0" code="if (global.difficulty = DIFF_HARD)&#xA;    instance_destroy();&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBokazurahPlatform" x="1216" y="816" name="inst_1433B1F9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objBokazurah" x="1248" y="704" name="inst_D5AED721" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objBokazurah" x="1256" y="704" name="inst_D5AED721" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBossBarrier" x="1040" y="1104" name="inst_45497E1C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBossBarrier" x="1056" y="1104" name="inst_C71B3636" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBossBarrier" x="1072" y="1104" name="inst_38932C54" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

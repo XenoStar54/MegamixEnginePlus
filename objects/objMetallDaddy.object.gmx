@@ -569,9 +569,9 @@ else
           <argument>
             <kind>1</kind>
             <string>/// animation code
-draw_sprite_part(sprite_index, 1, 0, 40 + hatOffset, 80, 80, round(x - 40), round(y + hatOffset * 2 - 40 + 32 - hatOffset));
-draw_sprite_ext(sprite_index, 2, round(x), round(y + eyeOffset), 1, image_yscale, image_angle, image_blend, image_alpha);
-draw_sprite_ext(sprite_index, hatFrame, round(x), round(y + hatOffset), 1, image_yscale, image_angle, image_blend, image_alpha);
+draw_sprite_part(sprite_index, 1, 0, 40 + hatOffset, 80, 80, x - 40, y + hatOffset * 2 - 40 + 32 - hatOffset);
+draw_sprite_ext(sprite_index, 2, x, y + eyeOffset, 1, image_yscale, image_angle, image_blend, image_alpha);
+draw_sprite_ext(sprite_index, hatFrame, x, y + hatOffset, 1, image_yscale, image_angle, image_blend, image_alpha);
 </string>
           </argument>
         </arguments>

@@ -216,10 +216,10 @@ if (!(yb &lt; y - 8 &amp;&amp; yb &gt; y - 28) || !(image_xscale &lt; 0 &amp;&am
     d3d_set_fog(true, c_white, 0, 0);
 }
 
-draw_sprite_ext(sprGamarn, frogFrame, round(x), round(y), image_xscale,
+draw_sprite_ext(sprGamarn, frogFrame, x, y, image_xscale,
     image_yscale, image_angle, image_blend, image_alpha);
-draw_sprite_ext(sprGamadayu, rideFrame, round(x - 6 * image_xscale),
-    round(y - 48), image_xscale, image_yscale, image_angle, image_blend,
+draw_sprite_ext(sprGamadayu, rideFrame, x - 6 * image_xscale,
+    y - 48, image_xscale, image_yscale, image_angle, image_blend,
     image_alpha);
 
 if (iFrames == 1 || iFrames == 3)

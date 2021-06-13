@@ -473,6 +473,8 @@ else if (onCycle)
                 if (instance_exists(i))
                 {
                     i.xspeed = objRushCycle.image_xscale * 6.5;
+                    
+                    playSFX(sfxBuster);
                 }
             }
                 
@@ -511,6 +513,8 @@ else if (onCycle)
                 {
                     i.dir += 180;
                 }
+                
+                playSFX(sfxBuster);
             }
         }
     }

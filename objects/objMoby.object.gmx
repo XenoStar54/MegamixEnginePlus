@@ -181,23 +181,23 @@ else
     // Draw air suction
     if (instance_exists(objMobbyBomb))
     {
-        draw_sprite_ext(sprMobbyAir, image_index, round(x + 42 * image_xscale),
-            round(y + 17), image_xscale, image_yscale, image_angle,
+        draw_sprite_ext(sprMobbyAir, image_index, x + 42 * image_xscale,
+            y + 17, image_xscale, image_yscale, image_angle,
             image_blend, image_alpha);
     }
     
     // Draw self
-    draw_sprite_ext(sprite_index, image_index mod 2, round(x), round(y),
+    draw_sprite_ext(sprite_index, image_index mod 2, x, y,
         image_xscale, image_yscale, image_angle, image_blend, image_alpha);
     
     // Draw flipper
-    draw_sprite_ext(sprite_index, floor(flipperIndex + 2), round(x), round(y),
+    draw_sprite_ext(sprite_index, floor(flipperIndex + 2), x, y,
         image_xscale, image_yscale, image_angle, image_blend, image_alpha);
         
     // Draw blinking
     if (blink)
     {
-        draw_sprite_ext(sprite_index, 5, round(x), round(y), image_xscale,
+        draw_sprite_ext(sprite_index, 5, x, y, image_xscale,
             image_yscale, image_angle, image_blend, image_alpha);
     }
 }

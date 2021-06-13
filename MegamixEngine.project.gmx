@@ -5624,6 +5624,33 @@
       <background>background\bgQuad400x224</background>
     </backgrounds>
     <backgrounds name="Engine">
+      <backgrounds name="BorderGraphics">
+        <background>background\bgMM1Border</background>
+        <background>background\bgMM2Border</background>
+        <background>background\bgMM3Border</background>
+        <background>background\bgMM4Border</background>
+        <background>background\bgMM5Border</background>
+        <background>background\bgMM6Border</background>
+        <background>background\bgMM7Border1</background>
+        <background>background\bgMM7Border2</background>
+        <background>background\bgMM7Border3</background>
+        <background>background\bgMM7Border4</background>
+        <background>background\bgMM8Border1</background>
+        <background>background\bgMM8Border2</background>
+        <background>background\bgMM8Border3</background>
+        <background>background\bgMM8Border4</background>
+        <background>background\bgMM9Border1</background>
+        <background>background\bgMM9Border2</background>
+        <background>background\bgMM9Border3</background>
+        <background>background\bgMM9Border4</background>
+        <background>background\bgMM10Border1</background>
+        <background>background\bgMM10Border2</background>
+        <background>background\bgMM10Border3</background>
+        <background>background\bgMM10Border4Rock</background>
+        <background>background\bgMM10Border4Blues</background>
+        <background>background\bgMM10Border4Forte</background>
+        <background>background\bgMM10Border4Other</background>
+      </backgrounds>
       <background>background\bgBeta</background>
       <background>background\bgTitleScreen</background>
       <background>background\bgRoomSelector</background>
@@ -6050,6 +6077,7 @@
         <script>scripts\sprite_get_ycenter.gml</script>
         <script>scripts\sprite_get_ycenter_object.gml</script>
       </scripts>
+      <script>scripts\getBorderGraphic.gml</script>
     </scripts>
     <scripts name="Initialization">
       <script>scripts\freshOptions.gml</script>
@@ -6089,7 +6117,9 @@
       <script>scripts\insideSection.gml</script>
       <script>scripts\setSection.gml</script>
       <script>scripts\setScreenSize.gml</script>
+      <script>scripts\setFullscreen.gml</script>
       <script>scripts\reAndDeactivateObjects.gml</script>
+      <script>scripts\getPixelRatio.gml</script>
     </scripts>
     <scripts name="Levels">
       <script>scripts\goToLevel.gml</script>
@@ -6195,6 +6225,7 @@
         <script>scripts\inClosedRange.gml</script>
         <script>scripts\inOpenRange.gml</script>
         <script>scripts\rectangleIntersectionType.gml</script>
+        <script>scripts\powerOfTwo.gml</script>
       </scripts>
       <scripts name="Arrays">
         <script>scripts\arrayNearest.gml</script>
@@ -6365,6 +6396,11 @@
       <script>scripts\queueUnpause.gml</script>
     </scripts>
   </scripts>
+  <shaders name="shaders">
+    <shader type="GLSLES">shaders\shdColorSubtract.shader</shader>
+    <shader type="GLSLES">shaders\shdColorSubtractStep.shader</shader>
+    <shader type="GLSLES">shaders\shdCRT.shader</shader>
+  </shaders>
   <objects name="objects">
     <objects name="Level Objects">
       <object>objects\objDefaultSpawn</object>
@@ -8448,7 +8484,6 @@
   <rooms name="rooms">
     <room>rooms\rmInit</room>
     <room>rooms\lvlCopyThisRoom</room>
-    <room>rooms\lvlWaterAndWaterAndWaterWater</room>
     <room>rooms\lvlShowcaseHUB</room>
     <rooms name="Engine">
       <room>rooms\rmDisclaimer</room>
@@ -8481,6 +8516,7 @@
       <room>rooms\lvlMagmaManTest</room>
       <room>rooms\lvlPlusTest</room>
       <room>rooms\lvlDocTest</room>
+      <room>rooms\lvlWaterAndWaterAndWaterWater</room>
     </rooms>
     <rooms name="Classic Mega Man Example Stages">
       <room>rooms\lvlCutMan</room>

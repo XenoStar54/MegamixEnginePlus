@@ -98,7 +98,7 @@ if (global.keyPausePressed[0] || global.keyJumpPressed[0]
             <string>draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 
-draw_text(round(room_width / 2), round(room_height / 2), disclaimerText);
+draw_text(room_width / 2, room_height / 2, disclaimerText);
 
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);

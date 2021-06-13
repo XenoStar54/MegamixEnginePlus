@@ -79,9 +79,10 @@ global.respawnGravityAngle = 1; // 1 = normal, -1 = reverse
 global.font = font_add_sprite(sprMM9Font, ord(' '), false, 0);
 draw_set_font(global.font);
 
-// the default screen scaling.
-global.screensize = max(1, floor(min(display_get_width() / global.screenWidth,
+// the default window scaling.
+global.screenSize = max(1, floor(min(display_get_width() / global.screenWidth,
     (display_get_height() - 32) / global.screenHeight)));
+global.screenScale = 1;
 
 global.shakeTimer = 0;
 global.shakeFactorX = 0;
@@ -223,6 +224,20 @@ global.factionStance[7, 4] = 0;
 global.factionStance[7, 5] = 0;
 global.factionStance[7, 6] = 0;
 global.factionStance[7, 7] = 0;
+
+// shader compatability (always check if all shaders are compiled!!!!)
+global.shadersCompatible = shaders_are_supported()
+    && shader_is_compiled(shdColorSubtract) && shader_is_compiled(shdColorSubtractStep)
+    && shader_is_compiled(shdCRT);
+    
+if (!global.shadersCompatible)
+{
+    show_message("This game's shaders are not supported on your system. The shaders are required "
+        + "for elements such as nes-like fading and filters to work. Please update your graphics API "
+        + "to one that is compatible, or try using Microsoft Windows if you are playing this using a "
+        + "compatability layer like Wine. Shaders are now disabled. They can be turned back on in the "
+        + "options menu once shaders are supported and the game is launched again.");
+}
 
 // load external rooms
 global.roomExternalCache = ds_map_create();

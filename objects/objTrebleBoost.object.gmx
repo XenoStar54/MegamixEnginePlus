@@ -622,11 +622,14 @@ if (!_canSpawn &amp;&amp; instance_exists(myTrebleBoost))
                     {
                         i.dir += 180;
                     }
+                    
                     with (i)
                     {
                         xspeed = cos(degtorad(dir)) * 5;
                         yspeed = -sin(degtorad(dir)) * 5 * sign(image_yscale);//Run this once to set the x and y speed.
                     }
+                    
+                    playSFX(sfxBuster);
                 }
             }
         }

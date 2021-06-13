@@ -175,6 +175,7 @@ if (entityCanStep())
                     change = -45;
                 }
                 
+                speed = spd;
                 direction += change;
                 waitTimer = 0; // set cooldown
                 
@@ -208,6 +209,7 @@ if (entityCanStep())
 }
 else
 {
+    speed = 0;
     if (dead)
     {
         phase = 0;

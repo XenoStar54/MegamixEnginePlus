@@ -172,7 +172,7 @@ else if (dead)
             <kind>1</kind>
             <string>if (!iFrames &amp;&amp; !dead)
 {
-    draw_sprite_ext(sprGobotsFire, flameImg, round(x - 10 * image_xscale), round(y - 6), image_xscale, image_yscale, image_angle, image_blend, image_alpha);
+    draw_sprite_ext(sprGobotsFire, flameImg, x - 10 * image_xscale, y - 6, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
 }
 event_inherited();
 </string>

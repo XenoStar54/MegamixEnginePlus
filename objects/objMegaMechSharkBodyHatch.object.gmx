@@ -281,7 +281,7 @@ if (instance_exists(bodyShark))
                 }
                 
                 d3d_set_fog(true, flashcol, 0, 0);
-                draw_sprite_ext(sprMegaMechSharkBodyHatch, hatchIndex, x, round(y),
+                draw_sprite_ext(sprMegaMechSharkBodyHatch, hatchIndex, x, y,
                     bodyShark.image_xscale, bodyShark.image_yscale,
                     image_angle, image_blend, image_alpha);
                 d3d_set_fog(false, 0, 0, 0);
@@ -289,7 +289,7 @@ if (instance_exists(bodyShark))
                 if (iceTimer &gt; 0 &amp;&amp; (iceTimer &gt; iceBlinkTime || (iceTimer &lt;= iceBlinkTime &amp;&amp; iceTimer mod 4 == 0)))
                 {
                     draw_set_blend_mode(bm_add);
-                    draw_sprite_ext(sprMegaMechSharkBodyHatch, hatchIndex, x, round(y),
+                    draw_sprite_ext(sprMegaMechSharkBodyHatch, hatchIndex, x, y,
                         bodyShark.image_xscale, bodyShark.image_yscale,
                         image_angle, image_blend, image_alpha);
                     draw_set_blend_mode(bm_normal);
@@ -297,7 +297,7 @@ if (instance_exists(bodyShark))
             }
             else
             {
-                draw_sprite_ext(sprMegaMechSharkBodyHatch, hatchIndex, x, round(y),
+                draw_sprite_ext(sprMegaMechSharkBodyHatch, hatchIndex, x, y,
                     bodyShark.image_xscale, bodyShark.image_yscale,
                     image_angle, image_blend, image_alpha);
             }
@@ -305,7 +305,7 @@ if (instance_exists(bodyShark))
     }
     else
     {
-        draw_sprite_ext(sprMegaMechSharkBodyHatch, hatchIndex, x, round(y),
+        draw_sprite_ext(sprMegaMechSharkBodyHatch, hatchIndex, x, y,
             bodyShark.image_xscale, bodyShark.image_yscale, image_angle, image_blend,
             1 - ((floor(bodyShark.introTimer / (30 / 2)) * (30 / 2)) / 30) / 2);
     }

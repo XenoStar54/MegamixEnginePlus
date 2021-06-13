@@ -596,13 +596,13 @@ if (weaknessAnim){
 
 if (sprite_index == sprGalaxyMan){
 
-    draw_sprite_ext(sprGalaxyManMask, image_index, round(x), round(y), image_xscale, image_yscale, image_angle, color[c], image_alpha);
+    draw_sprite_ext(sprGalaxyManMask, image_index, x, y, image_xscale, image_yscale, image_angle, color[c], image_alpha);
 
 }
 
 if (sprite_index == sprGalaxyManPose){
 
-    draw_sprite_ext(sprGalaxyManPoseMask, image_index, round(x), round(y), image_xscale, image_yscale, image_angle, color[c], image_alpha);
+    draw_sprite_ext(sprGalaxyManPoseMask, image_index, x, y, image_xscale, image_yscale, image_angle, color[c], image_alpha);
 
 }
 </string>

@@ -453,7 +453,7 @@ if (isFight) //(!dead) &amp;&amp; (!isDying)
 {
     if (lightFrame &lt; 2)
     {
-        draw_sprite_ext(sprite_index, min(lightFrame + 7, 8), round(x), round(y), image_xscale, image_yscale, image_angle, image_blend, image_alpha);
+        draw_sprite_ext(sprite_index, min(lightFrame + 7, 8), x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
     }
 }
 </string>

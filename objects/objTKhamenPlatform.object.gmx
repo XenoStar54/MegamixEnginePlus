@@ -154,7 +154,7 @@ if (entityCanStep())
 {
     for (var i = 0; i &lt; image_xscale; i++)
     {
-        draw_sprite(sprite_index, 0, round(x + i * 16), round(y));
+        draw_sprite(sprite_index, 0, x + i * 16, y);
     }
 }
 </string>

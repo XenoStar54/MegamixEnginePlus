@@ -562,7 +562,7 @@ event_inherited();
             <kind>1</kind>
             <string>var bx = image_xscale;
 var by = y;
-y = round(y + sin(cAngleY) * cDistanceY);
+y = y + sin(cAngleY) * cDistanceY;
 if (detectAnimation != image_xscale)
 {
     image_xscale *= -1;

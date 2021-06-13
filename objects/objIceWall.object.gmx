@@ -364,8 +364,8 @@ if (!audio_is_playing(sfxReflect) || !(timer mod 4))
             for (var z = shards; z &gt;= shImg; z -= 1)
             {
                 draw_sprite_ext(sprIceWallShard, z,
-                    round(x + (min(8, shardTime - (timer - z)) * (3 * (1 - (i mod 2 == 0) * 2)))),
-                    round(y + (min(8, shardTime - (timer - z)) * (3 * (1 - (i mod 3 == 0) * 2)))),
+                    x + (min(8, shardTime - (timer - z)) * (3 * (1 - (i mod 2 == 0) * 2))),
+                    y + (min(8, shardTime - (timer - z)) * (3 * (1 - (i mod 3 == 0) * 2))),
                     image_xscale, image_yscale, image_angle, image_blend, image_alpha);
             }
         }

@@ -132,12 +132,12 @@ for (i = 0; i &lt; image_xscale; i += 1)
 {
     if (dir == 1)
     {
-        draw_sprite(sprite_index, img, round(x) + i * 16, round(y));
+        draw_sprite(sprite_index, img, x + i * 16, y);
     }
     else
     {
         draw_sprite(sprite_index, image_number - img mod image_number,
-            round(x) + i * 16, round(y));
+            x + i * 16, y);
     }
 }
 </string>
