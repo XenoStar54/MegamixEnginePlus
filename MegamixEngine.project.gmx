@@ -4706,6 +4706,7 @@
         <sprites name="Honey">
           <sprite>sprites\sprHoneyWomanIntro</sprite>
           <sprite>sprites\sprHoneyWoman</sprite>
+          <sprite>sprites\sprBeeChaser</sprite>
           <sprite>sprites\sprBeeDropper</sprite>
           <sprite>sprites\sprHoneycombBomb</sprite>
           <sprite>sprites\sprHoneyPuddle</sprite>
@@ -6157,7 +6158,7 @@
     </scripts>
     <scripts name="Sound">
       <script>scripts\playSFX.gml</script>
-      <script>scripts\loopSFX.gml</script>
+      <script>scripts\playSFXExt.gml</script>
       <script>scripts\stopSFX.gml</script>
       <script>scripts\playMusic.gml</script>
       <script>scripts\stopMusic.gml</script>
@@ -6197,6 +6198,7 @@
         <script>scripts\GME_GetComment.gml</script>
         <script>scripts\GME_GetCopyright.gml</script>
       </scripts>
+      <script>scripts\gainSFX.gml</script>
     </scripts>
     <scripts name="Helpful Functions">
       <scripts name="Math">
@@ -7564,7 +7566,7 @@
           <object>objects\objPlug</object>
           <object>objects\objPlugShot</object>
           <object>objects\objJewelManSattelite</object>
-          <object>objects\objBeeChaser</object>
+          <object>objects\objBossHornetChaser</object>
           <object>objects\objBeeDropper</object>
           <object>objects\objHoneycombBomb</object>
           <object>objects\objHoneyPuddle</object>
@@ -8466,6 +8468,15 @@
           <object>objects\objWilyCastleDot</object>
           <object>objects\objWilyCastleStart</object>
           <object>objects\objWilyCastleArrow</object>
+        </objects>
+      </objects>
+      <objects name="Cutscenes">
+        <object>objects\objPlayerCutsceneController</object>
+        <objects name="Common">
+          <objects name="Stage End">
+            <object>objects\objStageEndCutscene</object>
+            <object>objects\objBossAbsorb</object>
+          </objects>
         </objects>
       </objects>
       <objects name="Effects">

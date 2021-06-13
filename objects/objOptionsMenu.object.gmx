@@ -374,24 +374,44 @@ if (phase == 2 &amp;&amp; !selected)
                 pre = global.musicvolume;
                 global.musicvolume = max(0, min(100, global.musicvolume + 10 * dir));
                 
+                global.unboundedMusicVolume = -1;
+                audio_master_gain(1);
+                
                 // adjust current music volume to reflect change
                 switch (global.levelSongType)
                 {
                     default:
                     case "OGG":
-                        FMODInstanceSetVolume(global.songMemory, global.musicvolume * 0.01);
+                        FMODInstanceSetVolume(global.songMemory, global.levelVolume * (global.musicvolume * 0.01));
                         break;
+                    
                     case "VGM":
                         if (instance_exists(objMusicControl))
                         {
-                            audio_sound_gain(objMusicControl.sound_index, global.levelVolume * (global.musicvolume * 0.01), 0);
+                            v = global.levelVolume * (global.musicvolume * 0.01);
+                            if (v &lt;= 1)
+                            {
+                                audio_sound_gain(objMusicControl.sound_index, v, 0);
+                            }
+                            else
+                            {
+                                /* only way to raise music volumes above max using GMS' built in audio engine
+                                is to raise the master volume and then lower everything else back down except
+                                for the music*/
+                                audio_sound_gain(objMusicControl.sound_index, 1, 0);
+                                audio_master_gain(v);
+                                global.unboundedMusicVolume = v;
+                            }
                         }
+                        
                         break;
                 }
+                
                 if (global.musicvolume != pre)
                 {
                     playSFX(sfxMenuMove);
                 }
+                
                 break;
             
             // Sound volume

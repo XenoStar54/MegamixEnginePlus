@@ -165,7 +165,7 @@ if (entityCanStep())
     {
         if (sfx == noone)
         {
-            sfx = loopSFX(sfxDoorShutterGBI);
+            sfx = playSFX(sfxDoorShutterGBI, true);
         }
     }
     

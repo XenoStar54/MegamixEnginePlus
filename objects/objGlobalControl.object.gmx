@@ -414,9 +414,32 @@ for (var i = 0; i &lt; gamepad_get_device_count(); i += 1)
     if (gamepad_is_connected(i))
         n_connected += 1;
 }
+
 n_connected = min(n_connected, global.playerCount);
 for (i = 0; i &lt; global.playerCount; i += 1)
 {
+    
+    // lock player controls
+    var doLock = false;
+    if (!instance_exists(objDebugMenu))
+    {
+        with (objPlayerCutsceneController)
+        {
+            if (instance_exists(playerObj))
+            {
+                if (playerObj.playerID == i)
+                {
+                    doLock = true;
+                }
+            }
+        }
+    }
+    
+    if (doLock)
+    {
+        continue;
+    }
+    
     // Input
     var keyLeftHold = global.keyLeft[i];
     var keyRightHold = global.keyRight[i];
@@ -453,70 +476,85 @@ for (i = 0; i &lt; global.playerCount; i += 1)
         {
             jp += 4 - xinputDeviceCount;
         }
+        
         if (gamepad_is_connected(jp))
         {
             if (gamepad_axis_count(jp) &gt;= 2)
             {
                 // Check D-Pad first
+                var dPad = gamepad_button_check(jp, gp_padu) || gamepad_button_check(jp, gp_padl) || gamepad_button_check(jp, gp_padr) || gamepad_button_check(jp, gp_padd);
+                if (dPad)
+                {
+                    global.keyLeft[i] = gamepad_button_check(jp,gp_padl);
+                    global.keyRight[i] = gamepad_button_check(jp,gp_padr);
+                    global.keyUp[i] = gamepad_button_check(jp,gp_padu);
+                    global.keyDown[i] = gamepad_button_check(jp,gp_padd);
+                }
                 
-                var dPad = false;
                 if (joystick_has_pov(jp))
                 {
                     var angle = joystick_pov(jp);
                     if (angle != -1)
-                        dPad = true;
-                    switch (angle)
                     {
-                        case 0:
-                            global.keyUp[i] += 1;
-                            break;
-                        case 45:
-                            global.keyRight[i] += 1;
-                            global.keyUp[i] += 1;
-                            break;
-                        case 90:
-                            global.keyRight[i] += 1;
-                            break;
-                        case 135:
-                            global.keyDown[i] += 1;
-                            global.keyRight[i] += 1;
-                            break;
-                        case 180:
-                            global.keyDown[i] += 1;
-                            break;
-                        case 225:
-                            global.keyLeft[i] += 1;
-                            global.keyDown[i] += 1;
-                            break;
-                        case 270:
-                            global.keyLeft[i] += 1;
-                            break;
-                        case 315:
-                            global.keyLeft[i] += 1;
-                            global.keyUp[i] += 1;
-                            break;
+                        dPad = true;
+                        
+                        switch (angle)
+                        {
+                            case 0:
+                                global.keyUp[i] += 1;
+                                break;
+                            case 45:
+                                global.keyRight[i] += 1;
+                                global.keyUp[i] += 1;
+                                break;
+                            case 90:
+                                global.keyRight[i] += 1;
+                                break;
+                            case 135:
+                                global.keyDown[i] += 1;
+                                global.keyRight[i] += 1;
+                                break;
+                            case 180:
+                                global.keyDown[i] += 1;
+                                break;
+                            case 225:
+                                global.keyLeft[i] += 1;
+                                global.keyDown[i] += 1;
+                                break;
+                            case 270:
+                                global.keyLeft[i] += 1;
+                                break;
+                            case 315:
+                                global.keyLeft[i] += 1;
+                                global.keyUp[i] += 1;
+                                break;
+                        }
                     }
                 }
                 
                 // Analog Stick position
-                if (!dPad)
+                if (gamepad_axis_count(jp) &gt;= 2)
                 {
-                    var axX = gamepad_axis_value(jp, gp_axislh);
-                    var axY = gamepad_axis_value(jp, gp_axislv);
-                    if ((abs(axY) &gt; 0.4) || (abs(axX) &gt; 0.36))
+                    if (!dPad)
                     {
-                        var gamepadStick = point_direction(0, 0, axX, axY);
-                        global.keyLeft[i] += (gamepadStick &gt;= 120
-                            &amp;&amp; gamepadStick &lt;= 240);
-                        global.keyRight[i] += ((gamepadStick &lt;= 60)
-                            || gamepadStick &gt;= 300);
-                        global.keyUp[i] += (gamepadStick &gt;= 30
-                            &amp;&amp; gamepadStick &lt;= 150);
-                        global.keyDown[i] += (gamepadStick &gt;= 210
-                            &amp;&amp; gamepadStick &lt;= 330);
+                        var axX = gamepad_axis_value(jp, gp_axislh);
+                        var axY = gamepad_axis_value(jp, gp_axislv);
+                        if ((abs(axY) &gt; 0.4) || (abs(axX) &gt; 0.36))
+                        {
+                            gamepadStick = point_direction(0, 0, axX, axY);
+                            global.keyLeft[i] += (gamepadStick &gt;= 120
+                                &amp;&amp; gamepadStick &lt;= 240);
+                            global.keyRight[i] += ((gamepadStick &lt;= 60)
+                                || gamepadStick &gt;= 300);
+                            global.keyUp[i] += (gamepadStick &gt;= 30
+                                &amp;&amp; gamepadStick &lt;= 150);
+                            global.keyDown[i] += (gamepadStick &gt;= 210
+                                &amp;&amp; gamepadStick &lt;= 330);
+                        }
                     }
                 }
             }
+            
             global.keyJump[i] += gamepad_button_check(jp,
                 global.joystick_jumpKey[i]);
             global.keyShoot[i] += gamepad_button_check(jp,
@@ -1242,6 +1280,10 @@ if (global.inGame)
         dead = true;
     }
     global.hasTeleported = false;
+}
+else
+{
+    global.absorbOnClear = false;
 }
 
 // set global screen size based on the room's view

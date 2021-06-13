@@ -55,6 +55,7 @@ healthBarSecondaryColor[1] = 14; // actually it's rgb(88,144,248) but this is cl
 music = "Mega_Man_9.nsf";
 musicType = "VGM";
 musicTrackNumber = 16;
+musicVolume = 1.4;
 
 // Damage Table
 enemyDamageValue(objBusterShot, 1);

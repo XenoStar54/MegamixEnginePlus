@@ -106,6 +106,7 @@ healthBarSecondaryColor[1] = global.nesPalette[20];
 music = "Mega_Man_9.nsf";
 musicType = "VGM";
 musicTrackNumber = 16;
+musicVolume = 1.4;
 
 enemyDamageValue(objTornadoBlow, 6);
 

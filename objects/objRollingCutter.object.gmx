@@ -165,7 +165,7 @@ if (entityCanStep())
     {
         if (sfx == noone)
         {
-            sfx = loopSFX(sfxRollingCutter);
+            sfx = playSFX(sfxRollingCutter, true);
         }
     }
     

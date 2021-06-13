@@ -44,7 +44,7 @@ canHit = false;
 canDamage = false;
 destroyTimer = 0;
 
-loopSFX(sfxBlackHoleBomb);
+playSFX(sfxBlackHoleBomb, true);
 </string>
           </argument>
         </arguments>
@@ -108,7 +108,7 @@ if (!global.frozen)
                 sprite_index = sprBlackHoleBomb;
                 mask_index = sprBlackHoleBombHitbox;
                 audio_stop_sound(sfxBlackHoleBomb);
-                loopSFX(sfxBlackHoleBombOpen);
+                playSFX(sfxBlackHoleBombOpen, true);
                 canHit = true;
                 canDamage = true;
                 xspeed = 0;

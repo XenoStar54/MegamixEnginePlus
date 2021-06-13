@@ -116,6 +116,7 @@ global.previousRoom = rmTitleScreen;
 global.roomReturn = rmTitleScreen;
 global.roomReturnIsStage = false;
 global.levelReward = makeArray(0);
+global.absorbOnClear = false;
 
 // are we in a game room (mega man can jump around and stuff)
 global.inGame = false;

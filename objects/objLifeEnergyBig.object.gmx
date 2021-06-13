@@ -88,7 +88,7 @@ else
             <kind>1</kind>
             <string>instance_destroy();
 
-if (is1Up &amp;&amp; global.livesEnabled)
+if (is1Up &amp;&amp; global.livesEnabled &amp;&amp; global.livesRemaining &lt; global.maxLives)
 {
     global.livesRemaining++;
     playSFX(sfxImportantItem);
@@ -101,7 +101,7 @@ else if (global.playerHealth[collectPlayer.playerID] &lt; 28)
         increaseHealth = other.hlth;
         increasePID = other.collectPlayer.playerID;
     }
-    loopSFX(sfxEnergyRestore);
+    playSFX(sfxEnergyRestore, true);
 }
 </string>
           </argument>

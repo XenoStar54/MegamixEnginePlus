@@ -1,9 +1,19 @@
-/// playSFX(index)
+/// playSFX(index, [loops?], [gain])
 // Plays a sound effect
 
-audio_stop_sound(argument0);
+_index = argument[0]
+_loops = false;
+_gain = 1;
 
-var mySound = audio_play_sound(argument0, 50, 0);
-audio_sound_gain(mySound, global.soundvolume * 0.01, 0);
+if (argument_count >= 2)
+{
+    _loops = argument[1];
+}
 
-return mySound;
+if (argument_count >= 3)
+{
+    _gain = argument[2];
+}
+
+return playSFXExt(_index, 50, _loops, _gain);
+

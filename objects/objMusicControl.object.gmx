@@ -30,6 +30,7 @@ LoadFMOD();
 FMODInit(5, false); // If you somehow have over 200 pieces of music, increase this number
 global.tempSongData = -1;
 global.songMemory = -1;
+global.unboundedMusicVolume = -1;
 
 // GME Init
 

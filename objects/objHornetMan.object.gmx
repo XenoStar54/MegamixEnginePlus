@@ -55,6 +55,7 @@ healthBarSecondaryColor[1] = make_colour_rgb(236,184,68);
 music = "Mega_Man_9.nsf";
 musicType = "VGM";
 musicTrackNumber = 16;
+musicVolume = 1.4;
 
 // Damage Table
 enemyDamageValue(objBusterShot, 1);
@@ -187,8 +188,7 @@ if (entityCanStep())
                 {
                     timer = 0;
                     
-                    var bee = instance_create(x + 10 * image_xscale, y - 6, objBeeChaser);
-                    bee.sprite_index = sprBossHornetChaser;
+                    var bee = instance_create(x + 10 * image_xscale, y - 6, objBossHornetChaser);
                     bee.image_xscale = image_xscale;
                     bee.timer += (26 - counter * 13); // make sure they all start moving at the same time
                     bee.contactDamage = 4;
@@ -298,7 +298,7 @@ if (entityCanStep())
                         image_xscale = -image_xscale;
                         
                         // only shoot more bees if there's no more bees, otherwise just turn around and run the other way
-                        if (!instance_exists(objBeeChaser))
+                        if (!instance_exists(objBossHornetChaser))
                         {
                             xspeed = 0;
                             timer = 0;
@@ -372,9 +372,9 @@ specialDamageValue(objPharaohShot, max(2, floor(global.damage / 3)));
             <kind>1</kind>
             <string>event_inherited();
 
-if (instance_exists(objBeeChaser))
+if (instance_exists(objBossHornetChaser))
 {
-    with (objBeeChaser)
+    with (objBossHornetChaser)
     {
         healthpoints = 0;
         event_user(EV_DEATH);

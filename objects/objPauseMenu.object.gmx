@@ -190,7 +190,7 @@ switch (phase)
                     mtank = 0;
                     global.eTanks -= 1;
                     eTankTimer = 0;
-                    loopSFX(sfxEnergyRestore);
+                    playSFX(sfxEnergyRestore, true);
                 }
                 else
                 {
@@ -251,7 +251,7 @@ switch (phase)
                         wtank = 0;
                         global.mTanks -= 1;
                         eTankTimer = 0;
-                        loopSFX(sfxEnergyRestore);
+                        playSFX(sfxEnergyRestore, true);
                     }
                     else
                     {
@@ -454,7 +454,7 @@ switch (phase)
                 {
                     phase = 5;
                     eTankTimer = 0;
-                    loopSFX(sfxEnergyRestore);
+                    playSFX(sfxEnergyRestore, true);
                 }
                 else
                 {

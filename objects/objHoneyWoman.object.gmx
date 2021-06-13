@@ -33,7 +33,7 @@ healthpoints = healthpointsStart;
 pose = sprHoneyWomanIntro;
 poseImgSpeed = 0.11;
 
-contactDamage = 4;
+contactDamage = 3;
 
 phase = 0;
 dropHoney = false;
@@ -56,11 +56,12 @@ healthBarSecondaryColor[1] = make_colour_rgb(236,184,68);
 music = "Mega_Man_9.nsf";
 musicType = "VGM";
 musicTrackNumber = 16;
+musicVolume = 1.4;
 
 // Damage Table
 enemyDamageValue(objBusterShot, 1);
 enemyDamageValue(objBusterShotHalfCharged, 1);
-enemyDamageValue(objBusterShotCharged, 3);
+enemyDamageValue(objBusterShotCharged, 2);
 
 // MaGMML3
 enemyDamageValue(objSparkChaser, 1);
@@ -146,10 +147,18 @@ if (entityCanStep())
         // starting direction
         calibrateDirection();
     }
+    
+    // fix for honey going up by 2 pixels in her intro
+    if (sprite_index == sprHoneyWomanIntro &amp;&amp; image_index == 5)
+    {
+        y = ystart;
+    }
+    
     if (isFight == true)
     {
         // set normal sprite
         sprite_index = sprHoneyWoman;
+        
         switch (phase)
         {
             // windup before flying
@@ -165,9 +174,12 @@ if (entityCanStep())
                     imgIndex = 10;
                     phase++;
                 }
+                
                 break;
+                
             // fly up and shoot bees
-            case 1: // animation 
+            case 1:
+                // animation
                 if (timer &lt; 0)
                 {
                     // normal flying
@@ -199,9 +211,11 @@ if (entityCanStep())
                 if (timer &gt; 13 - ((global.difficulty == DIFF_HARD) * 4))
                 {
                     timer = 0;
-                    var bee = instance_create(x + 10 * image_xscale, y, objBeeChaser);
+                    bee = instance_create(x + 10 * image_xscale, y, objBossHornetChaser);
+                    bee.sprite_index = sprBeeChaser;
                     bee.image_xscale = image_xscale;
                     bee.timer += (26 - counter * 13); // make sure they all start moving at the same time
+                    bee.contactDamage = 2;
                     playSFX(sfxHornetChaser);
                     counter++;
                     if (counter &gt;= 3 + (global.difficulty == DIFF_HARD))
@@ -241,7 +255,7 @@ if (entityCanStep())
                         yspeed = 0;
                         timer = 0;
                         grav = gravAccel;
-                        var walk = false;
+                        walk = false;
                         if (instance_exists(target))
                         {
                             if ((image_xscale &gt; 0 &amp;&amp; target.x &gt; x) || (image_xscale &lt; 0 &amp;&amp; target.x &lt; x))
@@ -260,6 +274,7 @@ if (entityCanStep())
                         {
                             walk = true;
                         }
+                        
                         if (walk)
                         {
                             imgIndex = 4;
@@ -268,6 +283,7 @@ if (entityCanStep())
                     }
                 }
                 break;
+                
             // Jump at the player
             case 3:
                 if (timer &gt;= 10)
@@ -303,9 +319,12 @@ if (entityCanStep())
                 {
                     timer++;
                 }
+                
                 break;
+                
             // walk to the other side of the screen
-            case 4: // animation 
+            case 4:
+                // animation
                 if (ground)
                 {
                     imgIndex += imgSpd;
@@ -324,7 +343,7 @@ if (entityCanStep())
                 if (ground)
                 {
                     // jump
-                    var stop = false;
+                    stop = false;
                     if (checkSolid(10 * image_xscale, 0,1,1) || !positionCollision(x+10 * image_xscale,y+20,1,1))
                     {
                         if (!checkSolid(10 * image_xscale,- 16,1,1))
@@ -341,33 +360,25 @@ if (entityCanStep())
                         }
                     }
                     
-            
                     // going off screen
                     if ((image_xscale &lt; 0 &amp;&amp; x + 16 * image_xscale &lt; view_xview[0])
                         || (image_xscale &gt; 0 &amp;&amp; x + 16 * image_xscale &gt; view_xview[0] + view_wview[0]))
                     {
                         stop = true;
                     }
+                    
                     if (stop)
                     {
                         image_xscale = -image_xscale;
                         
                         // only shoot more bees if there's no more bees, otherwise just turn around and run the other way
-                        if (!instance_exists(objBeeChaser))
+                        if (!instance_exists(objBossHornetChaser))
                         {
                             xspeed = 0;
                             timer = 0;
                             imgIndex = 0;
-                            if (!dropHoney)
-                            {
-                                phase = 0;
-                            }
-                            else
-                            {
-                                imgIndex = 18;
-                                phase++;
-                            }
-                            dropHoney = !dropHoney;
+                            imgIndex = 18;
+                            phase++;
                         }
                         else
                         {
@@ -387,7 +398,9 @@ if (entityCanStep())
                 {
                     timer = 0;
                 }
+                
                 break;
+                
             // drop honey
             case 5:
                 if (timer &gt;= 10) // &lt;-- time until swiping arm
@@ -402,7 +415,7 @@ if (entityCanStep())
                         imgIndex = 20;
                         if (timer == 10 || (timer == 25 &amp;&amp; global.difficulty == DIFF_HARD)) // Only summon bee once, unless on hard mode
                         {
-                            var bee = instance_create(view_xview[0] + view_wview[0] * (image_xscale == -1), view_yview[0] + 64, objBeeDropper);
+                            bee = instance_create(view_xview[0] + view_wview[0] * (image_xscale == -1), view_yview[0] + 64, objBeeDropper);
                             bee.image_xscale = image_xscale;
                             bee.respawn = false;
                             bee.itemDrop = -1;
@@ -420,8 +433,10 @@ if (entityCanStep())
                 {
                     timer++;
                 }
+                
                 break;
         }
+        
         image_index = floor(imgIndex);
     }
 }
@@ -479,9 +494,9 @@ specialDamageValue(objPharaohShot, max(2, floor(global.damage / 3)));
             <string>/// EV_DEATH
 event_inherited();
 
-if (instance_exists(objBeeChaser))
+if (instance_exists(objBossHornetChaser))
 {
-    with (objBeeChaser)
+    with (objBossHornetChaser)
     {
         healthpoints = 0;
         event_user(EV_DEATH);

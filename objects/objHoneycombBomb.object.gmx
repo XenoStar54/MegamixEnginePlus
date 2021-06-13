@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>event_inherited();
 
-contactDamage = 4;
+contactDamage = 3;
 stopOnFlash = false;
 
 // enemy specific
