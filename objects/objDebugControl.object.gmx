@@ -50,6 +50,13 @@ names = 0
 scroll = 0
 amounts = 0
 ids = -1;
+
+// stage info
+elementName = "";
+elementScript = scrNoEffect;
+elementCode = "";
+bossCheckpointX = -1;
+bossCheckpointY = -1;
 </string>
           </argument>
         </arguments>
@@ -282,6 +289,79 @@ if (global.alwaysHealth)
     {
         global.playerHealth[playerID] = 28;
     }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>// grab stage info
+if (instance_exists(prtBoss) || instance_exists(objEnergyElement))
+{
+    var ender = instance_find(prtBoss, 0);
+    if (instance_exists(ender))
+    {
+        elementName = ender.elementName;
+        elementCode = ender.elementCode;
+        elementScript = ender.elementScript;
+    }
+    else
+    {
+        ender = instance_find(objEnergyElement, 0);
+        elementName = ender.name;
+        elementCode = ender.code;
+        elementScript = ender.script;
+    }
+    
+    check = instance_nearest(ender.x, ender.y, objCheckpoint);
+    checkTouch = instance_nearest(ender.x, ender.y, objCheckpointTouch);
+    
+    if (instance_exists(checkTouch))
+    {
+        if (instance_exists(check))
+        {
+            if (point_distance(ender.x, ender.y, checkTouch.x, checkTouch.y) 
+                &lt; point_distance(ender.x, ender.y, ender.x, ender.y))
+            {
+                check = checkTouch;
+            }
+        }
+        else
+        {
+            check = checkTouch;
+        }
+    }
+    
+    if (instance_exists(check))
+    {
+        bossCheckpointX = check.xx;
+        bossCheckpointY = check.yy;
+    }
+}
+else
+{
+    elementName = "";
+    elementCode = "";
+    elementScript = scrNoEffect;
+    bossTeleportX = -1;
+    bossTeleportY = -1;
 }
 </string>
           </argument>

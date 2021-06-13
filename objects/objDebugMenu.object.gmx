@@ -38,7 +38,7 @@ playerID = 0;
 pauseLock = lockPoolLock(PL_LOCK_PAUSE);
 option = 0;
 quickScrollTimer = 25;
-endy = 11;
+endy = 13;
 mode = 0; // 0: normal. 1: record input menu
 openTimer = 0;
 
@@ -52,7 +52,9 @@ COSTUME CHANGE#
 RECORD INPUT#
 VISIBLE COLLISION#
 PRESS 2#
-KILL ONSCREEN ENTITIES";
+KILL ONSCREEN ENTITIES#
+SKIP TO BOSS#
+INSTANT CLEAR STAGE";
 </string>
           </argument>
         </arguments>
@@ -395,6 +397,62 @@ if (mode == 0)
                         event_user(EV_DEATH);
                     }
                 }
+                
+                break;
+            
+            // skip to boss
+            case 11:
+                if (objDebugControl.bossCheckpointX != -1)
+                {
+                    global.checkpoint = room;
+                    global.checkpointX = objDebugControl.bossCheckpointX;
+                    global.checkpointY = objDebugControl.bossCheckpointY;
+                    
+                    global.nextRoom = room;
+                    
+                    playSFX(sfxTeleportOut);
+                    
+                    instance_destroy();
+                }
+                else
+                {
+                    playSFX(sfxError);
+                }
+                
+                break;
+            
+            // instaclear stage
+            case 12:
+                if (objDebugControl.elementName != ""
+                    &amp;&amp; !indexOf(global.elementsCollected, objDebugControl.elementName))
+                {
+                    arrayAppend(global.elementsCollected, objDebugControl.elementName);
+                    script_execute(objDebugControl.elementScript);
+                    stringExecutePartial(objDebugControl.elementCode);
+                    
+                    // update count of number of elements collected:
+                    global.energyElements = array_length_1d(global.elementsCollected) - numberOf(global.elementsCollected, "");
+                    
+                    playSFX(sfxElementGrab);
+                    stopMusic();
+                    
+                    // save the game file
+                    saveLoadGame(true);
+                    
+                    // teleport out
+                    with (objMegaman)
+                    {
+                        i = instance_create(x, y, objMegamanExit);
+                        i.pid = playerID;
+                        i.cid = costumeID;
+                        
+                        visible = 0;
+                        instance_destroy();
+                    }
+                    
+                    instance_destroy();
+                }
+                
                 break;
         }
     }
@@ -472,17 +530,17 @@ draw_set_halign(fa_center);
 draw_text(view_xview[0] + 128, view_yview[0] + 4, "DEBUG MENU");
 draw_set_halign(fa_left);
 if (mode == 0)
-    draw_text(view_xview[0] + 20, view_yview[0] + 24, optionText);
+    draw_text(view_xview[0] + 20, view_yview[0] + 20, optionText);
 else
-    draw_text(view_xview[0] + 20, view_yview[0] + 24, "RECORD-HERE [UNSTABLE!]##RECORD-RESET [SAFE]##BACK####'RECORD HERE' MUST ONLY#BE USED IN A SCREEN#WITHOUT GIMMICKS OR ENEMIES");
-draw_sprite(sprOptionsCursor, 0, view_xview[0] + 8, view_yview[0] + 24 + (option * 16));
+    draw_text(view_xview[0] + 20, view_yview[0] + 20, "RECORD-HERE [UNSTABLE!]##RECORD-RESET [SAFE]##BACK####'RECORD HERE' MUST ONLY#BE USED IN A SCREEN#WITHOUT GIMMICKS OR ENEMIES");
+draw_sprite(sprOptionsCursor, 0, view_xview[0] + 8, view_yview[0] + 20 + (option * 16));
 
 // specific text for options
 draw_set_halign(fa_right);
 if (mode == 0)
-    for (var i = 24; i &lt;= endy * 16; i += 16)
+    for (var i = 20; i &lt;= endy * 16; i += 16)
     {
-        switch ((i - 24) / 16)
+        switch ((i - 20) / 16)
         {
             // invincibility
             case 2:
