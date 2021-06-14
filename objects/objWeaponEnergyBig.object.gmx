@@ -32,7 +32,7 @@ image_speed = 1 / 6;
 
 hlth = 10;
 
-respawnupondeath = 1;
+respawnWhenCollected = 1;
 </string>
           </argument>
         </arguments>

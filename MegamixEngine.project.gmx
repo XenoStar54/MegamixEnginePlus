@@ -403,6 +403,23 @@
     </datafiles>
     <datafiles number="118" name="Music">
       <datafile>
+        <name>Mega_Man_1.nsf</name>
+        <exists>-1</exists>
+        <size>12048</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>Mega_Man_1.nsf</filename>
+      </datafile>
+      <datafile>
         <name>Mega_Man_2.nsf</name>
         <exists>-1</exists>
         <size>16848</size>
@@ -420,9 +437,9 @@
         <filename>Mega_Man_2.nsf</filename>
       </datafile>
       <datafile>
-        <name>MaGMML3DevkitBoss.nsf</name>
+        <name>Mega_Man_3.nsf</name>
         <exists>-1</exists>
-        <size>11367</size>
+        <size>20156</size>
         <exportAction>2</exportAction>
         <exportDir></exportDir>
         <overwrite>0</overwrite>
@@ -434,12 +451,12 @@
             <CopyToMask>9223372036854775807</CopyToMask>
           </Config>
         </ConfigOptions>
-        <filename>MaGMML3DevkitBoss.nsf</filename>
+        <filename>Mega_Man_3.nsf</filename>
       </datafile>
       <datafile>
-        <name>FrostMan.nsf</name>
+        <name>Mega_Man_4.nsf</name>
         <exists>-1</exists>
-        <size>10998</size>
+        <size>24704</size>
         <exportAction>2</exportAction>
         <exportDir></exportDir>
         <overwrite>0</overwrite>
@@ -451,12 +468,12 @@
             <CopyToMask>9223372036854775807</CopyToMask>
           </Config>
         </ConfigOptions>
-        <filename>FrostMan.nsf</filename>
+        <filename>Mega_Man_4.nsf</filename>
       </datafile>
       <datafile>
-        <name>Rockboard.nsf</name>
+        <name>Mega_Man_5.nsf</name>
         <exists>-1</exists>
-        <size>16512</size>
+        <size>24704</size>
         <exportAction>2</exportAction>
         <exportDir></exportDir>
         <overwrite>0</overwrite>
@@ -468,12 +485,12 @@
             <CopyToMask>9223372036854775807</CopyToMask>
           </Config>
         </ConfigOptions>
-        <filename>Rockboard.nsf</filename>
+        <filename>Mega_Man_5.nsf</filename>
       </datafile>
       <datafile>
-        <name>WT_stage_4.vgm</name>
+        <name>Mega_Man_6.nsf</name>
         <exists>-1</exists>
-        <size>211934</size>
+        <size>24704</size>
         <exportAction>2</exportAction>
         <exportDir></exportDir>
         <overwrite>0</overwrite>
@@ -485,58 +502,7 @@
             <CopyToMask>9223372036854775807</CopyToMask>
           </Config>
         </ConfigOptions>
-        <filename>WT_stage_4.vgm</filename>
-      </datafile>
-      <datafile>
-        <name>MM8Boss.ogg</name>
-        <exists>-1</exists>
-        <size>393182</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>MM8Boss.ogg</filename>
-      </datafile>
-      <datafile>
-        <name>FreezeMan.nsf</name>
-        <exists>-1</exists>
-        <size>11715</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>FreezeMan.nsf</filename>
-      </datafile>
-      <datafile>
-        <name>RnFBossNES.ogg</name>
-        <exists>-1</exists>
-        <size>1156286</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>RnFBossNES.ogg</filename>
+        <filename>Mega_Man_6.nsf</filename>
       </datafile>
       <datafile>
         <name>Mega_Man_9.nsf</name>
@@ -573,9 +539,9 @@
         <filename>Mega_Man_10.nsf</filename>
       </datafile>
       <datafile>
-        <name>dr. wily stage 1.ogg</name>
+        <name>Mega_Man_1GB.gbs</name>
         <exists>-1</exists>
-        <size>1080810</size>
+        <size>29405</size>
         <exportAction>2</exportAction>
         <exportDir></exportDir>
         <overwrite>0</overwrite>
@@ -587,7 +553,7 @@
             <CopyToMask>9223372036854775807</CopyToMask>
           </Config>
         </ConfigOptions>
-        <filename>dr. wily stage 1.ogg</filename>
+        <filename>Mega_Man_1GB.gbs</filename>
       </datafile>
       <datafile>
         <name>Mega_Man_2GB.gbs</name>
@@ -607,9 +573,9 @@
         <filename>Mega_Man_2GB.gbs</filename>
       </datafile>
       <datafile>
-        <name>Mega_Man_5GB.gbs</name>
+        <name>Mega_Man_3GB.gbs</name>
         <exists>-1</exists>
-        <size>29723</size>
+        <size>15255</size>
         <exportAction>2</exportAction>
         <exportDir></exportDir>
         <overwrite>0</overwrite>
@@ -621,109 +587,7 @@
             <CopyToMask>9223372036854775807</CopyToMask>
           </Config>
         </ConfigOptions>
-        <filename>Mega_Man_5GB.gbs</filename>
-      </datafile>
-      <datafile>
-        <name>WilyTowerBossTheme.vgm</name>
-        <exists>-1</exists>
-        <size>94289</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>WilyTowerBossTheme.vgm</filename>
-      </datafile>
-      <datafile>
-        <name>WeaponGet.ogg</name>
-        <exists>-1</exists>
-        <size>471574</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>WeaponGet.ogg</filename>
-      </datafile>
-      <datafile>
-        <name>MM7Boss.nsf</name>
-        <exists>-1</exists>
-        <size>11495</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>MM7Boss.nsf</filename>
-      </datafile>
-      <datafile>
-        <name>songlist.txt</name>
-        <exists>-1</exists>
-        <size>7179</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>songlist.txt</filename>
-      </datafile>
-      <datafile>
-        <name>Rockman8intro.ogg</name>
-        <exists>-1</exists>
-        <size>3280813</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>Rockman8intro.ogg</filename>
-      </datafile>
-      <datafile>
-        <name>Mega_Man_6.nsf</name>
-        <exists>-1</exists>
-        <size>24704</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>Mega_Man_6.nsf</filename>
+        <filename>Mega_Man_3GB.gbs</filename>
       </datafile>
       <datafile>
         <name>Mega_Man_4GB.gbs</name>
@@ -743,9 +607,9 @@
         <filename>Mega_Man_4GB.gbs</filename>
       </datafile>
       <datafile>
-        <name>MegamixEnginePlusTitle.ogg</name>
+        <name>Mega_Man_5GB.gbs</name>
         <exists>-1</exists>
-        <size>2679933</size>
+        <size>29723</size>
         <exportAction>2</exportAction>
         <exportDir></exportDir>
         <overwrite>0</overwrite>
@@ -757,12 +621,12 @@
             <CopyToMask>9223372036854775807</CopyToMask>
           </Config>
         </ConfigOptions>
-        <filename>MegamixEnginePlusTitle.ogg</filename>
+        <filename>Mega_Man_5GB.gbs</filename>
       </datafile>
       <datafile>
-        <name>Mega_Man_3.nsf</name>
+        <name>Rockboard.nsf</name>
         <exists>-1</exists>
-        <size>20156</size>
+        <size>16512</size>
         <exportAction>2</exportAction>
         <exportDir></exportDir>
         <overwrite>0</overwrite>
@@ -774,12 +638,12 @@
             <CopyToMask>9223372036854775807</CopyToMask>
           </Config>
         </ConfigOptions>
-        <filename>Mega_Man_3.nsf</filename>
+        <filename>Rockboard.nsf</filename>
       </datafile>
       <datafile>
-        <name>Mega_Man_3GB.gbs</name>
+        <name>WT_stage_4.vgm</name>
         <exists>-1</exists>
-        <size>15255</size>
+        <size>211934</size>
         <exportAction>2</exportAction>
         <exportDir></exportDir>
         <overwrite>0</overwrite>
@@ -791,228 +655,7 @@
             <CopyToMask>9223372036854775807</CopyToMask>
           </Config>
         </ConfigOptions>
-        <filename>Mega_Man_3GB.gbs</filename>
-      </datafile>
-      <datafile>
-        <name>Victory.ogg</name>
-        <exists>-1</exists>
-        <size>67880</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>Victory.ogg</filename>
-      </datafile>
-      <datafile>
-        <name>Mega_Man_1GB.gbs</name>
-        <exists>-1</exists>
-        <size>29405</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>Mega_Man_1GB.gbs</filename>
-      </datafile>
-      <datafile>
-        <name>Showcase.ogg</name>
-        <exists>-1</exists>
-        <size>2990929</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>Showcase.ogg</filename>
-      </datafile>
-      <datafile>
-        <name>Mega_Man_5.nsf</name>
-        <exists>-1</exists>
-        <size>24704</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>Mega_Man_5.nsf</filename>
-      </datafile>
-      <datafile>
-        <name>MM7_Dr._Wily_3.spc</name>
-        <exists>-1</exists>
-        <size>66144</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>MM7_Dr._Wily_3.spc</filename>
-      </datafile>
-      <datafile>
-        <name>Wily4StairwaytoDarkness.ogg</name>
-        <exists>-1</exists>
-        <size>484043</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>Wily4StairwaytoDarkness.ogg</filename>
-      </datafile>
-      <datafile>
-        <name>14 Tenguman.spc</name>
-        <exists>-1</exists>
-        <size>66136</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>14 Tenguman.spc</filename>
-      </datafile>
-      <datafile>
-        <name>HoneyWoman.ogg</name>
-        <exists>-1</exists>
-        <size>677300</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>HoneyWoman.ogg</filename>
-      </datafile>
-      <datafile>
-        <name>WilyIntro.ogg</name>
-        <exists>-1</exists>
-        <size>109747</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>WilyIntro.ogg</filename>
-      </datafile>
-      <datafile>
-        <name>Mega_Man_4.nsf</name>
-        <exists>-1</exists>
-        <size>24704</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>Mega_Man_4.nsf</filename>
-      </datafile>
-      <datafile>
-        <name>18 Boss Battle.spc</name>
-        <exists>-1</exists>
-        <size>66136</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>18 Boss Battle.spc</filename>
-      </datafile>
-      <datafile>
-        <name>Mega_Man_1.nsf</name>
-        <exists>-1</exists>
-        <size>12048</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>Mega_Man_1.nsf</filename>
-      </datafile>
-      <datafile>
-        <name>MM7RMBoss.spc</name>
-        <exists>-1</exists>
-        <size>66088</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>MM7RMBoss.spc</filename>
+        <filename>WT_stage_4.vgm</filename>
       </datafile>
       <datafile>
         <name>WW_Boss.vgz</name>
@@ -1032,6 +675,227 @@
         <filename>WW_Boss.vgz</filename>
       </datafile>
       <datafile>
+        <name>WilyTowerBossTheme.vgm</name>
+        <exists>-1</exists>
+        <size>94289</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>WilyTowerBossTheme.vgm</filename>
+      </datafile>
+      <datafile>
+        <name>FreezeMan.nsf</name>
+        <exists>-1</exists>
+        <size>11715</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>FreezeMan.nsf</filename>
+      </datafile>
+      <datafile>
+        <name>MM7RMBoss.spc</name>
+        <exists>-1</exists>
+        <size>66088</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>MM7RMBoss.spc</filename>
+      </datafile>
+      <datafile>
+        <name>MM7Boss.nsf</name>
+        <exists>-1</exists>
+        <size>11495</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>MM7Boss.nsf</filename>
+      </datafile>
+      <datafile>
+        <name>MM7_Dr._Wily_3.spc</name>
+        <exists>-1</exists>
+        <size>66144</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>MM7_Dr._Wily_3.spc</filename>
+      </datafile>
+      <datafile>
+        <name>FrostMan.nsf</name>
+        <exists>-1</exists>
+        <size>10998</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>FrostMan.nsf</filename>
+      </datafile>
+      <datafile>
+        <name>Rockman8intro.ogg</name>
+        <exists>-1</exists>
+        <size>3280813</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>Rockman8intro.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>MM8Boss.ogg</name>
+        <exists>-1</exists>
+        <size>393182</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>MM8Boss.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>dr. wily stage 1.ogg</name>
+        <exists>-1</exists>
+        <size>1080810</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>dr. wily stage 1.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>14 Tenguman.spc</name>
+        <exists>-1</exists>
+        <size>66136</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>14 Tenguman.spc</filename>
+      </datafile>
+      <datafile>
+        <name>18 Boss Battle.spc</name>
+        <exists>-1</exists>
+        <size>66136</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>18 Boss Battle.spc</filename>
+      </datafile>
+      <datafile>
+        <name>RnFBossNES.ogg</name>
+        <exists>-1</exists>
+        <size>1156286</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>RnFBossNES.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>HoneyWoman.ogg</name>
+        <exists>-1</exists>
+        <size>677300</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>HoneyWoman.ogg</filename>
+      </datafile>
+      <datafile>
         <name>Chill Man.ogg</name>
         <exists>-1</exists>
         <size>807950</size>
@@ -1047,6 +911,142 @@
           </Config>
         </ConfigOptions>
         <filename>Chill Man.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>Wily4StairwaytoDarkness.ogg</name>
+        <exists>-1</exists>
+        <size>484043</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>Wily4StairwaytoDarkness.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>MegamixEnginePlusTitle.ogg</name>
+        <exists>-1</exists>
+        <size>2679933</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>MegamixEnginePlusTitle.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>MaGMML3DevkitBoss.nsf</name>
+        <exists>-1</exists>
+        <size>11367</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>MaGMML3DevkitBoss.nsf</filename>
+      </datafile>
+      <datafile>
+        <name>WeaponGet.ogg</name>
+        <exists>-1</exists>
+        <size>471574</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>WeaponGet.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>WilyIntro.ogg</name>
+        <exists>-1</exists>
+        <size>109747</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>WilyIntro.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>Victory.ogg</name>
+        <exists>-1</exists>
+        <size>67880</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>Victory.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>Showcase.ogg</name>
+        <exists>-1</exists>
+        <size>2990929</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>Showcase.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>songlist.txt</name>
+        <exists>-1</exists>
+        <size>7179</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>songlist.txt</filename>
       </datafile>
     </datafiles>
     <datafiles number="118" name="Recordings">
@@ -5535,6 +5535,8 @@
       <sprite>sprites\sprKeyGate</sprite>
       <sprite>sprites\sprKeyCoin</sprite>
       <sprite>sprites\sprKeyCoinHUD</sprite>
+      <sprite>sprites\sprBalloonPickup</sprite>
+      <sprite>sprites\sprWirePickup</sprite>
     </sprites>
     <sprites name="Menu">
       <sprites name="Pause">
@@ -6052,10 +6054,13 @@
       <script>scripts\drawCostume.gml</script>
       <script>scripts\drawPlayer.gml</script>
       <script>scripts\drawPlayerInk.gml</script>
+      <script>scripts\drawWeaponIcon.gml</script>
+      <script>scripts\drawWeaponIconExt.gml</script>
       <script>scripts\animationLoop.gml</script>
       <script>scripts\drawControllerOverlay.gml</script>
       <script>scripts\drawHudBar.gml</script>
       <script>scripts\getBossHealthBarColors.gml</script>
+      <script>scripts\getBorderGraphic.gml</script>
       <scripts name="Sprite_center">
         <script>scripts\spriteGetXCenter.gml</script>
         <script>scripts\spriteGetYCenter.gml</script>
@@ -6078,7 +6083,6 @@
         <script>scripts\sprite_get_ycenter.gml</script>
         <script>scripts\sprite_get_ycenter_object.gml</script>
       </scripts>
-      <script>scripts\getBorderGraphic.gml</script>
     </scripts>
     <scripts name="Initialization">
       <script>scripts\freshOptions.gml</script>
@@ -6096,6 +6100,8 @@
       <script>scripts\specialDamageValue.gml</script>
       <script>scripts\getWeaponDamage.gml</script>
       <script>scripts\getWeaponID.gml</script>
+      <script>scripts\getWeaponPrimaryColor.gml</script>
+      <script>scripts\getWeaponSecondaryColor.gml</script>
       <script>scripts\weaponReward.gml</script>
       <scripts name="Buster Replacements">
         <script>scripts\scrBusterControl.gml</script>

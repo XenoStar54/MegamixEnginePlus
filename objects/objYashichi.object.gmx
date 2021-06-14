@@ -31,7 +31,7 @@ hlth = 28;
 
 grabable = 0;
 heavy = 1;
-respawnupondeath = 1;
+respawnWhenCollected = 1;
 </string>
           </argument>
         </arguments>

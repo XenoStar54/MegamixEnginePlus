@@ -344,7 +344,7 @@ if global.difficulty &lt; DIFF_HARD
     <instance objName="objBatabattan" x="1568" y="640" name="inst_037F9443" locked="0" code="if (global.difficulty &lt; DIFF_HARD)&#xA;{&#xA;    instance_destroy();&#xA;}&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objHeliButon" x="4096" y="512" name="inst_CC836850" locked="0" code="variation = 1;&#xA;&#xA;if global.difficulty &lt; DIFF_HARD&#xA;{&#xA;    instance_destroy();&#xA;}&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBatabattan" x="352" y="624" name="inst_2B18DAD5" locked="0" code="if (global.difficulty &lt; DIFF_HARD)&#xA;{&#xA;    instance_destroy();&#xA;}&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objBallade" x="5072" y="656" name="inst_058B7AAE" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objPlantMan" x="5072" y="656" name="inst_13448A22" locked="0" code="elementName = &quot;plant&quot;;&#xA;elementCode = &quot;weaponReward(objPlantBarrier);&quot;;&#xA;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="tstPlantMan" x="896" y="592" w="16" h="16" xo="192" yo="48" id="11226757" name="inst_1999A174" depth="1000001" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

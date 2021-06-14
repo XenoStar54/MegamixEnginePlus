@@ -90,7 +90,7 @@ else
     }
     
     // Weapon icon
-    if (drawWeaponIcon)
+    if (weaponIcon)
     {
         var icon, iconx;
         iconx = 0;

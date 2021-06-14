@@ -126,7 +126,7 @@ if global.difficulty &lt; DIFF_HARD
     <instance objName="objBossBarrier" x="2432" y="464" name="inst_1DB9D0F4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBossBarrier" x="2416" y="464" name="inst_03D954CF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBossBarrier" x="2400" y="464" name="inst_DB934707" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objProtomanEncounter" x="2432" y="394" name="inst_B0F07B0C" locked="0" code="if (global.difficulty &gt;= DIFF_HARD)&#xA;    instance_destroy();&#xA;    &#xA;instantLeave = true;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objProtomanEncounter" x="2432" y="394" name="inst_B0F07B0C" locked="0" code="if (global.difficulty &gt;= DIFF_HARD)&#xA;    instance_destroy();&#xA;    &#xA;instantLeave = true;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objCheckpoint" x="5504" y="176" name="inst_83CA4E26" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objCheckpoint" x="3968" y="624" name="inst_406C8533" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objGeminiEgg" x="2704" y="624" name="inst_D786E250" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

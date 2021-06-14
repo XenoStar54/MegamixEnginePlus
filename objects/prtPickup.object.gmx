@@ -41,7 +41,7 @@ usePlayerColor = 0; // Make sure to have white mask images for the primary, seco
 
 heavy = 0;
 grabable = 1;
-respawnupondeath = 0;
+respawnWhenCollected = 0;
 
 stopOnFlash = false;
 
@@ -133,7 +133,7 @@ if (entityCanStep())
         {
             event_user(0);
             
-            if (!respawnupondeath) // Keeps it from reappearing after a death
+            if (!respawnWhenCollected) // Keeps it from reappearing after a being collected
             {
                 if (respawn)
                 {

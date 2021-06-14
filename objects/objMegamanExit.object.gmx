@@ -42,6 +42,7 @@ X = -1;
 Y = -1;
 newStage = false;
 returnToHub = true;
+returnToCheckpoint = false;
 isExternal = false;
 externalRoomFilename = "";
 
@@ -79,7 +80,7 @@ else
             <kind>1</kind>
             <string>instance_destroy();
 
-if (((isExternal&amp;&amp;externalRoomFilename=="")||(!isExternal &amp;&amp; myRoom &lt;= 0)) &amp;&amp; !returnToHub)
+if (((isExternal&amp;&amp;externalRoomFilename=="")||(!isExternal &amp;&amp; myRoom &lt;= 0)) &amp;&amp; !returnToHub &amp;&amp; !returnToCheckpoint)
 {
     queueUnpause();
     
@@ -136,6 +137,10 @@ else
             myRoom = roomExternalLoad(externalRoomFilename);
         }
         goToLevel(myRoom, true);
+    }
+    else if (returnToCheckpoint)
+    {
+        global.nextRoom = room;
     }
     else if (myRoom != -1 || (isExternal&amp;&amp;(externalRoomFilename!="")))
     {

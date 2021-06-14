@@ -35,7 +35,7 @@ canHit = false;
 
 stopOnFlash = false;
 
-respawnupondeath = 1;
+respawnWhenCollected = 1;
 grabable = 0;
 
 jumped = 0;

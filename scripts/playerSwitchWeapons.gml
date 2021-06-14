@@ -85,7 +85,7 @@ if (global.weapon[playerID] != oldWeapon)
     // error-checking for recording/playback
     recordInputFidelityMessage(string(playerID) + ":" + object_get_name(global.weaponObject[global.weapon[playerID]]));
     
-    drawWeaponIcon = 32;
+    weaponIcon = 32;
     playerPalette();
     
     with (prtPlayerProjectile)
@@ -128,4 +128,4 @@ if (global.weapon[playerID] != oldWeapon)
 }
 
 // Timer
-drawWeaponIcon = max(drawWeaponIcon - 1, 0);
+weaponIcon = max(weaponIcon - 1, 0);

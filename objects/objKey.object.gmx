@@ -37,7 +37,7 @@ blockCollision = 0;
 
 homingTimer = 0;
 isHoming = false;
-respawnupondeath = true;
+respawnWhenCollected = true;
 
 animTimer = 0;
 </string>

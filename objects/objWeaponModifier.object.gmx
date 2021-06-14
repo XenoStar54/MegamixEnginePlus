@@ -32,13 +32,16 @@ event_inherited();
 
 grabable = 0;
 heavy = 1;
-respawnupondeath = 0;
+respawnWhenCollected = false;
 
 // @cc the weapon object to lock on room start + unlock when touched
 weapon = 0;
 
-// @cc if this is set to true, the weapon will be locked instead of unlocked when obtained
+// @cc if this is set to true, the weapon will be locked instead of unlocked when obtained. Setting it to 2 will make it completely hidden in the pause menu.
 lockWeapon = false;
+
+// @cc 0 = don't equip immediately; 1 = equip immediately
+autoEquip = true;
 
 // @cc if this is set to true, it'll lock you TO the weapon in this capsule (ala IC, Hardccore Parkour etc) instead of just unlocking it
 lockToWeapon = false;
@@ -55,7 +58,15 @@ levelReward = false;
 //@cc destroy if already unlocked
 destroyIfUnlocked = false;
 
+//@cc whether the pickup will completely get destroyed and not respawn when re-entering the room
+destroyWhenGotten = false;
+
+//@cc whether the player gets teleported when getting it
+teleportWhenGotten = false;
+
 // other variables
+phase = 0;
+timer = 0;
 flashTimer = 0;
 weaponID = noone;
 </string>
@@ -85,6 +96,38 @@ weaponID = noone;
 if (destroyIfUnlocked &amp;&amp; !global.weaponLocked[global.weaponID[? weapon]])
 {
     instance_destroy();
+    exit;
+}
+
+switch (phase)
+{
+    // act as pickup (do nothing here)
+    case 0:
+        break;
+    
+    // teleport out
+    case 1:
+        timer++;
+        if (timer &gt;= 360) // players beam out
+        {
+            playerFreeMovement(playerLock);
+            
+            with (objMegaman)
+            {
+                i = instance_create(x, y, objMegamanExit);
+                i.pid = playerID;
+                i.cid = costumeID;
+                i.returnToHub = false;
+                i.returnToCheckpoint = true;
+                
+                visible = 0;
+                instance_destroy();
+            }
+            
+            instance_destroy();
+        }
+        
+        break;
 }
 </string>
           </argument>
@@ -108,52 +151,92 @@ if (destroyIfUnlocked &amp;&amp; !global.weaponLocked[global.weaponID[? weapon]]
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>playSFX(sfxImportantItem);
-
-weaponID = global.weaponID[? weapon];
-
-if (levelReward)
+            <string>if (phase == 0) // don't repeatedly get picked up during teleport sequence
 {
-    weaponReward(weapon);
-}
-
-// lock all weapons
-if (lockToWeapon)
-{
-    for (var i = 0; i &lt;= global.totalWeapons; i += 1)
+    playSFX(sfxImportantItem);
+    
+    var weaponID = global.weaponID[? weapon];
+    var saveGame = (global.weaponLocked[weaponID] != lockWeapon);
+    
+    if (levelReward)
     {
-        if ((i == 0 &amp;&amp; lockBuster) || (i != 0))
+        weaponReward(weapon);
+    }
+    
+    // lock all weapons
+    if (lockToWeapon)
+    {
+        for (var i = 0; i &lt;= global.totalWeapons; i += 1)
         {
-            global.weaponLocked[i] = true;
+            if ((i == 0 &amp;&amp; lockBuster) || (i != 0))
+            {
+                global.weaponLocked[i] = true;
+            }
+        }
+    }
+    
+    // unlock the capsule's weapon
+    global.weaponLocked[weaponID] = lockWeapon;
+    
+    // set infinite energy
+    if (infiniteEnergy)
+    {
+        global.infiniteEnergy[weaponID] = true;
+    }
+        
+    if (destroyWhenGotten &amp;&amp; !teleportWhenGotten)
+    {
+        instance_destroy();
+    }
+    else if (!destroyWhenGotten)
+    {
+        dead = true;
+        respawnWhenCollected = true;
+    }
+    
+    if (saveGame)
+    {
+        saveLoadGame(true);
+    }
+    
+    if (teleportWhenGotten)
+    {
+        playMusic("Mega_Man_4.nsf", "VGM", 58, -1, -1, false, 1);
+        
+        global.checkpoint = room;
+        global.checkpointX = teleportX;
+        global.checkpointY = teleportY;
+        playerLock = playerLockMovement();
+        visible = 0;
+        timer = 1;
+        
+        phase++;
+    }
+    
+    with (objMegaman)
+    {
+        // refill energy
+        if (!other.lockWeapon)
+        {
+            global.ammo[playerID, weaponID] = 28;
+        }
+        
+        // set players to use the weapon
+        if (other.autoEquip)
+        {
+            global.weapon[playerID] = weaponID;
+                    
+            // can't select completely hidden weapons
+            if (other.lockWeapon == 2 &amp;&amp; global.weapon[playerID] == weaponID)
+            {
+                global.keyWeaponSwitchRight[playerID] = true;
+                playerSwitchWeapons();
+            }
+            
+            playerPalette();
         }
     }
 }
-
-// unlock the capsule's weapon
-global.weaponLocked[weaponID] = lockWeapon;
-
-// set infinite energy
-if (infiniteEnergy)
-{
-    global.infiniteEnergy[weaponID] = true;
-}
-
-// set players to use the weapon
-with (objMegaman)
-{
-    if (other.lockWeapon)
-    {
-        global.keyWeaponSwitchRight[playerID] = true;
-        playerSwitchWeapons();
-    }
-    else
-    {
-        global.weapon[playerID] = other.weaponID;
-    }
-    playerPalette();
-}
-
-instance_destroy();
 </string>
           </argument>
         </arguments>
