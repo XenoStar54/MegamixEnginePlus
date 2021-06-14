@@ -3,9 +3,9 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="118" name="datafiles">
-    <datafiles number="118" name="UnitTests">
-      <datafiles number="118" name="Rooms">
+  <datafiles number="120" name="datafiles">
+    <datafiles number="120" name="UnitTests">
+      <datafiles number="120" name="Rooms">
         <datafile>
           <name>lvlUnitTestObjectSetter.room.gmx</name>
           <exists>-1</exists>
@@ -126,7 +126,7 @@
           <filename>lvlUnitTestEnemies.room.gmx</filename>
         </datafile>
       </datafiles>
-      <datafiles number="118" name="Recordings">
+      <datafiles number="120" name="Recordings">
         <datafile>
           <name>RecordingTestBasicMovement2.mrc</name>
           <exists>-1</exists>
@@ -401,7 +401,7 @@
         </datafile>
       </datafiles>
     </datafiles>
-    <datafiles number="118" name="Music">
+    <datafiles number="120" name="Music">
       <datafile>
         <name>Mega_Man_1.nsf</name>
         <exists>-1</exists>
@@ -1049,7 +1049,7 @@
         <filename>songlist.txt</filename>
       </datafile>
     </datafiles>
-    <datafiles number="118" name="Recordings">
+    <datafiles number="120" name="Recordings">
       <datafile>
         <name>demoPharaohMan.mrc</name>
         <exists>-1</exists>
@@ -1085,7 +1085,7 @@
         <filename>demoHoneyWoman.mrc</filename>
       </datafile>
     </datafiles>
-    <datafiles number="118" name="Levels">
+    <datafiles number="120" name="Levels">
       <datafile>
         <name>rmShowcaseBossSharp.room.gmx</name>
         <exists>-1</exists>
@@ -2021,6 +2021,40 @@
         </Config>
       </ConfigOptions>
       <filename>gig.so.32</filename>
+    </datafile>
+    <datafile>
+      <name>discord_rich_presence.dll</name>
+      <exists>0</exists>
+      <size>0</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>discord_rich_presence.dll</filename>
+    </datafile>
+    <datafile>
+      <name>discord-rpc.dll</name>
+      <exists>0</exists>
+      <size>0</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>discord-rpc.dll</filename>
     </datafile>
   </datafiles>
   <NewExtensions>
@@ -6403,6 +6437,9 @@
       <script>scripts\queuePause.gml</script>
       <script>scripts\queueUnpause.gml</script>
     </scripts>
+    <scripts name="Discord">
+      <script>scripts\discord_init_dll.gml</script>
+    </scripts>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shdColorSubtract.shader</shader>
@@ -8496,6 +8533,9 @@
         <object>objects\objBigExplosion</object>
         <object>objects\objDialogueBox</object>
       </objects>
+    </objects>
+    <objects name="Discord">
+      <object>objects\objRichPresence</object>
     </objects>
   </objects>
   <rooms name="rooms">

@@ -52,6 +52,7 @@
   </views>
   <instances>
     <instance objName="objGlobalControl" x="0" y="0" name="inst_3334DD84" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRichPresence" x="32" y="0" name="inst_8D248173" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

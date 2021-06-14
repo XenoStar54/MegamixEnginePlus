@@ -10,7 +10,11 @@
   <persistent>0</persistent>
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
-  <code>stopMusic();</code>
+  <code>stopMusic();
+with objRichPresence
+{
+discord_update_presence("Room Select","","megamixplusdiscord","")
+}</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
@@ -52,6 +56,7 @@
   </views>
   <instances>
     <instance objName="objRoomSelector" x="0" y="0" name="inst_69D70FB2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRichPresence" x="16" y="0" name="inst_CB6BA252" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgRoomSelector" x="208" y="144" w="16" h="16" xo="80" yo="32" id="11226272" name="inst_3E570187" depth="1000001" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

@@ -10,7 +10,11 @@
   <persistent>0</persistent>
   <colour>0</colour>
   <showcolour>-1</showcolour>
-  <code>global.characterSelected[0] = "Bass"
+  <code>with objRichPresence
+{
+discord_update_presence("Character Select","","megamixplusdiscord","")
+}
+global.characterSelected[0] = "Bass"
 global.characterSelected[1] = "Proto Man"</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
@@ -53,6 +57,7 @@ global.characterSelected[1] = "Proto Man"</code>
   </views>
   <instances>
     <instance objName="objCharacterSelector" x="0" y="0" name="inst_FC9F44FF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRichPresence" x="16" y="0" name="inst_FF015F8E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

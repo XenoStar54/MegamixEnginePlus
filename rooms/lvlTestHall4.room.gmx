@@ -10,7 +10,9 @@
   <persistent>0</persistent>
   <colour>8421504</colour>
   <showcolour>-1</showcolour>
-  <code>playMusic("Mega_Man_5GB.gbs","VGM", 13, 0, 0, 0, 1);</code>
+  <code>playMusic("Mega_Man_5GB.gbs","VGM", 13, 0, 0, 0, 1);
+with objRichPresence
+{discord_update_presence("TestHall 4","","megamixplusdiscord","")}</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
@@ -450,6 +452,7 @@
     <instance objName="objBossDoor" x="4096" y="176" name="inst_E1C72D65" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBossDoor" x="4096" y="160" name="inst_4086D657" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objDrillMan" x="4304" y="176" name="inst_B2313ADA" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRichPresence" x="256" y="0" name="inst_3D4A5CFE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgBasic" x="0" y="0" w="128" h="128" xo="0" yo="0" id="11285099" name="inst_CC7BB916" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
