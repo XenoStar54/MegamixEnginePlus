@@ -257,7 +257,7 @@ if (instance_exists(bossObject))
             {
                 xdir += (global.keyRightPressed[i] - global.keyLeftPressed[i]);
                 ydir += (global.keyDownPressed[i] - global.keyUpPressed[i]);
-                pause += global.keyPausePressed[i];
+                pause += global.keyPausePressed[i] || global.keyJumpPressed[i];
             }
             
             // Move x and y-axis

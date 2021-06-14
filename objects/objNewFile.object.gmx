@@ -77,15 +77,17 @@ if (!controlsLocked)
         playSFX(sfxMenuMove);
     
     var selected = false;
+    var back = false;
     for (var i = 0; i &lt; global.playerCount; i++)
     {
-        selected = selected || global.keyPausePressed[i];
+        selected = selected || global.keyPausePressed[i] || global.keyJumpPressed[i];
+        back = back || global.keyShootPressed[i];
     }
     
     // select an option
-    if (selected)
+    if (selected || back)
     {
-        if (selection == 0)
+        if (selection == 0 || back)
         {
             // quit:
             global.nextRoom = rmFileSelect;

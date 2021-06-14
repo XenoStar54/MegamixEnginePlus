@@ -31,6 +31,9 @@ selection = 0;
 nonFiles = 2;
 deleteMode = false;
 
+//global.debugEnabled = false; // debug keys not allowed for now
+global.livesEnabled = true;
+
 event_user(0); // load list of files
 </string>
           </argument>
