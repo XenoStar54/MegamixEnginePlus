@@ -11,8 +11,7 @@
   <colour>0</colour>
   <showcolour>-1</showcolour>
   <code>playMusic("Wily4StairwaytoDarkness.ogg", "OGG", 4, 0, 40.509, true, 1);
-with objRichPresence
-{discord_update_presence("Plus Test","","megamixplusdiscord","")}</code>
+discord_update_presence("Plus Test","","megamixplusdiscord","")</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
@@ -277,7 +276,6 @@ with objRichPresence
     <instance objName="objStopScrollingHorizontal" x="1536" y="672" name="inst_49F23C40" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objStopScrollingHorizontal" x="768" y="448" name="inst_CE514F63" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objCopyRobot" x="1248" y="624" name="inst_DF6A3324" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objRichPresence" x="768" y="448" name="inst_45A13C62" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="tstTopman" x="16" y="192" w="16" h="16" xo="128" yo="48" id="11355687" name="inst_C593DE49" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

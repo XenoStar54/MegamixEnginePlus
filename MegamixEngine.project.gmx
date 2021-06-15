@@ -8534,9 +8534,6 @@
         <object>objects\objDialogueBox</object>
       </objects>
     </objects>
-    <objects name="Discord">
-      <object>objects\objRichPresence</object>
-    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\rmInit</room>

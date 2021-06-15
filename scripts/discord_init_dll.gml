@@ -66,7 +66,9 @@ Returns:
 Discord Rich Presence for Game Maker made by Aouab
 
 */
-external_call(global.__d_update,argument0,argument1,argument2,argument3)
+
+external_call(global.__d_update, argument0, argument1, argument2, argument3)
+global.richPresenceSet = true;
 
 
 #define discord_free_app

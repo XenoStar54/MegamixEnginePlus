@@ -10,9 +10,7 @@
   <persistent>0</persistent>
   <colour>0</colour>
   <showcolour>-1</showcolour>
-  <code>with objRichPresence
-{discord_update_presence("Doc Test","","megamixplusdiscord","")};
-var docArray = makeArray(objProtoEye,objCutMan,objBombMan,objFireMan,objIceMan,objGutsMan, objOilMan,objElecMan,objTimeMan,//objCopyBot,
+  <code>var docArray = makeArray(objProtoEye,objCutMan,objBombMan,objFireMan,objIceMan,objGutsMan, objOilMan,objElecMan,objTimeMan,//objCopyBot,
 objMetalMan,objFlashMan,objWoodMan,objHeatMan,objAirMan,objCrashMan,objQuickMan,objBubbleMan,objHardMan,
 objTopMan,objGeminiMan,objSparkMan,objNeedleMan,objMagnetMan,objSnakeMan,objShadowMan,
 objDustMan,objPharaohMan,objToadMan,objBrightMan,objDrillMan,objRingMan,objDiveMan,objSkullMan,
@@ -219,7 +217,6 @@ with (objSolid)
     <instance objName="objDocRobotShell" x="464" y="192" name="inst_39BB6059" locked="0" code="myDoc = objMetalMan;&#xA;myItem = objYashichi;&#xA;itemDrop = objYashichi;&#xA;useEndStageBehaviour = false;&#xA;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objCustomSpawner" x="576" y="160" name="inst_847E13EC" locked="0" code="// Enemy specific code&#xA;&#xA;//@cc The object to spawn.&#xA;object = objLifeEnergyBig;&#xA;&#xA;//@cc How long until the spawner starts spawning objects normally.&#xA;startWait = 0;&#xA;&#xA;//@cc The wait time between each object spawn.&#xA;spawnWait = 480;&#xA;timer = 0;&#xA;&#xA;//@cc The limit to how many of the object the spawner can spawn. 0 = infinite (default: 0)&#xA;limit = 0;&#xA;&#xA;//@cc whether to only count objects this spawner created for the limit. (default: false)&#xA;countOwn = false;&#xA;&#xA;//@cc The Game Maker script to execute within the object. If you put, say, xspeed = -3 in your script called scrMySpawner,&#xA;// and the object is set to objEnemyBullet, then the spawner will create a bullet moving left. (This is an alternative to the code variable above,&#xA;// and is more reliable since GML code execution from a string is not fully-featured.)&#xA;script = scrNoEffect;&#xA;&#xA;//@cc number of arguments&#xA;scriptArgC = 0;&#xA;&#xA;//@cc array containing arguments (will be cropped to `scriptArgC`)&#xA;scriptArgV = makeArray(0);&#xA;&#xA;//@cc string containing GML code to execute. If you put, say, code = &quot;xspeed = -3&quot; and the object is set to objEnemyBullet,&#xA;// then the spawner will create a bullet moving left.&#xA;code = &quot;room_speed = 15; instance_destroy();&quot;;&#xA;&#xA;//@cc object should be shifted horizontally to the nearest screen left/right edge when it is created?&#xA;shiftEdgeHorizontal = false;&#xA;&#xA;//@cc object should be shifted vertically to the nearest screen top/bottom edge when it is created?&#xA;shiftEdgeVertical = false;&#xA;&#xA;// size of the spawned object list&#xA;spawnN = 0;&#xA;&#xA;// number of spawned objects still alive&#xA;spawnedCount = 0;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objWaveManJetSki" x="48" y="192" name="inst_D410E0FC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objRichPresence" x="0" y="0" name="inst_9E8C848A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

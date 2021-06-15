@@ -10,8 +10,7 @@
   <persistent>0</persistent>
   <colour>8421504</colour>
   <showcolour>-1</showcolour>
-  <code>with objRichPresence
-{discord_update_presence("TestHall G","","megamixplusdiscord","")}</code>
+  <code></code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
@@ -125,7 +124,6 @@
     <instance objName="objETank" x="176" y="176" name="inst_328C7DA3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objETank" x="192" y="176" name="inst_E94EBF21" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objETank" x="208" y="176" name="inst_514C8069" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objRichPresence" x="0" y="0" name="inst_3447DD9F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgBasic" x="16" y="272" w="128" h="128" xo="0" yo="0" id="11354782" name="inst_AFBFE6C6" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

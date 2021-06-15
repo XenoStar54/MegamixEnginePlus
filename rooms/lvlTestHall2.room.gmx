@@ -14,9 +14,7 @@
 with (objTeleporter)
 {
     pressUp = true;
-    }
-with objRichPresence
-{discord_update_presence("TestHall 2","","megamixplusdiscord","")}</code>
+}</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
@@ -758,7 +756,6 @@ with objRichPresence
     <instance objName="objEnergyElement" x="2576" y="2048" name="inst_ED32F5B2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBlocky" x="1336" y="128" name="inst_D0AD120B" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBlocky" x="1416" y="96" name="inst_C663849A" locked="0" code="head[0] = 1;&#xA;head[2] = 1;&#xA;head[3] = 1;&#xA;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objRichPresence" x="256" y="16" name="inst_CFA23DC4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgBasic" x="0" y="0" w="128" h="128" xo="0" yo="0" id="11285099" name="inst_CC7BB916" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
