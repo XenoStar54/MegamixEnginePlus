@@ -156,7 +156,6 @@ room_goto(rmDisclaimer);
           <argument>
             <kind>1</kind>
             <string>/// Auto-update Rich Presence
-show_debug_message("aaaaaaaaaaaaaaaaaaa");
 if (!global.richPresenceSet)
 {
     var str = room_get_name(room);
@@ -175,15 +174,15 @@ if (!global.richPresenceSet)
     for (var i = 2; i &lt;= string_length(str); i++)
     {
         var s = string_copy(str, i, 1);
+        var ls = string_copy(str, i - 1, 1);
         if (ord(s) &gt;= ord("A") &amp;&amp; ord(s) &lt;= ord("Z")
-            &amp;&amp; string_copy(str, i - 1, 1) != " ")
+            &amp;&amp; (ord(ls) &lt; ord("A") || ord(ls) &gt; ord("Z")) // Part of an acronym
+            &amp;&amp; ls != " ") // There's already a space
         {
             str = string_copy(str, 1, i - 1) + " " + string_copy(str, i, string_length(str));
             i++; // skip space we just added
         }
     }
-    
-    show_debug_message("str: " + string(str));
     
     // update
     discord_update_presence(str, "", "megamixplusdiscord", "");
