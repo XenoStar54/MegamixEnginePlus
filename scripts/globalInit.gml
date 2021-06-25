@@ -229,7 +229,8 @@ global.factionStance[7, 7] = 0;
 // shader compatability (always check if all shaders are compiled!!!!)
 global.shadersCompatible = shaders_are_supported()
     && shader_is_compiled(shdColorSubtract) && shader_is_compiled(shdColorSubtractStep)
-    && shader_is_compiled(shdCRT);
+    && shader_is_compiled(shdHSVShift) && shader_is_compiled(shdCRT) && shader_is_compiled(shdGreyscale)
+    && shader_is_compiled(shdMonochromePaletteEnforcer);
     
 if (!global.shadersCompatible)
 {

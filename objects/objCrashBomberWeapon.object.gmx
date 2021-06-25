@@ -154,6 +154,22 @@ if (!playerIsLocked(PL_LOCK_SHOOT))
         if (i)
         {
             i.image_xscale = image_xscale;
+            
+            // shunt out of walls
+            with (i)
+            {
+                var timeout = 0;
+                while (checkSolid(0, 0, false, true))
+                {
+                    x -= sign(image_xscale);
+                    timeout++;
+                    if (timeout &gt;= view_wview[0])
+                    {
+                        instance_destroy();
+                        break;
+                    }
+                }
+            }
         }
     }
 }

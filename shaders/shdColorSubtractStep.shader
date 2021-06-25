@@ -32,21 +32,29 @@ uniform int fadeShift;
 
 void main()
 {
-    /*It would probably be fine to directly subtract fadeAlpha from the color values with
-    shdColorSubtract, but I thought this would look better*/
+    /* it would probably be fine to directly subtract fadeAlpha from the color values
+    with shdColorSubtract, but I thought this might look better */
     vec4 col = texture2D(gm_BaseTexture, v_vTexcoord);
-    float grey = dot(col.xyz, lum);
-    int greyStep = int(floor(grey / fadeStep + 0.5)); // match color to closest brightness "step"
-    greyStep = greyStep - fadeShift; // step down the brightness
-    float subtract = grey - float(greyStep) * fadeStep; // amount to subtract so it aligns with the new brightness step
+    float subtract;
     
+    if (float(fadeShift) * fadeStep >= 1.0)
+    {
+        // full-fade override. Due to lum estimation and float precision sometimes things can be visible at full fade.
+        subtract = 1.0;
+    }
+    else
+    {
+        float grey = dot(col.xyz, lum);
+        int greyStep = int(floor(grey / fadeStep + 0.5)); // find closest brightness "step"
+        greyStep = greyStep - fadeShift; // step down the brightness
+        subtract = grey - float(greyStep) * fadeStep; // amount to subtract so it aligns with the new brightness step
+    }
+    
+    // directly subtracting color like this will distort the apparent color, which actually makes it look more like nes palette fading
     vec4 newColor = v_vColour * col;
     newColor.r = newColor.r - subtract;
-    if (newColor.r < 0.1) { newColor.r = 0.0; } // round to zero or else colors may linger at full fade
     newColor.g = newColor.g - subtract;
-    if (newColor.g < 0.1) { newColor.g = 0.0; }
     newColor.b = newColor.b - subtract;
-    if (newColor.b < 0.1) { newColor.b = 0.0; }
     
     gl_FragColor = newColor;
 }

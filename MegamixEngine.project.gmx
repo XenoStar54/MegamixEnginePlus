@@ -5629,6 +5629,9 @@
         <sprite>sprites\sprNPCKnightmanJump</sprite>
         <sprite>sprites\sprNPCVolt</sprite>
       </sprites>
+      <sprites name="Palettes">
+        <sprite>sprites\pltGameBoy</sprite>
+      </sprites>
       <sprite>sprites\sprDot</sprite>
       <sprite>sprites\mskPreciseDot</sprite>
       <sprite>sprites\sprFont</sprite>
@@ -6445,6 +6448,9 @@
     <shader type="GLSLES">shaders\shdColorSubtract.shader</shader>
     <shader type="GLSLES">shaders\shdColorSubtractStep.shader</shader>
     <shader type="GLSLES">shaders\shdCRT.shader</shader>
+    <shader type="GLSLES">shaders\shdGreyscale.shader</shader>
+    <shader type="GLSLES">shaders\shdMonochromePaletteEnforcer.shader</shader>
+    <shader type="GLSLES">shaders\shdHSVShift.shader</shader>
   </shaders>
   <objects name="objects">
     <objects name="Level Objects">

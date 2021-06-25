@@ -319,7 +319,7 @@ if (phase == 2 &amp;&amp; !selected)
             // filters
             case 9:
                 pre = global.filter;
-                global.filter = min(max(0, global.filter + dir), 2);
+                global.filter = min(max(0, global.filter + dir), 5);
                 if (global.filter != pre)
                 {
                     playSFX(sfxMenuMove);
@@ -1236,6 +1236,9 @@ for (var j = 0; j &lt; visibleOptions; j++)
                 case 0: opt += "NONE"; break;
                 case 1: opt += "INTERPOLATE"; break;
                 case 2: opt += "CRT"; break;
+                case 3: opt += "GREYSCALE"; break;
+                case 4: opt += "GAMEBOY"; break;
+                case 5: opt += "VIRTUALBOY"; break;
             }
             
             break;

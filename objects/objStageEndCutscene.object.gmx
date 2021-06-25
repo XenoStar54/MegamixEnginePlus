@@ -107,6 +107,8 @@ switch (phase)
             {
                 var a = instance_create(x, y, objPlayerCutsceneController);
                 a.playerObj = instance_find(objMegaman, p);
+                a.playerObj.canHit = false;
+                a.playerObj.dieToSpikes = false;
                 ds_list_add(players, a);
                 ds_list_add(prevGravs, 0); // placeholder
             }
@@ -196,18 +198,31 @@ switch (phase)
             var f = ds_list_find_value(players, i);
             var p = f.playerObj;
             
-            if (p.yspeed == 0)
+            with (p)
             {
-                allJump = false;
-            }
-            
-            if (p.image_yscale &gt; 0)
-            {
-                p.yspeed = ySpeedAim(p.y, view_yview[0] + 32, p.grav * p.gravfactor);
-            }
-            else
-            {
-                p.yspeed = ySpeedAim(p.y, view_yview[0] + view_hview[0] - 32, p.grav * p.gravfactor);
+                if (yspeed == 0)
+                {
+                    allJump = false;
+                }
+                
+                var g;
+                if (!inWater)
+                {
+                    g = gravAccel * gravfactor * gravDir;
+                }
+                else
+                {
+                    g = gravWater * gravfactor * gravDir;
+                }
+                
+                if (image_yscale &gt; 0)
+                {
+                    yspeed = ySpeedAim(y, view_yview[0] + 32, g);
+                }
+                else
+                {
+                    yspeed = ySpeedAim(y, view_yview[0] + view_hview[0] - 32, g);
+                }
             }
         }
         

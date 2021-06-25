@@ -105,6 +105,12 @@ border = shader_get_uniform(shdCRT, "border");
 
 crtSurface = noone;
 
+greyscaleSurface = noone;
+
+monoPalette = shader_get_sampler_index(shdMonochromePaletteEnforcer, "palette");
+monoPaletteLength = shader_get_uniform(shdMonochromePaletteEnforcer, "paletteLength");
+gbSurface = noone;
+
 shdFadeShift = shader_get_uniform(shdColorSubtractStep, "fadeShift");
 fadeSurface = noone;
 
@@ -1441,6 +1447,9 @@ finalSurface = application_surface;
 surfaceWidth = surface_get_width(application_surface);
 surfaceHeight = surface_get_height(application_surface);
 
+// apply shaders
+draw_enable_alphablend(false);
+
 if (global.shadersEnabled)
 {
     // fade
@@ -1507,12 +1516,63 @@ if (global.shadersEnabled)
                 surfaceHeight = global.crtSurfaceHeight;
                 
                 break;
+            
+            // greyscale
+            case 3:
+            // virtual boy
+            /* vb palette doesn't work well with palette enforcing. It doesn't
+            have enough colors and it's colors are too similar to differentiate
+            well so we're just going to make it greyscale and blend it with red
+            later*/
+            case 5:
+                if (!surface_exists(greyscaleSurface))
+                {
+                    var s = powerOfTwo(surfaceWidth, surfaceWidth);
+                    greyscaleSurface = surface_create(s, s);
+                    surface_resize(greyscaleSurface, surfaceWidth, surfaceHeight);
+                }
+                
+                surface_set_target(greyscaleSurface);
+                
+                shader_set(shdGreyscale);
+                draw_surface(finalSurface, 0, 0);
+                shader_reset();
+                
+                surface_reset_target();
+                
+                // set this as the new surface to draw
+                finalSurface = greyscaleSurface;
+                
+                break;
+            
+            // gameboy
+            case 4:
+                if (!surface_exists(gbSurface))
+                {
+                    s = powerOfTwo(surfaceWidth, surfaceWidth);
+                    gbSurface = surface_create(s, s);
+                    surface_resize(gbSurface, surfaceWidth, surfaceHeight);
+                }
+                
+                surface_set_target(gbSurface);
+                
+                shader_set(shdMonochromePaletteEnforcer);
+                texture_set_stage(monoPalette, sprite_get_texture(pltGameBoy, 0));
+                shader_set_uniform_f(monoPaletteLength, 5);
+                draw_surface(finalSurface, 0, 0);
+                shader_reset();
+                
+                surface_reset_target();
+                
+                // set this as the new surface to draw
+                finalSurface = gbSurface;
+                
+                break;
         }
     }
 }
 
 // draw border graphic
-draw_enable_alphablend(false); // pixels drawn with transparency will actually show the border graphic behind them without this
 texture_set_interpolation(true);
 if (window_get_fullscreen())
 {
@@ -1531,10 +1591,15 @@ if (window_get_fullscreen())
 // Note: interpolation isn't noticeable at window resolution when the window is big.
 texture_set_interpolation(global.filter == 1 || (global.filter == 2 &amp;&amp; global.shadersEnabled)); // always interpolate with crt filter
 
-// Draw the game
+var c = c_white;
+if (global.filter == 5 &amp;&amp; global.shadersEnabled)
+{
+    c = make_color_hsv(0, 255, 255) // hue and sat accurate to vb palette
+}
+
 var xscale = round(surfaceWidth * multiply * getPixelRatio()) / surfaceWidth;
 var yscale = round(surfaceHeight * multiply) / surfaceHeight;
-draw_surface_part_ext(finalSurface, 0, 0, surfaceWidth, surfaceHeight, appX, appY, xscale, yscale, c_white, 1);
+draw_surface_part_ext(finalSurface, 0, 0, surfaceWidth, surfaceHeight, appX, appY, xscale, yscale, c, 1);
 
 // cleanup
 texture_set_interpolation(false); // ONLY DRAW THE FINAL SURFACE WITH INTERPOLATION
@@ -1651,7 +1716,8 @@ depth = depthstart;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (showhealth)
+            <string>// draw huds
+if (showhealth)
 {
     var dx = view_xview + 16;
     var dy = view_yview + 17;
