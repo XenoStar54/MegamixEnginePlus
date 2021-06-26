@@ -89,6 +89,11 @@ freshSaveFile();
 freshOptions();
 
 // setup shaders
+setPaletteShader = false;
+enforcedPalette = shader_get_sampler_index(shdPaletteEnforcer, "palette");
+enforcedPaletteLength = shader_get_uniform(shdPaletteEnforcer, "paletteLength");
+pltSurface = noone;
+
 global.crtSurfaceScale = 6;
 
 global.crtSurfaceWidth  = global.screenWidth * global.crtSurfaceScale;
@@ -520,10 +525,10 @@ for (i = 0; i &lt; global.playerCount; i += 1)
                 var dPad = gamepad_button_check(jp, gp_padu) || gamepad_button_check(jp, gp_padl) || gamepad_button_check(jp, gp_padr) || gamepad_button_check(jp, gp_padd);
                 if (dPad)
                 {
-                    global.keyLeft[i] = gamepad_button_check(jp,gp_padl);
-                    global.keyRight[i] = gamepad_button_check(jp,gp_padr);
-                    global.keyUp[i] = gamepad_button_check(jp,gp_padu);
-                    global.keyDown[i] = gamepad_button_check(jp,gp_padd);
+                    global.keyLeft[i] = global.keyLeft[i] || gamepad_button_check(jp, gp_padl);
+                    global.keyRight[i] = global.keyRight[i] || gamepad_button_check(jp, gp_padr);
+                    global.keyUp[i] = global.keyUp[i] || gamepad_button_check(jp,gp_padu);
+                    global.keyDown[i] = global.keyDown[i] || gamepad_button_check(jp,gp_padd);
                 }
                 
                 if (joystick_has_pov(jp))
@@ -536,32 +541,32 @@ for (i = 0; i &lt; global.playerCount; i += 1)
                         switch (angle)
                         {
                             case 0:
-                                global.keyUp[i] += 1;
+                                global.keyUp[i] = true;
                                 break;
                             case 45:
-                                global.keyRight[i] += 1;
-                                global.keyUp[i] += 1;
+                                global.keyRight[i] = true;
+                                global.keyUp[i] = true;
                                 break;
                             case 90:
-                                global.keyRight[i] += 1;
+                                global.keyRight[i] = true;
                                 break;
                             case 135:
-                                global.keyDown[i] += 1;
-                                global.keyRight[i] += 1;
+                                global.keyDown[i] = true;
+                                global.keyRight[i] = true;
                                 break;
                             case 180:
-                                global.keyDown[i] += 1;
+                                global.keyDown[i] = true;
                                 break;
                             case 225:
-                                global.keyLeft[i] += 1;
-                                global.keyDown[i] += 1;
+                                global.keyLeft[i] = true;
+                                global.keyDown[i] = true;
                                 break;
                             case 270:
-                                global.keyLeft[i] += 1;
+                                global.keyLeft[i] = true;
                                 break;
                             case 315:
-                                global.keyLeft[i] += 1;
-                                global.keyUp[i] += 1;
+                                global.keyLeft[i] = true;
+                                global.keyUp[i] = true;
                                 break;
                         }
                     }
@@ -577,30 +582,30 @@ for (i = 0; i &lt; global.playerCount; i += 1)
                         if ((abs(axY) &gt; 0.4) || (abs(axX) &gt; 0.36))
                         {
                             gamepadStick = point_direction(0, 0, axX, axY);
-                            global.keyLeft[i] += (gamepadStick &gt;= 120
+                            global.keyLeft[i] = global.keyLeft[i] || (gamepadStick &gt;= 120
                                 &amp;&amp; gamepadStick &lt;= 240);
-                            global.keyRight[i] += ((gamepadStick &lt;= 60)
+                            global.keyRight[i] = global.keyRight[i] || ((gamepadStick &lt;= 60)
                                 || gamepadStick &gt;= 300);
-                            global.keyUp[i] += (gamepadStick &gt;= 30
+                            global.keyUp[i] = global.keyUp[i] || (gamepadStick &gt;= 30
                                 &amp;&amp; gamepadStick &lt;= 150);
-                            global.keyDown[i] += (gamepadStick &gt;= 210
+                            global.keyDown[i] = global.keyDown[i] || (gamepadStick &gt;= 210
                                 &amp;&amp; gamepadStick &lt;= 330);
                         }
                     }
                 }
             }
             
-            global.keyJump[i] += gamepad_button_check(jp,
+            global.keyJump[i] = global.keyJump[i] || gamepad_button_check(jp,
                 global.joystick_jumpKey[i]);
-            global.keyShoot[i] += gamepad_button_check(jp,
+            global.keyShoot[i] = global.keyShoot[i] || gamepad_button_check(jp,
                 global.joystick_shootKey[i]);
-            global.keySlide[i] += gamepad_button_check(jp,
+            global.keySlide[i] = global.keySlide[i] || gamepad_button_check(jp,
                 global.joystick_slideKey[i]);
-            global.keyPause[i] += gamepad_button_check(jp,
+            global.keyPause[i] = global.keyPause[i] || gamepad_button_check(jp,
                 global.joystick_pauseKey[i]);
-            global.keyWeaponSwitchLeft[i] += gamepad_button_check(jp,
+            global.keyWeaponSwitchLeft[i] = global.keyWeaponSwitchLeft[i] || gamepad_button_check(jp,
                 global.joystick_weaponSwitchLeftKey[i]);
-            global.keyWeaponSwitchRight[i] += gamepad_button_check(jp,
+            global.keyWeaponSwitchRight[i] = global.keyWeaponSwitchRight[i] || gamepad_button_check(jp,
                 global.joystick_weaponSwitchRightKey[i]);
         }
     }
@@ -1452,6 +1457,41 @@ draw_enable_alphablend(false);
 
 if (global.shadersEnabled)
 {
+    // enforce palette
+    if (global.enforcePalette &gt; 0)
+    {
+        var plt = pltNES;
+        var pltLength = 56;
+        switch (global.enforcePalette)
+        {
+            default:
+            case 1: plt = pltNES; pltLength = 56; break;
+            case 2: plt = pltMM9_10; pltLength = 52; break;
+        }
+        
+        // make surface
+        if (!surface_exists(pltSurface))
+        {
+            var p = powerOfTwo(surfaceWidth, surfaceHeight);
+            pltSurface = surface_create(p, p);
+            surface_resize(pltSurface, surfaceWidth, surfaceHeight); // crt filter messes up if the surface doesn't have exact screen dimensions
+        }
+        
+        // apply shader
+        surface_set_target(pltSurface);
+        
+        shader_set(shdPaletteEnforcer);
+        texture_set_stage(enforcedPalette, sprite_get_texture(plt, 0));
+        shader_set_uniform_f(enforcedPaletteLength, pltLength);
+        draw_surface(finalSurface, 0, 0);
+        shader_reset();
+        
+        surface_reset_target();
+        
+        // set to new final surface
+        finalSurface = pltSurface;
+    }
+    
     // fade
     fadeShift = floor(fadeAlpha / fadestep); // lazy replacement of fadeAlpha code, lol
     if (fadeShift &gt; 0)

@@ -23,22 +23,23 @@ varying vec4 v_vColour;
 
 const vec3 lum = vec3(0.299, 0.587, 0.114);
 
-uniform sampler2D palette; // palette sprites must be 32x1 in size and have "Used for 3D" checked!!!!!!!!
+uniform sampler2D palette; // palette sprites must be 32 in width and have "Used for 3D" checked!!!!!!!!
 uniform float paletteLength;
 
 void main()
 {
     vec4 col = texture2D(gm_BaseTexture, v_vTexcoord);
+    float grey = dot(col.xyz, lum);
+    float paletteHeight = ceil(paletteLength / 32.0);
     
     // find closest luminosity value
-    float grey = dot(col.xyz, lum);
     
     float index = 0.0;
     float i = 1.0;
     while (true)
     {
-        if (abs(grey - dot(texture2D(palette, vec2(i / 32.0, 0.0)).rgb, lum))
-            < abs(grey - dot(texture2D(palette, vec2(index / 32.0, 0.0)).rgb, lum)))
+        if (abs(grey - dot(texture2D(palette, vec2(mod(i, 32.0) / 32.0, (i / 32.0) / paletteHeight)).rgb, lum))
+            < abs(grey - dot(texture2D(palette, vec2(mod(index, 32.0) / 32.0, (index / 32.0) / paletteHeight)).rgb, lum)))
         {
             index = i;
         }
@@ -51,5 +52,5 @@ void main()
     }
     
     // replace
-    gl_FragColor = vec4(texture2D(palette, vec2(index / 32.0, 0.0)).rgb, col.a);
+    gl_FragColor = vec4(texture2D(palette, vec2(mod(index, 32.0) / 32.0, (index / 32.0) / paletteHeight)).rgb, col.a);
 }

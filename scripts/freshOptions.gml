@@ -5,6 +5,7 @@ global.resolution = false; // native
 global.pixelRatio = 1; // 8:7
 global.accurateFullscreen = true;
 global.shadersEnabled = global.shadersCompatible;
+global.enforcePalette = 0;
 global.filter = 0;
 global.borderGraphic = 18; // mm9 border 4
 global.healthEffect = 0;

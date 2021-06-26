@@ -11,6 +11,7 @@ global.resolution            = sl(global.resolution, "resolution");
 global.pixelRatio            = sl(global.pixelRatio, "pixel-ratio");
 global.accurateFullscreen    = sl(global.accurateFullscreen, "accurate-fullscreen");
 global.shadersEnabled        = sl(global.shadersEnabled, "shadersenabled") && global.shadersCompatible;
+global.enforcePalette        = sl(global.enforcePalette, "enforce-palette");
 global.filter                = sl(global.filter, "filter");
 global.crtDistort            = sl(global.crtDistort, "crt-distort");
 global.crtDistortionAmount   = sl(global.crtDistortionAmount, "crt-distortion-amount");
@@ -35,7 +36,7 @@ global.teleportSound         = sl(global.teleportSound, "teleport-sound");
 global.checkpointNotification= sl(global.checkpointNotification, "checkpoint-notice");
 global.vsync                 = sl(global.vsync,          "vsync");
 global.showControllerOverlay = sl(global.showControllerOverlay, "controlleroverlay");
-global.escapeBehavior         = sl(global.escapeBehavior, "escapebehavior");
+global.escapeBehavior        = sl(global.escapeBehavior, "escapebehavior");
 
 // controls
 for (var i = 0; i < global.maxPlayerCount; i += 1)

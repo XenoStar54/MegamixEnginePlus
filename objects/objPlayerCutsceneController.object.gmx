@@ -155,7 +155,8 @@ if (!instance_exists(playerObj))
 if (xTarget != 0)
 {
     if ((playerObj.x &gt;= xTarget &amp;&amp; keyRight)
-        || playerObj.x &lt;= xTarget &amp;&amp; keyLeft)
+        || playerObj.x &lt;= xTarget &amp;&amp; keyLeft
+        || playerObj.x == xTarget)
     {
         // reached target
         playerObj.x = xTarget;

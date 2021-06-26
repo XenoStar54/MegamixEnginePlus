@@ -304,8 +304,8 @@ if (!global.frozen)
     {
         if (moveLock)
         {
-            xVel = spd * (global.keyRight[playerID] - global.keyLeft[playerID]);
-            yVel = spd * (global.keyDown[playerID] - global.keyUp[playerID]);
+            xVel = spd * sign(global.keyRight[playerID] - global.keyLeft[playerID]);
+            yVel = spd * sign(global.keyDown[playerID] - global.keyUp[playerID]);
         }
         
         with (parent)

@@ -35,6 +35,12 @@ contactDamage = 4;
 ground = false;
 attackTimer = 0;
 
+// @cc
+cherryColor = false;
+baseSprite = noone;
+paletteSprite = noone;
+barrierSprite = sprPlantBarrierBoss;
+
 // rather than using game maker's image offset features, this time round we're building a more accurate animation system.
 imageTimer = 0;
 imageTimerMax = 99;
@@ -125,6 +131,38 @@ enemyDamageValue(objIceSlasher, 4);
         </arguments>
       </action>
     </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Palette swap sprite cleanup.
+if (sprite_exists(paletteSprite))
+{
+    sprite_delete(paletteSprite);
+}
+
+if (sprite_exists(barrierSprite) &amp;&amp; barrierSprite != sprPlantBarrierBoss)
+{
+    sprite_delete(barrierSprite);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -143,10 +181,12 @@ enemyDamageValue(objIceSlasher, 4);
           <argument>
             <kind>1</kind>
             <string>event_inherited();
+
 if (randomiser == -1)
 {
     randomiser = irandom_range(1, 4);
 }
+
 if (entityCanStep())
 {
     if (isFight == true)
@@ -159,24 +199,32 @@ if (entityCanStep())
             pose = sprite_index;
             imageTimer = 0;
         }
+        
         attackTimer += 1;
+        
         if (delay &gt; 0)
+        {
             delay -= 1;
+        }
+        
         imageTimer += 1;
         if (imageTimer &gt;= imageTimerMax &amp;&amp; image_index &lt; image_number - 1)
         {
             imageTimer = 0;
             image_index += 1;
         }
+        
         if (imageTimer &gt;= imageTimerMax &amp;&amp; image_index == image_number - 1)
         {
             imageTimer = 0;
             image_index = imageNoMin;
         }
+        
         switch (phase)
         {
-            case 0: // idle - begin animation and play generate plant barrier animation
-            // setup animation for this sprite index. 
+            // idle - begin animation and play generate plant barrier animation
+            case 0:
+                // setup animation for this sprite index. 
                 xspeed = 0;
                 randomiser = irandom_range(1, 3);
                 sprite_index = sprPlantGeneratePlantBarrier;
@@ -187,8 +235,11 @@ if (entityCanStep())
                     phase = 1;
                     attackTimer = 0;
                 }
+                
                 break;
-            case 1: // generate plant barrier // pre jump 
+            
+            // generate plant barrier // pre jump
+            case 1:
                 if (!instance_exists(objPlantBarrierBoss))
                 {
                     guard = 1;
@@ -197,15 +248,19 @@ if (entityCanStep())
                     {
                         var WS = instance_create(x, y, objPlantBarrierBoss);
                         WS.cAngle = degtorad(90 * i);
+                        WS.sprite_index = barrierSprite;
                         WS.image_xscale = image_xscale;
                     }
+                    
                     playSFX(sfxBlizzardAttack);
                 }
+                
                 if (attackTimer &lt;= 9)
                 {
                     sprite_index = sprPlantIdle;
                     imageTimerMax = 9999;
                 }
+                
                 if (attackTimer
                     == 10) // which direction plant man jumps in is determined randomly. i think.
                 {
@@ -214,31 +269,40 @@ if (entityCanStep())
                     else
                         image_xscale = 1;
                 }
+                
                 if (attackTimer &gt; 9)
                 {
                     sprite_index = sprPlantGeneratePlantBarrier;
                     image_index = 1;
                 }
+                
                 if (attackTimer &gt;= 18)
                 {
                     randomiser = irandom_range(1, 3);
                     phase = 2;
                     attackTimer = 0;
                 }
+                
                 break;
-            case 2: // jump! 
+            
+            // jump!
+            case 2:
                 xspeed = walkX * image_xscale;
                 yspeed = jumpY + randomiser;
                 sprite_index = sprPlantJump;
                 delay = 5;
                 phase = 3;
+                
                 break;
-            case 3: // rebound off wall and land. 
+            
+            // rebound off wall and land.
+            case 3:
                 if (xspeed == 0)
                 {
                     image_xscale = image_xscale * -1;
                     xspeed = walkX * image_xscale;
                 }
+                
                 if (ground == true &amp;&amp; delay == 0)
                 {
                     // setup next phase - face mega man and play throwing sound effect.
@@ -246,23 +310,36 @@ if (entityCanStep())
                     calibrateDirection();
                     phase = 4;
                 }
+                
                 break;
-            case 4: // throw plant barrier! 
+            
+            // throw plant barrier! 
+            case 4:
                 guard = 0;
                 sprite_index = sprPlantThrow;
                 xspeed = 0;
+                
                 var plantXS;
                 plantXS = image_xscale;
                 with (objPlantBarrierBoss)
+                {
                     xspeed = 2 * plantXS;
+                }
+                
                 if (!instance_exists(objPlantBarrierBoss))
                 {
                     if (instance_exists(target))
+                    {
                         walkDestination = target.x;
+                    }
+                    
                     phase = 5;
                 }
+                
                 break;
-            case 5: // walk towards mega man 
+            
+            // walk towards player
+            case 5:
                 if (walkDestination != 0)
                 {
                     if (sprite_index != sprPlantWalk)
@@ -273,6 +350,7 @@ if (entityCanStep())
                         imageNoMin = 0;
                         imageTimerMax = 4;
                     }
+                    
                     if ((image_xscale == 1 &amp;&amp; x &gt;= walkDestination)
                         || (image_xscale == -1 &amp;&amp; x &lt;= walkDestination) || xspeed == 0)
                     {
@@ -281,9 +359,13 @@ if (entityCanStep())
                         
                         // if on hard mode, there's a chance to shoot his buster
                         if (global.difficulty == DIFF_HARD)
+                        {
                             phase = choose(0, 6, 6);
+                        }
                         else
+                        {
                             phase = 0;
+                        }
                     }
                 }
                 else
@@ -291,8 +373,11 @@ if (entityCanStep())
                     attackTimer = 0;
                     phase = 0;
                 }
+                
                 break;
-            case 6: // hard mode only attack - shoot a few bullets at mega man 
+            
+            // hard mode only attack - shoot a few bullets at mega man 
+            case 6:
                 xspeed = 0;
                 sprite_index = sprPlantShoot;
                 imageNoMin = 0;
@@ -315,12 +400,11 @@ if (entityCanStep())
                     phase = 0;
                     attackTimer = 0;
                 }
+                
                 break;
         }
     }
 }
-else
-{ }
 </string>
           </argument>
         </arguments>
@@ -397,7 +481,41 @@ event_inherited();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited();
+            <string>/// Palette swap shader demo.
+if (cherryColor &amp;&amp; global.shadersEnabled)
+{
+    // sprite changed; palette swap the new sprite
+    if (paletteSprite != noone &amp;&amp; sprite_index != baseSprite)
+    {
+        sprite_delete(paletteSprite);
+        baseSprite = sprite_index;
+    }
+    
+    // create new palette swap sprites
+    if (!sprite_exists(paletteSprite))
+    {
+        paletteSprite = createPaletteSwappedSprite(sprite_index, pltPlantManBase, pltPlantManCherry, 7);
+        
+        if (barrierSprite == sprPlantBarrierBoss)
+        {
+            barrierSprite = createPaletteSwappedSprite(barrierSprite, pltPlantManBase, pltPlantManCherry, 7);
+            
+            healthBarPrimaryColor[1] = 17;
+            healthBarSecondaryColor[1] = 30;
+        }
+    }
+    
+    sprite_index = paletteSprite;
+}
+
+// draw like normal
+event_inherited();
+
+// replace the normal sprite cause Plant Man's animation code cares about sprite_index being the expected resource
+if (sprite_index == paletteSprite)
+{
+    sprite_index = baseSprite;
+}
 </string>
           </argument>
         </arguments>

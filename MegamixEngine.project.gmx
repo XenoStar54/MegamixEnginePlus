@@ -4558,6 +4558,8 @@
           <sprite>sprites\sprPlantThrow</sprite>
           <sprite>sprites\sprPlantShoot</sprite>
           <sprite>sprites\sprPlantBarrierBoss</sprite>
+          <sprite>sprites\pltPlantManBase</sprite>
+          <sprite>sprites\pltPlantManCherry</sprite>
         </sprites>
         <sprites name="Tomahawk">
           <sprite>sprites\sprTomahawkMan</sprite>
@@ -5630,6 +5632,8 @@
         <sprite>sprites\sprNPCVolt</sprite>
       </sprites>
       <sprites name="Palettes">
+        <sprite>sprites\pltNES</sprite>
+        <sprite>sprites\pltMM9_10</sprite>
         <sprite>sprites\pltGameBoy</sprite>
       </sprites>
       <sprite>sprites\sprDot</sprite>
@@ -6120,6 +6124,15 @@
         <script>scripts\sprite_get_ycenter.gml</script>
         <script>scripts\sprite_get_ycenter_object.gml</script>
       </scripts>
+      <scripts name="PaletteSwap">
+        <script>scripts\createPaletteSwappedSprite.gml</script>
+        <scripts name="Other">
+          <script>scripts\createPaletteSprite.gml</script>
+          <script>scripts\drawPaletteSprite.gml</script>
+          <script>scripts\drawPaletteSpriteExt.gml</script>
+          <script>scripts\createPaletteSwappedSprite2.gml</script>
+        </scripts>
+      </scripts>
     </scripts>
     <scripts name="Initialization">
       <script>scripts\freshOptions.gml</script>
@@ -6445,12 +6458,18 @@
     </scripts>
   </scripts>
   <shaders name="shaders">
+    <shaders name="PaletteSwap">
+      <shader type="GLSLES">shaders\shdPaletteSpriteAndSwap.shader</shader>
+      <shader type="GLSLES">shaders\shdPaletteSprite.shader</shader>
+      <shader type="GLSLES">shaders\shdPaletteSwap.shader</shader>
+    </shaders>
+    <shader type="GLSLES">shaders\shdHSVShift.shader</shader>
     <shader type="GLSLES">shaders\shdColorSubtract.shader</shader>
     <shader type="GLSLES">shaders\shdColorSubtractStep.shader</shader>
     <shader type="GLSLES">shaders\shdCRT.shader</shader>
     <shader type="GLSLES">shaders\shdGreyscale.shader</shader>
+    <shader type="GLSLES">shaders\shdPaletteEnforcer.shader</shader>
     <shader type="GLSLES">shaders\shdMonochromePaletteEnforcer.shader</shader>
-    <shader type="GLSLES">shaders\shdHSVShift.shader</shader>
   </shaders>
   <objects name="objects">
     <objects name="Level Objects">
