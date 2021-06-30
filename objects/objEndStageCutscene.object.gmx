@@ -64,7 +64,8 @@ xTarget = view_xview[0] + view_wview[0] / 2;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ds_list_destroy(players);
+            <string>/// destroy lists
+ds_list_destroy(players);
 ds_list_destroy(prevGravs);
 </string>
           </argument>
@@ -95,6 +96,17 @@ if (global.frozen)
     exit;
 }
 
+// remove null player controller entries
+for (var i = 0; i &lt; ds_list_size(players); i++)
+{
+    if (!instance_exists(ds_list_find_value(players, i)))
+    {
+        ds_list_delete(players, i);
+        i--; // list entries are now shifted
+    }
+}
+
+// behavior
 switch (phase)
 {
     // delay after defeating boss
@@ -172,12 +184,13 @@ switch (phase)
         var onGround = true;
         for (var i = 0; i &lt; ds_list_size(players); i++)
         {
-            if (!ds_list_find_value(players, i).playerObj.ground)
+            var p = ds_list_find_value(players, i);
+            if (!p.playerObj.ground)
             {
                 onGround = false;
             }
             
-            if (ds_list_find_value(players, i).busy)
+            if (p.busy)
             {
                 areBusy = true;
             }
@@ -192,7 +205,7 @@ switch (phase)
     
     // initiate jump
     case 3:
-        allJump = true;
+        var allJump = true;
         for (var i = 0; i &lt; ds_list_size(players); i++)
         {
             var f = ds_list_find_value(players, i);
@@ -327,7 +340,6 @@ switch (phase)
     
     // teleport out
     case 5:
-        //playerFreeMovement(playerLock);
         with (objMegaman)
         {
             var p = instance_create(x, y, objMegamanExit);

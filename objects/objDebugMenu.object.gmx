@@ -149,7 +149,8 @@ else
 // Functions for each option
 if (mode == 0)
 {
-    if (global.keyPausePressed[playerID] || global.keyLeftPressed[playerID] || global.keyRightPressed[playerID])
+    if (global.keyPausePressed[playerID] || global.keyJumpPressed[playerID]
+        || global.keyLeftPressed[playerID] || global.keyRightPressed[playerID])
     {
         switch (option)
         {
@@ -492,7 +493,8 @@ else if (mode == 1)
 }
 
 // close the debug menu
-if (keyboard_check_pressed(ord('2')) &amp;&amp; openTimer &gt; 1)
+if ((keyboard_check_pressed(ord('2')) || global.keyShootPressed[playerID])
+    &amp;&amp; openTimer &gt; 1)
 {
     instance_destroy();
 }

@@ -423,7 +423,7 @@ if (_init)
         {
             if (useEndStageBehavior)
             {
-                itemDrop = objStageEndCutscene;
+                itemDrop = objEndStageCutscene;
             }
         }
     }
@@ -714,7 +714,7 @@ if (quickSpawn || global.aliveBosses &lt;= 0)
             playSFX(sfxKeySpawn);
         }
     }
-    else if (itemDrop == objEnergyElement || itemDrop == objStageEndCutscene)
+    else if (itemDrop == objEnergyElement || itemDrop == objEndStageCutscene)
     {
         var a = instance_create(bboxGetXCenter() - 8, bboxGetYCenter() - 8, itemDrop);
         with (a)
@@ -726,7 +726,7 @@ if (quickSpawn || global.aliveBosses &lt;= 0)
             script_execute(other.itemScript);
             stringExecutePartial(other.itemCode);
             
-            if (object_index != objStageEndCutscene)
+            if (object_index != objEndStageCutscene)
             {
                 endStage = other.useEndStageBehavior;
             }

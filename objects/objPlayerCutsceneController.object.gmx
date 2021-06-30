@@ -75,13 +75,14 @@ if (instance_exists(objDebugMenu))
     exit;
 }
 
+// delete this if the player doesn't exist
 if (!instance_exists(playerObj))
 {
     instance_destroy();
     exit;
 }
 
-// artificial button inputs
+// artificial button inputs (inputs get disabled in objGlobalControl's code)
 playerID = playerObj.playerID;
 
 keyLeftHold = global.keyLeft[playerID];

@@ -8542,7 +8542,7 @@
         <object>objects\objPlayerCutsceneController</object>
         <objects name="Common">
           <objects name="Stage End">
-            <object>objects\objStageEndCutscene</object>
+            <object>objects\objEndStageCutscene</object>
             <object>objects\objBossAbsorb</object>
           </objects>
         </objects>
