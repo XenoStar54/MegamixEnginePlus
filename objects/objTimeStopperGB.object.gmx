@@ -127,7 +127,7 @@ if (entityCanStep())
             <kind>1</kind>
             <string>event_perform_object(objFlashmanTimeStopGB, ev_step, ev_step_normal);
 
-with(parent)
+with (parent)
 {
     if (!other.timeStopperLock)
     {

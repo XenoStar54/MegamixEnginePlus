@@ -139,9 +139,12 @@ if (global.weapon[other.parent.playerID] == weakness)
 
 with (other)
 {
-    guardCancel = 4;
+    if (canDamage)
+    {
+        guardCancel = 4;
+    }
     
-    if (object_is_ancestor(object_index,prtPlayerProjectile))
+    if (object_is_ancestor(object_index, prtPlayerProjectile))
     {
         if (instance_exists(parent))
         {

@@ -96,6 +96,17 @@ if (global.frozen)
     exit;
 }
 
+// failsafe
+if (!ds_exists(players, ds_type_list))
+{
+    players = ds_list_create();
+}
+
+if (!ds_exists(prevGravs, ds_type_list))
+{
+    prevGravs = ds_list_create();
+}
+
 // remove null player controller entries
 for (var i = 0; i &lt; ds_list_size(players); i++)
 {

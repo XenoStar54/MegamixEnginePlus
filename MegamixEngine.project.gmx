@@ -4975,6 +4975,15 @@
           <sprite>sprites\sprHyperStormH</sprite>
           <sprite>sprites\sprHyperStormHDust</sprite>
         </sprites>
+        <sprites name="Fire Snakey">
+          <sprite>sprites\sprFireSnakeyBody</sprite>
+          <sprite>sprites\sprFireSnakeyFireball</sprite>
+          <sprite>sprites\sprFireSnakeyFlamethrower</sprite>
+          <sprite>sprites\sprFireSnakeyHeadStill</sprite>
+          <sprite>sprites\sprFireSnakeyHeadTurn</sprite>
+          <sprite>sprites\sprFireSnakeyPreview</sprite>
+          <sprite>sprites\sprFireSnakeySplash</sprite>
+        </sprites>
         <sprites name="Iron Ball">
           <sprite>sprites\sprIronBall</sprite>
         </sprites>
@@ -5442,6 +5451,10 @@
         <sprite>sprites\sprBladeManSeeSawTether</sprite>
         <sprite>sprites\sprBladeManSeeSawMiddle</sprite>
         <sprite>sprites\sprSolarManConveyor</sprite>
+      </sprites>
+      <sprites name="MMWW">
+        <sprite>sprites\sprMMWTFallingPlatform</sprite>
+        <sprite>sprites\sprSpringboard</sprite>
       </sprites>
       <sprites name="MM&amp;B">
         <sprite>sprites\sprAstroWallRipple</sprite>
@@ -7747,6 +7760,7 @@
         <object>objects\objBusterRodG</object>
         <object>objects\objMegaWaterS</object>
         <object>objects\objHyperStormH</object>
+        <object>objects\objFireSnakey</object>
         <object>objects\objIronBall</object>
         <objects name="Projectiles">
           <object>objects\objBusterRodGRod</object>
@@ -7755,6 +7769,7 @@
           <object>objects\objMegaWaterSStream</object>
           <object>objects\objHyperStormHDust</object>
           <object>objects\objHyperStormHMet</object>
+          <object>objects\objFireSnakeySegment</object>
         </objects>
       </objects>
       <objects name="MM&amp;B">
@@ -8173,6 +8188,10 @@
           <object>objects\objVenusWaterfallEnd</object>
         </objects>
       </objects>
+      <objects name="MMWW">
+        <object>objects\objMMWTFallingPlatform</object>
+        <object>objects\objSpringboard</object>
+      </objects>
       <objects name="MM&amp;B">
         <object>objects\objAstroWall</object>
       </objects>
@@ -8405,6 +8424,10 @@
           </objects>
           <objects name="MMGBIII">
             <object>objects\objScrewCrusher</object>
+            <object>objects\objSparkShockGB</object>
+            <objects name="Don't Use">
+              <object>objects\objSparkShockParalyzeGB</object>
+            </objects>
           </objects>
           <objects name="MMGBIV">
             <object>objects\objBalladeCracker</object>

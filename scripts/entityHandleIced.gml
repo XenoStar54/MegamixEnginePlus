@@ -9,6 +9,7 @@ if (iceTimer > 0)
     image_speed = 0;
     
     // special physics while iced:
+    speed = 0;
     if (icePhysics)
     {
         // xspeed friction:
@@ -33,15 +34,19 @@ if (iceTimer > 0)
     if (!isSolid && !place_meeting(x, y, objMegaman) && ground)
         isSolid = iceSolid;
     
+    canDamage = iceCanDamage;
+    
     // ice effect ends -- reset variables
     if (iceTimer == 0)
     {
+        speed = speedPreIce;
         yspeed = yspeedPreIce;
         xspeed = xspeedPreIce;
         grav = gravPreIce;
         blockCollision = blockCollisionPreIce;
         image_speed = imageSpeedPreIce;
         isSolid = solidPreIce;
+        canDamage = canDamagePreIce;
         doesTransition = doesTransitionPreIce;
     }
 }

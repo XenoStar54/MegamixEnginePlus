@@ -148,6 +148,7 @@ if(!global.frozen)
         {
             deadLeafMove = 1.5;
         }
+        
         xspeed = deadLeafMove;
     }
 }

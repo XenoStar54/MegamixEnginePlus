@@ -51,6 +51,8 @@ yStore = choose(1, -1);
 music = "WilyTowerBossTheme.vgm";
 musicType = "VGM";
 musicTrackNumber = 0;
+musicLoopSecondsStart = 0;
+musicLoopSecondsEnd = 0;
 
 // Damage Tables
 enemyDamageValue(objBusterShot, 1);

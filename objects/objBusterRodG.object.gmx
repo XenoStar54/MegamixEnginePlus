@@ -44,8 +44,10 @@ escapeOnDefeat = true;
 // Music
 music = "WilyTowerBossTheme.vgm"
 musicType = "VGM"
-musicTrackNumber = 0
-musicVolume = 1
+musicTrackNumber = 0;
+musicVolume = 1;
+musicLoopSecondsStart = 0;
+musicLoopSecondsEnd = 0;
 
 // enemy variables
 phase = 0;

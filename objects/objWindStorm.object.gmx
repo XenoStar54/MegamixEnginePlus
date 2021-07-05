@@ -92,15 +92,25 @@ if (entityCanStep() &amp;&amp; canDamage)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT)){
+            <string>if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT))
+{
     a = fireWeapon(20, -1, objWindStorm, 3, 1, 1, 0);
-    if (a){
+    if (a)
+    {
         playSFX(sfxBuster);
-        a.xspeed = 3*image_xscale;
-        a.yspeed = image_yscale*-1;
+        a.xspeed = 3 * image_xscale;
+        a.yspeed = image_yscale * -1;
         a.image_xscale = image_xscale;
         a.image_yscale = image_yscale;
-        a.grav = 0.25*image_yscale;
+        a.grav = 0.25 * image_yscale;
+        
+        with (a)
+        {
+            if (checkSolid(0, 0, false, true))
+            {
+                instance_destroy();
+            }
+        }
     }
 }
 </string>

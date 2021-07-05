@@ -104,8 +104,22 @@ itemCode = ""; //Code that runs on the dropped object
 itemScript = scrNoEffect; //Script that runs on the dropped object
 
 stopOnFlash = true;
+
 iceTimer = 0; // is iced (frozen cold), and how much remaining time to spend iced
-canIce = true; //@cc is it possible to ice this object (usually doesn't matter if canHit is false)
+canIce = true; // @cc is it possible to ice this object (usually doesn't matter if canHit is false)
+speedPreIce = 0;
+yspeedPreIce = 0;
+xspeedPreIce = 0;
+gravPreIce = 0;
+solidPreIce = 0;
+canDamagePreIce = 0;
+blockCollisionPreIce = 0;
+imageSpeedPreIce = 0;
+icePhysics = 0;
+iceSolid = 0;
+iceGraphicStyle = 0;
+iceCanDamage = 0;
+doesTransitionPreIce = 0;
 
 invincible = false; // set this to true to make this enemy invincible no matter what
 sparkleTimer = 0;
@@ -205,9 +219,13 @@ else if (!global.frozen)
                             {
                                 if (place_meeting(x, y, other))
                                 {
-                                    with (other)
+                                    if (!other.dead &amp;&amp; other.canDamage
+                                        &amp;&amp; other.contactDamage != 0)
                                     {
-                                        entityEntityCollision();
+                                        with (other)
+                                        {
+                                            entityEntityCollision();
+                                        }
                                     }
                                 }
                             }

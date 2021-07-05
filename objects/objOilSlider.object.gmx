@@ -370,10 +370,14 @@ if ((entityCanStep() || instance_exists(objSectionSwitcher)) &amp;&amp; canDamag
 
 image_index = (sprite_index == sprOilSliderSkateboard);
 shiftVisible = 0;
+blockCollision = false;
 
-if (instance_exists(parent)){
-    with(parent){
-        if (other.oilSliderLock){
+if (instance_exists(parent))
+{
+    with (parent)
+    {
+        if (other.oilSliderLock)
+        {
             other.oilSliderLock = lockPoolRelease(other.oilSliderLock);
         }
     }

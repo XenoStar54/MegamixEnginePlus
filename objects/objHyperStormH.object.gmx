@@ -39,10 +39,12 @@ healthBarPrimaryColor[2] = global.nesPalette[1]; // dark blue / purple
 healthBarSecondaryColor[2] = global.nesPalette[40]; // white
 
 // Music
-music = "WilyTowerBossTheme.vgm"
-musicType = "VGM"
-musicTrackNumber = 0
-musicVolume = 1
+music = "WilyTowerBossTheme.vgm";
+musicType = "VGM";
+musicTrackNumber = 0;
+musicVolume = 1;
+musicLoopSecondsStart = 0;
+musicLoopSecondsEnd = 0;
 
 // creation code
 //@cc

@@ -22,12 +22,13 @@ if (object_index == objMegaman)
 {
     cgrav = gravDir;
 }
+
 cgrav += (cgrav == 0);
 
 // Set stuff solid according to the isSolid variable
 with (objSolid)
 {
-    solid = (isSolid>0);
+    solid = (isSolid > 0);
 }
 
 with (prtEntity)
@@ -76,7 +77,7 @@ if (dieToSpikes) // Handle dying to spikes
         
     with (objSpike)
     {
-        solid = spSolid;
+        solid = isSolid && spSolid;
     }
 }
 

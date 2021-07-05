@@ -99,8 +99,8 @@ musicType = "VGM";
 musicTrackNumber = 17;
 musicVolume = 1;
 musicLoop = true;
-musicLoopSecondsStart = 8.825;
-musicLoopSecondsEnd = 61.575;
+musicLoopSecondsStart = 0;
+musicLoopSecondsEnd = 0;
 
 itemDrop = noone;
 elementName = "";
