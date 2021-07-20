@@ -1410,12 +1410,12 @@ discord_free_dll()
             <string>/// Draw Game, apply filters, and do Shader Fade Out
 
 // app position stuff
-appPosition = application_get_position();
+var appPosition = application_get_position();
 
-appWidth = (appPosition[2] - appPosition[0]) * getPixelRatio();
-appHeight = appPosition[3] - appPosition[1];
-appX = appPosition[0] + ((appPosition[2] - appPosition[0]) - appWidth) / 2;
-appY = appPosition[1];
+var appWidth = (appPosition[2] - appPosition[0]) * getPixelRatio();
+var appHeight = appPosition[3] - appPosition[1];
+var appX = appPosition[0] + ((appPosition[2] - appPosition[0]) - appWidth) / 2;
+var appY = appPosition[1];
 if (window_get_fullscreen())
 {
     if (global.accurateFullscreen)
@@ -1445,12 +1445,12 @@ if (window_get_fullscreen())
 }
 
 // how many times application_surface is stretched (ignoring pixel ratio)
-multiply = appHeight / surface_get_height(application_surface);
+var multiply = appHeight / surface_get_height(application_surface);
 
 // surfaces
-finalSurface = application_surface;
-surfaceWidth = surface_get_width(application_surface);
-surfaceHeight = surface_get_height(application_surface);
+var finalSurface = application_surface;
+var surfaceWidth = surface_get_width(application_surface);
+var surfaceHeight = surface_get_height(application_surface);
 
 // apply shaders
 draw_enable_alphablend(false);
@@ -1649,6 +1649,20 @@ if (surface_exists(fadeSurface))
 }
 
 draw_enable_alphablend(true);
+
+// Screenshot
+with (objDebugControl)
+{
+    if (keyboard_check_pressed(vk_f9))
+    {
+        while (file_exists(working_directory + "\screenshots\screenshot" + string(screenshotNum) + ".png"))
+            screenshotNum += 1;
+        screen_save_part(working_directory + "\screenshots\screenshot" + string(screenshotNum) + ".png",
+            appX, appY, surfaceWidth * xscale, surfaceHeight * yscale);
+        print("SCREENSHOT SAVED", WL_SHOW, c_orange);
+        playSFX(sfxKeyGet);
+    }
+}
 </string>
           </argument>
         </arguments>

@@ -150,16 +150,6 @@ if (keyboard_check_pressed(vk_f4))
     setFullscreen(!window_get_fullscreen());
 }
 
-// Screenshot
-if (keyboard_check_pressed(vk_f9))
-{
-    while (file_exists(working_directory + "\screenshots\screenshot" + string(screenshotNum) + ".png"))
-        screenshotNum += 1;
-    screen_save(working_directory + "\screenshots\screenshot" + string(screenshotNum) + ".png");
-    print("SCREENSHOT SAVED", WL_SHOW, c_orange);
-    playSFX(sfxKeyGet);
-}
-
 // Quit
 if (keyboard_check_pressed(vk_escape) &amp;&amp; global.escapeBehavior == 0)
 {
