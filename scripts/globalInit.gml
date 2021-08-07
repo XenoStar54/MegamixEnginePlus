@@ -18,6 +18,7 @@ gigInit();
 
 // extension initialization
 cleanMem('init');
+scheduler_resolution_set(1); // doing this + setting the game's sleep margin to 1 ms prevents GMS' low fps / performance bug
 
 // Keys
 global.keyLeft[4] = 0;

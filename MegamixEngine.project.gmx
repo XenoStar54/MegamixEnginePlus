@@ -2059,6 +2059,7 @@
   </datafiles>
   <NewExtensions>
     <extension index="0">extensions\GameMusicEmu</extension>
+    <extension index="1">extensions\GMSched</extension>
   </NewExtensions>
   <sounds name="sound">
     <sounds name="Player">
@@ -6331,6 +6332,7 @@
         <script>scripts\stringReverse.gml</script>
         <script>scripts\getTimeStamp.gml</script>
         <script>scripts\zeroPad.gml</script>
+        <script>scripts\roomGetNameFormatted.gml</script>
         <scripts name="XML">
           <script>scripts\xmlParseTag.gml</script>
           <script>scripts\xmlStringUnescape.gml</script>

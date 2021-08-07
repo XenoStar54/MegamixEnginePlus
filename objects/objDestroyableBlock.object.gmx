@@ -29,6 +29,7 @@
 
 contactDamage = 0;
 bubbleTimer = -1;
+itemDrop = -1;
 
 killOverride = false;
 
