@@ -39,23 +39,52 @@ despite them being global to all entities.
 User Defined Events 0-6 are all left for the users to use with their own weapons.
 */
 
-/// weaponSetup(name, primary color, secondary color, icon)
+/// weaponSetup(name, primary color, secondary color, icon, power, speed, rapidness, cost, description)
 // name - name of the weapon
 // primary color - replacement for Mega Man's darker blue
 // secondary color - replacement for Mega Man's brighter blue
 // icon - the icon that will be displayed in the pause menu or when switching weapons
+// power - (weapon help menu) how much damage the weapon does normally
+// speed - (weapon help menu) how fast the weapon travels
+// rapidness - (weapon help menu) how many of this can you have onscreen
+// cost - (weapon help menu) how much energy does this eat up per shot
+// description - (weapon help menu) self-explanatory (preferably in 4MI Engrish)
 
 // Setup this weapon.
 global.totalWeapons += 1;
 
 // Name
-global.weaponName[global.totalWeapons] = argument0;
+global.weaponName[global.totalWeapons] = argument[0];
 
 // Color / -1 will make it use default colors.
-global.weaponPrimaryColor[global.totalWeapons] = argument1;
-global.weaponSecondaryColor[global.totalWeapons] = argument2;
+global.weaponPrimaryColor[global.totalWeapons] = argument[1];
+global.weaponSecondaryColor[global.totalWeapons] = argument[2];
 
-global.weaponIcon[global.totalWeapons] = argument3;
+global.weaponIcon[global.totalWeapons] = argument[3];
+if argument_count >= 5{
+    global.weaponPower[global.totalWeapons] = argument[4];}
+else{
+    global.weaponPower[global.totalWeapons] = 1;}
+    
+if argument_count >= 6{
+    global.weaponSpeed[global.totalWeapons] = argument[5];}
+else{
+    global.weaponSpeed[global.totalWeapons] = 1;}
+    
+if argument_count >= 7{
+    global.weaponRapidness[global.totalWeapons] = argument[6];}
+else{
+    global.weaponRapidness[global.totalWeapons] = 1;}
+    
+if argument_count >= 8{
+    global.weaponCost[global.totalWeapons] = argument[7];}
+else{
+    global.weaponCost[global.totalWeapons] = 1;}
+    
+if argument_count >= 9{
+    global.weaponDescription[global.totalWeapons] = argument[8];}
+else{
+    global.weaponDescription[global.totalWeapons] = "INSERT DESCRIPTION HERE";}
 
 global.weaponID[? obj] = global.totalWeapons;
 global.weaponObject[global.totalWeapons] = obj;

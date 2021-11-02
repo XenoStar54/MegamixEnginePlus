@@ -286,7 +286,10 @@ scrBusterControl(false, true, !_canSpawn);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>weaponSetup("TIME SLOW", make_color_rgb(219, 0, 207), make_color_rgb(251, 186, 251), sprWeaponIconsTimeSlow);
+            <string>weaponSetup("TIME SLOW", make_color_rgb(219, 0, 207), make_color_rgb(251, 186, 251), sprWeaponIconsTimeSlow,
+0,"-",1,4,
+"EMITS A TEMPORAL WAVE THAT SLOWS DOWN TIME. YOU STILL MOVE AT NORMAL SPEED AND CAN SHOOT NORMALLY WHILE TIME IS SLOWED."
+);
 </string>
           </argument>
         </arguments>

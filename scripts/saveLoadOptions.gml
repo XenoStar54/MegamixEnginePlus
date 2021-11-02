@@ -9,7 +9,8 @@ global.screenSize            = sl(global.screenSize,   "screensize");
 setFullscreen(sl(window_get_fullscreen(), "fullscreen"));
 global.resolution            = sl(global.resolution, "resolution");
 global.pixelRatio            = sl(global.pixelRatio, "pixel-ratio");
-global.accurateFullscreen    = sl(global.accurateFullscreen, "accurate-fullscreen");
+global.accurateFullscreen    = sl(global.accurateFullscreen, "accurate-fullscreen");;
+global.pauseMenu    = sl(global.pauseMenu, "pause-menu");
 global.shadersEnabled        = sl(global.shadersEnabled, "shadersenabled") && global.shadersCompatible;
 global.enforcePalette        = sl(global.enforcePalette, "enforce-palette");
 global.filter                = sl(global.filter, "filter");
@@ -31,6 +32,8 @@ global.playerCount           = sl(global.playerCount,    "player-count");
 playerGlobalInit(); // Initialize global variable arrays for all players.
 global.pickupGraphics        = sl(global.pickupGraphics, "item-graphics");
 global.deathEffect           = sl(global.deathEffect, "death-effect");
+global.deathSpeed           = sl(global.deathSpeed, "death-speed");
+global.stopMusicOnDeath           = sl(global.stopMusicOnDeath, "death-music");
 global.jumpSound             = sl(global.jumpSound, "jump-sound");
 global.teleportSound         = sl(global.teleportSound, "teleport-sound");
 global.checkpointNotification= sl(global.checkpointNotification, "checkpoint-notice");

@@ -77,7 +77,6 @@
     <instance objName="objSolid" x="128" y="304" name="inst_B28494A8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSolid" x="112" y="304" name="inst_DFA269EE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBossDoor" x="144" y="336" name="inst_5BB3A356" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objDefaultSpawn" x="128" y="144" name="inst_AE177042" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objFlashMan" x="3296" y="1808" name="inst_7373AC84" locked="0" code="elementName = &quot;flash&quot;;&#xA;elementCode = &quot;weaponReward(objTimeStopper);&quot;;&#xA;isHard = global.difficulty == DIFF_HARD;&#xA;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objVerticalScrolling" x="1536" y="240" name="inst_0B1319BF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objVerticalScrolling" x="1536" y="480" name="inst_C6F971B0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -264,6 +263,7 @@
     <instance objName="objBoltSmall" x="2432" y="1872" name="inst_76BBE4FD" locked="0" code="if (global.difficulty &lt; DIFF_HARD)&#xA;    instance_destroy();&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBoltSmall" x="2416" y="1872" name="inst_0F901B8B" locked="0" code="if (global.difficulty &lt; DIFF_HARD)&#xA;    instance_destroy();&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objShadowClone" x="2400" y="1872" name="inst_E162E192" locked="0" code="if (global.difficulty &lt; DIFF_HARD)&#xA;    instance_destroy();&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objDefaultSpawn" x="2920" y="1792" name="inst_1864BFD7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="tstFlashman" x="1280" y="64" w="16" h="16" xo="64" yo="48" id="11288555" name="inst_70BECDDC" depth="100000001" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

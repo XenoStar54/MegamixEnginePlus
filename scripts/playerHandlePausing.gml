@@ -10,7 +10,15 @@ if (!playerIsLocked(PL_LOCK_PAUSE))
             {
                 queuePause(true);
                 global.createArgument[0] = playerID;
-                instance_create(x, y, objPauseMenu);
+                switch global.pauseMenu{
+                    case 0:
+                        instance_create(x, y, objOldPauseMenu);
+                        break;
+                    default:
+                    case 1:
+                        instance_create(x, y, objNewPauseMenu);
+                        break;
+                }
                 playSFX(sfxPause);
             }
         }

@@ -73,6 +73,15 @@ else
     col[2] = global.secondaryCol[playerID];
     col[3] = global.outlineCol[playerID];
     
+    /*if (weaponFlash > 5)
+    {
+        col[2] = c_white;
+    }
+    if (weaponFlash)
+    {
+        col[1] = c_white;
+    }*/
+    
     
     if ((iFrames mod 4) < 2 || iFrames < 0)
     {
@@ -99,6 +108,8 @@ else
             iconx = image_xscale;
         }
         col[0] = make_color_rgb(255, 228, 164);
+        col[1] = global.primaryCol[playerID];
+        col[2] = global.secondaryCol[playerID];
         col[3] = c_white;
         
         for (i = 0; i <= 3; i += 1)

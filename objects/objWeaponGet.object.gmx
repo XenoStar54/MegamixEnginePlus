@@ -59,7 +59,6 @@ for (var i = array_length_1d(global.levelReward) - 1; i &gt;= 1 i--)
     reward[rewardN++] = global.levelReward[i];
     setWeaponLocked(global.levelReward[i], false);
 }
-
 global.levelReward = makeArray(0);
 </string>
           </argument>

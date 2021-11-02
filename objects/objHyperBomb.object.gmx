@@ -165,7 +165,12 @@ if (entityCanStep() &amp;&amp; canDamage)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>weaponSetup("HYPER BOMB", global.nesPalette[23], global.nesPalette[40], sprWeaponIconsHyperBomb);
+            <string>weaponSetup("HYPER BOMB", global.nesPalette[23], global.nesPalette[40], sprWeaponIconsHyperBomb,
+2,1.5,1,2,
+"TOSSES AN EXPLOSIVE SPHERE THAT EXPLODES WHEN IT HITS AN ENEMY OR THE GROUND.#
+THERE IS A DELAY IF IT HITS THE GROUND, HOWEVER.#
+THE EXPLOSION DOESN'T GO THROUGH ARMOR.#"
+);
 </string>
           </argument>
         </arguments>

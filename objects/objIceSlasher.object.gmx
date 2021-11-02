@@ -106,7 +106,12 @@ if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT))
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>weaponSetup("ICE SLASHER", global.nesPalette[15], global.nesPalette[26], sprWeaponIconsIceSlasher);
+            <string>weaponSetup("ICE SLASHER", global.nesPalette[15], global.nesPalette[26], sprWeaponIconsIceSlasher,
+0,5,2,1,
+"SHOOTS A BLADE OF SOLID ICE THAT FREEZES ANYTHING IN IT'S PATH.#
+THIS DOESN'T DO ANY DAMAGE ON IT'S OWN, BUT PASSES THROUGH ENEMIES.#
+FROZEN ENEMIES STILL DEAL CONTACT DAMAGE."
+);
 </string>
           </argument>
         </arguments>

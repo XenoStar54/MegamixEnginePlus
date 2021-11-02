@@ -27,6 +27,7 @@ if (!file_exists(mus) || mus == global.levelSong)
 }
 
 stopMusic();
+//if(global.levelSong != fileName || global.levelSongType != fileType || global.levelTrackNumber != trackNumber){stopMusic();}
 
 // Update music global variables
 

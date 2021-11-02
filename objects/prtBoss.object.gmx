@@ -141,7 +141,7 @@ fillingHealthBar = false;
 healthBarTimer = 0; // timer for fillup
 healthBarTimerMax = 30; // how long will the boss wait between finishing intro and filling healthbar?
 
-healthBarTimerSpeed = 1; // basically health per frame
+healthBarTimerSpeed = 1 * 5; // basically health per frame
 healthBarTimerSpeedExtra = 0.25;
 
 healthBarPrimaryColor[1] = 34;
@@ -332,8 +332,8 @@ if (instance_exists(objMegaman) &amp;&amp; !global.frozen &amp;&amp; !isFight &a
                     playSFX(sfxEnergyRestore, true);
                 }
                 
-                healthBarTimerSpeed = (healthBarHealth div 28)
-                    * healthBarTimerSpeedExtra + 1;
+                /*healthBarTimerSpeed = (healthBarHealth div 28)
+                    * healthBarTimerSpeedExtra + 1;*/
                 
                 healthBarTimer += healthBarTimerSpeed;
                 
@@ -703,7 +703,20 @@ if (doPlayerExplosion)
 // HANDLING ITEM DROPS
 if (quickSpawn || global.aliveBosses &lt;= 0)
 {
-    if (itemDrop == objKey)
+    if (global.inArena){
+    
+        with (objMegaman)
+        {
+            var p = instance_create(x, y, objMegamanExit);
+            p.pid = playerID;
+            p.cid = costumeID;
+            
+            visible = 0;
+            instance_destroy();
+        }
+        
+    }
+    else if (itemDrop == objKey)
     {
         i = instance_create(bboxGetXCenter() - 8, bboxGetYCenter() - 8,
             objKey);

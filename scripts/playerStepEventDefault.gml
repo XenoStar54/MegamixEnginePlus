@@ -52,4 +52,6 @@ if (!global.frozen && !frozen)
     
     // Recover from mm1 stun
     playerHandleStun();
+    
+    weaponFlash = max(weaponFlash - 1, 0);
 }

@@ -255,7 +255,11 @@ if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT))
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>weaponSetup("ROLLING CUTTER", global.nesPalette[0], global.nesPalette[40], sprWeaponIconsRollingCutter);
+            <string>weaponSetup("ROLLING CUTTER", global.nesPalette[0], global.nesPalette[40], sprWeaponIconsRollingCutter,
+2, 2.5, 1, 1,
+"TOSSES SPINNING SCISSORS IN A TEARDROP PATTERN.#
+IT CAN CUT THROUGH MOST ENEMIES, BUT MIGHT NOT DO WELL AGAINST ARMOR.#"
+);
 </string>
           </argument>
         </arguments>

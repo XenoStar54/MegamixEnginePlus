@@ -48,6 +48,9 @@ arrayAppend(nonLevels, rmTitleScreen);
 ds_list_add(roomlist, -3);
 ds_list_add(roomnames, "@#Difficulty: ");
 
+ds_list_add(roomlist, -4);
+ds_list_add(roomnames, "@$Lives: ");
+
 ds_list_add(roomlist, rmFileSelect);
 ds_list_add(roomnames, "@Example Game");
 arrayAppend(nonLevels, rmFileSelect);
@@ -299,8 +302,8 @@ if (!selected)
         else if (myRoom == -4)
         {
             // temporary lives config
-            global.defaultLives = (global.defaultLives + 1) mod 7;
-            global.livesEnabled = global.defaultLives != 6;
+            global.defaultLives = (global.defaultLives + 1) mod 11;
+            global.livesEnabled = global.defaultLives != 10;
             global.livesRemaining = global.defaultLives;
             
             playSFX(sfxMenuMove);

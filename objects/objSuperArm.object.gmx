@@ -259,7 +259,12 @@ if (superArmHeldObject != noone)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>weaponSetup("SUPER ARM", global.nesPalette[20], global.nesPalette[40], sprWeaponIconsSuperArm);
+            <string>weaponSetup("SUPER ARM", global.nesPalette[20], global.nesPalette[40], sprWeaponIconsSuperArm,
+4,2,1,2,
+"PRESS FIRE NEAR A BLOCK TO LIFT IT ABOVE YOUR HEAD. (LIFTABLE BLOCKS FLASH WHEN CLOSE BY)#
+PUSH FIRE AGAIN TO THROW IT.#
+IF YOU AREN'T NEAR A BLOCK WHEN PRESSING FIRE, YOU'LL SPAWN ONE OUT OF THIN AIR."
+);
 
 // objects which have the 'superArmTarget' category
 // must have the following instance variables:

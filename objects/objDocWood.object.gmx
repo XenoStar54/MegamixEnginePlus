@@ -35,7 +35,7 @@ introType = 0;
 customPose = 1;
 isFight = false;
 introVar = 0;
-
+biggerShield = false; //is his leaf shield scaled up to his size (true), or the same as the actual Woodman (false)
 contactDamage = 4;
 attackTimer = 0;
 phase = 0;
@@ -140,6 +140,8 @@ enemyDamageValue(objIceSlasher, 4);
             <kind>1</kind>
             <string>// leave this. this is needed, but don't use this as an example, this code is pretty weird.
 event_inherited();
+shieldObj[false] = objWoodLeafShield;
+shieldObj[true] = objDocWoodLeafShield;
 if (entityCanStep())
 {
     // this startIntro and isIntro stuff generates the little Doc Robot animation seen in MM3
@@ -207,7 +209,7 @@ if (entityCanStep())
                         var i;
                         for (i = 0; i &lt; 8; i += 1)
                         {
-                            shield = instance_create(x, y, objWoodLeafShield);
+                            shield = instance_create(x, y, shieldObj[biggerShield]);
                             shield.image_xscale = image_xscale;
                             shield.direction = i * 45;
                             shield.despawnRange = -1;
@@ -245,12 +247,12 @@ if (entityCanStep())
                     else if (leafTimer &lt;= 0)
                     {
                         sprite_index = sprDocRobotShoot;
-                        if instance_exists(objWoodLeafShield)
+                        if instance_exists(shieldObj[biggerShield])
                         {
-                            objWoodLeafShield.xspeed = 3.5 * image_xscale;
-                            objWoodLeafShield.yspeed = 0;
-                            objWoodLeafShield.followWood = false;
-                            objWoodLeafShield.despawnRange = 4;
+                            shieldObj[biggerShield].xspeed = 3.5 * image_xscale;
+                            shieldObj[biggerShield].yspeed = 0;
+                            shieldObj[biggerShield].followWood = false;
+                            shieldObj[biggerShield].despawnRange = 4;
                         }
                         for (i = 1; i &lt; 5; i += 1)
                         {
@@ -318,7 +320,7 @@ if (entityCanStep())
             case 4:
                 if (sprite_index == sprDocRobotStand)
                 {
-                    if (!instance_exists(objWoodFallingLeaves) &amp;&amp; !instance_exists(objWoodLeafShield))
+                    if (!instance_exists(objWoodFallingLeaves) &amp;&amp; !instance_exists(shieldObj[biggerShield]))
                         phase = 0;
                 }
                 break;
@@ -355,6 +357,11 @@ else
     instance_destroy();
 }
 with (objWoodRisingLeaves)
+{
+    instance_create(x, y, objExplosion);
+    instance_destroy();
+}
+with (objDocWoodLeafShield)
 {
     instance_create(x, y, objExplosion);
     instance_destroy();

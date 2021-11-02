@@ -133,6 +133,10 @@ instance_create(0, 0, objMusicControl);
 instance_create(0, 0, objDebugControl);
 instance_create(0, 0, objMobileControl);
 
+global.levelTimerRun = false;
+global.levelTimerShow = false;
+global.levelTimer = 0;
+
 //Used to load a room passed as parameter
 init = 1;
 
@@ -417,6 +421,11 @@ if (!instance_exists(objSectionSwitcher) &amp;&amp; global.inGame)
 
 global.roomTimer += 1;
 global.gameTimer += 1;
+if global.levelTimerRun &amp;&amp; !global.frozen &amp;&amp; !global.timeStopped{
+
+    global.levelTimer += 1;
+}       
+
 </string>
           </argument>
         </arguments>
@@ -1003,7 +1012,7 @@ if (!global.frozen)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>cleanMem('clean');
+            <string>//cleanMem('clean');
 
 setfrozen = 0;
 
@@ -1076,7 +1085,7 @@ if (joystick_exists(1))
 
 // global.frozen = false;
 global.aliveBosses = 0;
-
+global.levelTimerRun = false;
 global.lockTransition = false;
 global.switchingSections = false;
 
@@ -1379,8 +1388,8 @@ saveLoadOptions(true);
 saveLoadGame(true);
 
 // End cleanMem
-cleanMem('clear');
-cleanMem('free');
+//cleanMem('clear');
+//cleanMem('free');
 
 // end rich presence
 discord_free_app()
@@ -1762,8 +1771,12 @@ if (showhealth)
     var dx = view_xview + 16;
     var dy = view_yview + 17;
     
-    draw_enable_alphablend(false);
+    draw_enable_alphablend(true);
     
+    draw_set_halign(fa_center)
+    draw_set_valign(fa_top)
+    draw_set_color(c_white);
+    draw_text_transformed(view_xview+128, view_yview+4 - 0, zeroPad(floor(global.levelTimer/3600) mod 60,2)+"'"+zeroPad(floor(global.levelTimer/60) mod 60,2)+'"'+zeroPad(floor(global.levelTimer/1) mod 60,2), 1, 1, 0);
     /// Draw HUD
     for (var z = 0; z &lt; global.playerCount; z += 1)
     {
@@ -1809,9 +1822,9 @@ if (showhealth)
                 draw_enable_alphablend(true);
                 draw_set_halign(fa_left);
                 draw_set_valign(fa_top);
-                draw_sprite_ext(sprDot, 0, dx, dy + sprite_get_height(sprHealthbarBackground), 8, 8, 0, c_black, 1);
+                //draw_sprite_ext(sprDot, 0, dx, dy + sprite_get_height(sprHealthbarBackground), 8, 8, 0, c_black, 1);
                 draw_text(dx, dy + sprite_get_height(sprHealthbarBackground), global.livesRemaining);
-                draw_enable_alphablend(false);
+                draw_enable_alphablend(true);
             }
             
             // Weapons

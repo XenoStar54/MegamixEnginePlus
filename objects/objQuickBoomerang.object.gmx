@@ -163,7 +163,11 @@ if (global.keyShoot[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT) &amp;&am
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>weaponSetup("QUICK BOOMERANG", global.nesPalette[31], global.nesPalette[44], sprWeaponIconsQuickBoomerang);
+            <string>weaponSetup("QUICK BOOMERANG", global.nesPalette[31], global.nesPalette[44], sprWeaponIconsQuickBoomerang,
+1,4,8,"1/6",
+"FIRES A BOOMERANG THAT TRAVELS QUICKLY ALONG A TEARDROP ORBIT LIKE ROLLING CUTTER.#
+BUT UNLIKE ROLLING CUTTER, THIS WEAPON'S ARC IS SMALLER, IT DOESN'T GO THROUGH ENEMIES, AND IT DISAPPEARS AS SOON AS IT FINISHES ITS ARC."
+);
 </string>
           </argument>
         </arguments>

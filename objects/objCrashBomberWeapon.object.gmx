@@ -195,7 +195,11 @@ if (!playerIsLocked(PL_LOCK_SHOOT))
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>weaponSetup("CRASH BOMBER", global.nesPalette[32], global.nesPalette[40], sprWeaponIconsCrashBomber);
+            <string>weaponSetup("CRASH BOMBER", global.nesPalette[32], global.nesPalette[40], sprWeaponIconsCrashBomber,
+4,4,1,4,
+"FIRES A TIMED EXPLOSIVE THAT WILL EXPLODE A SHORT WHILE AFTER LATCHING ONTO A WALL.#
+IF THIS HITS AN ENEMY (REGARDLESS OF ARMOR) IT WILL EXPLODE RIGHT AWAY."
+);
 </string>
           </argument>
         </arguments>

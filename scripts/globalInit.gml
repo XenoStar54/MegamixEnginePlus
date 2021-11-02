@@ -17,7 +17,7 @@ fsInit();
 gigInit();
 
 // extension initialization
-cleanMem('init');
+//cleanMem('init');
 
 // Keys
 global.keyLeft[4] = 0;
@@ -67,6 +67,12 @@ global.playerCount = 1; // the number of players playing
 global.playerCountInitialized = 0; // number of players whose global variables have been initialized.
 weaponsInit();
 playerGlobalInit();
+
+// Arena
+global.inArena = false;
+global.arenaEnemies = "";
+
+global.arenaItems[6] = 0;
 
 // can dead players respawn?
 global.respawnAllowed = true;

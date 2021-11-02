@@ -120,9 +120,9 @@ if (!global.frozen)
                         expl.stopOnFlash = false;
                         expl.sprite_index = sprCrashExplosion;
                         expl.contactDamage = 4;
+                        expl.direction = t;
                         with (expl)
                         {
-                            direction = other.t;
                             rotationMovement(x, y, irandom_range(8, 20), 0);
                         }
                     }

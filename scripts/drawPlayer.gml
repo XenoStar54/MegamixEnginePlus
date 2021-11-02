@@ -27,11 +27,27 @@ if (instance_exists(objMegaman))
 }
 
 
+col[0] = c_white;
+col[1] = global.primaryCol[pid];
+col[2] = global.secondaryCol[pid];
+col[3] = global.outlineCol[pid];
+if object_index == objMegaman
+{
+if (weaponFlash > 5)
+{
+    col[2] = c_white;
+}
+if (weaponFlash)
+{
+    col[1] = c_white;
+}
+}
+
 if (!_inked)
 {
     drawCostume(global.playerSprite[cid], sheetX, sheetY, _x, _y, _xscale, _yscale,
-        baseCol, global.primaryCol[pid],
-        global.secondaryCol[pid], global.outlineCol[pid], image_alpha, image_alpha, image_alpha, image_alpha);
+        baseCol, col[1],
+        col[2], global.outlineCol[pid], image_alpha, image_alpha, image_alpha, image_alpha);
 }
 
 // octone ink handling:

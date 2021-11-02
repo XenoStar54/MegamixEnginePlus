@@ -259,7 +259,12 @@ specialDamageValue("nature", 10);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>weaponSetup("LEAF SHIELD", global.nesPalette[9], global.nesPalette[40], sprWeaponIconsLeafShield);
+            <string>weaponSetup("LEAF SHIELD", global.nesPalette[9], global.nesPalette[40], sprWeaponIconsLeafShield,
+2,4,1,3,
+"GATHERS A SWIRL OF LEAVES TO SURROUND YOU.#
+WHEN ANY DIRECTION ON THE D-PAD IS PUSHED, THE SHIELD WILL FLY IN THAT DIRECTION.#
+UNLIKE MM2, THIS ACTUALLY DEFENDS AGAINST PROJECTILES."
+);
 </string>
           </argument>
         </arguments>

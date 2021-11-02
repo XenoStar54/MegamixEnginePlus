@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>playMusic('MegamixEnginePlusTitle.ogg', "OGG", 0, 0, 161, 0, 1);
+            <string>playMusic("Mega_Man_10.nsf", "VGM", 6, 0, 0, false, 1);
 
 canProceed = true;
 drawtext = 0;
@@ -74,14 +74,14 @@ freshSaveFile();
         exit;
     }
     
-    if ((demoTimer++) mod 500 == 495)
+    /*if ((demoTimer++) mod 500 == 495)
     {
         if (!recordInputPlayback(
             choose("Recordings/demoHoneyWoman.mrc",
             "Recordings/demoHoneyWoman.mrc")))
             canProceed = false;
         exit;
-    }
+    }*/
     var dir = global.keyDownPressed[0] - global.keyUpPressed[0];
     if (dir != 0)
     {

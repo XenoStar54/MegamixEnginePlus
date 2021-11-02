@@ -158,8 +158,8 @@ if (entityCanStep()
                     grav = 0;
                     blockCollision = false;
                     
-                    moveTowardPoint(other.ballPosX, other.ballPosY, 2);
-                }
+                    moveTowardPoint(parent.ballPosX, other.ballPosY, 2);
+                } //other
             }
             else
             {

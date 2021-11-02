@@ -96,6 +96,7 @@ else
                         iFrames = 0;
                         
                         teleportLock = lockPoolRelease(teleportLock);
+                        global.levelTimerRun = true;
                         ground = true;
                         global.lockTransition = false;
                         exit;
@@ -137,6 +138,7 @@ else
                 teleporting = false;
                 teleportTimer = 0;
                 teleportLock = lockPoolRelease(teleportLock);
+                global.levelTimerRun = true;
                 
                 canHit = true;
                 iFrames = 0;
@@ -166,6 +168,7 @@ else
                     teleporting = false;
                     teleportTimer = 0;
                     teleportLock = lockPoolRelease(teleportLock);
+                    global.levelTimerRun = true;
                     
                     canHit = true;
                     iFrames = 0;
@@ -234,6 +237,7 @@ else
                 teleporting = false;
                 teleportTimer = 0;
                 teleportLock = lockPoolRelease(teleportLock);
+                global.levelTimerRun = true;
                 
                 canHit = true;
                 iFrames = 0;
@@ -250,6 +254,7 @@ else
                 teleporting = false;
                 teleportTimer = 0;
                 teleportLock = lockPoolRelease(teleportLock);
+                global.levelTimerRun = true;
                 canHit = true;
                 iFrames = 0;
                 ground = true;
@@ -340,6 +345,7 @@ else
                     teleporting = false;
                     teleportTimer = 0;
                     teleportLock = lockPoolRelease(teleportLock);
+                    global.levelTimerRun = true;
                     
                     iFrames = 0;
                     ground = true;

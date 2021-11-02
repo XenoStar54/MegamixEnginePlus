@@ -230,7 +230,11 @@ if (!playerIsLocked(PL_LOCK_SHOOT))
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>weaponSetup("BUBBLE LEAD", global.nesPalette[39], global.nesPalette[40], sprWeaponIconsBubbleLead);
+            <string>weaponSetup("BUBBLE LEAD", global.nesPalette[39], global.nesPalette[40], sprWeaponIconsBubbleLead,
+1,1,2,0.5,
+"FIRES A SEMI-SOLID BUBBLE THAT ROLLS ALONG THE GROUND.#
+THE BUBBLE CAN CATCH MOST PROJECTILES THAT TOUCH IT."
+);
 </string>
           </argument>
         </arguments>

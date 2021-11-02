@@ -196,7 +196,11 @@ if (!global.frozen)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>weaponSetup("THUNDER BEAM", global.nesPalette[0], global.nesPalette[47], sprWeaponIconsThunderBeam);
+            <string>weaponSetup("THUNDER BEAM", global.nesPalette[0], global.nesPalette[47], sprWeaponIconsThunderBeam,
+3,8,1,1,
+"SHOOTS A BOLT OF THUNDER FORWARD, AND TWO MORE UP AND DOWN.#
+ALL THREE OF THE BOLTS GO THROUGH ARMOR."
+);
 </string>
           </argument>
         </arguments>

@@ -21,5 +21,6 @@
   <height>16</height>
   <frames>
     <frame index="0">images\sprBeatCall_0.png</frame>
+    <frame index="1">images\sprBeatCall_1.png</frame>
   </frames>
 </sprite>

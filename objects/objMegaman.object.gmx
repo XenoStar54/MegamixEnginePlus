@@ -143,6 +143,7 @@ blinkTimerMax = 120;
 blinkImage = 0; // 0 for no blinking, 1 for blinking
 blinkDuration = 8; // The amount of frames the blinking lasts
 weaponIcon = false; // Whether or not we should draw the weapon icon above our head (used when using quick weapon switching)
+weaponFlash = false;
 
 deathByPit = false; // Did we die by falling in a bottomless pit?
 dieToPit = true;

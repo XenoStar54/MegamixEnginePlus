@@ -4,6 +4,7 @@
 global.resolution = false; // native
 global.pixelRatio = 1; // 8:7
 global.accurateFullscreen = true;
+global.pauseMenu = 0;
 global.shadersEnabled = global.shadersCompatible;
 global.enforcePalette = 0;
 global.filter = 0;
@@ -20,6 +21,8 @@ global.familyFriendlyText = false;
 global.escapeBehavior = 0;
 global.pickupGraphics = 0;
 global.deathEffect = 0;
+global.deathSpeed = 0;
+global.stopMusicOnDeath = 0;
 global.jumpSound = 0;
 global.teleportSound = 0;
 global.checkpointNotification = 1;

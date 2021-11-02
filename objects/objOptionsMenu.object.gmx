@@ -73,31 +73,34 @@ optionText[4] = 'FULLSCREEN';
 optionText[5] = 'RESOLUTION';
 optionText[6] = 'PIXEL RATIO';
 optionText[7] = 'PERFECT FULLSCREEN';
-optionText[8] = 'SHADERS';
-optionText[9] = 'ENFORCE PALETTE';
-optionText[10] = 'FILTER';
-optionText[11] = 'CRT DISTORTION';
-optionText[12] = 'CRT DISTORT VAL';
-optionText[13] = 'BORDER GRAPHIC';
-optionText[14] = 'V-SYNC';
-optionText[15] = 'MUSIC VOLUME';
-optionText[16] = 'SOUND VOLUME';
-optionText[17] = 'PLAYER COUNT';
-optionText[18] = 'SHOW FPS';
-optionText[19] = 'SHOW CONTROLLER';
-optionText[20] = 'DAMAGE POPUP';
-optionText[21] = 'CHARGE BAR';
-optionText[22] = 'LIFE COUNTER';
-optionText[23] = 'MM COLOR';
-optionText[24] = 'MOVING TEXT';
-optionText[25] = 'PICKUP EFFECT';
-optionText[26] = 'ESC KEY BEHAVIOR';
-optionText[27] = 'COLORED TEXT OVERLAYS';
-optionText[28] = 'ITEM GRAPHICS';
-optionText[29] = 'DEATH EFFECT';
-optionText[30] = 'JUMP SOUND';
-optionText[31] = 'TELEPORT SOUND';
-optionText[32] = 'CHECKPOINT NOT.';
+optionText[8] = 'PAUSE MENU';
+optionText[9] = 'SHADERS';
+optionText[10] = 'ENFORCE PALETTE';
+optionText[11] = 'FILTER';
+optionText[12] = 'CRT DISTORTION';
+optionText[13] = 'CRT DISTORT VAL';
+optionText[14] = 'BORDER GRAPHIC';
+optionText[15] = 'V-SYNC';
+optionText[16] = 'MUSIC VOLUME';
+optionText[17] = 'SOUND VOLUME';
+optionText[18] = 'PLAYER COUNT';
+optionText[19] = 'SHOW FPS';
+optionText[20] = 'SHOW CONTROLLER';
+optionText[21] = 'DAMAGE POPUP';
+optionText[22] = 'CHARGE BAR';
+optionText[23] = 'LIFE COUNTER';
+optionText[24] = 'MM COLOR';
+optionText[25] = 'MOVING TEXT';
+optionText[26] = 'PICKUP EFFECT';
+optionText[27] = 'ESC KEY BEHAVIOR';
+optionText[28] = 'COLORED TEXT OVERLAYS';
+optionText[29] = 'ITEM GRAPHICS';
+optionText[30] = 'DEATH EFFECT';
+optionText[31] = 'DEATH SPEED';
+optionText[32] = 'MUSIC ON DEATH';
+optionText[33] = 'JUMP SOUND';
+optionText[34] = 'TELEPORT SOUND';
+optionText[35] = 'CHECKPOINT NOT.';
 </string>
           </argument>
         </arguments>
@@ -299,8 +302,27 @@ if (phase == 2 &amp;&amp; !selected)
                 
                 break;
                 
-            // shaders
+            // Pause Menu
             case 8:
+                if (room == rmOptions)
+                {
+                    pre = global.pauseMenu;
+                    global.pauseMenu = min(max(0, global.pauseMenu + dir), 1);
+                    if (global.pauseMenu != pre)
+                    {
+                        playSFX(sfxMenuMove);
+                    }
+                    break;
+                }
+                else
+                {
+                    playSFX(sfxError);
+                }
+                
+                break;
+                
+            // shaders
+            case 9:
                 if (global.shadersCompatible)
                 {
                     pre = global.shadersEnabled;
@@ -318,7 +340,7 @@ if (phase == 2 &amp;&amp; !selected)
                 break;
             
             // enforce palette
-            case 9:
+            case 10:
                 pre = global.enforcePalette;
                 global.enforcePalette = min(max(0, global.enforcePalette + dir), 2);
                 if (global.enforcePalette != pre)
@@ -329,7 +351,7 @@ if (phase == 2 &amp;&amp; !selected)
                 break;
             
             // filters
-            case 10:
+            case 11:
                 pre = global.filter;
                 global.filter = min(max(0, global.filter + dir), 5);
                 if (global.filter != pre)
@@ -340,7 +362,7 @@ if (phase == 2 &amp;&amp; !selected)
                 break;
             
             // crt distort
-            case 11:
+            case 12:
                 if (global.filter == 2)
                 {
                     pre = global.crtDistort;
@@ -358,7 +380,7 @@ if (phase == 2 &amp;&amp; !selected)
                 break;
                 
             // border graphic
-            case 13:
+            case 14:
                 pre = global.borderGraphic;
                 global.borderGraphic = min(max(0, global.borderGraphic + dir), 25);
                 if (global.borderGraphic != pre)
@@ -369,7 +391,7 @@ if (phase == 2 &amp;&amp; !selected)
                 break;
             
             // V-Sync
-            case 14:
+            case 15:
                 pre = global.vsync;
                 global.vsync = max(0, min(1, global.vsync + dir));
                 if (pre != global.vsync)
@@ -382,7 +404,7 @@ if (phase == 2 &amp;&amp; !selected)
                 break;
             
             // Music volume
-            case 15:
+            case 16:
                 pre = global.musicvolume;
                 global.musicvolume = max(0, min(100, global.musicvolume + 10 * dir));
                 
@@ -427,7 +449,7 @@ if (phase == 2 &amp;&amp; !selected)
                 break;
             
             // Sound volume
-            case 16:
+            case 17:
                 pre = global.soundvolume;
                 global.soundvolume = max(0, min(100, global.soundvolume + 10 * dir));
                 if (global.soundvolume != pre)
@@ -437,7 +459,7 @@ if (phase == 2 &amp;&amp; !selected)
                 break;
             
             // Players (co-op)
-            case 17:
+            case 18:
                 pre = global.playerCount;
                 global.playerCount = clamp(global.playerCount + dir, 1, global.maxPlayerCount);
                 if (global.playerCount != pre)
@@ -467,7 +489,7 @@ if (phase == 2 &amp;&amp; !selected)
                 break;
             
             // FPS
-            case 18:
+            case 19:
                 pre = global.showFPS;
                 global.showFPS = min(max(0, global.showFPS + dir), 1);
                 if (global.showFPS != pre)
@@ -477,7 +499,7 @@ if (phase == 2 &amp;&amp; !selected)
                 break;
             
             // Controller Overlay
-            case 19:
+            case 20:
                 pre = global.showControllerOverlay;
                 global.showControllerOverlay = min(max(0, global.showControllerOverlay + dir), 2);
                 if (global.showControllerOverlay != pre)
@@ -487,7 +509,7 @@ if (phase == 2 &amp;&amp; !selected)
                 break;
             
             // Damage popup
-            case 20:
+            case 21:
                 pre = global.damagePopup;
                 global.damagePopup = min(max(0, global.damagePopup + dir), 1);
                 if (global.damagePopup != pre)
@@ -497,7 +519,7 @@ if (phase == 2 &amp;&amp; !selected)
                 break;
             
             // Charge Bar
-            case 21:
+            case 22:
                 pre = global.chargeBar;
                 global.chargeBar = min(max(0, global.chargeBar + dir), 1);
                 if (global.chargeBar != pre)
@@ -507,7 +529,7 @@ if (phase == 2 &amp;&amp; !selected)
                 break;
             
             // Life Bar
-            case 22:
+            case 23:
                 pre = global.lifeCounter;
                 global.lifeCounter = min(max(0, global.lifeCounter + dir), 1);
                 if (global.lifeCounter != pre)
@@ -518,7 +540,7 @@ if (phase == 2 &amp;&amp; !selected)
                 break;
             
             // MM Color
-            case 23:
+            case 24:
                 pre = global.mmColor;
                 global.mmColor = min(max(0, global.mmColor + dir), 1);
                 if (global.mmColor != pre)
@@ -528,7 +550,7 @@ if (phase == 2 &amp;&amp; !selected)
                 break;
             
             // moving text effects
-            case 24:
+            case 25:
                 pre = global.showMovingText;
                 global.showMovingText = min(max(0, global.showMovingText + dir), 1);
                 if (global.showMovingText != pre)
@@ -538,7 +560,7 @@ if (phase == 2 &amp;&amp; !selected)
                 break;
             
             // Instant refills
-            case 25:
+            case 26:
                 pre = global.healthEffect;
                 global.healthEffect = min(max(0, global.healthEffect + dir), 1);
                 if (global.healthEffect != pre)
@@ -548,7 +570,7 @@ if (phase == 2 &amp;&amp; !selected)
                 break;
             
             // Escape key behavior
-            case 26:
+            case 27:
                 pre = global.escapeBehavior;
                 global.escapeBehavior = min(max(0, global.escapeBehavior - dir), 2);
                 if (global.escapeBehavior != pre)
@@ -558,7 +580,7 @@ if (phase == 2 &amp;&amp; !selected)
                 break;
             
             // Pickup Graphics
-            case 28:
+            case 29:
                 pre = global.pickupGraphics;
                 global.pickupGraphics = min(max(0, global.pickupGraphics + dir), 1);
                 if (global.pickupGraphics != pre)
@@ -568,17 +590,37 @@ if (phase == 2 &amp;&amp; !selected)
                 break;
             
             // Death Effect
-            case 29:
+            case 30:
                 pre = global.deathEffect;
-                global.deathEffect = min(max(0, global.deathEffect + dir), 1);
+                global.deathEffect = min(max(0, global.deathEffect + dir), 2);
                 if (global.deathEffect != pre)
+                {
+                    playSFX(sfxMenuMove);
+                }
+                break;
+                
+            // Death Speed
+            case 31:
+                pre = global.deathSpeed;
+                global.deathSpeed = min(max(0, global.deathSpeed + dir), 2);
+                if (global.deathSpeed != pre)
+                {
+                    playSFX(sfxMenuMove);
+                }
+                break;
+                
+            // Stop Music On Death
+            case 32:
+                pre = global.stopMusicOnDeath;
+                global.stopMusicOnDeath = min(max(0, global.stopMusicOnDeath + dir), 1);
+                if (global.stopMusicOnDeath != pre)
                 {
                     playSFX(sfxMenuMove);
                 }
                 break;
             
             // Jump Sound
-            case 30:
+            case 33:
                 pre = global.jumpSound;
                 global.jumpSound = min(max(0, global.jumpSound + dir), 1);
                 if (global.jumpSound != pre)
@@ -588,7 +630,7 @@ if (phase == 2 &amp;&amp; !selected)
                 break;
             
             // Teleport Sound
-            case 31:
+            case 34:
                 pre = global.teleportSound;
                 global.teleportSound = min(max(0, global.teleportSound + dir), 1);
                 if (global.teleportSound != pre)
@@ -598,7 +640,7 @@ if (phase == 2 &amp;&amp; !selected)
                 break;
             
             // Checkpoint notification
-            case 32:
+            case 35:
                 pre = global.checkpointNotification;
                 global.checkpointNotification = min(max(0, global.checkpointNotification + dir), 3);
                 if (global.checkpointNotification != pre)
@@ -1150,7 +1192,8 @@ for (var j = 0; j &lt; visibleOptions; j++)
 {
     var o = optionOffset + j;
     if ((o == 7 &amp;&amp; !global.shadersCompatible) // cannot enable shaders
-        || ((o == 11 || o == 12) &amp;&amp; global.filter != 2)) // only edit crt filter settings when crt is on
+        || ((o == 11 || o == 12) &amp;&amp; global.filter != 2) // only edit crt filter settings when crt is on
+            || ((o == 8) &amp;&amp; room != rmOptions)) // only change pause menu when not in-game
     {
         draw_set_color(c_gray);
     }
@@ -1227,8 +1270,21 @@ for (var j = 0; j &lt; visibleOptions; j++)
             
             break;
         
-        // shaders
+        // pause menu
         case 8:
+            if (global.pauseMenu)
+            {
+                opt += "NEW";
+            }
+            else
+            {
+                opt += "OLD";
+            }
+            
+            break;
+            
+        // shaders
+        case 9:
             if (global.shadersEnabled)
             {
                 opt += "ON";
@@ -1241,7 +1297,7 @@ for (var j = 0; j &lt; visibleOptions; j++)
             break;
         
         // palette enforce
-        case 9:
+        case 10:
             switch (global.enforcePalette)
             {
                 case 0: opt += "OFF"; break;
@@ -1251,7 +1307,7 @@ for (var j = 0; j &lt; visibleOptions; j++)
             break;
         
         // filter
-        case 10:
+        case 11:
             switch (global.filter)
             {
                 default:
@@ -1266,7 +1322,7 @@ for (var j = 0; j &lt; visibleOptions; j++)
             break;
         
         // crt distortion
-        case 11:
+        case 12:
             if (global.crtDistort)
             {
                 opt += "ON";
@@ -1279,12 +1335,12 @@ for (var j = 0; j &lt; visibleOptions; j++)
             break;
         
         // crt distortion value
-        case 12:
+        case 13:
             opt += string(global.crtDistortionAmount);
             break;
         
         // border graphic
-        case 13:
+        case 14:
             if (global.borderGraphic &lt;= 0)
             {
                 opt += "NONE";
@@ -1297,7 +1353,7 @@ for (var j = 0; j &lt; visibleOptions; j++)
             break;
         
         // V-Sync
-        case 14:
+        case 15:
             if (global.vsync)
             {
                 opt += 'ON';
@@ -1310,25 +1366,25 @@ for (var j = 0; j &lt; visibleOptions; j++)
             break;
         
         // Music volume
-        case 15:
+        case 16:
             opt += string(global.musicvolume) + '%';
             
             break;
         
         // Sound volume
-        case 16:
+        case 17:
             opt += string(global.soundvolume) + '%';
             
             break;
         
         // Co-op
-        case 17:
+        case 18:
             opt += string(global.playerCount);
             
             break;
         
         // FPS dispaly
-        case 18:
+        case 19:
             if (global.showFPS == 1)
             {
                 opt += 'ON';
@@ -1341,7 +1397,7 @@ for (var j = 0; j &lt; visibleOptions; j++)
             break;
         
         // controller overlay
-        case 19:
+        case 20:
             switch (global.showControllerOverlay)
             {
                 case 0:
@@ -1358,7 +1414,7 @@ for (var j = 0; j &lt; visibleOptions; j++)
             break;
         
         // damage popup
-        case 20:
+        case 21:
             if (global.damagePopup == 1)
             {
                 opt += 'ON';
@@ -1371,7 +1427,7 @@ for (var j = 0; j &lt; visibleOptions; j++)
             break;
         
         // charge bar
-        case 21:
+        case 22:
             if (global.chargeBar == 1)
             {
                 opt += 'ON';
@@ -1384,7 +1440,7 @@ for (var j = 0; j &lt; visibleOptions; j++)
             break;
         
         // life counter
-        case 22:
+        case 23:
             if (global.lifeCounter)
             {
                 opt += 'ON';
@@ -1397,7 +1453,7 @@ for (var j = 0; j &lt; visibleOptions; j++)
             break;
         
         // mega man colors
-        case 23:
+        case 24:
             if (global.mmColor)
             {
                 opt += 'MM9/MM10';
@@ -1410,7 +1466,7 @@ for (var j = 0; j &lt; visibleOptions; j++)
             break;
         
         // moving text effects
-        case 24:
+        case 25:
             if (global.showMovingText)
             {
                 opt += 'ON';
@@ -1423,7 +1479,7 @@ for (var j = 0; j &lt; visibleOptions; j++)
             break;
         
         // health effect
-        case 25:
+        case 26:
             switch (global.healthEffect)
             {
                 case 0:
@@ -1437,7 +1493,7 @@ for (var j = 0; j &lt; visibleOptions; j++)
             break;
         
         // esc key function
-        case 26:
+        case 27:
             switch (global.escapeBehavior)
             {
                 case 0:
@@ -1454,7 +1510,7 @@ for (var j = 0; j &lt; visibleOptions; j++)
             break;
         
         // Pickup graphics
-        case 28:
+        case 29:
             if (global.pickupGraphics)
             {
                 opt += 'MM1';
@@ -1466,19 +1522,53 @@ for (var j = 0; j &lt; visibleOptions; j++)
             break;
         
         // Death effect
-        case 29:
-            if (global.deathEffect)
+        case 30:
+            switch (global.deathEffect)
             {
-                opt += 'MM1/MM2';
+                case 0:
+                    opt += 'MM1/MM2';
+                    break;
+                case 1:
+                    opt += 'MM3+';
+                    break;
+                case 2:
+                    opt += 'GBI';
+                    break;
+            }
+            
+            break;
+            
+        // Death Speed
+        case 31:
+            switch (global.deathSpeed)
+            {
+                case 0:
+                    opt += 'SLOW';
+                    break;
+                case 1:
+                    opt += 'FAST';
+                    break;
+                case 2:
+                    opt += 'FASTER';
+                    break;
+            }
+            
+            break;
+            
+        // Stop Music On Death
+        case 32:
+            if (global.stopMusicOnDeath)
+            {
+                opt += 'STOP';
             }
             else
             {
-                opt += 'MM3+';
+                opt += 'CONTINUE';
             }
             break;
         
         // Jump sound
-        case 30:
+        case 33:
             if (global.jumpSound)
             {
                 opt += 'MM1/MM2';
@@ -1490,7 +1580,7 @@ for (var j = 0; j &lt; visibleOptions; j++)
             break;
         
         // Teleport sound
-        case 31:
+        case 34:
             if (global.teleportSound)
             {
                 opt += 'MM1/MM2';
@@ -1502,7 +1592,7 @@ for (var j = 0; j &lt; visibleOptions; j++)
             break;
         
         // Checkpoint notification
-        case 32:
+        case 35:
             if (global.checkpointNotification == 0)
             {
                 opt += 'ON';

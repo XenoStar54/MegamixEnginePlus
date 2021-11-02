@@ -320,7 +320,12 @@ if ((entityCanStep() || instance_exists(objSectionSwitcher)) &amp;&amp; canDamag
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>weaponSetup("OIL SLIDER", global.nesPalette[12], global.nesPalette[28], sprWeaponIconsOilSlider);
+            <string>weaponSetup("OIL SLIDER", global.nesPalette[12], global.nesPalette[28], sprWeaponIconsOilSlider,
+"1-3",3,2,1,
+"SHOOTS A GLOB OF OIL THAT CREATES A PUDDLE UPON HITTING THE FLOOR.#
+IF YOU WALK OVER THE PUDDLE, IT TURNS INTO A SURFBOARD THAT YOU CONSTANTLY RIDE FORWARD.#
+YOU AREN'T INVINCIBLE WHILE YOU'RE RIDING, HOWEVER."
+);
 </string>
           </argument>
         </arguments>

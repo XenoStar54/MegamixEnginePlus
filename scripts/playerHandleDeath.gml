@@ -2,13 +2,17 @@
 // Dying
 
 // Set up death sound
-if (global.deathEffect)
+if (global.deathEffect == 0)
 {
     deathSFX = sfxDeathClassic;
 }
-else
+else if (global.deathEffect == 1)
 {
     deathSFX = sfxDeath;
+}
+else
+{
+    deathSFX = sfxDeathGBI;
 }
 
 if (global.playerHealth[playerID] <= 0 && !global.alwaysHealth)
@@ -35,7 +39,7 @@ if (global.playerHealth[playerID] <= 0 && !global.alwaysHealth)
                     stopSFX(i);
                 }
             }
-            stopMusic();
+            if global.stopMusicOnDeath {stopMusic();}
             playSFX(deathSFX);
             
             // for pit
@@ -49,7 +53,14 @@ if (global.playerHealth[playerID] <= 0 && !global.alwaysHealth)
         {
             if (deathTimer == -1)
             {
-                deathTimer = 30;
+                if global.deathSpeed
+                {
+                    deathTimer = 0;
+                }
+                else
+                {
+                    deathTimer = 30;
+                }
                 queuePause(true);
                 isHit = 0;
                 playerPalette();
@@ -64,7 +75,7 @@ if (global.playerHealth[playerID] <= 0 && !global.alwaysHealth)
                         stopSFX(i);
                     }
                 }
-                stopMusic();
+                if global.stopMusicOnDeath {stopMusic();}
                 
                 exit;
             }
@@ -76,14 +87,20 @@ if (global.playerHealth[playerID] <= 0 && !global.alwaysHealth)
                 explosionID.spd = 0.75 * (1 + floor(i / 8));
                 with (explosionID)
                 {
-                    if (global.deathEffect)
+                    
+                    if (global.deathEffect == 0)
                     {
                         sprite_index = sprExplosionClassic;
                     }
-                    else
+                    else if (global.deathEffect == 1)
                     {
                         sprite_index = sprExplosion;
                     }
+                    else
+                    {
+                        sprite_index = sprExplosionGB;
+                    }
+                    
                 }
             }
         }
@@ -93,7 +110,14 @@ if (global.playerHealth[playerID] <= 0 && !global.alwaysHealth)
             global.decrementLivesOnRoomEnd = true;
             with (objGlobalControl)
             {
-                alarm[0] = 3 * room_speed;
+                if global.deathSpeed == 2
+                {
+                    alarm[0] = 1 * room_speed;
+                }
+                else
+                {
+                    alarm[0] = 3 * room_speed;
+                }
             }
         }
         else

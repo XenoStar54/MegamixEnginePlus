@@ -595,7 +595,12 @@ if(sprite_index == sprAtomicFire3)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>weaponSetup("ATOMIC FIRE", global.nesPalette[18], global.nesPalette[34], sprWeaponIconsAtomicFire);
+            <string>weaponSetup("ATOMIC FIRE", global.nesPalette[18], global.nesPalette[34], sprWeaponIconsAtomicFire,
+"1-6",1,2,"1-4",
+"FORMS A BALL OF ATOMIC ENERGY ON YOUR BUSTER.#
+HOLDING FIRE WILL CHARGE IT UP, MAKING IT GROW BIGGER. RELEASING FIRE WILL SHOOT THE BALL FORWARD.#
+IF SOMETHING HITS THE BALL WHILE IT'S CHARGING AND ISN'T DESTROYED, THE BALL WILL DISAPPEAR."
+);
 </string>
           </argument>
         </arguments>

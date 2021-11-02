@@ -183,7 +183,11 @@ if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>weaponSetup("TIME STOPPER", global.nesPalette[17], global.nesPalette[44], sprWeaponIconsTimeStopper);
+            <string>weaponSetup("TIME STOPPER", global.nesPalette[17], global.nesPalette[44], sprWeaponIconsTimeStopper,
+0,"-","-","&gt;= 1",
+"EMITS A TEMPORAL FIELD AROUND YOU THAT STOPS ALL ENEMIES AND PROJECTILES ON SCREEN, SAVE FOR YOURSELF.#
+PRESS SHOOT AGAIN TO RESUME TIME."
+);
 </string>
           </argument>
         </arguments>

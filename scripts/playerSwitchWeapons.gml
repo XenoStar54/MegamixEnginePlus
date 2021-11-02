@@ -20,7 +20,7 @@ if (dir != 0)
     // prevent switching if GB Time Stopper is active
     if(instance_exists(objTimeStopperGB))
     {
-        //playSFX(sfxError);
+        playSFX(sfxError);
         exit;
     }
     
@@ -46,6 +46,7 @@ else
     // prevent switching if GB Time Stopper is active
     if(instance_exists(objTimeStopperGB))
     {
+        playSFX(sfxError);
         exit;
     }
     
@@ -86,6 +87,7 @@ if (global.weapon[playerID] != oldWeapon)
     recordInputFidelityMessage(string(playerID) + ":" + object_get_name(global.weaponObject[global.weapon[playerID]]));
     
     weaponIcon = 32;
+    weaponFlash = 10;
     playerPalette();
     
     with (prtPlayerProjectile)

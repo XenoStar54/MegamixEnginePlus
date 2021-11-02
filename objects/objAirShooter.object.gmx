@@ -152,7 +152,11 @@ specialDamageValue("flying", 3);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>weaponSetup("AIR SHOOTER", global.nesPalette[15], global.nesPalette[40], sprWeaponIconsAirShooter);
+            <string>weaponSetup("AIR SHOOTER", global.nesPalette[15], global.nesPalette[40], sprWeaponIconsAirShooter,
+1,2,1,2,
+"FIRES THREE SPREAD-OUT TORNADOES THAT ARC UPWARD.#
+THE TORNADOES GO THROUGH ANYTHING THEY DESTROY."
+);
 </string>
           </argument>
         </arguments>

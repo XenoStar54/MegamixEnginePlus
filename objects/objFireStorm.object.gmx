@@ -155,7 +155,11 @@ if (entityCanStep())
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>weaponSetup("FIRE STORM", global.nesPalette[19], global.nesPalette[34], sprWeaponIconsFireStorm);
+            <string>weaponSetup("FIRE STORM", global.nesPalette[19], global.nesPalette[34], sprWeaponIconsFireStorm,
+1,4,1,1,
+"SHOOTS A SMALL JET OF FLAME FORWARD THAT PIERCES ENEMIES.#
+THIS WILL ALSO CREATE AN ORBITING FIREBALL THAT DEALS CONTACT DAMAGE AND GOES THROUGH SHIELDS, BUT DOESN'T DEFEND AGAINST PROJECTILES."
+);
 </string>
           </argument>
         </arguments>

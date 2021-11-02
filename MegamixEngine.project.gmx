@@ -1921,23 +1921,6 @@
       <filename>filesystem.dll</filename>
     </datafile>
     <datafile>
-      <name>CleanMem.dll</name>
-      <exists>-1</exists>
-      <size>1024</size>
-      <exportAction>2</exportAction>
-      <exportDir></exportDir>
-      <overwrite>0</overwrite>
-      <freeData>-1</freeData>
-      <removeEnd>0</removeEnd>
-      <store>0</store>
-      <ConfigOptions>
-        <Config name="Default">
-          <CopyToMask>9223372036854775807</CopyToMask>
-        </Config>
-      </ConfigOptions>
-      <filename>CleanMem.dll</filename>
-    </datafile>
-    <datafile>
       <name>fmodex.dll</name>
       <exists>-1</exists>
       <size>370688</size>
@@ -5538,7 +5521,10 @@
     </sprites>
     <sprites name="Effects">
       <sprite>sprites\sprExplosion</sprite>
+      <sprite>sprites\sprExplosionAbsorbP</sprite>
+      <sprite>sprites\sprExplosionAbsorbS</sprite>
       <sprite>sprites\sprExplosionClassic</sprite>
+      <sprite>sprites\sprExplosionGB</sprite>
       <sprite>sprites\sprBigExplosion</sprite>
       <sprite>sprites\sprSlideDust</sprite>
       <sprite>sprites\sprSplash</sprite>
@@ -5586,6 +5572,18 @@
         <sprite>sprites\sprPauseMenuWeaponDisabled</sprite>
         <sprite>sprites\sprArrow</sprite>
         <sprite>sprites\sprShopCursor</sprite>
+        <sprite>sprites\sprSaveMenuBG</sprite>
+        <sprite>sprites\sprGameOver</sprite>
+        <sprite>sprites\sprSaveMenuCursor</sprite>
+        <sprite>sprites\sprNewPauseMenu1</sprite>
+        <sprite>sprites\sprNewPauseMenu</sprite>
+        <sprite>sprites\sprite2621</sprite>
+        <sprite>sprites\sprPauseMenuDisabled</sprite>
+        <sprite>sprites\sprPauseOptions</sprite>
+        <sprite>sprites\sprPauseOptionsGrey</sprite>
+        <sprite>sprites\sprWeaponIconsPlaceholder</sprite>
+        <sprite>sprites\sprMenuArrow</sprite>
+        <sprite>sprites\sprMenuTank</sprite>
       </sprites>
       <sprites name="Options">
         <sprite>sprites\sprOptionsMenuBG</sprite>
@@ -5645,6 +5643,7 @@
       <sprite>sprites\sprDialogueBox</sprite>
       <sprite>sprites\sprDialogueOptionBox</sprite>
       <sprite>sprites\sprMugshots</sprite>
+      <sprite>sprites\sprArenaMugshots</sprite>
       <sprite>sprites\sprTextbox</sprite>
       <sprite>sprites\sprPressUp</sprite>
       <sprite>sprites\sprButtonPrompts</sprite>
@@ -6456,6 +6455,7 @@
     <scripts name="Discord">
       <script>scripts\discord_init_dll.gml</script>
     </scripts>
+    <script>scripts\drawPauseMenuWeapon.gml</script>
   </scripts>
   <shaders name="shaders">
     <shaders name="PaletteSwap">
@@ -7453,6 +7453,7 @@
           <object>objects\objShadowShuriken</object>
           <object>objects\objDocRobotIntro</object>
           <object>objects\objKamegoro</object>
+          <object>objects\objDocWoodLeafShield</object>
           <object>objects\objKamegoroShell</object>
         </objects>
       </objects>
@@ -8521,10 +8522,13 @@
         <object>objects\objRoomSelector</object>
         <object>objects\objDebugMenu</object>
         <object>objects\objPauseMenu</object>
+        <object>objects\objOldPauseMenu</object>
+        <object>objects\objNewPauseMenu</object>
         <object>objects\objOptionsMenu</object>
         <object>objects\objColoredTextOverlaysMenu</object>
         <object>objects\objNewFile</object>
         <object>objects\objFileSelector</object>
+        <object>objects\objFileSelector1</object>
         <object>objects\objCharacterSelector</object>
         <object>objects\objStageSelect</object>
         <object>objects\objWeaponGet</object>
@@ -8537,6 +8541,8 @@
           <object>objects\objWilyCastleStart</object>
           <object>objects\objWilyCastleArrow</object>
         </objects>
+        <object>objects\objNewPauseMenu1</object>
+        <object>objects\objArenaHandler</object>
       </objects>
       <objects name="Cutscenes">
         <object>objects\objPlayerCutsceneController</object>
@@ -8557,12 +8563,14 @@
         <object>objects\objDamagePopup</object>
         <object>objects\objBigExplosion</object>
         <object>objects\objDialogueBox</object>
+        <object>objects\objDamagePopupModern</object>
       </objects>
     </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\rmInit</room>
     <room>rooms\lvlCopyThisRoom</room>
+    <room>rooms\lvlArenaHub</room>
     <room>rooms\lvlShowcaseHUB</room>
     <rooms name="Engine">
       <room>rooms\rmDisclaimer</room>
@@ -8570,6 +8578,7 @@
       <room>rooms\rmCharacterSelect</room>
       <room>rooms\rmRoomSelect</room>
       <room>rooms\rmFileSelect</room>
+      <room>rooms\rmFileSelect1</room>
       <room>rooms\rmNewFile</room>
       <room>rooms\rmStageSelect</room>
       <room>rooms\rmOptions</room>

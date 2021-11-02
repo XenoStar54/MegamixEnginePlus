@@ -42,6 +42,8 @@ name = "";
 script = scrNoEffect;
 code = "";
 xTarget = view_xview[0] + view_wview[0] / 2;
+rewardN = 0;
+weaponObject = 0;
 </string>
           </argument>
         </arguments>
@@ -142,6 +144,12 @@ switch (phase)
             // save the game file
             saveLoadGame(true);
             
+            for (var i = array_length_1d(global.levelReward) - 1; i &gt;= 1 i--)
+            {
+                reward[rewardN++] = global.levelReward[i];
+            }
+            
+            //weapon = global.weaponID[? reward[0]];
             // next
             timer = 0;
             phase++;
@@ -281,6 +289,8 @@ switch (phase)
                         a.moveSpd = 0.69 + 0.69 * (j &gt;= 4); // nice
                         a.targetX = bboxGetXCenterObject(p);
                         a.targetY = bboxGetYCenterObject(p);
+                        a.pCol = getWeaponPrimaryColor(global.weaponID[? reward[0]], objMegaman.costumeID);
+                        a.sCol = getWeaponSecondaryColor(global.weaponID[? reward[0]], objMegaman.costumeID);
                         a.x = a.targetX + a.distance * cos(degtorad(a.angle + 180));
                         a.y = a.targetY + a.distance * sin(degtorad(a.angle + 180));
                     }
@@ -301,6 +311,9 @@ switch (phase)
                 if (absorbedAll)
                 {
                     p.gravfactor = ds_list_find_value(prevGravs, i);
+                    playSFX(sfxMenuSelect);
+                    objMegaman.weaponFlash = 10;
+                    global.weapon[0] = global.weaponID[? reward[0]];
                 }
             }
         }
