@@ -16,9 +16,18 @@ mathTableSetup();
 fsInit();
 gigInit();
 
-// extension initialization
-cleanMem('init');
-scheduler_resolution_set(1); // doing this + setting the game's sleep margin to 1 ms prevents GMS' low fps / performance bug
+// windows bugfix extension initialization
+if (os_type == os_windows)
+{
+    cleanMem('init');
+    scheduler_resolution_set(1); // doing this + setting the game's sleep margin to 1 ms prevents GMS' low fps / performance bug
+}
+
+// discord rich presence
+discord_init_dll()
+discord_init_app("854104021752086578")
+global.richPresenceSet = false;
+discord_update_presence("Megamix Plus","","megamixplusdiscord","")
 
 // Keys
 global.keyLeft[4] = 0;

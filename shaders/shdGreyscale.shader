@@ -18,7 +18,8 @@ void main()
     v_vTexcoord = in_TextureCoord;
 }
 
-//######################_==_YOYO_SHADER_MARKER_==_######################@~varying vec2 v_vTexcoord;
+//######################_==_YOYO_SHADER_MARKER_==_######################@~//
+varying vec2 v_vTexcoord;
 varying vec4 v_vColour;
 
 void main()

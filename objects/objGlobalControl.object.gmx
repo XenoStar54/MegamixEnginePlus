@@ -136,12 +136,6 @@ instance_create(0, 0, objMobileControl);
 //Used to load a room passed as parameter
 init = 1;
 
-// discord rich presence
-discord_init_dll()
-discord_init_app("854104021752086578")
-global.richPresenceSet = false;
-discord_update_presence("Megamix Plus","","megamixplusdiscord","")
-
 // show disclaimer
 room_goto(rmDisclaimer);
 </string>
@@ -1353,8 +1347,11 @@ saveLoadOptions(true);
 saveLoadGame(true);
 
 // End cleanMem
-cleanMem('clear');
-cleanMem('free');
+if (os_type == os_windows)
+{
+    cleanMem('clear');
+    cleanMem('free');
+}
 
 // end rich presence
 discord_free_app()

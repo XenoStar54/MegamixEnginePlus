@@ -9,7 +9,8 @@ void main()
     gl_Position = gm_Matrices[MATRIX_WORLD_VIEW_PROJECTION] * vec4(in_Position, 1.0);
     v_vTexcoord = in_TextureCoord;  
 }
-//######################_==_YOYO_SHADER_MARKER_==_######################@~varying vec2 v_vTexcoord;
+//######################_==_YOYO_SHADER_MARKER_==_######################@~//
+varying vec2 v_vTexcoord;
 
 uniform vec4 u_crt_sizes;
 uniform float distortion;

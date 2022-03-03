@@ -19,10 +19,12 @@ Discord Rich Presence for Game Maker made by Aouab
 
 dll = "discord_rich_presence.dll";
 
-global.__d_init = external_define(dll,"InitDiscord",dll_cdecl,ty_real,1,ty_string)
-global.__d_update = external_define(dll,"UpdatePresence",dll_cdecl,ty_real,4,ty_string,ty_string,ty_string,ty_string)
-global.__d_free = external_define(dll,"FreeDiscord",dll_cdecl,ty_real,0)
-
+if (os_type == os_windows)
+{
+    global.__d_init = external_define(dll,"InitDiscord",dll_cdecl,ty_real,1,ty_string)
+    global.__d_update = external_define(dll,"UpdatePresence",dll_cdecl,ty_real,4,ty_string,ty_string,ty_string,ty_string)
+    global.__d_free = external_define(dll,"FreeDiscord",dll_cdecl,ty_real,0)
+}
 
 
 #define discord_init_app
@@ -43,8 +45,10 @@ Returns:
 Discord Rich Presence for Game Maker made by Aouab
 
 */
-
-return external_call(global.__d_init,argument0)
+if (os_type == os_windows)
+{
+    return external_call(global.__d_init,argument0)
+}
 
 
 #define discord_update_presence
@@ -66,10 +70,11 @@ Returns:
 Discord Rich Presence for Game Maker made by Aouab
 
 */
-
-external_call(global.__d_update, argument0, argument1, argument2, argument3)
-global.richPresenceSet = true;
-
+if (os_type == os_windows)
+{
+    external_call(global.__d_update, argument0, argument1, argument2, argument3)
+    global.richPresenceSet = true;
+}
 
 #define discord_free_app
 /*
@@ -90,7 +95,10 @@ Discord Rich Presence for Game Maker made by Aouab
 
 */
 
-external_call(global.__d_free)
+if (os_type == os_windows)
+{
+    external_call(global.__d_free)
+}
 
 
 #define discord_free_dll
@@ -111,4 +119,7 @@ Discord Rich Presence for Game Maker made by Aouab
 
 */
 
-external_free("discord_rich_presence.dll")
+if (os_type == os_windows)
+{
+    external_free("discord_rich_presence.dll")
+}

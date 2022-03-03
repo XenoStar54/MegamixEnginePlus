@@ -18,7 +18,8 @@ void main()
     v_vTexcoord = in_TextureCoord;
 }
 
-//######################_==_YOYO_SHADER_MARKER_==_######################@~varying vec2 v_vTexcoord;
+//######################_==_YOYO_SHADER_MARKER_==_######################@~//
+varying vec2 v_vTexcoord;
 varying vec4 v_vColour;
 
 uniform sampler2D palette; // palette sprites must be 32 in width and have "Used for 3D" checked!!!!!!!!
