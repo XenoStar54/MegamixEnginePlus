@@ -16,3 +16,7 @@ if (jumpCounter > 1 && multiJumpDashCancel == true)
 {
     dashJumped = false;
 }
+else if(dashSlide && global.keySlide[playerID])
+{
+    dashJumped = true;
+}

@@ -465,6 +465,10 @@ if (animate) // Animation
         spriteLoopID = spriteLoopPoint;
     }
 }
+else // reset animation
+{
+    spriteLoopID = 0;
+}
 
 /*
 0 = stand
