@@ -39,4 +39,6 @@ for (var j = 1; j <= global.totalWeapons; j++)
 // weapon hotbar order (should probably be file-specific?)
 saveLoadHotbarHelper();
 
+global.achievementTrackerSave = sl(global.achievementTrackerSave, 'achievements', 1);
+
 return slEnd();

@@ -40,6 +40,7 @@ global.keySlide[4] = 0;
 global.keyPause[4] = 0;
 global.keyWeaponSwitchLeft[4] = 0;
 global.keyWeaponSwitchRight[4] = 0;
+global.keyWeaponWheel[4] = 0;
 
 global.keyLeftPressed[4] = 0;
 global.keyRightPressed[4] = 0;
@@ -51,6 +52,7 @@ global.keySlidePressed[4] = 0;
 global.keyPausePressed[4] = 0;
 global.keyWeaponSwitchLeftPressed[4] = 0;
 global.keyWeaponSwitchRightPressed[4] = 0;
+global.keyWeaponWheelPressed[4] = 0;
 
 // width and height of quads (screens).
 // alternatively set per-room by using bgQuadXXXX backgrounds
@@ -250,6 +252,12 @@ if (!global.shadersCompatible)
         + "compatability layer like Wine. Shaders are now disabled. They can be turned back on in the "
         + "options menu once shaders are supported and the game is launched again.");
 }
+
+// for achievements
+global.achievementTrackerIndependent = makeArray(0);
+
+// load achievements from file
+if(!global.achievementsAreSaveFileBound) saveLoadAchievements(0);
 
 // load external rooms
 global.roomExternalCache = ds_map_create();

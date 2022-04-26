@@ -51,3 +51,6 @@ global.maxBolts = 9999;
 
 // debug mode and keys (1, 2) are enabled.
 global.debugEnabled = true;
+
+// if game saves achievements to game save files, or an independent global achievement file.
+global.achievementsAreSaveFileBound = false;
