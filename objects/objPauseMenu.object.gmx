@@ -98,6 +98,21 @@ exitPositionY = 208;
 arrowTimer = 20;
 
 quickScrollTimer = 0; // 24;
+
+imageOffset = 0;
+imageOffsetMax = 8;
+weaponWheelSelectedWeapon = -1;
+wheelWeaponsNum = 8;
+oldSavedWep = -1;
+
+wheelPage = global.weaponWheelLastUsedPage[playerID];
+wheelNewPage = 0;
+switchDir = 0;
+switchAngularVelocity = 0.1;
+switchTimerMax = 8;
+switchTimer = switchTimerMax;
+
+storeWeaponWheel = global.weaponWheelSavedWeapon;
 </string>
           </argument>
         </arguments>
@@ -184,7 +199,7 @@ switch (phase)
             {
                 if (global.eTanks &amp;&amp; global.playerHealth[playerID] &lt; 28)
                 {
-                    option = 99; // Nothing selected
+                    option = -1; // Nothing selected
                     phase = 5;
                     wtank = 0;
                     mtank = 0;
@@ -245,7 +260,7 @@ switch (phase)
                     
                     if (proceed) // If proceed is still false after the past calculations, it seems there is nothing to fill
                     {
-                        option = 99; // Nothing selected
+                        option = -1; // Nothing selected
                         phase = 5;
                         mtank = 1;
                         wtank = 0;
@@ -323,6 +338,14 @@ switch (phase)
             {
                 retryConfirm = false;
             }
+        }
+        
+        // edit weapon wheel
+        if(!retryConfirm &amp;&amp; !exitConfirm &amp;&amp; global.keyWeaponWheelPressed[playerID])
+        {
+            playSFX(sfxPause);
+            phase = 7;
+            for(var i = 0; i &lt; array_height_2d(global.weaponWheelSavedWeapon); i++) storeWeaponWheel[i,playerID] = global.weaponWheelSavedWeapon[i,playerID];
         }
         
         break;
@@ -463,6 +486,158 @@ switch (phase)
             }
         }
         
+        break;
+        
+    // bring up weapon wheel
+    case 7:
+        if(imageOffset &gt;= imageOffsetMax)
+        {
+            imageOffset = imageOffsetMax;
+            phase = 8;
+        }
+        else imageOffset++;
+        break;
+        
+    // edit weapon wheel
+    case 8:
+        var wheelXdir = sign(global.keyRight[playerID] - global.keyLeft[playerID]);
+        var wheelYdir = sign(global.keyDown[playerID] - global.keyUp[playerID]);
+        var prevSelected = weaponWheelSelectedWeapon;
+        if(wheelXdir == 0 &amp;&amp; wheelYdir == 0)
+        {
+            weaponWheelSelectedWeapon = -1;
+        }
+        else
+        {
+            weaponWheelSelectedWeapon = wheelPage*wheelWeaponsNum + (2 - 2*wheelXdir) * (wheelYdir == 0) - (2 * wheelYdir - wheelYdir*wheelXdir) * (wheelYdir != 0);
+            if(weaponWheelSelectedWeapon &lt; wheelPage*wheelWeaponsNum) weaponWheelSelectedWeapon += wheelWeaponsNum;
+        }
+        
+        if(weaponWheelSelectedWeapon != prevSelected)
+        {
+            if(weaponWheelSelectedWeapon != -1)
+            {
+                playSFX(sfxMenuMove);
+            }
+        }
+        
+        if(weaponWheelSelectedWeapon &lt; -1 || weaponWheelSelectedWeapon + 1 &gt;= array_height_2d(global.weaponWheelSavedWeapon)) weaponWheelSelectedWeapon = -1;
+        
+        if(weaponWheelSelectedWeapon != -1 &amp;&amp; global.keyJumpPressed[playerID])
+        {
+            phase = 10;
+            oldSavedWep = global.weaponWheelSavedWeapon[weaponWheelSelectedWeapon+1,playerID];
+            playSFX(sfxMenuSelect);
+        }
+        else if(global.keyShootPressed[playerID])
+        {
+            phase = 9;
+            global.weaponWheelSavedWeapon = storeWeaponWheel;
+            playSFX(sfxTextBox);
+        }
+        else if(global.keyWeaponWheelPressed[playerID])
+        {
+            phase = 9;
+            playSFX(sfxMenuSelect);
+        }
+        else
+        {
+            switchDir = sign(global.keyWeaponSwitchRightPressed[playerID] - global.keyWeaponSwitchLeftPressed[playerID]);
+            
+            if(wheelPage != 0 &amp;&amp; global.keyWeaponSwitchRight[playerID] &amp;&amp; global.keyWeaponSwitchLeft[playerID])
+            {
+                wheelNewPage = 0;
+                switchDir = 0;
+                phase = 11;
+                switchTimer = switchTimerMax;
+                playSFX(sfxWeaponSwitch);
+            }
+            else if(switchDir != 0)
+            {
+                var pageNum = floor((array_height_2d(global.weaponWheelSavedWeapon)-1)/wheelWeaponsNum);
+                if(pageNum &lt; 2) playSFX(sfxError);
+                else
+                {
+                    wheelNewPage = (wheelPage+switchDir+pageNum) mod pageNum;
+                    phase = 11;
+                    switchTimer = switchTimerMax;
+                    playSFX(sfxWeaponSwitch);
+                }
+            }
+        }
+        
+        break;
+        
+    // hide weapon wheel
+    case 9:
+        if(imageOffset &lt;= 0)
+        {
+            imageOffset = 0;
+            phase = 2;
+        }
+        else imageOffset--;
+        break;
+        
+    // pick weapon to be saved to weapon wheel slot
+    case 10:
+        event_user(0); // move selection
+        if(option &lt; 0) option = 0;
+        if(option &gt; weaponVisibleN - 1) option = weaponVisibleN - 1;
+        
+        var w = global.weaponHotbar[weaponVisible[option]];
+        
+        var slot = weaponWheelSelectedWeapon+1;
+        if(slot &lt; 1) slot = 1;
+        if(slot &gt;= array_height_2d(global.weaponWheelSavedWeapon)) slot = array_height_2d(global.weaponWheelSavedWeapon) - 1;
+        global.weaponWheelSavedWeapon[slot,playerID] = w;
+        
+        if(global.keyJumpPressed[playerID]) // save picked weapon to new slot
+        {
+            if(option &gt;= 0 &amp;&amp; option &lt; weaponVisibleN)
+            {
+                if(global.weaponLocked[w]) // error, this weapon is locked!
+                {
+                    playSFX(sfxError);
+                }
+                else
+                {
+                    phase = 8;
+                    playSFX(sfxMenuSelect);
+                    weaponWheelSelectedWeapon = -1;
+                }
+            }
+        }
+        else if(global.keyShootPressed[playerID]) // cancel
+        {
+            global.weaponWheelSavedWeapon[slot,playerID] = oldSavedWep;
+            phase = 8;
+            playSFX(sfxTextBox);
+            weaponWheelSelectedWeapon = -1;
+        }
+        break;
+        
+    // spin weapon wheel
+    case 11:
+        if(switchTimer &lt;= 0)
+        {
+            phase = 12;
+            wheelPage = wheelNewPage;
+            switchTimer = 0;
+            switchDir *= -1;
+        }
+        else switchTimer--;
+        break;
+        
+    // end spin
+    case 12:
+        if(switchTimer &gt;= switchTimerMax)
+        {
+            phase = 8;
+            switchTimer = 0;
+            switchDir = 0;
+            switchTimer = switchTimerMax;
+        }
+        else switchTimer++;
         break;
 }
 
@@ -871,6 +1046,66 @@ if (phase != 0)
     if (global.energySaver)
     {
         draw_sprite(sprEnergySaver, 0, x + 180, y + 164);
+    }
+    
+    // weapon wheel
+    if(phase &gt;= 7 &amp;&amp; phase &lt;= 12)
+    {
+        var xpos = x + 128 + 60;
+        var ypos = y + 112 + 60;
+        
+        // diagonal weapon icons
+        for(var i = 1; i &lt; wheelWeaponsNum; i += 2)
+        {
+            w = global.weaponWheelSavedWeapon[wheelPage*wheelWeaponsNum + i + 1,playerID];
+            if(global.weaponLocked[w]) w = 0;
+            var cl = (weaponWheelSelectedWeapon == wheelPage*wheelWeaponsNum + i);
+            var radius = 3*imageOffset*(switchTimer/switchTimerMax) + 2*cl;
+            var spinAngle = switchTimer*switchDir*switchAngularVelocity - switchTimerMax*switchDir*switchAngularVelocity;
+            var xOff = 0 + cos(2*pi*i/wheelWeaponsNum + spinAngle)*radius;
+            var yOff = -8 - sin(2*pi*i/wheelWeaponsNum + spinAngle)*radius;
+            draw_sprite_ext(global.weaponIcon[w], 0, xpos+xOff, ypos+yOff, 1, 1, 0, col[!cl, 2], 1);
+            draw_sprite_ext(global.weaponIcon[w], 1, xpos+xOff, ypos+yOff, 1, 1, 0, col[0, cl], 1);
+            draw_sprite_ext(global.weaponIcon[w], 2, xpos+xOff, ypos+yOff, 1, 1, 0, col[1, cl], 1);
+            draw_sprite_ext(global.weaponIcon[w], 3, xpos+xOff, ypos+yOff, 1, 1, 0, col[1, 2], cl);
+        }
+        
+        // cardinal weapon icons
+        for(var i = 0; i &lt; wheelWeaponsNum; i += 2)
+        {
+            w = global.weaponWheelSavedWeapon[wheelPage*wheelWeaponsNum + i + 1,playerID];
+            if(global.weaponLocked[w]) w = 0;
+            var cl = (weaponWheelSelectedWeapon == wheelPage*wheelWeaponsNum + i);
+            var radius = 3*imageOffset*(switchTimer/switchTimerMax) + 2*cl;
+            var spinAngle = switchTimer*switchDir*switchAngularVelocity - switchTimerMax*switchDir*switchAngularVelocity;
+            var xOff = 0 + cos(2*pi*i/wheelWeaponsNum + spinAngle)*radius;
+            var yOff = -8 - sin(2*pi*i/wheelWeaponsNum + spinAngle)*radius;
+            draw_sprite_ext(global.weaponIcon[w], 0, xpos+xOff, ypos+yOff, 1, 1, 0, col[!cl, 2], 1);
+            draw_sprite_ext(global.weaponIcon[w], 1, xpos+xOff, ypos+yOff, 1, 1, 0, col[0, cl], 1);
+            draw_sprite_ext(global.weaponIcon[w], 2, xpos+xOff, ypos+yOff, 1, 1, 0, col[1, cl], 1);
+            draw_sprite_ext(global.weaponIcon[w], 3, xpos+xOff, ypos+yOff, 1, 1, 0, col[1, 2], cl);
+        }
+        
+        // draw Mega Buster icon in the middle
+        var w = 0;
+        var cl = (weaponWheelSelectedWeapon == -1);
+        var xOff = 0, yOff = -8;
+        draw_sprite_ext(global.weaponIcon[w], 0, xpos+xOff, ypos+yOff, 1, 1, 0, col[!cl, 2], 1);
+        draw_sprite_ext(global.weaponIcon[w], 1, xpos+xOff, ypos+yOff, 1, 1, 0, col[0, cl], 1);
+        draw_sprite_ext(global.weaponIcon[w], 2, xpos+xOff, ypos+yOff, 1, 1, 0, col[1, cl], 1);
+        draw_sprite_ext(global.weaponIcon[w], 3, xpos+xOff, ypos+yOff, 1, 1, 0, col[1, 2], cl);
+        
+        // page number
+        var pageNum = floor((array_height_2d(global.weaponWheelSavedWeapon)-1)/wheelWeaponsNum);
+        if(pageNum &gt;= 2)
+        {
+            draw_set_valign(fa_top);
+            draw_set_halign(fa_left);
+            draw_set_color(c_white);
+            draw_text(xpos-48,ypos-32,string(wheelPage+1)+'/'+string(pageNum));
+        }
+        
+        if(imageOffset &lt; imageOffsetMax) draw_sprite_part_ext(sprDot,0,0,0,1,1,xpos-48,ypos-32,48*2,32*2,c_black,(imageOffsetMax-imageOffset)/imageOffsetMax);
     }
     
     // colored text overlays

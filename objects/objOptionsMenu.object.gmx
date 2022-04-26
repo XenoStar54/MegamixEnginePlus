@@ -928,6 +928,11 @@ if (newControls == 1)
             case 'PAUSE':
                 if(!skip)
                     global.pauseKey[pID] = key;
+                current = 'WEAPON WHEEL';
+                break;
+            case 'WEAPON WHEEL':
+                if(!skip)
+                    global.weaponWheelKey[pID] = key;
                 current = 'LEFT';
                 pID += 1;
                 if (pID &gt;= global.playerCount)
@@ -1020,8 +1025,13 @@ if (newControls == 2)
                 current = 'PAUSE';
                 break;
             case 'PAUSE':
-                 if(!skip)
+                if(!skip)
                     global.joystick_pauseKey[pID] = key;
+                current = 'WEAPON WHEEL';
+                break;
+            case 'WEAPON WHEEL':
+                if(!skip)
+                    global.joystick_weaponWheelKey[pID] = key;
                 current = 'JUMP';
                 pID += 1;
                 if (pID &gt;= 1 &amp;&amp; gamepad_get_device_count() &gt; pID) // global.playerCount

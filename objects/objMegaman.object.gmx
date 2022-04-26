@@ -59,7 +59,7 @@ jumpSpeedWater = 0.1;
 
 // jumpSpeedWater = 4.85 + grav*2;
 
-walkSpeed = 1.3; // walkSpeed = 1.296875;
+walkSpeed = 1.375; // walkSpeed = 1.296875;
 oilWalk = 0.3;
 maxVspeed = 7;
 
@@ -183,6 +183,16 @@ multiJumpDashCancel = true; //controls whether dash momentum is removed after mu
 
 //Contact Damage Multiplier
 contactDamageMultiplier = 1; //you can increase this to multiply the amount of damage mega man takes from a certain object.
+
+//coyote time stuff, i.e. amount of frames after falling off a ledge during which you can still jump
+// if coyoteTimeMax is negative, you'll have infinite coyote time (i.e. Quint's Revenge mode)
+coyoteTime = 0;
+coyoteTimeMax = 3;
+
+// set this to true if you want to be able to jump up ladders
+jumpUpLadders = false;
+jumpLadderCooldown = 0;
+jumpLadderCooldownMax = 30;
 
 // Animation Initiation
 spriteX = 0;

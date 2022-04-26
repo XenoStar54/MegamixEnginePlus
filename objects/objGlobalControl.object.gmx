@@ -459,6 +459,7 @@ for (i = 0; i &lt; global.playerCount; i += 1)
     var keyPauseHold = global.keyPause[i];
     var keyWeaponSwitchLeftHold = global.keyWeaponSwitchLeft[i];
     var keyWeaponSwitchRightHold = global.keyWeaponSwitchRight[i];
+    var keyWeaponWheelHold = global.keyWeaponWheel[i];
     
     // Check keys
     global.keyLeft[i] = keyboard_check(global.leftKey[i]);
@@ -475,6 +476,7 @@ for (i = 0; i &lt; global.playerCount; i += 1)
         global.weaponSwitchLeftKey[i]);
     global.keyWeaponSwitchRight[i] = keyboard_check(
         global.weaponSwitchRightKey[i]);
+    global.keyWeaponWheel[i] = keyboard_check(global.weaponWheelKey[i]);
     
     var jp = i;
     
@@ -575,6 +577,7 @@ for (i = 0; i &lt; global.playerCount; i += 1)
                 global.joystick_weaponSwitchLeftKey[i]);
             global.keyWeaponSwitchRight[i] = global.keyWeaponSwitchRight[i] || gamepad_button_check(jp,
                 global.joystick_weaponSwitchRightKey[i]);
+            global.keyWeaponWheel[i] = global.keyWeaponWheel[i] || global.joystick_weaponWheelKey[i];
         }
     }
     
@@ -591,6 +594,7 @@ for (i = 0; i &lt; global.playerCount; i += 1)
         &amp;&amp; !keyWeaponSwitchLeftHold;
     global.keyWeaponSwitchRightPressed[i] = global.keyWeaponSwitchRight[i]
         &amp;&amp; !keyWeaponSwitchRightHold;
+    global.keyWeaponWheelPressed[i] = global.keyWeaponWheel[i] &amp;&amp; !keyWeaponWheelHold;
 }
 
 // recorded controls dubbing:
@@ -978,6 +982,9 @@ setfrozen = 0;
 if (global.endStageOnRoomEnd)
 {
     stageEnd();
+    
+    // reset last used weapon wheel page
+    for(var j = 0; j &lt; 4; j++) global.weaponWheelLastUsedPage[j] = 0;
 }
 else if (global.decrementLivesOnRoomEnd)
 {
