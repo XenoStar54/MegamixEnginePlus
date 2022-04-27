@@ -18,7 +18,7 @@ for (var j = 0; j < global.playerCount; j += 1)
     draw_set_color(c_white);
     
     // draw red dots
-    for (i = 1; i <= 10; i += 1)
+    for (i = 1; i <= 11; i += 1)
     {
         active = false;
         
@@ -54,6 +54,9 @@ for (var j = 0; j < global.playerCount; j += 1)
                 break;
             case 10:
                 active = global.keyPause[j];
+                break;
+            case 11:
+                active = global.keyWeaponWheel[j];
                 break;
         }
         if (active)

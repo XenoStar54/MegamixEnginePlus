@@ -52,6 +52,7 @@ for (var i = 0; i < global.maxPlayerCount; i += 1)
     global.pauseKey[i] = sl(global.pauseKey[i], "key-pause" + string(i));
     global.weaponSwitchLeftKey[i]  = sl(global.weaponSwitchLeftKey[i],  "key-swl" + string(i));
     global.weaponSwitchRightKey[i] = sl(global.weaponSwitchRightKey[i], "key-swr" + string(i));
+    global.weaponWheelKey[i] = sl(global.weaponWheelKey[i], "key-ww" + string(i));
     
     // joystick
     global.joystick_jumpKey[i]  = sl(global.joystick_jumpKey[i],  "joy-j" + string(i));
@@ -60,7 +61,10 @@ for (var i = 0; i < global.maxPlayerCount; i += 1)
     global.joystick_pauseKey[i] = sl(global.joystick_pauseKey[i], "joy-pause" + string(i));
     global.joystick_weaponSwitchLeftKey[i]  = sl(global.joystick_weaponSwitchLeftKey[i],  "joy-swl" + string(i));
     global.joystick_weaponSwitchRightKey[i] = sl(global.joystick_weaponSwitchRightKey[i], "joy-swr" + string(i));
+    global.joystick_weaponWheelKey[i] = sl(global.joystick_weaponWheelKey[i], "joy-ww" + string(i));
 }
+
+for(var j = 0; j < 4; j++) for(var i = 0; i < array_height_2d(global.weaponWheelSavedWeapon); i++) global.weaponWheelSavedWeapon[i,j] = sl(global.weaponWheelSavedWeapon[i,j], "ww" + string(i) + "pl" + string(j));
 
 slEnd();
 

@@ -41,15 +41,11 @@ usePlayerColor = 0; // Make sure to have white mask images for the primary, seco
 
 heavy = 0;
 grabable = 1;
-respawnupondeath = 0;
+respawnWhenCollected = 0;
 
 stopOnFlash = false;
 
 collectPlayer = objMegaman;
-
-collectScript = scrNoEffect;
-collectScriptArgs = makeArray(0);
-collectCode = '';
 </string>
           </argument>
         </arguments>
@@ -136,9 +132,8 @@ if (entityCanStep())
         if (!collectPlayer.teleporting)
         {
             event_user(0);
-            event_user(1);
             
-            if (!respawnupondeath) // Keeps it from reappearing after a death
+            if (!respawnWhenCollected) // Keeps it from reappearing after a being collected
             {
                 if (respawn)
                 {
@@ -184,31 +179,6 @@ dead = 1;
         </arguments>
       </action>
     </event>
-    <event eventtype="7" enumb="11">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// run code and script for when player collects the item
-if(collectScript != scrNoEffect &amp;&amp; array_length_1d(collectScriptArgs) &gt; 0) scriptExecuteNargs(collectScript,collectScriptArgs);
-if(collectCode != '') stringExecutePartial(collectCode);
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
@@ -237,9 +207,9 @@ if(collectCode != '') stringExecutePartial(collectCode);
             image_index = image_index mod imgs;
             
             drawSelf();
-            draw_sprite_ext(sprite_index, image_index + imgs, round(x), round(y), image_xscale, image_yscale, image_angle, global.primaryCol[0], image_alpha);
-            draw_sprite_ext(sprite_index, image_index + imgs * 2, round(x), round(y), image_xscale, image_yscale, image_angle, global.secondaryCol[0], image_alpha);
-            draw_sprite_ext(sprite_index, image_index + imgs * 3, round(x), round(y), image_xscale, image_yscale, image_angle, global.outlineCol[0], image_alpha);
+            draw_sprite_ext(sprite_index, image_index + imgs, x, y, image_xscale, image_yscale, image_angle, global.primaryCol[0], image_alpha);
+            draw_sprite_ext(sprite_index, image_index + imgs * 2, x, y, image_xscale, image_yscale, image_angle, global.secondaryCol[0], image_alpha);
+            draw_sprite_ext(sprite_index, image_index + imgs * 3, x, y, image_xscale, image_yscale, image_angle, global.outlineCol[0], image_alpha);
         }
         else
         {

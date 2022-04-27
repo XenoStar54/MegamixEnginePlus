@@ -52,4 +52,18 @@ if (!global.frozen && !frozen)
     
     // Recover from mm1 stun
     playerHandleStun();
+    
+    // weapon wheel
+    if (!instance_exists(objPauseMenu) && !playerIsLocked(PL_LOCK_PAUSE))
+    {
+        if(global.keyWeaponWheelPressed[playerID])
+        {
+            if (global.playerHealth[playerID] > 0)
+            {
+                var wheel = instance_create(x, y, objWeaponWheel);
+                wheel.playerID = playerID;
+                wheel.parent = self;
+            }
+        }
+    }
 }

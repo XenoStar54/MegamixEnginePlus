@@ -362,7 +362,7 @@ if (animate) // Animation
         spriteLoopID = spriteLoopPoint;
     }
 }
-else
+else // reset animation
 {
     spriteLoopID = 0;
 }

@@ -56,6 +56,7 @@ for (i = 0; i < 4; i += 1)
     global.pauseKey[i] = vk_space;
     global.weaponSwitchLeftKey[i] = ord('A');
     global.weaponSwitchRightKey[i] = ord('S');
+    global.weaponWheelKey[i] = ord('W');
     
     global.joystick_jumpKey[i] = gp_face1;
     global.joystick_shootKey[i] = gp_face3;
@@ -63,6 +64,7 @@ for (i = 0; i < 4; i += 1)
     global.joystick_pauseKey[i] = gp_start;
     global.joystick_weaponSwitchLeftKey[i] = gp_shoulderlb;
     global.joystick_weaponSwitchRightKey[i] = gp_shoulderrb;
+    global.joystick_weaponWheelKey[i] = gp_face2;
 }
 
 global.leftKey[1] = vk_numpad4;
@@ -75,3 +77,11 @@ global.slideKey[1] = vk_numpad3;
 global.pauseKey[1] = vk_enter;
 global.weaponSwitchLeftKey[1] = vk_numpad7;
 global.weaponSwitchRightKey[1] = vk_numpad9;
+global.weaponWheelKey[i] = vk_numpad1;
+
+for(var j = 0; j < 4; j++)
+{
+    for(var i = 0; i < 1+8*5; i++) global.weaponWheelSavedWeapon[i,j] = 0;
+    global.weaponWheelLastUsedPage[j] = 0;
+}
+
