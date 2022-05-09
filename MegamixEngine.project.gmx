@@ -2697,6 +2697,8 @@
           <sprite>sprites\sprGrabBuster</sprite>
           <sprite>sprites\sprGrabBusterPickup</sprite>
           <sprite>sprites\sprBubbleBomb</sprite>
+          <sprite>sprites\sprBlackHole</sprite>
+          <sprite>sprites\sprBlackHoleBullet</sprite>
           <sprite>sprites\sprSaltWater</sprite>
           <sprite>sprites\sprSaltWaterDrop</sprite>
           <sprite>sprites\sprSaltWaterSplash1</sprite>
@@ -2900,6 +2902,7 @@
             <sprite>sprites\sprWeaponIconsSparkChaser</sprite>
             <sprite>sprites\sprWeaponIconsGrabBuster</sprite>
             <sprite>sprites\sprWeaponIconsBubbleBomb</sprite>
+            <sprite>sprites\sprWeaponIconsBlackHole</sprite>
             <sprite>sprites\sprWeaponIconsBreakDash</sprite>
             <sprite>sprites\sprWeaponIconsSaltWater</sprite>
           </sprites>
@@ -8498,8 +8501,8 @@
             <object>objects\objSakugarne</object>
           </objects>
           <objects name="MMGBIII">
-            <object>objects\objScrewCrusher</object>
             <object>objects\objSparkShockGB</object>
+            <object>objects\objScrewCrusher</object>
             <objects name="Don't Use">
               <object>objects\objSparkShockParalyzeGB</object>
             </objects>
@@ -8511,10 +8514,12 @@
             <object>objects\objSparkChaser</object>
             <object>objects\objGrabBuster</object>
             <object>objects\objBubbleBomb</object>
+            <object>objects\objBlackHole</object>
             <object>objects\objBreakDash</object>
             <object>objects\objSaltWater</object>
             <objects name="Don't Use">
               <object>objects\objGrabBusterPickup</object>
+              <object>objects\objBlackHoleVictim</object>
             </objects>
           </objects>
           <objects name="MM&amp;B">
