@@ -7869,7 +7869,7 @@
           <object>objects\objKomusoSmoke</object>
         </objects>
       </objects>
-      <objects name="DOS1">
+      <objects name="MMDOS1">
         <object>objects\objSonicMan</object>
         <object>objects\objVoltMan</object>
         <object>objects\objDynaMan</object>
@@ -7881,7 +7881,7 @@
           <object>objects\objVoltmanShot</object>
         </objects>
       </objects>
-      <objects name="DOS3">
+      <objects name="MMDOS3">
         <object>objects\objBitMan</object>
         <object>objects\objTorchManDOS</object>
         <objects name="Projectiles">
@@ -8546,7 +8546,7 @@
               <object>objects\objCompassSlicerBullet</object>
             </objects>
           </objects>
-          <objects name="DOS1">
+          <objects name="MMDOS1">
             <object>objects\objSonicWave</object>
             <object>objects\objForceField</object>
             <object>objects\objNuclearDetonator</object>
@@ -8554,7 +8554,7 @@
               <object>objects\objNuclearDetonatorExplosion</object>
             </objects>
           </objects>
-          <objects name="DOS3">
+          <objects name="MMDOS3">
             <object>objects\objBitCannon</object>
             <object>objects\objSharkBoomerang</object>
             <object>objects\objOilStream</object>
@@ -8702,7 +8702,7 @@
       <room>rooms\lvlPlusTest</room>
       <room>rooms\lvlDocTest</room>
       <room>rooms\lvlWaterAndWaterAndWaterWater</room>
-      <room>rooms\lvlCopyTest2</room>
+	  <room>rooms\lvlCopyTest2.room</room>
     </rooms>
     <rooms name="Classic Mega Man Example Stages">
       <room>rooms\lvlCutMan</room>
