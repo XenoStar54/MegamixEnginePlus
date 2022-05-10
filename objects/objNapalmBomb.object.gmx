@@ -37,7 +37,7 @@ image_speed = 1/8;
 
 xspeed = 0;
 yspeed = 0;
-grav = 0.25;
+grav = 0.22;
 blockCollision = 1;
 
 penetrate = 3;
@@ -80,6 +80,10 @@ if (entityCanStep() &amp;&amp; canDamage)
         {
             image_xscale *= -1;
             x += 2 * image_xscale;
+        }
+        if(ground)
+        {
+            yspeed = -0.75;
         }
     }
     else
