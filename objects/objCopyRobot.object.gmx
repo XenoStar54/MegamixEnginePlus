@@ -72,12 +72,10 @@ shotDetectionMode = 1;
 checkpointUpdateMode = 1;
 
 shotProjectile = objElecManBullet;
-myProjectile = noone;
 
 
 projectileTimer = 0;
 
-code = "";
 shotSound = sfxThunderBeam;
 
 // Health Bar
@@ -732,10 +730,6 @@ if (entityCanStep())
         
         xspeed = xSpeedStore;
         
-        if((!instance_exists(myProjectile) || myProjectile.dead) &amp;&amp; myProjectile != noone)
-        {
-            myProjectile = noone;
-        }
         var isBarrier = (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,objGenericStopper,true,true));
         if (isBarrier)
         {
@@ -874,8 +868,37 @@ event_inherited();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with (myProjectile) instance_destroy();
-event_inherited();
+            <string>event_inherited();
+
+var deathSFX;
+
+if (global.deathEffect)
+{
+    deathSFX = sfxDeathClassic;
+}
+else
+{
+    deathSFX = sfxDeath;
+}
+playSFX(deathSFX);
+for (i = 0; i &lt; 16; i += 1)
+{
+    var explosionID = instance_create(x, y, objMegamanExplosion);
+    explosionID.dir = i * 45;
+    explosionID.spd = 0.75 * (1 + floor(i / 8));
+    with (explosionID)
+    {
+        if (global.deathEffect)
+        {
+            sprite_index = sprExplosionClassic;
+        }
+        else
+        {
+            sprite_index = sprExplosion;
+        }
+    }
+}
+
 </string>
           </argument>
         </arguments>
