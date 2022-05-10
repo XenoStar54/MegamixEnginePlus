@@ -8429,6 +8429,7 @@
       <room>rooms\lvlGrenadeManTest</room>
       <room>rooms\lvlMagmaManTest</room>
       <room>rooms\lvlPlusTest</room>
+      <room>rooms\lvlCopyRobotTest</room>
       <room>rooms\lvlDocTest</room>
     </rooms>
     <rooms name="Classic Mega Man Example Stages">
