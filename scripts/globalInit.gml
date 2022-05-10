@@ -16,8 +16,18 @@ mathTableSetup();
 fsInit();
 gigInit();
 
-// extension initialization
-cleanMem('init');
+// windows bugfix extension initialization
+if (os_type == os_windows)
+{
+    cleanMem('init');
+    scheduler_resolution_set(1); // doing this + setting the game's sleep margin to 1 ms prevents GMS' low fps / performance bug
+}
+
+// discord rich presence
+discord_init_dll()
+discord_init_app("854104021752086578")
+global.richPresenceSet = false;
+discord_update_presence("Megamix Plus","","megamixplusdiscord","")
 
 // Keys
 global.keyLeft[4] = 0;
@@ -30,6 +40,7 @@ global.keySlide[4] = 0;
 global.keyPause[4] = 0;
 global.keyWeaponSwitchLeft[4] = 0;
 global.keyWeaponSwitchRight[4] = 0;
+global.keyWeaponWheel[4] = 0;
 
 global.keyLeftPressed[4] = 0;
 global.keyRightPressed[4] = 0;
@@ -41,6 +52,7 @@ global.keySlidePressed[4] = 0;
 global.keyPausePressed[4] = 0;
 global.keyWeaponSwitchLeftPressed[4] = 0;
 global.keyWeaponSwitchRightPressed[4] = 0;
+global.keyWeaponWheelPressed[4] = 0;
 
 // width and height of quads (screens).
 // alternatively set per-room by using bgQuadXXXX backgrounds
@@ -79,9 +91,10 @@ global.respawnGravityAngle = 1; // 1 = normal, -1 = reverse
 global.font = font_add_sprite(sprMM9Font, ord(' '), false, 0);
 draw_set_font(global.font);
 
-// the default screen scaling.
-global.screensize = max(1, floor(min(display_get_width() / global.screenWidth,
+// the default window scaling.
+global.screenSize = max(1, floor(min(display_get_width() / global.screenWidth,
     (display_get_height() - 32) / global.screenHeight)));
+global.screenScale = 1;
 
 global.shakeTimer = 0;
 global.shakeFactorX = 0;
@@ -115,6 +128,7 @@ global.previousRoom = rmTitleScreen;
 global.roomReturn = rmTitleScreen;
 global.roomReturnIsStage = false;
 global.levelReward = makeArray(0);
+global.absorbOnClear = false;
 
 // are we in a game room (mega man can jump around and stuff)
 global.inGame = false;
@@ -223,6 +237,27 @@ global.factionStance[7, 4] = 0;
 global.factionStance[7, 5] = 0;
 global.factionStance[7, 6] = 0;
 global.factionStance[7, 7] = 0;
+
+// shader compatability (always check if all shaders are compiled!!!!)
+global.shadersCompatible = shaders_are_supported()
+    && shader_is_compiled(shdColorSubtract) && shader_is_compiled(shdColorSubtractStep)
+    && shader_is_compiled(shdHSVShift) && shader_is_compiled(shdCRT) && shader_is_compiled(shdGreyscale)
+    && shader_is_compiled(shdMonochromePaletteEnforcer);
+    
+if (!global.shadersCompatible)
+{
+    show_message("This game's shaders are not supported on your system. The shaders are required "
+        + "for elements such as nes-like fading and filters to work. Please update your graphics API "
+        + "to one that is compatible, or try using Microsoft Windows if you are playing this using a "
+        + "compatability layer like Wine. Shaders are now disabled. They can be turned back on in the "
+        + "options menu once shaders are supported and the game is launched again.");
+}
+
+// for achievements
+global.achievementTrackerIndependent = makeArray(0);
+
+// load achievements from file
+if(!global.achievementsAreSaveFileBound) saveLoadAchievements(0);
 
 // load external rooms
 global.roomExternalCache = ds_map_create();

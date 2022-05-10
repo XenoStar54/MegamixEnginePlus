@@ -116,7 +116,7 @@ goToLevel(level[global.castleStagesBeaten + 1]);
             <string>// Progress Path
 if (!started)
 {
-    loopSFX(sfxCastlePath);
+    playSFX(sfxCastlePath, true);
     started = 1;
 }
 

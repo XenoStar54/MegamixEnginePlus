@@ -31,7 +31,7 @@ event_inherited();
 image_speed = 0.2;
 grabable = 0;
 
-respawnupondeath = true;
+respawnWhenCollected = true;
 
 grav = 0;
 blockCollision = 0;

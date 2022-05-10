@@ -29,7 +29,7 @@
 
 bulletLimitCost = 1;
 
-contactDamage = 1;
+contactDamage = -1;
 inWater = -1;
 
 image_speed = 0.15;
@@ -129,9 +129,33 @@ if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT))
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with (other)
+            <string>if (other.faction == faction)
 {
-    entityIceFreeze(360, false, false, 0);
+    exit;
+}
+
+if (global.damage == -1)
+{
+    global.damage = 0;
+    if (other.boss &gt; 0)
+    {
+        global.damage = 1;
+    }
+}
+
+if(global.damage == 0)
+{
+    with (other)
+    {
+        if (canIce)
+        {
+            entityIceFreeze(360, false, false, 0);
+        }
+    }
+}
+else
+{
+    instance_destroy();
 }
 </string>
           </argument>

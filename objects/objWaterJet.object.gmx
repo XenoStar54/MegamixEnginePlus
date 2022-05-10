@@ -255,8 +255,8 @@ var angle = 0;
 if (dir == "up")
 {
     draw_sprite_part_ext(sprWaterPillar, timer / 4, 0, 0, 16, length,
-        round(x) + 8 - sprite_get_xoffset(sprWaterPillar),
-        round(y) - length - sprite_get_yoffset(sprWaterPillar),
+        x + 8 - sprite_get_xoffset(sprWaterPillar),
+        y - length - sprite_get_yoffset(sprWaterPillar),
         image_xscale, image_yscale, image_blend, image_alpha);
 }
 if (dir == "down")
@@ -266,8 +266,8 @@ if (dir == "down")
     xDir = -1;
     angle = 180;
     draw_sprite_part_ext(sprWaterPillar, timer / 4, 0, 0, 16, length,
-        round(x) + 8 - sprite_get_xoffset(sprWaterPillar),
-        round(y) + 16 + length, image_xscale, -image_yscale, image_blend,
+        x + 8 - sprite_get_xoffset(sprWaterPillar),
+        y + 16 + length, image_xscale, -image_yscale, image_blend,
         image_alpha);
 }
 if (dir == "left")
@@ -277,8 +277,8 @@ if (dir == "left")
     xDir = -1;
     angle = 90;
     draw_sprite_part_ext(sprWaterPillarH, timer / 4, 0, 0, length, 16,
-        round(x) + 8 - length - sprite_get_xoffset(sprWaterPillar),
-        round(y), image_xscale, image_yscale, image_blend, image_alpha);
+        x + 8 - length - sprite_get_xoffset(sprWaterPillar),
+        y, image_xscale, image_yscale, image_blend, image_alpha);
 }
 if (dir == "right")
 {
@@ -286,11 +286,11 @@ if (dir == "right")
     Y = 0;
     angle = 270;
     draw_sprite_part_ext(sprWaterPillarH, timer / 4, 0, 0, length, 16,
-        round(x) + 16 + length, round(y), -image_xscale, image_yscale,
+        x + 16 + length, round(y), -image_xscale, image_yscale,
         image_blend, image_alpha);
 }
 
-draw_sprite_ext(sprWaterPump, timer / 4, round(x) + X, round(y) + Y,
+draw_sprite_ext(sprWaterPump, timer / 4, x + X, y + Y,
     image_xscale * xDir, image_yscale * yDir, angle, image_blend,
     image_alpha);
 </string>

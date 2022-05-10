@@ -31,7 +31,7 @@ respawn = true;
 
 healthpointsStart = 2;
 healthpoints = healthpointsStart;
-contactDamage = 3;
+contactDamage = 2;
 grav = 0;
 blockCollision = false;
 stopOnFlash = false;

@@ -15,6 +15,7 @@ with (objTeleporter)
 {
     pressUp = true;
 }
+
 with(prtBoss)
 {
     useEndStageBehavior=false;

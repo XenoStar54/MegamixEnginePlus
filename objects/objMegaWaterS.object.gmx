@@ -39,10 +39,12 @@ healthBarPrimaryColor[1] = 9;
 healthBarSecondaryColor[1] = 40;
 
 // Music
-music = "WilyTowerBossTheme.vgm"
-musicType = "VGM"
-musicTrackNumber = 0
-musicVolume = 1
+music = "WilyTowerBossTheme.vgm";
+musicType = "VGM";
+musicTrackNumber = 0;
+musicVolume = 1;
+musicLoopSecondsStart = 0;
+musicLoopSecondsEnd = 0;
 
 // @cc
 platformLeft = (x div view_wview[0]) * view_wview[0] + 80;

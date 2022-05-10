@@ -124,7 +124,7 @@ if (damage != 0)
     damage = 0;
 }
 
-draw_text(round(x), round(y), str);
+draw_text(x, y, str);
 
 draw_set_color(c_white);
 </string>

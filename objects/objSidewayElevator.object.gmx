@@ -219,12 +219,6 @@ else if (dead)
     }
 }
 
-var xs = x;
-var ys = y;
-
-x = round(x);
-y = round(y);
-
 if (drawrail)
 {
     draw_sprite_ext(sprSidewayElevatortrack, 0, view_xview, y, view_wview / 16,
@@ -252,9 +246,6 @@ else if (img != -1)
     draw_sprite_ext(sprSidewayElevatorArrow, img, x - 32 - 1, y + 14,
         -image_xscale, image_yscale, image_angle, image_blend, image_alpha);
 }
-
-x = xs;
-y = ys;
 </string>
           </argument>
         </arguments>

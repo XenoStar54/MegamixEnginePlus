@@ -264,7 +264,7 @@ with (objKamegoroTornadoMakerH)
 {
     if (attackTimer &lt; 16)
     {
-        draw_sprite_ext(sprKamegoro, 0, round(x), round(y) + (attackTimer * 2), image_xscale, image_yscale, image_angle, image_blend, image_alpha);
+        draw_sprite_ext(sprKamegoro, 0, x, y + (attackTimer * 2), image_xscale, image_yscale, image_angle, image_blend, image_alpha);
     }
 }
 event_inherited();

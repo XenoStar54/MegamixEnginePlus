@@ -30,6 +30,7 @@ grav = 0.135;
 yspeed = 0.65;
 contactDamage = 5;
 blockCollision = 0;
+reflectable = false;
 ground = 0;
 maxYspeed = 6.5;
 </string>

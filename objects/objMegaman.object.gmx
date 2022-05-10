@@ -59,7 +59,7 @@ jumpSpeedWater = 0.1;
 
 // jumpSpeedWater = 4.85 + grav*2;
 
-walkSpeed = 1.3; // walkSpeed = 1.296875;
+walkSpeed = 1.375; // walkSpeed = 1.296875;
 oilWalk = 0.3;
 maxVspeed = 7;
 
@@ -142,7 +142,7 @@ blinkTimer = 0; // Timer for MM's blinking animation when standing still
 blinkTimerMax = 120;
 blinkImage = 0; // 0 for no blinking, 1 for blinking
 blinkDuration = 8; // The amount of frames the blinking lasts
-drawWeaponIcon = false; // Whether or not we should draw the weapon icon above our head (used when using quick weapon switching)
+weaponIcon = false; // Whether or not we should draw the weapon icon above our head (used when using quick weapon switching)
 
 deathByPit = false; // Did we die by falling in a bottomless pit?
 dieToPit = true;
@@ -184,6 +184,16 @@ multiJumpDashCancel = true; //controls whether dash momentum is removed after mu
 //Contact Damage Multiplier
 contactDamageMultiplier = 1; //you can increase this to multiply the amount of damage mega man takes from a certain object.
 
+//coyote time stuff, i.e. amount of frames after falling off a ledge during which you can still jump
+// if coyoteTimeMax is negative, you'll have infinite coyote time (i.e. Quint's Revenge mode)
+coyoteTime = 0;
+coyoteTimeMax = 3;
+
+// set this to true if you want to be able to jump up ladders
+jumpUpLadders = false;
+jumpLadderCooldown = 0;
+jumpLadderCooldownMax = 30;
+
 // Animation Initiation
 spriteX = 0;
 spriteY = 0;
@@ -205,6 +215,7 @@ paletteRefresh = 0;
 
 myProtoShield = noone;
 myTrebleBoost = noone;
+myRushMarine = noone;
 </string>
           </argument>
         </arguments>
@@ -342,73 +353,10 @@ switch (global.characterSelected[playerID])
           <argument>
             <kind>1</kind>
             <string>event_inherited();
+
 if (spawned)
 {
-    switch (global.characterSelected[playerID])
-    { 
-        default: //define any variables that need to be overwritten here for a specific character. Note that the costume ID variables are assumed to be in their default values
-            break;
-        case "Mega Man":
-        {
-            costumeID = 0;
-            break;
-        }
-        case "Proto Man":
-        {
-            contactDamageMultiplier = 2; //Proto Man takes double damage like in MM10
-            costumeID = 1;
-            break;
-        }
-        case "Bass":
-        {
-            jumpCounterMax = 2; //Bass has double jumping
-            dashSlide = true; //Bass can dash
-            multiJumpDashCancel = true; //dash momentum no longer applies when a jump is done in midair with bass
-            firstSlideMask = mskMegaman;//This also applies to dash masks
-            secondSlideMask = mskMegaman;//same as above
-            costumeID = 2;
-            break;
-        }
-        case "Roll":
-        {
-            costumeID = 3;
-            break;
-        }
-    }
-    
-    switch (global.characterSelected[0])
-    {
-        default: //Weapon Names and Icons. This is to prevent multiplayer from confusing the game
-        case "Mega Man":
-        {
-            global.weaponName[0] = "MEGA BUSTER"
-            global.weaponIcon[0] = sprWeaponIconsMegaBuster;
-            break;
-        }
-        case "Proto Man":
-        {
-            global.weaponName[0] = "PROTO BUSTER"
-            global.weaponIcon[0] = sprWeaponIconsMegaBuster;
-            break;
-        }
-        case "Bass":
-        {
-            global.weaponName[0] = "BASS BUSTER"
-            global.weaponIcon[0] = sprWeaponIconsBassBuster;
-            break;
-        }
-        case "Roll":
-        {
-            global.weaponName[0] = "ROLL BUSTER"
-            global.weaponIcon[0] = sprWeaponIconsMegaBuster;
-            break;
-        }
-    }
-    
-    if (global.difficulty == DIFF_EASY)
-    {
-        contactDamageMultiplier /= 2;
-    }
+    event_user(0); // setup character traits
 }
 </string>
           </argument>
@@ -480,6 +428,127 @@ global.playerHealth[playerID] = 0;
           <argument>
             <kind>1</kind>
             <string>playerGetHit(global.damage);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>switch (global.characterSelected[playerID])
+{ 
+    default: //define any variables that need to be overwritten here for a specific character. Note that the costume ID variables are assumed to be in their default values
+        break;
+    case "Mega Man":
+    {
+        contactDamageMultiplier = 1;
+        jumpCounterMax = 1;
+        dashSlide = false;
+        multiJumpDashCancel = true;
+        firstSlideMask = mskMegamanSlide;
+        secondSlideMask = mskMegamanSlide2;
+        
+        costumeID = 0;
+        break;
+    }
+    case "Proto Man":
+    {
+        contactDamageMultiplier = 2; //Proto Man takes double damage like in MM10
+        jumpCounterMax = 1;
+        dashSlide = false;
+        multiJumpDashCancel = true;
+        firstSlideMask = mskMegamanSlide;
+        secondSlideMask = mskMegamanSlide2;
+        
+        costumeID = 1;
+        break;
+    }
+    case "Bass":
+    {
+        contactDamageMultiplier = 1;
+        jumpCounterMax = 2; //Bass has double jumping
+        dashSlide = true; //Bass can dash
+        multiJumpDashCancel = true; //dash momentum no longer applies when a jump is done in midair with bass
+        firstSlideMask = mskMegaman;//This also applies to dash masks
+        secondSlideMask = mskMegaman;//same as above
+        
+        costumeID = 2;
+        break;
+    }
+    case "Roll":
+    {
+        contactDamageMultiplier = 1;
+        jumpCounterMax = 1;
+        dashSlide = false;
+        multiJumpDashCancel = true;
+        firstSlideMask = mskMegamanSlide;
+        secondSlideMask = mskMegamanSlide2;
+        
+        costumeID = 3;
+        break;
+    }
+}
+
+switch (global.characterSelected[0])
+{
+    default: //Weapon Names and Icons. This is to prevent multiplayer from confusing the game
+    case "Mega Man":
+    {
+        global.weaponName[0] = "MEGA BUSTER"
+        global.weaponIcon[0] = sprWeaponIconsMegaBuster;
+        break;
+    }
+    case "Proto Man":
+    {
+        global.weaponName[0] = "PROTO BUSTER"
+        global.weaponIcon[0] = sprWeaponIconsMegaBuster;
+        break;
+    }
+    case "Bass":
+    {
+        global.weaponName[0] = "BASS BUSTER"
+        global.weaponIcon[0] = sprWeaponIconsBassBuster;
+        break;
+    }
+    case "Roll":
+    {
+        global.weaponName[0] = "ROLL BUSTER"
+        global.weaponIcon[0] = sprWeaponIconsMegaBuster;
+        break;
+    }
+}
+
+if (global.difficulty == DIFF_EASY)
+{
+    contactDamageMultiplier /= 2;
+}
+
+// get rid of proto shield if we hot-swapped characters
+if (global.characterSelected[playerID] != "Proto Man")
+{
+    with (objProtoShield)
+    {
+        if (parent == other.id)
+        {
+            instance_destroy();
+        }
+    }
+}
 </string>
           </argument>
         </arguments>

@@ -109,7 +109,7 @@ if (entityCanStep())
             {
                 action = 1;
                 grav = 0.25;
-                playSFX(sfxWheelCutter2);
+                playSFX(sfxCuttingWheelGBI);
             }
         }
     }

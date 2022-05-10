@@ -240,10 +240,17 @@ if (!selected)
         
         playSFX(sfxMenuMove);
     }
-    if (global.keyPausePressed[0])
+    
+    if (global.keyPausePressed[0] || global.keyJumpPressed[0] || global.keyShootPressed[0])
     {
         var ID;
         var myRoom = ds_list_find_value(roomlist, option - 1);
+        
+        if (global.keyShootPressed[0])
+        {
+            myRoom = ds_list_find_value(roomlist, 0);
+        }
+        
         if (myRoom == -1)
         {
             // load external
@@ -316,8 +323,13 @@ if (!selected)
                 // stage level
                 goToLevel(myRoom);
             }
+            
             selected = 1;
-            playSFX(sfxMenuSelect);
+            
+            if (!global.keyShootPressed[0])
+            {
+                playSFX(sfxMenuSelect);
+            }
         }
     }
     
@@ -372,7 +384,7 @@ if (!selected)
 draw_set_halign(fa_center);
 draw_set_valign(fa_top);
 
-draw_text(128, round(8 + (sin(timer / 12) * 1)), "STAGE SELECT");
+draw_text(128, 8 + (sin(timer / 12) * 1), "STAGE SELECT");
 
 var col = c_white;
 if (timer mod 44 &lt; 40)

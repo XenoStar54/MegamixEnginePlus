@@ -11,4 +11,4 @@ grav = 0;
 
 isBoost = false;
 
-playSFX(sfxBuster);
+ReflectSFX = sfxReflect;

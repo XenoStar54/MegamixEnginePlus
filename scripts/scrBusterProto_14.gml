@@ -1,3 +1,22 @@
+/// scrBusterProto_14([canCharge?], [canStartShoot], [sfx])
+var _canCharge = true;
+if (argument_count > 0)
+{
+    _canCharge = argument[0];
+}
+
+var _canStartShoot = true;
+if (argument_count > 1)
+{
+    _canStartShoot = argument[1];
+}
+
+var _sfx = true;
+if (argument_count > 2)
+{
+    _sfx = argument[2];
+}
+
 var bulletLimit = 2;
 var weaponCost = 0;
 var action = 1; // 0 - no frame; 1 - shoot; 2 - throw
@@ -6,13 +25,43 @@ var willStop = 0; // If this is 1, the player will halt on shooting ala Metal Bl
 var chargeTime = 57; // Set charge time for this weapon
 var initChargeTime = 20;
 
+// make all charge levels count for eachother
+var shots = 0;
+var halfShots = 0;
+var fullShots = 0;
+with (prtPlayerProjectile)
+{
+    if (playerID == other.playerID)
+    {
+        if (object_index == objBusterShot)
+        {
+            shots++;
+        }
+        else if (object_index == objBusterShotHalfChargedProto)
+        {
+            halfShots++;
+        }
+        else if (object_index == objBusterShotChargedProto)
+        {
+            fullShots++;
+        }
+    }
+}
+
 if (!global.lockBuster)
 {
-    if (global.keyShootPressed[playerID] && !playerIsLocked(PL_LOCK_SHOOT) && chargeTimer == 0)
+    if (_canStartShoot && global.keyShootPressed[playerID]
+        && !playerIsLocked(PL_LOCK_SHOOT) && chargeTimer == 0)
     {
-        i = fireWeapon(16, 0, objBusterShot, bulletLimit, weaponCost, action, willStop);
+        i = fireWeapon(16, 0, objBusterShot, bulletLimit - halfShots - fullShots, weaponCost, action, willStop);
         if (i)
         {
+            playSFX(_sfx);
+            if(_sfx == sfxBusterGBI)
+            {
+                i.sprite_index = sprBusterShotGB;
+                i.ReflectSFX = sfxReflectGBI;
+            }
             i.xspeed = image_xscale * 5; // zoom
         }
     }
@@ -21,10 +70,10 @@ if (!global.lockBuster)
     // Charging //
     //////////////
     
-    if (global.enableCharge)
+    if (global.enableCharge && _canCharge)
     {
         if ((global.keyShoot[playerID] || (isSlide && chargeTimer > 0))
-            && !playerIsLocked(PL_LOCK_CHARGE))
+            && !playerIsLocked(PL_LOCK_CHARGE) && (_canStartShoot || initChargeTimer > 0))
         {
             if (!isShoot)
             {
@@ -112,7 +161,7 @@ if (!global.lockBuster)
                 
                 if (chargeTimer < chargeTime) // Half charge
                 {
-                    i = fireWeapon(12, 0, objBusterShotHalfChargedProto, bulletLimit, weaponCost, action, willStop);
+                    i = fireWeapon(12, 0, objBusterShotHalfChargedProto, bulletLimit - shots - fullShots, weaponCost, action, willStop);
                     if (i)
                     {
                         i.xspeed = image_xscale * 5;
@@ -120,7 +169,7 @@ if (!global.lockBuster)
                 }
                 else // Full charge
                 {
-                    i = fireWeapon(20, 0, objBusterShotChargedProto, 3, 0, 1, 0);
+                    i = fireWeapon(20, 0, objBusterShotChargedProto, bulletLimit - shots - halfShots, 0, 1, 0);
                     if (i)
                     {
                         i.xspeed = image_xscale * 5.5;

@@ -41,7 +41,7 @@ usePlayerColor = 0; // Make sure to have white mask images for the primary, seco
 
 heavy = 0;
 grabable = 1;
-respawnupondeath = 0;
+respawnWhenCollected = 0;
 
 stopOnFlash = false;
 
@@ -133,7 +133,7 @@ if (entityCanStep())
         {
             event_user(0);
             
-            if (!respawnupondeath) // Keeps it from reappearing after a death
+            if (!respawnWhenCollected) // Keeps it from reappearing after a being collected
             {
                 if (respawn)
                 {
@@ -207,9 +207,9 @@ dead = 1;
             image_index = image_index mod imgs;
             
             drawSelf();
-            draw_sprite_ext(sprite_index, image_index + imgs, round(x), round(y), image_xscale, image_yscale, image_angle, global.primaryCol[0], image_alpha);
-            draw_sprite_ext(sprite_index, image_index + imgs * 2, round(x), round(y), image_xscale, image_yscale, image_angle, global.secondaryCol[0], image_alpha);
-            draw_sprite_ext(sprite_index, image_index + imgs * 3, round(x), round(y), image_xscale, image_yscale, image_angle, global.outlineCol[0], image_alpha);
+            draw_sprite_ext(sprite_index, image_index + imgs, x, y, image_xscale, image_yscale, image_angle, global.primaryCol[0], image_alpha);
+            draw_sprite_ext(sprite_index, image_index + imgs * 2, x, y, image_xscale, image_yscale, image_angle, global.secondaryCol[0], image_alpha);
+            draw_sprite_ext(sprite_index, image_index + imgs * 3, x, y, image_xscale, image_yscale, image_angle, global.outlineCol[0], image_alpha);
         }
         else
         {

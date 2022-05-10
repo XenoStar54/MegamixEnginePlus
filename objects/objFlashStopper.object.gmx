@@ -196,21 +196,32 @@ if (!global.frozen)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT))
+            <string>var _canSpawn = true;
+with (objFlashStopper)
 {
-    if (!instance_exists(objFlashStopper))
+    if (playerID == other.playerID)
     {
-        fireWeapon(0, 0, objFlashStopper, 0, 4, 0, 0);
-    }
-    else // fire buster shots when flashstopper is active
-    {
-        var i = fireWeapon(20, 0, objBusterShot, 4, 0, 1, 0);
-        if (i)
-        {
-            i.xspeed = image_xscale * 5;
-        }
+        _canSpawn = false;
     }
 }
+
+if (_canSpawn)
+{
+    if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT))
+    {
+        fireWeapon(0, 0, objFlashStopper, 0, 7, 0, 0);
+    }
+                
+    // Reset all charging stuff
+    chargeTimer = 0;
+    initChargeTimer = 0;
+    audio_stop_sound(sfxCharged);
+    audio_stop_sound(sfxCharging);
+    playerPalette(); // Reset the colors
+}
+
+// fire buster shots when flashstopper is active
+scrBusterControl(false, true, !_canSpawn);
 </string>
           </argument>
         </arguments>

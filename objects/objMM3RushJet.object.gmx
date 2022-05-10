@@ -119,7 +119,7 @@ if (!global.frozen)
         }
         else // Flying
         {
-            var dir = global.keyRight[parent.playerID] - global.keyLeft[parent.playerID];
+            var dir = sign(global.keyRight[parent.playerID] - global.keyLeft[parent.playerID]);
             xspeed = 0;
             
             // center rush to the player
@@ -176,7 +176,7 @@ if (!global.frozen)
                 }
                 
                 // Move vertically
-                yspeed = (-global.keyUp[parent.playerID] + global.keyDown[parent.playerID]) * sign(parent.image_yscale) * spd;
+                yspeed = sign(-global.keyUp[parent.playerID] + global.keyDown[parent.playerID]) * sign(parent.image_yscale) * spd;
                 
                 isSolid *= -1;
                 
@@ -261,11 +261,11 @@ with (objRushTeleport)
 
 _canSpawn = _canSpawn &amp;&amp; global.ammo[playerID, global.weapon[playerID]] &gt; 0;
 
-if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT))
+if (_canSpawn)
 {
-    if (_canSpawn)
+    if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT))
     {
-        i = fireWeapon(26, 0, objRushTeleport, 4, 0, 0, 0);
+        i = fireWeapon(26, 0, objRushTeleport, 1, 0, 0, 0);
         with (i)
         {
             type = 'mm3jet';
@@ -276,17 +276,10 @@ if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT))
             }
         }
     }
-    else
-    {
-        // buster
-        var i = fireWeapon(20, 0, objBusterShot, 4, 0, 1, 0);
-        if (i)
-        {
-            i.xspeed = image_xscale * 5; // zoom
-        }
-    }
 }
 
+// normal firing
+scrBusterControl(false, true, !_canSpawn);
 </string>
           </argument>
         </arguments>

@@ -4,7 +4,7 @@
   <width>3616</width>
   <height>1824</height>
   <vsnap>16</vsnap>
-  <hsnap>8</hsnap>
+  <hsnap>16</hsnap>
   <isometric>0</isometric>
   <speed>60</speed>
   <persistent>0</persistent>
@@ -48,7 +48,7 @@ playMusic("HoneyWoman.ogg", "OGG", 1, 06.398, 51.199, true, 0.75);</code>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
   </backgrounds>
   <views>
-    <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
+    <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="256" hview="224" xport="0" yport="0" wport="256" hport="224" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
@@ -118,7 +118,7 @@ playMusic("HoneyWoman.ogg", "OGG", 1, 06.398, 51.199, true, 0.75);</code>
     <instance objName="objBossDoor" x="336" y="272" name="inst_3653D5EC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBokazurahPlatform" x="224" y="272" name="inst_AA8890C3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objStopScrollingHorizontal" x="0" y="448" name="inst_A411AAB9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objHoneyWoman" x="3536" y="1744" name="inst_C252CE96" locked="0" code="elementName = &quot;honey&quot;;&#xA;elementCode = &quot;weaponReward(objHornetChaser);&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objHoneyWoman" x="3536" y="1744" name="inst_C252CE96" locked="0" code="elementName = &quot;honey&quot;;&#xA;elementCode = &quot;weaponReward(objHornetChaser);&quot;;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objHornetRoll" x="1376" y="1216" name="inst_7B462AFF" locked="0" code="if (global.difficulty = DIFF_HARD)&#xA;timeRestExtend = 45;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objHornetRoll" x="1536" y="1216" name="inst_57A8DE0B" locked="0" code="if (global.difficulty = DIFF_HARD)&#xA;timeRestExtend = 45;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objHornetRoll" x="1696" y="1184" name="inst_B8DC3868" locked="0" code="if (global.difficulty = DIFF_HARD)&#xA;timeRestExtend = 45;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -140,10 +140,10 @@ playMusic("HoneyWoman.ogg", "OGG", 1, 06.398, 51.199, true, 0.75);</code>
     <instance objName="objFlowerPresenter" x="544" y="496" name="inst_75DBE406" locked="0" code="flower = 0;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objCaricarry" x="624" y="640" name="inst_E5688F32" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objFlowerPresenter" x="720" y="576" name="inst_53110F54" locked="0" code="flower = 0;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objBokazurah" x="1056" y="256" name="inst_34EF6C7F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objBokazurah" x="1048" y="256" name="inst_34EF6C7F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBokazurah" x="1248" y="32" name="inst_8CBD034A" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objBokazurah" x="1248" y="384" name="inst_DDF3846F" locked="0" code="if (global.difficulty = DIFF_HARD)&#xA;    instance_destroy();" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objBokazurah" x="1056" y="480" name="inst_FDEAB5D3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objBokazurah" x="1256" y="384" name="inst_DDF3846F" locked="0" code="if (global.difficulty = DIFF_HARD)&#xA;    instance_destroy();" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objBokazurah" x="1048" y="480" name="inst_FDEAB5D3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBoltBig" x="560" y="64" name="inst_A2A6633B" locked="0" code="if (global.difficulty = DIFF_HARD)&#xA;    instance_destroy();&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objScissascissor" x="784" y="144" name="inst_E7C8422E" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objScissascissor" x="976" y="96" name="inst_17C0C913" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -178,7 +178,7 @@ playMusic("HoneyWoman.ogg", "OGG", 1, 06.398, 51.199, true, 0.75);</code>
     <instance objName="objBokazurahPlatform" x="1200" y="768" name="inst_45FD8818" locked="0" code="if (global.difficulty = DIFF_HARD)&#xA;    instance_destroy();&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBokazurahPlatform" x="1168" y="768" name="inst_889160BD" locked="0" code="if (global.difficulty = DIFF_HARD)&#xA;    instance_destroy();&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBokazurahPlatform" x="1216" y="816" name="inst_1433B1F9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objBokazurah" x="1248" y="704" name="inst_D5AED721" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objBokazurah" x="1256" y="704" name="inst_D5AED721" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBossBarrier" x="1040" y="1104" name="inst_45497E1C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBossBarrier" x="1056" y="1104" name="inst_C71B3636" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBossBarrier" x="1072" y="1104" name="inst_38932C54" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -411,7 +411,6 @@ playMusic("HoneyWoman.ogg", "OGG", 1, 06.398, 51.199, true, 0.75);</code>
     <tile bgName="tstHornetman" x="1232" y="416" w="16" h="16" xo="16" yo="0" id="11284958" name="inst_D0DDFE0D" depth="1000001" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tstHornetman" x="1232" y="400" w="16" h="16" xo="16" yo="0" id="11284959" name="inst_2547AE64" depth="1000001" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tstHornetman" x="1232" y="384" w="16" h="16" xo="16" yo="0" id="11284960" name="inst_8C861727" depth="1000001" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tstHornetman" x="0" y="496" w="16" h="16" xo="64" yo="16" id="11284973" name="inst_85977746" depth="1000001" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tstHornetman" x="2304" y="1696" w="16" h="16" xo="0" yo="0" id="11284997" name="inst_FBF0A7C4" depth="1000001" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tstHornetman" x="2304" y="1648" w="16" h="16" xo="16" yo="0" id="11284998" name="inst_2BFC7FCC" depth="1000001" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tstHornetman" x="2304" y="1664" w="16" h="16" xo="16" yo="0" id="11284999" name="inst_731D7E93" depth="1000001" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -567,13 +566,6 @@ playMusic("HoneyWoman.ogg", "OGG", 1, 06.398, 51.199, true, 0.75);</code>
     <tile bgName="tstHornetman" x="1024" y="32" w="16" h="16" xo="16" yo="0" id="11293038" name="inst_8B7E8323" depth="1000001" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tstHornetman" x="1024" y="48" w="16" h="16" xo="16" yo="0" id="11293039" name="inst_0CE3B425" depth="1000001" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tstHornetman" x="1040" y="16" w="16" h="16" xo="272" yo="0" id="11293040" name="inst_D4A2AA7A" depth="1000001" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tstHornetman" x="0" y="592" w="16" h="16" xo="64" yo="16" id="11293056" name="inst_B6E527BC" depth="1000001" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tstHornetman" x="0" y="576" w="16" h="16" xo="64" yo="16" id="11293057" name="inst_22D9CC1E" depth="1000001" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tstHornetman" x="0" y="560" w="16" h="16" xo="64" yo="16" id="11293058" name="inst_09ABB17F" depth="1000001" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tstHornetman" x="0" y="544" w="16" h="16" xo="64" yo="16" id="11293059" name="inst_19DBD14F" depth="1000001" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tstHornetman" x="0" y="608" w="16" h="16" xo="64" yo="32" id="11293061" name="inst_7DCF4937" depth="1000001" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tstHornetman" x="0" y="624" w="16" h="16" xo="32" yo="32" id="11293062" name="inst_ECBAC887" depth="1000001" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tstHornetman" x="0" y="640" w="16" h="16" xo="0" yo="0" id="11293063" name="inst_F36AFB4D" depth="1000001" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tstHornetman" x="2368" y="1584" w="16" h="16" xo="160" yo="32" id="11293064" name="inst_67DD5ECF" depth="1000001" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tstHornetman" x="2064" y="1776" w="16" h="16" xo="0" yo="0" id="11293065" name="inst_7AD78AFA" depth="1000001" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tstHornetman" x="2080" y="1776" w="16" h="16" xo="0" yo="0" id="11293066" name="inst_3696DA9B" depth="1000001" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -5633,6 +5625,14 @@ playMusic("HoneyWoman.ogg", "OGG", 1, 06.398, 51.199, true, 0.75);</code>
     <tile bgName="bgNESPalette" x="1168" y="16" w="16" h="16" xo="240" yo="0" id="11293053" name="inst_79E5BA03" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgNESPalette" x="1184" y="16" w="16" h="16" xo="240" yo="0" id="11293054" name="inst_83465050" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgNESPalette" x="1200" y="16" w="16" h="16" xo="240" yo="0" id="11293055" name="inst_E92BFDEE" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tstHornetman" x="0" y="640" w="16" h="16" xo="0" yo="0" id="11481705" name="inst_90813B02" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tstHornetman" x="0" y="608" w="16" h="16" xo="64" yo="32" id="11481708" name="inst_6924DDE5" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tstHornetman" x="0" y="624" w="16" h="16" xo="32" yo="32" id="11481711" name="inst_5AD0ABC3" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tstHornetman" x="0" y="592" w="16" h="16" xo="64" yo="16" id="11481712" name="inst_B3695682" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tstHornetman" x="0" y="576" w="16" h="16" xo="64" yo="16" id="11481713" name="inst_50DE6749" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tstHornetman" x="0" y="560" w="16" h="16" xo="64" yo="16" id="11481714" name="inst_B31F5A2B" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tstHornetman" x="0" y="544" w="16" h="16" xo="64" yo="16" id="11481715" name="inst_6A95638C" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tstHornetman" x="0" y="496" w="16" h="16" xo="64" yo="16" id="11481716" name="inst_ECBA9805" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
   </tiles>
   <PhysicsWorld>0</PhysicsWorld>
   <PhysicsWorldTop>0</PhysicsWorldTop>

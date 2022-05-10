@@ -10,6 +10,8 @@ global.gameSpeed = 60;
 global.screenWidth = 256;
 global.screenHeight = 224;
 
+global.screenScaleMax = 8; // any larger will cause shaders to lag a ton
+
 // colour palette
 paletteSetup();
 
@@ -49,3 +51,6 @@ global.maxBolts = 9999;
 
 // debug mode and keys (1, 2) are enabled.
 global.debugEnabled = true;
+
+// if game saves achievements to game save files, or an independent global achievement file.
+global.achievementsAreSaveFileBound = false;

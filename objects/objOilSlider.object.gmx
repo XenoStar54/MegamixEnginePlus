@@ -224,7 +224,11 @@ if ((entityCanStep() || instance_exists(objSectionSwitcher)) &amp;&amp; canDamag
                 }
             }
         
-            if (parent.isHit || parent.climbing || parent.xcoll != 0 || instance_place(x, y, prtBossDoor))
+            if (parent.isHit || parent.climbing || parent.xcoll != 0 || instance_place(x, y, prtBossDoor)
+                // collide with the left and right sides of the screen when there's no screen transition
+                || (!(bbox_right &lt; view_xview[0] + view_wview[0] &amp;&amp; bbox_left &gt; view_xview[0])
+                    &amp;&amp; (!instance_place(parent.x, parent.y, objSectionArrowRight)
+                        &amp;&amp; !instance_place(parent.x, parent.y, objSectionArrowLeft))))
             {
                 parent.xspeed = 0;
                 instance_destroy();
@@ -366,10 +370,14 @@ if ((entityCanStep() || instance_exists(objSectionSwitcher)) &amp;&amp; canDamag
 
 image_index = (sprite_index == sprOilSliderSkateboard);
 shiftVisible = 0;
+blockCollision = false;
 
-if (instance_exists(parent)){
-    with(parent){
-        if (other.oilSliderLock){
+if (instance_exists(parent))
+{
+    with (parent)
+    {
+        if (other.oilSliderLock)
+        {
             other.oilSliderLock = lockPoolRelease(other.oilSliderLock);
         }
     }

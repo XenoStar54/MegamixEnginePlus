@@ -171,7 +171,7 @@ if (!global.frozen)
                 {
                     drawSelf();
                 }
-                draw_sprite_ext(sprHanabiranOverlay, image_index - 5, round(x), round(y), image_xscale, image_yscale, image_angle, image_blend, image_alpha);
+                draw_sprite_ext(sprHanabiranOverlay, image_index - 5, x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
                 d3d_set_fog(false, 0, 0, 0);
                 
                 if (iceTimer &gt; 0)
@@ -181,7 +181,7 @@ if (!global.frozen)
                     {
                         drawSelf();
                     }
-                    draw_sprite_ext(sprHanabiranOverlay, image_index - 5, round(x), round(y), image_xscale, image_yscale, image_angle, image_blend, image_alpha);
+                    draw_sprite_ext(sprHanabiranOverlay, image_index - 5, x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
                     draw_set_blend_mode(bm_normal);
                 }
             }
@@ -191,7 +191,7 @@ if (!global.frozen)
                 {
                     drawSelf();
                 }
-                draw_sprite_ext(sprHanabiranOverlay, image_index - 5, round(x), round(y), image_xscale, image_yscale, image_angle, image_blend, image_alpha);
+                draw_sprite_ext(sprHanabiranOverlay, image_index - 5, x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
             }
         }
     }

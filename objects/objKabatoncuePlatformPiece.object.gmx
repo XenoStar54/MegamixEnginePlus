@@ -172,8 +172,8 @@ if (other.penetrate &lt; 2 &amp;&amp; other.pierces &lt; 2 &amp;&amp; other.obje
             <string>if (!dead)
 {
     draw_sprite_part(sprite_index, -1, 0, 0, sprite_width,
-        round(sprite_height - offset), round(x - sprite_xoffset),
-        round(y - sprite_yoffset));
+        round(sprite_height - offset), x - sprite_xoffset,
+        y - sprite_yoffset);
 }
 </string>
           </argument>

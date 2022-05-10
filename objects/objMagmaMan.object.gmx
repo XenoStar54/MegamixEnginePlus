@@ -106,6 +106,7 @@ healthBarSecondaryColor[1] = global.nesPalette[20];
 music = "Mega_Man_9.nsf";
 musicType = "VGM";
 musicTrackNumber = 16;
+musicVolume = 1.4;
 
 enemyDamageValue(objTornadoBlow, 6);
 
@@ -619,7 +620,7 @@ with (objMagmaBazookBoss)
             <string>if ((iFrames mod 4) &lt; 2 || !iFrames)
 {    
    if (hasFire){
-        draw_sprite_ext(sprMagmaHeat,(floor((global.gameTimer * 0.20)) % 2), round(x + bombX[image_index] * image_xscale), round(y + bombY[image_index] * image_yscale),
+        draw_sprite_ext(sprMagmaHeat,(floor((global.gameTimer * 0.20)) % 2), x + bombX[image_index] * image_xscale, y + bombY[image_index] * image_yscale,
             image_xscale, image_yscale, image_angle, image_blend, image_alpha);
    }
     

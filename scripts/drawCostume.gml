@@ -7,8 +7,8 @@
 // [alphaBase, alphaPrimary, alphaSecondary, alphaOutline] (optional): alpha values for palette (0-1)
 
 var costume = argument[0],
-    sheetX = argument[1],
-    sheetY = argument[2],
+    sheetX = floor(argument[1]),
+    sheetY = floor(argument[2]),
     _x = argument[3],
     _y = argument[4],
     _xscale = argument[5],
@@ -31,9 +31,9 @@ var SquareSize = 48;
 for (var i = 0; i < 4; i += 1)
 {
     draw_sprite_part_ext(costume, i,
-        1 + (floor(sheetX) * (SquareSize + 3)),
-        1 + (floor(sheetY) * (SquareSize + 3)), SquareSize,
-        SquareSize, round(_x) - (24 * _xscale),
-        round(_y) - (20 * _yscale), _xscale, _yscale,
+        1 + (sheetX * (SquareSize + 3)),
+        1 + (sheetY * (SquareSize + 3)), SquareSize,
+        SquareSize, _x - (24 * _xscale),
+        _y - (20 * _yscale), _xscale, _yscale,
         col[i], alpha[i]);
 }

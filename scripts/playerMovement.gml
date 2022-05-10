@@ -1,4 +1,5 @@
-if (!instance_exists(vehicle) && !instance_exists(myTrebleBoost))
+if (!instance_exists(vehicle) && !instance_exists(myTrebleBoost)
+    && !instance_exists(myRushMarine))
 {
     if (ycoll * gravDir > 0)
     {

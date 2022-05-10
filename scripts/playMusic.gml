@@ -34,19 +34,23 @@ global.levelSong = fileName;
 global.levelSongType = fileType;
 global.levelTrackNumber = trackNumber;
 
-if (songLength > loopPosition)
+if (global.levelSongType == "OGG")
 {
     global.levelLoopStart = loopPosition / songLength;
+    global.levelLoopEnd = 1;
 }
 else
 {
-    global.levelLoopStart = 1;
+    global.levelLoopStart = loopPosition * 1000;
+    global.levelLoopEnd = songLength * 1000;
 }
 
-global.levelLoopEnd = 1;
 
 global.levelLoop = loops;
 global.levelVolume = volume;
+
+global.unboundedMusicVolume = -1;
+audio_master_gain(1);
 
 if (global.levelSongType == "OGG")
 {
@@ -79,7 +83,22 @@ else if (global.levelSongType == "VGM")
         sound_index = GME_LoadSong(mus);
         if (sound_index != noone)
         {
-            audio_sound_gain(sound_index, global.levelVolume * (global.musicvolume * 0.01), 0); // set the volume
+            var _v = global.levelVolume * (global.musicvolume * 0.01);
+            if (_v <= 1)
+            {
+                audio_sound_gain(sound_index, _v, 0); // set the volume
+            }
+            else
+            {
+                /* only way to raise music volumes above max using GMS' built in audio engine
+                is to raise the master volume and then lower everything else back down except
+                for the music*/
+                
+                audio_sound_gain(sound_index, 1, 0);
+                audio_master_gain(_v);
+                global.unboundedMusicVolume = _v;
+            }
+            
             song_tracks = GME_NumTracks();
             song_voices = GME_NumVoices();
             

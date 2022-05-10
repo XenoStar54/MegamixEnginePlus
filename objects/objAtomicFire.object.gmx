@@ -244,7 +244,7 @@ if(!global.frozen)
             else
             {
                 sprite_index = sprAtomicFire3;
-                contactDamage = 8;
+                contactDamage = 6;
             }
         }
         else

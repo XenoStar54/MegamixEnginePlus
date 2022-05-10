@@ -238,26 +238,26 @@ if (introTimer &lt;= 0)
     if (!killed)
     {
         draw_sprite_ext(sprMegaMechSharkTailJet, jetIndex,
-            x + 76 * image_xscale, round(y), image_xscale, image_yscale,
+            x + 76 * image_xscale, y, image_xscale, image_yscale,
             image_angle, image_blend, image_alpha);
     }
     
     if (iFrames mod 4 &lt; 2 || !iFrames)
     {
         draw_sprite_ext(sprMegaMechSharkSilo, siloIndex,
-            x - 8 * image_xscale, round(y) - 17 * image_yscale,
+            x - 8 * image_xscale, y - 17 * image_yscale,
             image_xscale, image_yscale, image_angle,
             image_blend, image_alpha);
     }
     else
     {
         draw_sprite_ext(sprMegaMechSharkSilo, siloIndex,
-            x - 8 * image_xscale, round(y) - 17 * image_yscale,
+            x - 8 * image_xscale, y - 17 * image_yscale,
             image_xscale, image_yscale, image_angle,
             c_black, image_alpha);
     }
     draw_sprite_ext(sprMegaMechSharkTailHatch, hatchIndex,
-        x - 8 * image_xscale, round(y) - 17 * image_yscale, image_xscale,
+        x - 8 * image_xscale, y - 17 * image_yscale, image_xscale,
         image_yscale, image_angle, image_blend, image_alpha);
 }
 else
@@ -265,20 +265,20 @@ else
     if (!killed)
     {
         draw_sprite_ext(sprMegaMechSharkTailJet, jetIndex,
-            x + 76 * image_xscale, round(y), image_xscale, image_yscale,
+            x + 76 * image_xscale, y, image_xscale, image_yscale,
             image_angle, c_black,
             1);
         draw_sprite_ext(sprMegaMechSharkTailJet, jetIndex,
-            x + 76 * image_xscale, round(y), image_xscale, image_yscale,
+            x + 76 * image_xscale, y, image_xscale, image_yscale,
             image_angle, image_blend,
             1 - ((floor(introTimer / (30 / 2)) * (30 / 2)) / 30) / 2);
     }
     draw_sprite_ext(sprMegaMechSharkTailHatch, hatchIndex,
-        x - 8 * image_xscale, round(y) - 17 * image_yscale, image_xscale,
+        x - 8 * image_xscale, y - 17 * image_yscale, image_xscale,
         image_yscale, image_angle, c_black,
         1);
     draw_sprite_ext(sprMegaMechSharkTailHatch, hatchIndex,
-        x - 8 * image_xscale, round(y) - 17 * image_yscale, image_xscale,
+        x - 8 * image_xscale, y - 17 * image_yscale, image_xscale,
         image_yscale, image_angle, image_blend,
         1 - ((floor(introTimer / (30 / 2)) * (30 / 2)) / 30) / 2);
 }

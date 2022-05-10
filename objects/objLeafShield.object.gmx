@@ -39,8 +39,12 @@ grav = 0;
 blockCollision = 0;
 
 leafSoundTimer = 0;
+deadShieldMovement = 0;
 
-penetrate = 3;
+deathPos = 0;
+deadLeafMove = 1.5;
+
+penetrate = 2;
 pierces = 2;
 
 isShield = true;
@@ -70,66 +74,82 @@ isShield = true;
 
 if(!global.frozen)
 {
-    // play the classic annoying sound
-    leafSoundTimer++;
-    if(leafSoundTimer % 8 == 0)
+    if(canDamage)
     {
-        playSFX(sfxLeafShield);
-    }
-    
-    if (!instance_exists(parent))
-    {
-        if (isShield)
+        // play the classic annoying sound
+        leafSoundTimer++;
+        if(leafSoundTimer % 8 == 0)
         {
-            event_user(10);
-            exit;
+            playSFX(sfxLeafShield);
         }
-    }
-    else
-    {
-        if (entityCanStep())
+        
+        if (!instance_exists(parent))
         {
             if (isShield)
             {
-                x = spriteGetXCenterObject(parent);
-                y = spriteGetYCenterObject(parent);
-                
-                if(sprite_index == sprLeafShield)
+                event_user(10);
+                exit;
+            }
+        }
+        else
+        {
+            if (entityCanStep())
+            {
+                if (isShield)
                 {
-                    with(parent)
+                    x = spriteGetXCenterObject(parent);
+                    y = spriteGetYCenterObject(parent);
+                    
+                    if(sprite_index == sprLeafShield &amp;&amp; parent.object_index == objMegaman)//Right side is for copy bot.
                     {
-                        if (global.keyUp[playerID])
-                        {   
-                            other.isShield = false;
-                            other.yspeed = image_yscale * -4;
-                            global.ammo[playerID, global.weapon[playerID]] = max(0,
-                            global.ammo[playerID, global.weapon[playerID]] - 3 / (global.energySaver + 1));
-                        }
-                        else if (global.keyDown[playerID])
-                        {   
-                            other.isShield = false;
-                            other.yspeed = image_yscale * 4;
-                            global.ammo[playerID, global.weapon[playerID]] = max(0,
-                            global.ammo[playerID, global.weapon[playerID]] - 3 / (global.energySaver + 1));
-                        }
-                        else if (global.keyLeft[playerID])
-                        {   
-                            other.isShield = false;
-                            other.xspeed = image_xscale * 4;
-                            global.ammo[playerID, global.weapon[playerID]] = max(0,
-                            global.ammo[playerID, global.weapon[playerID]] - 3 / (global.energySaver + 1));
-                        }
-                        else if (global.keyRight[playerID] || isSlide)
-                        {   
-                            other.isShield = false;
-                            other.xspeed = image_xscale * 4;
-                            global.ammo[playerID, global.weapon[playerID]] = max(0,
-                            global.ammo[playerID, global.weapon[playerID]] - 3 / (global.energySaver + 1));
+                        with(parent)
+                        {
+                            if (global.keyUp[playerID])
+                            {   
+                                other.isShield = false;
+                                other.yspeed = image_yscale * -4;
+                                global.ammo[playerID, global.weapon[playerID]] = max(0,
+                                global.ammo[playerID, global.weapon[playerID]] - 3 / (global.energySaver + 1));
+                            }
+                            else if (global.keyDown[playerID])
+                            {   
+                                other.isShield = false;
+                                other.yspeed = image_yscale * 4;
+                                global.ammo[playerID, global.weapon[playerID]] = max(0,
+                                global.ammo[playerID, global.weapon[playerID]] - 3 / (global.energySaver + 1));
+                            }
+                            else if (global.keyLeft[playerID])
+                            {   
+                                other.isShield = false;
+                                other.xspeed = image_xscale * 4;
+                                global.ammo[playerID, global.weapon[playerID]] = max(0,
+                                global.ammo[playerID, global.weapon[playerID]] - 3 / (global.energySaver + 1));
+                            }
+                            else if (global.keyRight[playerID] || isSlide)
+                            {   
+                                other.isShield = false;
+                                other.xspeed = image_xscale * 4;
+                                global.ammo[playerID, global.weapon[playerID]] = max(0,
+                                global.ammo[playerID, global.weapon[playerID]] - 3 / (global.energySaver + 1));
+                            }
                         }
                     }
                 }
             }
         }
+    }
+    else
+    {
+        if (x &gt;= deathPos + 16)
+        {
+            deadLeafMove = -1.5;
+        }
+        else if (x &lt;= deathPos - 16)
+        {
+            deadLeafMove = 1.5;
+        }
+        
+        xspeed = deadLeafMove;
     }
 }
 </string>
@@ -154,13 +174,15 @@ if(!global.frozen)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var inst = instance_place(x, y, prtEnemyProjectile);
-if (inst.reflectable)
+            <string>if(canDamage)
 {
-    with(inst)
-        instance_destroy();
+    var inst = instance_place(x, y, prtEnemyProjectile);
+    if (inst.reflectable)
+    {
+        with(inst)
+            instance_destroy();
+    }
 }
-
 </string>
           </argument>
         </arguments>
@@ -192,6 +214,30 @@ if (inst.reflectable)
         a.image_yscale = image_yscale;
     }
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="23">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>// fun fact: Leaf Shield kills every enemy in Wood Man's stage in one hit
+specialDamageValue("nature", 10);
 </string>
           </argument>
         </arguments>
@@ -237,14 +283,7 @@ if (inst.reflectable)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(objMegaman)
-{
-    with (objMegaman)
-    {
-        gravfactor = 1;
-    }
-}
-instance_destroy();
+            <string>instance_destroy();
 dead = 1;
 
 </string>
@@ -269,7 +308,12 @@ dead = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_user(EV_DEATH);
+            <string>playSFX(sfxReflect);
+canDamage = false;
+grav = 0;
+yspeed = 1.5 * image_yscale;
+deathPos = x;
+sprite_index = sprLeafShieldDead;
 </string>
           </argument>
         </arguments>

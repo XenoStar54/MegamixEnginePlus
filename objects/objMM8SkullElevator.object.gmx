@@ -179,7 +179,7 @@ else if (dead)
             <kind>1</kind>
             <string>draw_sprite_part_ext(sprite_index, 0, 0, 0, 52,
     sprite_height * global.flag[myFlag],
-    round(x) - sprite_xoffset, round(y) - sprite_yoffset - (3 * global.flag[myFlag] &lt;= .93), image_xscale, image_yscale, image_blend, image_alpha);
+    x - sprite_xoffset, y - sprite_yoffset - (3 * global.flag[myFlag] &lt;= .93), image_xscale, image_yscale, image_blend, image_alpha);
 
 // Draw the shaft rising upwards
 if (y &lt; ystart)

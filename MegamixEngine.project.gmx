@@ -3,9 +3,9 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="118" name="datafiles">
-    <datafiles number="118" name="UnitTests">
-      <datafiles number="118" name="Rooms">
+  <datafiles number="121" name="datafiles">
+    <datafiles number="121" name="UnitTests">
+      <datafiles number="121" name="Rooms">
         <datafile>
           <name>lvlUnitTestObjectSetter.room.gmx</name>
           <exists>-1</exists>
@@ -126,7 +126,7 @@
           <filename>lvlUnitTestEnemies.room.gmx</filename>
         </datafile>
       </datafiles>
-      <datafiles number="118" name="Recordings">
+      <datafiles number="121" name="Recordings">
         <datafile>
           <name>RecordingTestBasicMovement2.mrc</name>
           <exists>-1</exists>
@@ -401,7 +401,24 @@
         </datafile>
       </datafiles>
     </datafiles>
-    <datafiles number="118" name="Music">
+    <datafiles number="121" name="Music">
+      <datafile>
+        <name>Mega_Man_1.nsf</name>
+        <exists>-1</exists>
+        <size>12048</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>Mega_Man_1.nsf</filename>
+      </datafile>
       <datafile>
         <name>Mega_Man_2.nsf</name>
         <exists>-1</exists>
@@ -420,9 +437,9 @@
         <filename>Mega_Man_2.nsf</filename>
       </datafile>
       <datafile>
-        <name>MaGMML3DevkitBoss.nsf</name>
+        <name>Mega_Man_3.nsf</name>
         <exists>-1</exists>
-        <size>11367</size>
+        <size>20156</size>
         <exportAction>2</exportAction>
         <exportDir></exportDir>
         <overwrite>0</overwrite>
@@ -434,12 +451,12 @@
             <CopyToMask>9223372036854775807</CopyToMask>
           </Config>
         </ConfigOptions>
-        <filename>MaGMML3DevkitBoss.nsf</filename>
+        <filename>Mega_Man_3.nsf</filename>
       </datafile>
       <datafile>
-        <name>FrostMan.nsf</name>
+        <name>Mega_Man_4.nsf</name>
         <exists>-1</exists>
-        <size>10998</size>
+        <size>24704</size>
         <exportAction>2</exportAction>
         <exportDir></exportDir>
         <overwrite>0</overwrite>
@@ -451,12 +468,12 @@
             <CopyToMask>9223372036854775807</CopyToMask>
           </Config>
         </ConfigOptions>
-        <filename>FrostMan.nsf</filename>
+        <filename>Mega_Man_4.nsf</filename>
       </datafile>
       <datafile>
-        <name>Rockboard.nsf</name>
+        <name>Mega_Man_5.nsf</name>
         <exists>-1</exists>
-        <size>16512</size>
+        <size>24704</size>
         <exportAction>2</exportAction>
         <exportDir></exportDir>
         <overwrite>0</overwrite>
@@ -468,12 +485,12 @@
             <CopyToMask>9223372036854775807</CopyToMask>
           </Config>
         </ConfigOptions>
-        <filename>Rockboard.nsf</filename>
+        <filename>Mega_Man_5.nsf</filename>
       </datafile>
       <datafile>
-        <name>WT_stage_4.vgm</name>
+        <name>Mega_Man_6.nsf</name>
         <exists>-1</exists>
-        <size>211934</size>
+        <size>24704</size>
         <exportAction>2</exportAction>
         <exportDir></exportDir>
         <overwrite>0</overwrite>
@@ -485,58 +502,7 @@
             <CopyToMask>9223372036854775807</CopyToMask>
           </Config>
         </ConfigOptions>
-        <filename>WT_stage_4.vgm</filename>
-      </datafile>
-      <datafile>
-        <name>MM8Boss.ogg</name>
-        <exists>-1</exists>
-        <size>393182</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>MM8Boss.ogg</filename>
-      </datafile>
-      <datafile>
-        <name>FreezeMan.nsf</name>
-        <exists>-1</exists>
-        <size>11715</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>FreezeMan.nsf</filename>
-      </datafile>
-      <datafile>
-        <name>RnFBossNES.ogg</name>
-        <exists>-1</exists>
-        <size>1156286</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>RnFBossNES.ogg</filename>
+        <filename>Mega_Man_6.nsf</filename>
       </datafile>
       <datafile>
         <name>Mega_Man_9.nsf</name>
@@ -573,9 +539,9 @@
         <filename>Mega_Man_10.nsf</filename>
       </datafile>
       <datafile>
-        <name>dr. wily stage 1.ogg</name>
+        <name>Mega_Man_1GB.gbs</name>
         <exists>-1</exists>
-        <size>1080810</size>
+        <size>29405</size>
         <exportAction>2</exportAction>
         <exportDir></exportDir>
         <overwrite>0</overwrite>
@@ -587,7 +553,7 @@
             <CopyToMask>9223372036854775807</CopyToMask>
           </Config>
         </ConfigOptions>
-        <filename>dr. wily stage 1.ogg</filename>
+        <filename>Mega_Man_1GB.gbs</filename>
       </datafile>
       <datafile>
         <name>Mega_Man_2GB.gbs</name>
@@ -607,9 +573,9 @@
         <filename>Mega_Man_2GB.gbs</filename>
       </datafile>
       <datafile>
-        <name>Mega_Man_5GB.gbs</name>
+        <name>Mega_Man_3GB.gbs</name>
         <exists>-1</exists>
-        <size>29723</size>
+        <size>15255</size>
         <exportAction>2</exportAction>
         <exportDir></exportDir>
         <overwrite>0</overwrite>
@@ -621,109 +587,7 @@
             <CopyToMask>9223372036854775807</CopyToMask>
           </Config>
         </ConfigOptions>
-        <filename>Mega_Man_5GB.gbs</filename>
-      </datafile>
-      <datafile>
-        <name>WilyTowerBossTheme.vgm</name>
-        <exists>-1</exists>
-        <size>94289</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>WilyTowerBossTheme.vgm</filename>
-      </datafile>
-      <datafile>
-        <name>WeaponGet.ogg</name>
-        <exists>-1</exists>
-        <size>471574</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>WeaponGet.ogg</filename>
-      </datafile>
-      <datafile>
-        <name>MM7Boss.nsf</name>
-        <exists>-1</exists>
-        <size>11495</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>MM7Boss.nsf</filename>
-      </datafile>
-      <datafile>
-        <name>songlist.txt</name>
-        <exists>-1</exists>
-        <size>7179</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>songlist.txt</filename>
-      </datafile>
-      <datafile>
-        <name>Rockman8intro.ogg</name>
-        <exists>-1</exists>
-        <size>3280813</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>Rockman8intro.ogg</filename>
-      </datafile>
-      <datafile>
-        <name>Mega_Man_6.nsf</name>
-        <exists>-1</exists>
-        <size>24704</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>Mega_Man_6.nsf</filename>
+        <filename>Mega_Man_3GB.gbs</filename>
       </datafile>
       <datafile>
         <name>Mega_Man_4GB.gbs</name>
@@ -743,9 +607,9 @@
         <filename>Mega_Man_4GB.gbs</filename>
       </datafile>
       <datafile>
-        <name>MegamixEnginePlusTitle.ogg</name>
+        <name>Mega_Man_5GB.gbs</name>
         <exists>-1</exists>
-        <size>2679933</size>
+        <size>29723</size>
         <exportAction>2</exportAction>
         <exportDir></exportDir>
         <overwrite>0</overwrite>
@@ -757,12 +621,12 @@
             <CopyToMask>9223372036854775807</CopyToMask>
           </Config>
         </ConfigOptions>
-        <filename>MegamixEnginePlusTitle.ogg</filename>
+        <filename>Mega_Man_5GB.gbs</filename>
       </datafile>
       <datafile>
-        <name>Mega_Man_3.nsf</name>
+        <name>Rockboard.nsf</name>
         <exists>-1</exists>
-        <size>20156</size>
+        <size>16512</size>
         <exportAction>2</exportAction>
         <exportDir></exportDir>
         <overwrite>0</overwrite>
@@ -774,12 +638,12 @@
             <CopyToMask>9223372036854775807</CopyToMask>
           </Config>
         </ConfigOptions>
-        <filename>Mega_Man_3.nsf</filename>
+        <filename>Rockboard.nsf</filename>
       </datafile>
       <datafile>
-        <name>Mega_Man_3GB.gbs</name>
+        <name>WT_stage_4.vgm</name>
         <exists>-1</exists>
-        <size>15255</size>
+        <size>211934</size>
         <exportAction>2</exportAction>
         <exportDir></exportDir>
         <overwrite>0</overwrite>
@@ -791,228 +655,7 @@
             <CopyToMask>9223372036854775807</CopyToMask>
           </Config>
         </ConfigOptions>
-        <filename>Mega_Man_3GB.gbs</filename>
-      </datafile>
-      <datafile>
-        <name>Victory.ogg</name>
-        <exists>-1</exists>
-        <size>67880</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>Victory.ogg</filename>
-      </datafile>
-      <datafile>
-        <name>Mega_Man_1GB.gbs</name>
-        <exists>-1</exists>
-        <size>29405</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>Mega_Man_1GB.gbs</filename>
-      </datafile>
-      <datafile>
-        <name>Showcase.ogg</name>
-        <exists>-1</exists>
-        <size>2990929</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>Showcase.ogg</filename>
-      </datafile>
-      <datafile>
-        <name>Mega_Man_5.nsf</name>
-        <exists>-1</exists>
-        <size>24704</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>Mega_Man_5.nsf</filename>
-      </datafile>
-      <datafile>
-        <name>MM7_Dr._Wily_3.spc</name>
-        <exists>-1</exists>
-        <size>66144</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>MM7_Dr._Wily_3.spc</filename>
-      </datafile>
-      <datafile>
-        <name>Wily4StairwaytoDarkness.ogg</name>
-        <exists>-1</exists>
-        <size>484043</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>Wily4StairwaytoDarkness.ogg</filename>
-      </datafile>
-      <datafile>
-        <name>14 Tenguman.spc</name>
-        <exists>-1</exists>
-        <size>66136</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>14 Tenguman.spc</filename>
-      </datafile>
-      <datafile>
-        <name>HoneyWoman.ogg</name>
-        <exists>-1</exists>
-        <size>677300</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>HoneyWoman.ogg</filename>
-      </datafile>
-      <datafile>
-        <name>WilyIntro.ogg</name>
-        <exists>-1</exists>
-        <size>109747</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>WilyIntro.ogg</filename>
-      </datafile>
-      <datafile>
-        <name>Mega_Man_4.nsf</name>
-        <exists>-1</exists>
-        <size>24704</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>Mega_Man_4.nsf</filename>
-      </datafile>
-      <datafile>
-        <name>18 Boss Battle.spc</name>
-        <exists>-1</exists>
-        <size>66136</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>18 Boss Battle.spc</filename>
-      </datafile>
-      <datafile>
-        <name>Mega_Man_1.nsf</name>
-        <exists>-1</exists>
-        <size>12048</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>Mega_Man_1.nsf</filename>
-      </datafile>
-      <datafile>
-        <name>MM7RMBoss.spc</name>
-        <exists>-1</exists>
-        <size>66088</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>MM7RMBoss.spc</filename>
+        <filename>WT_stage_4.vgm</filename>
       </datafile>
       <datafile>
         <name>WW_Boss.vgz</name>
@@ -1032,6 +675,227 @@
         <filename>WW_Boss.vgz</filename>
       </datafile>
       <datafile>
+        <name>WilyTowerBossTheme.vgm</name>
+        <exists>-1</exists>
+        <size>94289</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>WilyTowerBossTheme.vgm</filename>
+      </datafile>
+      <datafile>
+        <name>FreezeMan.nsf</name>
+        <exists>-1</exists>
+        <size>11715</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>FreezeMan.nsf</filename>
+      </datafile>
+      <datafile>
+        <name>MM7RMBoss.spc</name>
+        <exists>-1</exists>
+        <size>66088</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>MM7RMBoss.spc</filename>
+      </datafile>
+      <datafile>
+        <name>MM7Boss.nsf</name>
+        <exists>-1</exists>
+        <size>11495</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>MM7Boss.nsf</filename>
+      </datafile>
+      <datafile>
+        <name>MM7_Dr._Wily_3.spc</name>
+        <exists>-1</exists>
+        <size>66144</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>MM7_Dr._Wily_3.spc</filename>
+      </datafile>
+      <datafile>
+        <name>FrostMan.nsf</name>
+        <exists>-1</exists>
+        <size>10998</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>FrostMan.nsf</filename>
+      </datafile>
+      <datafile>
+        <name>Rockman8intro.ogg</name>
+        <exists>-1</exists>
+        <size>3280813</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>Rockman8intro.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>MM8Boss.ogg</name>
+        <exists>-1</exists>
+        <size>393182</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>MM8Boss.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>dr. wily stage 1.ogg</name>
+        <exists>-1</exists>
+        <size>1080810</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>dr. wily stage 1.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>14 Tenguman.spc</name>
+        <exists>-1</exists>
+        <size>66136</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>14 Tenguman.spc</filename>
+      </datafile>
+      <datafile>
+        <name>18 Boss Battle.spc</name>
+        <exists>-1</exists>
+        <size>66136</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>18 Boss Battle.spc</filename>
+      </datafile>
+      <datafile>
+        <name>RnFBossNES.ogg</name>
+        <exists>-1</exists>
+        <size>1156286</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>RnFBossNES.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>HoneyWoman.ogg</name>
+        <exists>-1</exists>
+        <size>677300</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>HoneyWoman.ogg</filename>
+      </datafile>
+      <datafile>
         <name>Chill Man.ogg</name>
         <exists>-1</exists>
         <size>807950</size>
@@ -1048,8 +912,161 @@
         </ConfigOptions>
         <filename>Chill Man.ogg</filename>
       </datafile>
+      <datafile>
+        <name>Wily4StairwaytoDarkness.ogg</name>
+        <exists>-1</exists>
+        <size>484043</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>Wily4StairwaytoDarkness.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>MegamixEnginePlusTitle.ogg</name>
+        <exists>-1</exists>
+        <size>2679933</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>MegamixEnginePlusTitle.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>MaGMML3DevkitBoss.nsf</name>
+        <exists>-1</exists>
+        <size>11367</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>MaGMML3DevkitBoss.nsf</filename>
+      </datafile>
+      <datafile>
+        <name>WeaponGet.ogg</name>
+        <exists>-1</exists>
+        <size>471574</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>WeaponGet.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>WilyIntro.ogg</name>
+        <exists>-1</exists>
+        <size>109747</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>WilyIntro.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>Victory.ogg</name>
+        <exists>-1</exists>
+        <size>67880</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>Victory.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>Showcase.ogg</name>
+        <exists>-1</exists>
+        <size>2990929</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>Showcase.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>BassBossTheme.spc</name>
+        <exists>-1</exists>
+        <size>66216</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>BassBossTheme.spc</filename>
+      </datafile>
+      <datafile>
+        <name>songlist.txt</name>
+        <exists>-1</exists>
+        <size>7179</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>songlist.txt</filename>
+      </datafile>
     </datafiles>
-    <datafiles number="118" name="Recordings">
+    <datafiles number="121" name="Recordings">
       <datafile>
         <name>demoPharaohMan.mrc</name>
         <exists>-1</exists>
@@ -1085,7 +1102,7 @@
         <filename>demoHoneyWoman.mrc</filename>
       </datafile>
     </datafiles>
-    <datafiles number="118" name="Levels">
+    <datafiles number="121" name="Levels">
       <datafile>
         <name>rmShowcaseBossSharp.room.gmx</name>
         <exists>-1</exists>
@@ -2022,9 +2039,44 @@
       </ConfigOptions>
       <filename>gig.so.32</filename>
     </datafile>
+    <datafile>
+      <name>discord_rich_presence.dll</name>
+      <exists>0</exists>
+      <size>0</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>discord_rich_presence.dll</filename>
+    </datafile>
+    <datafile>
+      <name>discord-rpc.dll</name>
+      <exists>0</exists>
+      <size>0</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>discord-rpc.dll</filename>
+    </datafile>
   </datafiles>
   <NewExtensions>
     <extension index="0">extensions\GameMusicEmu</extension>
+    <extension index="1">extensions\GMSched</extension>
   </NewExtensions>
   <sounds name="sound">
     <sounds name="Player">
@@ -2464,6 +2516,7 @@
       <sprite>sprites\mskMegaman</sprite>
       <sprite>sprites\mskMegamanSlide</sprite>
       <sprite>sprites\mskMegamanSlide2</sprite>
+      <sprite>sprites\mskMegamanMarine</sprite>
       <sprite>sprites\mskProtoShield</sprite>
       <sprite>sprites\sprMegamanTeleport</sprite>
       <sprite>sprites\sprMegamanTeleportPrimary</sprite>
@@ -2477,6 +2530,7 @@
         <sprite>sprites\sprBusterShotHalfChargedProto</sprite>
         <sprite>sprites\sprBusterShotChargedProto</sprite>
         <sprite>sprites\sprBassBullet</sprite>
+        <sprite>sprites\sprBusterShotGB</sprite>
         <sprites name="MM1">
           <sprite>sprites\sprRollingCutter</sprite>
           <sprite>sprites\sprSuperArmCreateBlock</sprite>
@@ -2505,6 +2559,7 @@
           <sprite>sprites\sprAtomicFire3</sprite>
           <sprite>sprites\sprLeafShield</sprite>
           <sprite>sprites\sprLeafShieldInit</sprite>
+          <sprite>sprites\sprLeafShieldDead</sprite>
         </sprites>
         <sprites name="MM3">
           <sprite>sprites\sprNeedleCannon</sprite>
@@ -2599,6 +2654,7 @@
           <sprite>sprites\sprWheelCutter</sprite>
           <sprite>sprites\sprSolarBlaze</sprite>
           <sprite>sprites\sprSolarBlazeWave</sprite>
+          <sprite>sprites\sprMirrorBuster</sprite>
         </sprites>
         <sprites name="MM11">
           <sprite>sprites\sprBlockDropper</sprite>
@@ -2611,7 +2667,19 @@
           <sprite>sprites\sprBounceBallConfetti</sprite>
         </sprites>
         <sprites name="MMGBI">
-          <sprite>sprites\sprMirrorBuster</sprite>
+          <sprite>sprites\sprRollingCutterGB</sprite>
+          <sprite>sprites\sprIceSlasherGB</sprite>
+          <sprite>sprites\sprFireStormGB</sprite>
+          <sprite>sprites\sprFireStormShieldGB</sprite>
+          <sprite>sprites\sprThunderBeamGB</sprite>
+          <sprite>sprites\sprThunderBeamVerticalGB</sprite>
+          <sprite>sprites\sprBubbleLeadGB</sprite>
+          <sprite>sprites\sprQuickBoomerangGB</sprite>
+          <sprite>sprites\sprAtomicFireGB1</sprite>
+          <sprite>sprites\sprAtomicFireGB2</sprite>
+          <sprite>sprites\sprAtomicFireGB3</sprite>
+          <sprite>sprites\sprMirrorBusterGB</sprite>
+          <sprite>sprites\sprMirrorBusterBulletGB</sprite>
         </sprites>
         <sprites name="MMGBII">
           <sprite>sprites\sprSakugarne</sprite>
@@ -2629,6 +2697,8 @@
           <sprite>sprites\sprGrabBuster</sprite>
           <sprite>sprites\sprGrabBusterPickup</sprite>
           <sprite>sprites\sprBubbleBomb</sprite>
+          <sprite>sprites\sprBlackHole</sprite>
+          <sprite>sprites\sprBlackHoleBullet</sprite>
           <sprite>sprites\sprSaltWater</sprite>
           <sprite>sprites\sprSaltWaterDrop</sprite>
           <sprite>sprites\sprSaltWaterSplash1</sprite>
@@ -2669,35 +2739,40 @@
           <sprite>sprites\sprTorchArm</sprite>
         </sprites>
         <sprites name="Other">
-          <sprite>sprites\sprBeat</sprite>
           <sprite>sprites\sprMagneticShockwave</sprite>
           <sprite>sprites\sprMagneticShockwaveParticle</sprite>
           <sprite>sprites\sprCentaurArrow</sprite>
           <sprite>sprites\sprSkeletuppinPakkajoe</sprite>
+          <sprite>sprites\sprBeat</sprite>
           <sprites name="Do Not Use">
             <sprite>sprites\mskWeaponExplosion</sprite>
           </sprites>
         </sprites>
-        <sprites name="Utilities">
+        <sprites name="Non-Rush Utilities">
           <sprite>sprites\sprMagnetBeam</sprite>
           <sprite>sprites\sprMagnetBeamEnd</sprite>
           <sprite>sprites\sprMagnetBeamPickup</sprite>
           <sprite>sprites\sprItem1</sprite>
           <sprite>sprites\sprItem2</sprite>
           <sprite>sprites\sprItem3</sprite>
+          <sprite>sprites\sprWireAdapterWire</sprite>
+          <sprite>sprites\sprWireAdapter</sprite>
+          <sprite>sprites\sprSuperArrow</sprite>
+          <sprite>sprites\sprCarry</sprite>
+          <sprites name="Don't Use">
+            <sprite>sprites\sprItem1Mask</sprite>
+            <sprite>sprites\sprItem2Mask</sprite>
+            <sprite>sprites\sprItem3Mask</sprite>
+          </sprites>
+        </sprites>
+        <sprites name="Rush Utilities">
           <sprite>sprites\sprRushTeleport</sprite>
           <sprite>sprites\sprRush</sprite>
           <sprite>sprites\sprRushCoil</sprite>
           <sprite>sprites\sprRushJet</sprite>
-          <sprite>sprites\sprWireAdapterWire</sprite>
-          <sprite>sprites\sprWireAdapter</sprite>
-          <sprite>sprites\sprSuperArrow</sprite>
+          <sprite>sprites\sprRushMarine</sprite>
           <sprite>sprites\sprRushCycle</sprite>
-          <sprite>sprites\sprCarry</sprite>
-          <sprites name="Do Not Use">
-            <sprite>sprites\sprItem1Mask</sprite>
-            <sprite>sprites\sprItem2Mask</sprite>
-            <sprite>sprites\sprItem3Mask</sprite>
+          <sprites name="Don't Use">
             <sprite>sprites\sprRushMask</sprite>
           </sprites>
         </sprites>
@@ -2792,6 +2867,7 @@
             <sprite>sprites\sprWeaponIconsReboundStriker</sprite>
             <sprite>sprites\sprWeaponIconsWheelCutter</sprite>
             <sprite>sprites\sprWeaponIconsSolarBlaze</sprite>
+            <sprite>sprites\sprWeaponIconsMirrorBuster</sprite>
           </sprites>
           <sprites name="MM11">
             <sprite>sprites\sprWeaponIconsBlockDropper</sprite>
@@ -2807,7 +2883,7 @@
             <sprite>sprites\sprWeaponIconsQuickBoomerangGB</sprite>
             <sprite>sprites\sprWeaponIconsTimeStopperGB</sprite>
             <sprite>sprites\sprWeaponIconsAtomicFireGB</sprite>
-            <sprite>sprites\sprWeaponIconsMirrorBuster</sprite>
+            <sprite>sprites\sprWeaponIconsMirrorBusterGB</sprite>
           </sprites>
           <sprites name="MMGBII">
             <sprite>sprites\sprWeaponIconsMetalBladeGB</sprite>
@@ -2826,6 +2902,7 @@
             <sprite>sprites\sprWeaponIconsSparkChaser</sprite>
             <sprite>sprites\sprWeaponIconsGrabBuster</sprite>
             <sprite>sprites\sprWeaponIconsBubbleBomb</sprite>
+            <sprite>sprites\sprWeaponIconsBlackHole</sprite>
             <sprite>sprites\sprWeaponIconsBreakDash</sprite>
             <sprite>sprites\sprWeaponIconsSaltWater</sprite>
           </sprites>
@@ -2857,21 +2934,24 @@
             <sprite>sprites\sprWeaponIconsTorchArm</sprite>
           </sprites>
           <sprites name="Other">
-            <sprite>sprites\sprWeaponIconsBeat</sprite>
             <sprite>sprites\sprWeaponIconsMagneticShockwave</sprite>
             <sprite>sprites\sprWeaponIconsSkeletuppinPakkajoe</sprite>
             <sprite>sprites\sprWeaponIconsCentaurArrow</sprite>
+            <sprite>sprites\sprWeaponIconsBeat</sprite>
           </sprites>
-          <sprites name="Utilities">
+          <sprites name="Non-Rush Utilities">
             <sprite>sprites\sprWeaponIconsMagnetBeam</sprite>
-            <sprite>sprites\sprWeaponIconsCarry</sprite>
             <sprite>sprites\sprWeaponIconsItem1</sprite>
             <sprite>sprites\sprWeaponIconsItem2</sprite>
             <sprite>sprites\sprWeaponIconsItem3</sprite>
-            <sprite>sprites\sprWeaponIconsRushCoil</sprite>
-            <sprite>sprites\sprWeaponIconsRushJet</sprite>
             <sprite>sprites\sprWeaponIconsWire</sprite>
             <sprite>sprites\sprWeaponIconsSuperArrow</sprite>
+            <sprite>sprites\sprWeaponIconsCarry</sprite>
+          </sprites>
+          <sprites name="Rush Utilities">
+            <sprite>sprites\sprWeaponIconsRushCoil</sprite>
+            <sprite>sprites\sprWeaponIconsRushJet</sprite>
+            <sprite>sprites\sprWeaponIconsRushMarine</sprite>
             <sprite>sprites\sprWeaponIconsRushCycle</sprite>
             <sprite>sprites\sprWeaponIconsTrebleBoost</sprite>
           </sprites>
@@ -3229,10 +3309,6 @@
         <sprite>sprites\sprBBitter</sprite>
         <sprite>sprites\sprBounder</sprite>
         <sprite>sprites\sprSpaceMetool</sprite>
-        <sprite>sprites\sprDachoneB</sprite>
-        <sprite>sprites\sprDachoneG</sprite>
-        <sprite>sprites\sprOctoboss</sprite>
-        <sprite>sprites\sprOctoperOA</sprite>
         <sprite>sprites\sprGiree</sprite>
         <sprite>sprites\sprMetallK1000</sprite>
         <sprite>sprites\sprCorocoro</sprite>
@@ -3276,9 +3352,6 @@
           <sprite>sprites\sprThrownBomb</sprite>
           <sprite>sprites\sprRock</sprite>
           <sprite>sprites\sprRockShatter</sprite>
-          <sprite>sprites\sprOctobossBullet</sprite>
-          <sprite>sprites\sprOctoperBullet1</sprite>
-          <sprite>sprites\sprDachoneBullet</sprite>
           <sprite>sprites\sprRembakunMissile</sprite>
           <sprite>sprites\sprApacheJoeBullet</sprite>
           <sprite>sprites\sprFoojeenTrash</sprite>
@@ -3804,16 +3877,27 @@
         <sprite>sprites\sprKabatoncue</sprite>
         <sprite>sprites\sprKabatoncueTeleport</sprite>
       </sprites>
+      <sprites name="MM5">
+        <sprite>sprites\sprDachoneB</sprite>
+        <sprite>sprites\sprDachoneG</sprite>
+        <sprite>sprites\sprOctoboss</sprite>
+        <sprite>sprites\sprOctoperOA</sprite>
+        <sprites name="Projectiles">
+          <sprite>sprites\sprDachoneBullet</sprite>
+          <sprite>sprites\sprOctobossBullet</sprite>
+          <sprite>sprites\sprOctoperBullet1</sprite>
+        </sprites>
+      </sprites>
       <sprites name="MM6">
         <sprite>sprites\sprGamarn</sprite>
         <sprite>sprites\sprGamarnLaser</sprite>
         <sprite>sprites\sprGamadayu</sprite>
         <sprite>sprites\sprGamadayuBomb</sprite>
         <sprite>sprites\sprGamarnIcon</sprite>
-        <sprite>sprites\sprMetallPotton</sprite>
         <sprite>sprites\sprGorillaTank</sprite>
         <sprite>sprites\sprGorillaTankEyes</sprite>
         <sprite>sprites\sprGorillaTankHand</sprite>
+        <sprite>sprites\sprMetallPotton</sprite>
       </sprites>
       <sprites name="MM7">
         <sprite>sprites\sprShirokumachineGTV</sprite>
@@ -4495,6 +4579,8 @@
           <sprite>sprites\sprPlantThrow</sprite>
           <sprite>sprites\sprPlantShoot</sprite>
           <sprite>sprites\sprPlantBarrierBoss</sprite>
+          <sprite>sprites\pltPlantManBase</sprite>
+          <sprite>sprites\pltPlantManCherry</sprite>
         </sprites>
         <sprites name="Tomahawk">
           <sprite>sprites\sprTomahawkMan</sprite>
@@ -4632,6 +4718,23 @@
           <sprite>sprites\sprGrenadeWall</sprite>
           <sprite>sprites\sprGrenadeMask</sprite>
         </sprites>
+        <sprites name="Super Bass">
+          <sprite>sprites\sprSuperBassBossBeamBody</sprite>
+          <sprite>sprites\sprSuperBassBossBeamOrigin</sprite>
+          <sprite>sprites\sprSuperBassBossBeamTip</sprite>
+          <sprite>sprites\sprSuperBassBossChargedShot</sprite>
+          <sprite>sprites\sprSuperBassBossDown</sprite>
+          <sprite>sprites\sprSuperBassBossDownPrepare</sprite>
+          <sprite>sprites\sprSuperBassBossExplosion</sprite>
+          <sprite>sprites\sprSuperBassBossHover</sprite>
+          <sprite>sprites\sprSuperBassBossInvincible</sprite>
+          <sprite>sprites\sprSuperBassBossMeteorShotMaker</sprite>
+          <sprite>sprites\sprSuperBassBossShoot</sprite>
+          <sprite>sprites\sprSuperBassBossStand</sprite>
+          <sprite>sprites\sprSuperBassBossSuperChargedParticle</sprite>
+          <sprite>sprites\sprSuperBassBossUp</sprite>
+          <sprite>sprites\sprSuperBassBossUpPrepare</sprite>
+        </sprites>
       </sprites>
       <sprites name="MM9">
         <sprites name="Tornado">
@@ -4677,6 +4780,7 @@
         <sprites name="Honey">
           <sprite>sprites\sprHoneyWomanIntro</sprite>
           <sprite>sprites\sprHoneyWoman</sprite>
+          <sprite>sprites\sprBeeChaser</sprite>
           <sprite>sprites\sprBeeDropper</sprite>
           <sprite>sprites\sprHoneycombBomb</sprite>
           <sprite>sprites\sprHoneyPuddle</sprite>
@@ -4706,6 +4810,11 @@
           <sprite>sprites\sprBlackHoleBombConcrete</sprite>
           <sprite>sprites\sprGalaxyManMask</sprite>
           <sprite>sprites\sprGalaxyManPoseMask</sprite>
+        </sprites>
+        <sprites name="Concrete">
+          <sprite>sprites\mskConcreteManShot</sprite>
+          <sprite>sprites\sprConcreteMan</sprite>
+          <sprite>sprites\sprConcreteManShot</sprite>
         </sprites>
         <sprites name="Fake">
           <sprite>sprites\sprFakeMan</sprite>
@@ -4804,8 +4913,15 @@
           <sprite>sprites\sprSolarBlazeMedium</sprite>
           <sprite>sprites\sprSolarBlazeLarge</sprite>
         </sprites>
+        <sprites name="Blade">
+          <sprite>sprites\sprBladeMan10</sprite>
+          <sprite>sprites\sprBladeMan10Blade</sprite>
+        </sprites>
       </sprites>
       <sprites name="MMGBI">
+        <sprites name="Flash">
+          <sprite>sprites\sprFlashTwinkleGB</sprite>
+        </sprites>
         <sprites name="Enker">
           <sprite>sprites\sprEnker</sprite>
           <sprite>sprites\mskEnkerCollision</sprite>
@@ -4905,6 +5021,15 @@
         <sprites name="Hyper Storm H">
           <sprite>sprites\sprHyperStormH</sprite>
           <sprite>sprites\sprHyperStormHDust</sprite>
+        </sprites>
+        <sprites name="Fire Snakey">
+          <sprite>sprites\sprFireSnakeyBody</sprite>
+          <sprite>sprites\sprFireSnakeyFireball</sprite>
+          <sprite>sprites\sprFireSnakeyFlamethrower</sprite>
+          <sprite>sprites\sprFireSnakeyHeadStill</sprite>
+          <sprite>sprites\sprFireSnakeyHeadTurn</sprite>
+          <sprite>sprites\sprFireSnakeyPreview</sprite>
+          <sprite>sprites\sprFireSnakeySplash</sprite>
         </sprites>
         <sprites name="Iron Ball">
           <sprite>sprites\sprIronBall</sprite>
@@ -5307,6 +5432,17 @@
         <sprite>sprites\sprSkullElevatorShaft</sprite>
         <sprite>sprites\sprTenguWind</sprite>
         <sprite>sprites\sprTenguWindTrigger</sprite>
+        <sprite>sprites\sprHugeBlockFall</sprite>
+        <sprite>sprites\sprHugeBlock</sprite>
+        <sprite>sprites\sprSwingingHammer</sprite>
+        <sprite>sprites\mskSwingingHammer</sprite>
+        <sprite>sprites\sprTNTBlock</sprite>
+        <sprite>sprites\sprBlastBlockBlue</sprite>
+        <sprite>sprites\sprBlastBlock</sprite>
+        <sprite>sprites\sprCountBombNEOFont</sprite>
+        <sprite>sprites\sprCountBombNEOWalkPressed</sprite>
+        <sprite>sprites\sprCountBombNEOWalk</sprite>
+        <sprite>sprites\sprCountBombNEO</sprite>
       </sprites>
       <sprites name="MM9">
         <sprite>sprites\sprMM9SpinningPlatform</sprite>
@@ -5373,6 +5509,10 @@
         <sprite>sprites\sprBladeManSeeSawTether</sprite>
         <sprite>sprites\sprBladeManSeeSawMiddle</sprite>
         <sprite>sprites\sprSolarManConveyor</sprite>
+      </sprites>
+      <sprites name="MMWW">
+        <sprite>sprites\sprMMWTFallingPlatform</sprite>
+        <sprite>sprites\sprSpringboard</sprite>
       </sprites>
       <sprites name="MM&amp;B">
         <sprite>sprites\sprAstroWallRipple</sprite>
@@ -5502,6 +5642,8 @@
       <sprite>sprites\sprKeyGate</sprite>
       <sprite>sprites\sprKeyCoin</sprite>
       <sprite>sprites\sprKeyCoinHUD</sprite>
+      <sprite>sprites\sprBalloonPickup</sprite>
+      <sprite>sprites\sprWirePickup</sprite>
     </sprites>
     <sprites name="Menu">
       <sprites name="Pause">
@@ -5560,6 +5702,11 @@
         <sprite>sprites\sprNPCKnightmanJump</sprite>
         <sprite>sprites\sprNPCVolt</sprite>
       </sprites>
+      <sprites name="Palettes">
+        <sprite>sprites\pltNES</sprite>
+        <sprite>sprites\pltMM9_10</sprite>
+        <sprite>sprites\pltGameBoy</sprite>
+      </sprites>
       <sprite>sprites\sprDot</sprite>
       <sprite>sprites\mskPreciseDot</sprite>
       <sprite>sprites\sprFont</sprite>
@@ -5572,8 +5719,6 @@
       <sprite>sprites\sprTextbox</sprite>
       <sprite>sprites\sprPressUp</sprite>
       <sprite>sprites\sprButtonPrompts</sprite>
-      <sprite>sprites\sprControllerOverlay</sprite>
-      <sprite>sprites\sprControllerOverlayThin</sprite>
       <sprite>sprites\sprRecPlay</sprite>
       <sprite>sprites\sprSavingIcon</sprite>
       <sprite>sprites\sprEnergySaver</sprite>
@@ -5582,6 +5727,9 @@
       <sprite>sprites\sprPlusGraphic</sprite>
       <sprite>sprites\sprPierceProtector</sprite>
       <sprite>sprites\sprBeatCall</sprite>
+      <sprite>sprites\sprAchievementGetPopup</sprite>
+      <sprite>sprites\sprControllerOverlay</sprite>
+      <sprite>sprites\sprControllerOverlayThin</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -5592,6 +5740,33 @@
       <background>background\bgQuad400x224</background>
     </backgrounds>
     <backgrounds name="Engine">
+      <backgrounds name="BorderGraphics">
+        <background>background\bgMM1Border</background>
+        <background>background\bgMM2Border</background>
+        <background>background\bgMM3Border</background>
+        <background>background\bgMM4Border</background>
+        <background>background\bgMM5Border</background>
+        <background>background\bgMM6Border</background>
+        <background>background\bgMM7Border1</background>
+        <background>background\bgMM7Border2</background>
+        <background>background\bgMM7Border3</background>
+        <background>background\bgMM7Border4</background>
+        <background>background\bgMM8Border1</background>
+        <background>background\bgMM8Border2</background>
+        <background>background\bgMM8Border3</background>
+        <background>background\bgMM8Border4</background>
+        <background>background\bgMM9Border1</background>
+        <background>background\bgMM9Border2</background>
+        <background>background\bgMM9Border3</background>
+        <background>background\bgMM9Border4</background>
+        <background>background\bgMM10Border1</background>
+        <background>background\bgMM10Border2</background>
+        <background>background\bgMM10Border3</background>
+        <background>background\bgMM10Border4Rock</background>
+        <background>background\bgMM10Border4Blues</background>
+        <background>background\bgMM10Border4Forte</background>
+        <background>background\bgMM10Border4Other</background>
+      </backgrounds>
       <background>background\bgBeta</background>
       <background>background\bgTitleScreen</background>
       <background>background\bgRoomSelector</background>
@@ -5992,10 +6167,13 @@
       <script>scripts\drawCostume.gml</script>
       <script>scripts\drawPlayer.gml</script>
       <script>scripts\drawPlayerInk.gml</script>
+      <script>scripts\drawWeaponIcon.gml</script>
+      <script>scripts\drawWeaponIconExt.gml</script>
       <script>scripts\animationLoop.gml</script>
       <script>scripts\drawControllerOverlay.gml</script>
       <script>scripts\drawHudBar.gml</script>
       <script>scripts\getBossHealthBarColors.gml</script>
+      <script>scripts\getBorderGraphic.gml</script>
       <scripts name="Sprite_center">
         <script>scripts\spriteGetXCenter.gml</script>
         <script>scripts\spriteGetYCenter.gml</script>
@@ -6018,6 +6196,15 @@
         <script>scripts\sprite_get_ycenter.gml</script>
         <script>scripts\sprite_get_ycenter_object.gml</script>
       </scripts>
+      <scripts name="PaletteSwap">
+        <script>scripts\createPaletteSwappedSprite.gml</script>
+        <scripts name="Other">
+          <script>scripts\createPaletteSprite.gml</script>
+          <script>scripts\drawPaletteSprite.gml</script>
+          <script>scripts\drawPaletteSpriteExt.gml</script>
+          <script>scripts\createPaletteSwappedSprite2.gml</script>
+        </scripts>
+      </scripts>
     </scripts>
     <scripts name="Initialization">
       <script>scripts\freshOptions.gml</script>
@@ -6035,8 +6222,11 @@
       <script>scripts\specialDamageValue.gml</script>
       <script>scripts\getWeaponDamage.gml</script>
       <script>scripts\getWeaponID.gml</script>
+      <script>scripts\getWeaponPrimaryColor.gml</script>
+      <script>scripts\getWeaponSecondaryColor.gml</script>
       <script>scripts\weaponReward.gml</script>
       <scripts name="Buster Replacements">
+        <script>scripts\scrBusterControl.gml</script>
         <scripts name="Default">
           <script>scripts\scrBusterDefault_Create.gml</script>
           <script>scripts\scrBusterDefault_14.gml</script>
@@ -6056,7 +6246,9 @@
       <script>scripts\insideSection.gml</script>
       <script>scripts\setSection.gml</script>
       <script>scripts\setScreenSize.gml</script>
+      <script>scripts\setFullscreen.gml</script>
       <script>scripts\reAndDeactivateObjects.gml</script>
+      <script>scripts\getPixelRatio.gml</script>
     </scripts>
     <scripts name="Levels">
       <script>scripts\goToLevel.gml</script>
@@ -6094,7 +6286,7 @@
     </scripts>
     <scripts name="Sound">
       <script>scripts\playSFX.gml</script>
-      <script>scripts\loopSFX.gml</script>
+      <script>scripts\playSFXExt.gml</script>
       <script>scripts\stopSFX.gml</script>
       <script>scripts\playMusic.gml</script>
       <script>scripts\stopMusic.gml</script>
@@ -6134,6 +6326,7 @@
         <script>scripts\GME_GetComment.gml</script>
         <script>scripts\GME_GetCopyright.gml</script>
       </scripts>
+      <script>scripts\gainSFX.gml</script>
     </scripts>
     <scripts name="Helpful Functions">
       <scripts name="Math">
@@ -6162,6 +6355,7 @@
         <script>scripts\inClosedRange.gml</script>
         <script>scripts\inOpenRange.gml</script>
         <script>scripts\rectangleIntersectionType.gml</script>
+        <script>scripts\powerOfTwo.gml</script>
       </scripts>
       <scripts name="Arrays">
         <script>scripts\arrayNearest.gml</script>
@@ -6196,6 +6390,7 @@
         <script>scripts\stringReverse.gml</script>
         <script>scripts\getTimeStamp.gml</script>
         <script>scripts\zeroPad.gml</script>
+        <script>scripts\roomGetNameFormatted.gml</script>
         <scripts name="XML">
           <script>scripts\xmlParseTag.gml</script>
           <script>scripts\xmlStringUnescape.gml</script>
@@ -6220,6 +6415,7 @@
     <scripts name="Misc.">
       <scripts name="Saving">
         <script>scripts\saveLoadOptions.gml</script>
+        <script>scripts\saveLoadAchievements.gml</script>
         <script>scripts\saveLoadGame.gml</script>
         <script>scripts\saveLoadHotbarHelper.gml</script>
         <script>scripts\slPlaintextBegin.gml</script>
@@ -6330,14 +6526,33 @@
       <script>scripts\cleanMem.gml</script>
       <script>scripts\queuePause.gml</script>
       <script>scripts\queueUnpause.gml</script>
+      <script>scripts\awardAchievement.gml</script>
+    </scripts>
+    <scripts name="Discord">
+      <script>scripts\discord_init_dll.gml</script>
     </scripts>
   </scripts>
+  <shaders name="shaders">
+    <shaders name="PaletteSwap">
+      <shader type="GLSLES">shaders\shdPaletteSpriteAndSwap.shader</shader>
+      <shader type="GLSLES">shaders\shdPaletteSprite.shader</shader>
+      <shader type="GLSLES">shaders\shdPaletteSwap.shader</shader>
+    </shaders>
+    <shader type="GLSLES">shaders\shdHSVShift.shader</shader>
+    <shader type="GLSLES">shaders\shdColorSubtract.shader</shader>
+    <shader type="GLSLES">shaders\shdColorSubtractStep.shader</shader>
+    <shader type="GLSLES">shaders\shdCRT.shader</shader>
+    <shader type="GLSLES">shaders\shdGreyscale.shader</shader>
+    <shader type="GLSLES">shaders\shdPaletteEnforcer.shader</shader>
+    <shader type="GLSLES">shaders\shdMonochromePaletteEnforcer.shader</shader>
+  </shaders>
   <objects name="objects">
     <objects name="Level Objects">
       <object>objects\objDefaultSpawn</object>
       <object>objects\objDestroyField</object>
       <object>objects\objCheckpoint</object>
       <object>objects\objCheckpointTouch</object>
+      <object>objects\objMinibossCheckpoint</object>
       <object>objects\objNPC</object>
       <object>objects\objNPCMobile</object>
       <object>objects\objSign</object>
@@ -6597,7 +6812,6 @@
         <object>objects\objCocco</object>
         <object>objects\objCorocoro</object>
         <object>objects\objCrystalJoe</object>
-        <object>objects\objDachone</object>
         <object>objects\objFoojeen</object>
         <object>objects\objGiree</object>
         <object>objects\objGravitron</object>
@@ -6888,20 +7102,24 @@
           <object>objects\objShieldAttackerTRLShield</object>
         </objects>
       </objects>
-      <objects name="GB I-IV">
-        <object>objects\objBubukanMkII</object>
+      <objects name="MMGBI">
         <object>objects\objCuttingWheel</object>
         <object>objects\objCuttingWheelChase</object>
         <object>objects\objCuttingWheelStationary</object>
         <object>objects\objDrillun</object>
-        <object>objects\objGunnerJoe</object>
+      </objects>
+      <objects name="MMGBIII">
+        <object>objects\objBubukanMkII</object>
         <object>objects\objPickelmanDada</object>
+      </objects>
+      <objects name="MMGBIV">
+        <object>objects\objGunnerJoe</object>
         <object>objects\objPressn</object>
         <objects name="Projectiles">
           <object>objects\objGunnerJoeMissile</object>
         </objects>
       </objects>
-      <objects name="GB V">
+      <objects name="MMGBV">
         <object>objects\objAlabell</object>
         <object>objects\objArmaroid</object>
         <object>objects\objBabyFlies</object>
@@ -6963,7 +7181,7 @@
           <object>objects\objSoshiBreakerDebris</object>
         </objects>
       </objects>
-      <objects name="CFTF">
+      <objects name="MM&amp;B2">
         <object>objects\objAceManbow</object>
         <object>objects\objButterdroid</object>
         <object>objects\objChuckmagnet</object>
@@ -7040,6 +7258,7 @@
         </objects>
       </objects>
       <objects name="MM5">
+        <object>objects\objDachone</object>
         <object>objects\objOctoboss</object>
         <object>objects\objOctoperOA</object>
         <objects name="Projectiles">
@@ -7135,13 +7354,13 @@
           <object>objects\objTricastlePlatform</object>
         </objects>
       </objects>
-      <objects name="MMIV">
+      <objects name="MMGBIV">
         <object>objects\objGiantMetCannon</object>
         <objects name="Projectiles">
           <object>objects\objGiantMetCannonShot</object>
         </objects>
       </objects>
-      <objects name="MMV">
+      <objects name="MMGBV">
         <object>objects\objGundrill</object>
         <object>objects\objHyoey</object>
         <object>objects\objTKhamen</object>
@@ -7436,6 +7655,7 @@
         <object>objects\objSwordMan</object>
         <object>objects\objFrostMan</object>
         <object>objects\objGrenadeMan</object>
+        <object>objects\objSuperBassBoss</object>
         <objects name="Projectiles">
           <object>objects\objSwordFire</object>
           <object>objects\objSwordStone</object>
@@ -7448,6 +7668,10 @@
           <object>objects\objGrenadeBlock</object>
           <object>objects\objGrenadeDebris</object>
           <object>objects\objGrenadeManGrenade</object>
+          <object>objects\objSuperBassBossBeam</object>
+          <object>objects\objSuperBassBossChargedShot</object>
+          <object>objects\objSuperBassBossMeteorShotMaker</object>
+          <object>objects\objSuperBassBossSuperChargedParticle</object>
         </objects>
         <objects name="Don't Use">
           <object>objects\objSwordHead</object>
@@ -7479,6 +7703,7 @@
         <object>objects\objHornetMan</object>
         <object>objects\objMagmaMan</object>
         <object>objects\objGalaxyMan</object>
+        <object>objects\objConcreteMan</object>
         <object>objects\objFakeMan</object>
         <object>objects\objMegaMechSharkHead</object>
         <object>objects\objMegaMechSharkBody</object>
@@ -7491,7 +7716,7 @@
           <object>objects\objPlug</object>
           <object>objects\objPlugShot</object>
           <object>objects\objJewelManSattelite</object>
-          <object>objects\objBeeChaser</object>
+          <object>objects\objBossHornetChaser</object>
           <object>objects\objBeeDropper</object>
           <object>objects\objHoneycombBomb</object>
           <object>objects\objHoneyPuddle</object>
@@ -7504,6 +7729,7 @@
           <object>objects\objMagmaStep6</object>
           <object>objects\objMagmaStep7</object>
           <object>objects\objGalaxyBH</object>
+          <object>objects\objConcreteManShot</object>
           <object>objects\objSharkSubmarineMissile</object>
           <object>objects\objSharkSubmarineDolphin</object>
           <object>objects\objSharkSubmarineLaser</object>
@@ -7524,6 +7750,7 @@
         <object>objects\objStrikeMan</object>
         <object>objects\objNitroMan</object>
         <object>objects\objSolarMan</object>
+        <object>objects\objBladeMan10</object>
         <objects name="Projectiles">
           <object>objects\objCommandoBomb</object>
           <object>objects\objCommandoBombExplosion</object>
@@ -7547,6 +7774,7 @@
         <object>objects\objWilyMachineGBIA</object>
         <object>objects\objWilyMachineGBIB</object>
         <objects name="Projectiles">
+          <object>objects\objFlashmanTimeStopGB</object>
           <object>objects\objEnkerShot</object>
           <object>objects\objWilyMachineGBIHurtbox</object>
           <object>objects\objWilyMachineGBIBeamGun</object>
@@ -7603,6 +7831,7 @@
         <object>objects\objBusterRodG</object>
         <object>objects\objMegaWaterS</object>
         <object>objects\objHyperStormH</object>
+        <object>objects\objFireSnakey</object>
         <object>objects\objIronBall</object>
         <objects name="Projectiles">
           <object>objects\objBusterRodGRod</object>
@@ -7611,6 +7840,7 @@
           <object>objects\objMegaWaterSStream</object>
           <object>objects\objHyperStormHDust</object>
           <object>objects\objHyperStormHMet</object>
+          <object>objects\objFireSnakeySegment</object>
         </objects>
       </objects>
       <objects name="MM&amp;B">
@@ -7926,6 +8156,13 @@
         <object>objects\objMM8Switch</object>
         <object>objects\objTenguWind</object>
         <object>objects\objTenguWindSpeedTrigger</object>
+        <object>objects\objHugeBlock</object>
+        <object>objects\objHugeBlockFall</object>
+        <object>objects\objSwingingHammer</object>
+        <object>objects\objCountBombNEO</object>
+        <object>objects\objBlastBlock</object>
+        <object>objects\objBlastBlockBlue</object>
+        <object>objects\objTNTBlock</object>
         <objects name="Don't Use">
           <object>objects\objSkullElevatorMask</object>
           <object>objects\objTenguLeaf</object>
@@ -8028,6 +8265,10 @@
           <object>objects\objVenusWaterfallSegment</object>
           <object>objects\objVenusWaterfallEnd</object>
         </objects>
+      </objects>
+      <objects name="MMWW">
+        <object>objects\objMMWTFallingPlatform</object>
+        <object>objects\objSpringboard</object>
       </objects>
       <objects name="MM&amp;B">
         <object>objects\objAstroWall</object>
@@ -8229,6 +8470,7 @@
             <object>objects\objReboundStriker</object>
             <object>objects\objWheelCutter</object>
             <object>objects\objSolarBlaze</object>
+            <object>objects\objMirrorBuster</object>
             <objects name="Don't Use">
               <object>objects\objBubblePopEffect</object>
               <object>objects\objChillSpikeLanded</object>
@@ -8245,13 +8487,25 @@
             </objects>
           </objects>
           <objects name="MMGBI">
-            <object>objects\objMirrorBuster</object>
+            <object>objects\objRollingCutterGB</object>
+            <object>objects\objIceSlasherGB</object>
+            <object>objects\objFireStormGB</object>
+            <object>objects\objThunderBeamGB</object>
+            <object>objects\objBubbleLeadGB</object>
+            <object>objects\objQuickBoomerangGB</object>
+            <object>objects\objTimeStopperGB</object>
+            <object>objects\objAtomicFireGB</object>
+            <object>objects\objMirrorBusterGB</object>
           </objects>
           <objects name="MMGBII">
             <object>objects\objSakugarne</object>
           </objects>
           <objects name="MMGBIII">
+            <object>objects\objSparkShockGB</object>
             <object>objects\objScrewCrusher</object>
+            <objects name="Don't Use">
+              <object>objects\objSparkShockParalyzeGB</object>
+            </objects>
           </objects>
           <objects name="MMGBIV">
             <object>objects\objBalladeCracker</object>
@@ -8260,10 +8514,12 @@
             <object>objects\objSparkChaser</object>
             <object>objects\objGrabBuster</object>
             <object>objects\objBubbleBomb</object>
+            <object>objects\objBlackHole</object>
             <object>objects\objBreakDash</object>
             <object>objects\objSaltWater</object>
             <objects name="Don't Use">
               <object>objects\objGrabBusterPickup</object>
+              <object>objects\objBlackHoleVictim</object>
             </objects>
           </objects>
           <objects name="MM&amp;B">
@@ -8308,24 +8564,27 @@
             </objects>
           </objects>
           <objects name="Other">
-            <object>objects\objBeat</object>
             <object>objects\objMagneticShockwave</object>
             <object>objects\objCentaurArrow</object>
             <object>objects\objSkeletuppinPakkajoe</object>
+            <object>objects\objBeat</object>
           </objects>
-          <objects name="Utilities">
+          <objects name="Non-Rush Utilities">
             <object>objects\objMagnetBeam</object>
             <object>objects\objItem1</object>
             <object>objects\objItem2</object>
             <object>objects\objItem3</object>
+            <object>objects\objWireAdapter</object>
+            <object>objects\objSuperArrow</object>
+            <object>objects\objCarry</object>
+          </objects>
+          <objects name="Rush Utilities">
             <object>objects\objRushCoil</object>
             <object>objects\objMM3RushJet</object>
             <object>objects\objRushJet</object>
-            <object>objects\objWireAdapter</object>
-            <object>objects\objSuperArrow</object>
+            <object>objects\objRushMarine</object>
             <object>objects\objRushCycle</object>
             <object>objects\objTrebleBoost</object>
-            <object>objects\objCarry</object>
           </objects>
           <objects name="Don't Use">
             <object>objects\objNormalBusterShot</object>
@@ -8374,12 +8633,22 @@
         <object>objects\objWeaponGet</object>
         <object>objects\objShopControl</object>
         <object>objects\objGameOver</object>
+        <object>objects\objWeaponWheel</object>
         <object>objects\objCredits</object>
         <objects name="WilyCastle">
           <object>objects\objWilyCastle</object>
           <object>objects\objWilyCastleDot</object>
           <object>objects\objWilyCastleStart</object>
           <object>objects\objWilyCastleArrow</object>
+        </objects>
+      </objects>
+      <objects name="Cutscenes">
+        <object>objects\objPlayerCutsceneController</object>
+        <objects name="Common">
+          <objects name="Stage End">
+            <object>objects\objEndStageCutscene</object>
+            <object>objects\objBossAbsorb</object>
+          </objects>
         </objects>
       </objects>
       <objects name="Effects">
@@ -8390,8 +8659,10 @@
         <object>objects\objAirBubble</object>
         <object>objects\objTrailEffect</object>
         <object>objects\objDamagePopup</object>
-        <object>objects\objBigExplosion</object>
         <object>objects\objDialogueBox</object>
+        <object>objects\objBigExplosion</object>
+        <object>objects\objAchievementGetPopup</object>
+        <object>objects\objAchievementsGallery</object>
       </objects>
     </objects>
   </objects>
@@ -8429,8 +8700,9 @@
       <room>rooms\lvlGrenadeManTest</room>
       <room>rooms\lvlMagmaManTest</room>
       <room>rooms\lvlPlusTest</room>
-      <room>rooms\lvlCopyRobotTest</room>
       <room>rooms\lvlDocTest</room>
+      <room>rooms\lvlWaterAndWaterAndWaterWater</room>
+      <room>rooms\lvlCopyTest2</room>
     </rooms>
     <rooms name="Classic Mega Man Example Stages">
       <room>rooms\lvlCutMan</room>

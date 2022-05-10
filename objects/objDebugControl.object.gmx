@@ -50,6 +50,13 @@ names = 0
 scroll = 0
 amounts = 0
 ids = -1;
+
+// stage info
+elementName = "";
+elementScript = scrNoEffect;
+elementCode = "";
+bossCheckpointX = -1;
+bossCheckpointY = -1;
 </string>
           </argument>
         </arguments>
@@ -106,7 +113,7 @@ for (var i = 0; i &lt; CONSOLE_MAX &amp;&amp; i &lt; global.consoleN; i++)
             <string>// Debug keys
 
 // Reset game
-if (keyboard_check_pressed(vk_f2))
+if (keyboard_check_pressed(vk_f1))
 {
     audio_stop_all();
     stopMusic();
@@ -114,39 +121,33 @@ if (keyboard_check_pressed(vk_f2))
 }
 
 // Change screen size
-if (keyboard_check_pressed(vk_f3))
+if (!window_get_fullscreen()) // don't change if you can't see it
 {
-    var pre = global.screensize;
-    
-    setScreenSize(global.screensize + 1);
-    
-    if (global.screensize == pre)
+    if (keyboard_check_pressed(vk_f2))
     {
-        setScreenSize(1);
+        var pre = global.screenSize;
+        setScreenSize(global.screenSize - 1);
+        if (global.screenSize == pre)
+        {
+            setScreenSize(floor(display_get_width() / global.screenWidth));
+        }
+    }
+    
+    if (keyboard_check_pressed(vk_f3))
+    {
+        var pre = global.screenSize;
+        setScreenSize(global.screenSize + 1);
+        if (global.screenSize == pre)
+        {
+            setScreenSize(1);
+        }
     }
 }
 
 // Toggle fullscreen
 if (keyboard_check_pressed(vk_f4))
 {
-    if (window_get_fullscreen())
-    {
-        setScreenSize(global.screensize);
-    }
-    else
-    {
-        setScreenSize(9999); // definitely going to set it to fullscreen   :P
-    }
-}
-
-// Screenshot
-if (keyboard_check_pressed(vk_f9))
-{
-    while (file_exists(working_directory + "\screenshots\screenshot" + string(screenshotNum) + ".png"))
-        screenshotNum += 1;
-    screen_save(working_directory + "\screenshots\screenshot" + string(screenshotNum) + ".png");
-    print("SCREENSHOT SAVED", WL_SHOW, c_orange);
-    playSFX(sfxKeyGet);
+    setFullscreen(!window_get_fullscreen());
 }
 
 // Quit
@@ -218,50 +219,52 @@ case 1: // exit instances screen
 
 switch (enteringScreen)
 {
-case 1: // open instances screen
-    ids = ds_list_create();
-    names = ds_map_create();
-    amounts = ds_map_create();
-    
-    ds_list_clear(ids);
-    ds_map_clear(names);
-    ds_map_clear(amounts);
-    
-    var index;
-    
-    with (all)
-    {
-        index = string(object_index);
+    case 1: // open instances screen
+        ids = ds_list_create();
+        names = ds_map_create();
+        amounts = ds_map_create();
         
-        with (other)
+        ds_list_clear(ids);
+        ds_map_clear(names);
+        ds_map_clear(amounts);
+        
+        var index;
+        
+        with (all)
         {
-            if (!ds_map_exists(names, index)) // Check if object_index is not in the list
+            index = string(object_index);
+            
+            with (other)
             {
-                ds_list_add(ids, index); // Add the id
-                ds_map_add(names, index, string_delete(object_get_name(real(index)), 1, 3)); // Add the name
-                ds_map_add(amounts, index, 1); // Add to amount list
-            }
-            else
-            {
-                ds_map_replace(amounts, index, ds_map_find_value(amounts, index) + 1);
+                if (!ds_map_exists(names, index)) // Check if object_index is not in the list
+                {
+                    ds_list_add(ids, index); // Add the id
+                    ds_map_add(names, index, string_delete(object_get_name(real(index)), 1, 3)); // Add the name
+                    ds_map_add(amounts, index, 1); // Add to amount list
+                }
+                else
+                {
+                    ds_map_replace(amounts, index, ds_map_find_value(amounts, index) + 1);
+                }
             }
         }
-    }
-    
-    limit = min(25, ds_list_size(ids));
-    scroll = 0;
-    break
+        
+        limit = min(25, ds_list_size(ids));
+        scroll = 0;
+        
+        break;
 }
 
 switch (infoScreen)
 {
-case 1:
-    scroll += global.keyDownPressed[0] - global.keyUpPressed[0];
-    scroll = min(max(0, scroll), ds_list_size(ids) - limit);
-    break
-case 2:
-    scroll += (global.keyDown[0] - global.keyUp[0]) * 3;
-    scroll = max(0, scroll)
+    case 1:
+        scroll += global.keyDownPressed[0] - global.keyUpPressed[0];
+        scroll = min(max(0, scroll), ds_list_size(ids) - limit);
+        break;
+    case 2:
+        scroll += (global.keyDown[0] - global.keyUp[0]) * 3;
+        scroll = max(0, scroll);
+        break;
 }
 
 ///////////////////////////////////////////////////////////
@@ -276,6 +279,79 @@ if (global.alwaysHealth)
     {
         global.playerHealth[playerID] = 28;
     }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>// grab stage info
+if (instance_exists(prtBoss) || instance_exists(objEnergyElement))
+{
+    var ender = instance_find(prtBoss, 0);
+    if (instance_exists(ender))
+    {
+        elementName = ender.elementName;
+        elementCode = ender.elementCode;
+        elementScript = ender.elementScript;
+    }
+    else
+    {
+        ender = instance_find(objEnergyElement, 0);
+        elementName = ender.name;
+        elementCode = ender.code;
+        elementScript = ender.script;
+    }
+    
+    check = instance_nearest(ender.x, ender.y, objCheckpoint);
+    checkTouch = instance_nearest(ender.x, ender.y, objCheckpointTouch);
+    
+    if (instance_exists(checkTouch))
+    {
+        if (instance_exists(check))
+        {
+            if (point_distance(ender.x, ender.y, checkTouch.x, checkTouch.y) 
+                &lt; point_distance(ender.x, ender.y, ender.x, ender.y))
+            {
+                check = checkTouch;
+            }
+        }
+        else
+        {
+            check = checkTouch;
+        }
+    }
+    
+    if (instance_exists(check))
+    {
+        bossCheckpointX = check.xx;
+        bossCheckpointY = check.yy;
+    }
+}
+else
+{
+    elementName = "";
+    elementCode = "";
+    elementScript = scrNoEffect;
+    bossTeleportX = -1;
+    bossTeleportY = -1;
 }
 </string>
           </argument>

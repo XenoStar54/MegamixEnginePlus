@@ -196,7 +196,7 @@ if (!global.frozen)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>weaponSetup("THUNDER BEAM", make_color_rgb(120, 120, 120), make_color_rgb(255, 222, 132), sprWeaponIconsThunderBeam);
+            <string>weaponSetup("THUNDER BEAM", global.nesPalette[0], global.nesPalette[47], sprWeaponIconsThunderBeam);
 </string>
           </argument>
         </arguments>

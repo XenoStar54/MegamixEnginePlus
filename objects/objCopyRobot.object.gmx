@@ -172,6 +172,10 @@ currentWeapon = 0;
 
 copyAnimCounter = 0;
 //shootWaitTimer = 0;//Needed as the player will be firing the same weapon.
+
+shootType = 0;
+
+copyBotCharge = 0;
 </string>
           </argument>
         </arguments>
@@ -259,6 +263,8 @@ if (entityCanStep())
                 // ok gotta start caring for being on the ground
                 var nextPoint = realNextVantagePoint;
                 if(nextPoint &gt; 2) nextPoint = 1;
+                
+                
                 if(abs(x - pointPos[nextPoint]) &lt; abs(xSpeedStore))
                 {
                     // shoot
@@ -297,12 +303,12 @@ if (entityCanStep())
                     {
                         if(abs(x - pointPos[0]) &lt; abs(x - pointPos[2]))
                         {
-                            pointPos[0] = x;
+                            //pointPos[0] = x;
                             dir = 1;
                         }
                         else
                         {
-                            pointPos[2] = x;
+                            //pointPos[2] = x;
                             dir = -1;
                         }
                         timer = 0;
@@ -370,11 +376,14 @@ if (entityCanStep())
                     }
                     bulletLimitCost *= -1;//We'll switch all these back at the end.
                 }
-                lockHold = isLocked(PL_LOCK_SHOOT);
                 
-                if (lockHold)
+                var keepStandStill = shootStandStillLock == true;//Need this here.
+                
+                lockHold = shootStandStillLock == true;//isLocked(PL_LOCK_SHOOT);
+                
+                if (lockHold)//If the player is currently shooting, release sssl.
                 {
-                    lockPoolRelease(PL_LOCK_SHOOT);
+                    shootStandStillLock = lockPoolRelease(PL_LOCK_SHOOT);
                 }
             
                 var tempPress = global.keyShootPressed[playerID];
@@ -385,28 +394,55 @@ if (entityCanStep())
                 var tXS = image_xscale;
                 var tYS = image_yscale;
                 
-                x = other.x;
-                y = other.y;
-                image_xscale = other.image_xscale;
-                image_yscale = other.image_yscale;
+                
                 
                 var tAmmo = global.ammo[0, global.weapon[0]];
                 global.ammo[0,global.weapon[0]] = 255;
                 var tShootTimer = shootTimer;
                 var tIsShoot = isShoot;
-                var keepStandStill = isLocked(shootStandStillLock);
+                
                 var tXspeed = xspeed;
                 
                 var tGround = ground;
                 var tClimbing = climbing;
                 var tVehicle = vehicle;
+                var tCharge = chargeTimer;
+                var tXDir = xDir;
+                var tYDir = yDir;
+                
                 
                 //var tPID = playerID;
                 //playerID = other.multiplayerMax;//In the event that multiplayer goes beyond 8 players, change this to the max.
-                
+                xDir = other.image_xscale;
+                if (!other.ground || ground)
+                {
+                    yDir = 0;
+                }
+                else if (distance_to_point(other.x,y) &lt; 48)
+                {
+                    if (distance_to_point(other.x,y) &lt; 8)
+                    {
+                        xDir = 0;
+                    }
+                    if (y &gt; other.y)
+                    {
+                        yDir = 1;
+                    }
+                    else
+                    {
+                        yDir = -1;
+                    }
+                }
+                x = other.x;
+                y = other.y;
+                image_xscale = other.image_xscale;
+                image_yscale = other.image_yscale;
                 ground = other.ground;
                 climbing = false;
                 vehicle = noone;
+                chargeTimer = 0;
+                
+                
                 
                 //var weapon = indexOf(global.weaponID,);
                 var bossWeapon = false;//Use for when you're using a non-player weapon as your firing instance.
@@ -430,9 +466,47 @@ if (entityCanStep())
                     */
                     switch (wep)
                     {
+                        case objLeafShield:
+                        case objJewelSatellite:
+                            with (wep)
+                            {
+                                if (faction == 3 &amp;&amp; (object_index == objLeafShield &amp;&amp; isShield) || (object_index == objJewelSatellite &amp;&amp; followPlayer))// &amp;&amp; xspeed == yspeed)
+                                {
+                                    printErr("STOP");
+                                    var xD = parent.xDir;
+                                    if (xD == 0)
+                                    {
+                                        xD = parent.image_xscale;
+                                    }
+                                    xspeed = xD*4;
+                                    if (xspeed == 0 &amp;&amp; wep == objLeafShield)
+                                    {
+                                        yspeed = parent.yDir*4;
+                                    }
+                                    if (wep == objJewelSatellite)
+                                    {
+                                        xspeed *= 3/4;
+                                        yspeed *= 3/4;
+                                    }
+                                    isShield = false;
+                                    followPlayer = false;
+                                    parent = noone;
+                                    //event_perform(ev_step,ev_step_normal);
+                                    wep = -1;
+                                }
+                            }
+                            
+                                
+                            
+                        break;
+                        
+                    }
+                    switch (wep)
+                    {
                         case objRushCoil:
                         case objRushJet:
                         case objRushCycle:
+                        case objTrebleBoost:
                         //case objSuperArm:
                         
                         case objSlashClaw://Self-calls locks to the parent, which isn't megaman here.
@@ -441,6 +515,8 @@ if (entityCanStep())
                         case objTenguBlade://See Slash Claw.
                         case objTopSpin://See Slash Claw.
                         case objWaterShield://Can be workable, but will need a modified variant.
+                        case objOilSlider:
+                        case objHardKnuckle:
                             wep = objBusterShot;
                         break;
                         case objPharaohShot://Needs some fixes.
@@ -494,6 +570,18 @@ if (entityCanStep())
                         case objCentaurFlash:
                             tXspeed = 0;//Cancel out the speed return we'll get from the revert.
                         break;
+                        /*case objGravityHold:
+                            bossWeapon = true;
+                            wep = 
+                        break;*/
+                        case objLeafShield:
+                        //case objJewelSatellite:Will need some kind of special case.
+                        case objSkullBarrier:
+                        case objPlantBarrier:
+                        case objStarCrash:
+                            bossWeapon = true;
+                        break;
+                        
                        
                     }
                     if (wep &gt;= 0)
@@ -501,6 +589,7 @@ if (entityCanStep())
                         if (!bossWeapon)
                         { 
                              event_perform_object(wep,ev_other,ev_user14);
+                             other.shootType = isShoot;
                         }
                         else
                         {
@@ -523,6 +612,9 @@ if (entityCanStep())
                 ground = tGround;
                 climbing = tClimbing;
                 vehicle = tVehicle;
+                chargeTimer = tCharge;
+                xDir = tXDir;
+                yDir = tYDir;
                 //playerID = tPID;
                 
                 if (!keepStandStill)//Lock pool releases it before relocking it in firing script.
@@ -643,6 +735,16 @@ if (entityCanStep())
         if((!instance_exists(myProjectile) || myProjectile.dead) &amp;&amp; myProjectile != noone)
         {
             myProjectile = noone;
+        }
+        var isBarrier = (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,objGenericStopper,true,true));
+        if (isBarrier)
+        {
+            if (sign(dir) != sign(isBarrier.image_xscale) || (!ground &amp;&amp; sign(xspeed) != sign(isBarrier.image_xscale)))
+            {
+                xspeed = 0;
+                realNextVantagePoint = (realNextVantagePoint+1)%3
+                dir *= -1;
+            }
         }
     }
     if (projectileTimer &gt; 0)
@@ -851,7 +953,7 @@ if (!dead)
                 break;
                 case 6://Fire
                 case 7:
-                    sY = 1;
+                    sY = shootType;
                 break;
                 case 8://Damage.
                     sX = 13;

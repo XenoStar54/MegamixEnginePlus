@@ -489,19 +489,19 @@ else
             <kind>1</kind>
             <string>/// draw code
 
-draw_sprite_ext(sprite_index, 1, round(x), round(y), image_xscale, image_yscale, image_angle, image_blend, image_alpha);
-draw_sprite_ext(sprite_index, 2 + animTimerTreads div 5, round(x), round(y), image_xscale, image_yscale, image_angle, image_blend, image_alpha);
+draw_sprite_ext(sprite_index, 1, x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
+draw_sprite_ext(sprite_index, 2 + animTimerTreads div 5, x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
 if (animTimerMouth &gt; 0)
-    draw_sprite_ext(sprite_index, 5, round(x), round(y), image_xscale, image_yscale, image_angle, image_blend, image_alpha);
+    draw_sprite_ext(sprite_index, 5, x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
 else
-    draw_sprite_ext(sprite_index, 4, round(x), round(y), image_xscale, image_yscale, image_angle, image_blend, image_alpha);
+    draw_sprite_ext(sprite_index, 4, x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
 
 if ((floor(shootTimer / 8) mod 2) == 0)
 {
-    draw_sprite_ext(sprite_index, 6, round(x), round(y), image_xscale, image_yscale, image_angle, image_blend, image_alpha);
+    draw_sprite_ext(sprite_index, 6, x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
 }
 if (instance_exists(child))
-    draw_sprite_ext(sprGutsDozerHand, 0, round(x - 58 * image_xscale), round(y - 16 - child.yOffset), image_xscale, image_yscale, image_angle, image_blend, image_alpha);
+    draw_sprite_ext(sprGutsDozerHand, 0, x - 58 * image_xscale, y - 16 - child.yOffset, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
 </string>
           </argument>
         </arguments>
@@ -541,7 +541,7 @@ if (instance_exists(child))
                 event_user(2);
                 if (instance_exists(child))
                 {
-                    draw_sprite_ext(sprGutsDozerHand, 1, round(x - 58 * image_xscale), round(y - 16 - child.yOffset), image_xscale, image_yscale, image_angle, image_blend, image_alpha);
+                    draw_sprite_ext(sprGutsDozerHand, 1, x - 58 * image_xscale, y - 16 - child.yOffset, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
                 }
                 sprite_index = sprGutsDozer;
                 //d3d_set_fog(false, 0, 0, 0);
@@ -555,7 +555,7 @@ if (instance_exists(child))
                 event_user(2);
                 if (instance_exists(child))
                 {
-                    draw_sprite_ext(sprGutsDozerHand, 1, round(x - 58 * image_xscale), round(y - 16 - child.yOffset), image_xscale, image_yscale, image_angle, image_blend, image_alpha);
+                    draw_sprite_ext(sprGutsDozerHand, 1, x - 58 * image_xscale, y - 16 - child.yOffset, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
                 }
                 d3d_set_fog(false, 0, 0, 0);
             }

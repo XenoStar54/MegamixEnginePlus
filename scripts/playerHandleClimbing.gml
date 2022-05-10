@@ -7,7 +7,7 @@ var ladderDown = instance_position(spriteGetXCenter(), ((bbox_top * (gravDir < 0
 
 if (!playerIsLocked(PL_LOCK_CLIMB))
 {
-    if (((instance_exists(ladder) && gravDir == -yDir)
+    if (((instance_exists(ladder) && gravDir == -yDir && jumpLadderCooldown <= 0)
         || (instance_exists(ladderDown) && !instance_exists(ladderUp) && gravDir == yDir && ground))
         && !climbing)
     {
@@ -26,20 +26,26 @@ if (!playerIsLocked(PL_LOCK_CLIMB))
         
         climbing = true;
         
+        // implemented support for wide ladders
         if (instance_exists(ladder))
         {
-            shiftObject((ladder.x + 8) - x, 0, true);
-            if (x != ladder.x + 8)
+            var ladderWidthHalf = abs(ladder.bbox_right-ladder.bbox_left)/2;
+            shiftObject((ladder.x + ladderWidthHalf) - x, 0, true);
+            if (x != ladder.x + ladderWidthHalf)
             {
                 climbing = false;
             }
         }
         else
         {
-            // this could potentially cause us to phase into a solid
-            // if one overlapped the ladder. :/
-            x = ladderDown.x + 8;
+            var ladderWidthHalf = abs(ladderDown.bbox_right-ladderDown.bbox_left)/2;
+            // unfortunately this might still clip into a potential solid overlapping a laddertop
+            shiftObject(ladderDown.x + ladderWidthHalf - x, 0, true);
             y += climbSpeed * gravDir;
+            if (x != ladderDown.x + ladderWidthHalf)
+            {
+                climbing = false;
+            }
         }
         
         if (climbing)
@@ -52,10 +58,7 @@ if (!playerIsLocked(PL_LOCK_CLIMB))
             climbLock.debugInfo += "<playerHandleClimbing"
             
             ground = false;
-            if jumpCounter == 0
-            {
-                jumpCounter += 1;
-            }
+            jumpCounter = 0;
             yspeed = 0;
             ladderXScale = image_xscale;
             climbShootXscale = ladderXScale;
@@ -107,7 +110,7 @@ if (!playerIsLocked(PL_LOCK_CLIMB))
         }
         
         // Releasing the ladder
-        var jump = global.keyJumpPressed[playerID] && yDir != -gravDir && !playerIsLocked(PL_LOCK_CLIMB);
+        var jump = global.keyJumpPressed[playerID] && ((yDir != -gravDir && !jumpUpLadders) || (jumpUpLadders)) && !playerIsLocked(PL_LOCK_CLIMB);
         if ((ground && yDir == gravDir) || !place_meeting(bbox_left, y, objLadder) || !place_meeting(bbox_right, y, objLadder) || jump)
         {
             var climbedUp=false;
@@ -124,6 +127,7 @@ if (!playerIsLocked(PL_LOCK_CLIMB))
             climbing = false;
             yspeed = 0;
             isSlide = false;
+            jumpCounter = !jumpUpLadders;
             climbLock = lockPoolRelease(climbLock);
             shootStandStillLock = lockPoolRelease(shootStandStillLock);
             image_xscale = ladderXScale;
@@ -132,6 +136,23 @@ if (!playerIsLocked(PL_LOCK_CLIMB))
                 yspeed = gravDir*climbSpeed;
                 event_inherited();
             }
+            else
+            {
+                if(jump && jumpUpLadders && yDir != gravDir)
+                {
+                    playerJump();
+                    jumpLadderCooldown = jumpLadderCooldownMax;
+                }
+            }
         }
+    }
+}
+
+if(!climbing)
+{
+    if(jumpLadderCooldown > 0)
+    {
+        jumpLadderCooldown--;
+        if(sign(yspeed) != -gravDir || !instance_exists(ladder)) jumpLadderCooldown = 0;
     }
 }

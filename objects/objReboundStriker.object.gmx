@@ -339,7 +339,7 @@ grav = 0;
             <kind>1</kind>
             <string>if (!dead){
 
-    draw_sprite(sprite_index, image_index, round(x), round(y));
+    draw_sprite(sprite_index, image_index, x, y);
 
 }
 </string>

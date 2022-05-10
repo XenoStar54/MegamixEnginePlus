@@ -228,7 +228,6 @@ if (!global.frozen)
                         {
                             x = other.playerX;
                             y = other.playerY;
-                            show_debug_message("y: " + string(y));
                         }
                         
                         // move
@@ -501,11 +500,11 @@ with (objBeat)
 
 canSpawn = (!instance_exists(beat) || convertBeat) &amp;&amp; global.ammo[playerID, global.weapon[playerID]] &gt; 0;
 
-if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT))
+if (canSpawn)
 {
-    if (canSpawn)
+    // spawn beat
+    if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT))
     {
-        // spawn beat
         if (!convertBeat)
         {
             i = fireWeapon(0, (view_yview[0] - 8) - y, objBeat, 1, 0, 0, 0);
@@ -516,16 +515,10 @@ if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT))
             playSFX(sfxBeat);
         }
     }
-    else
-    {
-        // normal firing
-        var i = fireWeapon(20, 0, objBusterShot, 4, 0, 1, 0);
-        if (i)
-        {
-            i.xspeed = image_xscale * 5; // zoom
-        }
-    }
 }
+
+// normal firing
+scrBusterControl(false, true, !canSpawn);
 </string>
           </argument>
         </arguments>

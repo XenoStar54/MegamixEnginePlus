@@ -137,7 +137,7 @@ if (!global.frozen &amp;&amp; !dead &amp;&amp; !global.timeStopped)
           <argument>
             <kind>1</kind>
             <string>var ys = y;
-y = round(min(ystart, y));
+y = min(ystart, y);
 
 event_inherited();
 

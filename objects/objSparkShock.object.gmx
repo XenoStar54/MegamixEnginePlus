@@ -135,7 +135,7 @@ if (global.damage == -1)
     }
 }
 
-if(global.damage == 0)
+if (global.damage == 0)
 {
     with (other)
     {

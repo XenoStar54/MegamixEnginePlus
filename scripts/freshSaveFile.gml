@@ -40,3 +40,6 @@ for (var j = 0; j <= global.totalWeapons; j++)
     global.weaponLocked[j] = false;
     global.weaponHotbar[j] = j;
 }
+
+// for achievements
+global.achievementTrackerSave = makeArray(0);

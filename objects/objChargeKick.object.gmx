@@ -219,17 +219,16 @@ else if (global.switchingSections)
             <string>var chargeTime = 40; // Set charge time for this weapon
 var initChargeTime = 20;
 
-// Shooting buster shots if not charged.
-if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT) &amp;&amp; !instance_exists(objChargeKicking))
+var _canSpawn = true;
+with (objChargeKick)
 {
-    i = fireWeapon(20, 0, objNormalBusterShot, 3, 0, 1, 0);
-    if (i)
+    if (playerID == other.playerID)
     {
-        i.xspeed = image_xscale * 5; // zoom
+        _canSpawn = false;
     }
 }
 
-if (global.ammo[playerID, global.weapon[playerID]] &gt; 0)
+if (_canSpawn &amp;&amp; global.ammo[playerID, global.weapon[playerID]] &gt; 0)
 {
     if (isSlide &amp;&amp; notDashing)
     {
@@ -248,6 +247,9 @@ if (global.ammo[playerID, global.weapon[playerID]] &gt; 0)
         notDashing = true;
     }
 }
+
+// normal firing
+scrBusterControl(false, true, _canSpawn);
 </string>
           </argument>
         </arguments>

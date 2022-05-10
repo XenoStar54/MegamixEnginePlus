@@ -53,6 +53,7 @@ healthBarSecondaryColor[1] = global.nesPalette[40]; // white
 music = "Mega_Man_9.nsf";
 musicType = "VGM";
 musicTrackNumber = 16;
+musicVolume = 1.4;
 
 // Damage Table
 enemyDamageValue(objBusterShot, 1);

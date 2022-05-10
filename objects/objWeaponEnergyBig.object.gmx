@@ -32,7 +32,7 @@ image_speed = 1 / 6;
 
 hlth = 10;
 
-respawnupondeath = 1;
+respawnWhenCollected = 1;
 </string>
           </argument>
         </arguments>
@@ -115,7 +115,7 @@ if (e &lt; 28)
         increaseWeapon = iw;
         increasePID = pid;
     }
-    loopSFX(sfxEnergyRestore);
+    playSFX(sfxEnergyRestore, true);
 }
 </string>
           </argument>

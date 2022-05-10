@@ -125,29 +125,31 @@ if (entityCanStep()){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT)){
+            <string>var _canSpawn = global.ammo[playerID, global.weapon[playerID]] &gt; 0;
+with (objCopyVision)
+{
+    if (playerID == other.playerID)
+    {
+        _canSpawn = false;
+    }
+}
 
-    if (!instance_exists(objCopyVision)){
-        
+if (_canSpawn)
+{
+    if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT))
+    {
         var c = fireWeapon(24, -4, objCopyVision, 1, 4, 1, 0);
-        if (c){
+        if (c)
+        {
             playSFX(sfxBuster);
             c.image_xscale = image_xscale;
             c.image_yscale = image_yscale;
         }
-    
     }
-    else{
-    
-        var i = fireWeapon(16, 0, objNormalBusterShot, 3, 0, 1, 0);
-        if (i)
-        {
-            i.xspeed = image_xscale * 5; // zoom
-        }
-    
-    }
-
 }
+
+// normal firing
+scrBusterControl(false, true, !_canSpawn);
 </string>
           </argument>
         </arguments>
@@ -195,7 +197,7 @@ if (entityCanStep()){
             <kind>1</kind>
             <string>if (!dead &amp;&amp; instance_exists(parent))
 {
-    drawCostume(parent.costumeID + 1, sx, sy, round(x), round(y), image_xscale, image_yscale, 
+    drawCostume(parent.costumeID + 1, sx, sy, x, y, image_xscale, image_yscale, 
     c_white, global.weaponPrimaryColor[global.weaponID[? objCopyVision]], global.weaponSecondaryColor[global.weaponID[? objCopyVision]],
     global.nesPalette[9]);
 

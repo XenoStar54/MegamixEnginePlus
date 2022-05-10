@@ -47,7 +47,7 @@ if global.difficulty &lt; DIFF_NORMAL
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
   </backgrounds>
   <views>
-    <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
+    <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="256" hview="224" xport="0" yport="0" wport="256" hport="224" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
@@ -103,7 +103,7 @@ if global.difficulty &lt; DIFF_NORMAL
     <instance objName="objLiftRail" x="32" y="320" name="inst_1A6F47AC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objLiftHole" x="48" y="320" name="inst_8492AB06" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objLiftRail" x="64" y="336" name="inst_0552C0C6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="objGutsMan" x="3776" y="1136" name="inst_21DADED4" locked="0" code="music = &quot;Mega_Man_1.nsf&quot;;&#xA;musicType = &quot;VGM&quot;;&#xA;musicTrackNumber = 8;&#xA;introType = 2;&#xA;&#xA;elementName = &quot;guts&quot;;&#xA;elementCode = &quot;weaponReward(objSuperArm); weaponReward(objRushJet);&quot;;&#xA;&#xA;isHard = global.difficulty == DIFF_HARD;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objGutsMan" x="3776" y="1136" name="inst_21DADED4" locked="0" code="music = &quot;Mega_Man_1.nsf&quot;;&#xA;musicType = &quot;VGM&quot;;&#xA;musicTrackNumber = 8;&#xA;introType = 2;&#xA;&#xA;elementName = &quot;guts&quot;;&#xA;elementCode = &quot;weaponReward(objRushJet); weaponReward(objSuperArm);&quot;;&#xA;&#xA;isHard = global.difficulty == DIFF_HARD;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBGColourChanger" x="2832" y="976" name="inst_A2F819A8" locked="0" code="colour = global.nesPalette[54];&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSpike" x="96" y="256" name="inst_D4421D7C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objLadder" x="96" y="272" name="inst_21BA351F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

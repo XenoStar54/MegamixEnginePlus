@@ -36,8 +36,8 @@ respawnAnimation = 0;
 //@cc play the animation sequence while ready's being displayed
 showDuringReady = false;
 
-xx = 0;
-yy = 0;
+xx = x;
+yy = y;
 </string>
           </argument>
         </arguments>

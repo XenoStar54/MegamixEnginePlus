@@ -167,7 +167,7 @@ if (introTimer &lt;= 0)
     if (killed)
         eyeIndex = 2;
     draw_sprite_ext(sprMegaMechSharkEye, eyeIndex, x - 93 * image_xscale,
-        round(y) - 5 * image_yscale, image_xscale, image_yscale, image_angle,
+        y - 5 * image_yscale, image_xscale, image_yscale, image_angle,
         image_blend, image_alpha);
 }
 </string>

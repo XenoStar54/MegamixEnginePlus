@@ -120,15 +120,15 @@ if (!global.frozen &amp;&amp; !global.timeStopped)
 {
     if (image_angle == 90)
     {
-        draw_sprite_ext(sprFireWaveVertical, -1, round(x), round(y), image_xscale, -image_yscale, 0, image_blend, image_alpha);
+        draw_sprite_ext(sprFireWaveVertical, -1, x, y, image_xscale, -image_yscale, 0, image_blend, image_alpha);
     }
     else if (image_angle == 270)
     {
-        draw_sprite_ext(sprFireWaveVertical, -1, round(x), round(y), image_xscale, image_yscale, 0, image_blend, image_alpha);
+        draw_sprite_ext(sprFireWaveVertical, -1, x, y, image_xscale, image_yscale, 0, image_blend, image_alpha);
     }
     else
     {
-        draw_sprite_ext(sprite_index, -1, round(x), round(y), image_xscale, image_yscale, image_angle, image_blend, image_alpha);
+        draw_sprite_ext(sprite_index, -1, x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
     }
 }
 </string>

@@ -248,23 +248,22 @@ if (!global.frozen || pauseTimer &gt; 0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT))
+            <string>var _canSpawn = !instance_exists(objTimeSlow);
+if (_canSpawn)
 {
-    if (!instance_exists(objTimeSlow))
+    if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT))
     {
-        var i = fireWeapon(0, 0, objTimeSlow, 1, 4, 2 - (ground == false)*2, 1);
-        i.origin_x = x;
-        i.origin_y = y;
-    }
-    else // fire buster shots when timeslow is active
-    {
-        i = fireWeapon(14, 0, objBusterShot, 4, 0, 1, 0);
-        if (i)
+        var i = fireWeapon(0, 0, objTimeSlow, 1, 4, 2 - (ground == false) * 2, 1 - 1 * (ground == false));
+        if (instance_exists(i))
         {
-            i.xspeed = image_xscale * 5;
+            i.origin_x = x;
+            i.origin_y = y;
         }
     }
 }
+
+// fire buster shots when timeslow is active
+scrBusterControl(false, true, !_canSpawn);
 </string>
           </argument>
         </arguments>

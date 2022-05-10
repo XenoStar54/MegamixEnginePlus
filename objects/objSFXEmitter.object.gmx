@@ -98,7 +98,7 @@ play = false;
         {
             if (!audio_is_playing(sfx))
             {
-                loopSFX(sfx);
+                playSFX(sfx, true);
             }
         }
         else

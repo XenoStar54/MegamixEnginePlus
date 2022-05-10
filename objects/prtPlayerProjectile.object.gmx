@@ -89,6 +89,7 @@ if (instance_exists(parent))
 // update costume sprite
 if (instance_exists(parent))
 {
+    playerID = parent.playerID;
     costumeID = parent.costumeID;
 }
 </string>
@@ -141,9 +142,8 @@ canHit = false;
 
 direction = 45 + 90 * (xspeed + hspeed &gt; 0);
 
-speed = 6;
-xspeed = 0;
-yspeed = 0;
+xspeed = 6 * cos(degtorad(direction));
+yspeed = 6 * -sin(degtorad(direction));
 
 playSFX(sfxReflect);
 </string>

@@ -78,99 +78,60 @@ isSolid = 0;
 
 if(entityCanStep())
 {
-    if(state == 0) // land
+    if(canDamage)
     {
-        xspeed = dir;
-        if(ground || inWater)
+        if(state == 0) // land
         {
-            state = 1;
-            yspeed = 0;
+            xspeed = dir;
+            if(ground || inWater)
+            {
+                state = 1;
+                yspeed = 0;
+                grav = 0;
+                xspeed = 0;
+            }
+        }
+        else if(state == 1) // I have landed
+        {
             grav = 0;
-            xspeed = 0;
+            if(ground || inWater)
+            {
+                xspeed = dir*2;
+                yspeed = 0;
+            }
+            else
+            {
+                xspeed = 0;
+                yspeed = 2*image_yscale;
+            }
+            
+            // die on wall
+            if(sign(xcoll) == dir) event_user(10);
+        }
+        else if(state == 2) //bullet capturing functionality
+        {
+            contactDamage = 3;
+            sprite_index = sprBubbleLeadCapture;
+            
+            grav = 0;
+            if(ground || inWater)
+            {
+                xspeed = dir*2;
+                yspeed = 0;
+            }
+            else
+            {
+                xspeed = 0;
+                yspeed = 2*image_yscale;
+            }
+            
+            // die on wall
+            if(sign(xcoll) == dir) event_user(10);
         }
     }
-    else if(state == 1) // I have landed
+    else
     {
-        grav = 0;
-        if(ground || inWater)
-        {
-            xspeed = dir*2;
-            yspeed = 0;
-            /*if(inWater)
-            {
-                var water = instance_place(x,y,objWater);
-                var waterSurface = water.y + (16*abs(water.image_yscale)) * (image_yscale != water.image_yscale) * -image_yscale;
-                if(abs(waterSurface - y) &lt; 2) yspeed = (waterSurface - y);
-                else yspeed = sign(waterSurface - y)*2;
-            }*/
-        }
-        else
-        {
-            xspeed = 0;
-            yspeed = 2*image_yscale;
-        }
-        
-        // die on wall
-        if(sign(xcoll) == dir) event_user(10);
-    }
-    else if(state == 2) //bullet capturing functionality
-    {
-        contactDamage = 3;
-        sprite_index = sprBubbleLeadCapture;
-        
-        grav = 0;
-        if(ground || inWater)
-        {
-            xspeed = dir*2;
-            yspeed = 0;
-            /*if(inWater)
-            {
-                var water = instance_place(x,y,objWater);
-                var waterSurface = water.y + (16*abs(water.image_yscale)) * (image_yscale != water.image_yscale) * -image_yscale;
-                if(abs(waterSurface - y) &lt; 2) yspeed = (waterSurface - y);
-                else yspeed = sign(waterSurface - y)*2;
-            }*/
-        }
-        else
-        {
-            xspeed = 0;
-            yspeed = 2*image_yscale;
-        }
-        
-        // die on wall
-        if(sign(xcoll) == dir) event_user(10);
-        
-        /*
-        if(instance_number(objRevolverBuster) &lt;= instance_number(objBubbleLead))
-        {
-            a = instance_create(bubbleAssign.x, bubbleAssign.y, objRevolverBuster)
-            a.sprite_index = capturedProjectile;
-            a.image_index = capturedProjectileImg;
-            a.image_xscale = objBubbleLead.image_xscale;
-            a.mask_index = sprEnemyBullet;
-        }
-        else
-        {
-            
-            objRevolverBuster.x = bubbleAssign.x;
-            objRevolverBuster.y = bubbleAssign.y;
-            
-        }*/
-        /*if (ground)
-        {
-            xspeed = 1 * image_xscale;
-            yspeed = -3;
-        }
-        if (xcoll != 0)
-        {*/
-            /*if(instance_exists(objRevolverBuster))
-            {
-                if(bubbleAssign.x == objRevolverBuster.x)
-                with(objRevolverBuster)
-                    instance_destroy();
-            }*/
-            //instance_destroy();
-        //}
+        xspeed = 0;
     }
 }
 </string>
@@ -300,6 +261,35 @@ if(capturedProjectile != 0)
         //instance_destroy();
     //}
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="17">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>playSFX(sfxReflect);
+canDamage = false;
+yspeed = image_yscale*-2;
+xspeed = 0;
+grav = 0;
+blockCollision = 0;
+state = -1; // do nothing
 </string>
           </argument>
         </arguments>

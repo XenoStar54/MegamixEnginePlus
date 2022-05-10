@@ -126,18 +126,6 @@ if (place_free(x, y))
         if (place_free(x, y + cgrav * _i)) // There is nothing solid below us?
         {
             ground = false;
-            if object_index == (objMegaman)
-            {
-                if jumpCounter == 0
-                {
-                    jumpCounter += 1;
-                    if (global.characterSelected[playerID] == "Bass" && isSlide)
-                    {
-                        dashJumped = true;
-                    }
-                }
-                
-            }
         }
         else if (yspeed * cgrav >= 0) // There is something solid below us! Lower position to stay grounded if necessary
         {
@@ -148,6 +136,18 @@ if (place_free(x, y))
         if (noSlopeEffect)
         {
             break;
+        }
+    }
+    
+    if (object_index == objMegaman && !ground)
+    {
+        if (jumpCounter == 0)
+        {
+            jumpCounter += 1;
+            if (dashSlide && isSlide)
+            {
+                dashJumped = true;
+            }
         }
     }
 }

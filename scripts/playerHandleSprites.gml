@@ -394,6 +394,62 @@ switch (AnimID)
             break;
         }
         
+        break;
+    
+    case "Marine": // Rush Marine
+        var startup = -1;
+        var aTimer = 0; // Because of how we're not overwriting blinkImage from Normal, we need TrebleBoost to handle this animation.
+        var onLand = false;
+        if (instance_exists(myRushMarine))
+        {
+            with (myRushMarine)
+            {
+                startup = alarm[1];
+                aTimer = animTimer;
+                onLand = !moveLock || !other.inWater;
+            }
+        }
+        
+        if (startup >= 0)
+        {
+            animNameID = 1;
+            aTimer = 0;
+            blinkImage = 0;
+        }
+        else
+        {
+            animNameID = 0; // Standing
+            
+            blinkImage = aTimer%2;
+            spriteX = 4 + blinkImage + 2 * isShoot + 4 * onLand;
+            spriteY = 13;
+        }
+        
+        switch (animNameID)
+        {
+            // moving
+            case 0: 
+                break;
+            
+            // startup animation
+            case 1:
+                spriteX = 1;
+                spriteY = 13;
+                if (startup >= 9)
+                {
+                    spriteX += 0;
+                }
+                else if (startup >= 6)
+                {
+                    spriteX += 1;
+                }
+                else
+                {
+                    spriteX += 2;
+                }
+                
+                break;
+        }
         
         break;
 }
@@ -408,6 +464,10 @@ if (animate) // Animation
     {
         spriteLoopID = spriteLoopPoint;
     }
+}
+else // reset animation
+{
+    spriteLoopID = 0;
 }
 
 /*

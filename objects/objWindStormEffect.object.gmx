@@ -90,7 +90,7 @@ imgSpeed = 2;
           <argument>
             <kind>1</kind>
             <string>drawSelf();
-draw_sprite(sprWindStormWeapon, imgIndex div 1, round(x), round(y));
+draw_sprite(sprWindStormWeapon, imgIndex div 1, x, y);
 </string>
           </argument>
         </arguments>

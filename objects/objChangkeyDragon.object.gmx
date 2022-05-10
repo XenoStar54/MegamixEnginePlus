@@ -400,12 +400,12 @@ if (introDone == true)
 }
 else // Intro animation
 {
-    draw_sprite_ext(sprChangkeyDragonEyes, 0, round(x), round(y), image_xscale, image_yscale, image_angle,
+    draw_sprite_ext(sprChangkeyDragonEyes, 0, x, y, image_xscale, image_yscale, image_angle,
         image_blend, image_alpha);
-    draw_sprite_ext(sprite_index, -1, round(x), round(y), image_xscale,
+    draw_sprite_ext(sprite_index, -1, x, y, image_xscale,
         image_yscale, image_angle, image_blend,
         1 - ((floor(introTimer / (30 / 2)) * (30 / 2)) / 30));
-    draw_sprite_ext(sprChangkeyDragonEyes, 1, round(x), round(y), image_xscale,
+    draw_sprite_ext(sprChangkeyDragonEyes, 1, x, y, image_xscale,
         image_yscale, image_angle, image_blend,
         1 - ((floor(introTimer / (30 / 2)) * (30 / 2)) / 30));
 }

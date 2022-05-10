@@ -33,7 +33,7 @@
     stopAtSolid = 0
     image_speed = 0.25
     depth = -300
-    loopSFX(sfxSpringManMagnetized)
+    playSFX(sfxSpringManMagnetized, true)
 }
 parentID = 0
 

@@ -161,7 +161,7 @@ if (superArmHeldObject == noone)
                     superArmPreCanHit = canHit;
                     
                     // this will overlap and look ugly, so set it to 0
-                    other.drawWeaponIcon = 0;
+                    other.weaponIcon = 0;
                 }
             }
         }

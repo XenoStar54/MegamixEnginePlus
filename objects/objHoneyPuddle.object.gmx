@@ -71,7 +71,10 @@ honeyLock = -1;
             <kind>1</kind>
             <string>event_inherited();
 
-honeyLock = lockPoolRelease(honeyLock);
+if (honeyLock)
+{
+    honeyLock = lockPoolRelease(honeyLock);
+}
 </string>
           </argument>
         </arguments>
@@ -108,11 +111,8 @@ honeyLock = lockPoolRelease(honeyLock);
             {
                 other.caughtTimer++;
             }
+            
             other.caughtXScalePrev = image_xscale;
-            if(other.honeyLock &gt;= 0)
-            {
-                other.honeyLock = lockPoolRelease(other.honeyLock);
-            }
         }
     }
 }
@@ -145,60 +145,71 @@ if (!dead &amp;&amp; !global.frozen &amp;&amp; !global.timeStopped)
     {
         with (objMegaman)
         {
-            var _player = id
             with (other)
             {
-                if (place_meeting(x, y, other) &amp;&amp; other.ground /*&amp;&amp; other.bbox_bottom &lt;= bbox_bottom */ )
+                if (place_meeting(x, y, other) &amp;&amp; other.ground)
                 {
-                    caughtPlayer = other.id;
-                    caughtXScalePrev = other.image_xscale;
-                    other.xspeed = 0;
-                    other.isSlide = 0;
-                    with (_player)
+                    if (!honeyLock)
                     {
-                        var lock = lockPoolLock(
-                            PL_LOCK_MOVE,
-                            PL_LOCK_SLIDE,
-                            PL_LOCK_GRAVITY,
-                            PL_LOCK_SHOOT,
-                            PL_LOCK_CLIMB
-                        );
-                        lock.targetInstance = id
-                        other.honeyLock = lock
+                        // undo any player locks
+                        with (other)
+                        {
+                            climbing = false;
+                            isSlide = false;
+                            climbLock = lockPoolRelease(climbLock);
+                            slideLock = lockPoolRelease(slideLock);
+                            slideChargeLock = lockPoolRelease(slideChargeLock);
+                            mask_index = mskMegaman;
+                            xspeed = 0;
+                        }
+                        
+                        // honey lock
+                        with (other)
+                        {
+                            other.honeyLock = lockPoolLock(
+                                PL_LOCK_MOVE,
+                                //PL_LOCK_TURN,
+                                PL_LOCK_JUMP,
+                                PL_LOCK_GRAVITY,
+                                PL_LOCK_SHOOT,
+                                PL_LOCK_CHARGE,
+                                PL_LOCK_SLIDE,
+                                PL_LOCK_CLIMB,
+                                PL_LOCK_CLIMB,
+                            );
+                            
+                            shiftObject(other.x - x, 0, true);
+                        }
+                        
+                        caughtPlayer = other.id;
+                        caughtXScalePrev = other.image_xscale;
                     }
                 }
             }
         }
     }
-    else
+    else if (caughtTimer &gt;= 8 + ((global.difficulty == DIFF_HARD) * 2))
     {
-        // trap player
-        with (caughtPlayer)
-        {
-            climbing = false;
-            isShoot = 0;
-            isSlide = false;
-            mask_index = mskMegaman;
-            xspeed = 0;
-        }
-        caughtPlayer.x = x;
-        caughtPlayer.y = y - (caughtPlayer.bbox_bottom - caughtPlayer.y) + 1;
-        
         // time player is caught
-        if (caughtTimer &gt;= 8 + ((global.difficulty == DIFF_HARD) * 2))
+        if (honeyLock)
         {
             honeyLock = lockPoolRelease(honeyLock);
-            instance_create(x, y, objExplosion);
-            instance_destroy();
-            exit;
         }
+        
+        instance_create(x, y, objExplosion);
+        instance_destroy();
+        exit;
     }
     
     // despawn timer
     despawnTimer += 1;
     if (despawnTimer &gt;= 370)
     {
-        honeyLock = lockPoolRelease(honeyLock);
+        if (honeyLock)
+        {
+            honeyLock = lockPoolRelease(honeyLock);
+        }
+        
         instance_destroy();
         exit;
     }

@@ -412,7 +412,7 @@ flashTimer = iFrames;
         drawSelf();
         if(sprite_index == spriteNormal || sprite_index == spriteHurt)
         {
-            draw_sprite_ext(spriteGun,0,round(x+gunPosX*image_xscale),round(y+gunPosY*image_yscale),gunDir,image_yscale,image_angle,c_white,image_alpha);
+            draw_sprite_ext(spriteGun,0,x+gunPosX*image_xscale,y+gunPosY*image_yscale,gunDir,image_yscale,image_angle,c_white,image_alpha);
         }
     }
 }

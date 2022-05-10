@@ -275,7 +275,7 @@ coolDown = 60;
             <kind>1</kind>
             <string>draw_sprite_part_ext(sprite_index, (round(image_index) mod 2) + blink * 2, 0,
     0, abs(sprite_width), sprite_height - abs(yCutoff),
-    round(x) + sprite_xoffset * image_xscale, round(y) - sprite_yoffset,
+    x + sprite_xoffset * image_xscale, y - sprite_yoffset,
     image_xscale, image_yscale, image_blend, image_alpha);
 </string>
           </argument>

@@ -53,6 +53,9 @@ optionOffset = 0;
 verticalQuickScrollTimer = 25;
 horizontalQuickScrollTimer = 25;
 
+tickUpSFX = noone;
+tickDownSFX = noone;
+
 // Control settings
 newControls = 0;
 current = 'NONE';
@@ -65,25 +68,36 @@ key = -1;
 optionText[0] = 'CLOSE';
 optionText[1] = 'CONFIGURE CONTROLS';
 optionText[2] = 'CONFIGURE GAMEPAD';
-optionText[3] = 'RESOLUTION';
-optionText[4] = 'V-SYNC';
-optionText[5] = 'MUSIC VOLUME';
-optionText[6] = 'SOUND VOLUME';
-optionText[7] = 'PLAYER COUNT';
-optionText[8] = 'SHOW FPS';
-optionText[9] = 'SHOW CONTROLLER';
-optionText[10] = 'DAMAGE POPUP';
-optionText[11] = 'CHARGE BAR';
-optionText[12] = 'MM COLOR';
-optionText[13] = 'MOVING TEXT';
-optionText[14] = 'PICKUP EFFECT';
-optionText[15] = 'ESC KEY BEHAVIOR';
-optionText[16] = 'COLORED TEXT OVERLAYS';
-optionText[17] = 'ITEM GRAPHICS';
-optionText[18] = 'DEATH EFFECT';
-optionText[19] = 'JUMP SOUND';
-optionText[20] = 'TELEPORT SOUND';
-optionText[21] = 'CHECKPOINT NOT.';
+optionText[3] = 'WINDOW SIZE';
+optionText[4] = 'FULLSCREEN';
+optionText[5] = 'RESOLUTION';
+optionText[6] = 'PIXEL RATIO';
+optionText[7] = 'PERFECT FULLSCREEN';
+optionText[8] = 'SHADERS';
+optionText[9] = 'ENFORCE PALETTE';
+optionText[10] = 'FILTER';
+optionText[11] = 'CRT DISTORTION';
+optionText[12] = 'CRT DISTORT VAL';
+optionText[13] = 'BORDER GRAPHIC';
+optionText[14] = 'V-SYNC';
+optionText[15] = 'MUSIC VOLUME';
+optionText[16] = 'SOUND VOLUME';
+optionText[17] = 'PLAYER COUNT';
+optionText[18] = 'SHOW FPS';
+optionText[19] = 'SHOW CONTROLLER';
+optionText[20] = 'DAMAGE POPUP';
+optionText[21] = 'CHARGE BAR';
+optionText[22] = 'LIFE COUNTER';
+optionText[23] = 'MM COLOR';
+optionText[24] = 'MOVING TEXT';
+optionText[25] = 'PICKUP EFFECT';
+optionText[26] = 'ESC KEY BEHAVIOR';
+optionText[27] = 'COLORED TEXT OVERLAYS';
+optionText[28] = 'ITEM GRAPHICS';
+optionText[29] = 'DEATH EFFECT';
+optionText[30] = 'JUMP SOUND';
+optionText[31] = 'TELEPORT SOUND';
+optionText[32] = 'CHECKPOINT NOT.';
 </string>
           </argument>
         </arguments>
@@ -220,73 +234,200 @@ if (phase == 2 &amp;&amp; !selected)
     
     // left / right controlled selections
     var dir = (global.keyRightPressed[0] || (global.keyRight[0] &amp;&amp; horizontalQuickScrollTimer &lt;= 0)) - (global.keyLeftPressed[0] || (global.keyLeft[0] &amp;&amp; horizontalQuickScrollTimer &lt;= 0));
+    var holdDir = global.keyRight[0] - global.keyLeft[0];
+    
     if (dir != 0)
     {
         switch (option)
         {
             // Screensize
             case 3:
-                if (!window_get_fullscreen())
+                var pre = global.screenSize;
+                setScreenSize(global.screenSize + dir);
+                if (global.screenSize != pre)
                 {
-                    // usual screen resizing
-                    var pre = global.screensize;
-                    setScreenSize(global.screensize + dir);
-                    if (global.screensize != pre)
+                    playSFX(sfxMenuMove);
+                }
+                
+                break;
+            
+            // fullscreen
+            case 4:
+                pre = window_get_fullscreen();
+                setFullscreen(max(0, min(1, window_get_fullscreen() + dir)));
+                if (window_get_fullscreen() != pre)
+                {
+                    playSFX(sfxMenuMove);
+                }
+                    
+                break;
+                
+            // resolution
+            case 5:
+                pre = global.resolution;
+                global.resolution = max(0, min(1, global.resolution + dir));
+                if (pre != global.resolution)
+                {
+                    display_reset(0, global.vsync);
+                    setScreenSize(global.screenSize);
+                    
+                    playSFX(sfxMenuMove);
+                }
+                
+                break;
+                
+            // pixel ratio
+            case 6:
+                pre = global.pixelRatio;
+                global.pixelRatio = max(0, min(2, global.pixelRatio + dir));
+                if (pre != global.pixelRatio)
+                {
+                    setScreenSize(global.screenSize);
+                    playSFX(sfxMenuMove);
+                }
+                
+                break;
+            
+            // accurate fullscreen
+            case 7:
+                pre = global.accurateFullscreen;
+                global.accurateFullscreen = max(0, min(1, global.accurateFullscreen + dir));
+                if (pre != global.accurateFullscreen)
+                {
+                    playSFX(sfxMenuMove);
+                }
+                
+                break;
+                
+            // shaders
+            case 8:
+                if (global.shadersCompatible)
+                {
+                    pre = global.shadersEnabled;
+                    global.shadersEnabled = min(max(0, global.shadersEnabled + dir), 1);
+                    if (global.shadersEnabled != pre)
                     {
                         playSFX(sfxMenuMove);
                     }
                 }
-                else if (dir &lt; 0)
+                else
                 {
-                    // coming out of fullscreen
-                    var newS = max(1, min(display_get_height() / global.screenHeight, display_get_width() / global.screenWidth));
-                    if (newS mod 1 == 0)
+                    playSFX(sfxError);
+                }
+                
+                break;
+            
+            // enforce palette
+            case 9:
+                pre = global.enforcePalette;
+                global.enforcePalette = min(max(0, global.enforcePalette + dir), 2);
+                if (global.enforcePalette != pre)
+                {
+                    playSFX(sfxMenuMove);
+                }
+                
+                break;
+            
+            // filters
+            case 10:
+                pre = global.filter;
+                global.filter = min(max(0, global.filter + dir), 5);
+                if (global.filter != pre)
+                {
+                    playSFX(sfxMenuMove);
+                }
+                
+                break;
+            
+            // crt distort
+            case 11:
+                if (global.filter == 2)
+                {
+                    pre = global.crtDistort;
+                    global.crtDistort = min(max(0, global.crtDistort + dir), 1);
+                    if (global.crtDistort != pre)
                     {
-                        newS --;
+                        playSFX(sfxMenuMove);
                     }
-                    else
-                    {
-                        newS = floor(newS);
-                    }
-                    
-                    setScreenSize(newS);
+                }
+                else
+                {
+                    playSFX(sfxError);
+                }
+                
+                break;
+                
+            // border graphic
+            case 13:
+                pre = global.borderGraphic;
+                global.borderGraphic = min(max(0, global.borderGraphic + dir), 25);
+                if (global.borderGraphic != pre)
+                {
+                    playSFX(sfxMenuMove);
                 }
                 
                 break;
             
             // V-Sync
-            case 4:
-                global.vsync = !global.vsync;
-                playSFX(sfxMenuMove);
+            case 14:
+                pre = global.vsync;
+                global.vsync = max(0, min(1, global.vsync + dir));
+                if (pre != global.vsync)
+                {
+                    display_reset(0, global.vsync);
+                    setScreenSize(global.screenSize);
+                    playSFX(sfxMenuMove);
+                }
+                
                 break;
             
             // Music volume
-            case 5:
+            case 15:
                 pre = global.musicvolume;
                 global.musicvolume = max(0, min(100, global.musicvolume + 10 * dir));
+                
+                global.unboundedMusicVolume = -1;
+                audio_master_gain(1);
                 
                 // adjust current music volume to reflect change
                 switch (global.levelSongType)
                 {
                     default:
                     case "OGG":
-                        FMODInstanceSetVolume(global.songMemory, global.musicvolume * 0.01);
+                        FMODInstanceSetVolume(global.songMemory, global.levelVolume * (global.musicvolume * 0.01));
                         break;
+                    
                     case "VGM":
                         if (instance_exists(objMusicControl))
                         {
-                            audio_sound_gain(objMusicControl.sound_index, global.levelVolume * (global.musicvolume * 0.01), 0);
+                            v = global.levelVolume * (global.musicvolume * 0.01);
+                            if (v &lt;= 1)
+                            {
+                                audio_sound_gain(objMusicControl.sound_index, v, 0);
+                            }
+                            else
+                            {
+                                /* only way to raise music volumes above max using GMS' built in audio engine
+                                is to raise the master volume and then lower everything else back down except
+                                for the music*/
+                                audio_sound_gain(objMusicControl.sound_index, 1, 0);
+                                audio_master_gain(v);
+                                global.unboundedMusicVolume = v;
+                            }
                         }
+                        
                         break;
                 }
+                
                 if (global.musicvolume != pre)
                 {
                     playSFX(sfxMenuMove);
                 }
+                
                 break;
             
             // Sound volume
-            case 6:
+            case 16:
                 pre = global.soundvolume;
                 global.soundvolume = max(0, min(100, global.soundvolume + 10 * dir));
                 if (global.soundvolume != pre)
@@ -296,7 +437,7 @@ if (phase == 2 &amp;&amp; !selected)
                 break;
             
             // Players (co-op)
-            case 7:
+            case 17:
                 pre = global.playerCount;
                 global.playerCount = clamp(global.playerCount + dir, 1, global.maxPlayerCount);
                 if (global.playerCount != pre)
@@ -326,7 +467,7 @@ if (phase == 2 &amp;&amp; !selected)
                 break;
             
             // FPS
-            case 8:
+            case 18:
                 pre = global.showFPS;
                 global.showFPS = min(max(0, global.showFPS + dir), 1);
                 if (global.showFPS != pre)
@@ -336,7 +477,7 @@ if (phase == 2 &amp;&amp; !selected)
                 break;
             
             // Controller Overlay
-            case 9:
+            case 19:
                 pre = global.showControllerOverlay;
                 global.showControllerOverlay = min(max(0, global.showControllerOverlay + dir), 2);
                 if (global.showControllerOverlay != pre)
@@ -346,7 +487,7 @@ if (phase == 2 &amp;&amp; !selected)
                 break;
             
             // Damage popup
-            case 10:
+            case 20:
                 pre = global.damagePopup;
                 global.damagePopup = min(max(0, global.damagePopup + dir), 1);
                 if (global.damagePopup != pre)
@@ -356,7 +497,7 @@ if (phase == 2 &amp;&amp; !selected)
                 break;
             
             // Charge Bar
-            case 11:
+            case 21:
                 pre = global.chargeBar;
                 global.chargeBar = min(max(0, global.chargeBar + dir), 1);
                 if (global.chargeBar != pre)
@@ -365,8 +506,19 @@ if (phase == 2 &amp;&amp; !selected)
                 }
                 break;
             
+            // Life Bar
+            case 22:
+                pre = global.lifeCounter;
+                global.lifeCounter = min(max(0, global.lifeCounter + dir), 1);
+                if (global.lifeCounter != pre)
+                {
+                    playSFX(sfxMenuMove);
+                }
+                
+                break;
+            
             // MM Color
-            case 12:
+            case 23:
                 pre = global.mmColor;
                 global.mmColor = min(max(0, global.mmColor + dir), 1);
                 if (global.mmColor != pre)
@@ -376,7 +528,7 @@ if (phase == 2 &amp;&amp; !selected)
                 break;
             
             // moving text effects
-            case 13:
+            case 24:
                 pre = global.showMovingText;
                 global.showMovingText = min(max(0, global.showMovingText + dir), 1);
                 if (global.showMovingText != pre)
@@ -386,7 +538,7 @@ if (phase == 2 &amp;&amp; !selected)
                 break;
             
             // Instant refills
-            case 14:
+            case 25:
                 pre = global.healthEffect;
                 global.healthEffect = min(max(0, global.healthEffect + dir), 1);
                 if (global.healthEffect != pre)
@@ -396,7 +548,7 @@ if (phase == 2 &amp;&amp; !selected)
                 break;
             
             // Escape key behavior
-            case 15:
+            case 26:
                 pre = global.escapeBehavior;
                 global.escapeBehavior = min(max(0, global.escapeBehavior - dir), 2);
                 if (global.escapeBehavior != pre)
@@ -406,7 +558,7 @@ if (phase == 2 &amp;&amp; !selected)
                 break;
             
             // Pickup Graphics
-            case 17:
+            case 28:
                 pre = global.pickupGraphics;
                 global.pickupGraphics = min(max(0, global.pickupGraphics + dir), 1);
                 if (global.pickupGraphics != pre)
@@ -416,7 +568,7 @@ if (phase == 2 &amp;&amp; !selected)
                 break;
             
             // Death Effect
-            case 18:
+            case 29:
                 pre = global.deathEffect;
                 global.deathEffect = min(max(0, global.deathEffect + dir), 1);
                 if (global.deathEffect != pre)
@@ -426,7 +578,7 @@ if (phase == 2 &amp;&amp; !selected)
                 break;
             
             // Jump Sound
-            case 19:
+            case 30:
                 pre = global.jumpSound;
                 global.jumpSound = min(max(0, global.jumpSound + dir), 1);
                 if (global.jumpSound != pre)
@@ -436,7 +588,7 @@ if (phase == 2 &amp;&amp; !selected)
                 break;
             
             // Teleport Sound
-            case 20:
+            case 31:
                 pre = global.teleportSound;
                 global.teleportSound = min(max(0, global.teleportSound + dir), 1);
                 if (global.teleportSound != pre)
@@ -446,7 +598,7 @@ if (phase == 2 &amp;&amp; !selected)
                 break;
             
             // Checkpoint notification
-            case 21:
+            case 32:
                 pre = global.checkpointNotification;
                 global.checkpointNotification = min(max(0, global.checkpointNotification + dir), 3);
                 if (global.checkpointNotification != pre)
@@ -457,21 +609,74 @@ if (phase == 2 &amp;&amp; !selected)
         }
     }
     
+    // left/right hold controlled selections
+    if (holdDir != 0)
+    {
+        switch (option)
+        {
+            case 12:
+                if (global.filter == 2)
+                {
+                    pre = global.crtDistortionAmount;
+                    global.crtDistortionAmount = max(0, min(1, global.crtDistortionAmount + 0.005 * holdDir));
+                    if (global.crtDistortionAmount != pre)
+                    {
+                         if (holdDir &gt; 0 &amp;&amp; !audio_is_playing(tickUpSFX))
+                         {
+                            tickUpSFX = playSFX(sfxMenuScrollUp);
+                            stopSFX(tickDownSFX);
+                         }
+                         
+                         if (holdDir &lt; 0 &amp;&amp; !audio_is_playing(tickDownSFX))
+                         {
+                            tickDownSFX = playSFX(sfxMenuScrollDown);
+                            stopSFX(tickUpSFX);
+                         }
+                    }
+                }
+                else if (dir == holdDir) // don't spam the sfx
+                {
+                    playSFX(sfxError);
+                }
+                
+                break;
+        }
+    }
+    
     // pause controlled selections
     var pausePressed = false;
+    var backPressed = false;
     for (var i = 0; i &lt; global.playerCount; i++)
-        if (global.keyPausePressed[i])
-            pausePressed = i + 1;
-    
-    if (pausePressed)
     {
+        if (global.keyPausePressed[i] || global.keyJumpPressed[i])
+        {
+            pausePressed = i + 1;
+        }
+        else if (global.keyShootPressed[i])
+        {
+            backPressed = i + 1;
+        }
+    }
+    
+    if (pausePressed || backPressed)
+    {
+        var preOption = option;
+        if (backPressed)
+        {
+            option = 0;
+        }
+        
         switch (option)
         {
             // exit
             case 0:
                 selected = true;
                 phase++;
-                playSFX(sfxMenuSelect);
+                if (!backPressed)
+                {
+                    playSFX(sfxMenuSelect);
+                }
+                
                 break;
             
             // set keyboard controls
@@ -514,10 +719,16 @@ if (phase == 2 &amp;&amp; !selected)
                 break;
             
             // colored text overlays
-            case 16:
+            case 27:
                 playSFX(sfxPause);
                 instance_create(x, y, objColoredTextOverlaysMenu);
                 break;
+        }
+        
+        // set cursor position back to where it was so the cursor doesn't just teleport
+        if (backPressed)
+        {
+            option = preOption;
         }
     }
     
@@ -717,6 +928,11 @@ if (newControls == 1)
             case 'PAUSE':
                 if(!skip)
                     global.pauseKey[pID] = key;
+                current = 'WEAPON WHEEL';
+                break;
+            case 'WEAPON WHEEL':
+                if(!skip)
+                    global.weaponWheelKey[pID] = key;
                 current = 'LEFT';
                 pID += 1;
                 if (pID &gt;= global.playerCount)
@@ -809,8 +1025,13 @@ if (newControls == 2)
                 current = 'PAUSE';
                 break;
             case 'PAUSE':
-                 if(!skip)
+                if(!skip)
                     global.joystick_pauseKey[pID] = key;
+                current = 'WEAPON WHEEL';
+                break;
+            case 'WEAPON WHEEL':
+                if(!skip)
+                    global.joystick_weaponWheelKey[pID] = key;
                 current = 'JUMP';
                 pID += 1;
                 if (pID &gt;= 1 &amp;&amp; gamepad_get_device_count() &gt; pID) // global.playerCount
@@ -937,8 +1158,21 @@ draw_set_halign(fa_left);
 draw_set_valign(fa_top);
 for (var j = 0; j &lt; visibleOptions; j++)
 {
-    draw_text_ext(drawXPosition + 48, drawYPosition + 52 + j * 14, optionText[optionOffset + j], 14, 256);
+    var o = optionOffset + j;
+    if ((o == 7 &amp;&amp; !global.shadersCompatible) // cannot enable shaders
+        || ((o == 11 || o == 12) &amp;&amp; global.filter != 2)) // only edit crt filter settings when crt is on
+    {
+        draw_set_color(c_gray);
+    }
+    else
+    {
+        draw_set_color(c_white);
+    }
+    
+    draw_text_ext(drawXPosition + 48, drawYPosition + 52 + j * 14, optionText[o], 14, 256);
 }
+
+draw_set_color(c_white);
 
 // draw current option status'
 var opt = '';
@@ -948,19 +1182,132 @@ for (var j = 0; j &lt; visibleOptions; j++)
     {
         // Resolution
         case 3:
-            if (!window_get_fullscreen())
+            opt += string(global.screenSize) + 'X';
+            break;
+        
+        // fullscreen
+        case 4:
+            if (window_get_fullscreen())
             {
-                opt += string(global.screensize) + 'X';
+                opt += "ON";
             }
             else
             {
-                opt += 'FULL';
+                opt += "OFF";
+            }
+            
+            break;
+        
+        // resolution
+        case 5:
+            if (global.resolution)
+            {
+                opt += "WINDOW";
+            }
+            else
+            {
+                opt += "NATIVE";
+            }
+            
+            break;
+        
+        // pixel ratio
+        case 6:
+            switch (global.pixelRatio)
+            {
+                default:
+                case 0: opt += "1:1"; break;
+                case 1: opt += "8:7"; break;
+                case 2: opt += "4:3"; break;
+                case 3: opt += "16:9"; break;
+            }
+            
+            break;
+        
+        // accurate fullscreen
+        case 7:
+            if (global.accurateFullscreen)
+            {
+                opt += "ON";
+            }
+            else
+            {
+                opt += "OFF";
+            }
+            
+            break;
+        
+        // shaders
+        case 8:
+            if (global.shadersEnabled)
+            {
+                opt += "ON";
+            }
+            else
+            {
+                opt += "OFF";
+            }
+            
+            break;
+        
+        // palette enforce
+        case 9:
+            switch (global.enforcePalette)
+            {
+                case 0: opt += "OFF"; break;
+                case 1: opt += "NES"; break;
+                case 2: opt += "MM9-10"; break;
+            }
+            break;
+        
+        // filter
+        case 10:
+            switch (global.filter)
+            {
+                default:
+                case 0: opt += "NONE"; break;
+                case 1: opt += "INTERPOLATE"; break;
+                case 2: opt += "CRT"; break;
+                case 3: opt += "GREYSCALE"; break;
+                case 4: opt += "GAMEBOY"; break;
+                case 5: opt += "VIRTUALBOY"; break;
+            }
+            
+            break;
+        
+        // crt distortion
+        case 11:
+            if (global.crtDistort)
+            {
+                opt += "ON";
+            }
+            else
+            {
+                opt += "OFF";
+            }
+            
+            break;
+        
+        // crt distortion value
+        case 12:
+            opt += string(global.crtDistortionAmount);
+            break;
+        
+        // border graphic
+        case 13:
+            if (global.borderGraphic &lt;= 0)
+            {
+                opt += "NONE";
+            }
+            else
+            {
+                opt += string(global.borderGraphic);
             }
             
             break;
         
         // V-Sync
-        case 4:
+        case 14:
             if (global.vsync)
             {
                 opt += 'ON';
@@ -973,25 +1320,25 @@ for (var j = 0; j &lt; visibleOptions; j++)
             break;
         
         // Music volume
-        case 5:
+        case 15:
             opt += string(global.musicvolume) + '%';
             
             break;
         
         // Sound volume
-        case 6:
+        case 16:
             opt += string(global.soundvolume) + '%';
             
             break;
         
         // Co-op
-        case 7:
+        case 17:
             opt += string(global.playerCount);
             
             break;
         
         // FPS dispaly
-        case 8:
+        case 18:
             if (global.showFPS == 1)
             {
                 opt += 'ON';
@@ -1004,7 +1351,7 @@ for (var j = 0; j &lt; visibleOptions; j++)
             break;
         
         // controller overlay
-        case 9:
+        case 19:
             switch (global.showControllerOverlay)
             {
                 case 0:
@@ -1021,7 +1368,7 @@ for (var j = 0; j &lt; visibleOptions; j++)
             break;
         
         // damage popup
-        case 10:
+        case 20:
             if (global.damagePopup == 1)
             {
                 opt += 'ON';
@@ -1034,7 +1381,7 @@ for (var j = 0; j &lt; visibleOptions; j++)
             break;
         
         // charge bar
-        case 11:
+        case 21:
             if (global.chargeBar == 1)
             {
                 opt += 'ON';
@@ -1046,8 +1393,21 @@ for (var j = 0; j &lt; visibleOptions; j++)
             
             break;
         
+        // life counter
+        case 22:
+            if (global.lifeCounter)
+            {
+                opt += 'ON';
+            }
+            else
+            {
+                opt += 'OFF';
+            }
+            
+            break;
+        
         // mega man colors
-        case 12:
+        case 23:
             if (global.mmColor)
             {
                 opt += 'MM9/MM10';
@@ -1060,7 +1420,7 @@ for (var j = 0; j &lt; visibleOptions; j++)
             break;
         
         // moving text effects
-        case 13:
+        case 24:
             if (global.showMovingText)
             {
                 opt += 'ON';
@@ -1073,7 +1433,7 @@ for (var j = 0; j &lt; visibleOptions; j++)
             break;
         
         // health effect
-        case 14:
+        case 25:
             switch (global.healthEffect)
             {
                 case 0:
@@ -1087,7 +1447,7 @@ for (var j = 0; j &lt; visibleOptions; j++)
             break;
         
         // esc key function
-        case 15:
+        case 26:
             switch (global.escapeBehavior)
             {
                 case 0:
@@ -1104,7 +1464,7 @@ for (var j = 0; j &lt; visibleOptions; j++)
             break;
         
         // Pickup graphics
-        case 17:
+        case 28:
             if (global.pickupGraphics)
             {
                 opt += 'MM1';
@@ -1116,7 +1476,7 @@ for (var j = 0; j &lt; visibleOptions; j++)
             break;
         
         // Death effect
-        case 18:
+        case 29:
             if (global.deathEffect)
             {
                 opt += 'MM1/MM2';
@@ -1128,7 +1488,7 @@ for (var j = 0; j &lt; visibleOptions; j++)
             break;
         
         // Jump sound
-        case 19:
+        case 30:
             if (global.jumpSound)
             {
                 opt += 'MM1/MM2';
@@ -1140,7 +1500,7 @@ for (var j = 0; j &lt; visibleOptions; j++)
             break;
         
         // Teleport sound
-        case 20:
+        case 31:
             if (global.teleportSound)
             {
                 opt += 'MM1/MM2';
@@ -1152,7 +1512,7 @@ for (var j = 0; j &lt; visibleOptions; j++)
             break;
         
         // Checkpoint notification
-        case 21:
+        case 32:
             if (global.checkpointNotification == 0)
             {
                 opt += 'ON';
@@ -1169,6 +1529,7 @@ for (var j = 0; j &lt; visibleOptions; j++)
             {
                 opt += 'BOTTOM';
             }
+            
             break;
     }
     

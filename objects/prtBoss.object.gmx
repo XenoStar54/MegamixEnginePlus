@@ -97,10 +97,10 @@ wasKilled = false;
 music = "Mega_Man_2.nsf";
 musicType = "VGM";
 musicTrackNumber = 17;
-musicVolume = 0.8;
+musicVolume = 1;
 musicLoop = true;
-musicLoopSecondsStart = 8.825;
-musicLoopSecondsEnd = 61.575;
+musicLoopSecondsStart = 0;
+musicLoopSecondsEnd = 0;
 
 itemDrop = noone;
 elementName = "";
@@ -201,7 +201,6 @@ visible = 0;
             <string>event_inherited();
 if (isFight == true)
 {
-    
     if(dieToPits)
     {
         if( (sign(grav)&gt;0 &amp;&amp; bbox_top&gt;global.sectionBottom)
@@ -210,12 +209,13 @@ if (isFight == true)
     }
     
 }
+
 // STARTING THE BOSS SETUP (Triggering it, healthbar fillup)
 if (instance_exists(objMegaman) &amp;&amp; !global.frozen &amp;&amp; !isFight &amp;&amp; !wasKilled)
 {
     if (!objMegaman.teleporting &amp;&amp; !objMegaman.showReady)
     {
-        if (insideSection(x, y))
+        if (insideSection(x, y) &amp;&amp; !dead)
         {
             // s the player and activates the boss (but won't make the boss move yet, it just performs its starting pose)
             // Also plays the boss music
@@ -317,7 +317,7 @@ if (instance_exists(objMegaman) &amp;&amp; !global.frozen &amp;&amp; !isFight &a
                         healthBarTimer = 0;
                         canFillHealthBar = false;
                         fillingHealthBar = true;
-                        loopSFX(sfxEnergyRestore);
+                        playSFX(sfxEnergyRestore, true);
                         drawHealthBar = true;
                     }
                 }
@@ -329,7 +329,7 @@ if (instance_exists(objMegaman) &amp;&amp; !global.frozen &amp;&amp; !isFight &a
                 // make sure sfx is playing if the healthbar is filling
                 if (healthParent==-1&amp;&amp;!audio_is_playing(sfxEnergyRestore))
                 {
-                    loopSFX(sfxEnergyRestore);
+                    playSFX(sfxEnergyRestore, true);
                 }
                 
                 healthBarTimerSpeed = (healthBarHealth div 28)
@@ -422,7 +422,9 @@ if (_init)
         if (itemDrop == noone)
         {
             if (useEndStageBehavior)
-                itemDrop = objEnergyElement;
+            {
+                itemDrop = objEndStageCutscene;
+            }
         }
     }
 }
@@ -712,14 +714,22 @@ if (quickSpawn || global.aliveBosses &lt;= 0)
             playSFX(sfxKeySpawn);
         }
     }
-    else if (itemDrop == objEnergyElement)
+    else if (itemDrop == objEnergyElement || itemDrop == objEndStageCutscene)
     {
-        var a = instance_create(bboxGetXCenter() - 8, bboxGetYCenter() - 8, objEnergyElement);
+        var a = instance_create(bboxGetXCenter() - 8, bboxGetYCenter() - 8, itemDrop);
         with (a)
         {
             name = other.elementName;
             script = other.elementScript;
             code = other.elementCode;
+            
+            script_execute(other.itemScript);
+            stringExecutePartial(other.itemCode);
+            
+            if (object_index != objEndStageCutscene)
+            {
+                endStage = other.useEndStageBehavior;
+            }
         }
     }
     else

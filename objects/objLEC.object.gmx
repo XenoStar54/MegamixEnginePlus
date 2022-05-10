@@ -149,19 +149,19 @@ else if (dead)
     exit;
 }
 
-draw_sprite_ext(sprite_index, image_index, round(x), floor(y), 1, image_yscale, image_angle, image_blend, image_alpha);
+draw_sprite_ext(sprite_index, image_index, x, y, 1, image_yscale, image_angle, image_blend, image_alpha);
 if ((iFrames == 1 || iFrames == 3) || (iceTimer &gt; 0))
 {
     var flashcol = c_white;
     if (iceTimer &gt; 0)
         flashcol = make_color_rgb(0, 120, 255);
     d3d_set_fog(true, flashcol, 0, 0);
-    draw_sprite_ext(sprite_index, image_index, round(x), floor(y), 1, image_yscale, image_angle, image_blend, image_alpha);
+    draw_sprite_ext(sprite_index, image_index, x, y, 1, image_yscale, image_angle, image_blend, image_alpha);
     d3d_set_fog(false, 0, 0, 0);
     if (iceTimer &gt; 0)
     {
         draw_set_blend_mode(bm_add);
-        draw_sprite_ext(sprite_index, image_index, round(x), floor(y), 1, image_yscale, image_angle, image_blend, image_alpha);
+        draw_sprite_ext(sprite_index, image_index, x, y, 1, image_yscale, image_angle, image_blend, image_alpha);
         draw_set_blend_mode(bm_normal);
     }
 }

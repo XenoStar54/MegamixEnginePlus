@@ -88,12 +88,44 @@ freshSaveFile();
 // default options
 freshOptions();
 
+// setup shaders
+setPaletteShader = false;
+enforcedPalette = shader_get_sampler_index(shdPaletteEnforcer, "palette");
+enforcedPaletteLength = shader_get_uniform(shdPaletteEnforcer, "paletteLength");
+pltSurface = noone;
+
+global.crtSurfaceScale = 6;
+
+global.crtSurfaceWidth  = global.screenWidth * global.crtSurfaceScale;
+global.crtSurfaceHeight = global.screenHeight * global.crtSurfaceScale;
+
+global.crtDistort = true;
+global.crtDistortionAmount = 0.12;
+global.crtBorder = true; // there's really no good reason to make this toggleable
+
+uni_crt_sizes = shader_get_uniform(shdCRT, "u_crt_sizes");
+distort = shader_get_uniform(shdCRT, "distort");
+distortion = shader_get_uniform(shdCRT, "distortion");
+border = shader_get_uniform(shdCRT, "border");
+
+crtSurface = noone;
+
+greyscaleSurface = noone;
+
+monoPalette = shader_get_sampler_index(shdMonochromePaletteEnforcer, "palette");
+monoPaletteLength = shader_get_uniform(shdMonochromePaletteEnforcer, "paletteLength");
+gbSurface = noone;
+
+shdFadeShift = shader_get_uniform(shdColorSubtractStep, "fadeShift");
+fadeSurface = noone;
+
 // load user's options (if they exist)
 saveLoadOptions(false);
 
 /// set up display ///
 
-setScreenSize(global.screensize);
+setScreenSize(global.screenSize);
+application_surface_draw_enable(false);
 display_reset(0, global.vsync);
 
 //// Create other control objects ////
@@ -106,6 +138,34 @@ init = 1;
 
 // show disclaimer
 room_goto(rmDisclaimer);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Auto-update Rich Presence
+if (!global.richPresenceSet)
+{
+    // update
+    discord_update_presence(roomGetNameFormatted(room), "", "megamixplusdiscord", "");
+}
 </string>
           </argument>
         </arguments>
@@ -206,8 +266,7 @@ for (i = 0; i &lt;= 1; i += 1)
 
 if (global.nextRoom != 0 || fadeAlpha &gt; 0)
 {
-    fadetimer += (1 + instance_exists(objPauseMenu));
-    
+    fadetimer += 1;
     if (fadetimer &gt;= fadeinterval)
     {
         if (global.nextRoom &amp;&amp; fadeAlpha == 1)
@@ -363,9 +422,32 @@ for (var i = 0; i &lt; gamepad_get_device_count(); i += 1)
     if (gamepad_is_connected(i))
         n_connected += 1;
 }
+
 n_connected = min(n_connected, global.playerCount);
 for (i = 0; i &lt; global.playerCount; i += 1)
 {
+    
+    // lock player controls
+    var doLock = false;
+    if (!instance_exists(objDebugMenu))
+    {
+        with (objPlayerCutsceneController)
+        {
+            if (instance_exists(playerObj))
+            {
+                if (playerObj.playerID == i)
+                {
+                    doLock = true;
+                }
+            }
+        }
+    }
+    
+    if (doLock)
+    {
+        continue;
+    }
+    
     // Input
     var keyLeftHold = global.keyLeft[i];
     var keyRightHold = global.keyRight[i];
@@ -377,6 +459,7 @@ for (i = 0; i &lt; global.playerCount; i += 1)
     var keyPauseHold = global.keyPause[i];
     var keyWeaponSwitchLeftHold = global.keyWeaponSwitchLeft[i];
     var keyWeaponSwitchRightHold = global.keyWeaponSwitchRight[i];
+    var keyWeaponWheelHold = global.keyWeaponWheel[i];
     
     // Check keys
     global.keyLeft[i] = keyboard_check(global.leftKey[i]);
@@ -393,6 +476,7 @@ for (i = 0; i &lt; global.playerCount; i += 1)
         global.weaponSwitchLeftKey[i]);
     global.keyWeaponSwitchRight[i] = keyboard_check(
         global.weaponSwitchRightKey[i]);
+    global.keyWeaponWheel[i] = keyboard_check(global.weaponWheelKey[i]);
     
     var jp = i;
     
@@ -402,82 +486,98 @@ for (i = 0; i &lt; global.playerCount; i += 1)
         {
             jp += 4 - xinputDeviceCount;
         }
+        
         if (gamepad_is_connected(jp))
         {
             if (gamepad_axis_count(jp) &gt;= 2)
             {
                 // Check D-Pad first
+                var dPad = gamepad_button_check(jp, gp_padu) || gamepad_button_check(jp, gp_padl) || gamepad_button_check(jp, gp_padr) || gamepad_button_check(jp, gp_padd);
+                if (dPad)
+                {
+                    global.keyLeft[i] = global.keyLeft[i] || gamepad_button_check(jp, gp_padl);
+                    global.keyRight[i] = global.keyRight[i] || gamepad_button_check(jp, gp_padr);
+                    global.keyUp[i] = global.keyUp[i] || gamepad_button_check(jp,gp_padu);
+                    global.keyDown[i] = global.keyDown[i] || gamepad_button_check(jp,gp_padd);
+                }
                 
-                var dPad = false;
                 if (joystick_has_pov(jp))
                 {
                     var angle = joystick_pov(jp);
                     if (angle != -1)
-                        dPad = true;
-                    switch (angle)
                     {
-                        case 0:
-                            global.keyUp[i] += 1;
-                            break;
-                        case 45:
-                            global.keyRight[i] += 1;
-                            global.keyUp[i] += 1;
-                            break;
-                        case 90:
-                            global.keyRight[i] += 1;
-                            break;
-                        case 135:
-                            global.keyDown[i] += 1;
-                            global.keyRight[i] += 1;
-                            break;
-                        case 180:
-                            global.keyDown[i] += 1;
-                            break;
-                        case 225:
-                            global.keyLeft[i] += 1;
-                            global.keyDown[i] += 1;
-                            break;
-                        case 270:
-                            global.keyLeft[i] += 1;
-                            break;
-                        case 315:
-                            global.keyLeft[i] += 1;
-                            global.keyUp[i] += 1;
-                            break;
+                        dPad = true;
+                        
+                        switch (angle)
+                        {
+                            case 0:
+                                global.keyUp[i] = true;
+                                break;
+                            case 45:
+                                global.keyRight[i] = true;
+                                global.keyUp[i] = true;
+                                break;
+                            case 90:
+                                global.keyRight[i] = true;
+                                break;
+                            case 135:
+                                global.keyDown[i] = true;
+                                global.keyRight[i] = true;
+                                break;
+                            case 180:
+                                global.keyDown[i] = true;
+                                break;
+                            case 225:
+                                global.keyLeft[i] = true;
+                                global.keyDown[i] = true;
+                                break;
+                            case 270:
+                                global.keyLeft[i] = true;
+                                break;
+                            case 315:
+                                global.keyLeft[i] = true;
+                                global.keyUp[i] = true;
+                                break;
+                        }
                     }
                 }
                 
                 // Analog Stick position
-                if (!dPad)
+                if (gamepad_axis_count(jp) &gt;= 2)
                 {
-                    var axX = gamepad_axis_value(jp, gp_axislh);
-                    var axY = gamepad_axis_value(jp, gp_axislv);
-                    if ((abs(axY) &gt; 0.4) || (abs(axX) &gt; 0.36))
+                    if (!dPad)
                     {
-                        var gamepadStick = point_direction(0, 0, axX, axY);
-                        global.keyLeft[i] += (gamepadStick &gt;= 120
-                            &amp;&amp; gamepadStick &lt;= 240);
-                        global.keyRight[i] += ((gamepadStick &lt;= 60)
-                            || gamepadStick &gt;= 300);
-                        global.keyUp[i] += (gamepadStick &gt;= 30
-                            &amp;&amp; gamepadStick &lt;= 150);
-                        global.keyDown[i] += (gamepadStick &gt;= 210
-                            &amp;&amp; gamepadStick &lt;= 330);
+                        var axX = gamepad_axis_value(jp, gp_axislh);
+                        var axY = gamepad_axis_value(jp, gp_axislv);
+                        if ((abs(axY) &gt; 0.4) || (abs(axX) &gt; 0.36))
+                        {
+                            gamepadStick = point_direction(0, 0, axX, axY);
+                            global.keyLeft[i] = global.keyLeft[i] || (gamepadStick &gt;= 120
+                                &amp;&amp; gamepadStick &lt;= 240);
+                            global.keyRight[i] = global.keyRight[i] || ((gamepadStick &lt;= 60)
+                                || gamepadStick &gt;= 300);
+                            global.keyUp[i] = global.keyUp[i] || (gamepadStick &gt;= 30
+                                &amp;&amp; gamepadStick &lt;= 150);
+                            global.keyDown[i] = global.keyDown[i] || (gamepadStick &gt;= 210
+                                &amp;&amp; gamepadStick &lt;= 330);
+                        }
                     }
                 }
             }
-            global.keyJump[i] += gamepad_button_check(jp,
+            
+            global.keyJump[i] = global.keyJump[i] || gamepad_button_check(jp,
                 global.joystick_jumpKey[i]);
-            global.keyShoot[i] += gamepad_button_check(jp,
+            global.keyShoot[i] = global.keyShoot[i] || gamepad_button_check(jp,
                 global.joystick_shootKey[i]);
-            global.keySlide[i] += gamepad_button_check(jp,
+            global.keySlide[i] = global.keySlide[i] || gamepad_button_check(jp,
                 global.joystick_slideKey[i]);
-            global.keyPause[i] += gamepad_button_check(jp,
+            global.keyPause[i] = global.keyPause[i] || gamepad_button_check(jp,
                 global.joystick_pauseKey[i]);
-            global.keyWeaponSwitchLeft[i] += gamepad_button_check(jp,
+            global.keyWeaponSwitchLeft[i] = global.keyWeaponSwitchLeft[i] || gamepad_button_check(jp,
                 global.joystick_weaponSwitchLeftKey[i]);
-            global.keyWeaponSwitchRight[i] += gamepad_button_check(jp,
+            global.keyWeaponSwitchRight[i] = global.keyWeaponSwitchRight[i] || gamepad_button_check(jp,
                 global.joystick_weaponSwitchRightKey[i]);
+            global.keyWeaponWheel[i] = global.keyWeaponWheel[i] || global.joystick_weaponWheelKey[i];
         }
     }
     
@@ -494,6 +594,7 @@ for (i = 0; i &lt; global.playerCount; i += 1)
         &amp;&amp; !keyWeaponSwitchLeftHold;
     global.keyWeaponSwitchRightPressed[i] = global.keyWeaponSwitchRight[i]
         &amp;&amp; !keyWeaponSwitchRightHold;
+    global.keyWeaponWheelPressed[i] = global.keyWeaponWheel[i] &amp;&amp; !keyWeaponWheelHold;
 }
 
 // recorded controls dubbing:
@@ -881,6 +982,9 @@ setfrozen = 0;
 if (global.endStageOnRoomEnd)
 {
     stageEnd();
+    
+    // reset last used weapon wheel page
+    for(var j = 0; j &lt; 4; j++) global.weaponWheelLastUsedPage[j] = 0;
 }
 else if (global.decrementLivesOnRoomEnd)
 {
@@ -910,10 +1014,12 @@ global.lockBuster = false;
 
 global.timeStopped = false;
 
-application_surface_draw_enable(true);
-
 // forcibly reset control locks
 globalLockReset();
+
+// prepare update of discord rich presence (give time for room creation code to set it manually)
+global.richPresenceSet = false;
+alarm[1] = 1;
 </string>
           </argument>
         </arguments>
@@ -1194,15 +1300,28 @@ if (global.inGame)
     }
     global.hasTeleported = false;
 }
+else
+{
+    global.absorbOnClear = false;
+}
+
+// set global screen size based on the room's view
+var preW = global.screenWidth;
+var preH = global.screenHeight;
+global.screenWidth = view_wview[0];
+global.screenHeight =  view_hview[0];
 
 // if the new room's view size is different, adjust the screen size accordingly
-var s = max(1, min(display_get_height() / global.screenHeight, display_get_width() / global.screenWidth));
-if ((window_get_fullscreen() &amp;&amp; (surface_get_width(application_surface) != floor(global.screenWidth * s)
-        || surface_get_height(application_surface) != floor(global.screenHeight * s)))
-    || (!window_get_fullscreen() &amp;&amp; (surface_get_width(application_surface) != view_wview[0] * global.screensize
-        || surface_get_height(application_surface) != view_hview[0] * global.screensize)))
+if (preW != global.screenWidth || preH != global.screenHeight)
 {
-    setScreenSize(global.screensize, false);
+    setScreenSize(global.screensize);
+    
+    // workaround to fix the application position not updating while in fullscreen
+    if (window_get_fullscreen())
+    {
+        window_set_fullscreen(false);
+        setFullscreen(true);
+    }
 }
 
 // next room should not launch a new level
@@ -1235,8 +1354,293 @@ saveLoadOptions(true);
 saveLoadGame(true);
 
 // End cleanMem
-cleanMem('clear');
-cleanMem('free');
+if (os_type == os_windows)
+{
+    cleanMem('clear');
+    cleanMem('free');
+}
+
+// end rich presence
+discord_free_app()
+discord_free_dll()
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="77">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw Game, apply filters, and do Shader Fade Out
+
+// app position stuff
+var appPosition = application_get_position();
+
+var appWidth = (appPosition[2] - appPosition[0]) * getPixelRatio();
+var appHeight = appPosition[3] - appPosition[1];
+var appX = appPosition[0] + ((appPosition[2] - appPosition[0]) - appWidth) / 2;
+var appY = appPosition[1];
+if (window_get_fullscreen())
+{
+    if (global.accurateFullscreen)
+    {
+        var d = 0;
+        do
+        {
+            // lock to highest whole-number scale
+            appWidth = (((appPosition[2] - appPosition[0]) div global.screenWidth) - d) * global.screenWidth * getPixelRatio();
+            appHeight = (((appPosition[3] - appPosition[1]) div global.screenHeight) - d) * global.screenHeight;
+            
+            // try smaller scales until we're within screen limits
+            d++;
+        }
+        until ((appWidth &lt;= display_get_width() &amp;&amp; appHeight &lt;= display_get_height()) || appHeight &lt;= global.screenHeight)
+    }
+    else if (appWidth &gt; display_get_width())
+    {
+        // change app position if too wide due to pixel ratio (gms will automatically adjust app position otherwise)
+        appWidth = display_get_width();
+        appHeight = (display_get_width() / getPixelRatio()) * global.screenHeight / global.screenWidth;
+    }
+
+    // fullscreen app position
+    appX = (display_get_width() - appWidth) / 2;
+    appY = (display_get_height() - appHeight) / 2;
+}
+
+// how many times application_surface is stretched (ignoring pixel ratio)
+var multiply = appHeight / surface_get_height(application_surface);
+
+// surfaces
+var finalSurface = application_surface;
+var surfaceWidth = surface_get_width(application_surface);
+var surfaceHeight = surface_get_height(application_surface);
+
+// apply shaders
+draw_enable_alphablend(false);
+
+if (global.shadersEnabled)
+{
+    // enforce palette
+    if (global.enforcePalette &gt; 0)
+    {
+        var plt = pltNES;
+        var pltLength = 56;
+        switch (global.enforcePalette)
+        {
+            default:
+            case 1: plt = pltNES; pltLength = 56; break;
+            case 2: plt = pltMM9_10; pltLength = 52; break;
+        }
+        
+        // make surface
+        if (!surface_exists(pltSurface))
+        {
+            var p = powerOfTwo(surfaceWidth, surfaceHeight);
+            pltSurface = surface_create(p, p);
+            surface_resize(pltSurface, surfaceWidth, surfaceHeight); // crt filter messes up if the surface doesn't have exact screen dimensions
+        }
+        
+        // apply shader
+        surface_set_target(pltSurface);
+        
+        shader_set(shdPaletteEnforcer);
+        texture_set_stage(enforcedPalette, sprite_get_texture(plt, 0));
+        shader_set_uniform_f(enforcedPaletteLength, pltLength);
+        draw_surface(finalSurface, 0, 0);
+        shader_reset();
+        
+        surface_reset_target();
+        
+        // set to new final surface
+        finalSurface = pltSurface;
+    }
+    
+    // fade
+    fadeShift = floor(fadeAlpha / fadestep); // lazy replacement of fadeAlpha code, lol
+    if (fadeShift &gt; 0)
+    {
+        if (!surface_exists(fadeSurface))
+        {
+            var p = powerOfTwo(surfaceWidth, surfaceHeight);
+            fadeSurface = surface_create(p, p);
+            surface_resize(fadeSurface, surfaceWidth, surfaceHeight); // crt filter messes up if the surface doesn't have exact screen dimensions
+        }
+        
+        surface_set_target(fadeSurface);
+        
+        //shader_set(shdColorSubtract);
+        //var subtract = shader_get_uniform(shdColorSubtract, "subtractColor");
+        //shader_set_uniform_f(subtract, fadeAlpha, fadeAlpha, fadeAlpha);
+        shader_set(shdColorSubtractStep);
+        shader_set_uniform_f(shdFadeShift, fadeShift);
+        draw_surface(finalSurface, 0, 0);
+        shader_reset();
+        
+        surface_reset_target();
+        
+        // set to new final surface
+        finalSurface = fadeSurface;
+    }
+    
+    // filters
+    if (global.filter &gt; 0)
+    {
+        switch (global.filter)
+        {
+            // interpolation
+            case 1:
+                // done at the bottom with a gms function
+                break;
+                
+            // CRT filter
+            case 2:
+                if (!surface_exists(crtSurface))
+                {
+                    var s = powerOfTwo(global.crtSurfaceWidth, global.crtSurfaceHeight);
+                    crtSurface = surface_create(s, s);
+                }
+                
+                surface_set_target(crtSurface);
+                
+                shader_set(shdCRT);
+                shader_set_uniform_f(uni_crt_sizes, global.screenWidth, global.screenHeight, global.crtSurfaceWidth, global.crtSurfaceHeight);
+                shader_set_uniform_f(distort, global.crtDistort);
+                shader_set_uniform_f(distortion, global.crtDistortionAmount);
+                shader_set_uniform_f(border, global.crtBorder);
+                draw_surface_part_ext(finalSurface, 0, 0, surface_get_width(application_surface), surface_get_height(application_surface), 0, 0, global.crtSurfaceScale, global.crtSurfaceScale, c_white, 1);
+                shader_reset();
+                
+                surface_reset_target();
+                
+                // set this as the new surface to draw
+                finalSurface = crtSurface;
+                multiply = appHeight / global.crtSurfaceHeight;
+                surfaceWidth = global.crtSurfaceWidth;
+                surfaceHeight = global.crtSurfaceHeight;
+                
+                break;
+            
+            // greyscale
+            case 3:
+            // virtual boy
+            /* vb palette doesn't work well with palette enforcing. It doesn't
+            have enough colors and it's colors are too similar to differentiate
+            well so we're just going to make it greyscale and blend it with red
+            later*/
+            case 5:
+                if (!surface_exists(greyscaleSurface))
+                {
+                    var s = powerOfTwo(surfaceWidth, surfaceWidth);
+                    greyscaleSurface = surface_create(s, s);
+                    surface_resize(greyscaleSurface, surfaceWidth, surfaceHeight);
+                }
+                
+                surface_set_target(greyscaleSurface);
+                
+                shader_set(shdGreyscale);
+                draw_surface(finalSurface, 0, 0);
+                shader_reset();
+                
+                surface_reset_target();
+                
+                // set this as the new surface to draw
+                finalSurface = greyscaleSurface;
+                
+                break;
+            
+            // gameboy
+            case 4:
+                if (!surface_exists(gbSurface))
+                {
+                    s = powerOfTwo(surfaceWidth, surfaceWidth);
+                    gbSurface = surface_create(s, s);
+                    surface_resize(gbSurface, surfaceWidth, surfaceHeight);
+                }
+                
+                surface_set_target(gbSurface);
+                
+                shader_set(shdMonochromePaletteEnforcer);
+                texture_set_stage(monoPalette, sprite_get_texture(pltGameBoy, 0));
+                shader_set_uniform_f(monoPaletteLength, 5);
+                draw_surface(finalSurface, 0, 0);
+                shader_reset();
+                
+                surface_reset_target();
+                
+                // set this as the new surface to draw
+                finalSurface = gbSurface;
+                
+                break;
+        }
+    }
+}
+
+// draw border graphic
+texture_set_interpolation(true);
+if (window_get_fullscreen())
+{
+    if (global.borderGraphic &gt; 0)
+    {
+        draw_background_stretched(getBorderGraphic(), 0, 0, display_get_width(), display_get_height());
+    }
+    else
+    {
+        draw_set_color(c_black);
+        draw_rectangle(0, 0, display_get_width(), display_get_height(), false);
+        draw_set_color(c_white);
+    }
+}
+
+// Note: interpolation isn't noticeable at window resolution when the window is big.
+texture_set_interpolation(global.filter == 1 || (global.filter == 2 &amp;&amp; global.shadersEnabled)); // always interpolate with crt filter
+
+var c = c_white;
+if (global.filter == 5 &amp;&amp; global.shadersEnabled)
+{
+    c = make_color_hsv(0, 255, 255) // hue and sat accurate to vb palette
+}
+
+var xscale = round(surfaceWidth * multiply * getPixelRatio()) / surfaceWidth;
+var yscale = round(surfaceHeight * multiply) / surfaceHeight;
+draw_surface_part_ext(finalSurface, 0, 0, surfaceWidth, surfaceHeight, appX, appY, xscale, yscale, c, 1);
+
+// cleanup
+texture_set_interpolation(false); // ONLY DRAW THE FINAL SURFACE WITH INTERPOLATION
+if (surface_exists(fadeSurface))
+{
+    surface_free(fadeSurface);
+}
+
+draw_enable_alphablend(true);
+
+// Screenshot
+with (objDebugControl)
+{
+    if (keyboard_check_pressed(vk_f9))
+    {
+        while (file_exists(working_directory + "\screenshots\screenshot" + string(screenshotNum) + ".png"))
+            screenshotNum += 1;
+        screen_save_part(working_directory + "\screenshots\screenshot" + string(screenshotNum) + ".png",
+            appX, appY, surfaceWidth * xscale, surfaceHeight * yscale);
+        print("SCREENSHOT SAVED", WL_SHOW, c_orange);
+        playSFX(sfxKeyGet);
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -1316,7 +1720,7 @@ draw_set_color(c_white);
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
 
-if (fadeAlpha &gt; 0)
+if (fadeAlpha &gt; 0 &amp;&amp; !global.shadersEnabled)
 {
     draw_sprite_ext(sprDot, 0, view_xview, view_yview, view_wview, view_hview, 0, c_black, fadeAlpha);
 }
@@ -1344,7 +1748,8 @@ depth = depthstart;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (showhealth)
+            <string>// draw huds
+if (showhealth)
 {
     var dx = view_xview + 16;
     var dy = view_yview + 17;
@@ -1390,9 +1795,20 @@ depth = depthstart;
             
             drawHudBar(dx, dy, pcol, scol, global.playerHealth[z], 28);
             
-            var display = true;
+            // lives counter
+            if (global.livesEnabled &amp;&amp; global.lifeCounter)
+            {
+                draw_enable_alphablend(true);
+                draw_set_halign(fa_left);
+                draw_set_valign(fa_top);
+                draw_sprite_ext(sprDot, 0, dx, dy + sprite_get_height(sprHealthbarBackground), 8, 8, 0, c_black, 1);
+                draw_text(dx, dy + sprite_get_height(sprHealthbarBackground), global.livesRemaining);
+                draw_enable_alphablend(false);
+            }
             
             // Weapons
+            var display = true;
+            
             var c
             if (global.weapon[z] != 0) // Weapon energy
             {

@@ -85,6 +85,7 @@ healthBarSecondaryColor[1] = 40;
 music = "Mega_Man_9.nsf";
 musicType = "VGM";
 musicTrackNumber = 16;
+musicVolume = 1.4;
 
 // Damage Table
 enemyDamageValue(objBusterShot, 2);
@@ -562,7 +563,7 @@ event_inherited();
             <kind>1</kind>
             <string>var bx = image_xscale;
 var by = y;
-y = round(y + sin(cAngleY) * cDistanceY);
+y = y + sin(cAngleY) * cDistanceY;
 if (detectAnimation != image_xscale)
 {
     image_xscale *= -1;

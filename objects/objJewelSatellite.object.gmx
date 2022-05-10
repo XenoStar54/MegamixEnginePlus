@@ -227,17 +227,10 @@ if (!global.frozen)
             instance_destroy();
         }
         if (global.keyShootPressed[playerID] &amp;&amp; endInitTimer
-            &gt;= 8) // Do not shoot the weapon until the init state is over
+            &gt;= 8 &amp;&amp; instance_exists(parent) &amp;&amp; parent.object_index == objMegaman) // Do not shoot the weapon until the init state is over. Also don't shoot if copybot or we are dead.
         {
-            var dir; // 1 = firing to the right, -1 = firing to the left
-            if (instance_exists(parent))
-            {
-                dir = parent.image_xscale;
-            }
-            else
-            {
-                dir = 1;
-            }
+            var dir = parent.image_xscale;; // 1 = firing to the right, -1 = firing to the left
+            
             
             followPlayer = false;
             xspeed = dir * spd;

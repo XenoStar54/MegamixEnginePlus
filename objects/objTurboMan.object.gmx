@@ -325,7 +325,7 @@ if (entityCanStep())
         
         if(cart){
         cart = false
-        loopSFX(sfxTurbo);
+        playSFX(sfxTurbo, true);
         }
         
         

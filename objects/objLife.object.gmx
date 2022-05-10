@@ -30,7 +30,7 @@
 hlth = 28;
 is1Up = true;
 
-respawnupondeath = 0;
+respawnWhenCollected = 0;
 
 timer = 0;
 </string>

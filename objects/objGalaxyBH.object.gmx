@@ -42,7 +42,7 @@ damp = 0.125;
 strength = 1;
 isConcrete = false;
 
-loopSFX(sfxBlackHoleBomb);
+playSFX(sfxBlackHoleBomb, true);
 </string>
           </argument>
         </arguments>
@@ -107,10 +107,10 @@ if (entityCanStep()){
                 }
             
             }
-            else{
-            
+            else
+            {
                 audio_stop_sound(sfxBlackHoleBomb);
-                loopSFX(sfxBlackHoleBombOpen);
+                playSFX(sfxBlackHoleBombOpen, true);
                 xspeed = 0;
                 yspeed = 0;
                 timer = 0;
