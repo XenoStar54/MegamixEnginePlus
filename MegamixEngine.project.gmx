@@ -8702,7 +8702,6 @@
       <room>rooms\lvlPlusTest</room>
       <room>rooms\lvlDocTest</room>
       <room>rooms\lvlWaterAndWaterAndWaterWater</room>
-	  <room>rooms\lvlCopyTest2.room</room>
     </rooms>
     <rooms name="Classic Mega Man Example Stages">
       <room>rooms\lvlCutMan</room>
