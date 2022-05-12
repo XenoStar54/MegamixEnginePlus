@@ -81,6 +81,7 @@ musicType = "VGM"
 musicTrackNumber = 0
 musicVolume = 1
 
+enemyDamageValue(objDustCrusher, 4);
 
 </string>
           </argument>

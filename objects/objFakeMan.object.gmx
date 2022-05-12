@@ -57,6 +57,9 @@ musicType = "VGM";
 musicTrackNumber = 16;
 musicVolume = 1.4;
 
+enemyDamageValue(objLeafShield, 4);
+enemyDamageValue(objStarCrash, 4);
+
 // Damage Table
 enemyDamageValue(objBusterShot, 1);
 enemyDamageValue(objBusterShotHalfCharged, 1);

@@ -62,6 +62,9 @@ musicVolume = 1;
 
 knocksMeBack[0] = objBusterShotCharged;
 
+enemyDamageValue(objYamatoSpear, 4);
+enemyDamageValue(objLaserTrident, 4);
+
 // Damage Table
 enemyDamageValue(objBusterShot, 1);
 enemyDamageValue(objBusterShotHalfCharged, 1);

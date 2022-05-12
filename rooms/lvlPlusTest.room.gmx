@@ -201,19 +201,7 @@ discord_update_presence("Plus Test","","megamixplusdiscord","")</code>
     <instance objName="objSolid" x="0" y="192" name="inst_47F08A34" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="objLadder" x="32" y="192" name="inst_9CE1C137" locked="0" code="" scaleX="1" scaleY="7" colour="4294967295" rotation="0"/>
     <instance objName="objSolid" x="1552" y="224" name="inst_764AEB31" locked="0" code="" scaleX="14" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objYellowDevil" x="2240" y="368" name="inst_BBF913B3" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objWindMan" x="2016" y="400" name="inst_5B1FEE05" locked="0" code="itemDrop = objYashichi;&#xA;useEndStageBehavior = false;&#xA;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objWilyMachine2A" x="1728" y="352" name="inst_BF7F261E" locked="0" code="itemDrop = objYashichi;&#xA;useEndStageBehavior = false;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objWilyMachine1A" x="1488" y="336" name="inst_812CA405" locked="0" code="itemDrop = objYashichi;&#xA;useEndStageBehavior = false;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objWaveMan" x="1248" y="400" name="inst_DA4AAED3" locked="0" code="itemDrop = objYashichi;&#xA;useEndStageBehavior = false;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objTurboMan" x="976" y="400" name="inst_F947B1DC" locked="0" code="itemDrop = objYashichi;&#xA;useEndStageBehavior = false;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objSpike" x="560" y="256" name="inst_1577CD16" locked="0" code="" scaleX="2" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objSpike" x="624" y="256" name="inst_28FB7935" locked="0" code="" scaleX="2" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objSpike" x="688" y="256" name="inst_21C8DCE9" locked="0" code="" scaleX="2" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objTornadoMan" x="736" y="400" name="inst_758C920B" locked="0" code="itemDrop = objYashichi;&#xA;useEndStageBehavior = false;&#xA;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objTorchManDOS" x="480" y="400" name="inst_9AD991CB" locked="0" code="itemDrop = objYashichi;&#xA;useEndStageBehavior = false;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objHyperStormH" x="304" y="608" name="inst_AD5B92D9" locked="0" code="// boss creation code&#xA;vacuumTime = 30;&#xA;shootCount *= 2;&#xA;shootWait /= 2;&#xA;jumpNumber = 3;&#xA;jumpHeight = -8;&#xA;&#xA;// death behavior&#xA;itemDrop = objYashichi;&#xA;useEndStageBehavior = false;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objDefaultSpawn" x="1152" y="848" name="inst_1E2F7B4E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objMegaWaterS" x="384" y="848" name="inst_8F1B55E7" locked="0" code="// boss creation code&#xA;platformLeft = 336;&#xA;platformRight = 432;&#xA;platformTop = 784;&#xA;&#xA;// defeat behavior&#xA;itemDrop = objYashichi;&#xA;useEndStageBehavior = false;&#xA;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBossDoor" x="496" y="752" name="inst_A8007701" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBossDoor" x="496" y="736" name="inst_A4E80941" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -226,11 +214,9 @@ discord_update_presence("Plus Test","","megamixplusdiscord","")</code>
     <instance objName="objBusterRodG" x="720" y="832" name="inst_57358470" locked="0" code="itemDrop = objYashichi;&#xA;useEndStageBehavior = false;&#xA;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objStopScrollingHorizontal" x="768" y="672" name="inst_CD911BFC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objStopScrollingHorizontal" x="256" y="672" name="inst_F2692E79" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objStopScrollingHorizontal" x="512" y="448" name="inst_258B127C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objDownScrolling" x="256" y="672" name="inst_C9755622" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objRightScrolling" x="512" y="672" name="inst_69B572AC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSolid" x="256" y="640" name="inst_692C9CC3" locked="0" code="" scaleX="6" scaleY="3" colour="4294967295" rotation="0"/>
-    <instance objName="objSolid" x="416" y="640" name="inst_1441D131" locked="0" code="" scaleX="6" scaleY="3" colour="4294967295" rotation="0"/>
+    <instance objName="objSolid" x="416" y="640" name="inst_1441D131" locked="0" code="" scaleX="5" scaleY="3.20000004768372" colour="4294967295" rotation="0"/>
     <instance objName="objSolid" x="480" y="688" name="inst_A7527634" locked="0" code="" scaleX="3" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="objSolid" x="512" y="672" name="inst_01D80C62" locked="0" code="" scaleX="16" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSolid" x="752" y="688" name="inst_C2D3FC63" locked="0" code="" scaleX="1" scaleY="11" colour="4294967295" rotation="0"/>
@@ -240,8 +226,7 @@ discord_update_presence("Plus Test","","megamixplusdiscord","")</code>
     <instance objName="objSolid" x="272" y="688" name="inst_F14E2881" locked="0" code="" scaleX="1" scaleY="13" colour="4294967295" rotation="0"/>
     <instance objName="objSolid" x="336" y="784" name="inst_78262B87" locked="0" code="" scaleX="6" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objDamageSpike" x="256" y="496" name="inst_A863A869" locked="0" code="contactDamage = 3;&#xA;" scaleX="1" scaleY="9" colour="4294967295" rotation="0"/>
-    <instance objName="objDamageSpike" x="496" y="496" name="inst_6AB19C71" locked="0" code="contactDamage = 3;&#xA;" scaleX="1" scaleY="9" colour="4294967295" rotation="0"/>
-    <instance objName="objSolid" x="256" y="448" name="inst_92714DA2" locked="0" code="" scaleX="16" scaleY="3" colour="4294967295" rotation="0"/>
+    <instance objName="objSolid" x="256" y="448" name="inst_92714DA2" locked="0" code="" scaleX="15" scaleY="3.20000004768372" colour="4294967295" rotation="0"/>
     <instance objName="objSolid" x="336" y="576" name="inst_85F33631" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSolid" x="416" y="576" name="inst_8798B60A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSpike" x="288" y="864" name="inst_82AC2483" locked="0" code="" scaleX="12" scaleY="1" colour="4294967295" rotation="0"/>
@@ -270,7 +255,6 @@ discord_update_presence("Plus Test","","megamixplusdiscord","")</code>
     <instance objName="objDownScrolling" x="768" y="672" name="inst_F667059B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objStopScrollingHorizontal" x="1792" y="448" name="inst_2867BE35" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objStopScrollingHorizontal" x="1536" y="672" name="inst_49F23C40" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objStopScrollingHorizontal" x="768" y="448" name="inst_CE514F63" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSolid" x="768" y="448" name="inst_F72EC223" locked="0" code="" scaleX="1" scaleY="12" colour="4294967295" rotation="0"/>
     <instance objName="objSolid" x="1008" y="448" name="inst_7DE7562C" locked="0" code="" scaleX="1" scaleY="12" colour="4294967295" rotation="0"/>
     <instance objName="objStopScrollingHorizontal" x="1024" y="448" name="inst_AB1B5208" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -300,6 +284,24 @@ discord_update_presence("Plus Test","","megamixplusdiscord","")</code>
     <instance objName="objSolid" x="1520" y="688" name="inst_277BA5F5" locked="0" code="" scaleX="1" scaleY="11" colour="4294967295" rotation="0"/>
     <instance objName="objPipiSpawner" x="992" y="720" name="inst_D96354B3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objHaveSuBee" x="1312" y="720" name="inst_88DB3AC6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objFakeMan" x="544" y="544" name="inst_211A3E8B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objMagicMan" x="576" y="544" name="inst_C6BC6C2E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objFreezeMan" x="704" y="544" name="inst_5ABD217F" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objSwordMan" x="736" y="544" name="inst_10004FDB" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objBigPets" x="576" y="608" name="inst_00720BE6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objProtoEye" x="672" y="640" name="inst_606370A4" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objProtoManMM7Boss" x="704" y="624" name="inst_8192C14D" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objDarkMan3" x="736" y="624" name="inst_D2E141F5" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objFakeMan" x="464" y="400" name="inst_824A4C13" locked="0" code="useEndStageBehavior = false;&#xA;itemDrop = objYashichi;&#xA;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objMagicMan" x="720" y="400" name="inst_4D8AC867" locked="0" code="useEndStageBehavior = false;&#xA;itemDrop = objYashichi;&#xA;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objFreezeMan" x="976" y="400" name="inst_8F500F4D" locked="0" code="useEndStageBehavior = false;&#xA;itemDrop = objYashichi;&#xA;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objSwordMan" x="1232" y="400" name="inst_134CF370" locked="0" code="useEndStageBehavior = false;&#xA;itemDrop = objYashichi;&#xA;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objBigPets" x="1472" y="320" name="inst_0A8B7A55" locked="0" code="useEndStageBehavior = false;&#xA;itemDrop = objYashichi;&#xA;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objProtoEye" x="1744" y="416" name="inst_EE0EFE44" locked="0" code="useEndStageBehavior = false;&#xA;itemDrop = objYashichi;&#xA;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objProtoManMM7Boss" x="2000" y="400" name="inst_CAAAD85E" locked="0" code="useEndStageBehavior = false;&#xA;itemDrop = objYashichi;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objDarkMan3" x="2256" y="400" name="inst_2C9AFEAD" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objDefaultSpawn" x="64" y="400" name="inst_96EB9AD3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objCopyRobot" x="640" y="576" name="inst_0302FAB7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="tstTopman" x="16" y="192" w="16" h="16" xo="128" yo="48" id="11355687" name="inst_C593DE49" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -1235,12 +1237,6 @@ discord_update_presence("Plus Test","","megamixplusdiscord","")</code>
     <tile bgName="bgBasic" x="736" y="240" w="16" h="16" xo="16" yo="32" id="11480890" name="inst_1B7FDFA7" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgBasic" x="512" y="240" w="16" h="16" xo="64" yo="0" id="11480891" name="inst_6D1C4653" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgBasic" x="752" y="240" w="16" h="16" xo="80" yo="0" id="11480892" name="inst_017F6D9A" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bgBasic" x="560" y="256" w="16" h="16" xo="48" yo="16" id="11480893" name="inst_2D45E21A" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bgBasic" x="576" y="256" w="16" h="16" xo="48" yo="16" id="11480894" name="inst_95B52C2B" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bgBasic" x="640" y="256" w="16" h="16" xo="48" yo="16" id="11480895" name="inst_73294C44" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bgBasic" x="624" y="256" w="16" h="16" xo="48" yo="16" id="11480896" name="inst_C8BAF267" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bgBasic" x="688" y="256" w="16" h="16" xo="48" yo="16" id="11480897" name="inst_B86C5838" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bgBasic" x="704" y="256" w="16" h="16" xo="48" yo="16" id="11480898" name="inst_CBB8D4D6" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgBasic" x="272" y="640" w="16" h="16" xo="16" yo="0" id="11480899" name="inst_04769DEA" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgBasic" x="288" y="640" w="16" h="16" xo="16" yo="0" id="11480900" name="inst_47FBE9B2" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgBasic" x="304" y="640" w="16" h="16" xo="16" yo="0" id="11480901" name="inst_7DB26B93" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

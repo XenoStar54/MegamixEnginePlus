@@ -64,6 +64,8 @@ music = "Mega_Man_5.nsf";
 musicType = "VGM";
 musicTrackNumber = 10;
 
+enemyDamageValue(objCrystalEye, 4);
+
 // Damage Table
 enemyDamageValue(objBusterShot, 1);
 enemyDamageValue(objBusterShotHalfCharged, 1);

@@ -617,7 +617,6 @@ if (entityCanStep())
                 
                 if (!keepStandStill)//Lock pool releases it before relocking it in firing script.
                 {   
-                    printErr("Undo");
                     shootStandStillLock = lockPoolRelease(shootStandStillLock);
                 }
                 

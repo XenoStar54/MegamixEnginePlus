@@ -7695,6 +7695,7 @@
         </objects>
       </objects>
       <objects name="MM9">
+        <object>objects\objConcreteMan</object>
         <object>objects\objTornadoMan</object>
         <object>objects\objSplashWoman</object>
         <object>objects\objPlugMan</object>
@@ -7703,12 +7704,12 @@
         <object>objects\objHornetMan</object>
         <object>objects\objMagmaMan</object>
         <object>objects\objGalaxyMan</object>
-        <object>objects\objConcreteMan</object>
         <object>objects\objFakeMan</object>
         <object>objects\objMegaMechSharkHead</object>
         <object>objects\objMegaMechSharkBody</object>
         <object>objects\objMegaMechSharkTail</object>
         <objects name="Projectiles">
+          <object>objects\objConcreteManShot</object>
           <object>objects\objTornadoProjectile</object>
           <object>objects\objSplashFlounder</object>
           <object>objects\objSplashNote</object>
@@ -7729,7 +7730,6 @@
           <object>objects\objMagmaStep6</object>
           <object>objects\objMagmaStep7</object>
           <object>objects\objGalaxyBH</object>
-          <object>objects\objConcreteManShot</object>
           <object>objects\objSharkSubmarineMissile</object>
           <object>objects\objSharkSubmarineDolphin</object>
           <object>objects\objSharkSubmarineLaser</object>
@@ -7744,13 +7744,13 @@
         </objects>
       </objects>
       <objects name="MM10">
+        <object>objects\objBladeMan10</object>
         <object>objects\objCommandoMan</object>
         <object>objects\objChillMan</object>
         <object>objects\objSheepMan</object>
         <object>objects\objStrikeMan</object>
         <object>objects\objNitroMan</object>
         <object>objects\objSolarMan</object>
-        <object>objects\objBladeMan10</object>
         <objects name="Projectiles">
           <object>objects\objCommandoBomb</object>
           <object>objects\objCommandoBombExplosion</object>

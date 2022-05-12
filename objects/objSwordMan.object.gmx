@@ -77,7 +77,7 @@ musicLoop = true;
 musicLoopSecondsStart = 2.930;
 musicLoopSecondsEnd = 36.000;
 
-//enemyDamageValue(objWaterBalloon, 4);
+enemyDamageValue(objWaterBalloon, 4);
 
 
 </string>

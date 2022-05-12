@@ -58,6 +58,8 @@ music = "Mega_Man_5.nsf";
 musicType = "VGM";
 musicTrackNumber = 10;
 
+enemyDamageValue(objGyroAttack, 4);
+
 // Damage Table
 enemyDamageValue(objBusterShot, 1);
 enemyDamageValue(objBusterShotHalfCharged, 1);
