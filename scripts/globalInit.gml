@@ -263,3 +263,6 @@ if(!global.achievementsAreSaveFileBound) saveLoadAchievements(0);
 global.roomExternalCache = ds_map_create();
 global.roomExternalFileName = ds_map_create();
 global.roomExternalSetupMap = ds_map_create();
+
+// used for wily castle returns
+global.comingFromCastle = 0;

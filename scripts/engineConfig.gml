@@ -54,3 +54,7 @@ global.debugEnabled = true;
 
 // if game saves achievements to game save files, or an independent global achievement file.
 global.achievementsAreSaveFileBound = false;
+
+// wily castle exit mode; if 0, all exits from wily castle
+// including beating a level, drop the player into stage select
+global.wilyCastleExitMode = 1;
