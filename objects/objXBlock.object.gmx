@@ -34,6 +34,11 @@ isSolid = 1;
 
 pushList[0] = objSlashClaw;
 pushList[1] = objBreakDash;
+pushList[2] = objPowerAdaptorPunch;
+
+pushSpd[0] = 1.5;
+pushSpd[1] = 1.5;
+pushSpd[2] = 2.5;
 
 // super arm interaction
 category = "superArmTarget";
@@ -112,8 +117,16 @@ if (entityCanStep())
         if (place_meeting(x, y, pushList[i]) &amp;&amp; xspeed == 0)
         {
             var obj = instance_place(x, y, pushList[i]);
-            xspeed = 1.5 * obj.image_xscale;
-            playSFX(sfxEnemyHit);
+            var doPush = true;
+            if(obj.object_index == objPowerAdaptorPunch)
+            {
+                if(obj.type &lt; 2) doPush = false;
+            }
+            if(doPush)
+            {
+                xspeed = pushSpd[i] * obj.image_xscale;
+                playSFX(sfxEnemyHit);
+            }
         }
     }
 }

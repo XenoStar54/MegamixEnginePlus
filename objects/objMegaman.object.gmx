@@ -216,6 +216,14 @@ paletteRefresh = 0;
 myProtoShield = noone;
 myTrebleBoost = noone;
 myRushMarine = noone;
+
+// used to decide if Jet Adaptor has fuel left
+jetAdaptorUseTime = 0;
+jetAdaptorRefillSpeed = 2;
+// airsliding code
+isAirSlide = 0;
+airSlideCounter = 0;
+airSlideCounterMax = 0;
 </string>
           </argument>
         </arguments>
@@ -239,6 +247,61 @@ myRushMarine = noone;
           <argument>
             <kind>1</kind>
             <string>playerEndStep();
+
+// make sure the player is wearing the adapter suits when they are selected
+if(global.weapon[playerID] == global.weaponID[? objJetAdaptor])
+{
+    var existenceCheck = true;
+    
+    with(objJetAdaptor)
+    {
+        if(parent == other) existenceCheck = false;
+    }
+    
+    if(existenceCheck) // Jet Adaptor should now spawn itself
+    {
+        var jet = fireWeapon(0,0,objJetAdaptor,3,0,0,0);
+        jet.jetSlideLock = 0;
+        jet.refillingFuel = 0;
+    }
+}
+else if(global.weapon[playerID] == global.weaponID[? objPowerAdaptor])
+{
+    var existenceCheck = true;
+    var myObject = noone;
+    
+    with(objPowerAdaptor)
+    {
+        if(parent == other)
+        {
+            existenceCheck = false;
+            myObject = self;
+        }
+    }
+    
+    if(existenceCheck) // Power Adaptor should now spawn itself
+    {
+        var pow = fireWeapon(0,0,objPowerAdaptor,3,0,0,0);
+        pow.powerSlideLock = 0;
+        global.ammo[playerID, global.weapon[playerID]] = 0;
+        
+        with(pow)
+        {
+            if(parent.isShoot &amp;&amp; !parent.isSlide)
+            {
+                var spriteSelector = 8;
+                if(parent.ground) spriteSelector = 3;
+                else if(parent.climbing) spriteSelector = 13;
+                parent.spriteX = spriteSelector;
+                parent.spriteY = 15;
+            }
+            else
+            {
+                parent.spriteY = 14;
+            }
+        }
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -307,10 +370,7 @@ if (paletteRefresh == 0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// you might not expect to find Needle Cannon code here but well here we are
-global.needleTimer++;
-
-// prevent annoying Atomic Fire sfx holdover
+            <string>// prevent annoying Atomic Fire sfx holdover
 if(!instance_exists(objAtomicFire) &amp;&amp; !isCharge)
 {
     audio_stop_sound(sfxFireCharging1);
@@ -329,6 +389,36 @@ switch (global.characterSelected[playerID])
     case "Proto Man":
         playerStepEventProto();
         break;
+}
+
+// don't run these when the game is paused
+if(!global.frozen)
+{
+    // you might not expect to find Needle Cannon code here but well here we are
+    global.needleTimer++;
+    
+    // used for Jet Adaptor
+    // I needed to put this here so that I'd avoid needing to do stupid things with dummy objects to keep track of jet state
+    if(jetAdaptorUseTime &gt; 0)
+    {
+        var useCheck = 0;
+        var aerialRefillCheck = 0;
+        with(objJetAdaptor)
+        {
+            if(parent == other)
+            {
+                if(jetInUse) useCheck = 1;
+                else if(allowAerialRefill) aerialRefillCheck = 1;
+            }
+        }
+        var refillJetFuel = ((ground || playerIsLocked(PL_LOCK_GRAVITY) || aerialRefillCheck) &amp;&amp; !useCheck);
+        if(refillJetFuel)
+        {
+            jetAdaptorUseTime -= jetAdaptorRefillSpeed;
+            if(jetAdaptorUseTime &lt; 0) jetAdaptorUseTime = 0;
+        }
+    }
+    else if(jetAdaptorUseTime &lt; 0) jetAdaptorUseTime = 0;
 }
 </string>
           </argument>

@@ -975,7 +975,13 @@ if (phase != 0)
     {
         if (playerID == other.playerID)
         {
-            drawPlayer(playerID, costumeID, 0, 0, other.x + 172, other.y + 51, -1, 1);
+            var sprY = 0, _x = other.x + 172, _y = other.y + 51;
+            if(global.weapon[playerID] == global.weaponID[? objPowerAdaptor]) sprY = 14;
+            drawPlayer(playerID, costumeID, 0, sprY, _x, _y, -1, 1);
+            if(global.weapon[playerID] == global.weaponID[? objJetAdaptor])
+                drawCostume(sprJetAdaptor, 0, 0, _x, _y, -1,
+                    1, c_white, global.primaryCol[playerID], global.secondaryCol[playerID],
+                    global.outlineCol[playerID], 1, 1, 1, 1);
         }
     }
     

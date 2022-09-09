@@ -12,7 +12,7 @@ if (global.enableSlide && !playerIsLocked(PL_LOCK_SLIDE))
     var keyPressed = global.keySlidePressed[playerID] || (global.keyJumpPressed[playerID] && yDir == gravDir);
     
     // begin new slide
-    if (ground && !isSlide && statusSliding && keyPressed)
+    if ((ground || airSlideCounter < airSlideCounterMax) && !isSlide && statusSliding && keyPressed)
     {
         shootStandStillLock = lockPoolRelease(shootStandStillLock);
         
@@ -49,6 +49,13 @@ if (global.enableSlide && !playerIsLocked(PL_LOCK_SLIDE))
             xspeed = slideSpeed * image_xscale;
             
         }
+        
+        if(!ground)
+        {
+            airSlideCounter++;
+            isAirSlide = 1;
+            yspeed = 0;
+        }
     }
     
     if (isSlide) // While sliding
@@ -65,8 +72,8 @@ if (global.enableSlide && !playerIsLocked(PL_LOCK_SLIDE))
         
         var canProceed = true;
         var isfree = true;
-        var jump = global.keyJumpPressed[playerID] && (yDir != gravDir || (global.characterSelected[playerID] == "Bass" && slideTimer != 1)); /*&& !playerIsLocked(PL_LOCK_JUMP )*/ ;
-        var jumpCancel = global.keyJumpPressed[playerID] && (yDir != gravDir || (global.characterSelected[playerID] == "Bass" && jumpCounter <= 1));//Why was this all set into a variable??
+        var jump = global.keyJumpPressed[playerID] && ((yDir != gravDir && ground) || (jumpCounterMax > 1 && slideTimer != 1)); /*&& !playerIsLocked(PL_LOCK_JUMP )*/ ;
+        var jumpCancel = global.keyJumpPressed[playerID] && ((yDir != gravDir && ground) || (jumpCounterMax > 1 && jumpCounter <= 1));//Why was this all set into a variable??
         
         if (image_xscale == -xDir || slideTimer >= slideFrames 
         || jump)
@@ -115,7 +122,7 @@ if (global.enableSlide && !playerIsLocked(PL_LOCK_SLIDE))
             ground = true;
             checkGround();
             
-            if (!ground)
+            if (!ground && !isAirSlide)
             {
                 canProceed = false;
                 isfree = true;
@@ -152,10 +159,11 @@ if (global.enableSlide && !playerIsLocked(PL_LOCK_SLIDE))
             if (jumpCancel)
             {
                 playerJump();
-                if dashSlide
-                {
-                    dashJumped = true;
-                }
+            }
+            
+            if dashSlide
+            {
+                dashJumped = true;
             }
         }
         else // forced to slide because not free
@@ -173,4 +181,7 @@ if (global.enableSlide && !playerIsLocked(PL_LOCK_SLIDE))
 if (!isSlide)
 {
     slideChargeLock = lockPoolRelease(slideChargeLock);
+    
+    if(ground || climbing) airSlideCounter = 0;
+    isAirSlide = 0;
 }

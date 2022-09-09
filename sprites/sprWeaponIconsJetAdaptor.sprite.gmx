@@ -8,21 +8,21 @@
   <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>
   <bbox_left>0</bbox_left>
-  <bbox_right>916</bbox_right>
+  <bbox_right>15</bbox_right>
   <bbox_top>0</bbox_top>
-  <bbox_bottom>865</bbox_bottom>
+  <bbox_bottom>15</bbox_bottom>
   <HTile>0</HTile>
   <VTile>0</VTile>
   <TextureGroups>
-    <TextureGroup0>37</TextureGroup0>
+    <TextureGroup0>42</TextureGroup0>
   </TextureGroups>
   <For3D>0</For3D>
-  <width>917</width>
-  <height>866</height>
+  <width>16</width>
+  <height>16</height>
   <frames>
-    <frame index="0">images\sprRockman_0.png</frame>
-    <frame index="1">images\sprRockman_1.png</frame>
-    <frame index="2">images\sprRockman_2.png</frame>
-    <frame index="3">images\sprRockman_3.png</frame>
+    <frame index="0">images\sprWeaponIconsJetAdaptor_0.png</frame>
+    <frame index="1">images\sprWeaponIconsJetAdaptor_1.png</frame>
+    <frame index="2">images\sprWeaponIconsJetAdaptor_2.png</frame>
+    <frame index="3">images\sprWeaponIconsJetAdaptor_3.png</frame>
   </frames>
 </sprite>

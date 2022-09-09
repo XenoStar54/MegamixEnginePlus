@@ -2481,6 +2481,7 @@
       <sounds name="Utilities">
         <sound>sound\sfxRushCycle1</sound>
         <sound>sound\sfxRushCycle2</sound>
+        <sound>sound\sfxJetAdaptor</sound>
       </sounds>
     </sounds>
     <sounds name="Menu">
@@ -2772,8 +2773,13 @@
           <sprite>sprites\sprRushJet</sprite>
           <sprite>sprites\sprRushMarine</sprite>
           <sprite>sprites\sprRushCycle</sprite>
+          <sprite>sprites\sprRushSearch</sprite>
+          <sprite>sprites\sprJetAdaptor</sprite>
+          <sprite>sprites\sprPowerAdaptor</sprite>
           <sprites name="Don't Use">
             <sprite>sprites\sprRushMask</sprite>
+            <sprite>sprites\mskRushSearchSniffMask</sprite>
+            <sprite>sprites\sprPowerAdaptorPunch</sprite>
           </sprites>
         </sprites>
         <sprites name="Weapon Icons">
@@ -2954,6 +2960,9 @@
             <sprite>sprites\sprWeaponIconsRushMarine</sprite>
             <sprite>sprites\sprWeaponIconsRushCycle</sprite>
             <sprite>sprites\sprWeaponIconsTrebleBoost</sprite>
+            <sprite>sprites\sprWeaponIconsRushSearch</sprite>
+            <sprite>sprites\sprWeaponIconsJetAdaptor</sprite>
+            <sprite>sprites\sprWeaponIconsPowerAdaptor</sprite>
           </sprites>
         </sprites>
         <sprites name="Don't Use">
@@ -5577,6 +5586,7 @@
         <sprite>sprites\sprDestroyable3216</sprite>
         <sprite>sprites\sprReflectBlockSmall</sprite>
         <sprite>sprites\sprReflectBlockLarge</sprite>
+        <sprite>sprites\sprRushSearchNode</sprite>
       </sprites>
     </sprites>
     <sprites name="Sections">
@@ -8282,6 +8292,7 @@
       </objects>
       <objects name="Other">
         <object>objects\objEmptyMech</object>
+        <object>objects\objRushSearchNode</object>
       </objects>
       <objects name="Don't Use">
         <object>objects\prtCustomCamera</object>
@@ -8585,6 +8596,10 @@
             <object>objects\objRushMarine</object>
             <object>objects\objRushCycle</object>
             <object>objects\objTrebleBoost</object>
+            <object>objects\objRushSearch</object>
+            <object>objects\objJetAdaptor</object>
+            <object>objects\objPowerAdaptor</object>
+            <object>objects\objPowerAdaptorPunch</object>
           </objects>
           <objects name="Don't Use">
             <object>objects\objNormalBusterShot</object>
@@ -8702,6 +8717,7 @@
       <room>rooms\lvlPlusTest</room>
       <room>rooms\lvlDocTest</room>
       <room>rooms\lvlWaterAndWaterAndWaterWater</room>
+      <room>rooms\lvlRushSearchTest</room>
     </rooms>
     <rooms name="Classic Mega Man Example Stages">
       <room>rooms\lvlCutMan</room>

@@ -876,10 +876,30 @@ for (i = 0; i &lt;= global.totalWeapons; i += 1)
             global.ammo[j, i] = 28;
         }
     }
+    
+    // failsafe for if energy is less than 0
+    for (var j = 0; j &lt; global.playerCount; j += 1)
+    {
+        if(global.ammo[j, i] &lt; 0) global.ammo[j, i] = 0;
+    }
 }
 
 if (increaseHealth || increaseAmmo) // Increase Health and/or Ammo
 {
+    // refilling jet adaptor fuel
+    var refillJet = false, copyJetTimerMax = 80, copyMaxAmmo = 28;
+    if(increaseWeapon == global.weaponID[? objJetAdaptor])
+    {
+        with(objJetAdaptor)
+        {
+            if(other.increaseAmmo &amp;&amp; refillUsingAmmoPickups &amp;&amp; !infiniteJet &amp;&amp; parent.jetAdaptorUseTime &gt; 0) refillingFuel = true;
+            else refillingFuel = false;
+            refillJet = refillingFuel;
+            copyJetTimerMax = jetTimerMax;
+            copyMaxAmmo = maxAmmo;
+        }
+    }
+    
     if (global.healthEffect) // Instant
     {
         if (increaseHealth)
@@ -893,6 +913,16 @@ if (increaseHealth || increaseAmmo) // Increase Health and/or Ammo
         {
             global.ammo[increasePID, increaseWeapon] = ceil(global.ammo[increasePID, increaseWeapon] + increaseAmmo);
             playSFX(sfxEnergyRestore);
+            
+            // jet
+            if(refillJet)
+            {
+                with(objMegaman) if(playerID == other.increasePID)
+                {
+                    var moreFuel = other.increaseAmmo*copyJetTimerMax/copyMaxAmmo;
+                    jetAdaptorUseTime = clamp(jetAdaptorUseTime-moreFuel,0,copyJetTimerMax);
+                }
+            }
             
             increaseAmmo = 0;
         }
@@ -914,6 +944,16 @@ if (increaseHealth || increaseAmmo) // Increase Health and/or Ammo
             {
                 global.ammo[increasePID, increaseWeapon] = floor(global.ammo[increasePID, increaseWeapon]) + 1;
                 increaseAmmo = max(increaseAmmo - 1, 0);
+                
+                // jet
+                if(refillJet)
+                {
+                    with(objMegaman) if(playerID == other.increasePID)
+                    {
+                        var moreFuel = 1*copyJetTimerMax/copyMaxAmmo;
+                        jetAdaptorUseTime = clamp(jetAdaptorUseTime-moreFuel,0,copyJetTimerMax);
+                    }
+                }
             }
         }
     }

@@ -63,6 +63,8 @@ contactDamage = 0;
 
 grav = 0;
 
+itemDrop = -1;
+
 if (sprite_index == sprSuperArmCreateBlock)
 {
     blockCollision = 1;
@@ -83,6 +85,8 @@ tileOffsetX = makeArray();
 tileLeft = makeArray();
 tileTop = makeArray();
 tiles = makeArray();
+
+canBeDestroyedWithPowerAdaptor = true;
 </string>
           </argument>
         </arguments>
@@ -127,6 +131,25 @@ if (sprite_index == sprSuperArmCreateBlock)
 if (superArmHoldOwner != noone)
 {
     depth = 1;
+}
+
+// Power Adaptor interaction
+if(entityCanStep())
+{
+    if(canBeDestroyedWithPowerAdaptor)
+    {
+        if(instance_exists(objPowerAdaptorPunch) &amp;&amp; place_meeting(x,y,objPowerAdaptorPunch))
+        {
+            var punch = instance_place(x,y,objPowerAdaptorPunch);
+            if(punch.type &gt;= 2)
+            {
+                event_user(10);
+                var blast = instance_create(bboxGetXCenter(),bboxGetYCenter(),objSingleLoopEffect);
+                blast.sprite_index = sprBigExplosion;
+                blast.image_speed = 0.5;
+            }
+        }
+    }
 }
 </string>
           </argument>

@@ -277,7 +277,10 @@ if (!global.frozen)
                 if (type == 'boost')
                 {
                     i = instance_create(x, y, objTrebleBoost);
-                    
+                }
+                if (type == 'search')
+                {
+                    i = instance_create(x, y, objRushSearch);
                 }
                 if (i)
                 {

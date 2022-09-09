@@ -63,25 +63,6 @@ if (superArmHeldObject == noone)
     var selectFlash = noone;
     if (!playerIsLocked(PL_LOCK_SHOOT))
     {
-        // code attempting to allow creation of blocks
-        if(global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT))
-        {
-            if(instance_number(objSuperArmCreateBlock) &lt; 5 &amp;&amp; global.ammo[playerID, global.weapon[playerID]] &gt; 0)
-            {
-                if(!place_meeting(x + 32 * image_xscale, y, objSuperArmCreateBlock) &amp;&amp; !place_meeting(x + 32 * image_xscale, y, objSolid) &amp;&amp; !place_meeting(x + 32 * image_xscale, y, objSuperArmBlock) &amp;&amp; !place_meeting(x + 32 * image_xscale, y, objSuperArmBlock2x2))
-                {
-                    global.ammo[playerID, global.weapon[playerID]] = max(0,
-                    global.ammo[playerID, global.weapon[playerID]] - 1 / (global.energySaver + 1));
-                    
-                    a = instance_create(x + 32 * image_xscale, y, objSuperArmCreateBlock);
-                    a.sprite_index = sprSuperArmCreateBlock;
-                    a.respawn = false;
-                    a.visible = 1;
-                    a.grav = 0.25;
-                }
-            }
-        }
-        
         for (var j = 4; j &gt;= 0; j--)
         {
             for (var i = 0; i &lt; array_length_1d(checkPosYList); i++)
@@ -236,6 +217,29 @@ if (superArmHeldObject != noone)
             superArmHoldOwner = noone;
         }
     }
+}
+
+// moved this to the very end to prevent spawning blocks when they shouldn't
+if(superArmHeldObject == noone)
+{
+    // code attempting to allow creation of blocks
+        if(global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT))
+        {
+            if(instance_number(objSuperArmCreateBlock) &lt; 5 &amp;&amp; global.ammo[playerID, global.weapon[playerID]] &gt; 0)
+            {
+                if(!place_meeting(x + 32 * image_xscale, y, objSuperArmCreateBlock) &amp;&amp; !place_meeting(x + 32 * image_xscale, y, objSolid) &amp;&amp; !place_meeting(x + 32 * image_xscale, y, objSuperArmBlock) &amp;&amp; !place_meeting(x + 32 * image_xscale, y, objSuperArmBlock2x2))
+                {
+                    global.ammo[playerID, global.weapon[playerID]] = max(0,
+                    global.ammo[playerID, global.weapon[playerID]] - 1 / (global.energySaver + 1));
+                    
+                    a = instance_create(x + 32 * image_xscale, y, objSuperArmCreateBlock);
+                    a.sprite_index = sprSuperArmCreateBlock;
+                    a.respawn = false;
+                    a.visible = 1;
+                    a.grav = 0.25;
+                }
+            }
+        }
 }
 </string>
           </argument>
