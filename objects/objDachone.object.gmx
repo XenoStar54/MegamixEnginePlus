@@ -34,9 +34,9 @@ healthpoints = healthpointsStart;
 contactDamage = 8;
 lockTransition = false;
 
-
+respawn = true;
 category = "bulky";
-
+deadTimer = 0;
 dir = image_xscale;
 
 //@cc 0 = blue (default); 1 = green;
@@ -95,7 +95,7 @@ calibrateDirection();
 
 event_inherited();
 
-if (entityCanStep())
+if (entityCanStep() &amp;&amp; !dead)
 {
     // turn around on hitting a wall
     xSpeedTurnaround();
@@ -226,12 +226,53 @@ if (entityCanStep())
 }
 else if (dead)
 {
-    deadTimer = 0;
     image_index = 0;
     cooldownTimer = 0;
     xspeed = 0;
     yspeed = 0;
     imageOffset = 0;
+    deadTimer += 1;
+        
+    // flickering
+    if (deadTimer mod 2 == 0)
+    {
+        visible = !visible;
+    }
+    
+    if (floor(deadTimer / 5) * 5 == deadTimer)
+    {
+        var xcenter = bbox_left + abs(bbox_left - bbox_right) / 2;
+        var ycenter = bbox_top + abs(bbox_top - bbox_bottom) / 2;
+        playSFX(sfxExplosion);
+        
+        // randomize();
+        var inst = instance_create(xcenter + irandom_range(-(sprite_width / 2),
+            (sprite_width / 2)),
+            ycenter + irandom_range(-(sprite_height / 2) + 16,
+            (sprite_height / 2) - 16), objBigExplosion);
+        with (inst)
+        {
+            image_speed = 1 / 3;
+        }
+    }
+    if (deadTimer &gt;= 60)
+    {
+        if (lockTransition)
+        {
+            var canUnlock = true;
+            var i = 0;
+            with (prtMiniBoss)
+            {
+                if (!dead &amp;&amp; lockTransition)
+                {
+                    canUnlock = false;
+                    break;
+                }
+            }
+            if (canUnlock)
+                global.lockTransition = false;
+        }
+    }
 }
 
 image_index = imageOffset;
