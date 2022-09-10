@@ -127,7 +127,7 @@ specialDamageValue("shielded", 0);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>weaponSetup("SPARK SHOCK GB", make_color_rgb(248, 120, 88), make_color_rgb(248, 248, 248), sprWeaponIconsSparkShock);
+            <string>weaponSetup("SPARK SHOCK GB", global.nesPalette[32], global.nesPalette[40], sprWeaponIconsSparkShockGB);
 </string>
           </argument>
         </arguments>
