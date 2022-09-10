@@ -2899,6 +2899,7 @@
             <sprite>sprites\sprWeaponIconsSakugarne</sprite>
           </sprites>
           <sprites name="MMGBIII">
+            <sprite>sprites\sprWeaponIconsSparkShockGB</sprite>
             <sprite>sprites\sprWeaponIconsScrewCrusher</sprite>
           </sprites>
           <sprites name="MMGBIV">

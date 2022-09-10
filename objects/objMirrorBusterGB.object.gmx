@@ -27,7 +27,11 @@
             <kind>1</kind>
             <string>event_inherited();
 
-contactDamage = 3;
+// Mirror Buster changed slightly between MMGBI and MM10, but implementing the MMGBI style
+// for such a diverse set of projectiles present in the engine was infeasible. This variant
+// instead spawns three projectiles in a spread when something is reflected to add some flavor.
+
+contactDamage = 2;
 attackDelay = 8;
 
 canHit = false;
@@ -43,11 +47,18 @@ yspeed = 0;
 
 image_speed = 0;
 timer = 0;
-imgSpeed = 4;
-
-despawnRange = 16;
-
 isBullet = false;
+if(!isBullet)
+{
+    imgSpeed = 4;
+}
+else
+{
+    imgSpeed = 0;
+    image_speed = 0;
+}
+    
+despawnRange = 16;
 </string>
           </argument>
         </arguments>
@@ -72,252 +83,82 @@ isBullet = false;
             <kind>1</kind>
             <string>event_inherited();
 
-if (!isBullet &amp;&amp; instance_exists(parent))
-{
-    if (!global.frozen)
-    {
+if (!isBullet &amp;&amp; instance_exists(parent)){
+    if (!global.frozen){
         timer++;
         if (timer mod imgSpeed == 0) image_index = (image_index == 0);
         
-        if (instance_place(x, y, prtEnemyProjectile))
-        {
-            with (instance_place(x, y, prtEnemyProjectile))
-            {   
+        if (instance_place(x, y, prtEnemyProjectile)){
+            with (instance_place(x, y, prtEnemyProjectile)){
                 var mirrorCheck = (object_index != objHarmfulExplosion &amp;&amp; reflectable);
-                with(objMirrorBusterGB)
-                {
-                    if (isBullet)
-                    {
+                with(objMirrorBusterGB){
+                    if (isBullet){
                         other.mirrorCheck = false;
                     }
                 }
-                if (mirrorCheck)
-                {
-                    /*a = instance_create(other.x, other.y, objMirrorBusterGB);
-                    a.sprite_index = sprMirrorBusterBulletGB;
+                if (mirrorCheck){
+                    event_user(EV_DEATH);
+                    // straight bullet
+                    a = instance_create(other.x, other.y, objMirrorBusterGB);
+                    a.xspeed = other.image_xscale*6;
                     a.image_xscale = other.image_xscale;
-                    if(xspeed == 0)
-                    {
-                        if(yspeed &gt; 0)
-                        {
-                            a.image_yscale = image_yscale;
-                            a.image_index = 0;
-                            a.yspeed = -6;
-                        }
-                        else
-                        {
-                            a.image_yscale = -image_yscale;
-                            a.image_index = 0;
-                            a.yspeed = 6;
-                        }       
-                    }
-                    else
-                    {
-                        if(yspeed == 0)
-                        {
-                            a.image_index = 2;
-                            a.xspeed = 6 * a.image_xscale;
-                        }
-                        else
-                        {
-                            if(yspeed &gt; 0)
-                            {
-                                a.image_yscale = 1;
-                                a.image_index = 1;
-                                a.xspeed = 6 * a.image_xscale;
-                                a.yspeed = -6;
-                            }
-                            else
-                            {
-                                a.image_yscale = -1;
-                                a.image_index = 1;
-                                a.xspeed = 6 * a.image_xscale;
-                                a.yspeed = 6;
-                            }
-                        }
-                    }*/
-                    //a.isBullet = true;
-                    //a.canDamage = true;
-                    //event_user(EV_DEATH);
+                    a.sprite_index = sprMirrorBusterBulletGB;
+                    a.image_index = 1;
+                    a.image_speed = 0;
+                    a.imgSpeed = 0;
+                    a.isBullet = true;
+                    a.canDamage = true;
+                    // diagonal up
+                    ab = instance_create(other.x, other.y, objMirrorBusterGB);
+                    ab.xspeed = other.image_xscale*6;
+                    ab.yspeed = -6;
+                    ab.image_xscale = other.image_xscale;
+                    ab.sprite_index = sprMirrorBusterBulletGB;
+                    ab.image_index = 0;
+                    ab.image_speed = 0;
+                    ab.imgSpeed = 0;
+                    ab.isBullet = true;
+                    ab.canDamage = true;
+                    // diagonal down
+                    ac = instance_create(other.x, other.y, objMirrorBusterGB);
+                    ac.xspeed = other.image_xscale*6;
+                    ac.yspeed = 6;
+                    ac.image_xscale = other.image_xscale;
+                    ac.sprite_index = sprMirrorBusterBulletGB;
+                    ac.image_index = 2;
+                    ac.image_speed = 0;
+                    ac.imgSpeed = 0;
+                    ac.isBullet = true;
+                    ac.canDamage = true;
                     playSFX(sfxReflectGBI);
-                    with(other)
-                    {
+                    with(other){
                         global.ammo[playerID, global.weapon[parent.playerID]] = max(global.ammo[playerID, global.weapon[parent.playerID]] - 2, 0);
                     }
                 }
-                else
-                {
+                else{
                     event_user(EV_DEATH);
                 }
             }
         }
         //parent stuff
-        if (parent.isShoot &amp;&amp; !parent.isHit)
-        {
-            with(parent)
-            {
-                other.x = x + image_xscale*20 - image_xscale*4*(!ground);
-                other.y = y + image_yscale*4 - image_yscale*4*(!ground);
-                other.image_xscale = image_xscale;
-                other.image_yscale = image_yscale;
+            if (parent.isShoot &amp;&amp; !parent.isHit){
+                with(parent){
+                    other.x = x + image_xscale*20 - image_xscale*4*(!ground);
+                    other.y = y + image_yscale*4 - image_yscale*4*(!ground);
+                    other.image_xscale = image_xscale;
+                    other.image_yscale = image_yscale;
+                }
             }
-        }
-        else
-        {
-            instance_destroy();
-            exit;
-        }
+            else{
+                instance_destroy();
+                exit;
+            }
     }
 }
-else if (isBullet)
-{
-    /*
-    if (!global.frozen)
-    {
-        if(image_index == 0 || image_index == 1)
-        {
-            yspeed = image_yscale * -6;
-        }
-        if(image_index == 1 || image_index == 2)
-        {
-            xspeed = image_xscale * 6;
-        }
-    }*/
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="prtEnemyProjectile">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if (!isBullet)
-{
-    if (!global.factionStance[faction, other.faction])
-    {
-        exit;
-    }
-    
-    switch (other.reflectable)
-    {
-        case 0:
-            exit;
-            break;
-        case -1:
-            playSFX(sfxEnemyHit);
-            with (other)
-            {
-                instance_create(bboxGetXCenter(), bboxGetYCenter(), objExplosion);
-                event_user(EV_DEATH);
-            }
-            break;
-        case 1:
-            playSFX(sfxEnemyHit);
-            with (other)
-            {
-                faction = other.faction;
-                image_speed = 0;
-                blockCollision = 0;
-                xspeed *= -1;
-                yspeed *= -1;
-                //hspeed *= -1;
-                //vspeed *= -1;
-                //direction += 180;
-                //image_xscale *= -1;
-                pierces = 0;
-                grav = 0;
-                finalXDir = 0;
-                finalYDir = 0;
-                if(xspeed == 0)
-                {
-                    if(yspeed &lt; 0)
-                    {
-                        sprite_index = sprMirrorBusterBulletGB;
-                        image_index = 0;
-                        finalXDir = 0;
-                        finalYDir = -6;
-                    }
-                    else
-                    {
-                        sprite_index = sprMirrorBusterBulletGB;
-                        image_index = 4;
-                        finalXDir = 0;
-                        finalYDir = 6;      
-                    }
-                }
-                else if(yspeed == 0)
-                {
-                    if(xspeed &gt; 0)
-                    {
-                        sprite_index = sprMirrorBusterBulletGB;
-                        image_index = 2;
-                        finalXDir = 6;
-                        finalYDir = 0;
-                    }
-                    else
-                    {
-                        sprite_index = sprMirrorBusterBulletGB;
-                        image_index = 6;
-                        finalXDir = -6;
-                        finalYDir = 0;
-                    }
-                }
-                else
-                {
-                    if(yspeed &lt; 0)
-                    {
-                        if(xspeed &gt; 0)
-                        {
-                            sprite_index = sprMirrorBusterBulletGB;
-                            image_index = 1;
-                            finalXDir = 6;
-                            finalYDir = -6;
-                        }
-                        else
-                        {
-                            sprite_index = sprMirrorBusterBulletGB;
-                            image_index = 7;
-                            finalXDir = -6;
-                            finalYDir = -6;
-                        }
-                    }
-                    else
-                    {
-                        if(xspeed &gt; 0)
-                        {
-                            sprite_index = sprMirrorBusterBulletGB;
-                            image_index = 3;
-                            finalXDir = 6;
-                            finalYDir = 6;
-                        }
-                        else
-                        {
-                            sprite_index = sprMirrorBusterBulletGB;
-                            image_index = 5;
-                            finalXDir = -6;
-                            finalYDir = 6;
-                        }      
-                    }
-                }
-                xspeed = finalXDir;
-                yspeed = finalYDir;
-            }
-            break;
+else if (isBullet){
+    if (!global.frozen){
+        imgSpeed = 0;
+        image_speed = 0;
     }
 }
 </string>
