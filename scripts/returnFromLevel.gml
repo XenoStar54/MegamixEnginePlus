@@ -21,6 +21,12 @@ global.checkpoint = false;
 
 var rm = global.roomReturn;
 
+// continue the castle after beating a boss in it
+if(global.comingFromCastle)
+{
+    rm = rmCastleIntro;
+}
+
 // weapon get!
 if (array_length_1d(global.levelReward) > 1)
 {

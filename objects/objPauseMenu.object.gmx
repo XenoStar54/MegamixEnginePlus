@@ -312,6 +312,7 @@ switch (phase)
                 if (global.keyJumpPressed[playerID]
                     || global.keyPausePressed[playerID])
                 {
+                    global.comingFromCastle = 0;
                     returnFromLevel();
                     playSFX(sfxMenuSelect);
                 }
