@@ -1,5 +1,5 @@
 // cleanMem()
-
+/*
 var task, dll;
 task = argument0;
 dll = "CleanMem.dll";

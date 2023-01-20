@@ -19,7 +19,6 @@ gigInit();
 // windows bugfix extension initialization
 if (os_type == os_windows)
 {
-    cleanMem('init');
     scheduler_resolution_set(1); // doing this + setting the game's sleep margin to 1 ms prevents GMS' low fps / performance bug
 }
 

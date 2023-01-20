@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>/// initialization
-
+gmsched_init();
 //// global initialization ////
 global.hudFlicker = 0
 
@@ -1015,7 +1015,7 @@ if (!global.frozen)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>cleanMem('clean');
+            <string>//cleanMem('clean');
 
 setfrozen = 0;
 
@@ -1394,11 +1394,11 @@ saveLoadOptions(true);
 saveLoadGame(true);
 
 // End cleanMem
-if (os_type == os_windows)
+/*if (os_type == os_windows)
 {
     cleanMem('clear');
     cleanMem('free');
-}
+}*/
 
 // end rich presence
 discord_free_app()
