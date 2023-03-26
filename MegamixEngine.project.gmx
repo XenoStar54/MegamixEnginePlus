@@ -2794,6 +2794,7 @@
             <sprite>sprites\sprWeaponIconsThunderBeam</sprite>
             <sprite>sprites\sprWeaponIconsTimeSlow</sprite>
             <sprite>sprites\sprWeaponIconsOilSlider</sprite>
+            <sprite>sprites\sprWeaponIconsNonNewtonianSplit</sprite>
           </sprites>
           <sprites name="MM2">
             <sprite>sprites\sprWeaponIconsMetalBlade</sprite>
@@ -8380,6 +8381,7 @@
             <object>objects\objThunderBeam</object>
             <object>objects\objTimeSlow</object>
             <object>objects\objOilSlider</object>
+            <object>objects\objNonNewtonianSplit</object>
             <objects name="Don't Use">
               <object>objects\objSuperArmBlockProjectile</object>
               <object>objects\objSuperArmDebris</object>
