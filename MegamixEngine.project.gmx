@@ -2628,6 +2628,7 @@
           <sprite>sprites\sprHomingSniperCrosshair</sprite>
           <sprite>sprites\sprWaterBalloon</sprite>
           <sprite>sprites\sprWaterBalloonSplash</sprite>
+          <sprite>sprites\sprAteteminoAirdrop</sprite>
         </sprites>
         <sprites name="MM9">
           <sprite>sprites\sprConcreteShot</sprite>
@@ -2734,9 +2735,13 @@
           <sprite>sprites\sprNuclearDetonatorExploding</sprite>
         </sprites>
         <sprites name="MMDOS3">
+          <sprite>sprites\sprBladeLauncher</sprite>
+          <sprite>sprites\sprBladeLauncherBoomerang</sprite>
+          <sprite>sprites\sprBladeLauncherBoomerangGibs</sprite>
           <sprite>sprites\sprSharkBoomerang</sprite>
           <sprite>sprites\sprOilStream</sprite>
           <sprite>sprites\sprOilStreamDrop</sprite>
+          <sprite>sprites\sprWaterShooter</sprite>
           <sprite>sprites\sprTorchArm</sprite>
         </sprites>
         <sprites name="Other">
@@ -2854,6 +2859,7 @@
           <sprites name="MM8">
             <sprite>sprites\sprWeaponIconsHomingSniper</sprite>
             <sprite>sprites\sprWeaponIconsWaterBalloon</sprite>
+            <sprite>sprites\sprWeaponIconsAteteminoAirdrop</sprite>
           </sprites>
           <sprites name="MM9">
             <sprite>sprites\sprWeaponIconsConcreteShot</sprite>
@@ -2937,9 +2943,11 @@
           </sprites>
           <sprites name="MMDOS3">
             <sprite>sprites\sprWeaponIconsBitCannon</sprite>
-            <sprite>sprites\sprWeaponIconsSharkBoomerang</sprite>
+            <sprite>sprites\sprWeaponIconsBladeLauncher</sprite>
             <sprite>sprites\sprWeaponIconsOilStream</sprite>
+            <sprite>sprites\sprWeaponIconsSharkBoomerang</sprite>
             <sprite>sprites\sprWeaponIconsTorchArm</sprite>
+            <sprite>sprites\sprWeaponIconsWaterShooter</sprite>
           </sprites>
           <sprites name="Other">
             <sprite>sprites\sprWeaponIconsMagneticShockwave</sprite>
@@ -8459,6 +8467,7 @@
           <objects name="MM8">
             <object>objects\objHomingSniper</object>
             <object>objects\objWaterBalloon</object>
+            <object>objects\objAteteminoAirdrop</object>
           </objects>
           <objects name="MM9">
             <object>objects\objConcreteShot</object>
@@ -8570,11 +8579,15 @@
           </objects>
           <objects name="MMDOS3">
             <object>objects\objBitCannon</object>
-            <object>objects\objSharkBoomerang</object>
+            <object>objects\objBladeLauncher</object>
             <object>objects\objOilStream</object>
+            <object>objects\objSharkBoomerang</object>
             <object>objects\objTorchArm</object>
+            <object>objects\objWaterShooter</object>
             <objects name="Don't Use">
               <object>objects\objBitCannonBit</object>
+              <object>objects\objBladeLauncherBoomerang</object>
+              <object>objects\objWaterShooterPushTracker</object>
             </objects>
           </objects>
           <objects name="Other">
