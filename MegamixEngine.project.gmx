@@ -2617,6 +2617,8 @@
           <sprite>sprites\sprWindStorm</sprite>
           <sprite>sprites\sprWindStormWeapon</sprite>
           <sprite>sprites\sprYamatoSpear</sprite>
+          <sprite>sprites\sprMechaSoarersPlatform</sprite>
+          <sprite>sprites\sprMechaSoarersFire</sprite>
         </sprites>
         <sprites name="MM7">
           <sprite>sprites\sprWeaponFreezeCracker</sprite>
@@ -2820,6 +2822,7 @@
             <sprite>sprites\sprWeaponIconsSearchSnake</sprite>
             <sprite>sprites\sprWeaponIconsSparkShock</sprite>
             <sprite>sprites\sprWeaponIconsShadowBlade</sprite>
+            <sprite>sprites\sprWeaponIconsKamegoroSquad</sprite>
           </sprites>
           <sprites name="MM4">
             <sprite>sprites\sprWeaponIconsFlashStopper</sprite>
@@ -2851,6 +2854,7 @@
             <sprite>sprites\sprWeaponIconsSilverTomahawk</sprite>
             <sprite>sprites\sprWeaponIconsWindStorm</sprite>
             <sprite>sprites\sprWeaponIconsYamatoSpear</sprite>
+            <sprite>sprites\sprWeaponIconsMechaSoarers</sprite>
           </sprites>
           <sprites name="MM7">
             <sprite>sprites\sprWeaponIconsFreezeCracker</sprite>
@@ -8415,6 +8419,7 @@
             <object>objects\objSearchSnake</object>
             <object>objects\objSparkShock</object>
             <object>objects\objShadowBlade</object>
+            <object>objects\objKamegoroSquad</object>
             <objects name="Don't Use">
               <object>objects\objSparkShockParalyze</object>
             </objects>
@@ -8453,6 +8458,7 @@
             <object>objects\objSilverTomahawk</object>
             <object>objects\objWindStorm</object>
             <object>objects\objYamatoSpear</object>
+            <object>objects\objMechaSoarers</object>
             <objects name="Don't Use">
               <object>objects\objWindStormEffect</object>
             </objects>
