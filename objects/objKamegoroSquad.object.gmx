@@ -199,7 +199,7 @@ if (entityCanStep())
                 if(target) calibrateDirection();
                 else
                 {
-                    if(sign(xcoll) == -image_xscale) image_xscale *= -1;
+                    if(checkSolid(image_xscale,0) &amp;&amp; !(instance_exists(objLadder) &amp;&amp; place_meeting(x+image_xscale,y,objLadder))) image_xscale *= -1;
                 }
                 xspeed = image_xscale*2;
                 image_index = 3;
