@@ -32,7 +32,7 @@ blockCollision = 0;
 contactDamage = 2;
 
 canHit = false;
-healthpointsStart = 12;
+healthpointsStart = 8;
 healthpoints = healthpointsStart;
 
 xspeed = 0;
@@ -197,6 +197,10 @@ if (entityCanStep())
                 grav = 0.25*image_yscale;
                 if(ground) yspeed = -6;
                 if(target) calibrateDirection();
+                else
+                {
+                    if(sign(xcoll) == -image_xscale) image_xscale *= -1;
+                }
                 xspeed = image_xscale*2;
                 image_index = 3;
             }

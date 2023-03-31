@@ -2588,6 +2588,7 @@
           <sprite>sprites\sprDustCrusherFrag</sprite>
           <sprite>sprites\sprDiveMissile</sprite>
           <sprite>sprites\sprSkullBarrier</sprite>
+          <sprite>sprites\sprSquareOne</sprite>
         </sprites>
         <sprites name="MM5">
           <sprite>sprites\sprWaterWave</sprite>
@@ -2833,6 +2834,7 @@
             <sprite>sprites\sprWeaponIconsDustCrusher</sprite>
             <sprite>sprites\sprWeaponIconsDiveMissile</sprite>
             <sprite>sprites\sprWeaponIconsSkullBarrier</sprite>
+            <sprite>sprites\sprWeaponIconsSquareOne</sprite>
           </sprites>
           <sprites name="MM5">
             <sprite>sprites\sprWeaponIconsGravityHold</sprite>
@@ -8433,6 +8435,7 @@
             <object>objects\objDustCrusher</object>
             <object>objects\objDiveMissile</object>
             <object>objects\objSkullBarrier</object>
+            <object>objects\objSquareOne</object>
           </objects>
           <objects name="MM5">
             <object>objects\objGravityHold</object>
