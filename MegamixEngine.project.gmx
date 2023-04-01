@@ -2697,6 +2697,9 @@
         <sprites name="MMGBIII">
           <sprite>sprites\sprScrewCrusher</sprite>
         </sprites>
+        <sprites name="MMGBIV">
+          <sprite>sprites\sprRadarRoller</sprite>
+        </sprites>
         <sprites name="MMGBV">
           <sprite>sprites\sprSparkChaser</sprite>
           <sprite>sprites\sprGrabBuster</sprite>
@@ -2917,6 +2920,7 @@
           </sprites>
           <sprites name="MMGBIV">
             <sprite>sprites\sprWeaponIconsBalladeCracker</sprite>
+            <sprite>sprites\sprWeaponIconsRadarRoller</sprite>
           </sprites>
           <sprites name="MMGBV">
             <sprite>sprites\sprWeaponIconsSparkChaser</sprite>
@@ -8541,6 +8545,7 @@
           </objects>
           <objects name="MMGBIV">
             <object>objects\objBalladeCracker</object>
+            <object>objects\objRadarRoller</object>
           </objects>
           <objects name="MMGBV">
             <object>objects\objSparkChaser</object>
