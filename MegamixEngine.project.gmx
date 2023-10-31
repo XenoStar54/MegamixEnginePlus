@@ -2545,6 +2545,9 @@
           <sprite>sprites\sprThunderBeamVertical</sprite>
           <sprite>sprites\sprOilSlider</sprite>
           <sprite>sprites\sprOilSliderSkateboard</sprite>
+          <sprite>sprites\sprIntruderEliminator</sprite>
+          <sprite>sprites\sprIntruderEliminatorBullet</sprite>
+          <sprite>sprites\sprIntruderEliminatorLaser</sprite>
         </sprites>
         <sprites name="MM2">
           <sprite>sprites\sprMetalBlade</sprite>
@@ -2561,6 +2564,8 @@
           <sprite>sprites\sprLeafShield</sprite>
           <sprite>sprites\sprLeafShieldInit</sprite>
           <sprite>sprites\sprLeafShieldDead</sprite>
+          <sprite>sprites\sprWeaponPicoStrike</sprite>
+          <sprite>sprites\sprWeaponBoobeamTrap</sprite>
         </sprites>
         <sprites name="MM3">
           <sprite>sprites\sprNeedleCannon</sprite>
@@ -2644,6 +2649,8 @@
           <sprite>sprites\sprMagmaBazookaCharged</sprite>
           <sprite>sprites\sprBlackHoleBombInactive</sprite>
           <sprite>sprites\sprBlackHoleBomb</sprite>
+          <sprite>sprites\sprWeaponMiniShark</sprite>
+          <sprite>sprites\sprWeaponMiniSharkLaser</sprite>
           <sprites name="Do Not Use">
             <sprite>sprites\mskTornadoBlow</sprite>
             <sprite>sprites\sprBlackHoleBombHitbox</sprite>
@@ -2659,6 +2666,7 @@
           <sprite>sprites\sprWheelCutter</sprite>
           <sprite>sprites\sprSolarBlaze</sprite>
           <sprite>sprites\sprSolarBlazeWave</sprite>
+          <sprite>sprites\sprCrabbyPunch</sprite>
           <sprite>sprites\sprMirrorBuster</sprite>
         </sprites>
         <sprites name="MM11">
@@ -2806,6 +2814,7 @@
             <sprite>sprites\sprWeaponIconsTimeSlow</sprite>
             <sprite>sprites\sprWeaponIconsOilSlider</sprite>
             <sprite>sprites\sprWeaponIconsNonNewtonianSplit</sprite>
+            <sprite>sprites\sprWeaponIconsIntruderEliminator</sprite>
           </sprites>
           <sprites name="MM2">
             <sprite>sprites\sprWeaponIconsMetalBlade</sprite>
@@ -2816,6 +2825,8 @@
             <sprite>sprites\sprWeaponIconsTimeStopper</sprite>
             <sprite>sprites\sprWeaponIconsAtomicFire</sprite>
             <sprite>sprites\sprWeaponIconsLeafShield</sprite>
+            <sprite>sprites\sprWeaponIconsPicoStrike</sprite>
+            <sprite>sprites\sprWeaponIconsBoobeamTrap</sprite>
           </sprites>
           <sprites name="MM3">
             <sprite>sprites\sprWeaponIconsNeedleCannon</sprite>
@@ -2880,6 +2891,7 @@
             <sprite>sprites\sprWeaponIconsMagmaBazooka</sprite>
             <sprite>sprites\sprWeaponIconsBlackHoleBomb</sprite>
             <sprite>sprites\sprWeaponIconsRevolverBuster</sprite>
+            <sprite>sprites\sprWeaponIconsMiniShark</sprite>
           </sprites>
           <sprites name="MM10">
             <sprite>sprites\sprWeaponIconsTripleBlade</sprite>
@@ -2889,6 +2901,7 @@
             <sprite>sprites\sprWeaponIconsReboundStriker</sprite>
             <sprite>sprites\sprWeaponIconsWheelCutter</sprite>
             <sprite>sprites\sprWeaponIconsSolarBlaze</sprite>
+            <sprite>sprites\sprWeaponIconsCrabbyPunch</sprite>
             <sprite>sprites\sprWeaponIconsMirrorBuster</sprite>
           </sprites>
           <sprites name="MM11">
@@ -8400,6 +8413,8 @@
             <object>objects\objTimeSlow</object>
             <object>objects\objOilSlider</object>
             <object>objects\objNonNewtonianSplit</object>
+            <object>objects\objIntruderEliminator</object>
+            <object>objects\objIntruderEliminatorLaser</object>
             <objects name="Don't Use">
               <object>objects\objSuperArmBlockProjectile</object>
               <object>objects\objSuperArmDebris</object>
@@ -8415,6 +8430,8 @@
             <object>objects\objTimeStopper</object>
             <object>objects\objAtomicFire</object>
             <object>objects\objLeafShield</object>
+            <object>objects\objWeaponPicoStrike</object>
+            <object>objects\objWeaponBoobeamTrap</object>
           </objects>
           <objects name="MM3">
             <object>objects\objNeedleCannon</object>
@@ -8492,6 +8509,7 @@
             <object>objects\objMagmaBazooka</object>
             <object>objects\objBlackHoleBomb</object>
             <object>objects\objRevolverBuster</object>
+            <object>objects\objWeaponMiniShark</object>
             <objects name="Don't Use">
               <object>objects\objTornadoEffect</object>
               <object>objects\objBHBEffect</object>
@@ -8506,6 +8524,7 @@
             <object>objects\objReboundStriker</object>
             <object>objects\objWheelCutter</object>
             <object>objects\objSolarBlaze</object>
+            <object>objects\objCrabbyPunch</object>
             <object>objects\objMirrorBuster</object>
             <objects name="Don't Use">
               <object>objects\objBubblePopEffect</object>
