@@ -149,7 +149,7 @@ if(entityCanStep())
                 switch(selectedAttack)
                 {
                     case 0: // wave
-                        x = parent.x+16;
+                        x = parent.x+16*image_xscale;
                         y = parent.y;
                         image_yscale = image_yscale;
                         phase = 1;
