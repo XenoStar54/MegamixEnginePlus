@@ -16,7 +16,7 @@ if (!playerIsLocked(PL_LOCK_JUMP))
     }
     if (global.keyJumpPressed[playerID] && yDir != gravDir)
     {
-        if (ground || jumpCounter < jumpCounterMax || coyoteTime <= coyoteTimeMax)
+        if (ground || jumpCounter < jumpCounterMax)
         {
             playerJump();
             coyoteTime = coyoteTimeMax+1;

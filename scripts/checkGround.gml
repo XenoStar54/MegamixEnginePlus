@@ -6,6 +6,13 @@ if (argument_count > 0 && argument[0])
 /// Checks for ground
 if (!ground)
 {
+    if (object_index == objMegaman && jumpCounter == 0)
+    {
+        if(coyoteTime > coyoteTimeMax)
+        {
+            jumpCounter++;
+        }
+    }
     exit;
 }
 
@@ -143,7 +150,6 @@ if (place_free(x, y))
     {
         if (jumpCounter == 0)
         {
-            jumpCounter += 1;
             if (dashSlide && isSlide)
             {
                 dashJumped = true;

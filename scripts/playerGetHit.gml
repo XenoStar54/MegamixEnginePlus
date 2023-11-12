@@ -4,7 +4,7 @@
 
 var dmg = argument0;
 
-if (!isHit)
+if (!isHit && iFrames == 0)
 {
     if (dmg > 0)
     {
@@ -29,14 +29,14 @@ if (!isHit)
         }
         
         global.playerHealth[playerID] -= dmg;
-        
-        iFrames = -1;
-        shootTimer = 0;
-        
-        if (global.playerHealth[playerID] > 0 || global.alwaysHealth)
-        {
-            playSFX(sfxHit);
-        }
+    }
+    
+    iFrames = -1;
+    shootTimer = 0;
+    
+    if (global.playerHealth[playerID] > 0 || global.alwaysHealth)
+    {
+        playSFX(sfxHit);
     }
     
     isHit = true;

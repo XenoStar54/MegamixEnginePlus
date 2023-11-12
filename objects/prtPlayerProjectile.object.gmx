@@ -51,6 +51,8 @@ bubbleTimer = -1;
 
 fnsolid = 1;
 
+attackDelay = 4;
+
 bulletLimitCost = 1; // how much this contributes to the bullet limit. &gt;1 used for charge shot
 
 playerID = 0;
