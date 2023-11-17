@@ -187,7 +187,7 @@ contactDamageMultiplier = 1; //you can increase this to multiply the amount of d
 //coyote time stuff, i.e. amount of frames after falling off a ledge during which you can still jump
 // if coyoteTimeMax is negative, you'll have infinite coyote time (i.e. Quint's Revenge mode)
 coyoteTime = 0;
-coyoteTimeMax = 3;
+coyoteTimeMax = 5;
 
 // set this to true if you want to be able to jump up ladders
 jumpUpLadders = false;
@@ -224,6 +224,13 @@ jetAdaptorRefillSpeed = 2;
 isAirSlide = 0;
 airSlideCounter = 0;
 airSlideCounterMax = 0;
+
+// Mega can mash buttons when frozen or stunned to get out faster
+// set this to 0 when enabling stun effect to disable
+enableMashGetout = 1;
+mashGetoutEffectiveness = 2;
+mashGetoutCooldownTimer = 0;
+mashGetoutCooldown = 2;
 </string>
           </argument>
         </arguments>

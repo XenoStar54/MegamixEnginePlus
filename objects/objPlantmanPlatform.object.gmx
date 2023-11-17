@@ -32,6 +32,14 @@ grav = 0;
 bubbleTimer = -1;
 
 image_speed = 0.25;
+
+closeTimer = 0;
+// @cc: when positive, the platform will close after that amount of time
+closeTimerMax = -1;
+
+closedSprite = sprPlantmanPlatformClosed;
+openSprite = sprPlantmanPlatformOpen;
+alertSprite = sprPlantmanPlatformAlert;
 </string>
           </argument>
         </arguments>
@@ -58,14 +66,34 @@ image_speed = 0.25;
 
 if (entityCanStep())
 {
-    isSolid = (sprite_index == sprPlantmanPlatformOpen) * 2;
+    isSolid = (sprite_index != closedSprite) * 2;
+    
+    if(closeTimer)
+    {
+        closeTimer--;
+        if(closeTimer &lt; 60)
+        {
+            if((closeTimer mod 20) == 19) playSFX(sfxBladeManSeeSawCart2);
+            if((closeTimer mod 20) &lt; 10) sprite_index = openSprite;
+            else sprite_index = alertSprite;
+            
+            if(closeTimer == 0)
+            {
+                sprite_index = closedSprite;
+                image_index = 0;
+                isSolid = 0;
+                canHit = true;
+            }
+        }
+    }
 }
 else if (dead)
 {
-    sprite_index = sprPlantmanPlatformClosed;
+    sprite_index = closedSprite;
     image_index = 0;
     isSolid = 0;
     canHit = true;
+    closeTimer = 0;
 }
 </string>
           </argument>
@@ -89,7 +117,7 @@ else if (dead)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>sprite_index = sprPlantmanPlatformOpen;
+            <string>sprite_index = openSprite;
 isSolid = 2;
 iFrames = 0;
 canHit = false;
@@ -103,6 +131,8 @@ with (other)
 }
 
 other.guardCancel = 2;
+
+if(closeTimerMax &gt; 0) closeTimer = closeTimerMax;
 </string>
           </argument>
         </arguments>

@@ -2545,6 +2545,9 @@
           <sprite>sprites\sprThunderBeamVertical</sprite>
           <sprite>sprites\sprOilSlider</sprite>
           <sprite>sprites\sprOilSliderSkateboard</sprite>
+          <sprite>sprites\sprIntruderEliminator</sprite>
+          <sprite>sprites\sprIntruderEliminatorBullet</sprite>
+          <sprite>sprites\sprIntruderEliminatorLaser</sprite>
         </sprites>
         <sprites name="MM2">
           <sprite>sprites\sprMetalBlade</sprite>
@@ -2561,6 +2564,8 @@
           <sprite>sprites\sprLeafShield</sprite>
           <sprite>sprites\sprLeafShieldInit</sprite>
           <sprite>sprites\sprLeafShieldDead</sprite>
+          <sprite>sprites\sprWeaponPicoStrike</sprite>
+          <sprite>sprites\sprWeaponBoobeamTrap</sprite>
         </sprites>
         <sprites name="MM3">
           <sprite>sprites\sprNeedleCannon</sprite>
@@ -2632,6 +2637,15 @@
           <sprite>sprites\sprWaterBalloon</sprite>
           <sprite>sprites\sprWaterBalloonSplash</sprite>
           <sprite>sprites\sprAteteminoAirdrop</sprite>
+          <sprite>sprites\sprBlikingRage</sprite>
+          <sprite>sprites\sprBlikingRageMine</sprite>
+          <sprite>sprites\sprBlikingRageMissile</sprite>
+          <sprite>sprites\sprBlikingRageEye</sprite>
+          <sprite>sprites\sprGelApocalypse</sprite>
+          <sprite>sprites\sprGelApocalypseSmall</sprite>
+          <sprite>sprites\sprGelApocalypseWave</sprite>
+          <sprite>sprites\sprGelApocalypseNeedle</sprite>
+          <sprite>sprites\sprGelApocalypseSelection</sprite>
         </sprites>
         <sprites name="MM9">
           <sprite>sprites\sprConcreteShot</sprite>
@@ -2644,6 +2658,8 @@
           <sprite>sprites\sprMagmaBazookaCharged</sprite>
           <sprite>sprites\sprBlackHoleBombInactive</sprite>
           <sprite>sprites\sprBlackHoleBomb</sprite>
+          <sprite>sprites\sprWeaponMiniShark</sprite>
+          <sprite>sprites\sprWeaponMiniSharkLaser</sprite>
           <sprites name="Do Not Use">
             <sprite>sprites\mskTornadoBlow</sprite>
             <sprite>sprites\sprBlackHoleBombHitbox</sprite>
@@ -2659,6 +2675,7 @@
           <sprite>sprites\sprWheelCutter</sprite>
           <sprite>sprites\sprSolarBlaze</sprite>
           <sprite>sprites\sprSolarBlazeWave</sprite>
+          <sprite>sprites\sprCrabbyPunch</sprite>
           <sprite>sprites\sprMirrorBuster</sprite>
         </sprites>
         <sprites name="MM11">
@@ -2722,6 +2739,7 @@
           <sprite>sprites\sprWaveBurner</sprite>
           <sprite>sprites\sprMagicCard</sprite>
           <sprite>sprites\sprMagicCardVertical</sprite>
+          <sprite>sprites\sprRoyalFlashbang</sprite>
         </sprites>
         <sprites name="MM&amp;B2">
           <sprite>sprites\sprFlameMixer</sprite>
@@ -2806,6 +2824,7 @@
             <sprite>sprites\sprWeaponIconsTimeSlow</sprite>
             <sprite>sprites\sprWeaponIconsOilSlider</sprite>
             <sprite>sprites\sprWeaponIconsNonNewtonianSplit</sprite>
+            <sprite>sprites\sprWeaponIconsIntruderEliminator</sprite>
           </sprites>
           <sprites name="MM2">
             <sprite>sprites\sprWeaponIconsMetalBlade</sprite>
@@ -2816,6 +2835,8 @@
             <sprite>sprites\sprWeaponIconsTimeStopper</sprite>
             <sprite>sprites\sprWeaponIconsAtomicFire</sprite>
             <sprite>sprites\sprWeaponIconsLeafShield</sprite>
+            <sprite>sprites\sprWeaponIconsPicoStrike</sprite>
+            <sprite>sprites\sprWeaponIconsBoobeamTrap</sprite>
           </sprites>
           <sprites name="MM3">
             <sprite>sprites\sprWeaponIconsNeedleCannon</sprite>
@@ -2869,6 +2890,8 @@
             <sprite>sprites\sprWeaponIconsHomingSniper</sprite>
             <sprite>sprites\sprWeaponIconsWaterBalloon</sprite>
             <sprite>sprites\sprWeaponIconsAteteminoAirdrop</sprite>
+            <sprite>sprites\sprWeaponIconsBlikingRage</sprite>
+            <sprite>sprites\sprWeaponIconsGelApocalypse</sprite>
           </sprites>
           <sprites name="MM9">
             <sprite>sprites\sprWeaponIconsConcreteShot</sprite>
@@ -2880,6 +2903,7 @@
             <sprite>sprites\sprWeaponIconsMagmaBazooka</sprite>
             <sprite>sprites\sprWeaponIconsBlackHoleBomb</sprite>
             <sprite>sprites\sprWeaponIconsRevolverBuster</sprite>
+            <sprite>sprites\sprWeaponIconsMiniShark</sprite>
           </sprites>
           <sprites name="MM10">
             <sprite>sprites\sprWeaponIconsTripleBlade</sprite>
@@ -2889,6 +2913,7 @@
             <sprite>sprites\sprWeaponIconsReboundStriker</sprite>
             <sprite>sprites\sprWeaponIconsWheelCutter</sprite>
             <sprite>sprites\sprWeaponIconsSolarBlaze</sprite>
+            <sprite>sprites\sprWeaponIconsCrabbyPunch</sprite>
             <sprite>sprites\sprWeaponIconsMirrorBuster</sprite>
           </sprites>
           <sprites name="MM11">
@@ -2936,6 +2961,7 @@
             <sprite>sprites\sprWeaponIconsIceWall</sprite>
             <sprite>sprites\sprWeaponIconsWaveBurner</sprite>
             <sprite>sprites\sprWeaponIconsMagicCard</sprite>
+            <sprite>sprites\sprWeaponIconsRoyalFlashbang</sprite>
           </sprites>
           <sprites name="MM&amp;B2">
             <sprite>sprites\sprWeaponIconsFlameMixer</sprite>
@@ -5263,10 +5289,21 @@
         <sprite>sprites\sprWaterPillar</sprite>
         <sprite>sprites\sprWaterPillarH</sprite>
         <sprite>sprites\sprPUHitSwitch</sprite>
-        <sprite>sprites\sprPUSwitchBlockBlue</sprite>
         <sprite>sprites\sprPUSwitchBlockRed</sprite>
+        <sprite>sprites\sprPUSwitchBlockBlue</sprite>
+        <sprite>sprites\sprPUSwitchLadderRed</sprite>
+        <sprite>sprites\sprPUSwitchLadderBlue</sprite>
+        <sprite>sprites\sprPUSwitchPlatformRed</sprite>
+        <sprite>sprites\sprPUSwitchPlatformBlue</sprite>
+        <sprite>sprites\sprPUSwitchSpikeRed</sprite>
+        <sprite>sprites\sprPUSwitchSpikeBlue</sprite>
+        <sprite>sprites\sprPUSwitchConveyor</sprite>
+        <sprite>sprites\sprPUSwitchConveyorPreview</sprite>
+        <sprite>sprites\sprPUMeltBlock</sprite>
+        <sprite>sprites\sprPUCrackBlock</sprite>
         <sprite>sprites\sprPUOilFire</sprite>
         <sprite>sprites\sprPUOil</sprite>
+        <sprite>sprites\sprPUElecMovingBlock</sprite>
         <sprite>sprites\sprSuperArmBlock</sprite>
         <sprite>sprites\sprSuperArm2x2</sprite>
       </sprites>
@@ -5407,6 +5444,7 @@
         <sprite>sprites\sprSpring</sprite>
         <sprite>sprites\sprPlantmanPlatformClosed</sprite>
         <sprite>sprites\sprPlantmanPlatformOpen</sprite>
+        <sprite>sprites\sprPlantmanPlatformAlert</sprite>
         <sprite>sprites\sprFanUp</sprite>
         <sprite>sprites\sprFanDown</sprite>
         <sprite>sprites\sprFanRight</sprite>
@@ -5437,6 +5475,8 @@
         <sprite>sprites\sprJunkMagDebris</sprite>
         <sprite>sprites\sprJunkDust</sprite>
         <sprite>sprites\sprControllableElevator</sprite>
+        <sprite>sprites\sprFreezeBreakPlatform</sprite>
+        <sprite>sprites\sprFreezeBreakPlatformBits</sprite>
         <sprite>sprites\sprRevealingTilesSnow</sprite>
       </sprites>
       <sprites name="MM8">
@@ -5475,6 +5515,7 @@
       </sprites>
       <sprites name="MM9">
         <sprite>sprites\sprMM9SpinningPlatform</sprite>
+        <sprite>sprites\sprVerticalTornadoPlatform</sprite>
         <sprite>sprites\sprGalaxyManPortal</sprite>
         <sprite>sprites\sprGalaxyManPortalReverse</sprite>
         <sprite>sprites\sprSplashWomanWaterPlatform</sprite>
@@ -5538,6 +5579,7 @@
         <sprite>sprites\sprBladeManSeeSawTether</sprite>
         <sprite>sprites\sprBladeManSeeSawMiddle</sprite>
         <sprite>sprites\sprSolarManConveyor</sprite>
+        <sprite>sprites\sprSolarManConveyorImg</sprite>
       </sprites>
       <sprites name="MMWW">
         <sprite>sprites\sprMMWTFallingPlatform</sprite>
@@ -8005,7 +8047,17 @@
         <object>objects\objPUHitSwitch</object>
         <object>objects\objPUSwitchBlockRed</object>
         <object>objects\objPUSwitchBlockBlue</object>
+        <object>objects\objPUSwitchLadderRed</object>
+        <object>objects\objPUSwitchLadderBlue</object>
+        <object>objects\objPUSwitchPlatformRed</object>
+        <object>objects\objPUSwitchPlatformBlue</object>
+        <object>objects\objPUSwitchSpikeRed</object>
+        <object>objects\objPUSwitchSpikeBlue</object>
+        <object>objects\objPUSwitchConveyor</object>
+        <object>objects\objPUMeltBlock</object>
+        <object>objects\objPUCrackBlock</object>
         <object>objects\objPUOil</object>
+        <object>objects\objPUElecMovingBlock</object>
         <object>objects\objSuperCutterSpawner</object>
         <object>objects\objWaterJet</object>
         <object>objects\objSuperArmBlock</object>
@@ -8165,6 +8217,7 @@
         <object>objects\objJunkMagDebrisSpawner</object>
         <object>objects\objJunkPlatform</object>
         <object>objects\objJunkPlatformLarge</object>
+        <object>objects\objFreezeBreakPlatform</object>
         <object>objects\objRevealingTiles</object>
         <objects name="Don't Use">
           <object>objects\objJunkMagDebris</object>
@@ -8213,6 +8266,7 @@
         <object>objects\objSplashWomanPlatform</object>
         <object>objects\objMagmaBeamSource</object>
         <object>objects\objTornadoPlatform</object>
+        <object>objects\objVerticalTornadoPlatform</object>
         <object>objects\objWily4Laser</object>
         <objects name="Don't Use">
           <object>objects\objMagmaBeam</object>
@@ -8400,6 +8454,8 @@
             <object>objects\objTimeSlow</object>
             <object>objects\objOilSlider</object>
             <object>objects\objNonNewtonianSplit</object>
+            <object>objects\objIntruderEliminator</object>
+            <object>objects\objIntruderEliminatorLaser</object>
             <objects name="Don't Use">
               <object>objects\objSuperArmBlockProjectile</object>
               <object>objects\objSuperArmDebris</object>
@@ -8415,6 +8471,8 @@
             <object>objects\objTimeStopper</object>
             <object>objects\objAtomicFire</object>
             <object>objects\objLeafShield</object>
+            <object>objects\objWeaponPicoStrike</object>
+            <object>objects\objWeaponBoobeamTrap</object>
           </objects>
           <objects name="MM3">
             <object>objects\objNeedleCannon</object>
@@ -8481,6 +8539,8 @@
             <object>objects\objHomingSniper</object>
             <object>objects\objWaterBalloon</object>
             <object>objects\objAteteminoAirdrop</object>
+            <object>objects\objBlikingRage</object>
+            <object>objects\objGelApocalypse</object>
           </objects>
           <objects name="MM9">
             <object>objects\objConcreteShot</object>
@@ -8492,6 +8552,7 @@
             <object>objects\objMagmaBazooka</object>
             <object>objects\objBlackHoleBomb</object>
             <object>objects\objRevolverBuster</object>
+            <object>objects\objWeaponMiniShark</object>
             <objects name="Don't Use">
               <object>objects\objTornadoEffect</object>
               <object>objects\objBHBEffect</object>
@@ -8506,6 +8567,7 @@
             <object>objects\objReboundStriker</object>
             <object>objects\objWheelCutter</object>
             <object>objects\objSolarBlaze</object>
+            <object>objects\objCrabbyPunch</object>
             <object>objects\objMirrorBuster</object>
             <objects name="Don't Use">
               <object>objects\objBubblePopEffect</object>
@@ -8565,6 +8627,7 @@
             <object>objects\objIceWall</object>
             <object>objects\objWaveBurner</object>
             <object>objects\objMagicCard</object>
+            <object>objects\objRoyalFlashbang</object>
             <objects name="Don't Use">
               <object>objects\objCopyVisionBusterShot</object>
               <object>objects\objTenguDash</object>
@@ -8748,6 +8811,9 @@
       <room>rooms\lvlDocTest</room>
       <room>rooms\lvlWaterAndWaterAndWaterWater</room>
       <room>rooms\lvlRushSearchTest</room>
+      <room>rooms\lvlBatteryFix</room>
+      <room>rooms\lvlEditedGimmicks</room>
+      <room>rooms\lvlNewGimmicks</room>
     </rooms>
     <rooms name="Classic Mega Man Example Stages">
       <room>rooms\lvlCutMan</room>

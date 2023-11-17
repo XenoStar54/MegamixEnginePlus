@@ -17,27 +17,11 @@ var alpha = argument11;
 var sprWidth = sprite_get_width(spr) * xscale;
 var sprHeight = sprite_get_height(spr) * yscale;
 
-assert(xscale >= 0, "negative xscale hasn't been implemented yet... it's tricky... sorry...");
-assert(yscale >= 0, "negative yscale hasn't been implemented yet... it's tricky... sorry...");
+// so the trick to drawing negative scale cropped sprites is that you have to invert width/height
+// something which the script already fucking does lmfao
 
 var trueX = max(_x, left);
 var trueY = max(_y, top);
-if (trueX < left - sprWidth)
-{
-    exit;
-}
-if (trueY < top - sprHeight)
-{
-    exit;
-}
-if (trueX >= left + width)
-{
-    exit;
-}
-if (trueY >= top + height)
-{
-    exit;
-}
 var trueRight = left + width;
 var trueBottom = top + height;
 var trueWidth = trueRight - trueX;

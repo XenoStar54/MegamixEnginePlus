@@ -238,6 +238,8 @@ if (entityCanStep())
         var d = fireWeapon(0, 0, objNonNewtonianSplit, 4, 0, 0, 0);
         if(d) d.angle = 270;
         playSFX(sfxChillShoot);
+        if(iFrames &lt; 5) iFrames = 5;
+        hitTimer = hitTime;
     }
 }
 </string>

@@ -29,12 +29,14 @@
 canHit = false;
 
 image_speed = 0.1;
+//@cc: decide how fast the battery spins; affects player spin rate and direction
+imgSpd = 0.1;
 
 respawnRange = -1;
 despawnRange = -1;
 
 xOffset = 16;
-noFlicker = true;
+noFlicker = false;
 
 isSolid = 2;
 blockCollision = 0;
@@ -54,10 +56,15 @@ for (i = 0; i &lt; global.playerCount; i += 1)
     offset[i] = 0;
     animOffset[i] = 0;
     shootLock[i] = false;
+    jumpLock[i] = false;
+    lockReleaseCountdown[i] = -1;
 }
 
 currX = x;
 currY = y;
+
+//@cc: if true, jumping at the platform from below will attach to it
+funMode = true;
 </string>
           </argument>
         </arguments>
@@ -144,7 +151,7 @@ if (instance_exists(objMegaman))
             <kind>1</kind>
             <string>event_inherited();
 
-if (!global.frozen &amp;&amp; !dead)
+if (entityCanStep())
 {
     // Check for drop rails
     if (instance_exists(lastRail))
@@ -155,12 +162,12 @@ if (!global.frozen &amp;&amp; !dead)
         }
         else
         {
-            image_speed = 0.1;
+            image_speed = imgSpd;
         }
     }
     else
     {
-        image_speed = 0.1;
+        image_speed = imgSpd;
     }
     
     // Rotate this absolute madman if they're touching the platform
@@ -169,16 +176,31 @@ if (!global.frozen &amp;&amp; !dead)
         with (other)
         {
             // Check if the player is touching the platform or is already attached
+            var ascendCheck = 0;
+            if(other.gravDir &gt; 0)
+            {
+                if(bbox_top &lt; other.bbox_top) ascendCheck = 1;
+            }
+            else
+            {
+                if(bbox_bottom &gt; other.bbox_bottom) ascendCheck = 1;
+            }
             if ((place_meeting(x, y - other.gravDir * 2, other) &amp;&amp; !place_meeting(x, y, other) &amp;&amp; other.ground)
+                || (place_meeting(x, y + other.gravDir * 2, other) &amp;&amp; /*sign(other.yspeed) == -other.gravDir &amp;&amp;*/ funMode &amp;&amp; ascendCheck)
                 || attached[other.playerID])
             {
                 // If they're not attached, start ROTATING
                 if (!attached[other.playerID])
                 {
+                    if(jumpLock[other.playerID]) jumpLock[other.playerID] = lockPoolRelease(jumpLock[other.playerID]);
+                    
                     attached[other.playerID] = true;
-                    var lock = lockPoolLock(PL_LOCK_SHOOT);
-                    lock.targetInstance = other.id
-                    shootLock[playerID] = lock
+                    var lock = lockPoolLock(PL_LOCK_SHOOT,PL_LOCK_SLIDE);
+                    lock.targetInstance = other.id;
+                    shootLock[other.playerID] = lock;
+                    var lock = lockPoolLock(PL_LOCK_JUMP);
+                    lock.targetInstance = other.id;
+                    jumpLock[other.playerID] = lock;
                     attachX[other.playerID] = other.x - x; // set x rotation origin
                     
                     spinTimer = 0; // reset timer
@@ -202,14 +224,17 @@ if (!global.frozen &amp;&amp; !dead)
                     // Update position + variables
                     
                     // Rotate UNLESS the platform is over a drop rail
-                    if (image_speed &gt; 0)
+                    if (image_speed != 0)
                     {
-                        spinTimer += 1;
+                        spinTimer += abs(imgSpd*10);
                         
-                        if (spinTimer mod spinMod == 0)
+                        if (spinTimer &gt;= spinMod)
                         {
-                            offset[other.playerID] += spinRate * playerDir[other.playerID];
-                            animOffset[other.playerID] += spinRate;
+                            spinTimer -= spinMod;
+                            offset[other.playerID] += spinRate*sign(imgSpd) * playerDir[other.playerID];
+                            animOffset[other.playerID] += spinRate*sign(imgSpd);
+                            if(offset[other.playerID] &lt; 0) offset[other.playerID]++;
+                            if(animOffset[other.playerID] &lt; 0) animOffset[other.playerID] += 2;
                         }
                     }
                     
@@ -218,13 +243,13 @@ if (!global.frozen &amp;&amp; !dead)
                     {
                         offset[other.playerID] = 1;
                         animOffset[other.playerID] = 1;
-                        playerDir[other.playerID] = -1;
+                        playerDir[other.playerID] = -1*sign(imgSpd);
                     }
                     if (offset[other.playerID] &lt;= 0)
                     {
                         offset[other.playerID] = 0;
                         animOffset[other.playerID] = 0;
-                        playerDir[other.playerID] = 1;
+                        playerDir[other.playerID] = 1*sign(imgSpd);
                     }
                     
                     // handle depth of player
@@ -233,38 +258,58 @@ if (!global.frozen &amp;&amp; !dead)
                     // Jumping off the platform
                     if (global.keyJumpPressed[other.playerID])
                     {
-                        if (offset[other.playerID] &gt; 0.5)
+                        with(other)
                         {
-                            other.yspeed = other.jumpSpeed;
-                            other.canMinJump = true;
+                            playerJump();
+                            canMinJump = true;
+                        }
+                        if (other.y &gt; bboxGetYCenter())
+                        {
+                            if(other.gravDir &gt; 0)
+                            {
+                                other.yspeed = 0;
+                                other.jumpCounter = 1;
+                            }
+                            else other.jumpCounter = 0;
+                            other.y = bbox_top + 25;
                         }
                         else
                         {
-                            other.yspeed = -other.jumpSpeed;
-                            other.canMinJump = true;
+                            if(other.gravDir &lt; 0)
+                            {
+                                other.yspeed = 0;
+                                other.jumpCounter = 1;
+                            }
+                            else other.jumpCounter = 0;
+                            other.y = bbox_top - 17;
                         }
                         attached[other.playerID] = false;
                         
                         // It was easier to just flip the players sprites temporarily for this
                         other.image_yscale = other.gravDir;
                         shootLock[other.playerID] = lockPoolRelease(shootLock[other.playerID]);
+                        lockReleaseCountdown[other.playerID] = 2;
                     }
                     
                     // no land sound pls
-                    if (instance_exists(target))
-                        target.playLandSound = 0;
+                    if (instance_exists(other))
+                        other.playLandSound = 0;
                 }
             }
-            else
+            
+            if(lockReleaseCountdown[other.playerID] &gt; 0)
             {
-                // This replicates the flicker effect seen in MM9
-                depth *= -1;
-                if (depth == 0)
-                    depth = 1;
+                lockReleaseCountdown[other.playerID]--;
+                if(!global.keyJump[other.playerID] || lockReleaseCountdown[other.playerID] == 0)
+                {
+                    jumpLock[other.playerID] = lockPoolRelease(jumpLock[other.playerID]);
+                    lockReleaseCountdown[other.playerID] = -1;
+                }
             }
         }
     }
 }
+else image_speed = 0;
 </string>
           </argument>
         </arguments>

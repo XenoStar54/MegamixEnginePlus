@@ -122,6 +122,11 @@ if (!global.frozen)
             with (parent)
             {
                 canShoot = !playerIsLocked(PL_LOCK_SHOOT);
+                if(other.sprite_index == sprPharaohShotCharged)
+                {
+                    chargeTimer = 60;
+                }
+                else chargeTimer = other.image_index*10;
             }
             
             if (!global.keyShoot[parent.playerID] &amp;&amp; canShoot) // LET GO OF CHARGE AND SHOOT

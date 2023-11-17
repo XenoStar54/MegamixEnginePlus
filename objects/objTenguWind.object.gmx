@@ -50,6 +50,10 @@ windAccel = 0.008;
 startWindAccel = windAccel;
 
 objectDrop = objTenguLeaf // leaf object used.
+
+//@cc: og tengu wind would push you at half speed if grounded
+multGroundedPushSpd = 0.5;
+// push speed for the player if they stand on the ground is multiplied by this value
 </string>
           </argument>
         </arguments>
@@ -90,7 +94,8 @@ objectDrop = objTenguLeaf // leaf object used.
         else */
         if (global.playerHealth[playerID] &gt; 0 &amp;&amp; !climbing)
         {
-            shiftObject(other.windSpeed, 0, 1);
+            if(ground) shiftObject(other.windSpeed*other.multGroundedPushSpd, 0, 1);
+            else shiftObject(other.windSpeed, 0, 1);
         }
     }
 }

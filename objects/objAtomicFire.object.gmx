@@ -246,6 +246,7 @@ if(!global.frozen)
                 sprite_index = sprAtomicFire3;
                 contactDamage = 6;
             }
+            parent.chargeTimer = atomicFireTimer;
         }
         else
         {
@@ -275,6 +276,8 @@ if(!global.frozen)
         playSFX(sfxHeatManTackle);
         xspeed = image_xscale * 3;
         fireGo = 2;
+        
+        if(instance_exists(parent)) parent.chargeTimer = 0;
     }
     else if(fireGo == 2)
     {

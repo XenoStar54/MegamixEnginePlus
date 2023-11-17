@@ -90,6 +90,7 @@ if (instance_exists(parent))
     if(powerPunchLock) powerPunchLock = lockPoolRelease(powerPunchLock);
     if(powerStandStillLock) powerStandStillLock = lockPoolRelease(powerStandStillLock);
     if(hoverLock) hoverLock = lockPoolRelease(hoverLock);
+    parent.spriteY = parent.isShoot;
 }
 </string>
           </argument>

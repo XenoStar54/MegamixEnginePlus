@@ -25,16 +25,29 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited();
+            <string>/// this block swaps solidity based on switch state
+event_inherited();
 
 canHit = false;
+canDamage = false;
+contactDamage = 0;
 isSolid = 1;
+
+shiftVisible = 1;
 
 blockCollision = 0;
 grav = 0;
 bubbleTimer = -1;
 
 myFlag = 999;
+
+setSolid = 1;
+setLadder = 0;
+setSpike = 0;
+
+blockSwitchStateFaction = 0;
+blockSprite[0] = sprPUSwitchBlockRed;
+blockSprite[1] = sprPUSwitchBlockBlue;
 </string>
           </argument>
         </arguments>
@@ -59,36 +72,55 @@ myFlag = 999;
             <kind>1</kind>
             <string>event_inherited();
 
-if (!global.frozen &amp;&amp; !dead &amp;&amp; !global.timeStopped)
+if (entityCanStep())
 {
-    if ((global.flagParent[myFlag].active &amp;&amp; object_index == objPUSwitchBlockRed)
-        || (!global.flagParent[myFlag].active &amp;&amp; object_index == objPUSwitchBlockBlue))
-    {
-        if (!isSolid)
-        {
-            isSolid = 1;
-            with (prtEntity)
-            {
-                if (!dead)
-                {
-                    if (blockCollision)
-                    {
-                        if (place_meeting(x, y, other.id))
-                        {
-                            other.isSolid = 0;
-                            break;
-                        }
-                    }
-                }
-            }
-        }
-    }
-    else
-    {
-        isSolid = 0;
-    }
+    sprite_index = blockSprite[blockSwitchStateFaction];
+    var activity = (global.flagParent[myFlag].active xor blockSwitchStateFaction);
+    isSolid = activity * setSolid;
+    entityLadder = activity * setLadder;
+    entitySpike = activity * setSpike;
+    canDamage = activity * setSpike;
+    image_index = !activity;
     
-    image_index = !isSolid;
+    if(setSolid == 2 &amp;&amp; setLadder == 0)
+    {
+        y = bbox_top;
+        image_yscale = sign(image_yscale);
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(!dead)
+{
+    for(var i = 0; i &lt; abs(image_xscale); i++) for(var j = 0; j &lt; abs(image_yscale); j++)
+    {
+        if(setSolid == 2 &amp;&amp; setLadder == 0) // if it's a topsolid only draw the topmost piece
+        {
+            draw_sprite(sprite_index,image_index,bbox_left+i*abs(sprite_width/image_xscale),bbox_top);
+            j = abs(image_yscale);
+        }
+        else draw_sprite(sprite_index,image_index,bbox_left+i*abs(sprite_width/image_xscale),bbox_top+j*abs(sprite_height/image_yscale));
+    }
 }
 </string>
           </argument>

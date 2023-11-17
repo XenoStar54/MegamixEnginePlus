@@ -6,7 +6,7 @@
   <depth>999</depth>
   <persistent>0</persistent>
   <parentName>prtEntity</parentName>
-  <maskName>&lt;undefined&gt;</maskName>
+  <maskName>sprMM2ConveyorIcon</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
@@ -73,6 +73,10 @@ img = 0;
 
 sprite_index = sprMM2Conveyor;
 
+//@cc: when true, sprite frames on the bottom will be used for left-facing conveyor
+// ONLY USE FOR 2-TILE CONVEYORS PLEASE
+useBelowFramesForLeft = true;
+
 // merge conveyor belt objects if this one is the leftmost object in the chain
 if (dir == 1)
 {
@@ -88,6 +92,11 @@ if (dir == 1)
         }
     }
 }
+
+// entities ignored by the conveyor
+ignoreList[0] = objCrusher;
+ignoreList[1] = objOshitsuOsarettsu;
+ignoreList[2] = objMetalMan;
 </string>
           </argument>
         </arguments>
@@ -118,19 +127,32 @@ if (!global.frozen &amp;&amp; !dead &amp;&amp; !global.timeStopped)
     
     if (exspd != 0)
     {
-        with (prtEntity)
+        with(prtEntity)
         {
+            var moveEntity = 1;
+            with(other)
+            {
+                for(var i = 0; i &lt; array_length_1d(ignoreList); i++)
+                {
+                    if(instance_exists(ignoreList[i]) &amp;&amp; ignoreList[i] != noone)
+                    {
+                        if(other.object_index == ignoreList[i].object_index)
+                        {
+                            moveEntity = 0;
+                        }
+                    }
+                }
+            }
+            exspd *= moveEntity;
+            
             if (blockCollision &amp;&amp; !dead &amp;&amp; ground &amp;&amp; grav != 0)
             {
-                if (object_index != objCrusher &amp;&amp; object_index!=objOshitsuOsarettsu &amp;&amp; object_index!=objMetalMan)
+                if(place_meeting(x,y+2*sign(grav), other))
                 {
-                    if(place_meeting(x,y+2*sign(grav), other))
-                    {
-                        if(!other.hasBelt)
-                            shiftObject(exspd, 0, 1);    
-                        else
-                            shiftObject(exspd*sign(grav), 0, 1);  
-                    }
+                    if(!other.hasBelt)
+                        shiftObject(exspd, 0, 1);    
+                    else
+                        shiftObject(exspd*sign(grav), 0, 1);  
                 }
             }
         }
@@ -172,23 +194,12 @@ var imgadd;
 
 for (var i = 0; i &lt; image_xscale; i += 1)
 {
-    if(i==0&amp;&amp;image_xscale==1)//single block
-    {
-        imgadd = 6*animFrames + animFrames*(dir&lt;0);
-    }
-    else if (i == 0)//left block
-    {
-        imgadd = animFrames*(dir&lt;0);
-    }
-    else if(i==image_xscale-1)//right block
-    {
-        imgadd = 4*animFrames + animFrames*(dir&lt;0);
-    }
-    else // Middle block
-    {
-        imgadd = 2*animFrames + animFrames*(dir&lt;0);
-    }
-    draw_sprite(sprite_index, img + imgadd, x + i * 16, y);
+    var _dimg = 2;
+    if(image_xscale == 1) _dimg = 0;
+    else if(i == 0) _dimg = 1;
+    else if(i == abs(image_xscale)-1) _dimg = 3;
+    if(useBelowFramesForLeft &amp;&amp; dir &lt; 0) draw_sprite_part_ext(sprite_index,img,16*(_dimg),16,16,32,bbox_left+i*16,y,1,image_yscale,c_white,1);
+    else draw_sprite_part_ext(sprite_index,img,16*(_dimg),0,16,16,bbox_left+i*dir*16+(dir&lt;0)*(abs(image_xscale)*16),y,dir,image_yscale,c_white,1);
 }
 </string>
           </argument>
