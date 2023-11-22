@@ -81,6 +81,21 @@ if (dieToSpikes) // Handle dying to spikes
     }
 }
 
+// entity spikes
+if(iFrames == 0 && canHit && dieToSpikes)
+{
+    with(prtEntity) if (!dead && id != myid && entitySpike)
+    {
+        if(!place_meeting(x, y+cgrav, myid))
+        {
+            if(contactDamage*canDamage > 0 && global.factionStance[faction, other.faction])
+            {
+                solid = 0;
+            }
+        }
+    }
+}
+
 // Horizontal collision
 if (xspeed != 0)
 {
@@ -123,6 +138,17 @@ if (xspeed != 0)
                                 if (fnsolid == 2)
                                 {
                                     solid = !solid;
+                                }
+                            }
+                            
+                            if(other.dieToSpikes && other.iFrames == 0 && other.canHit)
+                            {
+                                if(entitySpike)
+                                {
+                                    if(global.factionStance[faction, other.faction] && canDamage * contactDamage > 0)
+                                    {
+                                        solid = 0;
+                                    }
                                 }
                             }
                         }
@@ -238,11 +264,28 @@ if (yspeed != 0)
                             }
                         }
                     }
+                    
+                    if(other.dieToSpikes && other.iFrames == 0 && other.canHit)
+                    {
+                        if(entitySpike)
+                        {
+                            if(global.factionStance[faction, other.faction] && canDamage * contactDamage > 0)
+                            {
+                                solid = 0;
+                            }
+                        }
+                    }
                 }
             }
         }
     }
-
+    
+    // if climbing ladders, they're not solid
+    if(object_index == objMegaman && climbing)
+    {
+        with(objLadder) solid = 0;
+        with(prtEntity) if(isSolid == 2 && entityLadder && !dead) solid = 0;
+    }
     y += yspeed;
 
     // check for collision
@@ -305,6 +348,18 @@ if (dieToSpikes)
     if (!spSolid) // spikes caused death
     {
         spSolid = instance_place(x, y, objSpike);
+        
+        // entity spikes
+        if(!spSolid)
+        {
+            with(prtEntity) if(!dead && id != myid && entitySpike && canDamage)
+            {
+                with(other) spSolid = instance_place(x, y, other);
+            }
+        }
+        
+        if(spSolid) if(spSolid.contactDamage == 0) spSolid = noone;
+        
         if (spSolid)
         {
             if (object_index == objMegaman)
@@ -358,6 +413,7 @@ if (dieToSpikes)
                 x = xprevious;
                 y = yprevious;
                 event_user(EV_HURT);
+                if(object_index == objMegaman) xspeed = abs(xspeed)*-image_xscale;
             }
         }
     }

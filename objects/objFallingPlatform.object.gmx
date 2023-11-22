@@ -44,19 +44,14 @@ wait = 30;
 startWait = wait;
 
 active = false;
-count = 1;
 
 shiftVisible = 1;
 
-if (!place_meeting(x - 1, y, objFallingPlatform))
-{
-    while (instance_place(x + 16 * count, y, objFallingPlatform))
-    {
-        i = instance_place(x + 16 * count, y, objFallingPlatform);
-        i.sprite_index = sprite_index;
-        count += 1;
-    }
-}
+//@cc: platform's falling direction
+dir = 0;
+// 0: inherit player's gravity
+// negative: always fall up
+// positive: always fall down
 </string>
           </argument>
         </arguments>
@@ -87,17 +82,18 @@ if (!global.frozen &amp;&amp; !dead &amp;&amp; !global.timeStopped)
     {
         if (wait &lt;= 0)
         {
-            yspeed = abs(yspeed);
-            grav = gravAccel;
-            yspeed *= dir;
+            grav = gravAccel*dir;
+            drawOffsetY = 0;
         }
         else
         {
             wait -= 1;
+            if(((startWait-wait) mod 2) == 1) drawOffsetY = !abs(drawOffsetY)*image_yscale;
         }
     }
     else
     {
+        drawOffsetY = 0;
         with (objMegaman)
         {
             if (ground)
@@ -106,7 +102,7 @@ if (!global.frozen &amp;&amp; !dead &amp;&amp; !global.timeStopped)
                     &amp;&amp; !place_meeting(x, y, other.id))
                 {
                     other.active = true;
-                    other.dir = gravDir;
+                    if(other.dir == 0) other.dir = gravDir;
                 }
             }
         }
@@ -116,8 +112,8 @@ else if (dead)
 {
     wait = startWait;
     active = false;
-    count = 1;
     grav = 0;
+    drawOffsetY = 0;
 }
 </string>
           </argument>

@@ -28,6 +28,11 @@
             <string>// An enemy originating from Hornet Man's stage. It is invincible, but when it's
 // shot, it will shoot out three shots that destroy objBokazurahPlatform if it touches them.
 
+// NEW:
+// change shotAmount to change how many shots it creates per round
+// set shotAmount to -1 to make it infinite
+// when startAngry is true, Bokazurah will start shooting projectiles on spawn
+// change postShotWait to make it shoot more or less often
 event_inherited();
 
 respawn = true;
@@ -42,6 +47,11 @@ grav = 0;
 // Enemy specific code
 shootTimer = -1;
 animTimer = 0;
+shotCounter = 0;
+
+shotAmount = 3;
+postShotWait = 25;
+startAngry = 0;
 </string>
           </argument>
         </arguments>
@@ -83,25 +93,35 @@ if (entityCanStep())
         shootTimer += 1;
         
         // actions! wow!
-        if (shootTimer == 5 || shootTimer == 45 || shootTimer == 85)
+        if (shootTimer == 5)
         {
             image_index = 2;
         }
-        else if (shootTimer == 10 || shootTimer == 50 || shootTimer == 90)
+        else if (shootTimer == 10)
         {
             image_index = 3;
             playSFX(sfxCannonShoot);
             var a = instance_create(x + 16 * image_xscale, y, objBokazurahBall);
             a.image_xscale = image_xscale; // shoot
         }
-        else if (shootTimer == 15 || shootTimer == 55 || shootTimer == 95)
+        else if (shootTimer == 15)
         {
             image_index = 0;
         }
-        else if (shootTimer == 110)
+        else if (shootTimer &gt;= 15+(max(0,postShotWait)))
         {
-            shootTimer = -1;
-            animTimer = 0;
+            shotCounter++;
+            if(shotCounter &gt;= shotAmount &amp;&amp; shotAmount &gt; 0)
+            {
+                shootTimer = -1;
+                animTimer = 0;
+                shotCounter = 0;
+            }
+            else
+            {
+                shootTimer = 0;
+                image_index = 2;
+            }
         }
     }
 }
@@ -112,6 +132,33 @@ else if (dead)
     animTimer = 0;
     image_index = 0;
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="25">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>event_inherited();
+animTimer = 0;
+image_index = 1;
+shootTimer = -1+(startAngry==1);
+shotCounter = 0;
 </string>
           </argument>
         </arguments>

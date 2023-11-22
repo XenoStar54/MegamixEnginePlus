@@ -45,9 +45,21 @@ init = 1;
 dir = "none"; // left, up, down, right
 startDir = "none";
 
+keepGoingAfterFallingOff = 1;
+doRailCollision = 1;
+
+// for send rails
+saveBlockCollision = blockCollision;
+saveReceiveDir = "";
+sendDestination = noone;
+saveSendRailSpd = 0;
+
 // distance from the x and y position to check by
 xOffset = 8;
 yOffset = 8;
+
+// when true, the lift will try looking for possible rails 8 pixels on
+extendoRail = false;
 
 // Helpful variable to use in childs
 lastRail = noone;
@@ -94,6 +106,11 @@ if (init)
         switch (lastRail.dir)
         {
             case 0:
+            case 7:
+            case 8:
+            case 9:
+            case 10:
+            case 11:
                 dir = "right";
                 break;
             case 1:
@@ -122,36 +139,71 @@ if (entityCanStep())
         dir = "fall";
     }
     
-    if (dir != "fall")
+    if (!(dir == "fall" || dir == "send"))
     {
         xspeed = 0;
         yspeed = 0;
     }
+    
+    var copyDir = 0, blockDir = '', conveyDirX = 0, conveyDirY = 0;
+    
     if (instance_exists(lastRail))
     {
-        switch (lastRail.dir)
+        blockDir = lastRail.blockDir;
+        conveyDirX = lastRail.conveyDirX;
+        conveyDirY = lastRail.conveyDirY;
+        copyDir = lastRail.dir;
+        if(blockDir == dir) copyDir = 6; // block incoming rails from certain directions
+        
+        switch (copyDir)
         {
-            case 0: // horizontal 
-                if (dir == "fall")
+            case 0: // horizontal
+                // if incompatible dir happened, tiebreak based on previous speed
+                if(!(dir == "right" || dir == "left"))
                 {
-                    if (xspeed &gt;= 0)
+                    if (xsp &gt; 0)
                         dir = "right";
-                    else
+                    else if (xsp &lt; 0)
                         dir = "left";
-                    yspeed = (lastRail.y + 8 - yOffset) - (y);
+                    else // diagonal dir detected
+                    {
+                        if(dir == "d-ul" || dir == "d-dl") dir = "left";
+                        else if(dir == "d-ur" || dir == "d-dr") dir = "right";
+                        else
+                        {
+                            dir = "right";
+                        }
+                    }
                 }
+                yspeed = (lastRail.y + 8 - yOffset) - (y);
                 break;
             case 1: // vertical 
-                if (dir == "fall")
+                // if incompatible dir happened, tiebreak based on previous speed
+                if(!(dir == "up" || dir == "down"))
                 {
-                    if (yspeed &gt;= 0)
+                    if (ysp &gt; 0)
                         dir = "down";
-                    else
+                    else if(ysp &lt; 0)
                         dir = "up";
-                    xspeed = (lastRail.x + 8 - xOffset) - (x);
+                    else // diagonal dir detected
+                    {
+                        if(dir == "d-ul" || dir == "d-ur") dir = "up";
+                        else if(dir == "d-dr" || dir == "d-dr") dir = "down";
+                        else
+                        {
+                            dir = "down";
+                        }
+                    }
                 }
+                xspeed = (lastRail.x + 8 - xOffset) - (x);
                 break;
             case 2: // top left 
+                // correct directions for platforms coming in
+                if(prevRail != lastRail)
+                {
+                    if(x+xOffset &lt;= lastRail.x + 12) dir = "up";
+                    else dir = "left";
+                }
                 if (x + xOffset &lt;= lastRail.x + 8
                     &amp;&amp; dir == "left")
                 {
@@ -168,13 +220,19 @@ if (entityCanStep())
                     &amp;&amp; y + yOffset &gt;= lastRail.y + 8)
                 {
                     yspeed = (lastRail.y + 8 - yOffset) - (y);
-                    if (xspeed &gt;= 0)
+                    if (xsp &gt;= 0)
                         dir = "right";
                     else
                         dir = "left";
                 }
                 break;
             case 3: // bottom left 
+                // correct directions for platforms coming in
+                if(prevRail != lastRail)
+                {
+                    if(x+xOffset &lt;= lastRail.x + 12) dir = "down";
+                    else dir = "left";
+                }
                 if (x + xOffset &lt;= lastRail.x + 8
                     &amp;&amp; dir == "left")
                 {
@@ -191,13 +249,19 @@ if (entityCanStep())
                     &amp;&amp; y + yOffset &gt;= lastRail.y + 8)
                 {
                     yspeed = (lastRail.y + 8 - yOffset) - (y);
-                    if (xspeed &gt;= 0)
+                    if (xsp &gt;= 0)
                         dir = "right";
                     else
                         dir = "left";
                 }
                 break;
             case 4: // top right 
+                // correct directions for platforms coming in
+                if(prevRail != lastRail)
+                {
+                    if(x+xOffset &lt;= lastRail.x + 4) dir = "right";
+                    else dir = "up";
+                }
                 if (x + xOffset &gt;= lastRail.x + 8
                     &amp;&amp; dir == "right")
                 {
@@ -214,13 +278,19 @@ if (entityCanStep())
                     &amp;&amp; y + yOffset &gt;= lastRail.y + 8)
                 {
                     yspeed = (lastRail.y + 8 - yOffset) - (y);
-                    if (xspeed &gt; 0)
+                    if (xsp &gt; 0)
                         dir = "right";
                     else
                         dir = "left";
                 }
                 break;
             case 5: // bottom right 
+                // correct directions for platforms coming in
+                if(prevRail != lastRail)
+                {
+                    if(x+xOffset &lt;= lastRail.x + 4) dir = "right";
+                    else dir = "down";
+                }
                 if (x + xOffset &gt;= lastRail.x + 8
                     &amp;&amp; dir == "right")
                 {
@@ -237,7 +307,7 @@ if (entityCanStep())
                     &amp;&amp; y + yOffset &gt;= lastRail.y + 8)
                 {
                     yspeed = (lastRail.y + 8 - yOffset) - (y);
-                    if (xspeed &gt; 0)
+                    if (xsp &gt; 0)
                         dir = "right";
                     else
                         dir = "left";
@@ -285,48 +355,308 @@ if (entityCanStep())
                     }
                 }
                 break;
+            case 7: // cross 
+                if (!(dir == "up" || dir == "down" || dir == "left" || dir == "right"))
+                {
+                    // decide which direction the rail should go
+                    if(abs(xsp) == abs(ysp))
+                    {
+                        if(x+xOffset &lt; lastRail.x+6) dir = "right";
+                        else if(x+xOffset &gt; lastRail.x+10) dir = "left";
+                        else
+                        {
+                            if(y+yOffset &lt; lastRail.y+8) dir = "down";
+                            else dir = "up";
+                        }
+                    }
+                    else if(abs(xsp) &gt; abs(ysp))
+                    {
+                        if (xsp &gt;= 0)
+                            dir = "right";
+                        else
+                            dir = "left";
+                        yspeed = (lastRail.y + 8 - yOffset) - (y);
+                    }
+                    else
+                    {
+                        if (ysp &gt;= 0)
+                            dir = "down";
+                        else
+                            dir = "up";
+                        xspeed = (lastRail.x + 8 - xOffset) - (x);
+                    }
+                }
+                break;
+            case 8: // diagonal top left 
+                if(dir == "fall")
+                {
+                    if (ysp &gt;= 0)
+                        dir = "d-dl";
+                    else
+                        dir = "d-ur";
+                    var mv = abs(lastRail.x+8-(x+xOffset));
+                    shiftObject(lastRail.x+8-(x+xOffset)+mv,lastRail.y+16-(y+yOffset)-mv,blockCollision);
+                }
+                if(!(dir == "d-ur" || dir == "d-dl"))
+                {
+                    // decide which direction the rail should go
+                    // and snap the platform to the rail
+                    if(x+xOffset &lt; lastRail.x+12)
+                    {
+                        dir = "d-ur";
+                        var mv = abs(lastRail.x+8-(x+xOffset));
+                        shiftObject(lastRail.x+8-(x+xOffset)+mv,lastRail.y+16-(y+yOffset)-mv,blockCollision);
+                    }
+                    else
+                    {
+                        dir = "d-dl";
+                        var mv = abs(lastRail.x+16-(x+xOffset));
+                        shiftObject(lastRail.x+16-(x+xOffset)-mv,lastRail.y+8-(y+yOffset)+mv,blockCollision);
+                    }
+                }
+                break;
+            case 9: // diagonal bottom left
+                if(dir == "fall")
+                {
+                    if (ysp &gt;= 0)
+                        dir = "d-dr";
+                    else
+                        dir = "d-ul";
+                    var mv = abs(lastRail.x+8-(x+xOffset));
+                    shiftObject(lastRail.x+8-(x+xOffset)+mv,lastRail.y-(y+yOffset)+mv,blockCollision);
+                }
+                if(!(dir == "d-ul" || dir == "d-dr"))
+                {
+                    // decide which direction the rail should go
+                    // and snap the platform to the rail
+                    if(x+xOffset &lt; lastRail.x+12)
+                    {
+                        dir = "d-dr";
+                        var mv = abs(lastRail.x+8-(x+xOffset));
+                        shiftObject(lastRail.x+8-(x+xOffset)+mv,lastRail.y-(y+yOffset)+mv,blockCollision);
+                    }
+                    else
+                    {
+                        dir = "d-ul";
+                        var mv = abs(lastRail.x+16-(x+xOffset));
+                        shiftObject(lastRail.x+16-(x+xOffset)-mv,lastRail.y+8-(y+yOffset)-mv,blockCollision);
+                    }
+                }
+                break;
+            case 10: // diagonal top right
+                if(dir == "fall")
+                {
+                    if (ysp &gt;= 0)
+                        dir = "d-dr";
+                    else
+                        dir = "d-ul";
+                    var mv = abs(lastRail.x-(x+xOffset));
+                    shiftObject(lastRail.x-(x+xOffset)+mv,lastRail.y+8-(y+yOffset)+mv,blockCollision);
+                }
+                if(!(dir == "d-ul" || dir == "d-dr"))
+                {
+                    // decide which direction the rail should go
+                    // and snap the platform to the rail
+                    if(x+xOffset &lt; lastRail.x+4)
+                    {
+                        dir = "d-dr";
+                        var mv = abs(lastRail.x-(x+xOffset));
+                        shiftObject(lastRail.x-(x+xOffset)+mv,lastRail.y+8-(y+yOffset)+mv,blockCollision);
+                    }
+                    else
+                    {
+                        dir = "d-ul";
+                        var mv = abs(lastRail.x+8-(x+xOffset));
+                        shiftObject(lastRail.x+8-(x+xOffset)-mv,lastRail.y+16-(y+yOffset)-mv,blockCollision);
+                    }
+                }
+                break;
+            case 11: // diagonal bottom right
+                if(dir == "fall")
+                {
+                    if (ysp &gt;= 0)
+                        dir = "d-dl";
+                    else
+                        dir = "d-ur";
+                    //var mv = abs(lastRail.x-(x+xOffset));
+                    //shiftObject(lastRail.x-(x+xOffset)+mv,lastRail.y+8-(y+yOffset)-mv,blockCollision);
+                    if(x+xOffset &lt; lastRail.x+4) shiftObject(lastRail.x-(x+xOffset),lastRail.y+8-(y+yOffset),blockCollision);
+                    else shiftObject(lastRail.x+8-(x+xOffset),lastRail.y-(y+yOffset),blockCollision); 
+                }
+                if(!(dir == "d-ur" || dir == "d-dl"))
+                {
+                    // decide which direction the rail should go
+                    // and snap the platform to the rail
+                    if(x+xOffset &lt; lastRail.x+4)
+                    {
+                        dir = "d-ur";
+                        var mv = abs(lastRail.x-(x+xOffset));
+                        shiftObject(lastRail.x-(x+xOffset)+mv,lastRail.y+8-(y+yOffset)-mv,blockCollision);
+                    }
+                    else
+                    {
+                        dir = "d-dl";
+                        var mv = abs(lastRail.x+8-(x+xOffset));
+                        shiftObject(lastRail.x+8-(x+xOffset)-mv,lastRail.y-(y+yOffset)+mv,blockCollision);
+                    }
+                }
+                break;
+            case 12: // send
+                if(dir != "send")
+                {
+                    if(abs((x+xOffset) - (lastRail.x+8)) &lt;= abs(xsp) &amp;&amp; abs((y+yOffset) - (lastRail.y+8)) &lt;= abs(ysp))
+                    {
+                        with(prtRail)
+                        {
+                            if(abs(x-other.lastRail.sendDestinationX)&lt;1 &amp;&amp; abs(y-other.lastRail.sendDestinationY)&lt;1 &amp;&amp; dir == 13)
+                            {
+                                with(other)
+                                {
+                                    sendDestination = other.id;
+                                    shiftObject(-((x+xOffset) - (lastRail.x+8)),-((y+yOffset) - (lastRail.y+8)),blockCollision);
+                                    dir = "send";
+                                    saveBlockCollision = blockCollision;
+                                    blockCollision = 0;
+                                    saveSendRailSpd = mySpeed*lastRail.multSendSpd;
+                                    var angle = point_direction(x+xOffset,y+yOffset,lastRail.sendDestinationX+8,lastRail.sendDestinationY+8);
+                                    xspeed = cos(degtorad(angle))*saveSendRailSpd;
+                                    yspeed = -sin(degtorad(angle))*saveSendRailSpd;
+                                }
+                            }
+                        }
+                    }
+                }
+                break;
+            case 13: // receive
+                if(abs((x+xOffset) - (lastRail.x+8)) &lt;= abs(xsp) &amp;&amp; abs((y+yOffset) - (lastRail.y+8)) &lt;= abs(ysp) &amp;&amp; instance_exists(sendDestination))
+                {
+                    if(sendDestination == lastRail)
+                    {
+                        shiftObject(-((x+xOffset) - (lastRail.x+8)),-((y+yOffset) - (lastRail.y+8)),blockCollision);
+                        if(lastRail.sendDestinationX != lastRail.x &amp;&amp; lastRail.sendDestinationY != lastRail.y)
+                        {
+                            with(prtRail) // joint sender functionality
+                            {
+                                if(abs(x-other.lastRail.sendDestinationX)&lt;1 &amp;&amp; abs(y-other.lastRail.sendDestinationY)&lt;1 &amp;&amp; dir == 13)
+                                {
+                                    with(other)
+                                    {
+                                        sendDestination = other.id;
+                                        saveSendRailSpd = mySpeed*lastRail.multSendSpd;
+                                        var angle = point_direction(x+xOffset,y+yOffset,lastRail.sendDestinationX+8,lastRail.sendDestinationY+8);
+                                        xspeed = cos(degtorad(angle))*saveSendRailSpd;
+                                        yspeed = -sin(degtorad(angle))*saveSendRailSpd;
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            xspeed = 0;
+                            yspeed = 0;
+                            dir = lastRail.receiveDir;
+                            blockCollision = saveBlockCollision;
+                            sendDestination = noone;
+                        }
+                    }
+                }
+                break;
+                
         }
     }
     else
-        dir = "fall";
-    
+        if(dir != "send") dir = "fall";
     
     // direction to move
     switch (dir)
     {
         case "right":
-            xspeed += mySpeed;
-            
-            // yspeed = 0;
+            doRailCollision = 1;
+            xspeed += (mySpeed+conveyDirX);
             break;
         case "left":
-            xspeed += -mySpeed;
-            
-            // yspeed = 0;
+            doRailCollision = 1;
+            xspeed += (-mySpeed+conveyDirX);
             break;
-        case "down": // xspeed = 0; 
-            yspeed += mySpeed;
+        case "down":
+            doRailCollision = 1;
+            yspeed += (mySpeed+conveyDirY);
             break;
-        case "up": // xspeed = 0; 
-            yspeed += -mySpeed;
+        case "up":
+            doRailCollision = 1;
+            yspeed += (-mySpeed+conveyDirY);
             break;
         case "fall":
+            doRailCollision = 0;
             yspeed += fallMomentum;
+            xspeed = xsp*keepGoingAfterFallingOff;
+            break;
+        case "d-ur":
+            doRailCollision = 1;
+            xspeed += (mySpeed+conveyDirX);
+            yspeed += (mySpeed+conveyDirY);
+            var realSpd = point_distance(0,0,xspeed,yspeed);
+            var angle = point_direction(0,0,1,-1);
+            xspeed = cos(degtorad(angle))*realSpd;
+            yspeed = -sin(degtorad(angle))*realSpd;
+            //xspeed = realSpd;
+            //yspeed = -realSpd;
+            break;
+        case "d-ul":
+            doRailCollision = 1;
+            xspeed += (mySpeed+conveyDirX);
+            yspeed += (mySpeed+conveyDirY);
+            var realSpd = point_distance(0,0,xspeed,yspeed);
+            var angle = point_direction(0,0,-1,-1);
+            xspeed = cos(degtorad(angle))*realSpd;
+            yspeed = -sin(degtorad(angle))*realSpd;
+            //xspeed = -realSpd;
+            //yspeed = -realSpd;
+            break;
+        case "d-dr":
+            doRailCollision = 1;
+            xspeed += (mySpeed+conveyDirX);
+            yspeed += (mySpeed+conveyDirY);
+            var realSpd = point_distance(0,0,xspeed,yspeed);
+            var angle = point_direction(0,0,1,1);
+            xspeed = cos(degtorad(angle))*realSpd;
+            yspeed = -sin(degtorad(angle))*realSpd;
+            //xspeed = realSpd;
+            //yspeed = realSpd;
+            break;
+        case "d-dl":
+            doRailCollision = 1;
+            xspeed += (mySpeed+conveyDirX);
+            yspeed += (mySpeed+conveyDirY);
+            var realSpd = point_distance(0,0,xspeed,yspeed);
+            var angle = point_direction(0,0,-1,1);
+            xspeed = cos(degtorad(angle))*realSpd;
+            yspeed = -sin(degtorad(angle))*realSpd;
+            //xspeed = -realSpd;
+            //yspeed = realSpd;
+            break;
+        case "send":
+            doRailCollision = 0;
+            if(instance_exists(sendDestination))
+            {
+                var angle = point_direction(x+xOffset,y+yOffset,sendDestination.x+8,sendDestination.y+8);
+                xspeed = cos(degtorad(angle))*saveSendRailSpd;
+                yspeed = -sin(degtorad(angle))*saveSendRailSpd;
+            }
+            else
+            {
+                dir = "fall";
+                blockCollision = saveBlockCollision;
+            }
             break;
     }
+    
     prevRail = lastRail;
     xprevious = x;
     yprevious = y;
     
-    if (blockCollision)
-    {
-        generalCollision(1);
-    }
-    else
-    {
-        x += xspeed;
-        y += yspeed;
-    }
+    if (blockCollision) generalCollision(1);
+    else railCollision(doRailCollision);
     
     entityPlatform();
 }
@@ -357,6 +687,13 @@ grav = 0;
 dir = startDir;
 prevRail = noone;
 lastRail = noone;
+xspeed = 0;
+yspeed = 0;
+if(instance_exists(sendDestination))
+{
+    sendDestination = noone;
+    if(saveBlockCollision != blockCollision) blockCollision = saveBlockCollision;
+}
 </string>
           </argument>
         </arguments>
@@ -379,12 +716,13 @@ lastRail = noone;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>lastRail = noone;
+            <string>/// detect rail
+lastRail = noone;
 
 var msk = mask_index;
 var rexsc = image_xscale;
 var reysc = image_yscale;
-mask_index = sprDot;
+mask_index = mskRailPlatformHook;
 
 image_xscale = 1;
 image_yscale = 1;
@@ -394,12 +732,40 @@ image_yscale=1.0/sprite_get_height(sprite_index);
 image_xscale=1.0/sprite_get_width(sprite_index);
 */
 
-with (prtRail)
+if(dir == "send")
+{
+    with (prtRail)
+    {
+        var quit = false;
+        with (other)
+        {
+            if(collision_rectangle(bbox_left-3+xOffset,bbox_top-3+yOffset,bbox_right+3+xOffset,bbox_bottom+3+yOffset,other,0,1)
+                &amp;&amp; x+xOffset &gt;= other.x &amp;&amp; x+xOffset &lt; other.x+other.sprite_width &amp;&amp; y+yOffset &gt;= other.y &amp;&amp; y+yOffset &lt; other.y + other.sprite_height
+                &amp;&amp; other.dir == 13)
+            {
+                lastRail = other.id;
+                quit = true;
+            }
+        }
+    }
+}
+else with (prtRail)
 {
     var quit = false;
     with (other)
     {
-        if (place_meeting(round(x + xOffset), round(y + yOffset), other) || place_meeting(round(xprevious + xOffset), round(yprevious + yOffset), other))
+        if ((collision_rectangle(round(x + xOffset) - 3, round(y + yOffset) - 3, round(x + xOffset) + 3, round(y + yOffset) + 3, other, 0, 1)
+            &amp;&amp; x+xOffset &gt;= other.x &amp;&amp; x+xOffset &lt; other.x+other.sprite_width &amp;&amp; y+yOffset &gt;= other.y &amp;&amp; y+yOffset &lt; other.y + other.sprite_height)
+            || (collision_rectangle(round(xprevious + xOffset) - 3, round(yprevious + yOffset) - 3, round(xprevious + xOffset) + 3, round(yprevious + yOffset) + 3, other, 0, 1))
+            &amp;&amp; xprevious+xOffset &gt;= other.x &amp;&amp; xprevious+xOffset &lt; other.x+other.sprite_width &amp;&amp; yprevious+yOffset &gt;= other.y &amp;&amp; yprevious+yOffset &lt; other.y + other.sprite_height)
+        {
+            lastRail = other.id;
+            quit = true;
+        }
+        // extendo rail for weird connections
+        else if((extendoRail) &amp;&amp; (other.dir != 6) &amp;&amp; !(dir == "d-ul" || dir != "d-ur" || dir != "d-dl" || dir != "d-dr")
+            &amp;&amp; (collision_rectangle(round(x + xOffset + sign(xspeed)*8) - 3, round(y + yOffset + sign(yspeed)*8) - 3, round(x + xOffset + sign(xspeed)*8) + 3, round(y + yOffset + sign(yspeed)*8) - 3, other, 0, 1))
+            &amp;&amp; x+xOffset + sign(xspeed)*8 &gt;= other.x &amp;&amp; x+xOffset + sign(xspeed)*8 &lt; other.x+other.sprite_width &amp;&amp; y+yOffset + sign(yspeed)*8 &gt;= other.y &amp;&amp; y+yOffset + sign(yspeed)*8 &lt; other.y + other.sprite_height)
         {
             lastRail = other.id;
             quit = true;
@@ -413,16 +779,45 @@ mask_index = msk;
 image_xscale = rexsc;
 image_yscale = reysc;
 
-if (lastRail == noone)
+if (lastRail == noone &amp;&amp; dir != "send")
 {
-    var left = min(x + xOffset, xprevious + xOffset);
-    var right = max(x + xOffset, xprevious + xOffset);
-    var top = min(y + yOffset, yprevious + yOffset);
-    var bottom = max(y + yOffset, yprevious + yOffset);
+    left = min(x + xOffset, xprevious + xOffset);
+    right = max(x + xOffset, xprevious + xOffset);
+    top = min(y + yOffset, yprevious + yOffset);
+    bottom = max(y + yOffset, yprevious + yOffset);
     lastRail = collision_rectangle(left, top, right, bottom, prtRail, true, true);
     if (lastRail == noone)
         lastRail = collision_line(x + xOffset, y + yOffset, xprevious + xOffset, yprevious + yOffset, prtRail, true, true);
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>event_inherited();
+
+// debug
+/*
+var lastRailNum = -1;
+if(instance_exists(lastRail)) lastRailNum = lastRail.dir;
+draw_text(x,y-8,dir+" "+string(xspeed)+" "+string(yspeed)+" "+string(lastRailNum));
 </string>
           </argument>
         </arguments>

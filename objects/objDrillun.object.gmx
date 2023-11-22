@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited();
+            <string>/// I have updated Drillun to be usable in any direction by setting its image_angle
+
+event_inherited();
 
 respawn = true;
 
@@ -41,6 +43,16 @@ grav = 0;
 // Enemy specific code
 image_speed = 0.2;
 alarmStop = 0;
+
+phase = 0;
+timer = 0;
+detectionZone = 48;
+
+drillSpd = 2.5;
+returnSpd = 0.5;
+
+stopReturnOnBlock = 0;
+stopReturnOnOrigin = 1;
 </string>
           </argument>
         </arguments>
@@ -63,66 +75,97 @@ alarmStop = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var ys = yspeed;
+            <string>/// I have updated Drillun to be usable in any direction by setting its image_angle
 
 event_inherited();
 
 if (entityCanStep())
 {
-    if (instance_exists(target))
+    if(phase == 0) // observe target
     {
-        if (abs(target.x - x) &lt; 48)
+        if(target)
         {
-            if (floor(y) == floor(ystart))
+            var detected = false;
+            
+            // distance from point to line
+            var x1 = bboxGetXCenter()+cos(degtorad(image_angle+270))*8*image_xscale;
+            var y1 = bboxGetYCenter()-sin(degtorad(image_angle+270))*8*image_yscale;
+            var x2 = bboxGetXCenter()+cos(degtorad(image_angle+270+180))*8*image_xscale;
+            var y2 = bboxGetYCenter()-sin(degtorad(image_angle+270+180))*8*image_yscale;
+            var x0 = bboxGetXCenterObject(target);
+            var y0 = bboxGetYCenterObject(target);
+            
+            if((abs((x2-x1)*(y1-y0)-(x1-x0)*(y2-y1))/sqrt(power(x2-x1,2)+power(y2-y1,2))) &lt; detectionZone
+                &amp;&amp; abs(angle_difference(point_direction(bboxGetXCenter(),bboxGetYCenter(),x0,y0),point_direction(0,0,cos(degtorad(image_angle+270))*8*image_xscale,-sin(degtorad(image_angle+270))*8*image_yscale))) &lt; 90) detected = true;
+            
+            if(detected)
             {
-                yspeed = 2.5;
+                phase = 1;
+                
+                xspeed = cos(degtorad(image_angle+270))*drillSpd*image_xscale;
+                yspeed = -sin(degtorad(image_angle+270))*drillSpd*image_yscale;
             }
         }
     }
-    
-    if (alarmStop)
+    else if(phase == 1) // drill
     {
-        alarmStop += 1;
-        if (alarmStop == 21)
+        if(xcoll != 0 || ycoll != 0)
         {
-            yspeed = -0.5;
-            alarmStop = 0;
+            xspeed = 0;
+            yspeed = 0;
+            phase = 2;
+            timer = 0;
         }
     }
-    
-    if (yspeed == 0)
+    else if(phase == 2) // wait
     {
-        if (ys &gt; 0)
+        timer++;
+        if(timer &gt;= 21)
         {
-            alarmStop = 1;
-            repeat (2)
+            timer = 0;
+            phase = 3;
+            
+            xspeed = cos(degtorad(image_angle+270 + 180))*returnSpd*image_xscale;
+            yspeed = -sin(degtorad(image_angle+270 + 180))*returnSpd*image_yscale;
+        }
+    }
+    else if(phase == 3) // return
+    {
+        if(stopReturnOnBlock) // stop when blocked by something
+        {
+            if(xcoll != 0 || ycoll != 0)
             {
-                image_xscale *= -1;
-                var i = instance_create(x + 5 * image_xscale, bbox_bottom - 1, objSlideDust);
-                i.image_xscale = -image_xscale;
+                xspeed = 0;
+                yspeed = 0;
+                phase = 0;
+            }
+        }
+        else
+        {
+            xspeed = cos(degtorad(image_angle+270 + 180))*returnSpd*image_xscale;
+            yspeed = -sin(degtorad(image_angle+270 + 180))*returnSpd*image_yscale;
+        }
+        
+        if(stopReturnOnOrigin) // stop when found origin
+        {
+            if(abs(xstart - x) &lt;= abs(xspeed)) x = xstart;
+            if(abs(ystart - y) &lt;= abs(yspeed)) y = ystart;
+            
+            if(xstart == x &amp;&amp; ystart == y)
+            {
+                xspeed = 0;
+                yspeed = 0;
+                phase = 0;
             }
         }
     }
-    
-    if (yspeed &lt; 0)
-    {
-        if (y &lt; ystart)
-        {
-            shiftObject(0, ystart - y, 1);
-            y=ystart;
-        }
-    }
-}
-else if (dead)
-{
-    alarmStop = 0;
 }
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="0">
+    <event eventtype="7" enumb="25">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -139,30 +182,13 @@ else if (dead)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (dead)
-{
-    exit;
-}
+            <string>event_inherited();
 
-if (iFrames == 1 || iFrames == 3)
-{
-    d3d_set_fog(true, c_white, 0, 0);
-}
+phase = 0;
+timer = 0;
 
-if (!ground)
-{
-    drawSelf();
-}
-else
-{
-    draw_sprite_part(sprite_index, image_index, 0, 0, sprite_width,
-        sprite_height - 2, x - sprite_xoffset, y - sprite_yoffset);
-}
-
-if (iFrames == 1 || iFrames == 3)
-{
-    d3d_set_fog(false, 0, 0, 0);
-}
+// prevent being stuck in return phase
+if(!stopReturnOnBlock &amp;&amp; !stopReturnOnOrigin) stopReturnOnOrigin = 1;
 </string>
           </argument>
         </arguments>

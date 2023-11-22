@@ -171,8 +171,7 @@ if (entityCanStep())
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_alpha(1);
-if (lightingLevel == 1 &amp;&amp; !lightingSemi)
+            <string>if (lightingLevel == 1 &amp;&amp; !lightingSemi)
     exit;
 
 if (lightingSemi)
@@ -184,13 +183,12 @@ if (lightingSemi)
     draw_set_blend_mode(bm_normal);
 }
 
+image_alpha = (1 - roundedLightingLevel);
 draw_set_color(c_black);
-draw_set_alpha(1 - roundedLightingLevel);
+draw_set_alpha(image_alpha);
 {
     draw_rectangle(global.sectionLeft, global.sectionTop, global.sectionRight, global.sectionBottom, false);
 }
-
-draw_set_alpha(1);
 </string>
           </argument>
         </arguments>

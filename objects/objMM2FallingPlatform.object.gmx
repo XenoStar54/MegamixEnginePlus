@@ -75,6 +75,7 @@ if (!global.frozen &amp;&amp; !dead &amp;&amp; !global.timeStopped)
     if (timer &gt;= droptimer)
     {
         grav = 0.25 * dir;
+        drawOffsetY = 0;
     }
     else
     {
@@ -95,13 +96,16 @@ if (!global.frozen &amp;&amp; !dead &amp;&amp; !global.timeStopped)
         if (!ontop)
         {
             timer = 0;
+            drawOffsetY = 0;
         }
+        else if((timer mod 2) == 1) drawOffsetY = !abs(drawOffsetY)*image_yscale;
     }
 }
 else if (dead)
 {
     grav = 0;
     timer = 0;
+    drawOffsetY = 0;
 }
 </string>
           </argument>

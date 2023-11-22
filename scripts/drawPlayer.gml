@@ -29,7 +29,7 @@ if (instance_exists(objMegaman))
 
 if (!_inked)
 {
-    drawCostume(global.playerSprite[cid], sheetX, sheetY, _x, _y, _xscale, _yscale,
+    drawCostume(global.playerSprite[cid], sheetX, sheetY, _x+drawOffsetX, _y+drawOffsetY, _xscale, _yscale,
         baseCol, global.primaryCol[pid],
         global.secondaryCol[pid], global.outlineCol[pid], image_alpha, image_alpha, image_alpha, image_alpha);
 }
@@ -38,5 +38,5 @@ if (!_inked)
 
 if (_inked)
 {
-    drawPlayerInk(pid, sheetX, sheetY, _x, _y, _xscale, _yscale);
+    drawPlayerInk(pid, sheetX, sheetY, _x+drawOffsetX, _y+drawOffsetY, _xscale, _yscale);
 }

@@ -6,6 +6,13 @@ if (argument_count > 0 && argument[0])
 /// Checks for ground
 if (!ground)
 {
+    if (object_index == objMegaman && jumpCounter == 0)
+    {
+        if(coyoteTime > coyoteTimeMax)
+        {
+            jumpCounter++;
+        }
+    }
     exit;
 }
 
@@ -23,6 +30,12 @@ var cgrav = sign(grav);
 if (object_index == objMegaman)
 {
     cgrav = gravDir;
+    // take this opportunity to ignore collision if teleporting
+    if(teleporting)
+    {
+        ground = 0;
+        exit;
+    }
 }
 cgrav += (cgrav == 0);
 
@@ -113,6 +126,15 @@ with (prtEntity)
                     }
                 }
             }
+            
+            // entity spikes
+            if(entitySpike * canDamage * contactDamage > 0 && global.factionStance[faction, other.faction])
+            {
+                if(other.canHit && other.dieToSpikes && other.iFrames == 0)
+                {
+                    solid = 0;
+                }
+            }
         }
     }
 }
@@ -143,7 +165,6 @@ if (place_free(x, y))
     {
         if (jumpCounter == 0)
         {
-            jumpCounter += 1;
             if (dashSlide && isSlide)
             {
                 dashJumped = true;

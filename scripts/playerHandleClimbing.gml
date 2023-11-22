@@ -1,9 +1,23 @@
 /// playerHandleClimbing();
 
-var ladder = collision_line(bboxGetXCenter(), bbox_top + 2, bboxGetXCenter(), bbox_bottom, objLadder, false, false);
+var touchLadder = collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_bottom+1,objLadder,0,1);
+if(!touchLadder)
+{
+    with(prtEntity) if(isSolid == 2 && entityLadder && !dead) // entity ladder
+    {
+        if(collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_bottom+1,other,0,1)) touchLadder = self;
+    }
+}
 
-var ladderUp = instance_position(spriteGetXCenter(), ((bbox_top * (gravDir < 0)) + (bbox_bottom * (gravDir > 0))) - gravDir, objLadder);
-var ladderDown = instance_position(spriteGetXCenter(), ((bbox_top * (gravDir < 0)) + (bbox_bottom * (gravDir > 0))) + gravDir, objLadder);
+var ladder = noone, ladderUp = noone, ladderDown = noone;
+
+if(touchLadder)
+{
+    ladder = collision_line(bboxGetXCenter(), bbox_top + 2, bboxGetXCenter(), bbox_bottom, touchLadder, false, true);
+    
+    ladderUp = instance_position(spriteGetXCenter(), ((bbox_top * (gravDir < 0)) + (bbox_bottom * (gravDir > 0))) - gravDir, touchLadder);
+    ladderDown = instance_position(spriteGetXCenter(), ((bbox_top * (gravDir < 0)) + (bbox_bottom * (gravDir > 0))) + gravDir, touchLadder);
+}
 
 if (!playerIsLocked(PL_LOCK_CLIMB))
 {
@@ -30,8 +44,8 @@ if (!playerIsLocked(PL_LOCK_CLIMB))
         if (instance_exists(ladder))
         {
             var ladderWidthHalf = abs(ladder.bbox_right-ladder.bbox_left)/2;
-            shiftObject((ladder.x + ladderWidthHalf) - x, 0, true);
-            if (x != ladder.x + ladderWidthHalf)
+            shiftObject((ladder.bbox_left + ladderWidthHalf) - x, 0, true);
+            if (x != ladder.bbox_left + ladderWidthHalf)
             {
                 climbing = false;
             }
@@ -40,9 +54,9 @@ if (!playerIsLocked(PL_LOCK_CLIMB))
         {
             var ladderWidthHalf = abs(ladderDown.bbox_right-ladderDown.bbox_left)/2;
             // unfortunately this might still clip into a potential solid overlapping a laddertop
-            shiftObject(ladderDown.x + ladderWidthHalf - x, 0, true);
+            shiftObject(ladderDown.bbox_left + ladderWidthHalf - x, 0, true);
             y += climbSpeed * gravDir;
-            if (x != ladderDown.x + ladderWidthHalf)
+            if (x != ladderDown.bbox_left + ladderWidthHalf)
             {
                 climbing = false;
             }
@@ -62,11 +76,34 @@ if (!playerIsLocked(PL_LOCK_CLIMB))
             yspeed = 0;
             ladderXScale = image_xscale;
             climbShootXscale = ladderXScale;
+            
+            // inherit ladder movement
+            if(touchLadder)
+            {
+                if(touchLadder.object_index != objLadder && object_get_parent(touchLadder) != objLadder)
+                {
+                    shiftObject(touchLadder.xspeed,touchLadder.yspeed,1);
+                }
+            }
         }
     }
     
     if (climbing) // While climbing
     {
+        // inherit ladder movement
+        if(touchLadder)
+        {
+            if(touchLadder.object_index != objLadder && object_get_parent(touchLadder) != objLadder)
+            {
+                shiftObject(touchLadder.xspeed,touchLadder.yspeed,1);
+            }
+        }
+        // attempt to shove Mega to the middle of the ladder
+        if(ladder)
+        {
+            shiftObject((ladder.bbox_left + ladder.sprite_width/2) - x, 0, true)
+        }
+        
         if (yDir != 0 && !isShoot) // Movement
         {
             yspeed = climbSpeed * yDir;
@@ -98,9 +135,9 @@ if (!playerIsLocked(PL_LOCK_CLIMB))
         climbing = 1;
         
         // Getup sprite
-        if (!position_meeting(x, bbox_top * (gravDir == 1) + bbox_bottom * (gravDir == -1) + 11 * gravDir, objLadder)
+        if (!position_meeting(x, bbox_top * (gravDir == 1) + bbox_bottom * (gravDir == -1) + 11 * gravDir, touchLadder)
         // The second check is to make sure the getup animation is not shown when on the BOTTOM of a ladder that's placed in the air
-        && position_meeting(x, bbox_bottom * (gravDir == 1) + bbox_top * (gravDir == -1) + gravDir, objLadder))
+        && position_meeting(x, bbox_bottom * (gravDir == 1) + bbox_top * (gravDir == -1) + gravDir, touchLadder))
         {
             climbing = 2;
             if (!isShoot)
@@ -109,14 +146,18 @@ if (!playerIsLocked(PL_LOCK_CLIMB))
             }
         }
         
+        // check for other ladders touching Mega to properly release him
+        var ladderCheck = 1;
+        with(objLadder) if(place_meeting(x,y,other)) ladderCheck = 0;
+        with(prtEntity) if(isSolid == 2 && entityLadder && !dead) if(place_meeting(x,y,other)) ladderCheck = 0;
         // Releasing the ladder
         var jump = global.keyJumpPressed[playerID] && ((yDir != -gravDir && !jumpUpLadders) || (jumpUpLadders)) && !playerIsLocked(PL_LOCK_CLIMB);
-        if ((ground && yDir == gravDir) || !place_meeting(bbox_left, y, objLadder) || !place_meeting(bbox_right, y, objLadder) || jump)
+        if ((ground && yDir == gravDir) || ladderCheck /*!place_meeting(bbox_left, y, touchLadder) || !place_meeting(bbox_right, y, touchLadder)*/ || jump)
         {
             var climbedUp=false;
-            if (!place_meeting(x, y, objLadder))
+            if (ladderCheck)
             {
-                if (place_meeting(x, y + (gravDir * climbSpeed), objLadder))
+                if (place_meeting(x, y + (gravDir * climbSpeed), touchLadder))
                 {   
                     playLandSound=0;
                     ground=false;  
@@ -156,3 +197,4 @@ if(!climbing)
         if(sign(yspeed) != -gravDir || !instance_exists(ladder)) jumpLadderCooldown = 0;
     }
 }
+

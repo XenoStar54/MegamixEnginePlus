@@ -18,8 +18,22 @@ if (!instance_exists(vehicle) && !instance_exists(myTrebleBoost)
 }
 
 // Stop movement at section borders (horizontal)
+// but only when there's no screen wrap
+var screenWrapCheck = false;
+with(objScreenWrap)
+{
+    if(insideView() && y == global.sectionTop)
+    {
+        if(place_meeting(x-8,y,other) || place_meeting(x,y,other) || place_meeting(x+8,y,other))
+        {
+            screenWrapCheck = true;
+        }
+    }
+}
+
+
 var xdis = x - (view_xview + ((view_wview * 0.5)));
-var xpos = (view_wview * 0.5)-6;
+var xpos = (view_wview * 0.5)-6+screenWrapCheck*14;
 
 if (abs(xdis) > xpos)
 {

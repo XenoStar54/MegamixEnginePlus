@@ -1,5 +1,7 @@
 /// playerHandleWater();
 
+if(splashTimer > 0) splashTimer--;
+
 if (inWater != -1) // If inWater is set to -1 then there can be no interaction with water
 {
     var xw = xspeed + hspeed;
@@ -65,7 +67,8 @@ if (inWater != -1) // If inWater is set to -1 then there can be no interaction w
         {
             if (overlapping)
             {
-                inWater = 1;
+                // we need a more precise check
+                if(place_meeting(x+xspeed,y+yspeed,objWater)) inWater = 1;
             }
         }
     }
@@ -77,41 +80,45 @@ if (inWater != -1) // If inWater is set to -1 then there can be no interaction w
     
     if (preWater != inWater && overlapping != noone) // Has water state changed?
     {
-        with (overlapping) // Make splashes
+        if(splashTimer == 0)
         {
-            if (yw != 0)
+            with (overlapping) // Make splashes
             {
-                if (place_meeting(x, y + yw, other) == preWater)
+                if (yw != 0)
                 {
-                    var splash = instance_create(min(max(bboxGetXCenterObject(other.id), bbox_left + 16), bbox_right - 16), bbox_top, objSplash);
-                    if (yw * (preWater - other.inWater) > 0)
+                    if (place_meeting(x, y + yw, other) == preWater)
                     {
-                        splash.image_angle += 180;
-                        splash.y = bbox_bottom + 1;
+                        var splash = instance_create(min(max(bboxGetXCenterObject(other.id), bbox_left + 16), bbox_right - 16), bbox_top, objSplash);
+                        if (yw * (preWater - other.inWater) > 0)
+                        {
+                            splash.image_angle += 180;
+                            splash.y = bbox_bottom + 1;
+                        }
+                        with (splash)
+                        {
+                            event_user(0);
+                        }
                     }
-                    with (splash)
+                }
+                if (xw != 0)
+                {
+                    if (place_meeting(x + xw, y, other) == preWater)
                     {
-                        event_user(0);
+                        var splash = instance_create(bbox_left, min(max(bboxGetYCenterObject(other.id), bbox_top + 16), bbox_bottom - 16), objSplash);
+                        splash.image_angle = 90;
+                        if (xw * (preWater - other.inWater) > 0)
+                        {
+                            splash.image_angle += 180;
+                            splash.x = bbox_right + 1;
+                        }
+                        with (splash)
+                        {
+                            event_user(0);
+                        }
                     }
                 }
             }
-            if (xw != 0)
-            {
-                if (place_meeting(x + xw, y, other) == preWater)
-                {
-                    var splash = instance_create(bbox_left, min(max(bboxGetYCenterObject(other.id), bbox_top + 16), bbox_bottom - 16), objSplash);
-                    splash.image_angle = 90;
-                    if (xw * (preWater - other.inWater) > 0)
-                    {
-                        splash.image_angle += 180;
-                        splash.x = bbox_right + 1;
-                    }
-                    with (splash)
-                    {
-                        event_user(0);
-                    }
-                }
-            }
+            splashTimer = splashTimerMax;
         }
     }
 }

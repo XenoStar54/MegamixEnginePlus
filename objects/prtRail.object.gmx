@@ -25,8 +25,32 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>dir = 0; // 0 = horizontal, 1 = vertical, 2 = top left, 3 = bottom left, 4 = top right, 5 = bottom right, 6 = bumper
+            <string>dir = 0;
+// 0 = horizontal
+// 1 = vertical
+// 2 = top left
+// 3 = bottom left
+// 4 = top right
+// 5 = bottom right
+// 6 = bumper
+// 7 = cross
+// 8 = diagonal top left
+// 9 = diagonal bottom left
+// 10 = diagonal top right
+// 11 = diagonal bottom right
+// 12 = sender that sends lift to receiver, ignores all other rails
+// 13 = receiver
 drop = false;
+blockDir = ''; // left, right, up or down; when a rail moves in that direction, the rail will act like a bumper
+conveyDirX = 0; // when riding horizontally, the rail will be shoved that much every frame
+conveyDirY = 0; // when riding vertically, the rail will be shoved that much every frame
+
+// for send rails
+sendDir = "";
+receiveDir = "";
+sendDestinationX = x;
+sendDestinationY = y;
+multSendSpd = 1;
 </string>
           </argument>
         </arguments>

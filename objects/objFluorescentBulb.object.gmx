@@ -25,8 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// A levitating bulb platform from Bright Man's stage. While on it, it will rise and fall to specific points.
-event_inherited();
+            <string>event_inherited();
 
 image_speed = 0;
 canHit = false;
@@ -39,23 +38,33 @@ respawnRange = -1;
 grav = 0;
 blockCollision = false;
 bubbleTimer = -1;
-phase = 0; // 0: descending to ystart. 1: normal
-waitTimer = 0;
+timer = 0;
+phase = 0; // 0: descending to ystart; 1: normal; 2: go back to section top
 
-// @cc - The speed a bulb moves at
-mySpeed = 1.5;
+// @cc: platform modding values
+// moveSpd: how quick the object goes when stepped on; negative values make it go the other way first
+// initWait: how long the object initially waits before going
+// pauseWait: how long the object waits before changing direction
+// moveTime: how long the object moves up/down
+// descendSpd: how quick the platform descends from/ascends to the ceiling; when negative, the anchor point is the floor instead
+moveSpd = 0.75;
+initWait = 12;
+pauseWait = 28;
+moveTime = 63;
+descendSpd = 3;
 
-// @cc - How many pixels above my starting position can I rise?
-maxRise = 48;
+// @cc: the way this gimmick is activated
+// 0: on by default, no way to turn it off
+// 1: turns on when certain sources of darkness are active and off when none are
+// 2: turns on when associated switch is enabled and off when disabled
+activationMethod = 1;
+// if activation method isn't 0, it inverts the activation condition
+invertActivationMethod = 0;
 
-// @cc - How many pixels below my starting position can I fall?
-maxFall = 32;
+darknessSource[0] = obj100WattonVoid;
+darknessSource[1] = objDarkness;
 
-// @cc - The direction Bulbs move in (-1 = up; 1 = down)
-myDir = -1;
-
-// @cc - How long a bulb pauses for
-waitTime = 30;
+myFlag = 999;
 </string>
           </argument>
         </arguments>
@@ -83,68 +92,87 @@ waitTime = 30;
 if (entityCanStep())
 {
     var pressed = false;
-    visible = true;
     with (prtEntity)
-        if (blockCollision)
-            if (ground &amp;&amp; place_meeting(x, y + image_yscale, other) &amp;&amp; (other.phase != 0))
+        if (blockCollision &amp;&amp; !dead)
+            if (ground &amp;&amp; place_meeting(x, y + image_yscale, other))
                 pressed = true;
     
-    xspeed = 0;
-    yspeed = 0;
-    if (pressed &amp;&amp; phase &lt; 2)
+    switch(phase)
     {
-        // Normal movement
-        if (waitTimer = 0)
-        {
-            yspeed = mySpeed * myDir;
-        }
-        // Stop when at max/min height
-        if (y &gt;= ystart + maxFall) &amp;&amp; (myDir == 1) || (y &lt;= ystart - maxRise) &amp;&amp; (myDir == -1)
-        {
-            yspeed = 0;
-            
-            // Count down to when I can move again (only do this while Mega Man is on me)
-            waitTimer++;
-            if (waitTimer == waitTime) // Change direction + reset timer
+        case 0: // descending from ceiling
+            visible = true;
+            yspeed = sign(ystart - y)*abs(descendSpd);
+            if(abs(ystart - y) &lt; abs(yspeed))
             {
-                myDir *= -1;
-                waitTimer = 0;
+                yspeed = ystart - y;
+                phase = 1;
             }
-        }
-        phase = 1;
-    }
-    if (phase == 0)
-    {
-        // descending from ceiling:
-        yspeed = 3;
-        if (y &gt;= ystart - yspeed)
-        {
-            yspeed = ystart - y;
-            phase = 1;
-        }
+            break;
+        case 1: // move cyclically up and down
+            if(pressed)
+            {
+                timer++;
+                if(timer &lt; initWait) yspeed = 0;
+                else if(timer &lt; initWait+moveTime) yspeed = moveSpd;
+                else if(timer &lt; initWait+moveTime+pauseWait) yspeed = 0;
+                else if(timer &lt; initWait+moveTime+pauseWait+moveTime) yspeed = -moveSpd;
+                else if(timer &lt; initWait+moveTime+pauseWait+moveTime+pauseWait) yspeed = 0;
+                else
+                {
+                    timer = initWait;
+                    yspeed = moveSpd;
+                }
+            }
+            else yspeed = 0;
+            break;
+        case 2: // retreat into ceiling
+            yspeed = -descendSpd;
+            if(y &lt; global.sectionTop &amp;&amp; descendSpd &gt; 0) event_user(0);
+            else if(y &gt; global.sectionBottom &amp;&amp; descendSpd &lt; 0) event_user(0);
+            break;
     }
     
-    if (phase == 2)
+    switch(activationMethod)
     {
-        // retreat into ceiling
-        yspeed = -3;
+        case 1: // on when darkness detected
+            var isDark = 0;
+            for(var i = 0; i &lt; array_length_1d(darknessSource); i++)
+            {
+                with(darknessSource[i]) if(image_alpha &gt; 0)
+                {
+                    isDark = 1;
+                    i = array_length_1d(other.darknessSource);
+                }
+            }
+            if(isDark xor invertActivationMethod)
+            {
+                if(phase == -1 || phase == 2) phase = 0;
+            }
+            else
+            {
+                if(phase != 2) phase = 2;
+            }
+            break;
+        case 2: // follows switch state of its flag
+            if(global.flag[myFlag] xor invertActivationMethod)
+            {
+                if(phase == -1 || phase == 2) phase = 0;
+            }
+            else
+            {
+                if(phase != 2) phase = 2;
+            }
+            break;
+        default: // always on
+            if(phase == -1 || phase == 2) phase = 0;
+            break;
     }
-    
-    // visibility
-    /* if (y &lt; global.sectionTop + 8 &amp;&amp; phase != 1)
-    {
-        visible = false;
-        isSolid = false;
-    }
-    else
-    {
-        visible = true;
-        isSolid = 2;
-    } */
     
     var animTable = makeArray(1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 2, 3, 0);
     animTimer = (animTimer + 1) mod (array_length_1d(animTable) * 4);
     image_index = animTable[animTimer div 4];
+    
+    isSolid = visible;
 }
 </string>
           </argument>
@@ -170,10 +198,7 @@ if (entityCanStep())
             <kind>1</kind>
             <string>event_inherited();
 
-animTimer = 0;
-y = global.sectionTop;
-phase = 0;
-waitTimer = 0;
+event_user(0);
 </string>
           </argument>
         </arguments>
@@ -197,6 +222,38 @@ waitTimer = 0;
           <argument>
             <kind>1</kind>
             <string>other.guardCancel = 2;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// platform setup
+if(descendSpd == 0) descendSpd = 3;
+if(descendSpd &gt; 0) y = global.sectionTop;
+else y = global.sectionBottom;
+visible = false;
+animTimer = 0;
+phase = -1;
+timer = 0;
+xspeed = 0;
+yspeed = 0;
 </string>
           </argument>
         </arguments>

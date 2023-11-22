@@ -38,8 +38,8 @@ phase = 360;
 global.timeStopped = true;
 playSFX(sfxFlashStopper);
 
-x = view_xview + 128;
-y = view_yview + 112;
+x = view_xview + view_wview/2;
+y = view_yview + view_hview/2;
 </string>
           </argument>
         </arguments>
@@ -167,6 +167,8 @@ if (!global.frozen)
 
 if (!global.frozen)
 {
+    x = view_xview + view_wview/2;
+    y = view_yview + view_hview/2;
     phase -= 1;
     if (phase &lt;= 0)
     {

@@ -116,6 +116,7 @@ if (global.damage != 0)
                     if (global.factionStance[faction, other.faction])
                     {
                         event_perform(ev_collision, prtEntity);
+                        lastRecordedAttackDelay = other.attackDelay;
                     }
                 }
             }

@@ -27,6 +27,9 @@
             <kind>1</kind>
             <string>// These can only be destroyed by objBokazurahBall
 
+// NEW: now can be destroyed by "heavy" enemies landing on it with certain velocity
+// and charged power adaptor punch
+
 event_inherited();
 
 isSolid = 1;
@@ -36,6 +39,8 @@ blockCollision = 1;
 canHit = false;
 bubbleTimer = -1;
 
+itemDrop = -1;
+
 // super arm interaction
 category = "superArmTarget";
 superArmFlashTimer = 0;
@@ -44,6 +49,89 @@ superArmFlashOwner = noone;
 superArmHoldOwner = noone;
 superArmDeathOnDrop = true;
 superArmThrown = false;
+
+// Bowser SMB3 moment
+crushable = true;
+crushMinYvel = 5;
+
+var index = 0;
+breaksMe[index++] = objBigEye;
+breaksMe[index++] = objMM2Mech;
+breaksMe[index++] = objMole;
+breaksMe[index++] = objBikky;
+breaksMe[index++] = objGiantSpringer;
+breaksMe[index++] = objJumbig;
+breaksMe[index++] = objPowerMuscler;
+breaksMe[index++] = objBenK;
+breaksMe[index++] = objDachone;
+breaksMe[index++] = objDachoneLtdEd;
+breaksMe[index++] = objPowerSlam;
+breaksMe[index++] = objStegorus;
+breaksMe[index++] = objBigStomper;
+breaksMe[index++] = objBokazurahBall;
+breaksMe[index++] = objMolmole;
+breaksMe[index++] = objNitroTruck;
+breaksMe[index++] = objOshitsuOsarettsu;
+breaksMe[index++] = objTsurareStamp;
+breaksMe[index++] = objDrillun;
+breaksMe[index++] = objPickelmanDada;
+breaksMe[index++] = objPressn;
+breaksMe[index++] = objTamp;
+breaksMe[index++] = objFatool;
+breaksMe[index++] = objHammerfall;
+breaksMe[index++] = objHotDog;
+breaksMe[index++] = objLanternFish;
+breaksMe[index++] = objBigSnakey;
+breaksMe[index++] = objPenPenMaker;
+breaksMe[index++] = objTama;
+breaksMe[index++] = objEscaroo;
+breaksMe[index++] = objKabatoncue;
+breaksMe[index++] = objMoby;
+breaksMe[index++] = objDachone;
+breaksMe[index++] = objOctoboss;
+breaksMe[index++] = objGamarnAndGamadayu;
+breaksMe[index++] = objGorillaTank;
+breaksMe[index++] = objSquidon;
+breaksMe[index++] = objMadGrinder;
+breaksMe[index++] = objTruckJoe;
+breaksMe[index++] = objShirokumachineGTV;
+breaksMe[index++] = objStoneHead;
+breaksMe[index++] = objPaozo;
+breaksMe[index++] = objSHFallingBoulder;
+breaksMe[index++] = objPaozoBall;
+breaksMe[index++] = objGiantMetCannon;
+breaksMe[index++] = objGundrill;
+breaksMe[index++] = objTyhorn;
+breaksMe[index++] = objTKhamenDropRock;
+breaksMe[index++] = objDocKumo;
+breaksMe[index++] = objKnuckleDuster;
+breaksMe[index++] = objStompy;
+breaksMe[index++] = objProtoEye;
+breaksMe[index++] = objGutsMan;
+breaksMe[index++] = objWoodMan;
+breaksMe[index++] = objAirMan;
+breaksMe[index++] = objGutsDozer;
+breaksMe[index++] = objHardMan;
+breaksMe[index++] = objToadMan;
+breaksMe[index++] = objMetallDaddy;
+breaksMe[index++] = objStoneMan;
+breaksMe[index++] = objNapalmMan;
+breaksMe[index++] = objBlizzardMan;
+breaksMe[index++] = objKnightMan;
+breaksMe[index++] = objTurboMan;
+breaksMe[index++] = objFrostMan;
+breaksMe[index++] = objGrenadeMan;
+breaksMe[index++] = objConcreteMan;
+breaksMe[index++] = objCommandoMan;
+breaksMe[index++] = objQuint;
+breaksMe[index++] = objPunk;
+breaksMe[index++] = objGiantSuzy;
+breaksMe[index++] = objUranus;
+breaksMe[index++] = objHyperStormH;
+breaksMe[index++] = objIronBall;
+breaksMe[index++] = objDanganMan;
+breaksMe[index++] = objKonroMan;
+breaksMe[index++] = objXBlock;
 </string>
           </argument>
         </arguments>
@@ -68,22 +156,43 @@ superArmThrown = false;
             <kind>1</kind>
             <string>event_inherited();
 
-if (entityCanStep())
+if(entityCanStep())
 {
-    if (collision_rectangle(x, y, x + sprite_width, y + sprite_height,
-        objBokazurahBall, false, true))
+    if(instance_exists(objPowerAdaptorPunch))
     {
-        with (collision_rectangle(x, y, x + sprite_width, y + sprite_height,
-            objBokazurahBall, false, true))
+        var punch = instance_place(x,y,objPowerAdaptorPunch);
+        if(punch &amp;&amp; punch.type &gt;= 2)
         {
-            if (!dead)
+            event_user(10);
+        }
+    }
+    
+    if(instance_exists(objBokazurahBall))
+    {
+        var ball = instance_place(x,y,objBokazurahBall);
+        if(ball)
+        {
+            event_user(10);
+            with(ball) event_user(10);
+        }
+    }
+    
+    if(crushable) for(var i = 0; i &lt; array_length_1d(breaksMe); i++)
+    {
+        if(instance_exists(breaksMe[i]) &amp;&amp; breaksMe[i] != noone &amp;&amp; !breaksMe[i].dead)
+        {
+            with(breaksMe[i])
             {
-                instance_create(x, y, objExplosion);
-                dead = 1;
-                with (other)
+                if(place_meeting(x,y+sign(grav),other) &amp;&amp; !place_meeting(x,y,other))
                 {
-                    instance_create(x + 8, y + 8, objExplosion);
-                    instance_destroy();
+                    if(ground &amp;&amp; abs(yspeed_prev) &gt;= other.crushMinYvel)
+                    {
+                        with(other)
+                        {
+                            event_user(10);
+                            playSFX(sfxExplosion);
+                        }
+                    }
                 }
             }
         }
