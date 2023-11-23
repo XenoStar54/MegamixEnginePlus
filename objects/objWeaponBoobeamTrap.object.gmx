@@ -173,6 +173,8 @@ if(!playerIsLocked(PL_LOCK_SHOOT) &amp;&amp; global.keyShootPressed[playerID] &a
                 i.screenDistX = i.x-view_xview;
                 i.screenDistY = i.y-view_yview;
                 if(j == 0) playSFX(sfxTimeStopper);
+                i.image_xscale = 1;
+                i.image_yscale = 1;
             }
         }
     }

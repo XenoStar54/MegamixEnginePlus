@@ -38,6 +38,8 @@ isSolid = 2;
 
 parent = noone;
 initAngle = 0;
+
+doesTransition = false;
 </string>
           </argument>
         </arguments>
