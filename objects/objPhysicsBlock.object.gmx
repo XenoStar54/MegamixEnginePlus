@@ -43,6 +43,7 @@ splashTimerMax = 240;
 despawnRange = -1;
 
 prevxs = xspeed;
+prevys = yspeed;
 
 // @cc: how quick the block can slide down or up slopes (disabled by default)
 slideOffSlopesFactor = 0;
@@ -65,6 +66,22 @@ maxForce = 4;
 pushDecelGround = 0.15;
 // @cc: how much the block slows down horizontally when moving in the air
 pushDecelAir = 0.15;
+
+// @cc: when touching walls, the block can rebound with speed multiplied by this value
+reboundFactorX = 0;
+
+// @cc: when touching floors or ceilings, the block can rebound with speed multiplied by this value
+reboundFactorY = 0;
+
+// @cc: which type of lava physics this block has
+lavaPhysics = 2;
+// 2 - floats on lava
+// 1 - sinks in lava
+// 0 - ignores lava
+
+lavaSinkSpd = 0.2;
+
+inLava = -1;
 
 // @cc: when true, attacking the block pushes it
 pushable = true;
@@ -179,6 +196,79 @@ if(entityCanStep())
         }
     }
     
+    // lava physics
+    if(inLava)
+    {
+        var removeLavaStatus = 1;
+        with(objLava) if(!dead) with(other)
+        {
+            if(place_meeting(x,y,other))
+            {
+                var stop = 0;
+                var combinedMoveSpd = 0;
+                removeLavaStatus = 0;
+                if(place_meeting(x,y,other))
+                {
+                    if(other.iceTimer &gt; 0) stop = 1;
+                    else combinedMoveSpd += other.flowSpd;
+                }
+                if(stop)
+                {
+                    xspeed = 0;
+                    yspeed = -grav;
+                    removeLavaStatus = 0;
+                }
+                else switch(lavaPhysics)
+                {
+                    case 2: // float
+                        var midTouchLava = noone;
+                        with(objLava) if(!dead) with(other)
+                        {
+                            if(place_meeting(x,y-sign(grav)*0.5*sprite_height,other))
+                            {
+                                midTouchLava = other;
+                            }
+                        }
+                        if(midTouchLava)
+                        {
+                            if(abs(yspeed) &gt; abs(maxForce)) yspeed = sign(yspeed)*abs(maxForce);
+                            yspeed -= floor(abs(yspeed)+2)*grav;
+                        }
+                        else
+                        {
+                            if(place_meeting(x,y-sign(grav)*0.5*sprite_height+sign(grav),other) &amp;&amp; !midTouchLava)
+                            {
+                                yspeed = -grav;
+                            }
+                            else yspeed += -grav+sign(grav)*lavaSinkSpd;
+                        }
+                        shiftObject(combinedMoveSpd*sign(grav),0,blockCollision);
+                        removeLavaStatus = 0;
+                        break;
+                    case 1: // sink
+                        if(abs(yspeed) &gt; 2) yspeed -= (grav*5);
+                        else if(abs(yspeed) &gt; 1) yspeed -= (grav*2);
+                        else if(abs(yspeed) &gt; lavaSinkSpd) yspeed -= (grav*1.5);
+                        else yspeed = sign(grav)*lavaSinkSpd - grav;
+                        shiftObject(combinedMoveSpd*sign(grav),0,blockCollision);
+                        removeLavaStatus = 0;
+                        break;
+                }
+            }
+        }
+        if(removeLavaStatus) inLava = -1;
+    }
+    else
+    {
+        with(objLava) if(!dead)
+        {
+            if(place_meeting(x,y,other))
+            {
+                other.inLava++;
+            }
+        }
+    }
+    
     // slide down or up slopes
     if(slideOffSlopesFactor != 0 &amp;&amp; ground)
     {
@@ -277,11 +367,7 @@ if(entityCanStep())
             {
                 if(xspeed == 0 &amp;&amp; prevxs != 0)
                 {
-                    if(!checkSolid(-prevxs,0))
-                    {
-                        xspeed = -prevxs;
-                    }
-                    else if(!checkSolid(prevxs,0))
+                    if(!checkSolid(prevxs,0))
                     {
                         xspeed = prevxs;
                     }
@@ -302,11 +388,7 @@ if(entityCanStep())
             {
                 if(xspeed == 0 &amp;&amp; prevxs != 0)
                 {
-                    if(!checkSolid(-prevxs,0))
-                    {
-                        xspeed = -prevxs;
-                    }
-                    else if(!checkSolid(prevxs,0))
+                    if(!checkSolid(prevxs,0))
                     {
                         xspeed = prevxs;
                     }
@@ -315,7 +397,30 @@ if(entityCanStep())
         }
     }
     
+    // bounce off collision
+    if(reboundFactorX &gt; 0)
+    {
+        if(xspeed == 0 &amp;&amp; prevxs != 0)
+        {
+            if(!checkSolid(-prevxs,0))
+            {
+                xspeed = -prevxs*reboundFactorX;
+            }
+        }
+    }
+    if(reboundFactorY &gt; 0)
+    {
+        if(yspeed == 0 &amp;&amp; prevys != 0 &amp;&amp; ground)
+        {
+            if(!checkSolid(0,-prevys))
+            {
+                yspeed = -prevys*reboundFactorY;
+            }
+        }
+    }
+    
     prevxs = xspeed;
+    prevys = yspeed;
 }
 </string>
           </argument>

@@ -60,3 +60,7 @@ global.weaponIcon[global.totalWeapons] = argument3;
 global.weaponID[? obj] = global.totalWeapons;
 global.weaponObject[global.totalWeapons] = obj;
 global.weaponHotbar[global.totalWeapons] = global.totalWeapons;
+
+// code that happens when weapon is swapped to or from
+global.weaponSwapToCode[global.totalWeapons] = "";
+global.weaponSwapFromCode[global.totalWeapons] = "";

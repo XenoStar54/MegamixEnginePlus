@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// This object stops a Sparkman platform's movement upon collision
+            <string>/// This object stops Wave Man warp movement
 </string>
           </argument>
         </arguments>

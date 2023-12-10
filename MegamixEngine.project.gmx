@@ -5451,6 +5451,9 @@
         <sprite>sprites\sprBubblePlatformSmall</sprite>
         <sprite>sprites\sprBubblePlatformLarge</sprite>
         <sprite>sprites\sprWavemanWarpStop</sprite>
+        <sprite>sprites\sprWaveManWarpSelect</sprite>
+        <sprite>sprites\sprWaveManWarpGeneric</sprite>
+        <sprite>sprites\sprWaveManWarpSwitch</sprite>
       </sprites>
       <sprites name="MM6">
         <sprite>sprites\sprFallingPlatform2</sprite>
@@ -5501,6 +5504,7 @@
         <sprite>sprites\sprFreezeBreakPlatformBits</sprite>
         <sprite>sprites\sprFreezeBreakLadder</sprite>
         <sprite>sprites\sprFloorLight</sprite>
+        <sprite>sprites\sprLava</sprite>
         <sprite>sprites\sprRevealingTilesSnow</sprite>
       </sprites>
       <sprites name="MM8">
@@ -5690,6 +5694,7 @@
         <sprite>sprites\sprCrackingBlock</sprite>
         <sprite>sprites\sprScreenWrap</sprite>
         <sprite>sprites\sprScreenWrapVertical</sprite>
+        <sprite>sprites\mskLavaHover</sprite>
       </sprites>
     </sprites>
     <sprites name="Sections">
@@ -5806,6 +5811,7 @@
         <sprite>sprites\sprRevealingTiles</sprite>
         <sprite>sprites\spTrainIcon</sprite>
         <sprite>sprites\sprShift</sprite>
+        <sprite>sprites\sprMonochromeLayer</sprite>
       </sprites>
       <sprites name="NPC">
         <sprite>sprites\maskNPC</sprite>
@@ -8234,11 +8240,14 @@
         <object>objects\objWaveManJetSkiStopper</object>
         <object>objects\objWaveStream</object>
         <objects name="Wave Man Warps">
+          <object>objects\prtWaveManWarp</object>
           <object>objects\objWaveManWarpUp</object>
           <object>objects\objWaveManWarpDown</object>
           <object>objects\objWaveManWarpLeft</object>
           <object>objects\objWaveManWarpRight</object>
           <object>objects\objWaveManWarpStop</object>
+          <object>objects\objWaveManWarpSwitch</object>
+          <object>objects\objWaveManWarpSelect</object>
         </objects>
         <objects name="Don't Use">
           <object>objects\objRollingDrillField</object>
@@ -8277,6 +8286,7 @@
         <object>objects\objFreezeBreakPlatform</object>
         <object>objects\objFreezeBreakLadder</object>
         <object>objects\objFloorLight</object>
+        <object>objects\objLava</object>
         <object>objects\objRevealingTiles</object>
         <objects name="Don't Use">
           <object>objects\objJunkMagDebris</object>
@@ -8441,6 +8451,8 @@
         <object>objects\objCrackingBlock</object>
         <object>objects\objScreenWrap</object>
         <object>objects\objScreenWrapVertical</object>
+        <object>objects\objMonochromeLayer</object>
+        <object>objects\objLavaHover</object>
         <objects name="Don't Use">
           <object>objects\objGrassPatchFire</object>
         </objects>

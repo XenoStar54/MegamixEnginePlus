@@ -64,6 +64,13 @@ cy = 0;
 b = 0;
 
 myPixel = -1;
+
+freezesAndDies[0] = noone;
+
+freezesAndLives[0] = noone;
+
+solidState = 2;
+solidTime = 360;
 </string>
           </argument>
         </arguments>
@@ -498,6 +505,39 @@ if (entityCanStep())
     }
     
     lastXScale = image_xscale;
+}
+
+if(!global.frozen)
+{
+    // get solidified
+    for(var i = 0; i &lt; array_length_1d(freezesAndDies); i++)
+    {
+        with(freezesAndDies[i])
+        {
+            if(!dead &amp;&amp; !other.dead &amp;&amp; place_meeting(x,y,other))
+            {
+                event_user(10);
+                with(other)
+                {
+                    entityIceFreeze(solidTime,0,solidState,1,0);
+                }
+            }
+        }
+    }
+    // get solidified but again
+    for(var i = 0; i &lt; array_length_1d(freezesAndLives); i++)
+    {
+        with(freezesAndLives[i])
+        {
+            if(!dead &amp;&amp; !other.dead &amp;&amp; place_meeting(x,y,other))
+            {
+                with(other)
+                {
+                    entityIceFreeze(solidTime,0,solidState,1,0);
+                }
+            }
+        }
+    }
 }
 </string>
           </argument>

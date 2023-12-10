@@ -31,7 +31,8 @@ if (iceTimer > 0)
     }
     
     // become solid if required (except if in air or player intersecting)
-    if (!isSolid && !place_meeting(x, y, objMegaman) && ground)
+    // this is stupid, if it has to be solid when iced then just make it solid when iced ffs
+    if (!isSolid)
         isSolid = iceSolid;
     
     canDamage = iceCanDamage;

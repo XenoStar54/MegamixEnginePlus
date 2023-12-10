@@ -2,7 +2,7 @@
 <object>
   <spriteName>sprQuickLaserSpawner</spriteName>
   <solid>0</solid>
-  <visible>0</visible>
+  <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>prtEntity</parentName>
@@ -115,6 +115,13 @@ rotateStartRangeTurn = 0;
 rotateEndRangeTurn = 0;
 
 myLasers = ds_list_create();
+
+freezesAndDies[0] = objChillShot;
+
+freezesAndLives[0] = objChillSpikeLanded;
+
+solidState = 2;
+solidTime = 360;
 </string>
           </argument>
         </arguments>
@@ -160,7 +167,8 @@ myLasers = ds_list_create();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited();
+            <string>/// precise lasers need copypasted code
+event_inherited();
 if(useRails)
 {
     event_perform_object(prtRailPlatform,ev_step,ev_step_normal);
@@ -210,6 +218,10 @@ if (!dead &amp;&amp; !global.frozen &amp;&amp; !global.timeStopped)
                 laser.contactDamage = damage;
                 laser.drainCooldown = drainCooldown;
                 laser.faction = faction;
+                laser.freezesAndDies = freezesAndDies;
+                laser.freezesAndLives = freezesAndLives;
+                laser.solidState = solidState;
+                laser.solidTime = solidTime;
                 
                 if (sprite != -1)
                 {
@@ -606,6 +618,42 @@ else
 {
     startingRotateSpeed = 0;
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(!dead)
+{
+    if(phase == 0)
+    {
+        var sep = (sprite_get_width(sprite_index)/2)*(delay-timer)/delay - 0.5;
+        var len = view_wview;
+        var col = c_white;
+        if(timer mod 10 &gt;= 5) col = make_color_rgb(255,195,0);
+        draw_sprite_ext(sprDot,0,x+(-8-sep)*cos(degtorad(image_angle+90))+sprite_get_width(sprite_index)*cos(degtorad(image_angle)),y+(-8-sep)*-sin(degtorad(image_angle+90))-sprite_get_width(sprite_index)*sin(degtorad(image_angle)),len,1,image_angle,col,1);
+        draw_sprite_ext(sprDot,0,x+(-8+sep)*cos(degtorad(image_angle+90))+sprite_get_width(sprite_index)*cos(degtorad(image_angle)),y+(-8+sep)*-sin(degtorad(image_angle+90))-sprite_get_width(sprite_index)*sin(degtorad(image_angle)),len,1,image_angle,col,1);
+    }
+}
+
+event_inherited();
 </string>
           </argument>
         </arguments>

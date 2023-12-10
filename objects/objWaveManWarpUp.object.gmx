@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited();
+            <string>/// check prtWaveManWarp to see cc options
+event_inherited();
 dir = "Up";
 </string>
           </argument>

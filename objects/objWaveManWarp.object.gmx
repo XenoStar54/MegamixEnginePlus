@@ -2,7 +2,7 @@
 <object>
   <spriteName>mskMegaman</spriteName>
   <solid>0</solid>
-  <visible>0</visible>
+  <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>prtAlwaysActive</parentName>
@@ -26,14 +26,26 @@
           <argument>
             <kind>1</kind>
             <string>dir = "Right";
+angleDir = -1;
 spd = 4;
+spdVar = 0;
+allowShoot = 0;
 
 xspeed = 0;
 yspeed = 0;
 
 playSFX(sfxWaveManPipe);
 
-global.waveManWarpLock = false;
+waveLock = 0;
+waveShootLock = 0;
+affectedPlayer = noone;
+
+allowLeft = 0;
+allowRight = 0;
+allowUp = 0;
+allowDown = 0;
+
+lastWarp = noone;
 </string>
           </argument>
         </arguments>
@@ -56,121 +68,91 @@ global.waveManWarpLock = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (dir == "Right")
+            <string>/// wave man warp movement code
+if(!instance_exists(affectedPlayer))
 {
-    xspeed = spd;
-    yspeed = 0;
-    var warp;
-    if (instance_place(x, y, objWaveManWarpUp))
-    {
-        warp = instance_place(x, y, objWaveManWarpUp);
-        if (x &gt; warp.x + 8 &amp;&amp; warp.object_index == objWaveManWarpUp)
-        {
-            x = warp.x + 8;
-            dir = warp.dir;
-            xspeed = 0;
-            yspeed = 0;
-            playSFX(sfxWaveManPipe);
-        }
-    }
-    else if (instance_place(x, y, objWaveManWarpDown))
-    {
-        warp = instance_place(x, y, objWaveManWarpDown);
-        if (x &gt; warp.x + 8 &amp;&amp; warp.object_index == objWaveManWarpDown)
-        {
-            x = warp.x + 8;
-            dir = warp.dir;
-            xspeed = 0;
-            yspeed = 0;
-            playSFX(sfxWaveManPipe);
-        }
-    }
+    instance_destroy();
+    exit;
 }
-if (dir == "Left")
+
+// speed up by holding slide and slow down by holding jump
+var addSpd = spdVar*(global.keySlide[affectedPlayer.playerID] - global.keyJump[affectedPlayer.playerID]);
+
+switch(dir)
 {
-    xspeed = -spd;
-    yspeed = 0;
-    if (instance_place(x, y, objWaveManWarpUp))
-    {
-        warp = instance_place(x, y, objWaveManWarpUp);
-        if (x &gt; warp.x + 8 &amp;&amp; warp.object_index == objWaveManWarpUp)
+    case "useAngleDir": // custom angle direction
+        xspeed = cos(degtorad(angleDir))*(spd+addSpd);
+        yspeed = -sin(degtorad(angleDir))*(spd+addSpd);
+        break;
+    case "Right": // go right
+        xspeed = (spd+addSpd);
+        yspeed = 0;
+        break;
+    case "Left": // go left
+        xspeed = -(spd+addSpd);
+        yspeed = 0;
+        break;
+    case "Up": // go up
+        xspeed = 0;
+        yspeed = -(spd+addSpd);
+        break;
+    case "Down": // go down
+        xspeed = 0;
+        yspeed = (spd+addSpd);
+        break;
+    case "Select": // pick direction from allowed ones
+        xspeed = 0;
+        yspeed = 0;
+        if(global.keyRightPressed[affectedPlayer.playerID] &amp;&amp; allowRight)
         {
-            x = warp.x + 8;
-            dir = warp.dir;
-            xspeed = 0;
+            dir = "Right";
+            xspeed = (spd+addSpd);
             yspeed = 0;
             playSFX(sfxWaveManPipe);
         }
-    }
-    else if (instance_place(x, y, objWaveManWarpDown))
-    {
-        warp = instance_place(x, y, objWaveManWarpDown);
-        if (x &gt; warp.x + 8 &amp;&amp; warp.object_index == objWaveManWarpDown)
+        else if(global.keyLeftPressed[affectedPlayer.playerID] &amp;&amp; allowLeft)
         {
-            x = warp.x + 8;
-            dir = warp.dir;
-            xspeed = 0;
+            dir = "Left";
+            xspeed = -(spd+addSpd);
             yspeed = 0;
             playSFX(sfxWaveManPipe);
         }
-    }
+        else if(global.keyUpPressed[affectedPlayer.playerID] &amp;&amp; allowUp)
+        {
+            dir = "Up";
+            xspeed = 0;
+            yspeed = -(spd+addSpd);
+            playSFX(sfxWaveManPipe);
+        }
+        else if(global.keyDownPressed[affectedPlayer.playerID] &amp;&amp; allowDown)
+        {
+            dir = "Down";
+            xspeed = 0;
+            yspeed = (spd+addSpd);
+            playSFX(sfxWaveManPipe);
+        }
+        break;
 }
-if (dir == "Up")
+
+// detect next warp
+var warp = instance_place(x,y,prtWaveManWarp);
+if(warp &amp;&amp; warp != lastWarp)
 {
-    yspeed = -spd;
-    xspeed = 0;
-    if (instance_place(x, y, objWaveManWarpRight))
+    if(abs(angle_difference(point_direction(0,0,xspeed,yspeed),point_direction(x,y,bboxGetXCenterObject(warp),bboxGetYCenterObject(warp)))) &lt; 10
+        &amp;&amp; abs(x-bboxGetXCenterObject(warp)) &lt;= max(abs(xspeed),1) &amp;&amp; abs(y-bboxGetYCenterObject(warp)) &lt;= max(abs(yspeed),1))
     {
-        warp = instance_place(x, y, objWaveManWarpRight);
-        if (y &gt; warp.y &amp;&amp; warp.object_index == objWaveManWarpRight)
-        {
-            y = warp.y;
-            dir = warp.dir;
-            xspeed = 0;
-            yspeed = 0;
-            playSFX(sfxWaveManPipe);
-        }
-    }
-    else if (instance_place(x, y, objWaveManWarpLeft))
-    {
-        warp = instance_place(x, y, objWaveManWarpLeft);
-        if (y &gt; warp.y &amp;&amp; warp.object_index == objWaveManWarpLeft)
-        {
-            y = warp.y;
-            dir = warp.dir;
-            xspeed = 0;
-            yspeed = 0;
-            playSFX(sfxWaveManPipe);
-        }
-    }
-}
-if (dir == "Down")
-{
-    yspeed = spd;
-    xspeed = 0;
-    if (instance_place(x, y, objWaveManWarpRight))
-    {
-        warp = instance_place(x, y, objWaveManWarpRight);
-        if (y &gt; warp.y &amp;&amp; warp.object_index == objWaveManWarpRight)
-        {
-            y = warp.y;
-            dir = warp.dir;
-            xspeed = 0;
-            yspeed = 0;
-            playSFX(sfxWaveManPipe);
-        }
-    }
-    else if (instance_place(x, y, objWaveManWarpLeft))
-    {
-        warp = instance_place(x, y, objWaveManWarpLeft);
-        if (y &gt; warp.y &amp;&amp; warp.object_index == objWaveManWarpLeft)
-        {
-            y = warp.y;
-            dir = warp.dir;
-            xspeed = 0;
-            yspeed = 0;
-            playSFX(sfxWaveManPipe);
-        }
+        x = bboxGetXCenterObject(warp);
+        y = bboxGetYCenterObject(warp);
+        dir = warp.dir;
+        angleDir = warp.angleDir;
+        allowLeft = warp.allowLeft;
+        allowRight = warp.allowRight;
+        allowUp = warp.allowUp;
+        allowDown = warp.allowDown;
+        xspeed = 0;
+        yspeed = 0;
+        playSFX(sfxWaveManPipe);
+        lastWarp = warp;
     }
 }
 
@@ -180,49 +162,85 @@ if (!global.frozen)
     y += yspeed;
 }
 
-if (instance_exists(objMegaman))
+with (affectedPlayer)
 {
-    if (!global.waveManWarpLock)
-        global.waveManWarpLock = lockPoolLock(
-            PL_LOCK_MOVE,
-            PL_LOCK_TURN,
-            PL_LOCK_SHOOT
-        );
-            
-    with (objMegaman)
+    if !instance_exists(objSectionSwitcher)
     {
-        if !instance_exists(objSectionSwitcher)
-        {
-            x = other.x;
-            y = other.y + 4;
-            xspeed = 0;
-            yspeed = 0;
-            blockCollision = false;
-        }
-        
-        spriteX = 7;
+        x = other.x;
+        y = other.y;
+        xspeed = 0;
+        yspeed = 0;
+        blockCollision = false;
     }
+    
+    spriteX = 7;
 }
+
 if (instance_exists(objSectionSwitcher))
 {
     x = objSectionSwitcher.x;
     y = objSectionSwitcher.y - 2;
 }
-if (instance_exists(objMegaman))
+
+if (place_meeting(x, y, objWaveManWarpStop)
+    &amp;&amp; !place_meeting(x, y, objSolid))
 {
-    if (place_meeting(x, y, objWaveManWarpStop)
-        &amp;&amp; !place_meeting(x, y, objSolid))
+    with (affectedPlayer)
     {
-        with (objMegaman)
-        {
-            xspeed = other.xspeed;
-            yspeed = other.yspeed;
-            blockCollision = true;
-        }
-        global.waveManWarpLock = lockPoolRelease(
-            global
-            .waveManWarpLock);
-        instance_destroy();
+        xspeed = other.xspeed;
+        yspeed = other.yspeed;
+        blockCollision = true;
+    }
+    if(waveLock)
+        waveLock = lockPoolRelease(waveLock);
+    if(waveShootLock)
+        waveShootLock = lockPoolRelease(waveShootLock);
+    instance_destroy();
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// draw select dir arrows
+if(dir == "Select")
+{
+    if(allowLeft)
+    {
+        draw_sprite_part_ext(sprArrow,0,0,0,8,8,x-24+1-4,y+1-4,1,1,c_black,1);
+        draw_sprite_part_ext(sprArrow,0,0,0,8,8,x-24-4,y-4,1,1,c_white,1);
+    }
+    if(allowRight)
+    {
+        draw_sprite_part_ext(sprArrow,1,0,0,8,8,x+24+1-4,y+1-4,1,1,c_black,1);
+        draw_sprite_part_ext(sprArrow,1,0,0,8,8,x+24-4,y-4,1,1,c_white,1);
+    }
+    if(allowUp)
+    {
+        draw_sprite_part_ext(sprArrow,2,0,0,8,8,x+1-4,y-24+1-4,1,1,c_black,1);
+        draw_sprite_part_ext(sprArrow,2,0,0,8,8,x-4,y-24-4,1,1,c_white,1);
+    }
+    if(allowDown)
+    {
+        draw_sprite_part_ext(sprArrow,3,0,0,8,8,x+1-4,y+24+1-4,1,1,c_black,1);
+        draw_sprite_part_ext(sprArrow,3,0,0,8,8,x-4,y+24-4,1,1,c_white,1);
     }
 }
 </string>

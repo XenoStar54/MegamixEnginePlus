@@ -13,7 +13,9 @@
   <code>playMusic("Mega_Man_10.nsf","VGM", 41, 0, 0, 0, 1);
 with(objSolid) visible = 1;
 with(objTopSolid) visible = 1;
-with(prtRail) visible = 1;</code>
+with(prtRail) visible = 1;
+with(prtWaveManWarp) visible = 1;
+with(objWaveManWarpStop) visible = 1;</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
@@ -54,7 +56,6 @@ with(prtRail) visible = 1;</code>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="640" hview="480" xport="0" yport="0" wport="640" hport="480" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
   </views>
   <instances>
-    <instance objName="objDefaultSpawn" x="1328" y="160" name="inst_D3E2D883" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objHorizontalScrolling" x="256" y="0" name="inst_F1FEA80B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSolid" x="0" y="176" name="inst_2701AE62" locked="0" code="" scaleX="152" scaleY="4" colour="4294967295" rotation="0"/>
     <instance objName="objSolid" x="0" y="0" name="inst_2A0AFBCA" locked="0" code="" scaleX="49" scaleY="1" colour="4294967295" rotation="0"/>
@@ -273,6 +274,33 @@ with(prtRail) visible = 1;</code>
     <instance objName="objBokazurahPlatform" x="2256" y="160" name="inst_D80A27A3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBokazurahPlatform" x="2240" y="160" name="inst_AE6FF987" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSolid" x="2160" y="144" name="inst_5C90F691" locked="0" code="" scaleX="3" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objHorizontalScrolling" x="2304" y="224" name="inst_FA4DBF8C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objSolid" x="2256" y="416" name="inst_5350EF06" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objHorizontalScrolling" x="2048" y="224" name="inst_9E53B421" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objSolid" x="2032" y="240" name="inst_340BFF64" locked="0" code="" scaleX="2" scaleY="6" colour="4294967295" rotation="0"/>
+    <instance objName="objSolid" x="2288" y="240" name="inst_7B9ED93A" locked="0" code="" scaleX="2" scaleY="6" colour="4294967295" rotation="0"/>
+    <instance objName="objQuickLaserSpawner" x="2064" y="256" name="inst_6E436772" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objQuickLaserSpawner" x="2288" y="304" name="inst_ED455CF6" locked="0" code="delay = 90;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
+    <instance objName="objQuickLaserSpawner" x="2064" y="320" name="inst_5EF04659" locked="0" code="delay = 150;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objQuickLaserSpawner" x="2176" y="240" name="inst_06D22753" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
+    <instance objName="objQuickLaserSpawner" x="2256" y="432" name="inst_31BE4468" locked="0" code="delay = 90;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
+    <instance objName="objDefaultSpawn" x="2336" y="384" name="inst_38F00625" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objSolid" x="2064" y="416" name="inst_2346E7BD" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objSolid" x="1536" y="400" name="inst_8CD1DB9F" locked="0" code="" scaleX="33" scaleY="3" colour="4294967295" rotation="0"/>
+    <instance objName="objHorizontalScrolling" x="1792" y="224" name="inst_52252366" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objWaveManWarpUp" x="1824" y="272" name="inst_5B573CA2" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objWaveManWarpDown" x="1888" y="240" name="inst_2583D639" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objWaveManWarpLeft" x="1952" y="368" name="inst_60C6816A" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objWaveManWarpStop" x="1840" y="336" name="inst_869D8251" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objWaveManWarpSelect" x="1904" y="320" name="inst_93E4FF20" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objWaveManWarpUp" x="1952" y="304" name="inst_20DD9684" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="prtWaveManWarp" x="1968" y="256" name="inst_51822EAE" locked="0" code="angleDir = point_direction(0,0,1,1);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objWaveManWarpLeft" x="1984" y="272" name="inst_8FB80773" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="prtWaveManWarp" x="1840" y="240" name="inst_D3AC068F" locked="0" code="angleDir = point_direction(0,0,4,1);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objWaveManWarpDown" x="1792" y="304" name="inst_54FDF8A7" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objWaveManWarpRight" x="1792" y="336" name="inst_729A3CAA" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objWaveManWarpSwitch" x="1904" y="384" name="inst_95B089E6" locked="0" code="switchAngleDir[0] = 45;&#xA;switchAngleDir[1] = 90;&#xA;myFlag = 1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objPUHitSwitch" x="1840" y="384" name="inst_613E0881" locked="0" code="myFlag = 1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

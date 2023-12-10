@@ -26,3 +26,5 @@ for (var j = 0; j <= global.totalWeapons; j++)
 
 global.lockBuster = false;
 global.playerProjectileCreator = objMegaman;
+
+for (var j = 0; j <= 4; j++) global.lastUsedWeapon[j] = 0;

@@ -164,6 +164,10 @@ if (global.keyShoot[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT) &amp;&am
           <argument>
             <kind>1</kind>
             <string>weaponSetup("QUICK BOOMERANG GB", global.nesPalette[31], global.nesPalette[44], sprWeaponIconsQuickBoomerangGB);
+
+// weapon swap code
+global.weaponSwapToCode[global.weaponID[? objQuickBoomerangGB]] = "walkSpeed=1.75;jumpSpeed=6;climbSpeed=1.75;";
+global.weaponSwapFromCode[global.weaponID[? objQuickBoomerangGB]] = "walkSpeed=1.375;jumpSpeed=5.25;climbSpeed=1.3;";
 </string>
           </argument>
         </arguments>
