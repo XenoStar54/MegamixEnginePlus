@@ -71,7 +71,7 @@ reflectable = -1;
             <kind>1</kind>
             <string>event_inherited();
 
-if (global.frozen == false &amp;&amp; global.timeStopped == false)
+if (entityCanStep())
 {
     switch (phase)
     {

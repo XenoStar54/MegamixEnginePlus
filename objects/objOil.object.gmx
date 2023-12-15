@@ -37,6 +37,8 @@ blockCollision = 0;
 grav = 0;
 bubbleTimer = -1;
 
+entityOil = 1;
+
 fire = false;
 
 // What lights oil on fire

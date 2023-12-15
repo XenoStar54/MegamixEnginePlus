@@ -59,7 +59,7 @@ autoDieTime = 60 * 10;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (!global.frozen &amp;&amp; !global.timeStopped)
+            <string>if (entityCanStep())
 {
     x = view_xview + view_wview * 0.5;
     x = view_yview + view_hview * 0.5;

@@ -91,7 +91,7 @@ if (!instance_place(x - 16, y, objSnakeBody))
             <string>event_inherited();
 if (startDir == -99)
     startDir = shakeDir;
-if (!global.frozen &amp;&amp; !dead &amp;&amp; !global.timeStopped)
+if (entityCanStep())
 {
     if (shake)
     {

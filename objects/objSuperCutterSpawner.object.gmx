@@ -64,7 +64,7 @@ objectDrop = objSuperCutter;
             <kind>1</kind>
             <string>event_inherited();
 
-if (!dead &amp;&amp; !global.frozen &amp;&amp; !global.timeStopped)
+if (entityCanStep())
 {
     // increment timer + check if it's at the max
     timer += 1;

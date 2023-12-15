@@ -60,7 +60,7 @@ image_index = 0;
             <kind>1</kind>
             <string>event_inherited();
 
-if (!global.frozen &amp;&amp; !global.timeStopped)
+if (entityCanStep())
 {
     if (ground)
     {

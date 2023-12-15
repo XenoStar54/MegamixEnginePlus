@@ -28,6 +28,7 @@
             <string>event_inherited();
 canHit = false;
 
+blockCollision = 0;
 grav = 0;
 bubbleTimer = -1;
 
@@ -37,14 +38,16 @@ faction = 7;
 //@cc The vertical acceleration
 acc = 0.15;
 
-// Because moving in sub-pixels messed up collision, we need a value that keeps track of the sub-pixels, and only use real pixels for yspeed
-subY = 0;
-subYspeed = 0;
+spd = 0;
+
 maxSpeed = 3;
 decendSpeed = 1;
 phase = 0; // 0 = not moving; 1 = moving up; 2 = moving down
 
 test = 0;
+
+moveAngle = 90;
+image_index = 0;
 </string>
           </argument>
         </arguments>
@@ -69,19 +72,22 @@ test = 0;
             <kind>1</kind>
             <string>event_inherited();
 
-if (!global.frozen &amp;&amp; !dead &amp;&amp; !global.timeStopped)
+if (entityCanStep())
 {
-    if (phase == 0)
+    if (phase == 0) // wait to be stepped on
     {
+        spd = 0;
         with (objMegaman)
         {
-            if (place_meeting(x, y + gravDir, other.id))
+            if (place_meeting(x, y + gravDir, other.id) &amp;&amp; !place_meeting(x, y, other.id))
             {
                 if (ground)
                 {
                     with (other)
                     {
-                        yspeed = acc * -sign(image_yscale);
+                        spd += acc;
+                        xspeed = cos(degtorad(moveAngle))*spd;
+                        yspeed = -sin(degtorad(moveAngle))*spd;
                         phase = 1;
                     }
                 }
@@ -91,34 +97,55 @@ if (!global.frozen &amp;&amp; !dead &amp;&amp; !global.timeStopped)
     
     if (phase == 1) // Moving up
     {
-        yspeed -= (acc * sign(image_yscale));
-        if (yspeed * sign(image_yscale) &lt;= -maxSpeed)
-        {
-            yspeed = -maxSpeed * sign(image_yscale);
-        }
+        spd = min(spd+acc,maxSpeed);
+        xspeed = cos(degtorad(moveAngle))*spd;
+        yspeed = -sin(degtorad(moveAngle))*spd;
         
-        if (ycoll != 0 || place_meeting(x, y, objSparkmanPlatformStop))
+        if (checkSolid(xspeed,yspeed) || place_meeting(x, y, objSparkmanPlatformStop))
         {
+            xspeed = 0;
             yspeed = 0;
             phase = 2;
         }
     }
     else if (phase == 2) // Moving down
     {
-        yspeed = decendSpeed * sign(image_yscale);
-        if ((y &gt;= ystart &amp;&amp; sign(image_yscale) == 1) || (y &lt;= ystart &amp;&amp; sign(image_yscale) == -1))
+        xspeed = cos(degtorad(moveAngle+180))*decendSpeed;
+        yspeed = -sin(degtorad(moveAngle+180))*decendSpeed;
+        if (point_distance(x,y,xstart,ystart) &lt;= point_distance(0,0,xspeed,yspeed))
         {
-            yspeed = ystart - y;
+            shiftObject(xstart-x,ystart-y,blockCollision);
+            xspeed = 0;
             yspeed = 0;
             phase = 0;
         }
     }
 }
-else if (dead)
-{
-    phase = 0;
-    subYspeed = 0;
-}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="25">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>event_inherited();
+
+phase = 0;
 </string>
           </argument>
         </arguments>

@@ -38,6 +38,14 @@ timer = 0;
 droptimer = 16;
 dir = 0;
 
+//@cc: platform's falling direction
+dir = 0;
+// 0: inherit player's gravity
+// negative: always fall up
+// positive: always fall down
+
+saveGrav = 0;
+
 // super arm interaction
 category = "superArmTarget";
 superArmFlashTimer = 0;
@@ -70,11 +78,11 @@ superArmThrown = false;
             <kind>1</kind>
             <string>event_inherited();
 
-if (!global.frozen &amp;&amp; !dead &amp;&amp; !global.timeStopped)
+if (entityCanStep())
 {
     if (timer &gt;= droptimer)
     {
-        grav = 0.25 * dir;
+        grav = saveGrav;
         drawOffsetY = 0;
     }
     else
@@ -82,13 +90,16 @@ if (!global.frozen &amp;&amp; !dead &amp;&amp; !global.timeStopped)
         var ontop = 0;
         with (target)
         {
-            if (ground)
+            var viable = 1;
+            if(object_index == objMegaman &amp;&amp; teleportLock) viable = 0;
+            if (ground &amp;&amp; viable)
             {
                 if (place_meeting(x, y + gravDir, other.id)
                     &amp;&amp; !place_meeting(x, y, other.id))
                 {
                     other.timer += 1;
-                    other.dir = gravDir;
+                    if(other.dir == 0) other.saveGrav = gravAccel*gravDir;
+                    else other.saveGrav = gravAccel*other.dir;
                     ontop = 1;
                 }
             }

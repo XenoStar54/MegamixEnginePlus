@@ -53,7 +53,7 @@ spd = 0.5;
           <argument>
             <kind>1</kind>
             <string>event_inherited();
-if (!global.frozen &amp;&amp; !global.timeStopped)
+if (entityCanStep())
 {
     xspeed = cos(degtorad(dir)) * spd;
     yspeed = -sin(degtorad(dir))

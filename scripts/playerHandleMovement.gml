@@ -25,12 +25,20 @@ if (!playerIsLocked(PL_LOCK_MOVE))
             }
             else
             {
-                if (place_meeting(x, y + gravDir, objOil)) // Oil
+                var touchOil = false, onIce = false;
+                with(prtEntity) if(!dead)
+                {
+                    if(entityOil && place_meeting(x,y,other)) touchOil = true;
+                    if(entityIce && !place_meeting(x,y,other)
+                        && place_meeting(x,y-other.gravDir,other) && isSolid) onIce = true;
+                }
+                if (place_meeting(x, y + gravDir, objOil) || touchOil) // Oil
                 {
                     xspeed = oilWalk * xDir;
                 }
                 else if (place_meeting(x, y + gravDir, objIce)
-                    || (instance_exists(statusObject) && statusObject.statusOnIce)) // Ice
+                    || (instance_exists(statusObject) && statusObject.statusOnIce)
+                    || onIce) // Ice
                 {
                     if (xspeed * image_xscale < walkSpeed)
                     {
@@ -48,7 +56,14 @@ if (!playerIsLocked(PL_LOCK_MOVE))
             stepTimer = 0;
             if (xspeed != 0)
             {
-                if (!place_meeting(x, y + gravDir, objIce)
+                var onIce = false;
+                with(prtEntity) if(!dead)
+                {
+                    if(entityIce && !place_meeting(x,y,other)
+                        && place_meeting(x,y-other.gravDir,other) && isSolid) onIce = true;
+                }
+                
+                if (!place_meeting(x, y + gravDir, objIce) && !onIce
                     && !(instance_exists(statusObject) && statusObject.statusOnIce)) // Normal physics
                 {
                     xspeed = 0;

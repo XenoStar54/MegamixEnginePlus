@@ -1,6 +1,7 @@
 /// generalCollision([noSlopeEffect])
 // Handles general collision
-// isSolid = 0 - no collision, 1 = collision, 2 = topsolid collision, 3 = ignore mega man
+// isSolid = 0 - no collision, 1 = collision, 2 = topsolid collision
+// noSlopeEffect - default false; when true, slopes will be treated as walls
 
 xcoll = 0;
 ycoll = 0;
@@ -284,7 +285,7 @@ if (yspeed != 0)
     if(object_index == objMegaman && climbing)
     {
         with(objLadder) solid = 0;
-        with(prtEntity) if(isSolid == 2 && entityLadder && !dead) solid = 0;
+        with(prtEntity) if(entityLadder && !dead) solid = 0;
     }
     y += yspeed;
 

@@ -9,8 +9,8 @@ if (teleporting || showReady)
 }
 
 // without this the player jitters when the screen scrolls
-var _x = floor((x * global.screenScale) + .5) / global.screenScale;
-var _y = floor((y * global.screenScale) + .5) / global.screenScale;
+var _x = floor(((x + drawOffsetX) * global.screenScale) + .5) / global.screenScale;
+var _y = floor(((y + drawOffsetY) * global.screenScale) + .5) / global.screenScale;
 
 if ((teleporting || showDuringReady) && !instance_exists(objSectionSwitcher))
 {

@@ -15,22 +15,17 @@ if (isSolid)
         y = yprevious;
         x = xprevious;
         
-        /*
         with (objMegaman)
         {
-            if(grav != gravDir)
-            {
-                savedgrav = grav;
-                grav = gravDir;
-            }
+            savedgrav = grav;
+            grav = gravDir;
         }
-        */
         
         if (myyspeed != 0) // Vertical
         {   
             with (prtEntity)
             {
-                if (id!=other.id && blockCollision && !dead)
+                if (blockCollision && !dead)
                 {
                     if (other.fnsolid)
                     {
@@ -41,7 +36,7 @@ if (isSolid)
                     }
                     var epDir = sign(bboxGetYCenterObject(other.id) - bboxGetYCenter());
 
-                    if(place_meeting(x, y, other.id))
+                    if(place_meeting(x, y, other.id) && !(climbing && other.entityLadder))
                     {
                         continue;
                     }
@@ -49,14 +44,31 @@ if (isSolid)
                     
                     var epIsPassenger;
                     var epWillCollide;
+                    var epMoveAnyway = 0;
                     with(other)
                     {
                         epWillCollide = place_meeting(x, y + myyspeed, other.id); 
                        
                     }
                     epIsPassenger = place_meeting(x, y + sign(grav) + grav + (0.5*sign(grav)*ground), other.id);
+                    
+                    if(climbing && other.entityLadder) // ladder
+                    {
+                        epMoveAnyway = epMoveAnyway || place_meeting(x, y, other.id);
+                    }
+                    
+                    // allow down-climbing ladders when standing on them
+                    if(object_index == objMegaman && yDir == gravDir && epIsPassenger)
+                    {
+                        if(climbing && other.entityLadder)
+                        {
+                            epIsPassenger = 0;
+                            epWillCollide = 0;
+                            epMoveAnyway = 0;
+                        }
+                    }
 
-                    if (epIsPassenger || epWillCollide)
+                    if (epIsPassenger || epWillCollide || epMoveAnyway)
                     {
                         other.y += myyspeed;
                         
@@ -99,11 +111,6 @@ if (isSolid)
                                 if (global.factionStance[other.faction, faction])
                                 {
                                     event_user(EV_DEATH);
-                                    
-                                    if (object_index != objMegaman)
-                                    {
-                                        playSFX(sfxEnemyHit);
-                                    }
                                 }
                             }
                         }
@@ -126,7 +133,7 @@ if (isSolid)
             with (prtEntity)
             {
                 
-                if (id!=other.id && blockCollision && !dead)
+                if (blockCollision && !dead)
                 {
                     if (other.fnsolid)
                     {
@@ -136,15 +143,27 @@ if (isSolid)
                         }
                     }
                     
-                    if (place_meeting(x, y, other.id))
+                    if(place_meeting(x, y, other.id) && !(climbing && other.entityLadder))
                     {
                         continue;
                     }
                     
+                    /*
+                    if (object_index == objMegaman)
+                    {
+                        grav = gravDir;
+                    }
+                    */
                     var epIsOnPlat = false;
                     var epDir = sign(bboxGetXCenterObject(other.id) - bboxGetXCenter());
+                    var epMoveAnyway = 0;
+                    
+                    if(climbing && other.entityLadder) // ladder
+                    {
+                        epMoveAnyway = epMoveAnyway || place_meeting(x, y, other.id);
+                    }
 
-                    if (place_meeting(x, y + sign(grav)+grav+(ground*0.5*sign(grav)), other.id))
+                    if (place_meeting(x, y + sign(grav)+grav+(ground*0.5*sign(grav)), other.id) || epMoveAnyway)
                     {
                         shiftObject(myxspeed, 0, 1);
                         epIsOnPlat=true;
@@ -181,11 +200,6 @@ if (isSolid)
                                 if (global.factionStance[other.faction, faction])
                                 {
                                     event_user(EV_DEATH);
-                                    
-                                    if (object_index != objMegaman)
-                                    {
-                                        playSFX(sfxEnemyHit);
-                                    }
                                 }
                             }
                         }
@@ -193,6 +207,7 @@ if (isSolid)
                         other.x -= myxspeed;
                     }
                 }
+                epIsOnPlat=false;
             }
         }
         
@@ -203,9 +218,9 @@ if (isSolid)
         yprevious = y;
         xprevious = x;
         
-        /*with (objMegaman)
+        with (objMegaman)
         {
             grav = savedgrav;
-        }*/
+        }
     }
 }

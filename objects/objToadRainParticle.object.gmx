@@ -48,7 +48,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (global.frozen == false &amp;&amp; global.timeStopped == false)
+            <string>if (entityCanStep())
 {
     timer += 1;
     if (timer mod 10 == 1)

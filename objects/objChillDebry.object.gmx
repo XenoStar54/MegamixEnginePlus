@@ -55,7 +55,7 @@ ground = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (!global.frozen &amp;&amp; !global.timeStopped)
+            <string>if (entityCanStep())
 {
     gravityEffect();
     

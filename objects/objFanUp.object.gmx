@@ -35,12 +35,34 @@ grav = 0;
 bubbleTimer = -1;
 
 image_speed = 0.35;
+imgSpd = image_speed;
 
 shiftVisible = 1;
 
 dir = 0;
 velocity = 0;
 playSound = true;
+
+range = 7*16;
+blockedBySolid = 1;
+
+// the fans will extend past their range by this value;
+// when Mega is within overreachThreshold, he will slow gradually, to emulate MM6 fans
+overreachThreshold = 3*16;
+oldBehavior = 1;
+
+acceleration = 0.1;
+maxSpd = 3;
+
+//@cc: 1 - on when switch on; 0 - ignores switch; -1 - on when switch off
+useSwitchFlag = 0;
+myFlag = 999;
+
+timer = 0;
+timerMax = 15;
+
+push1 = noone;
+push2 = noone;
 </string>
           </argument>
         </arguments>
@@ -65,211 +87,214 @@ playSound = true;
             <kind>1</kind>
             <string>event_inherited();
 
-if (!global.frozen &amp;&amp; !dead &amp;&amp; !global.timeStopped)
+if (entityCanStep())
 {
-    switch (dir)
+    var isactive = 1;
+    if(useSwitchFlag != 0) isactive = (global.flagParent[myFlag].active xor (useSwitchFlag &lt; 0));
+    
+    image_speed = imgSpd*isactive;
+    
+    // carry my pushes around
+    switch(dir)
     {
-        case 0: // up 
-            with (collision_rectangle(bbox_left, bbox_top, bbox_right - 2,
-                bbox_top - 16 * 10, objMegaman, 0, 1))
-                with (other)
-                {
-                    if (collision_rectangle(bbox_left, bbox_top,
-                        bbox_right - 2, bbox_top - 16 * 4, other, 0, 1)
-                        || (velocity &lt;= 0 &amp;&amp; collision_rectangle(bbox_left,
-                        bbox_top, bbox_right - 2, bbox_top - 16 * 7, other,
-                        0, 1)))
-                    {
-                        if (velocity &gt; -2)
-                        {
-                            velocity -= 0.1;
-                        }
-                        if (other.yspeed &lt; velocity)
-                        {
-                            velocity = other.yspeed;
-                        }
-                        
-                        //        if velocity &lt; -2
-                        //            velocity += 0.1;
-                    }
-                    else if (velocity &lt; 3)
-                    {
-                        velocity += 0.1;
-                        if (other.yspeed &lt; velocity)
-                        {
-                            velocity = other.yspeed;
-                        }
-                    }
-                    
-                    if (instance_exists(other))
-                    {
-                        if ((!other.ground || velocity &lt; 0)
-                            || place_meeting(x, y - 1, other)
-                            || other.yspeed &gt; velocity)
-                        {
-                            other.yspeed = velocity;
-                        }
-                        else if (velocity &gt; 0)
-                        {
-                            velocity = 0;
-                        }
-                    }
-                    if (velocity &gt;= 0)
-                    {
-                        playSound = true;
-                    }
-                    else if (playSound)
-                    {
-                        playSFX(sfxFan);
-                        playSound = false;
-                    }
-                    
-                    for (var i = 1; i &gt;= -1; i -= 2)
-                    {
-                        if (instance_place(x + i, y, objFanUp))
-                        {
-                            var otherFan = instance_place(x + i, y, objFanUp);
-                            if (otherFan.object_index == object_index)
-                            {
-                                otherFan.velocity = velocity;
-                                otherFan.playSound = playSound;
-                            }
-                        }
-                    }
-                }
-        case 1: // down 
-            with (collision_rectangle(bbox_left, bbox_bottom, bbox_right - 2,
-                bbox_bottom + 16 * 10, objMegaman, 0, 1))
-                with (other)
-                {
-                    if (instance_exists(other))
-                        if (!other.ground)
-                        {
-                            other.yspeed = other.yspeed + 0.1;
-                        }
-                    if (other.yspeed &gt;= 0)
-                    {
-                        playSound = true;
-                    }
-                    else if (playSound)
-                    {
-                        playSFX(sfxFan);
-                        playSound = false;
-                    }
-                    for (var i = 1; i &gt;= -1; i -= 2)
-                    {
-                        if (instance_place(x + i, y, objFanUp))
-                        {
-                            var otherFan = instance_place(x + i, y, objFanUp);
-                            if (otherFan.object_index == object_index)
-                            {
-                                otherFan.velocity = velocity;
-                                otherFan.playSound = playSound;
-                            }
-                        }
-                    }
-                }
+        case 0: // up
+            if(instance_exists(push1))
+            {
+                push1.x = x;
+                push1.y = y;
+                push1.active = isactive;
+            }
+            if(instance_exists(push2))
+            {
+                push2.x = x+16;
+                push2.y = y;
+                push2.active = isactive;
+            }
             break;
-        case 2: // right 
-            with (collision_rectangle(bbox_right, bbox_top,
-                bbox_right + 16 * 7, bbox_bottom - 2, objMegaman, 0, 1))
-                with (other)
-                {
-                    if (collision_rectangle(bbox_right, bbox_top,
-                        bbox_right + 16 * 6, bbox_bottom - 2, other, 0, 1))
-                    {
-                        if (velocity &gt; -2)
-                        {
-                            velocity -= 0.1;
-                        }
-                        if (velocity &lt; -1 &amp;&amp; collision_rectangle(bbox_right,
-                            bbox_top, bbox_right + 16 * 3, bbox_bottom - 2,
-                            other, 0, 1))
-                        {
-                            playSound = true;
-                        }
-                        else if (playSound)
-                        {
-                            playSFX(sfxFan);
-                            playSound = false;
-                        }
-                    }
-                    else if (velocity &lt; 0)
-                    {
-                        velocity += 0.1;
-                    }
-                    
-                    with (other)
-                    {
-                        if (isSlide)
-                        {
-                            if (xspeed &lt; -1)
-                            {
-                                xspeed = xspeed / 2;
-                            }
-                            if (xspeed &gt; 0 &amp;&amp; xspeed &lt; 3)
-                            {
-                                xspeed = 3;
-                            }
-                        }
-                        else
-                        {
-                            shiftObject(-other.velocity, 0, 1);
-                        }
-                    }
-                }
+        case 1: // down
+            if(instance_exists(push1))
+            {
+                push1.x = x;
+                push1.y = y+16;
+                push1.active = isactive;
+            }
+            if(instance_exists(push2))
+            {
+                push2.x = x+16;
+                push2.y = y+16;
+                push2.active = isactive;
+            }
             break;
-        case 3: // left 
-            with (collision_rectangle(bbox_left, bbox_top, bbox_left - 16 * 7,
-                bbox_bottom - 2, objMegaman, 0, 1))
-                with (other)
-                {
-                    if (collision_rectangle(bbox_left, bbox_top,
-                        bbox_left - 16 * 6, bbox_bottom - 2, other, 0, 1))
-                    {
-                        if (velocity &gt; -2)
-                        {
-                            velocity -= 0.1;
-                        }
-                        if (velocity &lt; -1 &amp;&amp; collision_rectangle(bbox_left,
-                            bbox_top, bbox_left - 16 * 3, bbox_bottom - 2,
-                            other, 0, 1))
-                        {
-                            playSound = true;
-                        }
-                        else if (playSound)
-                        {
-                            playSFX(sfxFan);
-                            playSound = false;
-                        }
-                    }
-                    else if (velocity &lt; 0)
-                    {
-                        velocity += 0.1;
-                    }
-                    
-                    with (other)
-                    {
-                        if (isSlide)
-                        {
-                            if (xspeed &gt; 1)
-                            {
-                                xspeed = xspeed / 2;
-                            }
-                            if (xspeed &lt; 0 &amp;&amp; xspeed &gt; -3)
-                            {
-                                xspeed = -3;
-                            }
-                        }
-                        else
-                        {
-                            shiftObject(other.velocity, 0, 1);
-                        }
-                    }
-                }
+        case 2: // right
+            if(instance_exists(push1))
+            {
+                push1.x = x+16;
+                push1.y = y;
+                push1.active = isactive;
+            }
+            if(instance_exists(push2))
+            {
+                push2.x = x+16;
+                push2.y = y+16;
+                push2.active = isactive;
+            }
+            break;
+        case 3: // left
+            if(instance_exists(push1))
+            {
+                push1.x = x;
+                push1.y = y;
+                push1.active = isactive;
+            }
+            if(instance_exists(push2))
+            {
+                push2.x = x;
+                push2.y = y+16;
+                push2.active = isactive;
+            }
             break;
     }
+    
+    // spawn dust/bubbles
+    timer++;
+    if(isactive &amp;&amp; (((timer mod timerMax) == 0) || ((timer mod (2*timerMax)) == 0)) &amp;&amp; instance_exists(objFanPush))
+    {
+        timer = 0;
+        var xpos1 = x, xpos2 = x;
+        var ypos1 = y, ypos2 = y;
+        var xs = 0;
+        var ys = 0;
+        switch(dir)
+        {
+            case 0: // up
+                xpos1 = x+random_range(0,16);
+                ypos1 = y-1;
+                xpos2 = x+16+random_range(0,16);
+                ypos2 = y-1;
+                ys = -maxSpd;
+                break;
+            case 1: // down
+                xpos1 = x+random_range(0,16);
+                ypos1 = y+17;
+                xpos2 = x+16+random_range(0,16);
+                ypos2 = y+17;
+                ys = maxSpd;
+                break;
+            case 2: // right
+                xpos1 = x+17;
+                ypos1 = y+random_range(0,16);
+                xpos2 = x+17;
+                ypos2 = y+16+random_range(0,16);
+                xs = maxSpd;
+                break;
+            case 3: // left
+                xpos1 = x-1;
+                ypos1 = y+random_range(0,16);
+                xpos2 = x-1;
+                ypos2 = y+16+random_range(0,16);
+                xs = -maxSpd;
+                break;
+        }
+        if((timer mod (2*timerMax)) == 0)
+        {
+            with(instance_create(xpos2,ypos2,objFanPushDustParticle))
+            {
+                myPush = other.push2;
+                hspeed = xs;
+                vspeed = ys;
+            }
+        }
+        else
+        {
+            with(instance_create(xpos1,ypos1,objFanPushDustParticle))
+            {
+                myPush = other.push1;
+                hspeed = xs;
+                vspeed = ys;
+            }
+        }
+    }
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// create fan pushes according to given data
+push1 = instance_create(x,y,objFanPush);
+push2 = instance_create(x,y,objFanPush);
+switch(dir)
+{
+    case 0: // up
+        push1.x = x;
+        push1.y = y;
+        push2.x = x+16;
+        push2.y = y;
+        push1.image_yscale = -1;
+        push2.image_yscale = -1;
+        break;
+    case 1: // down
+        push1.x = x;
+        push1.y = y+16;
+        push2.x = x+16;
+        push2.y = y+16;
+        break;
+    case 2: // right
+        push1.x = x+16;
+        push1.y = y;
+        push2.x = x+16;
+        push2.y = y+16;
+        break;
+    case 3: // left
+        push1.x = x;
+        push1.y = y+16;
+        push2.x = x;
+        push2.y = y;
+        push1.image_xscale = -1;
+        push2.image_xscale = -1;
+        break;
+}
+push1.dir = dir;
+push1.range = range;
+push1.blockedBySolid = blockedBySolid;
+push1.useSwitchFlag = useSwitchFlag;
+push1.myFlag = myFlag;
+push1.acceleration = acceleration;
+push1.maxSpd = maxSpd;
+push1.overreachThreshold = overreachThreshold;
+push2.dir = dir;
+push2.range = range;
+push2.blockedBySolid = blockedBySolid;
+push2.useSwitchFlag = useSwitchFlag;
+push2.myFlag = myFlag;
+push2.acceleration = acceleration;
+push2.maxSpd = maxSpd;
+push2.overreachThreshold = overreachThreshold;
+push1.xstart = push1.x;
+push2.xstart = push2.x;
+push1.ystart = push1.y;
+push2.ystart = push2.y;
+push1.ownerFan = self;
+push2.ownerFan = self;
+push1.oldBehavior = oldBehavior;
+push2.oldBehavior = oldBehavior;
 </string>
           </argument>
         </arguments>

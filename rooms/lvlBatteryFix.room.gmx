@@ -69,12 +69,14 @@
     <instance objName="objRailBumper" x="368" y="32" name="inst_E32FB994" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objRailBumper" x="368" y="144" name="inst_CF1E3715" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objVerticalTornadoPlatform" x="368" y="48" name="inst_4C05F1A9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objVerticalTornadoPlatform" x="432" y="48" name="inst_F893616E" locked="0" code="mySpeed = 0;&#xA;imgSpd = -0.1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objVerticalTornadoPlatform" x="432" y="48" name="inst_F893616E" locked="0" code="mySpeed = 0;&#xA;imgSpd = -0.1;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objVerticalTornadoPlatform" x="304" y="112" name="inst_6E5DC43C" locked="0" code="mySpeed = 0;&#xA;imgSpd = 0.2;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objTornadoPlatform" x="448" y="128" name="inst_FD170020" locked="0" code="mySpeed = 0;&#xA;funMode = 0;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objTornadoPlatform" x="448" y="128" name="inst_FD170020" locked="0" code="mySpeed = 0;&#xA;//funMode = 0;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objRailHorizontal" x="448" y="128" name="inst_7C26D158" locked="0" code="" scaleX="2" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objLadder" x="368" y="32" name="inst_61C65C49" locked="0" code="visible = true;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objLadder" x="368" y="144" name="inst_144315AF" locked="0" code="visible = true;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objSign" x="160" y="160" name="inst_215F89EC" locked="0" code="name = 'Battery Fix Room pt. 1';&#xA;name_color = c_white;&#xA;text = 'Welcome! The team has collectively decided that nado batteries are horrible, and so we improved them. We added better support for non-standard spinning speeds and directions, as well as an ability to attach to them from below. They should also be much easier to attach to in general.';" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objSign" x="336" y="160" name="inst_D71B6E94" locked="0" code="name = 'Battery Fix Room pt. 2';&#xA;name_color = c_white;&#xA;text = 'There is also a vertical variant too! This one lets Mega attach to sides instead.';" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="tstGravityman" x="0" y="160" w="16" h="16" xo="16" yo="192" id="11482239" name="inst_6B7AC1D7" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

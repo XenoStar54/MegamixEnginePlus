@@ -67,7 +67,7 @@ xSpd = 2;
             <kind>1</kind>
             <string>event_inherited();
 
-if (!global.frozen &amp;&amp; !global.timeStopped)
+if (entityCanStep())
 {
     xspeed = xSpd * image_xscale;
 }

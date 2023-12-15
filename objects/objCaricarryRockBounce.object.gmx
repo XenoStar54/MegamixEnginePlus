@@ -63,7 +63,7 @@ bouncesMax = 3;
             <kind>1</kind>
             <string>event_inherited();
 
-if (global.frozen == false &amp;&amp; global.timeStopped == false)
+if (entityCanStep())
 {
     xspeed = image_xscale * 1.5;
     

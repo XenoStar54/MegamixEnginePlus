@@ -62,7 +62,7 @@ _speed = 4.5;
             <kind>1</kind>
             <string>event_inherited();
 
-if (!global.frozen &amp;&amp; !global.timeStopped)
+if (entityCanStep())
 {
     switch (phase)
     {

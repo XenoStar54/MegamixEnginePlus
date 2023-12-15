@@ -97,7 +97,7 @@ if (honeyLock)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (!dead &amp;&amp; !global.frozen &amp;&amp; !global.timeStopped)
+            <string>if (entityCanStep())
 {
     if (instance_exists(caughtPlayer))
     {
@@ -139,7 +139,7 @@ if (honeyLock)
           <argument>
             <kind>1</kind>
             <string>event_inherited();
-if (!dead &amp;&amp; !global.frozen &amp;&amp; !global.timeStopped)
+if (entityCanStep())
 {
     if (!instance_exists(caughtPlayer))
     {

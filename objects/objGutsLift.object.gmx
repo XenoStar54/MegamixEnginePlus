@@ -53,7 +53,7 @@ col = 0;
             <kind>1</kind>
             <string>event_inherited();
 
-if (!global.frozen &amp;&amp; !dead &amp;&amp; !global.timeStopped)
+if (entityCanStep())
 {
     // fold out if not solid
     if (!instance_exists(lastRail) || (instance_exists(lastRail) &amp;&amp; !lastRail.drop))

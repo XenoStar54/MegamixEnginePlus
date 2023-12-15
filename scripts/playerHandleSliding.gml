@@ -153,8 +153,20 @@ if (global.enableSlide && !playerIsLocked(PL_LOCK_SLIDE))
                 dieToSpikes = preDSpikes;
             }
             
-            xspeed = (ground && ((instance_exists(statusObject) && statusObject.statusOnIce)
-                || place_meeting(x, y + gravDir, objIce))) * slideSpeed * image_xscale * 0.5;
+            var onIce = false;
+            with(prtEntity) if(!dead)
+            {
+                if(entityIce && !place_meeting(x,y,other)
+                    && place_meeting(x,y-other.gravDir,other) && isSolid) onIce = true;
+            }
+            
+            // mlg ice physics
+            xspeed = (ground && ((instance_exists(statusObject)
+                && statusObject.statusOnIce) || place_meeting(x, y + gravDir, objIce)
+                || onIce)) * image_xscale *
+                (slideSpeed*(xDir == sign(xspeed)) + walkSpeed*(xDir != sign(xspeed)));
+                
+                if(xDir != 0) stepTimer = stepFrames;
             
             if (jumpCancel)
             {

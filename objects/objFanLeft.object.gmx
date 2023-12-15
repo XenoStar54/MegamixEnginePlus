@@ -28,6 +28,7 @@
             <string>event_inherited();
 
 dir = 3;
+overreachThreshold = 0;
 </string>
           </argument>
         </arguments>

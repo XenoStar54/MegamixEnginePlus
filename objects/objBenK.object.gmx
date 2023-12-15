@@ -206,7 +206,7 @@ imgIndex = 4;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (image_index == 4 || image_index == 5 &amp;&amp; !global.timeStopped)
+            <string>if (image_index == 4 || image_index == 5 &amp;&amp; entityCanStep())
 {
     if (image_xscale == -1)
     {

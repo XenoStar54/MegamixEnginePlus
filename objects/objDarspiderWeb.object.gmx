@@ -57,7 +57,7 @@ ystart = y;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (!global.frozen &amp;&amp; !global.timeStopped)
+            <string>if (entityCanStep())
 {
     if (instance_exists(parent) &amp;&amp; !parent.dead)
     {

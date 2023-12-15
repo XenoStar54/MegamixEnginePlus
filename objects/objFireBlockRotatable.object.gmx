@@ -66,7 +66,7 @@ i = noone;
             <kind>1</kind>
             <string>event_inherited();
 
-if (!global.frozen &amp;&amp; !dead &amp;&amp; !global.timeStopped)
+if (entityCanStep())
 {
     image_xscale = 1;
     image_yscale = 1;

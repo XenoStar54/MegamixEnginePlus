@@ -61,7 +61,7 @@ version = 1; // 1 = left low; 2 = right low; 3 = left high; 4 = right high;
             <kind>1</kind>
             <string>event_inherited();
 
-if (!global.frozen &amp;&amp; !global.timeStopped)
+if (entityCanStep())
 {
     if (xtravel == 0 &amp;&amp; ytravel == 0)
     {

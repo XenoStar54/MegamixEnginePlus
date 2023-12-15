@@ -45,6 +45,8 @@ dir = 7;
 // 9 = diagonal bottom left
 // 10 = diagonal top right
 // 11 = diagonal bottom right
+// 12 = sender
+// 13 = receiver
 drop = false;
 blockDir = '';
 conveyDirX = 0;
@@ -57,6 +59,10 @@ stateDrop[0] = false;
 stateBlockDir[0] = '';
 stateConveyDirX[0] = 0;
 stateConveyDirY[0] = 0;
+stateSendDestinationX[0] = x;
+stateSendDestinationY[0] = y;
+stateMultSendSpd[0] = 1;
+stateReceiveDir[0] = "";
 
 stateImage[1] = 0;
 stateSprite[1] = sprite_index;
@@ -65,6 +71,10 @@ stateDrop[1] = false;
 stateBlockDir[1] = '';
 stateConveyDirX[1] = 0;
 stateConveyDirY[1] = 0;
+stateSendDestinationX[1] = x;
+stateSendDestinationY[1] = y;
+stateMultSendSpd[1] = 1;
+stateReceiveDir[1] = "";
 
 // don't change this
 maskIndex[0] = mskRailHorizontal;
@@ -79,6 +89,8 @@ maskIndex[8] = mskRailDiagonalTopLeft;
 maskIndex[9] = mskRailDiagonalBottomLeft;
 maskIndex[10] = mskRailDiagonalTopRight;
 maskIndex[11] = mskRailDiagonalBottomRight;
+maskIndex[12] = mskRailBumper;
+maskIndex[13] = mskRailBumper;
 </string>
           </argument>
         </arguments>
@@ -111,6 +123,10 @@ blockDir = stateBlockDir[activity];
 conveyDirX = stateConveyDirX[activity];
 conveyDirY = stateConveyDirY[activity];
 mask_index = maskIndex[dir];
+sendDestinationX = stateSendDestinationX[activity];
+sendDestinationY = stateSendDestinationY[activity];
+multSendSpd = stateMultSendSpd[activity];
+receiveDir = stateReceiveDir[activity];
 </string>
           </argument>
         </arguments>

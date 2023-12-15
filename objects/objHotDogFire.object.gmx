@@ -63,7 +63,7 @@ reflectable = 0;
             <kind>1</kind>
             <string>event_inherited();
 
-if (!global.frozen &amp;&amp; !global.timeStopped)
+if (entityCanStep())
 {
     image_speed = 0.5;
     if (alarmDie &gt;= 0)

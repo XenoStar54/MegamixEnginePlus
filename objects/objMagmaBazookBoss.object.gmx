@@ -62,7 +62,7 @@ image_speed = 0.15;
             <kind>1</kind>
             <string>event_inherited();
 
-if (!global.frozen &amp;&amp; !global.timeStopped)
+if (entityCanStep())
 {
     xspeed = abs(cos(degtorad(dir))) * 5 * image_xscale;
     yspeed = -sin(degtorad(dir)) * 5;

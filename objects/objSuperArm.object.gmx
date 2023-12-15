@@ -140,6 +140,7 @@ if (superArmHeldObject == noone)
                     superArmPreBlockCollision = blockCollision;
                     superArmPreGrav = grav;
                     superArmPreCanHit = canHit;
+                    superArmPreDespawnRange = despawnRange;
                     
                     // this will overlap and look ugly, so set it to 0
                     other.weaponIcon = 0;
@@ -202,12 +203,13 @@ if (superArmHeldObject != noone)
             
             // adjust throw position
             y += 8 * other.image_yscale + yspeed;
-            x += 16 * other.image_xscale + xspeed;
+            x += 24 * other.image_xscale + xspeed;
             
             // set throw velocity
             xspeed = 3.5 * other.image_xscale;
             yspeed = -2 * other.image_yscale;
             grav = 0.2;
+            despawnRange = superArmPreDespawnRange;
             
             with (instance_create(x, y, objSuperArmBlockProjectile))
             {
@@ -219,24 +221,43 @@ if (superArmHeldObject != noone)
     }
 }
 
+var ownMadeSuperArmBlockLimit = 2;
+
 // moved this to the very end to prevent spawning blocks when they shouldn't
 if(superArmHeldObject == noone)
 {
     // code attempting to allow creation of blocks
         if(global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT))
         {
-            if(instance_number(objSuperArmCreateBlock) &lt; 5 &amp;&amp; global.ammo[playerID, global.weapon[playerID]] &gt; 0)
+            if(instance_number(objSuperArmCreateBlock) &lt; ownMadeSuperArmBlockLimit &amp;&amp; global.ammo[playerID, global.weapon[playerID]] &gt; 0)
             {
                 if(!place_meeting(x + 32 * image_xscale, y, objSuperArmCreateBlock) &amp;&amp; !place_meeting(x + 32 * image_xscale, y, objSolid) &amp;&amp; !place_meeting(x + 32 * image_xscale, y, objSuperArmBlock) &amp;&amp; !place_meeting(x + 32 * image_xscale, y, objSuperArmBlock2x2))
                 {
-                    global.ammo[playerID, global.weapon[playerID]] = max(0,
-                    global.ammo[playerID, global.weapon[playerID]] - 1 / (global.energySaver + 1));
-                    
                     a = instance_create(x + 32 * image_xscale, y, objSuperArmCreateBlock);
                     a.sprite_index = sprSuperArmCreateBlock;
                     a.respawn = false;
+                    a.despawnRange = 8;
                     a.visible = 1;
                     a.grav = 0.25;
+                    
+                    var consumeAmmo = 1;
+                    
+                    with(a)
+                    {
+                        if(checkSolid(0,0,1,1))
+                        {
+                            instance_destroy();
+                            instance_create(bboxGetXCenter(),bboxGetYCenter(),objExplosion);
+                            playSFX(sfxError);
+                            consumeAmmo = 0;
+                        }
+                    }
+                    
+                    if(consumeAmmo)
+                    {
+                        global.ammo[playerID, global.weapon[playerID]] = max(0,
+                            global.ammo[playerID, global.weapon[playerID]] - 1 / (global.energySaver + 1));
+                    }
                 }
             }
         }
@@ -395,6 +416,7 @@ with (owner)
                     blockCollision = superArmPreBlockCollision;
                     canHit = superArmPreCanHit;
                     isSolid = superArmPreIsSolid;
+                    despawnRange = superArmPreDespawnRange;
                     event_user(EV_SPAWN);
                     if (!respawn || sprite_index == sprSuperArmCreateBlock)
                     {

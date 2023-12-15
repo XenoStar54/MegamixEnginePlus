@@ -85,7 +85,7 @@ unlockBounds = false;
             <kind>1</kind>
             <string>event_inherited();
 
-if (!global.frozen &amp;&amp; !dead &amp;&amp; !global.timeStopped)
+if (entityCanStep())
 {
     switch (phase)
     {

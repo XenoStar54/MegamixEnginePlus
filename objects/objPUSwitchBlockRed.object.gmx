@@ -44,6 +44,8 @@ myFlag = 999;
 setSolid = 1;
 setLadder = 0;
 setSpike = 0;
+setSlippery = 0;
+setOil = 0;
 
 blockSwitchStateFaction = 0;
 blockSprite[0] = sprPUSwitchBlockRed;
@@ -80,6 +82,8 @@ if (entityCanStep())
     entityLadder = activity * setLadder;
     entitySpike = activity * setSpike;
     canDamage = activity * setSpike;
+    entityIce = activity * setSlippery;
+    entityOil = activity * setOil;
     image_index = !activity;
     
     if(setSolid == 2 &amp;&amp; setLadder == 0)

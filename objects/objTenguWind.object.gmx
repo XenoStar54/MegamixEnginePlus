@@ -54,6 +54,8 @@ objectDrop = objTenguLeaf // leaf object used.
 //@cc: og tengu wind would push you at half speed if grounded
 multGroundedPushSpd = 0.5;
 // push speed for the player if they stand on the ground is multiplied by this value
+multAerialPushSpd = 1;
+// same but for air
 </string>
           </argument>
         </arguments>
@@ -80,22 +82,10 @@ multGroundedPushSpd = 0.5;
 {
     with (objMegaman)
     {
-        /* if (isSlide)
-        {
-            if (xspeed &gt; 1)
-            {
-                xspeed = xspeed / 2;
-            }
-            if (xspeed &lt; 0 &amp;&amp; xspeed &gt; -3)
-            {
-                xspeed = -3;
-            }
-        }
-        else */
         if (global.playerHealth[playerID] &gt; 0 &amp;&amp; !climbing)
         {
             if(ground) shiftObject(other.windSpeed*other.multGroundedPushSpd, 0, 1);
-            else shiftObject(other.windSpeed, 0, 1);
+            else shiftObject(other.windSpeed*other.multAerialPushSpd, 0, 1);
         }
     }
 }

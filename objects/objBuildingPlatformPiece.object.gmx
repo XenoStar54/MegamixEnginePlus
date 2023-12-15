@@ -34,11 +34,15 @@ grav = 0;
 blockCollision = 0;
 bubbleTimer = -1;
 
-y = view_yview + view_hview - 16;
 respawn = false;
 
 respawnRange = -1;
 despawnRange = -1;
+
+spd = 2;
+moveAngle = 90;
+
+setoff = 0;
 </string>
           </argument>
         </arguments>
@@ -63,16 +67,27 @@ despawnRange = -1;
             <kind>1</kind>
             <string>event_inherited();
 
-if (!global.frozen &amp;&amp; !dead &amp;&amp; !global.timeStopped)
+if (entityCanStep())
 {
-    if (y &gt; ystart &amp;&amp; yspeed &lt;= 0)
+    if(!setoff)
     {
-        yspeed = -2;
+        if(!(x == xstart &amp;&amp; y == ystart))
+        {
+            xspeed = cos(degtorad(moveAngle))*spd;
+            yspeed = -sin(degtorad(moveAngle))*spd;
+            if (point_distance(x,y,xstart,ystart) &lt;= point_distance(0,0,xspeed,yspeed))
+            {
+                shiftObject(xstart-x,ystart-y,blockCollision);
+                xspeed = 0;
+                yspeed = 0;
+            }
+        }
     }
-    else if (y &lt;= ystart)
+    else
     {
-        yspeed = 0;
-        y = ystart;
+        xspeed = cos(degtorad(moveAngle+180))*spd;
+        yspeed = -sin(degtorad(moveAngle+180))*spd;
+        despawnRange = 8;
     }
 }
 </string>

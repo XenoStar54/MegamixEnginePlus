@@ -107,7 +107,7 @@ var sec_left, sec_right;
 sec_left = 0;
 sec_right = room_width;
 
-if (!global.frozen &amp;&amp; !global.timeStopped &amp;&amp; !dead)
+if (entityCanStep())
 {
     // select behaviour:
     mode_timer += 1;

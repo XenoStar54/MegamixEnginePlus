@@ -62,7 +62,7 @@ image_speed = 0;
             <kind>1</kind>
             <string>event_inherited();
 
-if (global.frozen == false &amp;&amp; global.timeStopped == false)
+if (entityCanStep())
 {
     if (instance_exists(target))
     {

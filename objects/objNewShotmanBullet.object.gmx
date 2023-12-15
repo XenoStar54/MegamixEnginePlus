@@ -101,7 +101,7 @@ canStep = true;
             <kind>1</kind>
             <string>event_inherited();
 
-if (!global.frozen &amp;&amp; canStep &amp;&amp; !global.timeStopped)
+if (entityCanStep() &amp;&amp; canStep)
 {
     if (yspeed &gt; 7)
     {

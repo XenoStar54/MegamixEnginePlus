@@ -51,6 +51,8 @@ inverse = false;
 
 active = false;
 alarm[0] = 1;
+
+stopOnFlash = 1;
 </string>
           </argument>
         </arguments>
@@ -99,7 +101,7 @@ global.flagParent[myFlag] = id;
             <kind>1</kind>
             <string>event_inherited();
 
-if (!global.frozen &amp;&amp; !global.timeStopped)
+if (!global.frozen &amp;&amp; !(-!global.timeStopped * stopOnFlash))
 {
     if (active)
     {

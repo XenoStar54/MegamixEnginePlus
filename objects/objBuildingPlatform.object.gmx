@@ -37,9 +37,14 @@ timer = 0;
 for (i = 1; i &lt;= 4; i += 1)
 {
     block[i - 1] = noone;
+    blockDataMoveAngle[i - 1] = 90;
+    blockDataSpd[i - 1] = 2;
 }
 
 wait = 600;
+waitMax = 600;
+
+reappear = 1;
 </string>
           </argument>
         </arguments>
@@ -64,7 +69,7 @@ wait = 600;
             <kind>1</kind>
             <string>event_inherited();
 
-if (!global.frozen &amp;&amp; !dead &amp;&amp; !global.timeStopped)
+if (entityCanStep())
 {
     timer += 1;
     for (i = 1; i &lt;= 4; i += 1)
@@ -74,6 +79,43 @@ if (!global.frozen &amp;&amp; !dead &amp;&amp; !global.timeStopped)
             block[i - 1] = instance_create(x + ((((i - 1) mod 2)) * 16),
                 y + floor((i - 1) / 2) * 16, objBuildingPlatformPiece);
             block[i - 1].image_index = i - 1;
+            block[i - 1].moveAngle = blockDataMoveAngle[i - 1];
+            block[i - 1].spd = blockDataSpd[i - 1];
+            var dist = view_wview+16;
+            if(wrapAngle(block[i - 1].moveAngle+180) == 0)
+            {
+                dist = abs(block[i - 1].x - (view_xview+view_wview+16));
+            }
+            else if(wrapAngle(block[i - 1].moveAngle+180) &lt; 90)
+            {
+                dist = max(abs(block[i - 1].x - (view_xview+view_wview+16)),abs(block[i - 1].y - (view_yview-32)));
+            }
+            else if(wrapAngle(block[i - 1].moveAngle+180) == 90)
+            {
+                dist = abs(block[i - 1].y - (view_yview-32));
+            }
+            else if(wrapAngle(block[i - 1].moveAngle+180) &lt; 180)
+            {
+                dist = max(abs(block[i - 1].x - (view_xview-32)),abs(block[i - 1].y - (view_yview-32)));
+            }
+            else if(wrapAngle(block[i - 1].moveAngle+180) == 180)
+            {
+                dist = abs(block[i - 1].x - (view_xview-32));
+            }
+            else if(wrapAngle(block[i - 1].moveAngle+180) &lt; 270)
+            {
+                dist = max(abs(block[i - 1].x - (view_xview-32)),abs(block[i - 1].y - (view_yview+view_hview+16)));
+            }
+            else if(wrapAngle(block[i - 1].moveAngle+180) == 270)
+            {
+                dist = abs(block[i - 1].y - (view_yview+view_hview+16));
+            }
+            else if(wrapAngle(block[i - 1].moveAngle+180) &lt; 360)
+            {
+                dist = max(abs(block[i - 1].x - (view_xview+view_wview+16)),abs(block[i - 1].y - (view_yview+view_hview+16)));
+            }
+            block[i - 1].x += cos(degtorad(block[i - 1].moveAngle+180))*(dist);
+            block[i - 1].y -= sin(degtorad(block[i - 1].moveAngle+180))*(dist);
         }
     }
     
@@ -86,7 +128,7 @@ if (!global.frozen &amp;&amp; !dead &amp;&amp; !global.timeStopped)
     {
         if (instance_exists(block[i - 1]))
         {
-            if (block[i - 1].y &gt; block[i - 1].ystart)
+            if (block[i - 1].x != block[i - 1].xstart || block[i - 1].y != block[i - 1].ystart)
             {
                 visible = false;
             }
@@ -129,8 +171,22 @@ if (!global.frozen &amp;&amp; !dead &amp;&amp; !global.timeStopped)
         {
             if (abs(wait) &gt;= 30 * i &amp;&amp; instance_exists(block[4 - i]))
             {
-                block[4 - i].yspeed = 2;
+                block[4 - i].setoff = 1;
                 visible = false;
+            }
+        }
+        if(reappear &amp;&amp; wait &lt;= -waitMax)
+        {
+            wait = waitMax;
+            timer = 0;
+            image_index = 0;
+            for (i = 1; i &lt;= 4; i += 1)
+            {
+                if (instance_exists(block[i - 1]))
+                {
+                    with (block[i - 1])
+                        instance_destroy();
+                }
             }
         }
     }
@@ -139,7 +195,7 @@ else if (dead)
 {
     timer = 0;
     image_index = 0;
-    wait = 600;
+    wait = waitMax;
     for (i = 1; i &lt;= 4; i += 1)
     {
         if (instance_exists(block[i - 1]))

@@ -103,6 +103,10 @@ sinkin = 1;
 xcoll = 0;
 ycoll = 0;
 
+// noGoUpSlopes will decide if entity is able to interact with slopes
+// when true, slope interactions will be disabled
+noGoUpSlopes = false;
+
 epIsOnPlat = 0;
 
 itemDrop = 0; //This object will be spawned once the entity dies
@@ -111,6 +115,9 @@ dropDisappearTime = 105*2;//(for prtPickup)Set to a non positive value to make i
 itemCode = ""; //Code that runs on the dropped object
 itemScript = scrNoEffect; //Script that runs on the dropped object
 
+// if this entity stops when time is stopped;
+// if false, this entity will be immune to timestop
+// when -1, this entity will only be active during timestop
 stopOnFlash = true;
 
 iceTimer = 0; // is iced (frozen cold), and how much remaining time to spend iced
@@ -147,6 +154,14 @@ entitySpike = 0;
 
 // if isSolid is 2 and this is enabled, the entity can be climbed like a ladder
 entityLadder = 0;
+
+// when true, emulates ice physics when Mega walks on it
+entityIce = 0;
+
+// when true and Mega is inside the entity, he will walk slower
+entityOil = 0;
+
+climbing = 0;
 
 spawned = -1; // parameter for spawn event; -1 indicates never spawned
 deadTimer = 0;
@@ -435,7 +450,7 @@ else if (!global.frozen) // Basically everything prtEntity should usually be doi
         
         if (blockCollision)
         {
-            generalCollision();
+            generalCollision(noGoUpSlopes);
         }
         else
         {
@@ -783,6 +798,17 @@ playSFX(sfxEnemyHit);
             }
             
             drawSelf(1);
+        }
+    }
+    // timestop flash
+    if(((stopOnFlash &gt; 0 &amp;&amp; global.timeStopped) || (stopOnFlash &lt; 0 &amp;&amp; !global.timeStopped)) &amp;&amp; !global.frozen)
+    {
+        if((global.roomTimer mod 15) == 0)
+        {
+            var particle = instance_create(random_range(bbox_left,bbox_right), random_range(bbox_top,bbox_bottom), objSingleLoopEffect);
+            particle.image_speed = 0.3;
+            particle.sprite_index = sprFlashTwinkle;
+            particle.depth = depth-1;
         }
     }
 }

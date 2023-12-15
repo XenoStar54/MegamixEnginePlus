@@ -52,6 +52,8 @@ dir = 0;
 // 0: inherit player's gravity
 // negative: always fall up
 // positive: always fall down
+
+saveGrav = 0;
 </string>
           </argument>
         </arguments>
@@ -76,14 +78,14 @@ dir = 0;
             <kind>1</kind>
             <string>event_inherited();
 
-if (!global.frozen &amp;&amp; !dead &amp;&amp; !global.timeStopped)
+if (entityCanStep())
 {
     if (active)
     {
         if (wait &lt;= 0)
         {
-            grav = gravAccel*dir;
             drawOffsetY = 0;
+            grav = saveGrav;
         }
         else
         {
@@ -96,13 +98,14 @@ if (!global.frozen &amp;&amp; !dead &amp;&amp; !global.timeStopped)
         drawOffsetY = 0;
         with (objMegaman)
         {
-            if (ground)
+            if (ground &amp;&amp; !teleportLock)
             {
                 if (place_meeting(x, y + gravDir, other.id)
                     &amp;&amp; !place_meeting(x, y, other.id))
                 {
                     other.active = true;
-                    if(other.dir == 0) other.dir = gravDir;
+                    if(other.dir == 0) other.saveGrav = gravAccel*gravDir;
+                    else other.saveGrav = gravAccel*other.dir;
                 }
             }
         }

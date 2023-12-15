@@ -30,7 +30,7 @@ event_inherited();
 dir = 12;
 
 sendDestinationX = x; // x coord of the place the platform gets sent to after riding over
-sendDestinationY = y; // x coord of the place the platform gets sent to after riding over
+sendDestinationY = y; // y coord of the place the platform gets sent to after riding over
 multSendSpd = 1; // multiplies platform speed by this much when in send mode
 </string>
           </argument>

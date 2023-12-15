@@ -5309,6 +5309,9 @@
         <sprite>sprites\sprWaterPump</sprite>
         <sprite>sprites\sprWaterPillar</sprite>
         <sprite>sprites\sprWaterPillarH</sprite>
+        <sprite>sprites\sprPendulum</sprite>
+        <sprite>sprites\sprPendulumAlt</sprite>
+        <sprite>sprites\sprPendulumSparkle</sprite>
         <sprite>sprites\sprPUHitSwitch</sprite>
         <sprite>sprites\sprPUSwitchBlockRed</sprite>
         <sprite>sprites\sprPUSwitchBlockBlue</sprite>
@@ -5695,6 +5698,12 @@
         <sprite>sprites\sprScreenWrap</sprite>
         <sprite>sprites\sprScreenWrapVertical</sprite>
         <sprite>sprites\mskLavaHover</sprite>
+        <sprite>sprites\sprLavaHover</sprite>
+        <sprite>sprites\sprLavaHoverAlt1</sprite>
+        <sprite>sprites\sprLavaHoverAlt2</sprite>
+        <sprite>sprites\sprLavaHoverAlt3</sprite>
+        <sprite>sprites\sprCyberSlider</sprite>
+        <sprite>sprites\sprBuildayaiBlock</sprite>
       </sprites>
     </sprites>
     <sprites name="Sections">
@@ -8106,6 +8115,8 @@
         <object>objects\objLiftEnd</object>
         <object>objects\objLiftHole</object>
         <object>objects\objLiftRail</object>
+        <object>objects\objPendulum</object>
+        <object>objects\objPendulumAlt</object>
         <object>objects\objPUHitSwitch</object>
         <object>objects\objPUSwitchBlockRed</object>
         <object>objects\objPUSwitchBlockBlue</object>
@@ -8131,6 +8142,7 @@
           <object>objects\objPUOilFire</object>
           <object>objects\objFireWave</object>
           <object>objects\objSuperCutter</object>
+          <object>objects\objPendulumSparkle</object>
         </objects>
       </objects>
       <objects name="MM2">
@@ -8275,6 +8287,10 @@
         <object>objects\objXBlock</object>
         <object>objects\objXPlatform</object>
         <object>objects\objXPlatformStop</object>
+        <objects name="Don't Use">
+          <object>objects\objFanPush</object>
+          <object>objects\objFanPushDustParticle</object>
+        </objects>
       </objects>
       <objects name="MM7">
         <object>objects\objControllableLift</object>
@@ -8453,6 +8469,9 @@
         <object>objects\objScreenWrapVertical</object>
         <object>objects\objMonochromeLayer</object>
         <object>objects\objLavaHover</object>
+        <object>objects\objCyberSlider</object>
+        <object>objects\objBuildayai</object>
+        <object>objects\objBuildayaiBlock</object>
         <objects name="Don't Use">
           <object>objects\objGrassPatchFire</object>
         </objects>
@@ -8883,6 +8902,19 @@
       <room>rooms\rmShop</room>
       <room>rooms\rmCastleIntro</room>
     </rooms>
+    <rooms name="Plus Test Rooms">
+      <room>rooms\lvlBatteryFix</room>
+      <room>rooms\lvlEditedGimmicks</room>
+      <room>rooms\lvlNewGimmicks</room>
+      <room>rooms\lvlRailTest</room>
+      <room>rooms\lvlFreezeManTest</room>
+      <room>rooms\lvlGrenadeManTest</room>
+      <room>rooms\lvlMagmaManTest</room>
+      <room>rooms\lvlPlusTest</room>
+      <room>rooms\lvlDocTest</room>
+      <room>rooms\lvlWaterAndWaterAndWaterWater</room>
+      <room>rooms\lvlRushSearchTest</room>
+    </rooms>
     <rooms name="Test Halls">
       <room>rooms\lvlTestHallTemp</room>
       <room>rooms\lvlTestHall</room>
@@ -8891,19 +8923,6 @@
       <room>rooms\lvlTestHall4</room>
       <room>rooms\lvlTestHall5</room>
       <room>rooms\lvlTestHallBoss</room>
-    </rooms>
-    <rooms name="Plus Test Rooms">
-      <room>rooms\lvlFreezeManTest</room>
-      <room>rooms\lvlGrenadeManTest</room>
-      <room>rooms\lvlMagmaManTest</room>
-      <room>rooms\lvlPlusTest</room>
-      <room>rooms\lvlDocTest</room>
-      <room>rooms\lvlWaterAndWaterAndWaterWater</room>
-      <room>rooms\lvlRushSearchTest</room>
-      <room>rooms\lvlBatteryFix</room>
-      <room>rooms\lvlEditedGimmicks</room>
-      <room>rooms\lvlNewGimmicks</room>
-      <room>rooms\lvlRailTest</room>
     </rooms>
     <rooms name="Classic Mega Man Example Stages">
       <room>rooms\lvlCutMan</room>

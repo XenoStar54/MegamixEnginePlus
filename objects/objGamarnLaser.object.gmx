@@ -57,7 +57,7 @@ yspeed = 0;
             <kind>1</kind>
             <string>event_inherited();
 
-if (global.frozen == false &amp;&amp; global.timeStopped == false)
+if (entityCanStep())
 {
     xspeed = image_xscale * 3;
 }

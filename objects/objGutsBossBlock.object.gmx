@@ -60,7 +60,7 @@ ignoreCollision = false;
           <argument>
             <kind>1</kind>
             <string>event_inherited();
-if (global.frozen == false &amp;&amp; global.timeStopped == false)
+if (entityCanStep())
 {
     if (phase == 0)
     {

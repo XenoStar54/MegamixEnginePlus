@@ -63,7 +63,7 @@ delay = 30;
             <kind>1</kind>
             <string>event_inherited();
 
-if (global.frozen == false &amp;&amp; global.timeStopped == false)
+if (entityCanStep())
 {
     if (y &lt; view_yview)
     {

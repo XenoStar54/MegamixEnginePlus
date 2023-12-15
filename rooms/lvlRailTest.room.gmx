@@ -12,7 +12,9 @@
   <showcolour>-1</showcolour>
   <code>playMusic("Mega_Man_10.nsf","VGM", 41, 0, 0, 0, 1);
 with(objSolid) visible = 1;
-with(prtRail) visible = 1;</code>
+with(prtRail) visible = 1;
+with(prtRailPlatform) if(sprite_index == sprSolid) entityLadder = 1;
+with(objPUSwitchBlockRed) myFlag = 1;</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
@@ -53,14 +55,14 @@ with(prtRail) visible = 1;</code>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="640" hview="480" xport="0" yport="0" wport="640" hport="480" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
   </views>
   <instances>
-    <instance objName="objDefaultSpawn" x="816" y="160" name="inst_D3E2D883" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objDefaultSpawn" x="688" y="160" name="inst_D3E2D883" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objHorizontalScrolling" x="256" y="0" name="inst_F1FEA80B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSolid" x="0" y="176" name="inst_2701AE62" locked="0" code="" scaleX="60" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="objSolid" x="0" y="0" name="inst_2A0AFBCA" locked="0" code="" scaleX="49" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objHorizontalScrolling" x="512" y="0" name="inst_1B41F6E3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSolid" x="0" y="16" name="inst_96DD4903" locked="0" code="" scaleX="1" scaleY="10" colour="4294967295" rotation="0"/>
     <instance objName="objHorizontalScrolling" x="768" y="0" name="inst_E77BA694" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objSolid" x="1008" y="16" name="inst_AAFD41CD" locked="0" code="" scaleX="2" scaleY="10" colour="4294967295" rotation="0"/>
+    <instance objName="objSolid" x="1008" y="112" name="inst_AAFD41CD" locked="0" code="" scaleX="2" scaleY="10" colour="4294967295" rotation="0"/>
     <instance objName="objSolid" x="960" y="0" name="inst_F619EA96" locked="0" code="" scaleX="7" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objHorizontalScrolling" x="1024" y="0" name="inst_6E94A90F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSolid" x="992" y="144" name="inst_8C84907A" locked="0" code="" scaleX="1" scaleY="5" colour="4294967295" rotation="0"/>
@@ -198,13 +200,28 @@ with(prtRail) visible = 1;</code>
     <instance objName="objRailVertical" x="928" y="48" name="inst_6F428D07" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objRailVertical" x="928" y="64" name="inst_8F09390E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objRailVertical" x="928" y="80" name="inst_8E3F05FD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objPUSwitchLadderRed" x="1088" y="128" name="inst_5C1465DC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objPUSwitchLadderRed" x="1088" y="112" name="inst_CDBD81C4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objPUSwitchLadderRed" x="1088" y="96" name="inst_18D54B22" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objPUHitSwitch" x="1040" y="128" name="inst_D8976400" locked="0" code="myFlag = 1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objSwitchHandler" x="1040" y="96" name="inst_F42DB46C" locked="0" code="myFlag = 1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objSolid" x="1040" y="144" name="inst_DA24CFE7" locked="0" code="" scaleX="6" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objPUSwitchLadderRed" x="1088" y="80" name="inst_54893EC9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objPUSwitchLadderRed" x="1088" y="64" name="inst_B590BB8B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objIce" x="1168" y="112" name="inst_6E8A7502" locked="0" code="" scaleX="24" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objSolid" x="1600" y="144" name="inst_C1C52652" locked="0" code="" scaleX="3" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objSolid" x="1552" y="192" name="inst_C086BEE2" locked="0" code="" scaleX="4" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objSolid" x="1136" y="176" name="inst_F06874C9" locked="0" code="" scaleX="3" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objFreezeBreakPlatform" x="1200" y="192" name="inst_6677D645" locked="0" code="timerMax = 600000;&#xA;" scaleX="20" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objSign" x="736" y="160" name="inst_64699E7C" locked="0" code="name = 'Rail Test Room';&#xA;name_color = c_white;&#xA;text = 'Hi. This is a room where several very annoying features were tested, most notably rails. Though there might be some cool stuff here too!';" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objSign" x="880" y="160" name="inst_C438F3A8" locked="0" code="name = 'Sender and receiver rails';&#xA;name_color = c_white;&#xA;text = 'This rail type was dubbed &quot;wifi rails&quot; by the team. They can send and receive the rail platform without interruptions. The receiver rail can also work as a sender allowing for unbroken daisy-chaining the wifi rails.';&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objPUSwitchLadderRed" x="1120" y="64" name="inst_1459D07B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objPUSwitchLadderRed" x="1120" y="80" name="inst_F1544D39" locked="0" code="setSolid = 0;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objPUSwitchLadderRed" x="1120" y="96" name="inst_39A45A29" locked="0" code="setSolid = 0;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objPUSwitchLadderRed" x="1120" y="112" name="inst_A862619D" locked="0" code="setSolid = 0;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objPUSwitchLadderRed" x="1120" y="128" name="inst_C1887CE1" locked="0" code="setSolid = 0;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
-  <tiles>
-    <tile bgName="tstChallenge" x="1232" y="176" w="16" h="16" xo="0" yo="0" id="11482243" name="inst_0F5D35D2" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tstChallenge" x="1248" y="176" w="16" h="16" xo="32" yo="0" id="11482244" name="inst_77E02039" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tstChallenge" x="1248" y="192" w="16" h="16" xo="32" yo="32" id="11482245" name="inst_05C4079B" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tstChallenge" x="1232" y="192" w="16" h="16" xo="0" yo="32" id="11482246" name="inst_7B72BCE2" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-  </tiles>
+  <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
   <PhysicsWorldTop>0</PhysicsWorldTop>
   <PhysicsWorldLeft>0</PhysicsWorldLeft>
