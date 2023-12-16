@@ -231,6 +231,7 @@ enableMashGetout = 1;
 mashGetoutEffectiveness = 2;
 mashGetoutCooldownTimer = 0;
 mashGetoutCooldown = 2;
+_mashInput = 0;
 </string>
           </argument>
         </arguments>

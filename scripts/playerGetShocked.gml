@@ -1,4 +1,4 @@
-/// playerGetShocked(_IgnoreGround)
+/// playerGetShocked(_IgnoreGround,-shootTimer,mm1Stun,shockedTime)
 // Call it like this: with objMegaman playerGetShocked();
 // Makes the player get shocked
 

@@ -10,7 +10,8 @@
   <persistent>0</persistent>
   <colour>0</colour>
   <showcolour>-1</showcolour>
-  <code>var docArray = makeArray(objProtoEye,objCutMan,objBombMan,objFireMan,objIceMan,objGutsMan, objOilMan,objElecMan,objTimeMan,//objCopyBot,
+  <code>playMusic("Mega_Man_10.nsf","VGM", 8, 0, 0, 0, 1);
+var docArray = makeArray(objProtoEye,objCutMan,objBombMan,objFireMan,objIceMan,objGutsMan, objOilMan,objElecMan,objTimeMan,//objCopyBot,
 objMetalMan,objFlashMan,objWoodMan,objHeatMan,objAirMan,objCrashMan,objQuickMan,objBubbleMan,objHardMan,
 objTopMan,objGeminiMan,objSparkMan,objNeedleMan,objMagnetMan,objSnakeMan,objShadowMan,
 objDustMan,objPharaohMan,objToadMan,objBrightMan,objDrillMan,objRingMan,objDiveMan,objSkullMan,
@@ -18,13 +19,13 @@ objGravityMan,objGyroMan,objStoneMan,objDarkMan4,objWaveMan,objStarMan,objCharge
 objBlizzardMan,objCentaurMan,objPlantMan,objYamatoMan,objFlameMan,objKnightMan,objTomahawkMan,objWindMan,
 objFreezeMan,objSpringMan,objSlashMan,objTurboMan,objProtoManMM7Boss,
 objSwordMan,objFrostMan,objGrenadeMan,
-objHoneyWoman,objHornetMan,objSplashWoman,objTornadoMan,objPlugMan,objJewelMan,objMagmaMan,objGalaxyMan,objFakeMan,
+objHoneyWoman,objHornetMan,objSplashWoman,objTornadoMan,objPlugMan,objJewelMan,objMagmaMan,objGalaxyMan,objConcreteMan,objFakeMan,
 objChillMan,objCommandoMan,objSolarMan,objSheepMan,objStrikeMan,objNitroMan,//objSolarMan,
 objEnker,objQuint,objPunk,objBallade,
 objMercury,objSaturn,objUranus,objTerra,
 objMagicMan,
 objDanganMan,objKomusoMan,objKonroMan,
-objDynaMan,objSonicMan,objVoltMan, objBitMan, objTorchManDOS);
+objDynaMan,objSonicMan,objVoltMan, objBitMan, objTorchManDOS, objBladeManDOS);
 
 with (objDocRobotShell)
 {

@@ -55,6 +55,8 @@ block = noone;
 timer = 0;
 newX = 0;
 
+for(var i = 0; i &lt; 4; i++) multistunPrevention[i] = 0;
+
 // Health Bar
 healthBarPrimaryColor[1] = 18;
 healthBarSecondaryColor[1] = 33;
@@ -466,9 +468,14 @@ if (entityCanStep())
         {
             if (instance_exists(objMegaman))
                 with (objMegaman)
-                    if (!isShocked)
+                    if (!isShocked &amp;&amp; !other.multistunPrevention[playerID])
+                    {
                         playerGetShocked(false, 0, true, 40);
+                        other.multistunPrevention[playerID] = 1;
+                    }
         }
+        
+        if(global.shakeTimer == 0) for(var i = 0; i &lt; 4; i++) multistunPrevention[i] = 0;
         
         // keep mega man bouncing while stunned
         if (instance_exists(objMegaman))

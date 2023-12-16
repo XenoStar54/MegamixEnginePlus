@@ -259,13 +259,16 @@ if(useTileMasking)
             <kind>1</kind>
             <string>event_inherited();
 
+var _x = (floor((x * global.screenScale) + .5) / global.screenScale);
+var _y = (floor((y * global.screenScale) + .5) / global.screenScale);
+
 if(!dead)
 {
     if(useTileMasking)
     {
         for (var i = 0; i &lt; tileN; i++)
         {
-            draw_background_part(tiles[i], tileLeft[i], tileTop[i], tileWidth[i], tileHeight[i], floor(x) + tileOffsetX[i], floor(y) + tileOffsetY[i]);
+            draw_background_part(tiles[i], tileLeft[i], tileTop[i], tileWidth[i], tileHeight[i], _x + tileOffsetX[i], _y + tileOffsetY[i]);
         }
     }
     
@@ -273,7 +276,14 @@ if(!dead)
     if (superArmFlashTimer mod (2 * superArmFlashInterval) &gt;= superArmFlashInterval || superArmThrown || superArmHoldOwner != noone)
     {
         draw_set_blend_mode(bm_add);
-        drawSelf();
+        if(useTileMasking)
+        {
+            for (var i = 0; i &lt; tileN; i++)
+            {
+                draw_background_part(tiles[i], tileLeft[i], tileTop[i], tileWidth[i], tileHeight[i], _x + tileOffsetX[i], _y + tileOffsetY[i]);
+            }
+        }
+        else drawSelf(1);
         draw_set_blend_mode(bm_normal);
         draw_set_alpha(1);
     }

@@ -67,7 +67,7 @@ if(entityCanStep())
     yspeed = -sin(degtorad(dir))*spd;
     if(target &amp;&amp; place_meeting(x,y,target)) with(target) // they stun you even if you have i-frames
     {
-        freezeTimer = 600;
+        freezeTimer = 90;
         isFrozen = 1;
         xspeed = 0;
         yspeed = 0;

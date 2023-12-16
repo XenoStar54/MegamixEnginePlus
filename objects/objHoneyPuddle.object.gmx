@@ -74,6 +74,12 @@ honeyLock = -1;
 if (honeyLock)
 {
     honeyLock = lockPoolRelease(honeyLock);
+    with(caughtPlayer)
+    {
+        drawOffsetY = 0;
+        mashGetoutCooldownTimer = 0;
+        enableMashGetout = 1;
+    }
 }
 </string>
           </argument>
@@ -188,17 +194,57 @@ if (entityCanStep())
             }
         }
     }
-    else if (caughtTimer &gt;= 8 + ((global.difficulty == DIFF_HARD) * 2))
+    else if (caughtTimer &gt;= 16 + ((global.difficulty == DIFF_HARD) * 4))
     {
         // time player is caught
         if (honeyLock)
         {
             honeyLock = lockPoolRelease(honeyLock);
+            with(caughtPlayer)
+            {
+                drawOffsetY = 0;
+                mashGetoutCooldownTimer = 0;
+                enableMashGetout = 1;
+            }
         }
         
         instance_create(x, y, objExplosion);
         instance_destroy();
         exit;
+    }
+    else // unstuck
+    {
+        with(caughtPlayer)
+        {
+            if(enableMashGetout)
+            {
+                _mashInput = false;
+                _mashInput = (global.keyLeftPressed[playerID]
+                    || global.keyRightPressed[playerID]
+                    || global.keyUpPressed[playerID]
+                    || global.keyDownPressed[playerID]
+                    || global.keyJumpPressed[playerID]
+                    || global.keyShootPressed[playerID]
+                    || global.keySlidePressed[playerID]);
+                
+                if(mashGetoutCooldownTimer &lt;= 0)
+                {
+                    drawOffsetY = 0;
+                    if(_mashInput != false)
+                    {
+                        drawOffsetY = -image_yscale;
+                        other.caughtTimer += mashGetoutEffectiveness;
+                        mashGetoutCooldownTimer = mashGetoutCooldown;
+                    }
+                }
+                else
+                {
+                    mashGetoutCooldownTimer--;
+                    if((mashGetoutCooldownTimer mod 4) &lt; 2) drawOffsetY = -image_yscale;
+                    else drawOffsetY = 0;
+                }
+            }
+        }
     }
     
     // despawn timer

@@ -31,11 +31,14 @@ blockCollision = false;
 contactDamage = 0;
 grav = 0;
 timerMax = 60;
+stunTime = 30;
 spawnTimer = 6;
 despawnTimer = 6;
 image_speed = 0;
 weldLock = -1;
 weldEscape = 0;
+owner = objTorchManDOS;
+caughtPlayer = noone;
 </string>
           </argument>
         </arguments>
@@ -60,7 +63,13 @@ weldEscape = 0;
             <kind>1</kind>
             <string>if(weldLock != -1 &amp;&amp; target)
 {
-    with(target) other.weldLock = lockPoolRelease(other.weldLock);
+    with(target)
+    {
+        other.weldLock = lockPoolRelease(other.weldLock);
+        drawOffsetY = 0;
+        mashGetoutCooldownTimer = 0;
+        enableMashGetout = 1;
+    }
     weldLock = -1;
 }
 </string>
@@ -92,7 +101,7 @@ if(entityCanStep())
     if(weldLock != -1 &amp;&amp; target)
     {
         target.spriteX = 13;
-        if(target.iFrames &lt; 0) timerMax = 0;
+        if(target.isHit) timerMax = 0;
     }
 }
 </string>
@@ -131,7 +140,13 @@ if(entityCanStep())
     {
         if(weldLock != -1 &amp;&amp; target)
         {
-            with(target) other.weldLock = lockPoolRelease(other.weldLock);
+            with(target)
+            {
+                other.weldLock = lockPoolRelease(other.weldLock);
+                drawOffsetY = 0;
+                mashGetoutCooldownTimer = 0;
+                enableMashGetout = 1;
+            }
             weldLock = -1;
         }
         despawnTimer--;
@@ -155,29 +170,47 @@ if(entityCanStep())
                         lock.targetInstance = id
                         other.weldLock = lock
                         xspeed = 0;
+                        other.caughtPlayer = self;
+                        other.timerMax = other.stunTime;
                     }
                 }
             }
         }
-        else if(!instance_exists(objTorchManDOS))
+        else if(!instance_exists(owner))
         {
             timerMax--;
         }
         
-        with(objMegaman)
+        with(caughtPlayer)
         {
-            if(global.keyRightPressed[playerID] || global.keyLeftPressed[playerID])
+            if(enableMashGetout)
             {
-                with(other)
+                _mashInput = false;
+                _mashInput = (global.keyLeftPressed[playerID]
+                    || global.keyRightPressed[playerID]
+                    || global.keyUpPressed[playerID]
+                    || global.keyDownPressed[playerID]
+                    || global.keyJumpPressed[playerID]
+                    || global.keyShootPressed[playerID]
+                    || global.keySlidePressed[playerID]);
+                
+                if(mashGetoutCooldownTimer &lt;= 0)
                 {
-                    weldEscape++;
+                    drawOffsetY = 0;
+                    if(_mashInput != false)
+                    {
+                        drawOffsetY = -image_yscale;
+                        other.timerMax -= mashGetoutEffectiveness;
+                        mashGetoutCooldownTimer = mashGetoutCooldown;
+                    }
+                }
+                else
+                {
+                    mashGetoutCooldownTimer--;
+                    if((mashGetoutCooldownTimer mod 4) &lt; 2) drawOffsetY = -image_yscale;
+                    else drawOffsetY = 0;
                 }
             }
-        }
-    
-        if(weldEscape &gt;= 8)
-        {
-            timerMax = 0;
         }
     }
 }

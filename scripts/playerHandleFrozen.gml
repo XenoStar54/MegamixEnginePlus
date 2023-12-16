@@ -24,18 +24,19 @@ if (isFrozen)
     
     if(enableMashGetout)
     {
-        var _mashInput = global.keyLeftPressed[playerID]
+        _mashInput = false;
+        _mashInput = (global.keyLeftPressed[playerID]
             || global.keyRightPressed[playerID]
             || global.keyUpPressed[playerID]
             || global.keyDownPressed[playerID]
             || global.keyJumpPressed[playerID]
             || global.keyShootPressed[playerID]
-            || global.keySlidePressed[playerID];
+            || global.keySlidePressed[playerID]);
         
         if(mashGetoutCooldownTimer <= 0)
         {
             drawOffsetY = 0;
-            if(_mashInput)
+            if(_mashInput != false)
             {
                 drawOffsetY = -image_yscale;
                 freezeTimer -= mashGetoutEffectiveness;
@@ -45,7 +46,8 @@ if (isFrozen)
         else
         {
             mashGetoutCooldownTimer--;
-            if(mashGetoutCooldownTimer mod 4 < 2) drawOffsetY = -image_yscale;
+            if((mashGetoutCooldownTimer mod 4) < 2) drawOffsetY = -image_yscale;
+            else drawOffsetY = 0;
         }
     }
     

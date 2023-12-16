@@ -38,5 +38,5 @@ if (!_inked)
 
 if (_inked)
 {
-    drawPlayerInk(pid, sheetX, sheetY, _x+drawOffsetX, _y+drawOffsetY, _xscale, _yscale);
+    drawPlayerInk(pid, sheetX, sheetY, _x, _y, _xscale, _yscale);
 }

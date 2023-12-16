@@ -211,11 +211,11 @@ if(entityCanStep())
     yspeed = 0;
     isFrozen = 1;
     global.playerHealth[playerID] -= contactDamage;
-    freezeTimer = 1200;
+    freezeTimer = 90;
     playerHandleSprites('Normal');
-    global.primaryCol[playerID] = global.nesPalette[0];
-    global.secondaryCol[playerID] = global.nesPalette[0];
-    global.outlineCol[playerID] = global.nesPalette[13];
+    frozenPalettePrimary = global.nesPalette[0];
+    frozenPaletteSecondary = global.nesPalette[0];
+    frozenPaletteOutline = global.nesPalette[13];
 }
 phase = 4;
 xspeed = 0;

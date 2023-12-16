@@ -5197,6 +5197,17 @@
           <sprite>sprites\sprTorchManDOSWelding</sprite>
           <sprite>sprites\mskTorchManDOS</sprite>
         </sprites>
+        <sprites name="Blade">
+          <sprite>sprites\sprBladeManDOStaunt</sprite>
+          <sprite>sprites\sprBladeManDOSjump</sprite>
+          <sprite>sprites\sprBladeManDOSwalk</sprite>
+          <sprite>sprites\sprBladeManDOSpose</sprite>
+          <sprite>sprites\sprBladeManDOS</sprite>
+          <sprite>sprites\sprBladeManDOSsaw</sprite>
+          <sprite>sprites\sprBladeManDOSboomerang</sprite>
+          <sprite>sprites\sprBladeManDOSbladeAlt</sprite>
+          <sprite>sprites\sprBladeManDOSblade</sprite>
+        </sprites>
       </sprites>
     </sprites>
     <sprites name="Gimmicks">
@@ -6655,6 +6666,7 @@
       <script>scripts\cleanMem.gml</script>
       <script>scripts\queuePause.gml</script>
       <script>scripts\queueUnpause.gml</script>
+      <script>scripts\AIdistCheck.gml</script>
       <script>scripts\awardAchievement.gml</script>
     </scripts>
     <scripts name="Discord">
@@ -8010,9 +8022,13 @@
       </objects>
       <objects name="MMDOS3">
         <object>objects\objBitMan</object>
+        <object>objects\objBladeManDOS</object>
         <object>objects\objTorchManDOS</object>
         <objects name="Projectiles">
           <object>objects\objBitManBullet</object>
+          <object>objects\objBladeManDOSblade</object>
+          <object>objects\objBladeManDOSboomerang</object>
+          <object>objects\objBladeManDOSsaw</object>
           <object>objects\objTorchManDOSEmber</object>
           <object>objects\objTorchManDOSWelding</object>
         </objects>
@@ -8910,6 +8926,7 @@
       <room>rooms\lvlFreezeManTest</room>
       <room>rooms\lvlGrenadeManTest</room>
       <room>rooms\lvlMagmaManTest</room>
+      <room>rooms\lvlBossTest</room>
       <room>rooms\lvlPlusTest</room>
       <room>rooms\lvlDocTest</room>
       <room>rooms\lvlWaterAndWaterAndWaterWater</room>
