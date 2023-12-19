@@ -97,11 +97,14 @@ with (objMegaman)
         if (attached[other.playerID])
         {
             other.x = x + attachX[other.playerID];
-            other.y = y - 16 + (40 * offset[other.playerID]);
-            other.image_yscale = 1;
+            other.y = y - 16 + (41 * offset[other.playerID]) + 7*(other.image_yscale &lt; 0);
+            // other.image_yscale = 1;
             
-            sprx = (animOffset[other.playerID] * 3);
+            sprx = (animOffset[other.playerID] * 3 + 3*(other.image_yscale &lt; 0)) mod 6;
             spry = 12;
+            
+            // handle depth of player
+            depth = other.depth - playerDir[other.playerID]*other.image_yscale;
             
             with (other)
             {
@@ -252,9 +255,6 @@ if (entityCanStep())
                         playerDir[other.playerID] = 1*sign(imgSpd);
                     }
                     
-                    // handle depth of player
-                    depth = other.depth - playerDir[other.playerID];
-                    
                     // Jumping off the platform
                     if (global.keyJumpPressed[other.playerID])
                     {
@@ -286,7 +286,7 @@ if (entityCanStep())
                         attached[other.playerID] = false;
                         
                         // It was easier to just flip the players sprites temporarily for this
-                        other.image_yscale = other.gravDir;
+                        // other.image_yscale = other.gravDir;
                         shootLock[other.playerID] = lockPoolRelease(shootLock[other.playerID]);
                         lockReleaseCountdown[other.playerID] = 2;
                     }
