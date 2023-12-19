@@ -35,6 +35,8 @@ for(var i = 0; i &lt; 4; i++)
 combineObjects(object_index);
 jumpOff = 1;
 shootWhenClimbing = 1;
+
+primeInstance = 0;
 </string>
           </argument>
         </arguments>
@@ -57,7 +59,7 @@ shootWhenClimbing = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(!global.frozen)
+            <string>if(!global.frozen &amp;&amp; primeInstance)
 {
     with(objMegaman) if(!playerIsLocked(PL_LOCK_CLIMB))
     {
@@ -72,8 +74,7 @@ shootWhenClimbing = 1;
                 {
                     climbingLock[other.playerID] = lockPoolLock(PL_LOCK_MOVE,
                         PL_LOCK_SLIDE,
-                        PL_LOCK_GRAVITY,
-                        PL_LOCK_TURN);
+                        PL_LOCK_GRAVITY);
                     climbingLock[other.playerID].targetInstance = other.id;
                     other.yspeed = 0;
                     other.xspeed = 0;
@@ -126,6 +127,32 @@ shootWhenClimbing = 1;
         }
     }
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// makes it so only one fence in a room does stuff to save resources
+var primeFence = instance_find(objFence,0);
+with(objFence) primeInstance = 0;
+with(primeFence) primeInstance = 1;
 </string>
           </argument>
         </arguments>

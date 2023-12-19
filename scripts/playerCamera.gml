@@ -89,8 +89,8 @@ view_xview = clamp(view_xview, bound_left, bound_right);
 view_yview = clamp(view_yview, bound_top, bound_bottom);
 
 // round camera (without this you will get distortion and tile seams)
-view_xview = round(view_xview * global.screenScale) / global.screenScale;
-view_yview = round(view_yview * global.screenScale) / global.screenScale;
+view_xview = floor(view_xview * global.screenScale + 0.5) / global.screenScale;
+view_yview = floor(view_yview * global.screenScale + 0.5) / global.screenScale;
 
 // cached
 global.cachedXView = view_xview[0];
