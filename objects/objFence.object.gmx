@@ -25,14 +25,22 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>climbingLock = 0;
+            <string>/// ladder but omnidirectional
+for(var i = 0; i &lt; 4; i++)
+{
+    climbingLock[i] = 0;
+    aerialCatchCooldown[i] = 0;
+    climbTimer[i] = 0;
+}
 combineObjects(object_index);
+jumpOff = 1;
+shootWhenClimbing = 1;
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="3" enumb="2">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -49,171 +57,76 @@ combineObjects(object_index);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(objMegaman) &amp;&amp; !global.frozen
+            <string>if(!global.frozen)
 {
-    if collision_rectangle(bbox_left + 1, bbox_top + 1, bbox_right - 1, bbox_bottom - 1, objMegaman, false, false) || climbingLock != 0
+    with(objMegaman) if(!playerIsLocked(PL_LOCK_CLIMB))
     {
-        with (objMegaman)
-        {   
-            if other.climbingLock &lt;= 0
+        var touches = collision_rectangle(bbox_left+2,bbox_top+2,bbox_right-3,bbox_bottom-3,objFence,0,1);
+        with(other)
+        {
+            if(!climbingLock[other.playerID]) // not climbing
             {
-                if yDir == -gravDir &amp;&amp; collision_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, other, false, false) &amp;&amp; !climbing &amp;&amp; !playerIsLocked(PL_LOCK_CLIMB)
+                if(aerialCatchCooldown[other.playerID]) aerialCatchCooldown[other.playerID]--;
+                if(sign(other.yspeed) == other.gravDir) aerialCatchCooldown[other.playerID] = 0;
+                if(touches &amp;&amp; (other.yDir == -other.gravDir || other.climbing) &amp;&amp; aerialCatchCooldown[other.playerID] &lt;= 0)
                 {
-                    if bbox_left &gt; other.bbox_left + 1 &amp;&amp; bbox_right &lt; other.bbox_right - 1 &amp;&amp; bbox_top &gt; other.bbox_top + 1 &amp;&amp; bbox_bottom &lt; other.bbox_bottom - 1
-                    {
-                        var lock = lockPoolLock(PL_LOCK_MOVE,
-                            PL_LOCK_SLIDE,
-                            PL_LOCK_GRAVITY,
-                            PL_LOCK_CLIMB,
-                            PL_LOCK_TURN
-                        );
-                        lock.targetInstance = id
-                        other.climbingLock = lock
-                        ground = false;
-                        clamp(x, other.bbox_left + 1, other.bbox_right - 1);
-                        clamp(y, other.bbox_top + 1, other.bbox_bottom - 1);
-                        if jumpCounter == 0
-                        {
-                            jumpCounter += 1;
-                        }
-                        yspeed = 0;
-                        ladderXScale = image_xscale;
-                        climbShootXscale = ladderXScale;
-                        /*// if there is no status effect object for current player, create one.
-                        if (!instance_exists(statusObject))
-                        {
-                            statusObject = instance_create(x, y, objStatusEffect);
-                            statusObject.statusCanClimb = false;
-                        }*/
-                    }
+                    climbingLock[other.playerID] = lockPoolLock(PL_LOCK_MOVE,
+                        PL_LOCK_SLIDE,
+                        PL_LOCK_GRAVITY,
+                        PL_LOCK_TURN);
+                    climbingLock[other.playerID].targetInstance = other.id;
+                    other.yspeed = 0;
+                    other.xspeed = 0;
+                    other.ground = 0;
+                    other.jumpCounter = !jumpOff;
+                    aerialCatchCooldown[other.playerID] = 30;
                 }
             }
-            else if other.climbingLock != 0
+            else // climbing
             {
-                    clamp(x, other.bbox_left + 1, other.bbox_right - 1);
-                    clamp(y, other.bbox_top + 1, other.bbox_bottom - 1);
-                    if bbox_top &lt; other.bbox_top + 1
-                    {
-                        y = yprevious;
-                    }
-                    if bbox_bottom &gt; other.bbox_bottom - 1
-                    {
-                        y = yprevious;
-                    }
-                    if bbox_right &gt; other.bbox_right - 1
-                    {
-                        x = xprevious;
-                    }
-                    if bbox_left &lt; other.bbox_left + 1
-                    {
-                        x = xprevious;
-                    }
-                    climbing = true;
-                    spriteX = 15;
-                    if xDir == 0
-                    {
-                        xspeed = 0;
-                    }
-                    else if xDir &lt; 0
-                    {
-                        if bbox_left &gt; other.bbox_left + 1 &amp;&amp; !isShoot
-                        {
-                            xspeed = climbSpeed*xDir;
-                        }
-                        else if xDir &lt; 0
-                        {
-                            xspeed = 0;
-                        }
-                    }
-                    else if xDir &gt; 0
-                    {
-                        if bbox_right &lt; other.bbox_right - 1 &amp;&amp; !isShoot
-                        {
-                            xspeed = climbSpeed*xDir;
-                        }
-                        else if xDir &gt; 0
-                        {
-                            xspeed = 0;
-                        }
-                    }
-                    
-                    if yDir == 0
-                    {
-                        yspeed = 0;
-                    }
-                    else if yDir &lt; 0
-                    {
-                        if bbox_top &gt; other.bbox_top + 1 &amp;&amp; !isShoot
-                        {
-                            yspeed = climbSpeed*yDir;
-                        }
-                        else if yDir &lt; 0
-                        {
-                            yspeed = 0;
-                        }
-                    }
-                    else if yDir &gt; 0
-                    { 
-                        if bbox_bottom &lt; other.bbox_bottom - 1 &amp;&amp; !isShoot
-                        {
-                            yspeed = climbSpeed*yDir;
-
-                        }
-                        else if yDir &gt; 0
-                        {
-                            yspeed = 0;
-                        }
-                    }
-                    
-                if (yDir != 0 || xDir != 0) &amp;&amp; !isShoot
+                var angle = point_direction(0,0,other.xDir,other.yDir);
+                if(other.xDir != 0) other.xspeed = cos(degtorad(angle))*other.climbSpeed;
+                else other.xspeed = 0;
+                if(other.yDir != 0) other.yspeed = -sin(degtorad(angle))*other.climbSpeed;
+                else other.yspeed = 0;
+                if(other.isShoot &amp;&amp; !shootWhenClimbing)
                 {
-                    climbSpriteTimer += 1;
-                    if (!(climbSpriteTimer mod 8))
-                    {
-                       image_xscale = -image_xscale;
-                    }
+                    other.yspeed = 0;
+                    other.xspeed = 0;
                 }
+                if(other.xspeed != 0 || other.yspeed != 0)
+                {
+                    climbTimer[other.playerID]++;
+                    if(climbTimer[other.playerID] &gt;= 16) climbTimer[other.playerID] = 0;
+                }
+                else climbTimer[other.playerID] = floor(other.playerID/8)*8;
+                if((climbTimer[other.playerID] mod 16) &lt; 8) other.spriteX = 15;
+                else other.spriteX = 16;
+                other.jumpCounter = !jumpOff;
                 
-                if (xDir != 0) // Left/right
+                var detach = false;
+                if(global.keyJumpPressed[other.playerID]) // jump off
                 {
-                    climbShootXscale = xDir;
-                }
-                if global.keyJumpPressed[playerID]
-                {
-                    other.climbingLock = lockPoolRelease(other.climbingLock);
-                    if (climbing)
+                    detach = true;
+                    with(other)
                     {
-                        climbing = false;
-                        climbLock = lockPoolRelease(climbLock);
+                        playerJump();
+                        if(!other.jumpOff) yspeed = 0;
                     }
+                }
+                if(!touches) // no touch
+                {
+                    detach = true;
+                }
+                if(detach)
+                {
+                    climbingLock[other.playerID] = lockPoolRelease(climbingLock[other.playerID]);
                 }
             }
         }
     }
 }
 </string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="4">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string></string>
           </argument>
         </arguments>
       </action>

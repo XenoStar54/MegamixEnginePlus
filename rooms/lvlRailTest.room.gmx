@@ -220,6 +220,59 @@ with(objPUSwitchBlockRed) myFlag = 1;</code>
     <instance objName="objPUSwitchLadderRed" x="1120" y="96" name="inst_39A45A29" locked="0" code="setSolid = 0;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objPUSwitchLadderRed" x="1120" y="112" name="inst_A862619D" locked="0" code="setSolid = 0;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objPUSwitchLadderRed" x="1120" y="128" name="inst_C1887CE1" locked="0" code="setSolid = 0;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objSolid" x="1680" y="176" name="inst_D6FEDD23" locked="0" code="" scaleX="25" scaleY="3" colour="4294967295" rotation="0"/>
+    <instance objName="objFence" x="1808" y="112" name="inst_80ACE09B" locked="0" code="" scaleX="2" scaleY="4" colour="4294967295" rotation="0"/>
+    <instance objName="objFence" x="1824" y="48" name="inst_9C20BEB8" locked="0" code="" scaleX="2" scaleY="4" colour="4294967295" rotation="0"/>
+    <instance objName="objFence" x="1840" y="112" name="inst_9D42168A" locked="0" code="" scaleX="6" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objFence" x="1792" y="48" name="inst_48AFA4A6" locked="0" code="" scaleX="2" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objFence" x="1760" y="16" name="inst_E0E70E7A" locked="0" code="" scaleX="2" scaleY="4" colour="4294967295" rotation="0"/>
+    <instance objName="objPiledanPlayerVehicle" x="1968" y="176" name="inst_6248F110" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objLadder" x="1920" y="48" name="inst_1EED3C8F" locked="0" code="visible = 1;&#xA;" scaleX="1" scaleY="4" colour="4294967295" rotation="0"/>
+    <instance objName="objMM1Met" x="2096" y="128" name="inst_85370102" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objMM1Met" x="2144" y="128" name="inst_87624B95" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objMM1Met" x="2192" y="96" name="inst_16A70B11" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objSolid" x="2080" y="144" name="inst_DCC0DA88" locked="0" code="" scaleX="5" scaleY="5" colour="4294967295" rotation="0"/>
+    <instance objName="objSolid" x="2160" y="112" name="inst_D50DEF0D" locked="0" code="" scaleX="4" scaleY="7" colour="4294967295" rotation="0"/>
+    <instance objName="objSolid" x="2224" y="192" name="inst_6035AABC" locked="0" code="" scaleX="21" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objSolid" x="2288" y="32" name="inst_F0E7A288" locked="0" code="" scaleX="4" scaleY="8" colour="4294967295" rotation="0"/>
+    <instance objName="objDustmanBlock" x="2224" y="112" name="inst_9EA91F86" locked="0" code="canHit = false;&#xA;destroyByAnything = true;&#xA;destroysAndLives[0] = objWeaponExplosion;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objDustmanBlock" x="2240" y="144" name="inst_B0314641" locked="0" code="canHit = false;&#xA;destroyByAnything = true;&#xA;destroysAndLives[0] = objWeaponExplosion;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objDustmanBlock" x="2240" y="112" name="inst_8DFDBB30" locked="0" code="canHit = false;&#xA;destroyByAnything = true;&#xA;destroysAndLives[0] = objWeaponExplosion;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objDustmanBlock" x="2256" y="112" name="inst_8A1790B2" locked="0" code="canHit = false;&#xA;destroyByAnything = true;&#xA;destroysAndLives[0] = objWeaponExplosion;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objDustmanBlock" x="2272" y="112" name="inst_6DD9E316" locked="0" code="canHit = false;&#xA;destroyByAnything = true;&#xA;destroysAndLives[0] = objWeaponExplosion;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objDustmanBlock" x="2272" y="144" name="inst_B1B62FFE" locked="0" code="canHit = false;&#xA;destroyByAnything = true;&#xA;destroysAndLives[0] = objWeaponExplosion;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objDustmanBlock" x="2256" y="144" name="inst_A86F44FD" locked="0" code="canHit = false;&#xA;destroyByAnything = true;&#xA;destroysAndLives[0] = objWeaponExplosion;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objDustmanBlock" x="2224" y="144" name="inst_255BE0E6" locked="0" code="canHit = false;&#xA;destroyByAnything = true;&#xA;destroysAndLives[0] = objWeaponExplosion;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objPiledanPlayerTurret" x="2384" y="176" name="inst_5BACDC49" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objSolid" x="2544" y="0" name="inst_9E159863" locked="0" code="" scaleX="1" scaleY="12" colour="4294967295" rotation="0"/>
+    <instance objName="objSolid" x="2448" y="128" name="inst_2A5AAF8D" locked="0" code="" scaleX="1" scaleY="4" colour="4294967295" rotation="0"/>
+    <instance objName="objSolid" x="2496" y="160" name="inst_35370C9C" locked="0" code="" scaleX="3" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objTopSolid" x="2496" y="112" name="inst_68637342" locked="0" code="visible = 1;&#xA;" scaleX="3" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objTopSolid" x="2464" y="80" name="inst_4FF44652" locked="0" code="visible = 1;&#xA;" scaleX="3" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objDustmanBlock" x="2464" y="128" name="inst_930FA504" locked="0" code="canHit = false;&#xA;destroyByAnything = true;&#xA;destroysAndLives[0] = objWeaponExplosion;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objDustmanBlock" x="2480" y="128" name="inst_E2C85A9F" locked="0" code="canHit = false;&#xA;destroyByAnything = true;&#xA;destroysAndLives[0] = objWeaponExplosion;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objDustmanBlock" x="2480" y="112" name="inst_86357EFB" locked="0" code="canHit = false;&#xA;destroyByAnything = true;&#xA;destroysAndLives[0] = objWeaponExplosion;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objDustmanBlock" x="2464" y="112" name="inst_F18E6059" locked="0" code="canHit = false;&#xA;destroyByAnything = true;&#xA;destroysAndLives[0] = objWeaponExplosion;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objDustmanBlock" x="2448" y="32" name="inst_C5D259FA" locked="0" code="canHit = false;&#xA;destroyByAnything = true;&#xA;destroysAndLives[0] = objWeaponExplosion;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objDustmanBlock" x="2448" y="64" name="inst_3E4A6D68" locked="0" code="canHit = false;&#xA;destroyByAnything = true;&#xA;destroysAndLives[0] = objWeaponExplosion;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objDustmanBlock" x="2448" y="48" name="inst_954F5687" locked="0" code="canHit = false;&#xA;destroyByAnything = true;&#xA;destroysAndLives[0] = objWeaponExplosion;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objDustmanBlock" x="2464" y="48" name="inst_7C1D8B3A" locked="0" code="canHit = false;&#xA;destroyByAnything = true;&#xA;destroysAndLives[0] = objWeaponExplosion;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objDustmanBlock" x="2464" y="64" name="inst_1930A3F1" locked="0" code="canHit = false;&#xA;destroyByAnything = true;&#xA;destroysAndLives[0] = objWeaponExplosion;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objDustmanBlock" x="2464" y="32" name="inst_D2C203C1" locked="0" code="canHit = false;&#xA;destroyByAnything = true;&#xA;destroysAndLives[0] = objWeaponExplosion;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objDustmanBlock" x="2480" y="32" name="inst_844EBC6B" locked="0" code="canHit = false;&#xA;destroyByAnything = true;&#xA;destroysAndLives[0] = objWeaponExplosion;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objDustmanBlock" x="2480" y="64" name="inst_B4A7BE9A" locked="0" code="canHit = false;&#xA;destroyByAnything = true;&#xA;destroysAndLives[0] = objWeaponExplosion;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objDustmanBlock" x="2480" y="48" name="inst_55B3D81E" locked="0" code="canHit = false;&#xA;destroyByAnything = true;&#xA;destroysAndLives[0] = objWeaponExplosion;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objGenericStopper" x="2368" y="0" name="inst_B393ED3A" locked="0" code="objectToStop = objPiledanPlayerTurret;&#xA;visible = 1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objSolid" x="2416" y="80" name="inst_DD1B508C" locked="0" code="" scaleX="3" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objEnergyElement" x="2512" y="144" name="inst_AB2EE769" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objPiledanPlayerVehicleExploder" x="2304" y="176" name="inst_DA968D57" locked="0" code="visible = 1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objSolid" x="2448" y="0" name="inst_0AAF5213" locked="0" code="" scaleX="6" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objFence" x="1920" y="16" name="inst_57F61964" locked="0" code="" scaleX="7" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objSolid" x="2288" y="0" name="inst_BB1FF029" locked="0" code="" scaleX="2" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objSign" x="1216" y="96" name="inst_A3FBEF72" locked="0" code="name = 'Reverted magmml2 ice physics';&#xA;name_color = c_white;&#xA;text = &quot;Sliding and then holding forward lets you run with slide speed because that's way more fun.&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objSign" x="1776" y="160" name="inst_9920C63C" locked="0" code="name = 'Fence';&#xA;name_color = c_white;&#xA;text = &quot;Ladder but omnidirectional, as seen in SMW, SFxMM, EZ, and many other games. Jumping up and climb-shooting enabled.&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objSign" x="1920" y="160" name="inst_34649B42" locked="0" code="name = 'Piledan bomber (player-controlled)';&#xA;name_color = c_white;&#xA;text = &quot;Hey, wouldn't it be cool if Mega Man could use vehicles that are usually enemy-controlled?&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objSign" x="2336" y="176" name="inst_7F66EC44" locked="0" code="name = 'Piledan turret (player-controlled)';&#xA;name_color = c_white;&#xA;text = &quot;Hey, wouldn't it be cool if Mega Man could use vehicles that are usually enemy-controlled? 2&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

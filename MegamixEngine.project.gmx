@@ -5622,6 +5622,10 @@
         <sprite>sprites\sprBladeManSeeSawMiddle</sprite>
         <sprite>sprites\sprSolarManConveyor</sprite>
         <sprite>sprites\sprSolarManConveyorImg</sprite>
+        <sprite>sprites\sprPiledanPlayerVehicle</sprite>
+        <sprite>sprites\sprPiledanPlayerVehicleExploder</sprite>
+        <sprite>sprites\sprPiledanPlayerTurret</sprite>
+        <sprite>sprites\sprPiledanPlayerBullet</sprite>
       </sprites>
       <sprites name="MM11">
         <sprite>sprites\sprAcidSpinWheel</sprite>
@@ -8398,9 +8402,13 @@
         <object>objects\objStrikeManSoccerBall</object>
         <object>objects\objStrikeManSpikeySoccerBall</object>
         <object>objects\objTackleFireDispenser</object>
+        <object>objects\objPiledanPlayerVehicle</object>
+        <object>objects\objPiledanPlayerVehicleExploder</object>
+        <object>objects\objPiledanPlayerTurret</object>
         <objects name="Don't Use">
           <object>objects\objBladeManSeeSawPlatform</object>
           <object>objects\objSandstorm</object>
+          <object>objects\objPiledanPlayerBullet</object>
         </objects>
       </objects>
       <objects name="MMGBI">
