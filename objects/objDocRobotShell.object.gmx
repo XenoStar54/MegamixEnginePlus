@@ -27,12 +27,6 @@
             <kind>1</kind>
             <string>// This variant of Doc Robot is designed as a shell to emulate most bosses in a Doc Robot form.
 
-
-
-
-
-
-
 didCreate = false;//Must delay creation event until we get our instance CC.
 event_inherited();
 ystart -= 1;

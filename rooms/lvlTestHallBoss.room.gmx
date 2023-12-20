@@ -241,7 +241,7 @@ with(prtBoss)
     <instance objName="objQuint" x="1744" y="176" name="inst_3E978CC4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objEnker" x="2000" y="176" name="inst_8CBFAAC9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objVoltMan" x="2512" y="176" name="inst_7CEAB7FF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objHoneyWoman" x="720" y="176" name="inst_055FAA67" locked="0" code="itemDrop=-1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objHoneyWoman" x="720" y="176" name="inst_055FAA67" locked="0" code="itemDrop=-1;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBossDoor" x="0" y="80" name="inst_19C8C633" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAirMan" x="2256" y="176" name="inst_4E97A35C" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objLadder" x="2176" y="144" name="inst_0FAF0CA3" locked="0" code="" scaleX="1" scaleY="3" colour="4294967295" rotation="0"/>

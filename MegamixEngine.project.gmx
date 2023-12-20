@@ -8930,6 +8930,7 @@
       <room>rooms\lvlBatteryFix</room>
       <room>rooms\lvlEditedGimmicks</room>
       <room>rooms\lvlNewGimmicks</room>
+      <room>rooms\lvlNewBosses</room>
       <room>rooms\lvlRailTest</room>
       <room>rooms\lvlFreezeManTest</room>
       <room>rooms\lvlGrenadeManTest</room>
