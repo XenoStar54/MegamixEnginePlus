@@ -1,4 +1,4 @@
-# Megamix Engine
+# Megamix Engine Plus
 
 Game Maker Studio Mega Man Engine, forked from the
 [Mega Engine](http://sprites-inc.co.uk/showthread.php?tid=1648).
