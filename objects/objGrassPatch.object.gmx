@@ -39,9 +39,43 @@ itemDrop = -1;
 
 fireTimerMax = 60;
 
-burnsMe[0] = objNitronFire;
-burnsMe[1] = objPharaohShot;
-burnsMe[2] = objGrassPatchFire;
+var index = 0;
+fireSource[index++] = objFireBlockFire;
+fireSource[index++] = objFirePillar;
+fireSource[index++] = objFireWave;
+fireSource[index++] = objTackleFire;
+fireSource[index++] = objHotDogFire;
+fireSource[index++] = objLightningLordLightning;
+fireSource[index++] = objApacheJoeProjectile;
+fireSource[index++] = objFireBoyShot;
+fireSource[index++] = objFireTellyShot;
+fireSource[index++] = objFireSpike;
+fireSource[index++] = objHeatMan;
+fireSource[index++] = objHeatManFire;
+fireSource[index++] = objMechaDragonFire;
+fireSource[index++] = objPharaohManShot;
+fireSource[index++] = objPharaohManShotBig;
+fireSource[index++] = objPharaohShot;
+fireSource[index++] = objSolarBlaze;
+fireSource[index++] = objNapalm;
+fireSource[index++] = objPopoHeliFire;
+fireSource[index++] = objChangkeyDragon;
+fireSource[index++] = objChangkeyDragonFire;
+fireSource[index++] = objSuzak;
+fireSource[index++] = objFenix;
+fireSource[index++] = objSFFire;
+fireSource[index++] = objFlameMixer;
+fireSource[index++] = objPUOilFire;
+fireSource[index++] = objGrassPatchFire;
+fireSource[index++] = objFireStorm;
+fireSource[index++] = objFireStormGB;
+fireSource[index++] = objAtomicFire;
+fireSource[index++] = objAtomicFireGB;
+fireSource[index++] = objFlameBlast;
+fireSource[index++] = objMagmaBazooka;
+fireSource[index++] = objBlazingTorch;
+fireSource[index++] = objWaveBurner;
+fireSource[index++] = objTorchArm;
 </string>
           </argument>
         </arguments>
@@ -68,11 +102,11 @@ burnsMe[2] = objGrassPatchFire;
 
 if(entityCanStep())
 {
-    for(var i = 0; i &lt; array_length_1d(burnsMe); i++)
+    for(var i = 0; i &lt; array_length_1d(fireSource); i++)
     {
-        if(instance_exists(burnsMe[i]) &amp;&amp; burnsMe[i] != noone &amp;&amp; !burnsMe[i].dead)
+        if(instance_exists(fireSource[i]) &amp;&amp; fireSource[i] != noone &amp;&amp; !fireSource[i].dead)
         {
-            var igniter = instance_place(x,y,burnsMe[i]);
+            var igniter = instance_place(x,y,fireSource[i]);
             if(igniter)
             {
                 dead = 1;
