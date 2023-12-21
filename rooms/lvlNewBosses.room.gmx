@@ -254,7 +254,7 @@
     <instance objName="objSolid" x="1008" y="1360" name="inst_DE1F75D6" locked="0" code="" scaleX="2" scaleY="7" colour="4294967295" rotation="0"/>
     <instance objName="objSolid" x="1264" y="1360" name="inst_6E839C89" locked="0" code="" scaleX="2" scaleY="7" colour="4294967295" rotation="0"/>
     <instance objName="objSolid" x="1520" y="1360" name="inst_8E4569B5" locked="0" code="" scaleX="1" scaleY="11" colour="4294967295" rotation="0"/>
-    <instance objName="objSolid" x="144" y="1536" name="inst_29DA5D82" locked="0" code="" scaleX="140" scaleY="3" colour="4294967295" rotation="0"/>
+    <instance objName="objSolid" x="128" y="1536" name="inst_29DA5D82" locked="0" code="" scaleX="57" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="objLadder" x="128" y="1536" name="inst_D92050E0" locked="0" code="" scaleX="1" scaleY="11" colour="4294967295" rotation="0"/>
     <instance objName="objSolid" x="0" y="1536" name="inst_44624100" locked="0" code="" scaleX="8" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="objStopScrollingHorizontal" x="1536" y="1344" name="inst_5339D11B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -283,10 +283,53 @@
     <instance objName="objSolid" x="1008" y="1568" name="inst_A39A1A9B" locked="0" code="" scaleX="2" scaleY="8" colour="4294967295" rotation="0"/>
     <instance objName="objSolid" x="1264" y="1584" name="inst_B404587C" locked="0" code="" scaleX="2" scaleY="12" colour="4294967295" rotation="0"/>
     <instance objName="objSolid" x="240" y="1568" name="inst_B98BEB1F" locked="0" code="" scaleX="2" scaleY="8" colour="4294967295" rotation="0"/>
-    <instance objName="objSwordMan" x="464" y="1744" name="inst_0679E6A2" locked="0" code="itemDrop = objYashichi;&#xA;useEndStageBehavior = false;&#xA;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objSwordMan" x="464" y="1744" name="inst_0679E6A2" locked="0" code="itemDrop = objYashichi;&#xA;useEndStageBehavior = false;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objFrostMan" x="704" y="1728" name="inst_F57259F8" locked="0" code="itemDrop = objYashichi;&#xA;useEndStageBehavior = false;&#xA;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objGrenadeMan" x="976" y="1744" name="inst_B0A228A5" locked="0" code="itemDrop = objYashichi;&#xA;useEndStageBehavior = false;&#xA;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objSuperBassBoss" x="1232" y="1744" name="inst_36302A83" locked="0" code="itemDrop = objYashichi;&#xA;useEndStageBehavior = false;&#xA;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objSuperBassBoss" x="1232" y="1664" name="inst_36302A83" locked="0" code="itemDrop = objYashichi;&#xA;useEndStageBehavior = false;&#xA;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objVerticalScrolling" x="0" y="2016" name="inst_0935D2FD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRightScrolling" x="256" y="1792" name="inst_0ACE20DA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRightScrolling" x="512" y="2016" name="inst_2D70F7A4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRightScrolling" x="512" y="1792" name="inst_37607B91" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRightScrolling" x="256" y="2016" name="inst_5A482EDC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRightScrolling" x="768" y="1792" name="inst_DD35F94A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRightScrolling" x="1024" y="1792" name="inst_429FB6CB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRightScrolling" x="1280" y="1792" name="inst_D6F79661" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRightScrolling" x="1536" y="1792" name="inst_D0020E6C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRightScrolling" x="1792" y="1792" name="inst_8342E20B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objLadder" x="128" y="1984" name="inst_A0AAA5C2" locked="0" code="" scaleX="1" scaleY="11" colour="4294967295" rotation="0"/>
+    <instance objName="objSolid" x="0" y="1984" name="inst_38940961" locked="0" code="" scaleX="8" scaleY="3" colour="4294967295" rotation="0"/>
+    <instance objName="objSolid" x="0" y="2224" name="inst_68943B99" locked="0" code="" scaleX="108" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRightScrolling" x="768" y="2016" name="inst_EC69929E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRightScrolling" x="1024" y="2016" name="inst_EEF18809" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objStopScrollingHorizontal" x="1280" y="2016" name="inst_98DD21C9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objStopScrollingHorizontal" x="2048" y="1792" name="inst_16B9F5C7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objSolid" x="144" y="1984" name="inst_DB548457" locked="0" code="" scaleX="148" scaleY="3" colour="4294967295" rotation="0"/>
+    <instance objName="objConcreteMan" x="464" y="1968" name="inst_62E1FDCA" locked="0" code="itemDrop = objYashichi;&#xA;useEndStageBehavior = false;&#xA;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objTornadoMan" x="720" y="1968" name="inst_662D1C2C" locked="0" code="itemDrop = objYashichi;&#xA;useEndStageBehavior = false;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objPlugMan" x="992" y="1968" name="inst_020A1D62" locked="0" code="itemDrop = objYashichi;&#xA;useEndStageBehavior = false;&#xA;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objJewelMan" x="1248" y="1968" name="inst_175C6CA6" locked="0" code="itemDrop = objYashichi;&#xA;useEndStageBehavior = false;&#xA;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objMagmaMan" x="1504" y="1968" name="inst_2B77A68C" locked="0" code="itemDrop = objYashichi;&#xA;useEndStageBehavior = false;&#xA;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objSolid" x="1344" y="1968" name="inst_4911B3E8" locked="0" code="" scaleX="8" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objSolid" x="1376" y="1952" name="inst_A0C26600" locked="0" code="" scaleX="4" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objGalaxyMan" x="1760" y="1968" name="inst_B9D7BE32" locked="0" code="itemDrop = objYashichi;&#xA;useEndStageBehavior = false;&#xA;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objFakeMan" x="2016" y="1968" name="inst_110C3562" locked="0" code="itemDrop = objYashichi;&#xA;useEndStageBehavior = false;&#xA;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objBladeMan10" x="464" y="2208" name="inst_8B22FAC9" locked="0" code="itemDrop = objYashichi;&#xA;useEndStageBehavior = false;&#xA;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objSolid" x="496" y="2032" name="inst_FDC7E434" locked="0" code="" scaleX="2" scaleY="8" colour="4294967295" rotation="0"/>
+    <instance objName="objSolid" x="240" y="2032" name="inst_F518A7D2" locked="0" code="" scaleX="2" scaleY="8" colour="4294967295" rotation="0"/>
+    <instance objName="objBossDoor" x="240" y="2160" name="inst_DA64DF82" locked="0" code="" scaleX="2" scaleY="4" colour="4294967295" rotation="0"/>
+    <instance objName="objBossDoor" x="496" y="2160" name="inst_1BA0CDCF" locked="0" code="" scaleX="2" scaleY="4" colour="4294967295" rotation="0"/>
+    <instance objName="objSheepMan" x="720" y="2208" name="inst_46A36CFC" locked="0" code="itemDrop = objYashichi;&#xA;useEndStageBehavior = false;&#xA;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objStrikeMan" x="976" y="2208" name="inst_99F9FC56" locked="0" code="itemDrop = objYashichi;&#xA;useEndStageBehavior = false;&#xA;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objBossDoor" x="752" y="2160" name="inst_C7450D53" locked="0" code="" scaleX="2" scaleY="4" colour="4294967295" rotation="0"/>
+    <instance objName="objBossDoor" x="1008" y="2160" name="inst_67D3DB40" locked="0" code="" scaleX="2" scaleY="4" colour="4294967295" rotation="0"/>
+    <instance objName="objSolid" x="752" y="2032" name="inst_095D3DFF" locked="0" code="" scaleX="2" scaleY="8" colour="4294967295" rotation="0"/>
+    <instance objName="objSolid" x="1008" y="2032" name="inst_16160734" locked="0" code="" scaleX="2" scaleY="8" colour="4294967295" rotation="0"/>
+    <instance objName="objNitroMan" x="1232" y="2208" name="inst_377080F8" locked="0" code="itemDrop = objYashichi;&#xA;useEndStageBehavior = false;&#xA;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objSolid" x="1264" y="2032" name="inst_E445114F" locked="0" code="" scaleX="2" scaleY="12" colour="4294967295" rotation="0"/>
+    <instance objName="objSolid" x="1040" y="1536" name="inst_D755047B" locked="0" code="" scaleX="31" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objSign" x="208" y="1968" name="inst_9BB38A64" locked="0" code="text = &quot;Proceed to fight Mega Man 9's new bosses.&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objSign" x="208" y="2208" name="inst_C8049C66" locked="0" code="text = &quot;Proceed to fight Mega Man 10's new bosses.&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgBasic" x="64" y="144" w="16" h="16" xo="32" yo="48" id="11482404" name="inst_43D6A166" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -2722,6 +2765,29 @@
     <tile bgName="bgBasic" x="752" y="1792" w="16" h="16" xo="80" yo="0" id="11485456" name="inst_4912054D" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgBasic" x="496" y="1792" w="16" h="16" xo="80" yo="0" id="11485457" name="inst_EA66050C" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgBasic" x="240" y="1792" w="16" h="16" xo="80" yo="0" id="11485458" name="inst_BA7A0AFE" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgBasic" x="1344" y="1968" w="16" h="16" xo="64" yo="32" id="11485459" name="inst_34C8BF43" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgBasic" x="1360" y="1968" w="16" h="16" xo="64" yo="32" id="11485460" name="inst_814EF537" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgBasic" x="1392" y="1968" w="16" h="16" xo="64" yo="32" id="11485461" name="inst_D0A517D0" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgBasic" x="1376" y="1968" w="16" h="16" xo="64" yo="32" id="11485463" name="inst_2FEFA623" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgBasic" x="1408" y="1968" w="16" h="16" xo="64" yo="32" id="11485465" name="inst_4A59F143" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgBasic" x="1424" y="1968" w="16" h="16" xo="64" yo="32" id="11485466" name="inst_7BD3B1A2" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgBasic" x="1440" y="1968" w="16" h="16" xo="64" yo="32" id="11485467" name="inst_267DEE59" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgBasic" x="1456" y="1968" w="16" h="16" xo="64" yo="32" id="11485468" name="inst_99A0705C" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgBasic" x="1376" y="1952" w="16" h="16" xo="64" yo="32" id="11485471" name="inst_99052692" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgBasic" x="1392" y="1952" w="16" h="16" xo="64" yo="32" id="11485472" name="inst_F901CBC5" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgBasic" x="1408" y="1952" w="16" h="16" xo="64" yo="32" id="11485473" name="inst_1E287DE9" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgBasic" x="1424" y="1952" w="16" h="16" xo="64" yo="32" id="11485474" name="inst_31D358C3" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgBasic" x="128" y="1984" w="16" h="16" xo="48" yo="0" id="11485476" name="inst_DDC9DA5D" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgBasic" x="128" y="2000" w="16" h="16" xo="48" yo="0" id="11485477" name="inst_57DF0199" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgBasic" x="128" y="2016" w="16" h="16" xo="48" yo="0" id="11485478" name="inst_84D7FCB0" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgBasic" x="128" y="2048" w="16" h="16" xo="48" yo="0" id="11485479" name="inst_966A6520" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgBasic" x="128" y="2064" w="16" h="16" xo="48" yo="0" id="11485480" name="inst_F775F659" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgBasic" x="128" y="2080" w="16" h="16" xo="48" yo="0" id="11485481" name="inst_91969290" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgBasic" x="128" y="2096" w="16" h="16" xo="48" yo="0" id="11485482" name="inst_D563238C" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgBasic" x="128" y="2112" w="16" h="16" xo="48" yo="0" id="11485483" name="inst_6F2B418C" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgBasic" x="128" y="2128" w="16" h="16" xo="48" yo="0" id="11485484" name="inst_A09FB6CA" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgBasic" x="128" y="2144" w="16" h="16" xo="48" yo="0" id="11485485" name="inst_5CBA455B" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgBasic" x="128" y="2032" w="16" h="16" xo="48" yo="0" id="11485486" name="inst_EF4F7BAF" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
   </tiles>
   <PhysicsWorld>0</PhysicsWorld>
   <PhysicsWorldTop>0</PhysicsWorldTop>
