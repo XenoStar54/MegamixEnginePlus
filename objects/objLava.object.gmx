@@ -68,6 +68,10 @@ freezesMe[index++] = objIceSlasher;
 freezesMe[index++] = objIceSlasherGB;
 freezesMe[index++] = objIcicle;
 freezesMe[index++] = objAuAuShot;
+freezesMe[index++] = objBlizzardAttack;
+freezesMe[index++] = objFreezeCracker;
+freezesMe[index++] = objChillShot;
+freezesMe[index++] = objChillSpikeLanded;
 
 index = 0;
 //@cc: list of objects that sink in lava

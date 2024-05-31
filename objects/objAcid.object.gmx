@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// water that can damage entities based on acidity level and being electrified
+            <string>/// liquid that can damage entities based on acidity level and being electrified
 // toxic chemical based attacks from enemies and player increase acidity level
 // water based attacks from enemies and player decrease acidity level
 // when acidity level is maximum, this object will start dealing damage
@@ -61,6 +61,8 @@ var index = 0;
 acidic[index++] = objGloopBall;
 acidic[index++] = objAcidDrop;
 acidic[index++] = objOilStream;
+acidic[index++] = objBubbleLead;
+acidic[index++] = objBubbleLeadGB;
 
 index = 0;
 acidicPersistent[index++] = objNitronFire;
@@ -76,7 +78,14 @@ cleansingPersistent[index++] = objFeeberBubble;
 
 index = 0;
 electrifying[index++] = objBiree;
+electrifying[index++] = objThunderBeam;
 electrifying[index++] = objSparkShock;
+electrifying[index++] = objPlugBall;
+electrifying[index++] = objThunderWool;
+electrifying[index++] = objThunderBeamGB;
+electrifying[index++] = objSparkShockGB;
+electrifying[index++] = objDarkStasis;
+electrifying[index++] = objForceField;
 
 index = 0;
 hurts[index++] = prtEntity;

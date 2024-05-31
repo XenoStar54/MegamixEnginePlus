@@ -2579,6 +2579,7 @@
           <sprite>sprites\sprShadowBlade</sprite>
           <sprites name="Do Not Use">
             <sprite>sprites\mskSearchSnake</sprite>
+            <sprite>sprites\mskTopSpin</sprite>
           </sprites>
         </sprites>
         <sprites name="MM4">

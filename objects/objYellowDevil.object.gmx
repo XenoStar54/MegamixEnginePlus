@@ -50,6 +50,8 @@ initX = x;
 oldX = x;
 initY = y;
 
+delay = 60;
+
 blobHeight[0] = 24;
 blobHeight[1] = 8;
 blobHeight[2] = 40;
@@ -249,23 +251,27 @@ if (entityCanStep())
         }
         else if(phase == 1) // make blobs
         {
-            visible = false;
-            timer++;
-            if(timer &gt;= interval)
+            if(delay) delay--
+            else
             {
-                timer = 0;
-                var blob = instance_create(view_xview+(view_wview*(image_xscale &lt; 0)), initY+blobHeight[blobSelector], objYDblob);
-                blob.image_xscale = image_xscale;
-                blob.spd = abs(blobVel);
-                blob.destX = initX+image_xscale*blobDest[blobSelector];
-                blob.myBlobID = blobSelector;
-                blobSelector++;
-                if(blobSelector == array_length_1d(blobHeight))
+                visible = false;
+                timer++;
+                if(timer &gt;= interval)
                 {
-                    blobSelector = 0;
-                    phase = 2;
                     timer = 0;
-                    image_xscale *= -1;
+                    var blob = instance_create(view_xview+(view_wview*(image_xscale &lt; 0)), initY+blobHeight[blobSelector], objYDblob);
+                    blob.image_xscale = image_xscale;
+                    blob.spd = abs(blobVel);
+                    blob.destX = initX+image_xscale*blobDest[blobSelector];
+                    blob.myBlobID = blobSelector;
+                    blobSelector++;
+                    if(blobSelector == array_length_1d(blobHeight))
+                    {
+                        blobSelector = 0;
+                        phase = 2;
+                        timer = 0;
+                        image_xscale *= -1;
+                    }
                 }
             }
         }

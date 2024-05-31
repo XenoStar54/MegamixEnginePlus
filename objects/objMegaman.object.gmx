@@ -193,6 +193,7 @@ coyoteTimeMax = 5;
 jumpUpLadders = false;
 jumpLadderCooldown = 0;
 jumpLadderCooldownMax = 30;
+saveLadder = noone;
 
 // Animation Initiation
 spriteX = 0;

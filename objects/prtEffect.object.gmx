@@ -39,6 +39,9 @@ dead = 0;
 
 drawOffsetX = 0;
 drawOffsetY = 0;
+
+stopOnFlash = 0;
+iceTimer = 0;
 </string>
           </argument>
         </arguments>

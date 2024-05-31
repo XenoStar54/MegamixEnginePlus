@@ -53,6 +53,15 @@ gunDir = image_xscale;
 
 dropItemAnyway = 0;
 
+preserveLevelMusic = 1;
+actualStoredMusic = -1;
+actualStoredMusicType = "";
+actualStoredMusicLoopStart = 0;
+actualStoredMusicLoopEnd = 1;
+actualStoredMusicLoop = 0;
+actualStoredMusicVolume = 0.8;
+actualStoredMusicTrackNumber = 0;
+
 mask_index = mskWilyMachine1A;
 spriteNormal = sprWilyMachine1A;
 spriteIntro = sprWilySaucerMM1;
@@ -79,97 +88,101 @@ music = "Mega_Man_1.nsf";
 musicType = "VGM";
 musicTrackNumber = 13;
 
+/*
 // Damage Table
 enemyDamageValue(objBusterShot, 1);
 enemyDamageValue(objBusterShotHalfCharged, 1);
 enemyDamageValue(objBusterShotCharged, 3);
 
-// MM1
-enemyDamageValue(objSuperArmBlockProjectile, 1);
-enemyDamageValue(objSuperArmDebris, 1);
-enemyDamageValue(objIceSlasher, 0);
-enemyDamageValue(objThunderBeam, 2);
-
-// MM2
-enemyDamageValue(objMetalBlade, 1);
-
-// MM3
-enemyDamageValue(objNeedleCannon, 1);
-enemyDamageValue(objMagnetMissile, 1);
-enemyDamageValue(objGeminiLaser, 1);
-enemyDamageValue(objHardKnuckle, 1);
-enemyDamageValue(objTopSpin, 1);
-enemyDamageValue(objSearchSnake, 1);
-enemyDamageValue(objSparkShock, 2);
-enemyDamageValue(objShadowBlade, 1);
-
-// MM4
-enemyDamageValue(objRainFlush, 1);
-enemyDamageValue(objPharaohShot, 2); //Charge shot = 6
-
-// MM5
-enemyDamageValue(objPowerStone, 1);
-
-// MM6
-enemyDamageValue(objPlantBarrier, 1);
-
-// MM7
-enemyDamageValue(objSlashClaw, 1);
-
-// MM8
-enemyDamageValue(objHomingSniper, 1);
-
-// MM9
-enemyDamageValue(objConcreteShot, 1);
+// MaGMML3
+enemyDamageValue(objSparkChaser, 1);
+enemyDamageValue(objLaserTrident, 2);
+enemyDamageValue(objWaterShield, 2);
 enemyDamageValue(objTornadoBlow, 1);
-enemyDamageValue(objLaserTrident, 1);
-enemyDamageValue(objJewelSatellite, 1);
+enemyDamageValue(objThunderBeam, 2);
+enemyDamageValue(objBreakDash, 2);
+enemyDamageValue(objMagneticShockwave, 6);
+enemyDamageValue(objIceWall, 2);
+
+// MaGMML2
 enemyDamageValue(objHornetChaser, 1);
+enemyDamageValue(objJewelSatellite, 1);
+enemyDamageValue(objGrabBuster, 2);
+enemyDamageValue(objTripleBlade, 4);
+enemyDamageValue(objWheelCutter, 2);
+enemyDamageValue(objSlashClaw, 2);
+enemyDamageValue(objSakugarne, 1);
+enemyDamageValue(objSuperArrow, 2);
+enemyDamageValue(objWireAdapter, 2);
+
+// MaGMML1
+enemyDamageValue(objMetalBlade, 2);
+enemyDamageValue(objGeminiLaser, 1);
+enemyDamageValue(objSolarBlaze, 5);
+enemyDamageValue(objTopSpin, 1);
+enemyDamageValue(objThunderWool, 1);
+enemyDamageValue(objPharaohShot, 2);
 enemyDamageValue(objBlackHoleBomb, 1);
+enemyDamageValue(objMagicCard, 2);
 
-// MM10
-enemyDamageValue(objTripleBlade, 1);
-enemyDamageValue(objWaterShield, 1);
-enemyDamageValue(objChillShot, 1);
-enemyDamageValue(objChillSpikeLanded, 1);
-enemyDamageValue(objThunderWool, 2);
-enemyDamageValue(objWheelCutter, 1);
-enemyDamageValue(objSolarBlaze, 4);
-
-// MM11
-enemyDamageValue(objBlockDropper, 1);
-
-// MMI
-
-// MMII
-enemyDamageValue(objSakugarne, 2);
-
-// MMIII
-
-// MMIV
-
-// MMV
-enemyDamageValue(objSparkChaser, 2);
-enemyDamageValue(objGrabBuster, 1);
-enemyDamageValue(objBreakDash, 1);
-enemyDamageValue(objSaltWater, 1);
-
-// MM&amp;B
-enemyDamageValue(objTenguBlade, 1);
-enemyDamageValue(objTenguDash, 1);
-enemyDamageValue(objTenguDisk, 1);
-enemyDamageValue(objIceWall, 1);
-enemyDamageValue(objMagicCard, 1);
-
-// MM&amp;B2
+// MaG48HMML
 enemyDamageValue(objFlameMixer, 4);
+enemyDamageValue(objRainFlush, 2);
+enemyDamageValue(objSparkShock, 2);
+enemyDamageValue(objSearchSnake, 1);
+enemyDamageValue(objTenguBlade, 2);
+enemyDamageValue(objTenguDash, 2);
+enemyDamageValue(objTenguDisk, 2);
+enemyDamageValue(objSaltWater, 2);
+enemyDamageValue(objConcreteShot, 2);
+enemyDamageValue(objHomingSniper, 2);
 
-// Other
-enemyDamageValue(objMagneticShockwave, 2);
+// MaG24HMML
+enemyDamageValue(objSuperArmBlockProjectile, 0);
+enemyDamageValue(objSuperArmDebris, 0);
+enemyDamageValue(objChillShot, 2);
+enemyDamageValue(objChillSpikeLanded, 2);
 
-// Utilities
-enemyDamageValue(objWireAdapter, 1);
-enemyDamageValue(objSuperArrow, 4);
+// Misc.
+enemyDamageValue(objPowerStone, 2);
+enemyDamageValue(objPlantBarrier, 2);
+enemyDamageValue(objBrickWeapon, 2);
+enemyDamageValue(objIceSlasher, 0);
+*/
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(preserveLevelMusic &amp;&amp; actualStoredMusic == -1)
+{
+    actualStoredMusic = global.levelSong;
+    actualStoredMusicType = global.levelSongType;
+    actualStoredMusicLoopStart = global.levelLoopStart;
+    actualStoredMusicLoopEnd = global.levelLoopEnd;
+    actualStoredMusicLoop = global.levelLoop;
+    actualStoredMusicVolume = global.levelVolume;
+    actualStoredMusicTrackNumber = global.levelTrackNumber;
+}
+
+event_inherited();
 </string>
           </argument>
         </arguments>
@@ -314,9 +327,12 @@ if (entityCanStep())
 with(myHurtbox) instance_destroy();
 if(nextForm != noone)
 {
+    var saveUseEndStageBehavior = useEndStageBehavior;
+    useEndStageBehavior = false;
     musicStore = "";
     with(instance_create(x,y,nextForm))
     {
+        useEndStageBehavior = saveUseEndStageBehavior;
         image_xscale = other.image_xscale;
         image_yscale = other.image_yscale;
         distance = other.distance;
@@ -327,51 +343,28 @@ if(nextForm != noone)
         respawn = false;
         music = "";
         itemDrop = other.itemDrop;
-        useEndStageBehavior = other.useEndStageBehavior;
-        musicStore = other.musicStore;
-        musicTypeStore = other.musicTypeStore;
-        musicLoopStartStore = other.musicLoopStartStore;
-        musicLoopEndStore = other.musicLoopEndStore;
-        musicLoopStore = other.musicLoopStore;
-        musicVolumeStore = other.musicVolumeStore;
-        musicTrackNumberStore = other.musicTrackNumberStore;
-        elementName = other.elementName;
-        elementCode = other.elementCode;
+        preserveLevelMusic = other.preserveLevelMusic;
+        preserveLevelMusic = other.preserveLevelMusic;
+        actualStoredMusic = other.actualStoredMusic;
+        actualStoredMusicType = other.actualStoredMusicType;
+        actualStoredMusicLoopStart = other.actualStoredMusicLoopStart;
+        actualStoredMusicLoopEnd = other.actualStoredMusicLoopEnd;
+        actualStoredMusicLoop = other.actualStoredMusicLoop;
+        actualStoredMusicVolume = other.actualStoredMusicVolume;
+        actualStoredMusicTrackNumber = other.actualStoredMusicTrackNumber;
         if(other.nextFormScript != scrNoEffect) scriptExecuteNargs(other.nextFormScript,other.nextFormArgs);
         if(other.nextFormCode != "") stringExecutePartial(other.nextFormCode);
     }
-    useEndStageBehavior = false;
     if(!dropItemAnyway) itemDrop = -1;
 }
 
 event_inherited();
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="19">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>event_inherited();
 
-iFrames = 4;
-
-flashTimer = iFrames;
+if(nextForm == noone &amp;&amp; preserveLevelMusic &amp;&amp; !useEndStageBehavior)
+{
+    stopMusic();
+    playMusic(actualStoredMusic, actualStoredMusicType, actualStoredMusicTrackNumber, actualStoredMusicLoopStart, actualStoredMusicLoopEnd, actualStoredMusicLoop, actualStoredMusicVolume);
+}
 </string>
           </argument>
         </arguments>
@@ -412,7 +405,7 @@ flashTimer = iFrames;
         drawSelf();
         if(sprite_index == spriteNormal || sprite_index == spriteHurt)
         {
-            draw_sprite_ext(spriteGun,0,x+gunPosX*image_xscale,y+gunPosY*image_yscale,gunDir,image_yscale,image_angle,c_white,image_alpha);
+            draw_sprite_ext(spriteGun,0,round(x+gunPosX*image_xscale),round(y+gunPosY*image_yscale),gunDir,image_yscale,image_angle,c_white,image_alpha);
         }
     }
 }
