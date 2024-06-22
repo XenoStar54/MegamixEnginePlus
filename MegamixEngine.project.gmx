@@ -5805,6 +5805,7 @@
         <sprite>sprites\sprOptionsMenuBG</sprite>
         <sprite>sprites\sprOptionsCursor</sprite>
         <sprite>sprites\sprControlconfigureScreen</sprite>
+        <sprite>sprites\sprControlconfigureScreenBig</sprite>
       </sprites>
       <sprites name="Map">
         <sprite>sprites\sprWilyCastle</sprite>
@@ -6673,6 +6674,7 @@
       <script>scripts\queueUnpause.gml</script>
       <script>scripts\AIdistCheck.gml</script>
       <script>scripts\awardAchievement.gml</script>
+      <script>scripts\convertInputToString.gml</script>
     </scripts>
     <scripts name="Discord">
       <script>scripts\discord_init_dll.gml</script>
