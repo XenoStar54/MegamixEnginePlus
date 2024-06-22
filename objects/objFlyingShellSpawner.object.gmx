@@ -30,6 +30,8 @@
 event_inherited();
 
 obj = objFlyingShell;
+code = "";
+followTargetY = 0;
 </string>
           </argument>
         </arguments>

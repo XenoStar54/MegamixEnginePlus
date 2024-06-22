@@ -33,6 +33,12 @@ if (showReady)
         readyTimer += 1;
     }
     
+    if(global.keySlide[playerID]) // quick respawn
+    {
+        readyTimer = 72;
+        if(audio_is_playing(sfxWhistle)) stopSFX(sfxWhistle);
+    }
+    
     var readyIndicator;
     readyIndicator = readyTimer mod 12;
     if (readyIndicator >= 6 && readyIndicator

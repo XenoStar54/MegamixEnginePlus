@@ -60,7 +60,7 @@ if (!isHit && iFrames == 0)
         // knockback speed:
         if (!playerIsLocked(PL_LOCK_MOVE))
         {
-            xspeed = image_xscale * -0.5;
+            xspeed = image_xscale * -0.4;
             yspeed = (-1.5 * gravDir) * (yspeed * gravDir <= 0);
         }
         

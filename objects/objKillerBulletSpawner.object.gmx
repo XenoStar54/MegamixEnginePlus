@@ -5,7 +5,7 @@
   <visible>0</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>prtEntity</parentName>
+  <parentName>objCustomSpawner</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,34 +25,31 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// Creation code (all optional):
+            <string>/// custom spawner configured to spawn objKillerBullet
 
 event_inherited();
+limit = 1;
+countOwn = true;
 
-healthpointsStart = 1;
-healthpoints = healthpointsStart;
-contactDamage = 0;
+followScreenEdgeX = 0;
+followTargetY = 1;
 
-blockCollision = 0;
-grav = 0;
+spawnWait = 64;
+startWait = spawnWait;
 
-// Enemy specific code
-canHit = 0;
+object = objKillerBullet;
+code = "col = 0;" // 0 = red; 1 = blue; 2 = orange
+
+init = 1;
 dir = -1;
-
-i = noone;
-
-timer = 0;
+col = -1;
 delay = 64;
-
-obj = objKillerBullet;
-col = 0; // 0 = red; 1 = blue; 2 = orange
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="3" enumb="1">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -71,33 +68,19 @@ col = 0; // 0 = red; 1 = blue; 2 = orange
             <kind>1</kind>
             <string>event_inherited();
 
-if (entityCanStep())
+if(init)
 {
-    if (dir == -1)
-    {
-        x = view_xview + view_wview;
-    }
-    if (dir == 1)
-    {
-        x = view_xview;
-    }
+    if(dir == 0 &amp;&amp; followScreenEdgeX == 0)
+        followScreenEdgeX = image_xscale;
+    else if(dir != 0 &amp;&amp; followScreenEdgeX == 0)
+        followScreenEdgeX = -dir;
     
-    if (!instance_exists(i))
-    {
-        timer++;
-        if (timer &gt;= delay)
-        {
-            i = instance_create(x, y, obj);
-            i.respawn = 0;
-            i.col = col;
-            
-            timer = 0;
-        }
-    }
-}
-else if (dead)
-{
-    timer = 0;
+    spawnWait = max(spawnWait,delay);
+    startWait = spawnWait;
+    
+    if(col != -1) code = "col = "+string(col)+";";
+    
+    init = 0;
 }
 </string>
           </argument>

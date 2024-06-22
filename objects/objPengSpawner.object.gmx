@@ -30,6 +30,7 @@
 event_inherited();
 
 obj = objPeng;
+code = "";
 </string>
           </argument>
         </arguments>

@@ -5,7 +5,7 @@
   <visible>0</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>prtEntity</parentName>
+  <parentName>objCustomSpawner</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,23 +25,24 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// Creation code (all optional):
-
-// A spawner that creates Swalloweggs from the side of the screen in front of you
+            <string>/// A spawner that creates Swalloweggs from the side of the screen in front of you
 
 event_inherited();
-grav = 0;
-blockCollision = false;
-obj = objSwallowegg;
 delay = 64;
-timer = delay;
-col = 0;
+
+spawnOnScreenEdgeLookedAtX = 1;
+object = objSwallowegg;
+spawnWait = 64;
+code = "col = 0";
+col = -1;
+
+init = 1;
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="3" enumb="1">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -59,40 +60,15 @@ col = 0;
           <argument>
             <kind>1</kind>
             <string>event_inherited();
-if (entityCanStep())
+
+if(init)
 {
-    // check which direction the target's facing, and move spawner to be in that direction
+    spawnWait = max(spawnWait,delay);
+    startWait = spawnWait;
     
-    // if there's no Swalloweggs, create a Swallowegg after a delay
-    if (!instance_exists(obj))
-    {
-        timer++;
-        if (timer &gt;= delay)
-        {
-            var spawnX = view_xview;
-            if (instance_exists(target))
-            {
-                if (target.image_xscale == 1)
-                {
-                    spawnX = view_xview + view_wview;
-                }
-                if (target.image_xscale == -1)
-                {
-                    spawnX = view_xview;
-                }
-            }
-            
-            var birb = instance_create(spawnX, y, obj);
-            birb.respawn = 0;
-            birb.col = col;
-            birb.target = target;
-            timer = 0;
-        }
-    }
-}
-else if (dead)
-{
-    timer = delay;
+    if(col != -1) code = "col = "+string(col)+";";
+    
+    init = 0;
 }
 </string>
           </argument>

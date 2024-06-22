@@ -81,6 +81,41 @@ shiftEdgeHorizontal = false;
 //@cc object should be shifted vertically to the nearest screen top/bottom edge when it is created?
 shiftEdgeVertical = false;
 
+//@cc should object spawn on target's x coordinate; this overwrites shiftEdgeHorizontal
+followTargetX = false;
+
+//@cc should object spawn on target's x coordinate; this overwrites shiftEdgeVertical
+followTargetY = false;
+
+//@cc if 1, the spawner will attach itself to the right screen edge, and if -1, to the left edge
+followScreenEdgeX = 0;
+
+//@cc if 1, the spawner will attach itself to the bottom screen edge, and if -1, to the top edge
+followScreenEdgeY = 0;
+
+//@cc if 1, the spawner will spawn the object at the screen edge the player is looking at
+// if -1, at the edge the player isn't looking at; ignores shiftEdgeHorizontal
+spawnOnScreenEdgeLookedAtX = 0;
+
+//@cc offset the spawned object
+// aside for shiftEdgeHorizontal and shiftEdgeVertical, spawner will try to spawn
+// objects in its center; this can be used to correct spawning position without
+// needing to move the spawner; this also works with followTargetX and Y
+spawnOffsetX = 0;
+spawnOffsetY = 0;
+
+//@cc the spawner's activation method
+activeMethod = 'A';
+// A - active if spawner is alive
+// V - active if target is vertically alligned with the spawner
+// H - active if target is horizontally alligned with the spawner
+// UP - active if target is vertically alligned with and above the spawner
+// DOWN - active if target is vertically alligned with and below the spawner
+// LEFT - active if target is horizontally alligned with and to the left of the spawner
+// RIGHT - active if target is horizontally alligned with and to the right of the spawner
+// IN - active if target is inside the spawner
+// you can stretch the spawner's hitbox to make detection easier
+
 // size of the spawned object list
 spawnN = 0;
 
@@ -88,7 +123,7 @@ spawnN = 0;
 spawnedCount = 0;
 
 alarm[0] = 1;
-spawnList = makeArray()
+spawnList = makeArray();
 canHit = false;
 image_speed = 0;
 </string>
@@ -118,6 +153,9 @@ image_speed = 0;
 if (entityCanStep())
 {
     timer -= 1;
+    
+    if(followScreenEdgeX != 0) x = (bboxGetXCenter()-x) + view_xview + view_wview*(followScreenEdgeX &gt; 0);
+    if(followScreenEdgeY != 0) y = (bboxGetYCenter()-y) + view_yview + view_hview*(followScreenEdgeY &gt; 0);
     
     // if counting own spawns, check if any have died:
     if (countOwn)
@@ -158,10 +196,62 @@ if (entityCanStep())
             allowSpawn = true;
         else if (countOwn &amp;&amp; spawnedCount &lt; limit)
             allowSpawn = true;
-        if (allowSpawn)
+        
+        // detection check
+        var detectionCheck = 0;
+        switch(activeMethod)
+        {
+            case 'A':
+                detectionCheck = 1;
+                break;
+            case 'V':
+                with(objMegaman) with(other)
+                {
+                    if(place_meeting(x,other.y,other)) detectionCheck = 1;
+                }
+                break;
+            case 'H':
+                with(objMegaman) with(other)
+                {
+                    if(place_meeting(other.x,y,other)) detectionCheck = 1;
+                }
+                break;
+            case 'UP':
+                with(objMegaman) with(other)
+                {
+                    if(place_meeting(x,other.y,other) &amp;&amp; bbox_bottom &lt;= other.bbox_bottom) detectionCheck = 1;
+                }
+                break;
+            case 'DOWN':
+                with(objMegaman) with(other)
+                {
+                    if(place_meeting(x,other.y,other) &amp;&amp; bbox_top &gt;= other.bbox_top) detectionCheck = 1;
+                }
+                break;
+            case 'LEFT':
+                with(objMegaman) with(other)
+                {
+                    if(place_meeting(other.x,y,other) &amp;&amp; bbox_right &lt;= other.bbox_right) detectionCheck = 1;
+                }
+                break;
+            case 'RIGHT':
+                with(objMegaman) with(other)
+                {
+                    if(place_meeting(other.x,y,other) &amp;&amp; bbox_left &gt;= other.bbox_left) detectionCheck = 1;
+                }
+                break;
+            case 'IN':
+                with(objMegaman) with(other)
+                {
+                    if(place_meeting(x,y,other)) detectionCheck = 1;
+                }
+                break;
+        }
+        
+        if (allowSpawn &amp;&amp; detectionCheck)
         {
             // spawn the object:
-            var obj = instance_create(x + 8, y + 8, object);
+            var obj = instance_create(bboxGetXCenter()+spawnOffsetX, bboxGetYCenter()+spawnOffsetY, object);
             
             // keep tally if counting own:
             if (countOwn)
@@ -187,6 +277,24 @@ if (entityCanStep())
                         makeArray(view_yview[0] - (bbox_bottom - y) + 1,
                         view_yview[0] + view_hview[0] + (y - bbox_top) - 1),
                         y);
+                }
+                if(other.followTargetX)
+                {
+                    if(other.target) x = other.target.x + other.spawnOffsetX;
+                }
+                if(other.followTargetY)
+                {
+                    if(other.target) y = other.target.y + other.spawnOffsetY;
+                }
+                if(other.spawnOnScreenEdgeLookedAtX != 0)
+                {
+                    if(other.target)
+                    {
+                        var _dir = sign(other.target.image_xscale) * sign(other.spawnOnScreenEdgeLookedAtX);
+                        
+                        x = (view_xview[0] + view_wview[0] + (x - bbox_left) - 1)*(_dir == 1)
+                            + (view_xview[0] - (bbox_right - x) + 1)*(_dir == -1);
+                    }
                 }
                 
                 // setup
@@ -249,41 +357,8 @@ timer = startWait;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/* You shouldn't have seen this! It is 2spooky4u and a skeleton is inside you now.
-
-´´´´´´´´´´´´´´´´´´´ ¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶´´´´´´´´´´´´´´´´´´´`
-´´´´´´´´´´´´´´´´´¶¶¶¶¶¶´´´´´´´´´´´´´¶¶¶¶¶¶¶´´´´´´´´´´´´´´´´
-´´´´´´´´´´´´´´¶¶¶¶´´´´´´´´´´´´´´´´´´´´´´´¶¶¶¶´´´´´´´´´´´´´´
-´´´´´´´´´´´´´¶¶¶´´´´´´´´´´´´´´´´´´´´´´´´´´´´´¶¶´´´´´´´´´´´´
-´´´´´´´´´´´´¶¶´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´¶¶´´´´´´´´´´´
-´´´´´´´´´´´¶¶´´´´´´´´´´´´´´´´´´´´´`´´´´´´´´´´´¶¶´´´´´´´´´´`
-´´´´´´´´´´¶¶´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´¶¶´´´´´´´´´´
-´´´´´´´´´´¶¶´¶¶´´´´´´´´´´´´´´´´´´´´´´´´´´´´´¶¶´¶¶´´´´´´´´´´
-´´´´´´´´´´¶¶´¶¶´´´´´´´´´´´´´´´´´´´´´´´´´´´´´¶¶´´¶´´´´´´´´´´
-´´´´´´´´´´¶¶´¶¶´´´´´´´´´´´´´´´´´´´´´´´´´´´´´¶¶´´¶´´´´´´´´´´
-´´´´´´´´´´¶¶´´¶¶´´´´´´´´´´´´´´´´´´´´´´´´´´´´¶¶´¶¶´´´´´´´´´´
-´´´´´´´´´´¶¶´´¶¶´´´´´´´´´´´´´´´´´´´´´´´´´´´¶¶´´¶¶´´´´´´´´´´
-´´´´´´´´´´´¶¶´¶¶´´´¶¶¶¶¶¶¶¶´´´´´¶¶¶¶¶¶¶¶´´´¶¶´¶¶´´´´´´´´´´´
-´´´´´´´´´´´´¶¶¶¶´¶¶¶¶¶¶¶¶¶¶´´´´´¶¶¶¶¶¶¶¶¶¶´¶¶¶¶¶´´´´´´´´´´´
-´´´´´´´´´´´´´¶¶¶´¶¶¶¶¶¶¶¶¶¶´´´´´¶¶¶¶¶¶¶¶¶¶´¶¶¶´´´´´´´´´´´´´
-´´´´¶¶¶´´´´´´´¶¶´´¶¶¶¶¶¶¶¶´´´´´´´¶¶¶¶¶¶¶¶¶´´¶¶´´´´´´¶¶¶¶´´´
-´´´¶¶¶¶¶´´´´´¶¶´´´¶¶¶¶¶¶¶´´´¶¶¶´´´¶¶¶¶¶¶¶´´´¶¶´´´´´¶¶¶¶¶¶´´
-´´¶¶´´´¶¶´´´´¶¶´´´´´¶¶¶´´´´¶¶¶¶¶´´´´¶¶¶´´´´´¶¶´´´´¶¶´´´¶¶´´
-´¶¶¶´´´´¶¶¶¶´´¶¶´´´´´´´´´´¶¶¶¶¶¶¶´´´´´´´´´´¶¶´´¶¶¶¶´´´´¶¶¶´
-¶¶´´´´´´´´´¶¶¶¶¶¶¶¶´´´´´´´¶¶¶¶¶¶¶´´´´´´´¶¶¶¶¶¶¶¶¶´´´´´´´´¶¶
-¶¶¶¶¶¶¶¶¶´´´´´¶¶¶¶¶¶¶¶´´´´¶¶¶¶¶¶¶´´´´¶¶¶¶¶¶¶¶´´´´´´¶¶¶¶¶¶¶¶
-´´¶¶¶¶´¶¶¶¶¶´´´´´´¶¶¶¶¶´´´´´´´´´´´´´´¶¶¶´¶¶´´´´´¶¶¶¶¶¶´¶¶¶´
-´´´´´´´´´´¶¶¶¶¶¶´´¶¶¶´´¶¶´´´´´´´´´´´¶¶´´¶¶¶´´¶¶¶¶¶¶´´´´´´´´
-´´´´´´´´´´´´´´¶¶¶¶¶¶´¶¶´¶¶¶¶¶¶¶¶¶¶¶´¶¶´¶¶¶¶¶¶´´´´´´´´´´´´´´
-´´´´´´´´´´´´´´´´´´¶¶´¶¶´¶´¶´¶´¶´¶´¶´¶´¶´¶¶´´´´´´´´´´´´´´´´´
-´´´´´´´´´´´´´´´´¶¶¶¶´´¶´¶´¶´¶´¶´¶´¶´¶´´´¶¶¶¶¶´´´´´´´´´´´´´´
-´´´´´´´´´´´´¶¶¶¶¶´¶¶´´´¶¶¶¶¶¶¶¶¶¶¶¶¶´´´¶¶´¶¶¶¶¶´´´´´´´´´´´´
-´´´´¶¶¶¶¶¶¶¶¶¶´´´´´¶¶´´´´´´´´´´´´´´´´´¶¶´´´´´´¶¶¶¶¶¶¶¶¶´´´´
-´´´¶¶´´´´´´´´´´´¶¶¶¶¶¶¶´´´´´´´´´´´´´¶¶¶¶¶¶¶¶´´´´´´´´´´¶¶´´´
-´´´´¶¶¶´´´´´¶¶¶¶¶´´´´´¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶´´´´´¶¶¶¶¶´´´´´¶¶¶´´´´
-´´´´´´¶¶´´´¶¶¶´´´´´´´´´´´¶¶¶¶¶¶¶¶¶´´´´´´´´´´´¶¶¶´´´¶¶´´´´´´
-´´´´´´¶¶´´¶¶´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´¶¶´´¶¶´´´´´´
-´´´´´´´¶¶¶¶´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´´¶¶¶¶´´´´´´´
+            <string>// stop FUCKING OVERWRITING DRAW CODES GODDAMMIT
+event_inherited();
 </string>
           </argument>
         </arguments>

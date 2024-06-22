@@ -25,7 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited();
+            <string>/// if you want your object to follow rails, look here
+// when you want something to follow rails,
+// first, run this script in create, right after event_inherited():
+//  event_perform_object(prtRailPlatform, ev_create, 0);
+// then, whenever you want your entity to follow rails, run this in step:
+//  event_perform_object(prtRailPlatform, ev_step, ev_step_normal);
+
+event_inherited();
 canHit = false;
 
 isSolid = 2;

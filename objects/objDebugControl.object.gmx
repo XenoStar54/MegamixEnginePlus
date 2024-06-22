@@ -57,6 +57,14 @@ elementScript = scrNoEffect;
 elementCode = "";
 bossCheckpointX = -1;
 bossCheckpointY = -1;
+
+// game time
+gameTimeOptionSel = 0;
+gameTimeEnabled = 0;
+gameTimeOption[0] = global.gameSpeed;
+gameTimeOption[1] = global.gameSpeed*2;
+gameTimeOption[2] = 5;
+gameTimeOption[3] = global.gameSpeed/2;
 </string>
           </argument>
         </arguments>
@@ -280,6 +288,24 @@ if (global.alwaysHealth)
         global.playerHealth[playerID] = 28;
     }
 }
+
+// game time settings
+if(keyboard_check_pressed(ord('4')))
+{
+    gameTimeEnabled = !gameTimeEnabled;
+    gameTimeOptionSel = 0;
+    room_speed = gameTimeOption[0];
+}
+
+if(gameTimeEnabled)
+{
+    // change room speed
+    if(keyboard_check_pressed(vk_shift)) gameTimeOptionSel++;
+    if(keyboard_check_pressed(vk_control)) gameTimeOptionSel--;
+    if(gameTimeOptionSel &gt;= array_length_1d(gameTimeOption)) gameTimeOptionSel = 0;
+    if(gameTimeOptionSel &lt; 0) gameTimeOptionSel = array_length_1d(gameTimeOption)-1;
+    room_speed = gameTimeOption[gameTimeOptionSel];
+}
 </string>
           </argument>
         </arguments>
@@ -425,6 +451,34 @@ if (infoScreen == 2)
     draw_set_halign(fa_left);
     draw_set_color(c_white);
     draw_text_ext(view_xview[0] + 4, view_yview[0] + 4 - scroll, lockPoolDebugString(), 12, view_wview[0] - 8)
+}
+
+// Debug - game time
+if (gameTimeEnabled)
+{
+    draw_set_color(c_ltgray);
+    draw_set_alpha(0.4);
+    draw_rectangle(view_xview[0],view_yview[0],view_xview[0]+view_wview,view_yview[0]+24,0);
+    draw_rectangle(view_xview[0],view_yview[0]+view_hview,view_xview[0]+view_wview,view_yview[0]+view_hview-16,0);
+    draw_set_alpha(1);
+    draw_set_valign(fa_top);
+    draw_set_halign(fa_left);
+    draw_set_color(c_white);
+    draw_text(view_xview[0] + 4, view_yview[0] + 4,"change game speed#with shift and ctrl");
+    var word = "normal";
+    switch(gameTimeOptionSel)
+    {
+        case 1:
+            word = "double";
+            break;
+        case 2:
+            word = "hyperslow";
+            break;
+        case 3:
+            word = "half";
+            break;
+    }
+    draw_text(view_xview[0] + 4, view_yview[0] + view_hview - 12,"game speed: "+word);
 }
 
 // recording / playback sign

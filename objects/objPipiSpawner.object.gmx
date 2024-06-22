@@ -31,6 +31,7 @@ event_inherited();
 
 obj = objPipi;
 col = 0; // 0 = red, 1 = orange, 2 = yellow
+followTargetY = 0;
 </string>
           </argument>
         </arguments>

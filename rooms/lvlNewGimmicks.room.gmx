@@ -418,6 +418,7 @@ with(objPUSwitchConveyor) myFlag = 1;</code>
     <instance objName="objSolid" x="2512" y="160" name="inst_D32A549C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objCrackingBlock" x="2448" y="160" name="inst_12C93565" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objCrackingBlock" x="2432" y="160" name="inst_0639370E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objCustomSpawner" x="96" y="16" name="inst_8F34272B" locked="0" code="visible = true;&#xA;spawnWait = 30;&#xA;followTargetX = true;&#xA;spawnOffsetX = -8;&#xA;spawnOffsetY = 16;&#xA;activeMethod = 'V';&#xA;" scaleX="4" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="tstChallenge" x="1232" y="176" w="16" h="16" xo="0" yo="0" id="11482243" name="inst_0F5D35D2" depth="10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
