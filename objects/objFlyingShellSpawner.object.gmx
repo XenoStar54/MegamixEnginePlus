@@ -29,7 +29,7 @@
 
 event_inherited();
 
-obj = objFlyingShell;
+object = objFlyingShell;
 code = "";
 followTargetY = 0;
 </string>

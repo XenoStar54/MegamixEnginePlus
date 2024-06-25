@@ -74,6 +74,10 @@ prevRail = noone;
 bumped = false;
 
 fallMomentum = 0.25;
+
+// used to be able to overlap rails without having them tangle up
+// if railAlliance isn't -1, platforms will only ride on rails with matching railAlliance
+railAlliance = -1;
 </string>
           </argument>
         </arguments>
@@ -139,6 +143,7 @@ if (init)
 if (entityCanStep())
 {
     bumped = false;
+    event_user(0);
     event_user(0);
     
     if (dir == "none")
@@ -663,7 +668,7 @@ if (entityCanStep())
     yprevious = y;
     
     if (blockCollision) generalCollision(1);
-    else railCollision(doRailCollision);
+    railCollision(doRailCollision);
     
     entityPlatform();
 }
@@ -741,7 +746,7 @@ image_xscale=1.0/sprite_get_width(sprite_index);
 
 if(dir == "send")
 {
-    with (prtRail)
+    with (prtRail) if(railAlliance == other.railAlliance || railAlliance == -1 || other.railAlliance == -1)
     {
         var quit = false;
         with (other)
@@ -756,7 +761,7 @@ if(dir == "send")
         }
     }
 }
-else with (prtRail)
+else with (prtRail) if(railAlliance == other.railAlliance || railAlliance == -1 || other.railAlliance == -1)
 {
     var quit = false;
     with (other)
@@ -795,6 +800,12 @@ if (lastRail == noone &amp;&amp; dir != "send")
     lastRail = collision_rectangle(left, top, right, bottom, prtRail, true, true);
     if (lastRail == noone)
         lastRail = collision_line(x + xOffset, y + yOffset, xprevious + xOffset, yprevious + yOffset, prtRail, true, true);
+    
+    if(lastRail != noone)
+    {
+        if(railAlliance != -1 &amp;&amp; lastRail.railAlliance != -1 &amp;&amp; railAlliance != lastRail.railAlliance)
+            lastRail = noone;
+    }
 }
 </string>
           </argument>

@@ -76,8 +76,7 @@ if (!playerIsLocked(PL_LOCK_CLIMB))
             
             climbLock = lockPoolLock(PL_LOCK_MOVE,
                 PL_LOCK_SLIDE,
-                PL_LOCK_GRAVITY,
-                PL_LOCK_TURN);
+                PL_LOCK_GRAVITY);
             climbLock.targetInstance = id
             climbLock.debugInfo += "<playerHandleClimbing"
             
@@ -175,7 +174,7 @@ if (!playerIsLocked(PL_LOCK_CLIMB))
             jumpCounter = !jumpUpLadders;
             climbLock = lockPoolRelease(climbLock);
             shootStandStillLock = lockPoolRelease(shootStandStillLock);
-            image_xscale = ladderXScale;
+            // image_xscale = ladderXScale;
             if(climbedUp) // drastic af actions
             {
                 ground = true;

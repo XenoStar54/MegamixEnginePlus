@@ -28,6 +28,9 @@
             <string>//Health sharing in Room Start
 event_inherited();
 event_perform_object(prtRail, ev_create, 0);
+event_perform_object(prtRailPlatform, ev_create, 0);
+
+canHit = true;
 
 numberOfRounder = 1;
 hitInvun = 1;

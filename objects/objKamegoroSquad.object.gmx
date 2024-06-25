@@ -51,11 +51,49 @@ radius = 20;
 spd = 4;
 bigSpd = 6;
 
+timeDir = 1;
+
 penetrate = 2;
 pierces = 2;
 
+shiftVisible = 2;
+
 ignoreProjectiles[0] = objGloop;
 ignoreProjectiles[1] = objGloopBall;
+
+distX = 0;
+distY = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>event_inherited();
+
+if(type == 1 &amp;&amp; parent)
+{
+    distX = bboxGetXCenterObject(parent) + cos(degtorad(angle) + 2*pi*timer/period)*radius;
+    distY = bboxGetYCenterObject(parent) - sin(degtorad(angle) + 2*pi*timer/period)*radius;
+    x = distX;
+    y = distY;
+}
 </string>
           </argument>
         </arguments>
@@ -88,9 +126,9 @@ event_inherited();
 
 if (entityCanStep())
 {
-    if(type &gt; 0) timer++;
-    var distX = bboxGetXCenterObject(parent) + image_xscale*cos(degtorad(angle) + 2*pi*timer/period)*radius;
-    var distY = bboxGetYCenterObject(parent) - image_yscale*sin(degtorad(angle) + 2*pi*timer/period)*radius;
+    if(type &gt; 0) timer += timeDir;
+    distX = bboxGetXCenterObject(parent) + cos(degtorad(angle) + 2*pi*timer/period)*radius;
+    distY = bboxGetYCenterObject(parent) - sin(degtorad(angle) + 2*pi*timer/period)*radius;
     if(type == 0) // prepare
     {
         canHit = true;
@@ -136,10 +174,11 @@ if (entityCanStep())
             pierces = 1;
             penetrate = 0;
             canHit = false;
-            despawnRange = saveDespawnRange;
             if(!inWater)
             {
                 yspeed = -6*image_yscale;
+                despawnRange = saveDespawnRange;
+                shiftVisible = 0;
             }
             playSFX(sfxMM3Explode);
             image_index = 3;
@@ -195,11 +234,14 @@ if (entityCanStep())
             else
             {
                 grav = 0.25*image_yscale;
-                if(ground) yspeed = -6;
-                if(target) calibrateDirection();
-                else
+                if(ground)
                 {
-                    if(checkSolid(image_xscale,0) &amp;&amp; !(instance_exists(objLadder) &amp;&amp; place_meeting(x+image_xscale,y,objLadder))) image_xscale *= -1;
+                    yspeed = -6;
+                    if(target) calibrateDirection();
+                }
+                if(!target)
+                {
+                    if(xcoll != 0) image_xscale *= -1;
                 }
                 xspeed = image_xscale*2;
                 image_index = 3;
@@ -244,6 +286,7 @@ if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT))
         {
             i.x = bboxGetXCenter();
             i.y = bboxGetYCenter();
+            i.timeDir = image_xscale;
             for(var j = 1; j &lt;= 3; j++)
             {
                 var k = fireWeapon(0, 0, objKamegoroSquad, 4, 0, 2, 1);
@@ -252,6 +295,7 @@ if (global.keyShootPressed[playerID] &amp;&amp; !playerIsLocked(PL_LOCK_SHOOT))
                     k.x = bboxGetXCenter();
                     k.y = bboxGetYCenter();
                     k.angle = 90*j;
+                    k.timeDir = image_xscale;
                 }
             }
             playSFX(sfxCrashBombArm);

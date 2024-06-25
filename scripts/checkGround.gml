@@ -49,16 +49,51 @@ with (objSolid)
 }
 
 // Stoppers are only solid for the object_index they have stored
+// unless inverted
 with (objGenericStopper)
 {
-    solid=0;
+    var tempSolid = 0;
+    
     if(isGround)
     {
-        if (other.object_index == objectToStop || object_is_ancestor(other.object_index, objectToStop))
+        if(is_array(objectToStop))
         {
-            solid = 1;
+            tempSolid = isSolid * invertBlockingSettings;
+            for(var i = 0; i < array_length_1d(objectToStop); i++)
+            {
+                if(other.object_index == objectToStop[i] || object_is_ancestor(other.object_index, objectToStop[i]))
+                {
+                    tempSolid = isSolid * !invertBlockingSettings;
+                    i = array_length_1d(objectToStop);
+                }
+            }
+        }
+        else
+        {
+            if (other.object_index == objectToStop || object_is_ancestor(other.object_index, objectToStop))
+            {
+                tempSolid = isSolid * !invertBlockingSettings;
+            }
+            else
+            {
+                tempSolid = isSolid * invertBlockingSettings;
+            }
+        }
+        
+        if(tempSolid == 2)
+        {
+            tempSolid = 0;
+            if (!place_meeting(x, y + cgrav, myid))
+            {
+                if (place_meeting(x, y - cgrav * slp, myid))
+                {
+                    tempSolid = 1;
+                }
+            }
         }
     }
+    
+    solid = tempSolid;
 }
 if (dieToSpikes) // entities with this variable set to "true" die when coming in contact with spikes
 {

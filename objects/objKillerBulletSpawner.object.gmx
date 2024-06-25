@@ -44,6 +44,8 @@ init = 1;
 dir = -1;
 col = -1;
 delay = 64;
+
+countTimeOnlyWhenLimitNotFull = true;
 </string>
           </argument>
         </arguments>

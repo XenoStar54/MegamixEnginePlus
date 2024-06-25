@@ -75,6 +75,9 @@ scriptArgV = makeArray(0);
 // then the spawner will create a bullet moving left.
 code = "";
 
+//@cc if true and the spawner has hit its limit, it will not count down its timer
+countTimeOnlyWhenLimitNotFull = false;
+
 //@cc object should be shifted horizontally to the nearest screen left/right edge when it is created?
 shiftEdgeHorizontal = false;
 
@@ -152,8 +155,6 @@ image_speed = 0;
 
 if (entityCanStep())
 {
-    timer -= 1;
-    
     if(followScreenEdgeX != 0) x = (bboxGetXCenter()-x) + view_xview + view_wview*(followScreenEdgeX &gt; 0);
     if(followScreenEdgeY != 0) y = (bboxGetYCenter()-y) + view_yview + view_hview*(followScreenEdgeY &gt; 0);
     
@@ -183,11 +184,8 @@ if (entityCanStep())
     }
     
     // attempt to spawn an object:
-    if (timer &lt;= 0)
+    if (true)
     {
-        // reset timer
-        timer = spawnWait;
-        
         // determine if constraints allow us to spawn an object:
         var allowSpawn = false;
         if (limit == 0)
@@ -196,6 +194,9 @@ if (entityCanStep())
             allowSpawn = true;
         else if (countOwn &amp;&amp; spawnedCount &lt; limit)
             allowSpawn = true;
+        
+        if(allowSpawn || !countTimeOnlyWhenLimitNotFull)
+            timer -= 1;
         
         // detection check
         var detectionCheck = 0;
@@ -248,8 +249,12 @@ if (entityCanStep())
                 break;
         }
         
-        if (allowSpawn &amp;&amp; detectionCheck)
+        // now we can actually spawn an object
+        if (allowSpawn &amp;&amp; detectionCheck &amp;&amp; timer &lt;= 0)
         {
+            // reset timer
+            timer = spawnWait;
+            
             // spawn the object:
             var obj = instance_create(bboxGetXCenter()+spawnOffsetX, bboxGetYCenter()+spawnOffsetY, object);
             

@@ -102,8 +102,7 @@ if global.difficulty &lt; DIFF_NORMAL
     <instance objName="objLiftEnd" x="16" y="320" name="inst_13C51C17" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objLiftRail" x="32" y="320" name="inst_1A6F47AC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objLiftHole" x="48" y="320" name="inst_8492AB06" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objLiftRail" x="64" y="336" name="inst_0552C0C6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="objGutsMan" x="3776" y="1136" name="inst_21DADED4" locked="0" code="music = &quot;Mega_Man_1.nsf&quot;;&#xA;musicType = &quot;VGM&quot;;&#xA;musicTrackNumber = 8;&#xA;introType = 2;&#xA;&#xA;elementName = &quot;guts&quot;;&#xA;elementCode = &quot;weaponReward(objRushJet); weaponReward(objSuperArm);&quot;;&#xA;&#xA;isHard = global.difficulty == DIFF_HARD;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objGutsMan" x="3776" y="1136" name="inst_21DADED4" locked="0" code="music = &quot;Mega_Man_1.nsf&quot;;&#xA;musicType = &quot;VGM&quot;;&#xA;musicTrackNumber = 8;&#xA;introType = 2;&#xA;&#xA;elementName = &quot;guts&quot;;&#xA;elementCode = &quot;weaponReward(objRushJet); weaponReward(objSuperArm);&quot;;&#xA;&#xA;isHard = global.difficulty == DIFF_HARD;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBGColourChanger" x="2832" y="976" name="inst_A2F819A8" locked="0" code="colour = global.nesPalette[54];&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSpike" x="96" y="256" name="inst_D4421D7C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objLadder" x="96" y="272" name="inst_21BA351F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -161,7 +160,7 @@ if global.difficulty &lt; DIFF_NORMAL
     <instance objName="objDestroyField" x="320" y="96" name="inst_E84C2139" locked="0" code="if global.difficulty &lt; DIFF_HARD&#xA;{&#xA;    instance_destroy();&#xA;}" scaleX="2" scaleY="9" colour="4294967295" rotation="0"/>
     <instance objName="objDestroyField" x="288" y="144" name="inst_2BABBD31" locked="0" code="destroyEntities = false;&#xA;if global.difficulty &lt; DIFF_HARD&#xA;{&#xA;    instance_destroy();&#xA;}" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="objLifeEnergySmall" x="296" y="160" name="inst_DCC63713" locked="0" code="if global.difficulty &lt; DIFF_HARD&#xA;{&#xA;    instance_destroy();&#xA;}&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objDrillBoulderSpawner" x="80" y="16" name="inst_84E58B15" locked="0" code="if global.difficulty &lt; DIFF_HARD&#xA;{&#xA;    instance_destroy();&#xA;}&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objDrillBoulderSpawner" x="80" y="16" name="inst_84E58B15" locked="0" code="if global.difficulty &lt; DIFF_HARD&#xA;{&#xA;    instance_destroy();&#xA;}" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objDefaultSpawn" x="16" y="176" name="inst_4A636CAB" locked="0" code="if global.difficulty &lt; DIFF_HARD&#xA;{&#xA;    instance_destroy();&#xA;}" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objDrillBoulderSpawner" x="1360" y="16" name="inst_F582DDA1" locked="0" code="if global.difficulty &lt; DIFF_HARD&#xA;{&#xA;    instance_destroy();&#xA;}&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objDrillBoulderSpawner" x="1872" y="16" name="inst_E95B86CC" locked="0" code="if global.difficulty &lt; DIFF_HARD&#xA;{&#xA;    instance_destroy();&#xA;}&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -177,7 +176,7 @@ if global.difficulty &lt; DIFF_NORMAL
     <instance objName="objMM1Met" x="2416" y="320" name="inst_15425649" locked="0" code="if global.difficulty &lt; DIFF_HARD&#xA;{&#xA;    instance_destroy();&#xA;}&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objMM1Met" x="2416" y="896" name="inst_8316AC52" locked="0" code="if global.difficulty &lt; DIFF_HARD&#xA;{&#xA;    instance_destroy();&#xA;}&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objMM1Met" x="2416" y="1072" name="inst_A090201D" locked="0" code="if global.difficulty &lt; DIFF_HARD&#xA;{&#xA;    instance_destroy();&#xA;}&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objMM1Met" x="3040" y="1008" name="inst_D9FCA875" locked="0" code="if global.difficulty &lt; DIFF_HARD&#xA;{&#xA;    instance_destroy();&#xA;}&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objMM1Met" x="3040" y="1008" name="inst_D9FCA875" locked="0" code="if global.difficulty &lt; DIFF_HARD&#xA;{&#xA;    instance_destroy();&#xA;}" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objMM1Met" x="3264" y="1008" name="inst_32FB4D68" locked="0" code="if global.difficulty &lt; DIFF_HARD&#xA;{&#xA;    instance_destroy();&#xA;}&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSuperArmBlock2x2" x="3616" y="1120" name="inst_21F6DF6F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSuperArmBlock2x2" x="3648" y="1120" name="inst_C32161E8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -314,6 +313,29 @@ if global.difficulty &lt; DIFF_NORMAL
     <instance objName="objSolid" x="3568" y="1120" name="inst_D25E2375" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSolid" x="3584" y="1120" name="inst_5A8AAB1D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSolid" x="3600" y="1120" name="inst_3397FDCA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRailBumper" x="496" y="64" name="inst_3361ABC5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRailBumper" x="768" y="64" name="inst_2B4F3EA0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRailBumper" x="624" y="128" name="inst_A97D9067" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRailBumper" x="896" y="128" name="inst_84ABDAB0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRailBumper" x="752" y="192" name="inst_ECC6C2D9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRailBumper" x="1104" y="192" name="inst_1D59732D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRailHorizontal" x="1088" y="192" name="inst_03D762FA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRailHorizontal" x="1024" y="192" name="inst_F607885D" locked="0" code="" scaleX="3" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRailHorizontal" x="960" y="192" name="inst_5564E3F4" locked="0" code="" scaleX="3" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRailHorizontal" x="896" y="192" name="inst_2CA166E9" locked="0" code="" scaleX="3" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRailHorizontal" x="832" y="192" name="inst_27025A8D" locked="0" code="" scaleX="3" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRailHorizontal" x="768" y="192" name="inst_4507CCA9" locked="0" code="" scaleX="3" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRailHorizontal" x="880" y="128" name="inst_B0D5AC1A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRailHorizontal" x="752" y="128" name="inst_1BCDC244" locked="0" code="" scaleX="7" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRailHorizontal" x="640" y="128" name="inst_2C025059" locked="0" code="" scaleX="6" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRailHorizontal" x="512" y="64" name="inst_70D88878" locked="0" code="" scaleX="16" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRailHorizontalHole" x="736" y="128" name="inst_4D1A3890" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRailHorizontalHole" x="864" y="128" name="inst_BB6B2582" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRailHorizontalHole" x="816" y="192" name="inst_3B4EB5B4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRailHorizontalHole" x="880" y="192" name="inst_47D208CC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRailHorizontalHole" x="944" y="192" name="inst_D4488633" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRailHorizontalHole" x="1008" y="192" name="inst_C8777426" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRailHorizontalHole" x="1072" y="192" name="inst_41FBB3D2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="tstGutsman" x="3600" y="992" w="16" h="16" xo="80" yo="32" id="11310268" name="inst_60BE594C" depth="1000010" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

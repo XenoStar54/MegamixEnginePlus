@@ -54,6 +54,15 @@ if(_doRailCollision && instance_exists(lastRail))
     with(prtRail)
     {
         solid = 1;
+        
+        if(dir == 0 && (other.dir == "up" || other.dir == "down"))
+        {
+            solid = 0;
+        }
+        if(dir == 1 && (other.dir == "left" || other.dir == "right"))
+        {
+            solid = 0;
+        }
     }
     // perform steps forward
     var stepCount = 4;

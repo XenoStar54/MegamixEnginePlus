@@ -34,7 +34,14 @@ event_inherited();
 isSolid = true;
 
 //@cc how long until it starts looking for minibosses/bosses
-delay = 32;
+delay = 24;
+
+//@cc: here you can add an extra object that it will search for
+objectToCheckFor = noone;
+// this can be used as an array, like so:
+// objectToCheckFor[0] = objMM4ShieldAttacker;
+// objectToCheckFor[1] = objShieldGuard;
+// objectToCheckFor[2] = objShieldAttackerGTR;
 
 active = 1;
 
@@ -57,6 +64,8 @@ if(place_meeting(x,y,objSpike))
 {
     isSolid=0;
 }
+
+countdown = 24;
 </string>
           </argument>
         </arguments>
@@ -90,16 +99,38 @@ if (!global.frozen &amp;&amp; !instance_exists(objSectionSwitcher))
         bossThere = 1;
     }
     
+    if(objectToCheckFor != noone)
+    { 
+        if(is_array(objectToCheckFor))
+        {
+            for(var i = 0; i &lt; array_length_1d(objectToCheckFor); i++)
+            {
+                with(objectToCheckFor[i])
+                {
+                    if(!dead)
+                    {
+                        bossThere = 1;
+                        i = array_length_1d(objectToCheckFor);
+                    }
+                }
+            }
+        }
+        else with(objectToCheckFor)
+        {
+            if(!dead) bossThere = 1;
+        }
+    }
+    
     if (active)
     {
         if (bossThere)
         {
-            delay = 24;
+            countdown = delay;
         }
         else if (insideView())
         {
-            delay -= 1;
-            if (!delay)
+            countdown -= 1;
+            if (!countdown)
             {
                 event_user(0);
             }

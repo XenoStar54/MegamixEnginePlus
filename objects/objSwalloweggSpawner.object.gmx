@@ -37,6 +37,9 @@ code = "col = 0";
 col = -1;
 
 init = 1;
+
+limit = 1;
+countTimeOnlyWhenLimitNotFull = true;
 </string>
           </argument>
         </arguments>

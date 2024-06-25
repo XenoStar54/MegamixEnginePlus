@@ -51,6 +51,10 @@ receiveDir = "";
 sendDestinationX = x;
 sendDestinationY = y;
 multSendSpd = 1;
+
+// used to be able to overlap rails without having them tangle up
+// if railAlliance isn't -1, platforms will only ride on rails with matching railAlliance
+railAlliance = -1;
 </string>
           </argument>
         </arguments>

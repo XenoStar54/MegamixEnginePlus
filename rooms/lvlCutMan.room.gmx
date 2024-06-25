@@ -10,7 +10,8 @@
   <persistent>0</persistent>
   <colour>14215168</colour>
   <showcolour>-1</showcolour>
-  <code>playMusic("Mega_Man_1.nsf", "VGM", 2, 0, 0, 0, 1);</code>
+  <code>playMusic("Mega_Man_1.nsf", "VGM", 2, 0, 0, 0, 1);
+with(objSuperArmBlock) isSolid = 1;</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
@@ -163,11 +164,11 @@
     <instance objName="objBlader" x="416" y="2000" name="inst_79EEB713" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSuperArmBlock" x="128" y="2080" name="inst_04A5C71F" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="objSuperArmBlock" x="160" y="2048" name="inst_35AA27F0" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
-    <instance objName="objSuperArmBlock" x="160" y="2080" name="inst_A35BA37E" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objSuperArmBlock" x="160" y="2080" name="inst_A35BA37E" locked="0" code="isSolid = 1;&#xA;" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="objSuperArmBlock" x="128" y="1984" name="inst_2D03944D" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="objSuperArmBlock" x="384" y="1984" name="inst_78D4EB9A" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="objSuperArmBlock" x="416" y="2048" name="inst_A0CC4FF1" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
-    <instance objName="objSuperArmBlock" x="416" y="2080" name="inst_AB87AA60" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objSuperArmBlock" x="416" y="2080" name="inst_AB87AA60" locked="0" code="isSolid = 1;&#xA;" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="objSuperArmBlock" x="384" y="2080" name="inst_C8BD2247" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="objSuperArmBlock2x2" x="640" y="2016" name="inst_8EBD5CF2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSuperArmBlock2x2" x="1152" y="1056" name="inst_DADA9341" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -175,9 +176,9 @@
     <instance objName="objSuperArmBlock2x2" x="1312" y="608" name="inst_BFE959D9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSuperArmBlock2x2" x="1376" y="368" name="inst_7E361A49" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSuperArmBlock2x2" x="1824" y="848" name="inst_7BE86A67" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objSuperArmBlock2x2" x="1856" y="848" name="inst_A6A7F688" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objSuperArmBlock2x2" x="1856" y="848" name="inst_A6A7F688" locked="0" code="isSolid = 1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSuperArmBlock2x2" x="1856" y="880" name="inst_D6FB1301" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objSuperArmBlock2x2" x="1888" y="880" name="inst_575BCC6A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objSuperArmBlock2x2" x="1888" y="880" name="inst_575BCC6A" locked="0" code="isSolid = 1;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSuperArmBlock2x2" x="3104" y="880" name="inst_4686B773" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSuperArmBlock2x2" x="3136" y="880" name="inst_84117DB0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objVerticalScrolling" x="768" y="1680" name="inst_C80D2D99" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

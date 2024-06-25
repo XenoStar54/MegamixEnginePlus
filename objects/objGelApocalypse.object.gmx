@@ -51,6 +51,8 @@ timeout = 300;
 
 distX = 0;
 distY = 0;
+
+shiftVisible = 2;
 </string>
           </argument>
         </arguments>
@@ -146,6 +148,7 @@ if(entityCanStep())
             {
                 parent.isShoot = 2;
                 parent.shootTimer = 0;
+                shiftVisible = 0;
                 switch(selectedAttack)
                 {
                     case 0: // wave

@@ -264,9 +264,7 @@ if global.difficulty == DIFF_HARD
     <instance objName="objRailHorizontal" x="3888" y="96" name="inst_914A302F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objRailHorizontal" x="3904" y="96" name="inst_89FD7DC7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objRailHorizontal" x="3920" y="96" name="inst_340D760A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objRailHorizontal" x="3936" y="96" name="inst_44C3416E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objRailHorizontal" x="3952" y="96" name="inst_A20A5749" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objRailHorizontal" x="3968" y="96" name="inst_82F4D899" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objRailHorizontal" x="3984" y="96" name="inst_A6868B87" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objRailHorizontal" x="4000" y="96" name="inst_5FCE019A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objRailHorizontal" x="4016" y="96" name="inst_86711EB1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -293,8 +291,6 @@ if global.difficulty == DIFF_HARD
     <instance objName="objRailVertical" x="4016" y="48" name="inst_47A0BD5F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objRailVertical" x="4016" y="64" name="inst_D1E71EAE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objRailVertical" x="4032" y="112" name="inst_E53A2B2E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objRailVertical" x="3936" y="96" name="inst_13B544EE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objRailVertical" x="3968" y="96" name="inst_28693518" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objApacheJoe" x="1376" y="576" name="inst_A0927A11" locked="0" code="if global.difficulty &lt; DIFF_HARD&#xA;{&#xA;    instance_destroy();&#xA;}&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objApacheJoe" x="2272" y="288" name="inst_1CB06F5B" locked="0" code="if global.difficulty &lt; DIFF_HARD&#xA;{&#xA;    instance_destroy();&#xA;}&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objTossMachine" x="3152" y="832" name="inst_3EC80B55" locked="0" code="if global.difficulty &lt; DIFF_HARD&#xA;{&#xA;    instance_destroy();&#xA;}" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -370,6 +366,8 @@ if global.difficulty == DIFF_HARD
     <instance objName="objEasyPlatform16" x="3136" y="320" name="inst_252DB14F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objEasyPlatform16" x="3104" y="576" name="inst_A085334F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objEasyCube16" x="1952" y="448" name="inst_E2EF377A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRailCross" x="3936" y="96" name="inst_6A5C8223" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRailCross" x="3968" y="96" name="inst_52D8D751" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="tstDark1" x="3584" y="144" w="16" h="16" xo="176" yo="80" id="11311054" name="inst_72FB6FB8" depth="1000100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

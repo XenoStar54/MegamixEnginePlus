@@ -31,11 +31,19 @@ image_speed = 0;
 
 //@cc
 objectToStop = objMM4ShieldAttacker;
+// the functionality has been expanded to support turning objectToStop into an array, like so:
+// objectToStop[0] = objMM4ShieldAttacker;
+// objectToStop[1] = objShieldGuard;
+// objectToStop[2] = objShieldAttackerGTR;
 
 //@cc if true, the stopper will be detected as ground
 isGround=false;
 
+//@cc
+isSolid = 1;
 
+//@cc if true, the stopper will stop EVERYTHING OTHER THAN the specified object(s)
+invertBlockingSettings = false;
 </string>
           </argument>
         </arguments>
