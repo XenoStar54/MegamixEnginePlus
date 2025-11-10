@@ -32,6 +32,7 @@ entitySpike = false;
 entityLadder = false;
 entityOil = false;
 contactDamage = 0;
+canBeShifted = true;
 </string>
           </argument>
         </arguments>

@@ -194,6 +194,8 @@ drawOffsetY = 0;
 
 // used by objDarkness; multiplies the spotlight radius around itself by this much
 darknessSpotlightRadiusMult = 1;
+
+canBeShifted = true;
 </string>
           </argument>
         </arguments>

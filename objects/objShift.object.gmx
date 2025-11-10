@@ -30,7 +30,8 @@
    Blizzard Man's stage, and others.
   
    The object should be placed and stretched over a section of tiles. Any collision
-   objects under these (i.e. objSolid) will be converted to moving platform objects.
+   objects under these (i.e. objSolid, objSpike, objLadder) will be converted to
+   moving platform objects.
    Entities will also be incorporated into the shift, but they will only actually shift
    if they have blockCollision = 0, otherwise they will only have their spawn coordinates
    adjusted.
@@ -70,9 +71,6 @@
      If you forget to provide an additional T value at the end, a value of 1
      greater than the previous value will be appended automatically, which
      may cause a rapid jump.
-     
-   Note: cannot currently handle some collision types, including ladders and spikes.
-   Note: it's probable that many entities will not work correctly in a shift area.
 */
 
 //@cc x-coordinates of path. See object decscription.
@@ -96,6 +94,16 @@ secY = -1; //@cc see secX
 // If this is an array, tiles on all provided layers will be moved
 // (if they are under the object when the room begins).
 tileLayer = 1000000;
+
+//@cc objects to move which will be converted to objSolidEntity
+objectToConvert[0] = objSolid;
+objectToConvert[1] = objTopSolid;
+objectToConvert[2] = objStandSolid;
+
+//@cc objects to move which will be left as-is
+objectToMoveDirectly[0] = objWater;
+
+// objects in this list and their children will be excluded from conversion
 
 // current time value
 timer = -1;
@@ -352,24 +360,15 @@ if (secY == -1)
           <argument>
             <kind>1</kind>
             <string>/// grab underlying
-
-var convertObject, convertIsSolid, directObject;
-
-// these objects should be converted into objSolidEntity
-convertObject[0] = objSolid;
-convertIsSolid[0] = 1;
-
-convertObject[1] = objTopSolid;
-convertIsSolid[1] = 2;
-
-convertObject[2] = objStandSolid;
-convertIsSolid[2] = 3;
-
-// because objSolidEntity cannot be a ladder or a spike, it cannot be handled here.
-
-// these objects should be left as-is and moved manually
-directObject[0] = objWater;
-
+var convertObject, directObject;
+for(var k = 0; k &lt; array_length_1d(objectToConvert); k++)
+{
+    convertObject[k] = objectToConvert[k];
+}
+for(var k = 0; k &lt; array_length_1d(objectToMoveDirectly); k++)
+{
+    directObject[k] = objectToMoveDirectly[k];
+}
 carveSolid(bbox_left, bbox_top, bbox_right, bbox_bottom);
 
 // leave these as they are; move directly
@@ -378,13 +377,14 @@ for (var k = 0; k &lt; array_length_1d(directObject); k++)
     var obj = directObject[k];
     with (obj)
     {
-        if (object_index == obj)
+        if (canBeShifted)
         {
             if (place_meeting(x, y, other))
             {
                 other.child[other.childCount] = id;
                 other.childMovementType[other.childCount] = other.MVT_DIRECT; // direct move
                 other.childCount++;
+                canBeShifted = false;
             }
         }
     }
@@ -411,7 +411,7 @@ for (var k = 0; k &lt; array_length_1d(convertObject); k++)
 {
     with (convertObject[k])
     {
-        if (1)
+        if(canBeShifted)
         {
             if (place_meeting(x, y, other))
             {
@@ -434,6 +434,7 @@ for (var k = 0; k &lt; array_length_1d(convertObject); k++)
                 other.child[other.childCount] = converted;
                 other.childMovementType[other.childCount] = other.MVT_SPEED; // xspeed/yspeed
                 other.childCount++;
+                canBeShifted = false;
                 instance_destroy();
             }
         }

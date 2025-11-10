@@ -25,8 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Activates water phisics on entities
+            <string>/// Activates water physics on entities
 image_speed = 0;
+canBeShifted = true;
 </string>
           </argument>
         </arguments>

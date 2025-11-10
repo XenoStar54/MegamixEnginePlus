@@ -26,6 +26,12 @@
           <argument>
             <kind>1</kind>
             <string>/// The only thing this object does is that Mega Man can not fall through it
+isSolid = 3;
+entityIce = false;
+entitySpike = false;
+entityLadder = false;
+entityOil = false;
+contactDamage = 0;
 </string>
           </argument>
         </arguments>

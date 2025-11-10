@@ -115,7 +115,7 @@ if (dieToSpikes) // entities with this variable set to "true" die when coming in
 with (objTopSolid)
 {
     solid=0;
-    if (isSolid == 1)
+    if (isSolid >= 1)
     {
         if (!place_meeting(x, y + cgrav, myid))
         {
