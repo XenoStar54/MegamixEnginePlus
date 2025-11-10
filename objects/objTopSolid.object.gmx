@@ -26,7 +26,12 @@
           <argument>
             <kind>1</kind>
             <string>/// Only solid on the top, blocks entities with blockCollision
-isSolid = true;
+isSolid = 2;
+entityIce = false;
+entitySpike = false;
+entityLadder = false;
+entityOil = false;
+contactDamage = 0;
 </string>
           </argument>
         </arguments>

@@ -26,10 +26,12 @@
           <argument>
             <kind>1</kind>
             <string>/// Climbable by players, and is a top solid for entities
+event_inherited();
 image_speed = 0;
 
-isSolid = 1;
+isSolid = 2;
 mytop = -1;
+entityLadder = true;
 </string>
           </argument>
         </arguments>

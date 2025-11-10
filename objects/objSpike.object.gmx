@@ -29,6 +29,7 @@
 event_inherited();
 
 contactDamage = 28;
+entitySpike = true;
 </string>
           </argument>
         </arguments>

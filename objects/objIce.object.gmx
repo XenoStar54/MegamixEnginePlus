@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>/// Activates ice physics on players walking on it
 event_inherited();
+entityIce = true;
 </string>
           </argument>
         </arguments>

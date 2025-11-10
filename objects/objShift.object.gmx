@@ -409,10 +409,9 @@ with (prtEntity)
 // convert these to objSolidEntity
 for (var k = 0; k &lt; array_length_1d(convertObject); k++)
 {
-    var obj = convertObject[k];
-    with (obj)
+    with (convertObject[k])
     {
-        if (object_index == obj)
+        if (1)
         {
             if (place_meeting(x, y, other))
             {
@@ -426,7 +425,12 @@ for (var k = 0; k &lt; array_length_1d(convertObject); k++)
                 converted.stopOnFlash = true;
                 converted.respawnRange = -1;
                 converted.despawnRange = -1;
-                converted.isSolid = convertIsSolid[k];
+                converted.isSolid = isSolid;
+                converted.entityIce = entityIce;
+                converted.entityOil = entityOil;
+                converted.entityLadder = entityLadder;
+                converted.contactDamage = contactDamage;
+                converted.entitySpike = entitySpike;
                 other.child[other.childCount] = converted;
                 other.childMovementType[other.childCount] = other.MVT_SPEED; // xspeed/yspeed
                 other.childCount++;

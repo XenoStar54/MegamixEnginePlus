@@ -273,8 +273,35 @@ with(objPUSwitchBlockRed) myFlag = 1;</code>
     <instance objName="objSign" x="1776" y="160" name="inst_9920C63C" locked="0" code="name = 'Fence';&#xA;name_color = c_white;&#xA;text = &quot;Ladder but omnidirectional, as seen in SMW, SFxMM, EZ, and many other games. Jumping up and climb-shooting enabled.&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSign" x="1920" y="160" name="inst_34649B42" locked="0" code="name = 'Piledan bomber (player-controlled)';&#xA;name_color = c_white;&#xA;text = &quot;Hey, wouldn't it be cool if Mega Man could use vehicles that are usually enemy-controlled?&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSign" x="2336" y="176" name="inst_7F66EC44" locked="0" code="name = 'Piledan turret (player-controlled)';&#xA;name_color = c_white;&#xA;text = &quot;Hey, wouldn't it be cool if Mega Man could use vehicles that are usually enemy-controlled? 2&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objLadder" x="1664" y="32" name="inst_33F72229" locked="0" code="" scaleX="1" scaleY="4" colour="4294967295" rotation="0"/>
+    <instance objName="objSolid" x="1584" y="32" name="inst_71917CA7" locked="0" code="" scaleX="4" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objDamageSpike" x="1584" y="64" name="inst_78F47C6E" locked="0" code="" scaleX="4" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objDamageSpike" x="1584" y="16" name="inst_4DE97AE1" locked="0" code="" scaleX="4" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objShift" x="1584" y="16" name="inst_B616009F" locked="0" code="posX[0] = x;&#xA;posY[0] = y;&#xA;posX[1] = x;&#xA;posY[1] = y+64;&#xA;posT[0] = 0;&#xA;posT[1] = 128;&#xA;posT[2] = 256;&#xA;" scaleX="4" scaleY="4" colour="4294967295" rotation="0"/>
+    <instance objName="objShift" x="1664" y="32" name="inst_37456452" locked="0" code="posX[0] = x;&#xA;posY[0] = y;&#xA;posX[1] = x+64;&#xA;posY[1] = y;&#xA;posT[0] = 0;&#xA;posT[1] = 128;&#xA;posT[2] = 256;&#xA;" scaleX="1" scaleY="4" colour="4294967295" rotation="0"/>
   </instances>
-  <tiles/>
+  <tiles>
+    <tile bgName="tstYamatoMan" x="1584" y="16" w="16" h="16" xo="240" yo="48" id="11485487" name="inst_F580F4AF" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tstYamatoMan" x="1600" y="16" w="16" h="16" xo="240" yo="48" id="11485488" name="inst_7096EDAB" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tstYamatoMan" x="1616" y="16" w="16" h="16" xo="240" yo="48" id="11485489" name="inst_083A2962" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tstYamatoMan" x="1632" y="16" w="16" h="16" xo="240" yo="48" id="11485490" name="inst_EA183D84" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tstYamatoMan" x="1632" y="64" w="16" h="16" xo="240" yo="48" id="11485491" name="inst_DE5FE006" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tstYamatoMan" x="1616" y="64" w="16" h="16" xo="240" yo="48" id="11485492" name="inst_C7D81D78" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tstYamatoMan" x="1600" y="64" w="16" h="16" xo="240" yo="48" id="11485493" name="inst_BBFDA5A4" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tstYamatoMan" x="1584" y="64" w="16" h="16" xo="240" yo="48" id="11485494" name="inst_8ACC521C" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tstYamatoMan" x="1584" y="32" w="16" h="16" xo="0" yo="0" id="11485495" name="inst_7BD7F681" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tstYamatoMan" x="1632" y="32" w="16" h="16" xo="32" yo="0" id="11485496" name="inst_DE34B3B7" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tstYamatoMan" x="1632" y="48" w="16" h="16" xo="32" yo="64" id="11485497" name="inst_A55345A0" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tstYamatoMan" x="1584" y="48" w="16" h="16" xo="0" yo="64" id="11485498" name="inst_EE862B17" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tstYamatoMan" x="1600" y="32" w="16" h="16" xo="16" yo="0" id="11485499" name="inst_989EDB05" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tstYamatoMan" x="1616" y="32" w="16" h="16" xo="16" yo="0" id="11485500" name="inst_E48A2AC6" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tstYamatoMan" x="1600" y="48" w="16" h="16" xo="16" yo="64" id="11485501" name="inst_8EF3B933" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tstYamatoMan" x="1616" y="48" w="16" h="16" xo="16" yo="64" id="11485502" name="inst_228EF803" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tstYamatoMan" x="1664" y="32" w="16" h="16" xo="224" yo="32" id="11485503" name="inst_E4B4A693" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tstYamatoMan" x="1664" y="48" w="16" h="16" xo="224" yo="32" id="11485504" name="inst_8938920D" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tstYamatoMan" x="1664" y="64" w="16" h="16" xo="224" yo="32" id="11485505" name="inst_E2EDA908" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tstYamatoMan" x="1664" y="80" w="16" h="16" xo="224" yo="32" id="11485506" name="inst_DB5F538D" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+  </tiles>
   <PhysicsWorld>0</PhysicsWorld>
   <PhysicsWorldTop>0</PhysicsWorldTop>
   <PhysicsWorldLeft>0</PhysicsWorldLeft>
