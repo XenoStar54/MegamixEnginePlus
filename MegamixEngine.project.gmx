@@ -7898,6 +7898,7 @@
         <object>objects\objNitroMan</object>
         <object>objects\objSolarMan</object>
         <objects name="Projectiles">
+          <object>objects\objBladeMan10Blade</object>
           <object>objects\objCommandoBomb</object>
           <object>objects\objCommandoBombExplosion</object>
           <object>objects\objCommandoGroundWave</object>

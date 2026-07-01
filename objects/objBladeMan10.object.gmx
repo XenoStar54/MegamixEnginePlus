@@ -243,7 +243,7 @@ if (entityCanStep())
                     {
                         dir = angle;
                         spd = 5;
-                        bullet.contactDamage = 2+other.overrideDifficultyMode;
+                        contactDamage = 2+other.overrideDifficultyMode;
                         image_index = 16*dir/360;
                     }
                     angle += angleDif*image_xscale;
@@ -338,7 +338,7 @@ if (entityCanStep())
                     {
                         dir = angle;
                         spd = 5;
-                        bullet.contactDamage = 2+other.overrideDifficultyMode;
+                        contactDamage = 2+other.overrideDifficultyMode;
                         image_index = 16*dir/360;
                     }
                     angle += angleDif*image_xscale;
@@ -498,7 +498,7 @@ if (entityCanStep())
                     {
                         dir = angle;
                         spd = 5;
-                        bullet.contactDamage = 2+other.overrideDifficultyMode;
+                        contactDamage = 2+other.overrideDifficultyMode;
                         image_index = 16*dir/360;
                     }
                     angle += angleDif*image_xscale;
