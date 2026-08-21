@@ -86,7 +86,13 @@ parent.hitTimer = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited();
+            <string>if(!instance_exists(parent) || parent == noone)
+{
+    instance_destroy();
+    exit;
+}
+
+event_inherited();
 
 if(entityCanStep())
 {
@@ -120,7 +126,13 @@ if(entityCanStep())
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited();
+            <string>if(!instance_exists(parent) || parent == noone)
+{
+    instance_destroy();
+    exit;
+}
+
+event_inherited();
 
 if(entityCanStep())
 {
@@ -151,7 +163,13 @@ if(entityCanStep())
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited();
+            <string>if(!instance_exists(parent) || parent == noone)
+{
+    instance_destroy();
+    exit;
+}
+
+event_inherited();
 
 if(entityCanStep())
 {

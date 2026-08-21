@@ -156,7 +156,7 @@ if(entityCanStep())
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(capturedProjectile == 0)
+            <string>if(capturedProjectile == 0 &amp;&amp; other.reflectable)
 {
     //state = 2;
     sprite_index = sprBubbleLeadCapture;

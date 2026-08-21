@@ -43,6 +43,8 @@ limitX = 0; // Set to be a certain number away from Dark Man's centre
 orbit = true; // Is it currently revolving around Dark Man?
 comeBack = false; // Is it coming back to Dark Man?
 stopHere = 0; // Where to stop when comeBack = true
+
+owner = objDarkMan4;
 </string>
           </argument>
         </arguments>
@@ -69,16 +71,16 @@ stopHere = 0; // Where to stop when comeBack = true
 if (entityCanStep())
 {
     // Only work if Dark Man exists
-    if (instance_exists(objDarkMan4))
+    if (instance_exists(owner))
     {
-        origX = objDarkMan4.x; // This is where the barriers "orbit" around Dark Man
+        origX = owner.x; // This is where the barriers "orbit" around Dark Man
         limitX = origX + 30 * dir; // This is how far the barriers can go before turning back around
         
         // If orbiting Dark Man...
         if (orbit)
         {
             // Speed up when Dark Man is shooting
-            if (objDarkMan4.shooting == true)
+            if (owner.shooting == true)
             {
                 xspeed = 3 * dir;
             } // Default speed
@@ -100,14 +102,14 @@ if (entityCanStep())
             // Turn around when at Dark Man's center
             if (x == origX)
             {
-                if (objDarkMan4.phase != 1)
+                if (owner.phase != 1)
                 {
                     dir = -dir;
                     x += 2 * dir;
                 } // Do not orbit Dark Man when he's about to jump
                 else
                 {
-                    if (objDarkMan4.attackTimer &gt;= 0)
+                    if (owner.attackTimer &gt;= 0)
                     {
                         orbit = false;
                         xspeed = 4 * dir;

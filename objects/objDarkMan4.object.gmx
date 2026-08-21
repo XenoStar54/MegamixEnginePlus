@@ -228,8 +228,10 @@ if (entityCanStep())
             case 4:
                 var i = instance_create(x + 30, y, objDarkBarrier);
                 i.dir = -1;
+                i.owner = self;
                 var i = instance_create(x - 30, y, objDarkBarrier);
                 i.dir = 1;
+                i.owner = self;
                 image_index = 0;
                 phase = choose(0, 1);
                 break;
@@ -283,7 +285,12 @@ if (entityCanStep())
             // Fire barriers
             case 1:
                 attackTimer++;
-                if (!instance_exists(objDarkBarrier) || objDarkBarrier.orbit == false)
+                var barrierCheck = 0;
+                with(objDarkBarrier) if(owner == other)
+                {
+                    if(orbit) barrierCheck++;
+                }
+                if (barrierCheck &lt;= 0)
                 {
                     if (attackTimer &gt;= 20)
                     {
@@ -315,13 +322,17 @@ if (entityCanStep())
                     }
                     xspeed = 0;
                     
-                    if (!instance_exists(objDarkBarrier))
+                    var barrierCheck = 0;
+                    with(objDarkBarrier) if(owner == other) barrierCheck++;
+                    
+                    if (barrierCheck &lt;= 0)
                     {
                         var i = instance_create(view_xview, y, objDarkBarrier);
                         i.dir = 1;
                         i.orbit = false;
                         i.comeBack = true;
                         i.stopHere = x - 30;
+                        i.owner = self;
                         barrier1 = i.id;
                         
                         var i = instance_create(view_xview + view_wview, y, objDarkBarrier);
@@ -329,13 +340,19 @@ if (entityCanStep())
                         i.orbit = false;
                         i.comeBack = true;
                         i.stopHere = x + 30;
+                        i.owner = self;
                         barrier2 = i.id;
                     }
                     else
                     {
-                        if ((barrier1.comeBack == false) &amp;&amp; (barrier2.comeBack == false))
+                        var barrierOrbitCheck = 0;
+                        with(objDarkBarrier) if(owner == other)
                         {
-                            objDarkBarrier.orbit = true;
+                            if(!comeBack) barrierOrbitCheck++;
+                        }
+                        if (barrierOrbitCheck &gt;= 2)
+                        {
+                            with(objDarkBarrier) if(owner == other) orbit = true;
                             calibrateDirection();
                             phase = choose(0, 1);
                         }

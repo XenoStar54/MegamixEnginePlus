@@ -341,7 +341,12 @@ playSFX(sfxSidewayElevatorButton);
             <kind>1</kind>
             <string>event_inherited();
 
-if((phase == 0 || timer &gt; 4) &amp;&amp; !dead) draw_sprite_ext(spriteNum,timerDisplay,round(x),round(y),image_xscale,image_yscale,image_angle,c_white,1);
+if((phase == 0 || timer &gt; 4) &amp;&amp; !dead)
+{
+    var _x = (floor((x * global.screenScale) + .5) / global.screenScale);
+    var _y = (floor((y * global.screenScale) + .5) / global.screenScale);
+    draw_sprite_ext(spriteNum,timerDisplay,_x+drawOffsetX,_y+drawOffsetY,image_xscale,image_yscale,image_angle,c_white,1);
+}
 </string>
           </argument>
         </arguments>
